@@ -1,154 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="LAMMB - Let's all make money.">
+  <meta name="theme-color" content="#0b0b0b">
   <title>LAMMB</title>
-
-  <link rel="stylesheet" href="css/styles.css" />
-  <!-- Optional -->
-  <!-- <link rel="icon" href="assets/favicon.png" /> -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-  <div class="app">
-    <!-- Top (always present on mobile for orientation) -->
-    <header class="topbar">
-      <div class="topbar__left">
-        <span class="brand">LAMMB</span>
-        <span class="dot">•</span>
-        <span class="subtle" id="statusLabel">prelaunch</span>
+  <div id="app" aria-live="polite">
+    
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active" role="main">
+      <div class="view-content home-content">
+        <div class="artifact-container">
+          <img 
+            src="https://raw.githubusercontent.com/LandoCrissian/LAMMB/refs/heads/main/BCA56892-8B88-4238-B495-A5AA20F014D9.png" 
+            alt="LAMMB Sacred Artifact" 
+            class="artifact-image"
+            loading="eager"
+          >
+        </div>
+        <p class="tagline" id="tagline"></p>
+        <nav class="nav-row" aria-label="Main navigation">
+          <button type="button" class="nav-link" data-view="join">[ Join ]</button>
+          <button type="button" class="nav-link" data-view="buy">[ Buy ]</button>
+          <button type="button" class="nav-link" data-view="fees">[ Fees ]</button>
+        </nav>
+        <p class="microcopy">Minimal by design. Community first.</p>
       </div>
+    </section>
 
-      <div class="topbar__right">
-        <button class="chip" id="homeBtn" type="button" aria-label="Home">home</button>
+    <!-- JOIN VIEW -->
+    <section id="view-join" class="view" role="main">
+      <div class="view-content">
+        <div class="prose">
+          <p class="statement">You don't need permission.</p>
+          <p class="statement">You just need to be early.</p>
+        </div>
+        <div class="action-row">
+          <a href="" id="community-link" class="nav-link external" target="_blank" rel="noopener noreferrer">[ Enter Community ]</a>
+        </div>
+        <div class="back-row">
+          <button type="button" class="nav-link" data-view="home">← Back</button>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Views -->
-    <main class="views" aria-live="polite">
-      <!-- HOME -->
-      <section id="view-home" class="view is-active" data-view="home">
-        <div class="stack">
-          <img class="artifact" src="assets/lammb-miami.png" alt="LAMMB terminal artifact" />
-
-          <p class="tagline" id="tagline">Let’s all make money.</p>
-
-          <div class="navrow">
-            <button class="linkbtn" data-go="join" type="button">[ Join ]</button>
-            <button class="linkbtn" data-go="buy" type="button">[ Buy ]</button>
-            <button class="linkbtn" data-go="fees" type="button">[ Fees ]</button>
+    <!-- BUY VIEW -->
+    <section id="view-buy" class="view" role="main">
+      <div class="view-content">
+        <!-- Gate Phase -->
+        <div id="buy-gate" class="buy-phase">
+          <div class="prose warning-prose">
+            <p class="statement">No roadmap.</p>
+            <p class="statement">No guarantees.</p>
+            <p class="statement">No one to blame.</p>
           </div>
-
-          <p class="micro subtle">
-            Minimal by design. Community first.
-          </p>
-        </div>
-      </section>
-
-      <!-- JOIN -->
-      <section id="view-join" class="view" data-view="join">
-        <div class="panel">
-          <p class="lead">You don’t need permission.</p>
-          <p class="lead">You just need to be early.</p>
-
-          <div class="actions">
-            <a class="primary" id="communityLink" target="_blank" rel="noopener">Join the community</a>
-            <button class="ghost" data-go="home" type="button">← back</button>
+          <p class="gate-warning">If that's a problem, don't continue.</p>
+          <div class="action-row">
+            <button type="button" class="nav-link" id="btn-continue">[ Continue ]</button>
           </div>
-
-          <p class="micro subtle">
-            If you’re reading this, you’re already ahead.
-          </p>
-        </div>
-      </section>
-
-      <!-- BUY -->
-      <section id="view-buy" class="view" data-view="buy">
-        <div class="panel">
-          <div id="buyGate">
-            <p class="lead">No roadmap.</p>
-            <p class="lead">No guarantees.</p>
-            <p class="lead">No one to blame.</p>
-
-            <p class="micro subtle">
-              If that’s a problem, don’t continue.
-            </p>
-
-            <div class="actions">
-              <button class="primarybtn" id="continueBtn" type="button">[ Continue ]</button>
-              <button class="ghost" data-go="home" type="button">← back</button>
-            </div>
-          </div>
-
-          <div id="buyLive" class="hidden">
-            <p class="lead"><strong id="tokenName">LAMMB</strong></p>
-            <p class="micro subtle">Ticker: <span id="tokenTicker">LAMMB</span></p>
-
-            <div class="card">
-              <div class="row">
-                <span class="label">Contract Address</span>
-                <button class="chip" id="copyCaBtn" type="button">copy</button>
-              </div>
-              <div class="mono ca" id="caText">—</div>
-              <p class="micro subtle">Tap copy. Verify on-chain before doing anything.</p>
-            </div>
-
-            <div class="card">
-              <div class="row">
-                <span class="label">Links</span>
-              </div>
-              <div class="linkgrid" id="dexLinks"></div>
-            </div>
-
-            <div class="actions">
-              <button class="ghost" data-go="fees" type="button">fees →</button>
-              <button class="ghost" data-go="home" type="button">← back</button>
-            </div>
+          <div class="back-row">
+            <button type="button" class="nav-link" data-view="home">← Back</button>
           </div>
         </div>
-      </section>
-
-      <!-- FEES -->
-      <section id="view-fees" class="view" data-view="fees">
-        <div class="panel">
-          <p class="lead">Creation fees → what they’re used for</p>
-
-          <div class="card">
-            <ul class="list">
-              <li><strong>DEXScreener</strong> — purchase / maintain listings & visibility.</li>
-              <li><strong>Buybacks</strong> — accumulate strategically when conditions make sense.</li>
-              <li><strong>Pairing</strong> — build liquidity options so we can start pairing with others.</li>
-              <li><strong>Burns</strong> — reduce supply over time when/if executed.</li>
-            </ul>
-
-            <p class="micro subtle">
-              Note: timing and execution are discretionary and depend on market/liquidity conditions.
-              Nothing here is a promise or guarantee.
-            </p>
+        <!-- Token Info Phase -->
+        <div id="buy-info" class="buy-phase hidden">
+          <div id="token-details">
+            <!-- Populated by JS -->
           </div>
-
-          <div class="card">
-            <p class="label">Transparency</p>
-            <p class="micro">
-              We’ll post receipts/links when spend happens. If we can’t prove it, it didn’t happen.
-            </p>
-          </div>
-
-          <div class="actions">
-            <button class="ghost" data-go="home" type="button">← back</button>
-            <button class="ghost" data-go="buy" type="button">buy →</button>
+          <div class="back-row">
+            <button type="button" class="nav-link" data-view="home">← Back</button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
+    <!-- FEES VIEW -->
+    <section id="view-fees" class="view" role="main">
+      <div class="view-content">
+        <h2 class="section-title">Creation Fee Allocation</h2>
+        <ul class="fee-list">
+          <li>Purchase / maintain DEXScreener</li>
+          <li>Buybacks to accumulate strategically</li>
+          <li>Start pairing with others (liquidity options)</li>
+          <li>Burns</li>
+        </ul>
+        <div class="disclaimer">
+          <p>Timing and execution are discretionary and depend on market/liquidity conditions. Nothing here is a promise.</p>
+        </div>
+        <div class="transparency">
+          <h3 class="subsection-title">Transparency</h3>
+          <p>We'll post receipts/links when spend happens. If we can't prove it, it didn't happen.</p>
+        </div>
+        <div class="back-row">
+          <button type="button" class="nav-link" data-view="home">← Back</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- Bottom hint (mobile-friendly) -->
-    <footer class="footer">
-      <span class="subtle" id="footerLine">terminal artifact • miami tint</span>
-    </footer>
   </div>
 
   <script src="js/config.js"></script>
