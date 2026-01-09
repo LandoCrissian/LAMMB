@@ -48,14 +48,17 @@
       targetView.classList.add('active');
       currentView = viewId;
       
+      // Scroll to top on view change
+      window.scrollTo(0, 0);
+      
       // Update URL hash without triggering scroll
       history.replaceState(null, '', `#${viewId}`);
     }
   }
 
   function resetBuyView() {
-    buyGateEl.classList.remove('hidden');
-    buyInfoEl.classList.add('hidden');
+    if (buyGateEl) buyGateEl.classList.remove('hidden');
+    if (buyInfoEl) buyInfoEl.classList.add('hidden');
   }
 
   // ─────────────────────────────────────────────────────────
@@ -63,8 +66,8 @@
   // ─────────────────────────────────────────────────────────
 
   function handleContinue() {
-    buyGateEl.classList.add('hidden');
-    buyInfoEl.classList.remove('hidden');
+    if (buyGateEl) buyGateEl.classList.add('hidden');
+    if (buyInfoEl) buyInfoEl.classList.remove('hidden');
     renderTokenInfo();
   }
 
@@ -80,18 +83,21 @@
 
     // Build links HTML
     const linkNames = {
+      pumpfun: 'Pump.fun',
       dexscreener: 'DEXScreener',
       jupiter: 'Jupiter',
       raydium: 'Raydium',
-      pumpfun: 'Pump.fun',
       birdeye: 'Birdeye'
     };
 
-    const links = Object.entries(config.token.links)
-      .filter(([_, url]) => url)
-      .map(([key, url]) => `
-        <a href="${escapeHtml(url)}" class="token-link" target="_blank" rel="noopener noreferrer">
-          ${linkNames[key] || key}
+    // Order links with pumpfun first
+    const linkOrder = ['pumpfun', 'dexscreener', 'jupiter', 'raydium', 'birdeye'];
+    
+    const links = linkOrder
+      .filter(key => config.token.links[key])
+      .map(key => `
+        <a href="${escapeHtml(config.token.links[key])}" class="token-link" target="_blank" rel="noopener noreferrer">
+          ${linkNames[key]}
         </a>
       `)
       .join('');
@@ -145,6 +151,7 @@
     textarea.value = text;
     textarea.style.position = 'fixed';
     textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
     document.body.appendChild(textarea);
     textarea.select();
     
