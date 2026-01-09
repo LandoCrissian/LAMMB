@@ -1,231 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="LAMMB - Let's All Make Money. Community first. Long game.">
-  <meta name="theme-color" content="#0a0a0a">
-  <title>LAMMB - Let's All Make Money</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LAMMB — Let's all make money. Community-first, transparent, building in public.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>LAMMB — Let's All Make Money</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/LandoCrissian/LAMMB/refs/heads/main/BCA56892-8B88-4238-B495-A5AA20F014D9.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo">LAMMB</a>
-      <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#token" class="nav-link">Token</a>
-        <a href="#plan" class="nav-link">Plan</a>
-        <a href="#transparency" class="nav-link">Updates</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="section hero">
-    <div class="hero-content">
-      <div class="artifact-glow"></div>
-      <img 
-        src="assets/lammb-miami.png" 
-        alt="LAMMB Sacred Artifact" 
-        class="artifact-image"
-        loading="eager"
-      >
-      <h1 class="hero-title">LAMMB</h1>
-      <p class="hero-tagline">Let's All Make Money</p>
-      <p class="hero-sub">Community first. Long game. Together.</p>
-      
-      <!-- Live Links Strip -->
-      <div class="live-links">
-        <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" class="live-link primary" target="_blank" rel="noopener">
-          <span class="link-icon">◈</span> Buy on Pump
-        </a>
-        <a href="https://x.com/i/communities/2009302380622565434" class="live-link" target="_blank" rel="noopener">
-          <span class="link-icon">◉</span> Community
-        </a>
-        <a href="https://x.com/lammb_?s=21" class="live-link" target="_blank" rel="noopener">
-          <span class="link-icon">✕</span> Twitter
-        </a>
-        <a href="https://dexscreener.com/solana/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" class="live-link" target="_blank" rel="noopener">
-          <span class="link-icon">◐</span> Dexscreener
-        </a>
-        <a href="https://jup.ag/swap/SOL-8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" class="live-link" target="_blank" rel="noopener">
-          <span class="link-icon">◑</span> Jupiter
-        </a>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-label">About</h2>
-      <div class="about-grid">
-        <div class="about-main">
-          <p class="about-lead">LAMMB was built for people tired of loud launches, empty promises, and silent devs.</p>
-          <p class="about-text">We're not here to hype and dump. We're here to build something that lasts. Community first. Long game. Let's all make money — together.</p>
-        </div>
-        <div class="about-values">
-          <div class="value-item">
-            <span class="value-icon">◈</span>
-            <span>Transparent</span>
-          </div>
-          <div class="value-item">
-            <span class="value-icon">◈</span>
-            <span>Community-Driven</span>
-          </div>
-          <div class="value-item">
-            <span class="value-icon">◈</span>
-            <span>Long-Term Vision</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Token Section -->
-  <section id="token" class="section">
-    <div class="container">
-      <h2 class="section-label">Token</h2>
-      <div class="token-card">
-        <div class="token-header">
-          <div class="token-info">
-            <span class="token-name">LAMMB</span>
-            <span class="token-ticker">$LAMMB</span>
-          </div>
-          <span class="token-chain">Solana</span>
-        </div>
-        <div class="token-ca">
-          <span class="ca-label">Contract Address</span>
-          <div class="ca-row">
-            <code class="ca-value" id="ca-display">8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump</code>
-            <button class="copy-btn" id="copy-btn" data-ca="8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump">
-              <span class="copy-text">Copy</span>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="https://raw.githubusercontent.com/LandoCrissian/LAMMB/refs/heads/main/BCA56892-8B88-4238-B495-A5AA20F014D9.png" alt="LAMMB" class="nav-logo-img">
+                <span>LAMMB</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-          </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#links" class="nav-link">Links</a>
+                <a href="#plan" class="nav-link">The Plan</a>
+                <a href="#transparency" class="nav-link">Transparency</a>
+                <a href="#future" class="nav-link">Future</a>
+                <a href="https://join.pump.fun/HSag/oohkn9qk" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Buy</a>
+            </div>
         </div>
-        <div class="token-actions">
-          <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" class="token-action primary" target="_blank" rel="noopener">Buy on Pump.fun</a>
-          <a href="https://jup.ag/swap/SOL-8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" class="token-action" target="_blank" rel="noopener">Trade on Jupiter</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Plan Section -->
-  <section id="plan" class="section">
-    <div class="container">
-      <h2 class="section-label">The Plan</h2>
-      <p class="plan-intro">Creator rewards are reinvested into the project. Here's exactly how:</p>
-      
-      <div class="plan-timeline">
-        <div class="plan-step">
-          <div class="step-marker">
-            <span class="step-number">01</span>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-content">
-            <h3>Launch on Pump</h3>
-            <p>Fair launch. No presale. Everyone gets the same chance.</p>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo-wrapper">
+                    <img src="https://raw.githubusercontent.com/LandoCrissian/LAMMB/refs/heads/main/BCA56892-8B88-4238-B495-A5AA20F014D9.png" alt="LAMMB Logo" class="hero-logo">
+                    <div class="hero-logo-shimmer"></div>
+                </div>
+                <h1 class="hero-title">LAMMB</h1>
+                <p class="hero-tagline">Let's all make money.</p>
+                <p class="hero-description">Community-first. Transparent. Playing the long game together.</p>
+                <div class="hero-ctas">
+                    <a href="https://join.pump.fun/HSag/oohkn9qk" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                        <span class="btn-glow"></span>
+                        Buy on Pump
+                    </a>
+                    <a href="https://x.com/i/communities/2009302380622565434" target="_blank" rel="noopener" class="btn btn-secondary btn-lg">
+                        Join Community
+                    </a>
+                </div>
+                <div class="hero-secondary">
+                    <button class="btn btn-ghost" id="heroCopyCA">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy CA
+                    </button>
+                    <a href="https://dexscreener.com/solana/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                        Dexscreener
+                    </a>
+                    <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                        Pump.fun
+                    </a>
+                    <a href="#transparency" class="btn btn-ghost">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Transparency
+                    </a>
+                </div>
+            </div>
         </div>
-        
-        <div class="plan-step">
-          <div class="step-marker">
-            <span class="step-number">02</span>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-content">
-            <h3>DEX Screener Listing</h3>
-            <p>Once we accumulate enough in creator rewards, DEX Screener gets paid for visibility.</p>
-          </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-indicator"></div>
         </div>
-        
-        <div class="plan-step">
-          <div class="step-marker">
-            <span class="step-number">03</span>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-content">
-            <h3>Boosts & Visibility</h3>
-            <p>After DEX is handled, funds go toward promotional boosts to grow the community.</p>
-          </div>
-        </div>
-        
-        <div class="plan-step">
-          <div class="step-marker">
-            <span class="step-number">04</span>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-content">
-            <h3>Buybacks Begin</h3>
-            <p>Rewards start flowing into strategic buybacks to support the token.</p>
-          </div>
-        </div>
-        
-        <div class="plan-step">
-          <div class="step-marker">
-            <span class="step-number">05</span>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-content">
-            <h3>Burns & LP</h3>
-            <p>Buybacks fuel token burns AND start pooling to create long-term liquidity.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Transparency Section -->
-  <section id="transparency" class="section">
-    <div class="container">
-      <h2 class="section-label">Updates & Transparency</h2>
-      <div class="transparency-card">
-        <p class="transparency-lead">If we can't prove it, it didn't happen.</p>
-        <p class="transparency-text">We post receipts. We share links. Every spend is documented and shared with the community. No hidden wallets, no mystery moves.</p>
-        <div class="transparency-cta">
-          <p>Have feedback? Ideas? Questions?</p>
-          <a href="https://x.com/i/communities/2009302380622565434" class="transparency-link" target="_blank" rel="noopener">Join the conversation →</a>
+    <!-- Live Links Section -->
+    <section class="links" id="links">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Quick Access</span>
+                <h2 class="section-title">Live Links</h2>
+            </div>
+            <div class="links-grid reveal">
+                <a href="https://join.pump.fun/HSag/oohkn9qk" target="_blank" rel="noopener" class="link-card link-card-primary">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">Buy on Pump</span>
+                        <span class="link-card-desc">Primary purchase link</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+                <a href="https://x.com/i/communities/2009302380622565434" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">Community</span>
+                        <span class="link-card-desc">Join the conversation</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+                <a href="https://dexscreener.com/solana/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">Dexscreener</span>
+                        <span class="link-card-desc">Live chart & data</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+                <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">Pump.fun</span>
+                        <span class="link-card-desc">Coin page</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+                <a href="https://jup.ag/swap/SOL-8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">Jupiter</span>
+                        <span class="link-card-desc">Swap on Jupiter</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+                <a href="https://x.com/lammb_?s=21" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </div>
+                    <div class="link-card-content">
+                        <span class="link-card-title">X Profile</span>
+                        <span class="link-card-desc">Follow @lammb_</span>
+                    </div>
+                    <svg class="link-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <span class="footer-logo">LAMMB</span>
-          <p class="footer-tagline">Let's All Make Money</p>
+    <!-- Contract Address Section -->
+    <section class="contract" id="contract">
+        <div class="container">
+            <div class="contract-card reveal">
+                <div class="contract-header">
+                    <span class="contract-label">Contract Address</span>
+                    <span class="contract-network">Solana</span>
+                </div>
+                <div class="contract-body">
+                    <code class="contract-address" id="contractAddress">8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump</code>
+                    <button class="btn btn-copy" id="copyCABtn" aria-label="Copy contract address">
+                        <svg class="copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
+                <p class="contract-note">Always verify the contract address before transacting.</p>
+            </div>
         </div>
-        <div class="footer-links">
-          <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener">Pump.fun</a>
-          <a href="https://x.com/i/communities/2009302380622565434" target="_blank" rel="noopener">Community</a>
-          <a href="https://x.com/lammb_?s=21" target="_blank" rel="noopener">Twitter</a>
-          <a href="https://dexscreener.com/solana/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener">Dexscreener</a>
-        </div>
-        <div class="footer-ca">
-          <span class="footer-ca-label">CA:</span>
-          <code class="footer-ca-value">8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump</code>
-          <button class="footer-copy-btn" data-ca="8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump">Copy</button>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>Community first. Long game. Together.</p>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="app.js"></script>
+    <!-- The Plan Section -->
+    <section class="plan" id="plan">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Roadmap</span>
+                <h2 class="section-title">The Plan</h2>
+                <p class="section-desc">A clear, transparent path forward. Built step by step.</p>
+            </div>
+            <div class="plan-timeline">
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">1</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">Launch on Pump</h3>
+                        <p class="plan-step-desc">Fair launch on Pump.fun. No presale. No insiders. Everyone starts equal.</p>
+                        <span class="plan-step-status status-complete">Complete</span>
+                    </div>
+                </div>
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">2</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">Creator Rewards Accumulate</h3>
+                        <p class="plan-step-desc">Rewards from trading activity build up over time. Fully transparent on-chain.</p>
+                        <span class="plan-step-status status-active">In Progress</span>
+                    </div>
+                </div>
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">3</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">DEX Listing</h3>
+                        <p class="plan-step-desc">When sufficient rewards accumulate, we fund the DEX listing. No shortcuts.</p>
+                        <span class="plan-step-status status-upcoming">Upcoming</span>
+                    </div>
+                </div>
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">4</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">Community Boosts</h3>
+                        <p class="plan-step-desc">Post-DEX rewards fund boosts to grow visibility and attract new community members.</p>
+                        <span class="plan-step-status status-upcoming">Upcoming</span>
+                    </div>
+                </div>
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">5</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">Buybacks Begin</h3>
+                        <p class="plan-step-desc">Rewards flow into buybacks from the open market. Consistent, transparent execution.</p>
+                        <span class="plan-step-status status-upcoming">Upcoming</span>
+                    </div>
+                </div>
+                <div class="plan-step reveal">
+                    <div class="plan-step-marker">
+                        <span class="plan-step-number">6</span>
+                        <div class="plan-step-line"></div>
+                    </div>
+                    <div class="plan-step-content">
+                        <h3 class="plan-step-title">Burns & LP Building</h3>
+                        <p class="plan-step-desc">Bought back tokens are burned and pooled to build liquidity. Long-term stability.</p>
+                        <span class="plan-step-status status-upcoming">Upcoming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency" id="transparency">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Open Book</span>
+                <h2 class="section-title">Transparency</h2>
+                <p class="section-desc">We build in public. Every step documented.</p>
+            </div>
+            <div class="transparency-grid">
+                <div class="transparency-card reveal">
+                    <div class="transparency-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Domain Secured</h3>
+                    <p>lammb.fun is owned and operated by the core team. This is our home base.</p>
+                </div>
+                <div class="transparency-card reveal">
+                    <div class="transparency-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Continuous Updates</h3>
+                    <p>This site evolves with the project. New features, dashboards, and tools incoming.</p>
+                </div>
+                <div class="transparency-card reveal">
+                    <div class="transparency-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Community-Driven</h3>
+                    <p>Your input shapes the project. Tell us what you want to see.</p>
+                </div>
+            </div>
+            <div class="transparency-cta reveal">
+                <p>Have ideas or feedback? We're listening.</p>
+                <a href="https://x.com/intent/tweet?text=Hey%20@lammb_%20I%20have%20a%20suggestion%20for%20the%20project%3A%20" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    Submit Feedback
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="future" id="future">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Vision</span>
+                <h2 class="section-title">More Than a Website</h2>
+                <p class="section-desc">Building real infrastructure. Transparent tools for the community.</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                        <span class="future-badge">Building</span>
+                    </div>
+                    <h3>Buyback & Burn Tracker</h3>
+                    <p>Live dashboard showing all buybacks and burns. Full transparency on execution.</p>
+                </div>
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span class="future-badge">In Progress</span>
+                    </div>
+                    <h3>LP Transparency Dashboard</h3>
+                    <p>See exactly where liquidity sits and how it grows over time.</p>
+                </div>
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                        <span class="future-badge">Planned</span>
+                    </div>
+                    <h3>On-Chain Metrics</h3>
+                    <p>Real-time holder data, volume stats, and transaction history.</p>
+                </div>
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="future-badge">Planned</span>
+                    </div>
+                    <h3>Community Proposals</h3>
+                    <p>Polls and voting for community input on key decisions.</p>
+                </div>
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5"/></svg>
+                        <span class="future-badge">Planned</span>
+                    </div>
+                    <h3>Updates Feed</h3>
+                    <p>Centralized log of all project updates and announcements.</p>
+                </div>
+                <div class="future-card reveal">
+                    <div class="future-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        <span class="future-badge">Planned</span>
+                    </div>
+                    <h3>Holder Widgets</h3>
+                    <p>Embeddable widgets showing live holder count and volume.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="https://raw.githubusercontent.com/LandoCrissian/LAMMB/refs/heads/main/BCA56892-8B88-4238-B495-A5AA20F014D9.png" alt="LAMMB" class="footer-logo">
+                    <span class="footer-tagline">LAMMB — We click. We stay. We build.</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://join.pump.fun/HSag/oohkn9qk" target="_blank" rel="noopener">Buy</a>
+                    <a href="https://x.com/i/communities/2009302380622565434" target="_blank" rel="noopener">Community</a>
+                    <a href="https://dexscreener.com/solana/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener">Dexscreener</a>
+                    <a href="https://pump.fun/coin/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener">Pump.fun</a>
+                    <a href="https://jup.ag/swap/SOL-8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump" target="_blank" rel="noopener">Jupiter</a>
+                    <a href="https://x.com/lammb_?s=21" target="_blank" rel="noopener">@lammb_</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-disclaimer">This is a community project. No guarantees of returns. Always do your own research before participating.</p>
+                <p class="footer-copy">&copy; 2025 LAMMB. Let's all make money.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
