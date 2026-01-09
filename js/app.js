@@ -1,246 +1,123 @@
-/**
- * LAMMB App
- * ═══════════════════════════════════════════════════════════
- * Site logic, view switching, and rendering.
- * ═══════════════════════════════════════════════════════════
- */
+// ========================================
+// LAMMB Single Page App
+// ========================================
 
-(function() {
-  'use strict';
+document.addEventListener('DOMContentLoaded', function () {
+  initNavigation();
+  initCopyButtons();
+  initContinueGate();
+  initSmoothScroll();
+  initAnimations();
+});
 
-  const config = window.LAMMB;
+// Navigation scroll effect
+function initNavigation() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
 
-  // ─────────────────────────────────────────────────────────
-  // DOM ELEMENTS
-  // ─────────────────────────────────────────────────────────
-
-  const views = document.querySelectorAll('.view');
-  const navLinks = document.querySelectorAll('[data-view]');
-  const taglineEl = document.getElementById('tagline');
-  const communityLinkEl = document.getElementById('community-link');
-  const buyGateEl = document.getElementById('buy-gate');
-  const buyInfoEl = document.getElementById('buy-info');
-  const tokenDetailsEl = document.getElementById('token-details');
-  const continueBtn = document.getElementById('btn-continue');
-
-  // ─────────────────────────────────────────────────────────
-  // STATE
-  // ─────────────────────────────────────────────────────────
-
-  let currentView = 'home';
-
-  // ─────────────────────────────────────────────────────────
-  // VIEW SWITCHING
-  // ─────────────────────────────────────────────────────────
-
-  function showView(viewId) {
-    // Reset buy view state when navigating away
-    if (currentView === 'buy' && viewId !== 'buy') {
-      resetBuyView();
-    }
-
-    views.forEach(view => {
-      view.classList.remove('active');
-    });
-
-    const targetView = document.getElementById(`view-${viewId}`);
-    if (targetView) {
-      targetView.classList.add('active');
-      currentView = viewId;
-      
-      // Scroll to top on view change
-      window.scrollTo(0, 0);
-      
-      // Update URL hash without triggering scroll
-      history.replaceState(null, '', `#${viewId}`);
-    }
-  }
-
-  function resetBuyView() {
-    if (buyGateEl) buyGateEl.classList.remove('hidden');
-    if (buyInfoEl) buyInfoEl.classList.add('hidden');
-  }
-
-  // ─────────────────────────────────────────────────────────
-  // BUY VIEW LOGIC
-  // ─────────────────────────────────────────────────────────
-
-  function handleContinue() {
-    if (buyGateEl) buyGateEl.classList.add('hidden');
-    if (buyInfoEl) buyInfoEl.classList.remove('hidden');
-    renderTokenInfo();
-  }
-
-  function renderTokenInfo() {
-    const isLive = config.launchMode === 'live' && config.token.mint;
-
-    if (!isLive) {
-      tokenDetailsEl.innerHTML = `
-        <p class="prelaunch-notice">Not live yet.</p>
-      `;
-      return;
-    }
-
-    // Build links HTML
-    const linkNames = {
-      pumpfun: 'Pump.fun',
-      dexscreener: 'DEXScreener',
-      jupiter: 'Jupiter',
-      raydium: 'Raydium',
-      birdeye: 'Birdeye'
-    };
-
-    // Order links with pumpfun first
-    const linkOrder = ['pumpfun', 'dexscreener', 'jupiter', 'raydium', 'birdeye'];
-    
-    const links = linkOrder
-      .filter(key => config.token.links[key])
-      .map(key => `
-        <a href="${escapeHtml(config.token.links[key])}" class="token-link" target="_blank" rel="noopener noreferrer">
-          ${linkNames[key]}
-        </a>
-      `)
-      .join('');
-
-    tokenDetailsEl.innerHTML = `
-      <div class="token-header">
-        <p class="token-name">${escapeHtml(config.name)}</p>
-        <p class="token-ticker">$${escapeHtml(config.ticker)}</p>
-      </div>
-      <div class="token-ca">
-        <p class="ca-label">Contract Address</p>
-        <div class="ca-row">
-          <span class="ca-value" id="ca-value">${escapeHtml(config.token.mint)}</span>
-          <button type="button" class="copy-btn" id="copy-btn">[ Copy ]</button>
-        </div>
-      </div>
-      ${links ? `
-        <div class="token-links">
-          <p class="links-label">Trade</p>
-          <div class="links-list">
-            ${links}
-          </div>
-        </div>
-      ` : ''}
-    `;
-
-    // Attach copy handler
-    const copyBtn = document.getElementById('copy-btn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', handleCopy);
-    }
-  }
-
-  function handleCopy() {
-    const caValue = config.token.mint;
-    const copyBtn = document.getElementById('copy-btn');
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(caValue).then(() => {
-        showCopied(copyBtn);
-      }).catch(() => {
-        fallbackCopy(caValue, copyBtn);
-      });
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 50) {
+      nav.classList.add('scrolled');
     } else {
-      fallbackCopy(caValue, copyBtn);
+      nav.classList.remove('scrolled');
     }
-  }
+  });
+}
 
-  function fallbackCopy(text, btn) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    textarea.style.pointerEvents = 'none';
-    document.body.appendChild(textarea);
-    textarea.select();
-    
-    try {
-      document.execCommand('copy');
-      showCopied(btn);
-    } catch (err) {
-      console.error('Copy failed:', err);
-    }
-    
-    document.body.removeChild(textarea);
-  }
+// Copy buttons
+function initCopyButtons() {
+  const copyBtns = document.querySelectorAll('.copy-btn');
 
-  function showCopied(btn) {
-    const originalText = btn.textContent;
-    btn.textContent = '[ Copied ]';
-    btn.classList.add('copied');
-    
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.classList.remove('copied');
-    }, 1500);
-  }
+  copyBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const textToCopy =
+        btn.getAttribute('data-copy') ||
+        '8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump';
 
-  // ─────────────────────────────────────────────────────────
-  // UTILITIES
-  // ─────────────────────────────────────────────────────────
+      navigator.clipboard.writeText(textToCopy).then(function () {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  // ─────────────────────────────────────────────────────────
-  // INITIALIZATION
-  // ─────────────────────────────────────────────────────────
-
-  function init() {
-    // Populate dynamic content
-    if (taglineEl) {
-      taglineEl.textContent = config.tagline;
-    }
-
-    if (communityLinkEl) {
-      communityLinkEl.href = config.communityUrl;
-    }
-
-    // Attach navigation handlers
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const viewId = link.getAttribute('data-view');
-        showView(viewId);
+        setTimeout(function () {
+          btn.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
       });
     });
+  });
+}
 
-    // Continue button handler
-    if (continueBtn) {
-      continueBtn.addEventListener('click', handleContinue);
-    }
+// Continue gate for buy section
+function initContinueGate() {
+  const continueLink = document.querySelector('.continue-link');
+  const buyInfo = document.querySelector('.buy-info');
 
-    // Handle initial hash
-    const hash = window.location.hash.slice(1);
-    const validViews = ['home', 'join', 'buy', 'fees'];
-    
-    if (hash && validViews.includes(hash)) {
-      showView(hash);
-    } else {
-      showView('home');
-    }
+  if (!continueLink || !buyInfo) return;
 
-    // Handle browser back/forward
-    window.addEventListener('popstate', () => {
-      const hash = window.location.hash.slice(1);
-      if (hash && validViews.includes(hash)) {
-        showView(hash);
-      } else {
-        showView('home');
+  continueLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    buyInfo.classList.add('visible');
+    continueLink.style.opacity = '0';
+
+    setTimeout(function () {
+      continueLink.style.display = 'none';
+    }, 300);
+
+    setTimeout(function () {
+      buyInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  });
+}
+
+// Smooth scroll for anchor links
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+
+      e.preventDefault();
+      const target = document.querySelector(href);
+
+      if (target) {
+        const navEl = document.querySelector('.nav');
+        const navHeight = navEl ? navEl.offsetHeight : 0;
+        const targetPosition =
+          target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth',
+        });
       }
     });
-  }
+  });
+}
 
-  // Start when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+// Scroll animations
+function initAnimations() {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
 
-})();
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document
+    .querySelectorAll('.flow-card, .community-card, .future-item, .stat-item')
+    .forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+}
