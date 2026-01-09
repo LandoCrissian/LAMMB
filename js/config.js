@@ -19,17 +19,17 @@
 window.LAMMB = {
   name: "LAMMB",
   ticker: "LAMMB",
-  tagline: "Let's all make money.",
+  tagline: "Let's All Make Money.",
   communityUrl: "https://x.com/i/communities/2009302380622565434",
   launchMode: "prelaunch", // "prelaunch" | "live"
   token: {
     chain: "solana",
     mint: "", // Set your contract address here when live
     links: {
+      pumpfun: "",     // Primary buy link
       dexscreener: "",
       jupiter: "",
       raydium: "",
-      pumpfun: "",
       birdeye: ""
     }
   }
