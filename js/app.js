@@ -1,123 +1,196 @@
-// ========================================
-// LAMMB Single Page App
-// ========================================
+/**
+ * LAMMB App
+ * ═══════════════════════════════════════════════════════════
+ * Vanilla JS - No frameworks
+ * ═══════════════════════════════════════════════════════════
+ */
 
-document.addEventListener('DOMContentLoaded', function () {
-  initNavigation();
-  initCopyButtons();
-  initContinueGate();
-  initSmoothScroll();
-  initAnimations();
-});
+(function() {
+  'use strict';
 
-// Navigation scroll effect
-function initNavigation() {
-  const nav = document.querySelector('.nav');
-  if (!nav) return;
+  // Contract Address
+  const CA = '8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump';
 
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 50) {
+  // ─────────────────────────────────────────────────────────
+  // NAV SCROLL EFFECT
+  // ─────────────────────────────────────────────────────────
+
+  const nav = document.getElementById('nav');
+  let lastScroll = 0;
+  let ticking = false;
+
+  function updateNav() {
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 50) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
     }
-  });
-}
+    
+    lastScroll = scrollY;
+    ticking = false;
+  }
 
-// Copy buttons
-function initCopyButtons() {
-  const copyBtns = document.querySelectorAll('.copy-btn');
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateNav);
+      ticking = true;
+    }
+  }, { passive: true });
 
-  copyBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const textToCopy =
-        btn.getAttribute('data-copy') ||
-        '8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump';
+  // ─────────────────────────────────────────────────────────
+  // SMOOTH SCROLL FOR NAV LINKS
+  // ─────────────────────────────────────────────────────────
 
-      navigator.clipboard.writeText(textToCopy).then(function () {
-        const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-
-        setTimeout(function () {
-          btn.textContent = originalText;
-          btn.classList.remove('copied');
-        }, 2000);
-      });
-    });
-  });
-}
-
-// Continue gate for buy section
-function initContinueGate() {
-  const continueLink = document.querySelector('.continue-link');
-  const buyInfo = document.querySelector('.buy-info');
-
-  if (!continueLink || !buyInfo) return;
-
-  continueLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    buyInfo.classList.add('visible');
-    continueLink.style.opacity = '0';
-
-    setTimeout(function () {
-      continueLink.style.display = 'none';
-    }, 300);
-
-    setTimeout(function () {
-      buyInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
-  });
-}
-
-// Smooth scroll for anchor links
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
-
-      e.preventDefault();
-      const target = document.querySelector(href);
-
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const target = document.querySelector(targetId);
       if (target) {
-        const navEl = document.querySelector('.nav');
-        const navHeight = navEl ? navEl.offsetHeight : 0;
-        const targetPosition =
-          target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
+        e.preventDefault();
+        const navHeight = nav.offsetHeight;
+        const targetPosition = target.offsetTop - navHeight;
+        
         window.scrollTo({
           top: targetPosition,
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       }
     });
   });
-}
 
-// Scroll animations
-function initAnimations() {
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1,
-  };
+  // ─────────────────────────────────────────────────────────
+  // COPY TO CLIPBOARD
+  // ─────────────────────────────────────────────────────────
 
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-        observer.unobserve(entry.target);
-      }
+  function copyToClipboard(text, button) {
+    const originalText = button.textContent || button.innerText;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showCopied(button, originalText);
+      }).catch(() => {
+        fallbackCopy(text, button, originalText);
+      });
+    } else {
+      fallbackCopy(text, button, originalText);
+    }
+  }
+
+  function fallbackCopy(text, button, originalText) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+      document.execCommand('copy');
+      showCopied(button, originalText);
+    } catch (err) {
+      console.error('Copy failed:', err);
+    }
+    
+    document.body.removeChild(textarea);
+  }
+
+  function showCopied(button, originalText) {
+    button.textContent = 'Copied!';
+    button.classList.add('copied');
+    
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.classList.remove('copied');
+    }, 2000);
+  }
+
+  // Main copy button
+  const copyBtn = document.getElementById('copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      const ca = this.getAttribute('data-ca') || CA;
+      copyToClipboard(ca, this.querySelector('.copy-text') || this);
     });
-  }, observerOptions);
+  }
 
-  document
-    .querySelectorAll('.flow-card, .community-card, .future-item, .stat-item')
-    .forEach(function (el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+  // Footer copy button
+  const footerCopyBtn = document.querySelector('.footer-copy-btn');
+  if (footerCopyBtn) {
+    footerCopyBtn.addEventListener('click', function() {
+      const ca = this.getAttribute('data-ca') || CA;
+      copyToClipboard(ca, this);
     });
-}
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // INTERSECTION OBSERVER FOR ANIMATIONS
+  // ─────────────────────────────────────────────────────────
+
+  if ('IntersectionObserver' in window) {
+    const sections = document.querySelectorAll('.section');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+
+    // Make hero visible immediately
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.style.opacity = '1';
+      hero.style.transform = 'translateY(0)';
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // KEYBOARD ACCESSIBILITY
+  // ─────────────────────────────────────────────────────────
+
+  document.addEventListener('keydown', function(e) {
+    // ESC to scroll to top
+    if (e.key === 'Escape') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // ─────────────────────────────────────────────────────────
+  // INIT
+  // ─────────────────────────────────────────────────────────
+
+  function init() {
+    // Initial nav state
+    updateNav();
+    
+    console.log('%c LAMMB ', 'background: linear-gradient(135deg, #00d4ff, #ff2d7a); color: #000; font-weight: bold; padding: 4px 8px;');
+    console.log("Let's All Make Money");
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
