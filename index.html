@@ -26,6 +26,7 @@
                 <span></span>
             </button>
             <div class="nav-menu" id="navMenu">
+                <a href="#stats" class="nav-link">Stats</a>
                 <a href="#links" class="nav-link">Links</a>
                 <a href="#plan" class="nav-link">The Plan</a>
                 <a href="#transparency" class="nav-link">Transparency</a>
@@ -79,6 +80,112 @@
         <div class="hero-scroll">
             <span>Scroll</span>
             <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <!-- Live Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Real-Time Data</span>
+                <h2 class="section-title">Live Stats</h2>
+                <p class="section-desc">Powered by DexScreener. Auto-updates every 30 seconds.</p>
+            </div>
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Price</span>
+                        <span class="stat-value" id="statPrice">—</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">24h Change</span>
+                        <span class="stat-value" id="statChange">—</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Market Cap</span>
+                        <span class="stat-value" id="statMcap">—</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">24h Volume</span>
+                        <span class="stat-value" id="statVolume">—</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.77L12 20.65l7.65-7.65.77-.77a5.4 5.4 0 0 0 0-7.65z"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Liquidity</span>
+                        <span class="stat-value" id="statLiquidity">—</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Holders</span>
+                        <span class="stat-value stat-value-link">
+                            <a href="https://solscan.io/token/8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump#holders" target="_blank" rel="noopener" id="statHolders">View on Solscan →</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-footer reveal">
+                <span class="stats-update" id="statsUpdate">Last updated: —</span>
+                <button class="btn btn-ghost btn-sm" id="refreshStats">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                    Refresh
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dev Wallet Transparency -->
+    <section class="dev-wallet" id="dev-wallet">
+        <div class="container">
+            <div class="dev-wallet-card reveal">
+                <div class="dev-wallet-header">
+                    <div class="dev-wallet-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span>Dev Wallet — Full Transparency</span>
+                    </div>
+                    <span class="dev-wallet-badge">Public</span>
+                </div>
+                <div class="dev-wallet-body">
+                    <code class="dev-wallet-address" id="devWalletAddress">HQcgVnNacvvjK4ToX8Pcq2bKmD5s32XR6AarQ2EVrrpq</code>
+                    <div class="dev-wallet-actions">
+                        <button class="btn btn-copy btn-sm" id="copyDevWallet" aria-label="Copy dev wallet">
+                            <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="copy-text">Copy</span>
+                        </button>
+                        <a href="https://solscan.io/account/HQcgVnNacvvjK4ToX8Pcq2bKmD5s32XR6AarQ2EVrrpq" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            View on Solscan
+                        </a>
+                    </div>
+                </div>
+                <p class="dev-wallet-note">Track all dev wallet activity on-chain. No hidden wallets. Full transparency.</p>
+            </div>
         </div>
     </section>
 
