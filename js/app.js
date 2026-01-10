@@ -6,8 +6,10 @@
 (function() {
     'use strict';
 
-    // Contract Address
+    // Contract Address & Dev Wallet
     const CONTRACT_ADDRESS = '8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump';
+    const DEV_WALLET = 'HQcgVnNacvvjK4ToX8Pcq2bKmD5s32XR6AarQ2EVrrpq';
+    const DEXSCREENER_API = 'https://api.dexscreener.com/latest/dex/tokens/';
 
     // DOM Elements
     const nav = document.getElementById('nav');
@@ -15,6 +17,8 @@
     const navMenu = document.getElementById('navMenu');
     const copyCABtn = document.getElementById('copyCABtn');
     const heroCopyCA = document.getElementById('heroCopyCA');
+    const copyDevWalletBtn = document.getElementById('copyDevWallet');
+    const refreshStatsBtn = document.getElementById('refreshStats');
     const toast = document.getElementById('toast');
 
     // ================================================
@@ -146,6 +150,157 @@
         });
     }
 
+    // Dev wallet copy button
+    if (copyDevWalletBtn) {
+        copyDevWalletBtn.addEventListener('click', function() {
+            copyToClipboard(DEV_WALLET, copyDevWalletBtn);
+        });
+    }
+
+    // ================================================
+    // Live Stats from DexScreener
+    // ================================================
+
+    let statsRefreshInterval = null;
+
+    function formatNumber(num, decimals = 2) {
+        if (num === null || num === undefined || isNaN(num)) return '—';
+        
+        if (num >= 1e9) {
+            return '$' + (num / 1e9).toFixed(decimals) + 'B';
+        } else if (num >= 1e6) {
+            return '$' + (num / 1e6).toFixed(decimals) + 'M';
+        } else if (num >= 1e3) {
+            return '$' + (num / 1e3).toFixed(decimals) + 'K';
+        } else {
+            return '$' + num.toFixed(decimals);
+        }
+    }
+
+    function formatPrice(price) {
+        if (price === null || price === undefined || isNaN(price)) return '—';
+        
+        if (price < 0.00001) {
+            return '$' + price.toExponential(2);
+        } else if (price < 0.01) {
+            return '$' + price.toFixed(6);
+        } else if (price < 1) {
+            return '$' + price.toFixed(4);
+        } else {
+            return '$' + price.toFixed(2);
+        }
+    }
+
+    function formatChange(change) {
+        if (change === null || change === undefined || isNaN(change)) return '—';
+        
+        const prefix = change >= 0 ? '+' : '';
+        return prefix + change.toFixed(2) + '%';
+    }
+
+    async function fetchLiveStats() {
+        const priceEl = document.getElementById('statPrice');
+        const changeEl = document.getElementById('statChange');
+        const mcapEl = document.getElementById('statMcap');
+        const volumeEl = document.getElementById('statVolume');
+        const liquidityEl = document.getElementById('statLiquidity');
+        const updateEl = document.getElementById('statsUpdate');
+
+        if (!priceEl) return; // Stats section not present
+
+        try {
+            const response = await fetch(DEXSCREENER_API + CONTRACT_ADDRESS);
+            
+            if (!response.ok) {
+                throw new Error('API request failed');
+            }
+
+            const data = await response.json();
+
+            if (data.pairs && data.pairs.length > 0) {
+                // Get the first pair (usually the main one)
+                const pair = data.pairs[0];
+
+                // Update price
+                if (priceEl && pair.priceUsd) {
+                    priceEl.textContent = formatPrice(parseFloat(pair.priceUsd));
+                }
+
+                // Update 24h change
+                if (changeEl && pair.priceChange) {
+                    const change24h = pair.priceChange.h24 || 0;
+                    changeEl.textContent = formatChange(change24h);
+                    changeEl.classList.remove('positive', 'negative');
+                    if (change24h >= 0) {
+                        changeEl.classList.add('positive');
+                    } else {
+                        changeEl.classList.add('negative');
+                    }
+                }
+
+                // Update market cap (FDV)
+                if (mcapEl && pair.fdv) {
+                    mcapEl.textContent = formatNumber(pair.fdv);
+                } else if (mcapEl && pair.marketCap) {
+                    mcapEl.textContent = formatNumber(pair.marketCap);
+                }
+
+                // Update 24h volume
+                if (volumeEl && pair.volume) {
+                    volumeEl.textContent = formatNumber(pair.volume.h24 || 0);
+                }
+
+                // Update liquidity
+                if (liquidityEl && pair.liquidity) {
+                    liquidityEl.textContent = formatNumber(pair.liquidity.usd || 0);
+                }
+
+                // Update timestamp
+                if (updateEl) {
+                    const now = new Date();
+                    updateEl.textContent = 'Last updated: ' + now.toLocaleTimeString();
+                }
+            } else {
+                // No pairs found - token might be new
+                if (priceEl) priceEl.textContent = 'Awaiting data...';
+                if (changeEl) changeEl.textContent = '—';
+                if (mcapEl) mcapEl.textContent = '—';
+                if (volumeEl) volumeEl.textContent = '—';
+                if (liquidityEl) liquidityEl.textContent = '—';
+            }
+        } catch (error) {
+            console.error('Failed to fetch stats:', error);
+            
+            // Show error state gracefully
+            if (updateEl) {
+                updateEl.textContent = 'Update failed — retrying...';
+            }
+        }
+    }
+
+    function initLiveStats() {
+        // Initial fetch
+        fetchLiveStats();
+
+        // Auto-refresh every 30 seconds
+        statsRefreshInterval = setInterval(fetchLiveStats, 30000);
+
+        // Manual refresh button
+        if (refreshStatsBtn) {
+            refreshStatsBtn.addEventListener('click', function() {
+                // Add spinning animation
+                const icon = this.querySelector('svg');
+                if (icon) {
+                    icon.style.animation = 'spin 0.5s linear';
+                    setTimeout(function() {
+                        icon.style.animation = '';
+                    }, 500);
+                }
+                fetchLiveStats();
+            });
+        }
+    }
+
     // ================================================
     // Reveal on Scroll (IntersectionObserver)
     // ================================================
@@ -247,6 +402,7 @@
         initRevealAnimations();
         initSmoothScroll();
         initLogoEffect();
+        initLiveStats();
         showPage();
     }
 
@@ -282,5 +438,6 @@
     console.log('%c🐑 LAMMB', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
     console.log('%cLet\'s all make money.', 'font-size: 14px; color: #a0a0a0;');
     console.log('%cContract: ' + CONTRACT_ADDRESS, 'font-size: 12px; color: #666666;');
+    console.log('%cDev Wallet: ' + DEV_WALLET, 'font-size: 12px; color: #666666;');
 
 })();
