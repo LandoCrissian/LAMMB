@@ -1,321 +1,480 @@
 /**
- * LAMMB — Main Application Script
- * Premium, minimal, fast
+ * LAMMB — Main Application Script v2.0
+ * Refactored: Clean, performant, no duplicates
  */
 
 (function() {
     'use strict';
 
-    // Contract Address & Dev Wallet
+    // ================================================
+    // Constants
+    // ================================================
+    
     const CONTRACT_ADDRESS = '8bqLYi7wF179V8bGXEMyV4GfD2dFfoWLqafS8iZwpump';
     const DEV_WALLET = 'HQcgVnNacvvjK4ToX8Pcq2bKmD5s32XR6AarQ2EVrrpq';
     const DEXSCREENER_API = 'https://api.dexscreener.com/latest/dex/tokens/';
+    const STATS_REFRESH_INTERVAL = 30000; // 30 seconds
 
-    // DOM Elements
-    const nav = document.getElementById('nav');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    const copyCABtn = document.getElementById('copyCABtn');
-    const heroCopyCA = document.getElementById('heroCopyCA');
-    const copyDevWalletBtn = document.getElementById('copyDevWallet');
-    const refreshStatsBtn = document.getElementById('refreshStats');
-    const toast = document.getElementById('toast');
+    // ================================================
+    // DOM Elements (cached)
+    // ================================================
+    
+    const elements = {
+        nav: document.getElementById('nav'),
+        navToggle: document.getElementById('navToggle'),
+        navMenu: document.getElementById('navMenu'),
+        navOverlay: document.getElementById('navOverlay'),
+        toast: document.getElementById('toast'),
+        refreshStatsBtn: document.getElementById('refreshStats'),
+        retryStatsBtn: document.getElementById('retryStats'),
+        statsError: document.getElementById('statsError'),
+        statsUpdate: document.getElementById('statsUpdate')
+    };
+
+    // Stats timestamp for "Updated Xs ago"
+    let lastStatsUpdate = null;
+    let statsInterval = null;
+    let updateTimeInterval = null;
+
+    // ================================================
+    // Initialization
+    // ================================================
+    
+    function init() {
+        initNavigation();
+        initCopyButtons();
+        initRevealAnimations();
+        initSmoothScroll();
+        initLiveStats();
+        showPage();
+    }
+
+    /**
+     * Show page after load (FOUC prevention)
+     */
+    function showPage() {
+        document.body.classList.add('is-loaded');
+    }
 
     // ================================================
     // Navigation
     // ================================================
+    
+    function initNavigation() {
+        // Scroll-based nav styling
+        handleNavScroll();
+        window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-    // Scroll-based nav styling
-    function handleNavScroll() {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+        // Mobile menu
+        if (elements.navToggle && elements.navMenu) {
+            elements.navToggle.addEventListener('click', toggleMobileMenu);
+            
+            // Close on overlay click
+            if (elements.navOverlay) {
+                elements.navOverlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close on link click
+            elements.navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', handleEscapeKey);
         }
     }
 
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-    handleNavScroll(); // Initial check
+    function handleNavScroll() {
+        if (!elements.nav) return;
+        
+        if (window.scrollY > 50) {
+            elements.nav.classList.add('scrolled');
+        } else {
+            elements.nav.classList.remove('scrolled');
+        }
+    }
 
-    // Mobile menu toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('open');
-            document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
-        });
+    function toggleMobileMenu() {
+        const isOpen = elements.navMenu.classList.contains('open');
+        
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
 
-        // Close menu on link click
-        navMenu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
+    function openMobileMenu() {
+        elements.navToggle.classList.add('active');
+        elements.navToggle.setAttribute('aria-expanded', 'true');
+        elements.navMenu.classList.add('open');
+        
+        if (elements.navOverlay) {
+            elements.navOverlay.classList.add('active');
+        }
+        
+        // Prevent body scroll (iOS-safe)
+        document.body.classList.add('menu-open');
+        
+        // Focus first link for accessibility
+        const firstLink = elements.navMenu.querySelector('a');
+        if (firstLink) {
+            setTimeout(() => firstLink.focus(), 100);
+        }
+    }
 
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
+    function closeMobileMenu() {
+        elements.navToggle.classList.remove('active');
+        elements.navToggle.setAttribute('aria-expanded', 'false');
+        elements.navMenu.classList.remove('open');
+        
+        if (elements.navOverlay) {
+            elements.navOverlay.classList.remove('active');
+        }
+        
+        // Restore body scroll
+        document.body.classList.remove('menu-open');
+    }
+
+    function handleEscapeKey(e) {
+        if (e.key === 'Escape' && elements.navMenu.classList.contains('open')) {
+            closeMobileMenu();
+            elements.navToggle.focus();
+        }
     }
 
     // ================================================
     // Copy to Clipboard
     // ================================================
+    
+    function initCopyButtons() {
+        // Find all copy buttons with data-address attribute
+        document.querySelectorAll('[data-address]').forEach(btn => {
+            btn.addEventListener('click', handleCopyClick);
+        });
+    }
 
-    async function copyToClipboard(text, buttonElement) {
+    async function handleCopyClick(e) {
+        const button = e.currentTarget;
+        const address = button.dataset.address;
+        
+        if (!address) return;
+        
+        const success = await copyToClipboard(address);
+        
+        if (success) {
+            showCopyFeedback(button);
+            showToast();
+        }
+    }
+
+    async function copyToClipboard(text) {
         try {
-            // Try modern clipboard API first
+            // Modern Clipboard API
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 await navigator.clipboard.writeText(text);
-            } else {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                textarea.style.position = 'fixed';
-                textarea.style.left = '-9999px';
-                textarea.style.top = '-9999px';
-                document.body.appendChild(textarea);
-                textarea.focus();
-                textarea.select();
-                
-                try {
-                    document.execCommand('copy');
-                } catch (err) {
-                    console.error('Fallback copy failed:', err);
-                    throw new Error('Copy failed');
-                }
-                
-                document.body.removeChild(textarea);
+                return true;
             }
-
-            // Show success state
-            if (buttonElement) {
-                buttonElement.classList.add('copied');
-                
-                // For hero button, update text
-                if (buttonElement.id === 'heroCopyCA') {
-                    const originalHTML = buttonElement.innerHTML;
-                    buttonElement.innerHTML = `
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                        Copied!
-                    `;
-                    
-                    setTimeout(function() {
-                        buttonElement.innerHTML = originalHTML;
-                        buttonElement.classList.remove('copied');
-                    }, 2000);
-                } else {
-                    setTimeout(function() {
-                        buttonElement.classList.remove('copied');
-                    }, 2000);
-                }
-            }
-
-            // Show toast
-            showToast();
-
-            return true;
+            
+            // Fallback for older browsers / iOS
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            textarea.setAttribute('readonly', '');
+            document.body.appendChild(textarea);
+            
+            // iOS-specific selection
+            const range = document.createRange();
+            range.selectNodeContents(textarea);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textarea.setSelectionRange(0, text.length);
+            
+            const result = document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            return result;
         } catch (err) {
             console.error('Copy failed:', err);
-            // Show error state
-            alert('Failed to copy. Please copy manually: ' + text);
-            return false;
+            
+            // Last resort: prompt user
+            try {
+                window.prompt('Copy this address:', text);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+    }
+
+    function showCopyFeedback(button) {
+        // Add copied state
+        button.classList.add('copied');
+        
+        // Handle hero button differently (has text child)
+        if (button.id === 'heroCopyCA') {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Copied!
+            `;
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.classList.remove('copied');
+            }, 2000);
+        } else {
+            setTimeout(() => {
+                button.classList.remove('copied');
+            }, 2000);
         }
     }
 
     function showToast() {
-        toast.classList.add('show');
-        setTimeout(function() {
-            toast.classList.remove('show');
+        if (!elements.toast) return;
+        
+        elements.toast.classList.add('show');
+        
+        setTimeout(() => {
+            elements.toast.classList.remove('show');
         }, 2500);
-    }
-
-    // Main CA copy button
-    if (copyCABtn) {
-        copyCABtn.addEventListener('click', function() {
-            copyToClipboard(CONTRACT_ADDRESS, copyCABtn);
-        });
-    }
-
-    // Hero CA copy button
-    if (heroCopyCA) {
-        heroCopyCA.addEventListener('click', function() {
-            copyToClipboard(CONTRACT_ADDRESS, heroCopyCA);
-        });
-    }
-
-    // Dev wallet copy button
-    if (copyDevWalletBtn) {
-        copyDevWalletBtn.addEventListener('click', function() {
-            copyToClipboard(DEV_WALLET, copyDevWalletBtn);
-        });
     }
 
     // ================================================
     // Live Stats from DexScreener
     // ================================================
-
-    let statsRefreshInterval = null;
-
-    function formatNumber(num, decimals = 2) {
-        if (num === null || num === undefined || isNaN(num)) return '—';
-        
-        if (num >= 1e9) {
-            return '$' + (num / 1e9).toFixed(decimals) + 'B';
-        } else if (num >= 1e6) {
-            return '$' + (num / 1e6).toFixed(decimals) + 'M';
-        } else if (num >= 1e3) {
-            return '$' + (num / 1e3).toFixed(decimals) + 'K';
-        } else {
-            return '$' + num.toFixed(decimals);
-        }
-    }
-
-    function formatPrice(price) {
-        if (price === null || price === undefined || isNaN(price)) return '—';
-        
-        if (price < 0.00001) {
-            return '$' + price.toExponential(2);
-        } else if (price < 0.01) {
-            return '$' + price.toFixed(6);
-        } else if (price < 1) {
-            return '$' + price.toFixed(4);
-        } else {
-            return '$' + price.toFixed(2);
-        }
-    }
-
-    function formatChange(change) {
-        if (change === null || change === undefined || isNaN(change)) return '—';
-        
-        const prefix = change >= 0 ? '+' : '';
-        return prefix + change.toFixed(2) + '%';
-    }
-
-    async function fetchLiveStats() {
-        const priceEl = document.getElementById('statPrice');
-        const changeEl = document.getElementById('statChange');
-        const mcapEl = document.getElementById('statMcap');
-        const volumeEl = document.getElementById('statVolume');
-        const liquidityEl = document.getElementById('statLiquidity');
-        const updateEl = document.getElementById('statsUpdate');
-
-        if (!priceEl) return; // Stats section not present
-
-        try {
-            const response = await fetch(DEXSCREENER_API + CONTRACT_ADDRESS);
-            
-            if (!response.ok) {
-                throw new Error('API request failed');
-            }
-
-            const data = await response.json();
-
-            if (data.pairs && data.pairs.length > 0) {
-                // Get the first pair (usually the main one)
-                const pair = data.pairs[0];
-
-                // Update price
-                if (priceEl && pair.priceUsd) {
-                    priceEl.textContent = formatPrice(parseFloat(pair.priceUsd));
-                }
-
-                // Update 24h change
-                if (changeEl && pair.priceChange) {
-                    const change24h = pair.priceChange.h24 || 0;
-                    changeEl.textContent = formatChange(change24h);
-                    changeEl.classList.remove('positive', 'negative');
-                    if (change24h >= 0) {
-                        changeEl.classList.add('positive');
-                    } else {
-                        changeEl.classList.add('negative');
-                    }
-                }
-
-                // Update market cap (FDV)
-                if (mcapEl && pair.fdv) {
-                    mcapEl.textContent = formatNumber(pair.fdv);
-                } else if (mcapEl && pair.marketCap) {
-                    mcapEl.textContent = formatNumber(pair.marketCap);
-                }
-
-                // Update 24h volume
-                if (volumeEl && pair.volume) {
-                    volumeEl.textContent = formatNumber(pair.volume.h24 || 0);
-                }
-
-                // Update liquidity
-                if (liquidityEl && pair.liquidity) {
-                    liquidityEl.textContent = formatNumber(pair.liquidity.usd || 0);
-                }
-
-                // Update timestamp
-                if (updateEl) {
-                    const now = new Date();
-                    updateEl.textContent = 'Last updated: ' + now.toLocaleTimeString();
-                }
-            } else {
-                // No pairs found - token might be new
-                if (priceEl) priceEl.textContent = 'Awaiting data...';
-                if (changeEl) changeEl.textContent = '—';
-                if (mcapEl) mcapEl.textContent = '—';
-                if (volumeEl) volumeEl.textContent = '—';
-                if (liquidityEl) liquidityEl.textContent = '—';
-            }
-        } catch (error) {
-            console.error('Failed to fetch stats:', error);
-            
-            // Show error state gracefully
-            if (updateEl) {
-                updateEl.textContent = 'Update failed — retrying...';
-            }
-        }
-    }
-
+    
     function initLiveStats() {
         // Initial fetch
         fetchLiveStats();
 
-        // Auto-refresh every 30 seconds
-        statsRefreshInterval = setInterval(fetchLiveStats, 30000);
+        // Auto-refresh
+        statsInterval = setInterval(fetchLiveStats, STATS_REFRESH_INTERVAL);
+
+        // Update "X seconds ago" display
+        updateTimeInterval = setInterval(updateRelativeTime, 10000);
 
         // Manual refresh button
-        if (refreshStatsBtn) {
-            refreshStatsBtn.addEventListener('click', function() {
-                // Add spinning animation
-                const icon = this.querySelector('svg');
-                if (icon) {
-                    icon.style.animation = 'spin 0.5s linear';
-                    setTimeout(function() {
-                        icon.style.animation = '';
-                    }, 500);
-                }
-                fetchLiveStats();
-            });
+        if (elements.refreshStatsBtn) {
+            elements.refreshStatsBtn.addEventListener('click', handleManualRefresh);
+        }
+
+        // Retry button
+        if (elements.retryStatsBtn) {
+            elements.retryStatsBtn.addEventListener('click', handleManualRefresh);
+        }
+    }
+
+    function handleManualRefresh() {
+        // Add refresh animation class
+        if (elements.refreshStatsBtn) {
+            elements.refreshStatsBtn.classList.add('refreshing');
+            setTimeout(() => {
+                elements.refreshStatsBtn.classList.remove('refreshing');
+            }, 500);
+        }
+        
+        fetchLiveStats();
+    }
+
+    async function fetchLiveStats() {
+        const statElements = {
+            price: document.getElementById('statPrice'),
+            change: document.getElementById('statChange'),
+            mcap: document.getElementById('statMcap'),
+            volume: document.getElementById('statVolume'),
+            liquidity: document.getElementById('statLiquidity')
+        };
+
+        // Check if stats section exists
+        if (!statElements.price) return;
+
+        try {
+            // Hide error state
+            if (elements.statsError) {
+                elements.statsError.hidden = true;
+            }
+
+            const response = await fetch(DEXSCREENER_API + CONTRACT_ADDRESS);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (!data.pairs || data.pairs.length === 0) {
+                // Token might be new, show waiting state
+                setPlaceholderState(statElements, 'Awaiting data...');
+                updateStatsTimestamp('Waiting for trading data');
+                return;
+            }
+
+            // Pick the best pair: Solana chain, highest liquidity
+            const pair = selectBestPair(data.pairs);
+
+            if (!pair) {
+                setPlaceholderState(statElements, 'No Solana pair found');
+                return;
+            }
+
+            // Update all stats
+            updateStatElement(statElements.price, formatPrice(pair.priceUsd));
+            updateChangeElement(statElements.change, pair.priceChange?.h24);
+            updateStatElement(statElements.mcap, formatNumber(pair.fdv || pair.marketCap));
+            updateStatElement(statElements.volume, formatNumber(pair.volume?.h24));
+            updateStatElement(statElements.liquidity, formatNumber(pair.liquidity?.usd));
+
+            // Update timestamp
+            lastStatsUpdate = Date.now();
+            updateStatsTimestamp('Updated just now');
+
+        } catch (error) {
+            console.error('Stats fetch failed:', error);
+            
+            // Show error state
+            if (elements.statsError) {
+                elements.statsError.hidden = false;
+            }
+            
+            updateStatsTimestamp('Update failed');
+        }
+    }
+
+    /**
+     * Select the best pair from API response
+     * Prefer: Solana chain + highest liquidity
+     */
+    function selectBestPair(pairs) {
+        // Filter to Solana pairs only
+        const solanaPairs = pairs.filter(p => 
+            p.chainId === 'solana' || 
+            p.dexId?.toLowerCase().includes('raydium') ||
+            p.dexId?.toLowerCase().includes('orca')
+        );
+
+        const candidates = solanaPairs.length > 0 ? solanaPairs : pairs;
+
+        // Sort by liquidity (highest first)
+        candidates.sort((a, b) => {
+            const liqA = a.liquidity?.usd || 0;
+            const liqB = b.liquidity?.usd || 0;
+            return liqB - liqA;
+        });
+
+        return candidates[0] || null;
+    }
+
+    function updateStatElement(el, value) {
+        if (!el) return;
+        
+        el.textContent = value;
+        el.classList.remove('stat-placeholder');
+        el.classList.add('stat-loaded');
+    }
+
+    function updateChangeElement(el, change) {
+        if (!el) return;
+
+        const value = parseFloat(change);
+        
+        if (isNaN(value)) {
+            el.textContent = '—';
+            el.classList.remove('positive', 'negative', 'stat-placeholder');
+            return;
+        }
+
+        const prefix = value >= 0 ? '+' : '';
+        el.textContent = `${prefix}${value.toFixed(2)}%`;
+        
+        el.classList.remove('stat-placeholder', 'positive', 'negative');
+        el.classList.add('stat-loaded');
+        el.classList.add(value >= 0 ? 'positive' : 'negative');
+    }
+
+    function setPlaceholderState(statElements, message) {
+        Object.values(statElements).forEach(el => {
+            if (el) {
+                el.textContent = message || '—';
+                el.classList.add('stat-placeholder');
+                el.classList.remove('stat-loaded', 'positive', 'negative');
+            }
+        });
+    }
+
+    function updateStatsTimestamp(message) {
+        if (!elements.statsUpdate) return;
+        elements.statsUpdate.textContent = message;
+    }
+
+    function updateRelativeTime() {
+        if (!lastStatsUpdate || !elements.statsUpdate) return;
+
+        const seconds = Math.floor((Date.now() - lastStatsUpdate) / 1000);
+
+        if (seconds < 10) {
+            elements.statsUpdate.textContent = 'Updated just now';
+        } else if (seconds < 60) {
+            elements.statsUpdate.textContent = `Updated ${seconds}s ago`;
+        } else {
+            const minutes = Math.floor(seconds / 60);
+            elements.statsUpdate.textContent = `Updated ${minutes}m ago`;
         }
     }
 
     // ================================================
-    // Reveal on Scroll (IntersectionObserver)
+    // Number Formatting
     // ================================================
+    
+    function formatNumber(num, decimals = 2) {
+        const value = parseFloat(num);
+        
+        if (isNaN(value) || value === null || value === undefined) {
+            return '—';
+        }
 
+        if (value >= 1e9) {
+            return '$' + (value / 1e9).toFixed(decimals) + 'B';
+        } else if (value >= 1e6) {
+            return '$' + (value / 1e6).toFixed(decimals) + 'M';
+        } else if (value >= 1e3) {
+            return '$' + (value / 1e3).toFixed(decimals) + 'K';
+        } else {
+            return '$' + value.toFixed(decimals);
+        }
+    }
+
+    function formatPrice(price) {
+        const value = parseFloat(price);
+        
+        if (isNaN(value) || value === null || value === undefined) {
+            return '—';
+        }
+
+        if (value < 0.00001) {
+            return '$' + value.toExponential(2);
+        } else if (value < 0.01) {
+            return '$' + value.toFixed(6);
+        } else if (value < 1) {
+            return '$' + value.toFixed(4);
+        } else {
+            return '$' + value.toFixed(2);
+        }
+    }
+
+    // ================================================
+    // Reveal Animations (IntersectionObserver)
+    // ================================================
+    
     function initRevealAnimations() {
         const revealElements = document.querySelectorAll('.reveal');
 
         if (!revealElements.length) return;
 
-        // Check if IntersectionObserver is supported
+        // Fallback for unsupported browsers
         if (!('IntersectionObserver' in window)) {
-            // Fallback: just show all elements
-            revealElements.forEach(function(el) {
-                el.classList.add('visible');
-            });
+            revealElements.forEach(el => el.classList.add('visible'));
             return;
         }
 
@@ -325,8 +484,8 @@
             threshold: 0.1
         };
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
@@ -334,79 +493,43 @@
             });
         }, observerOptions);
 
-        revealElements.forEach(function(el) {
-            observer.observe(el);
-        });
+        revealElements.forEach(el => observer.observe(el));
     }
 
     // ================================================
-    // Smooth Scroll for Anchor Links
+    // Smooth Scroll
     // ================================================
-
+    
     function initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    e.preventDefault();
-                    
-                    const navHeight = nav ? nav.offsetHeight : 0;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', handleAnchorClick);
         });
     }
 
-    // ================================================
-    // Logo Glitch Effect (Subtle)
-    // ================================================
-
-    function initLogoEffect() {
-        const logoWrapper = document.querySelector('.hero-logo-wrapper');
+    function handleAnchorClick(e) {
+        const targetId = this.getAttribute('href');
         
-        if (!logoWrapper) return;
-
-        // Subtle hover effect
-        logoWrapper.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.02)';
-        });
-
-        logoWrapper.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            e.preventDefault();
+            
+            const navHeight = elements.nav ? elements.nav.offsetHeight : 0;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     }
 
     // ================================================
-    // Prevent FOUC (Flash of Unstyled Content)
+    // Run on DOM Ready
     // ================================================
-
-    function showPage() {
-        document.body.style.opacity = '1';
-    }
-
-    // ================================================
-    // Initialize Everything
-    // ================================================
-
-    function init() {
-        initRevealAnimations();
-        initSmoothScroll();
-        initLogoEffect();
-        initLiveStats();
-        showPage();
-    }
-
-    // Run on DOM ready
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
@@ -414,27 +537,9 @@
     }
 
     // ================================================
-    // Performance: Debounce scroll events
+    // Console Easter Egg
     // ================================================
-
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction() {
-            const context = this;
-            const args = arguments;
-            const later = function() {
-                timeout = null;
-                func.apply(context, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // ================================================
-    // Easter Egg: Console Message
-    // ================================================
-
+    
     console.log('%c🐑 LAMMB', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
     console.log('%cLet\'s all make money.', 'font-size: 14px; color: #a0a0a0;');
     console.log('%cContract: ' + CONTRACT_ADDRESS, 'font-size: 12px; color: #666666;');
