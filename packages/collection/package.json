@@ -1,0 +1,16 @@
+{
+  "name": "@lammb/collection",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./config": "./src/config.ts",
+    "./network": "./src/network.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lammb/schema": "0.0.0"
+  }
+}
