@@ -25,7 +25,7 @@ Every study snapshot has development authority. Each variable datum additionally
 
 Future integrations have separate responsibilities: an authorized launch reader/control service; onchain recovered-supply reader; eligibility adapter with approved cross-partner deduplication; ownership reader; metadata/reveal publisher; fairness protocol/verifier; public collection catalog; share-card renderer. These are boundaries, not services implemented here. UI presentation never authorizes any of them. The web imports no art recipes and the strict share-card schema cannot accept internal generation fields.
 
-The initial art component is a decorative altitude study, separate from collection assets. It is replaceable without changing collection schemas. CSS is mobile-first, uses system fonts and reduced-motion preferences, and adds restrained chartreuse pixel accents without flashing effects.
+Task 005 extends presentation into a shared root layout, nine public pages and the preserved development launch route. Content renders on the server; navigation is the only client component. Native FAQ disclosures need no JavaScript. Canonical configuration, launch schemas and derivation remain unchanged. Abstract artwork slots and the decorative altitude study remain separate from collection assets; replacement requires source/permission approval. CSS is mobile-first with system fonts and reduced-motion support. See [website foundation](WEBSITE.md) for route responsibilities and future country-registry/profile/mint privacy, authority and transfer boundaries.
 
 ## DEVELOPMENT IMPLEMENTATION: offline construction
 
@@ -47,7 +47,7 @@ TypeScript 6.0.3 and ESLint 9.39.5 are pinned to the supported peer ranges of th
 
 ## Unresolved decisions
 
-- Hosting provider and operational topology for future production delivery.
+- Hosting operational topology and production runtime review. The owner linked the repository to Netlify during Task 005; public HTTP behavior was independently rechecked, while account settings remain inaccessible. See [read-only diagnosis](NETLIFY_DIAGNOSIS.md).
 - Persistence and authorized service for auditable launch state changes.
 - Partner eligibility verification, proof format, allocation policy, and privacy retention.
 - Mint/reveal interface and contract architecture.

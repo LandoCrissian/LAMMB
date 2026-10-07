@@ -1,5 +1,7 @@
 # Test foundation
 
+Task 005 adds website route/link, shared-landmark, native FAQ, explicit unavailable-feature and preserved launch-state markup tests. The only feature button is the mobile navigation disclosure; mint/profile/world are information pages. Windows art source-link tests use a directory junction with the current token, while POSIX retains a file symlink. All 195 tests pass. Browser checks for the new pages at 320/390/768/1440px remain unperformed because the browser connector exposes no surface; earlier Task 002 evidence below does not apply to the changed website. See [Task 005 review](../docs/TASK_005_REVIEW.md).
+
 Root Vitest tests import private workspace source directly. They verify canonical facts, invalid configuration rejection, launch audit requirements, access vocabulary, environment failure behavior, catalog integrity, reproducibility inputs, and structural provenance coverage.
 
 Task 002 adds strict payload/presentation tests for all seven global states, altitude bounds and canonical semantics/order/history, recovery bounds and unknown supply, authority spoof rejection, collector compatibility, commitment version/publication/verification boundaries, development-only partners and public share-card field/reference safety. Server-rendered panels are checked for visible development/ownership labeling and absence of actionable mint/reveal forms. These are behavior assertions, not visual snapshots.

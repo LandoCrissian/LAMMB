@@ -176,15 +176,25 @@ describe('offline art CLI and protected output boundary', () => {
       readJson(join(jsonLink, 'art-assets-v2.json')),
     ).rejects.toThrow(/links\/junctions/);
     await unlink(jsonLink);
-    const sourceLink = join(fixtureRoot, 'assets/dev-task004-link.txt');
+    // Windows file symlinks need elevation/Developer Mode. A directory junction
+    // exercises the same every-ancestor guard with the current user token;
+    // POSIX CI still exercises the direct file-symlink case.
+    const onWindows = process.platform === 'win32';
+    const linkedPath = onWindows
+      ? 'dev-task004-link/dev-asset-base.txt'
+      : 'dev-task004-link.txt';
+    const sourceLink = join(
+      fixtureRoot,
+      onWindows ? 'assets/dev-task004-link' : 'assets/dev-task004-link.txt',
+    );
     await symlink(
-      join(fixtureRoot, 'assets/dev-asset-base.txt'),
+      join(fixtureRoot, onWindows ? 'assets' : 'assets/dev-asset-base.txt'),
       sourceLink,
-      'file',
+      onWindows ? 'junction' : 'file',
     );
     try {
       const m = structuredClone(manifestData);
-      m.assets[0]!.path = 'dev-task004-link.txt';
+      m.assets[0]!.path = linkedPath;
       await expect(
         readAssetBytes(join(fixtureRoot, 'assets'), m),
       ).rejects.toThrow(/links\/junctions/);

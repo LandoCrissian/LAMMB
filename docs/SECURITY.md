@@ -37,6 +37,8 @@ JSON inputs now also reject ancestor symlink/junction paths and stay within the 
 
 ## Required future principles
 
+Task 005 adds presentation-only world/profile/mint pages. No registration, wallet/OAuth/authentication, ownership reader, database, endpoint, transaction, live country totals or tracking exists. Navigation state changes only disclosure visibility; launch state stays immutable. Routes retain existing response headers, including denied geolocation. Country/identity linking, transfer-aware invalidation, aggregate privacy, authoritative freshness and consent/withdrawal require approved policies; see [website boundaries](WEBSITE.md). Approved public art and source permissions are needed before replacing slots. No concept sheet is treated as production art.
+
 Keep privileged credentials server-side and validated before use. Do not add production signers or mainnet side effects during foundation tasks. Authorize and audit every live launch state change. Publish and enforce approved mint allocations without hidden exceptions. Preserve deterministic generation, independently verifiable fairness/provenance, and disclosed rarity methodology. Verify provider chain ID before any future wallet or RPC integration; never silently fall back to another chain.
 
 Do not log secrets, publish raw eligibility data without an approved privacy policy, or treat local UI state as mint/reveal authorization. Contract security review and testnet verification must precede any separately authorized production transaction.
