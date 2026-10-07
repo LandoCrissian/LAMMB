@@ -1,6 +1,6 @@
 # LAMMB
 
-LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 004 extends the reviewed foundation for `lammb.fun` with production art ingestion declarations, approval-bound planning and a DEVELOPMENT_ONLY text renderer, preserving Task 003 logical construction. Launch/data-authority/fairness boundaries from Task 002 remain intact.
+LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 005 builds the responsive website foundation while preserving Task 004 art ingestion, Task 003 offline construction and Task 002 launch/data-authority/fairness boundaries. Mint, country registration and collector profiles remain unavailable.
 
 ## Canonical product facts
 
@@ -45,7 +45,7 @@ npm run dev
 
 Open `http://localhost:3000`. No secrets, RPC credentials, wallet, or external service account is needed. `apps/web/.env.example` documents the current empty application environment. Next sets `NODE_ENV`; invalid values fail configuration validation before startup or build. Add any future required settings to the server validation boundary before using them. Never expose privileged values through `NEXT_PUBLIC_*`.
 
-The shell uses current stable **Next.js 16.3.8**, React 19.3.0, strict TypeScript, local CSS, and a replaceable decorative altitude study. It uses semantic sections, a skip link, visible keyboard focus, mobile layouts, and reduced-motion support. All components render on the server. [Next.js installation reference](https://nextjs.org/docs/app/getting-started/installation).
+The website preserves **Next.js 16.3.8**, React 19.3.0, strict TypeScript, local CSS and replaceable abstract visual studies. It has shared landmarks, a skip link, keyboard focus, mobile navigation and reduced-motion support. Content renders on the server; navigation is the only client component. [Routes and future boundaries](docs/WEBSITE.md). [Next.js installation reference](https://nextjs.org/docs/app/getting-started/installation).
 
 ## Verification
 
@@ -65,7 +65,7 @@ npm start
 
 ## Current implementation status
 
-- Responsive homepage at `PRE_ASCENT`, plus seven static presentations at `/development/launch`, visibly marked DEVELOPMENT / NOT LIVE.
+- Homepage, Universe, Collection, Ascent, Community and FAQ; unavailable future World, Profile and Mint information pages. Homepage remains PRE_ASCENT and seven static presentations stay at `/development/launch`, visibly marked DEVELOPMENT / NOT LIVE. No approved web character art exists; abstract slots are labeled.
 - Versioned strict launch payloads and a pure typed presentation model, with authority-labeled altitude/history and unavailable future onchain recovery supply. No automatic transitions or state writer.
 - Validated unowned collector reveal presentations, development-only consolidated PARTNER_GTD declarations, generic fairness commitment records and a public share-card schema. No eligibility decisions, assignment fairness verifier or share-card generation.
 - Validated collection configuration and network description, with no RPC/provider or wallet integration.

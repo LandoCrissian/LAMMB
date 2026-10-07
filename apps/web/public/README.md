@@ -1,3 +1,3 @@
 # Replaceable public assets
 
-Canonical artwork and brand assets are pending. The web shell uses an original, decorative SVG altitude study in `src/components/ascent-art.tsx`; it is not collection art or a trait example. Replace it at that component boundary when approved assets are supplied. No external font, remote image, AI concept recreation, or tracking asset is required.
+Canonical artwork and brand assets are pending. The website uses abstract CSS slots in `src/components/site-primitives.tsx` and the existing decorative SVG altitude study in `src/components/ascent-art.tsx`. These are labeled replaceable studies, not character/NFT art or traits. Studio concept references do not grant automatic publication approval. Replacement requires approved web-ready art with source/permission reference, digest, accessible text and reviewed crop/sizing. No concept-sheet mockup, external font, remote image, AI art recreation or tracking asset is used.
