@@ -1,3 +1,3 @@
 # Source assets
 
-Reserved for approved source layers or an asset manifest. No canonical collection artwork exists in this bootstrap. Hash and version every input before implementing generation. Keep large or generated outputs out of Git; storage and licensing policy are unresolved.
+Reserved for future approved source assets. No canonical collection artwork exists. Task 003 uses eleven tiny DEVELOPMENT_ONLY text references under `fixtures/assets/`, with a versioned manifest and verified raw-byte SHA-256. These are not visual art. Keep large or generated outputs out of Git; formats, rendering, storage and licensing remain unresolved. See `docs/GENERATOR.md` for the offline logical construction boundary.

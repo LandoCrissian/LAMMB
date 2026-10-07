@@ -1,0 +1,101 @@
+{
+  "assetManifestSha256": "527e5a684c12b75fb1a107bc8b0767e23ecc3100c5912401993dc0937e70bd0f",
+  "attemptStatistics": {
+    "grailReservations": 2,
+    "maxSpecimenAttempts": 10,
+    "ordinaryAccepted": 98,
+    "rejectedCandidates": 107,
+    "totalCandidates": 205
+  },
+  "catalogSha256": "9378da36d2cf931735de42dc67b63e7fa9c8363b5f2dbb5f405e017caa81754a",
+  "categoryFrequencies": {
+    "accessories": {
+      "dev-accessory-a": 70,
+      "dev-accessory-b": 5,
+      "dev-accessory-c": 15,
+      "dev-accessory-d": 10
+    },
+    "base_anatomy": {
+      "dev-base-a": 66,
+      "dev-base-b": 31,
+      "dev-base-c": 1,
+      "dev-base-d": 2
+    },
+    "clothing": {
+      "dev-clothing-a": 65,
+      "dev-clothing-b": 26,
+      "dev-clothing-c": 4,
+      "dev-clothing-d": 5
+    },
+    "environments": {
+      "dev-environment-a": 66,
+      "dev-environment-b": 25,
+      "dev-environment-c": 9
+    },
+    "expressions": {
+      "dev-expression-a": 70,
+      "dev-expression-b": 30
+    },
+    "eyes": {
+      "dev-eye-a": 67,
+      "dev-eye-b": 28,
+      "dev-eye-c": 3,
+      "dev-eye-d": 2
+    },
+    "mutations": {
+      "dev-mutation-a": 80,
+      "dev-mutation-b": 20
+    },
+    "pixel_corruption": {
+      "dev-pixel-a": 15,
+      "dev-pixel-b": 16,
+      "dev-pixel-c": 17,
+      "dev-pixel-d": 17,
+      "dev-pixel-e": 17,
+      "dev-pixel-f": 18
+    },
+    "wool": {
+      "dev-wool-a": 69,
+      "dev-wool-b": 21,
+      "dev-wool-c": 5,
+      "dev-wool-d": 5
+    }
+  },
+  "corruptionCounts": {
+    "BLEED": 17,
+    "FRACTURE": 17,
+    "GLITCHED": 17,
+    "NONE": 15,
+    "REALITY_FAILURE": 18,
+    "TOUCH": 16
+  },
+  "generatedSpecimens": 100,
+  "grailCount": 2,
+  "logicalCollectionSha256": "3f062e25fe2648ab2f5167c27754526d0f968d531611ca8e4505d765ae7eb9c3",
+  "mutationCount": 20,
+  "publicMetadataSha256": "0f402c1a650b3957527b028448bc44a258a2d5af1c191c19c68ce99ec63bed1b",
+  "purpose": "DEVELOPMENT_ONLY",
+  "rejectionCounts": {
+    "DUPLICATE_IDENTITY": 8,
+    "RESERVED_GRAIL_IDENTITY": 1,
+    "RULE:dev-accessory-clothing-requirement": 39,
+    "RULE:dev-base-accessory-exclusion": 2,
+    "RULE:dev-pixel-wool-exclusion": 1,
+    "RULE:dev-scene-capability": 7,
+    "STRUCTURE:dev-environment-b:base_anatomy": 7,
+    "STRUCTURE:dev-mutation-b:accessories": 19,
+    "STRUCTURE:dev-mutation-b:base_anatomy": 11,
+    "STRUCTURE:dev-mutation-b:clothing": 8,
+    "STRUCTURE:dev-mutation-b:wool": 4,
+    "TRAIT_INCOMPATIBLE:dev-pixel-f:dev-base-d": 3,
+    "TRAIT_REQUIRES:dev-pixel-d:dev-wool-a": 21,
+    "TRAIT_REQUIRES_TAG:dev-accessory-c:dev-scene-ready": 3,
+    "TRAIT_REQUIRES_TAG:dev-mutation-b:dev-effect-ready": 8,
+    "TRAIT_REQUIRES_TAG:dev-pixel-c:dev-effect-ready": 10,
+    "TRAIT_REQUIRES_TAG:dev-pixel-e:dev-effect-ready": 12,
+    "TRAIT_REQUIRES_TAG:dev-pixel-f:dev-effect-ready": 3
+  },
+  "requestedSpecimens": 100,
+  "schemaVersion": 1,
+  "uniqueFingerprints": 100
+}

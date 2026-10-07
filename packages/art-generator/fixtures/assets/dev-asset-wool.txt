@@ -1,0 +1,3 @@
+DEVELOPMENT_ONLY
+category: wool
+Synthetic logical reference. No collection artwork.

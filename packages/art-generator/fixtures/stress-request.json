@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "seedHex": "0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f",
+  "sourceReference": "urn:lammb:development:task-003-source-v1",
+  "outputCount": 100,
+  "maxAttemptsPerSpecimen": 2000,
+  "maxTotalAttempts": 200000
+}

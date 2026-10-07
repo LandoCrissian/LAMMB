@@ -5,12 +5,15 @@
   "type": "module",
   "exports": {
     "./schema": "./src/schema.ts",
-    "./fixtures": "./fixtures/development-catalog.ts"
+    "./fixtures": "./fixtures/development-catalog.ts",
+    "./engine": "./src/engine.ts",
+    "./engine-schema": "./src/engine-schema.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "4.6.5"
+    "zod": "4.6.5",
+    "@lammb/collection": "0.0.0"
   }
 }
