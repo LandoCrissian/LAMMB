@@ -2,6 +2,8 @@
 
 ## Current scope
 
+Task 004 adds [production art ingestion and the renderer boundary](ART_INGESTION.md): V2 source manifests, lifecycle/digest-bound local review declarations, explicit composition plans, render provenance and a DEVELOPMENT_ONLY text transcript renderer. Actual dimensions, media, alpha pixels and profiles remain declarative until a reviewed decoder exists. Source hashes are byte-verified. No artwork, image rendering or production collection is created.
+
 `packages/art-generator` now contains the Task 003 deterministic offline logical constructor, strict whole-input validation, compatibility/mutation/scene enforcement, bounded selection, explicit grail reservations, logical uniqueness, separate public metadata and internal provenance, and an executable reconstruction verifier. The 100-specimen fixture is **DEVELOPMENT_ONLY** and uses tiny synthetic text references. It contains no production artwork, raster renderer, final traits or production rarity. The shell's decorative mountain lines are not collection artwork.
 
 The original version 1 schema foundation remains available. The version 2 constructor extends those boundaries:

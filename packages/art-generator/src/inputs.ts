@@ -1,3 +1,4 @@
+import { validateArt } from './art-inputs.ts';
 import {
   assetManifestSchema,
   engineCatalogSchema,
@@ -22,14 +23,21 @@ export function validateInputs(
   manifestInput: unknown,
   requestInput: unknown,
   bytes: ReadonlyMap<string, Uint8Array>,
+  approvals?: unknown,
 ): { catalog: EngineCatalog; manifest: AssetManifest; request: EngineRequest } {
   // Normalize JSON strings before validating/hashing; do not normalize raw assets.
   const catalog = engineCatalogSchema.parse(
     JSON.parse(canonicalJson(catalogInput)),
   );
-  const manifest = assetManifestSchema.parse(
+  let manifest = assetManifestSchema.parse(
     JSON.parse(canonicalJson(manifestInput)),
   );
+  if (manifest.schemaVersion === 2)
+    manifest = validateArt(manifest, approvals, bytes).manifest;
+  else if (manifest.purpose === 'PRODUCTION')
+    throw new InputError(
+      'Production construction requires V2 artwork and approvals',
+    );
   const request = engineRequestSchema.parse(requestInput);
   if (catalog.purpose !== manifest.purpose)
     throw new InputError('Catalog/manifest environment mismatch');

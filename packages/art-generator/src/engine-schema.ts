@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { artManifestSchema } from './art-schema.ts';
 import { collection } from '@lammb/collection/config';
 import {
   generationRecipeSchema,
@@ -36,7 +37,7 @@ const text = z
     'Control characters are forbidden',
   );
 
-export const assetManifestSchema = z.strictObject({
+export const legacyAssetManifestSchema = z.strictObject({
   schemaVersion: z.literal(1),
   purpose: purposeSchema,
   assets: z
@@ -64,6 +65,11 @@ export const assetManifestSchema = z.strictObject({
     .min(1)
     .max(4096),
 });
+
+export const assetManifestSchema = z.union([
+  legacyAssetManifestSchema,
+  artManifestSchema,
+]);
 
 const categoryConstraint = z.strictObject({
   category: traitCategorySchema,

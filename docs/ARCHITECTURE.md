@@ -35,6 +35,10 @@ The flow is local inputs and actual asset bytes → strict whole-input validatio
 
 Construction indices are not token IDs. Synthetic metadata references are opaque logical/provenance URNs, not published NFT URIs or ownership assertions. There is no adapter into live share cards. A later approved adapter must select public revealed fields, authority and identifier/storage conventions. Construction randomness is unrelated to the future mint/reveal shuffle.
 
+## DEVELOPMENT IMPLEMENTATION: visual ingestion
+
+Task 004 adds a separate V2 artwork/approval validator, resolved composition planner, versioned renderer interface, textual development renderer, reconstructed render verifier and art CLI/readiness report. The generator accepts legacy development inputs, but production requires V2/APPROVED hash-bound sources. Plans use explicit square reference geometry, placement/scaling, slots/order and source-bound corruption instructions; traits/randomness remain upstream. No new external dependency, app integration or production image processing exists. See [art ingestion](ART_INGESTION.md) for schema versions and declaration-only checks.
+
 ## Verification and delivery
 
 Exact dependencies plus the npm lockfile support reproducible installs. CI installs with `npm ci`, then checks formatting, lint, types, unit tests, and production build. CI has read-only repository permissions and no deployment step. Build artifacts and environment files are ignored. Contract tooling will have its own verification when its design is approved; the current reserved directory is not an executable workspace package.

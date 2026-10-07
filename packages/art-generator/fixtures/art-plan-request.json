@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "purpose": "DEVELOPMENT_ONLY",
+  "referenceFrame": "dev-reference-frame",
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "renderer": {
+    "id": "dev-text-renderer",
+    "version": "1.0.0"
+  },
+  "output": {
+    "mediaType": "text/plain",
+    "colorProfile": "SRGB",
+    "alpha": "ALLOWED"
+  },
+  "grailCompositions": []
+}

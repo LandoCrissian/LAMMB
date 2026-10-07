@@ -29,6 +29,12 @@ Generation rejects duplicate logical identities, ordinary creation of reserved g
 
 The verifier regenerates from independent input evidence and recomputes all hashes; supplied digests and `verified` flags are insufficient. Negative tests cover altered inputs/output and missing evidence. This verifies construction integrity, not input approval, seed fairness, source attestation, token assignment, image correctness or safe production publication. See [generator](GENERATOR.md).
 
+## Task 004 ingestion and render boundary
+
+Production requires V2 source manifests and matching local APPROVED digest/state declarations; legacy production and development fixture sources reject. Approvals do not authenticate an authority. V2 declarations are strict and bounded; geometry/cropping, explicit scaling, role/order/slot/frame ambiguity, required tags and renderer identity are checked. No image decoder executes or verifies PNG/SVG content, alpha pixels or color profiles. Those checks remain explicitly declarative, and production pixel readiness remains false.
+
+JSON inputs now also reject ancestor symlink/junction paths and stay within the checkout. Source roots and generated output confinement remain intact. Art CLI tests disable network APIs while validating, planning, rendering and checking readiness. No source mutation, eval, shell execution from data, network or blockchain adapter is introduced. Exact saved fixture text bytes match output provenance. The render verifier reconstructs and compares the whole bundle, including metadata/image hash linkage. See [art ingestion](ART_INGESTION.md).
+
 ## Required future principles
 
 Keep privileged credentials server-side and validated before use. Do not add production signers or mainnet side effects during foundation tasks. Authorize and audit every live launch state change. Publish and enforce approved mint allocations without hidden exceptions. Preserve deterministic generation, independently verifiable fairness/provenance, and disclosed rarity methodology. Verify provider chain ID before any future wallet or RPC integration; never silently fall back to another chain.
