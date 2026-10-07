@@ -25,7 +25,11 @@
     "collection:summarize": "node --experimental-strip-types packages/art-generator/src/cli.ts summarize",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "collection:art:validate": "node --experimental-strip-types packages/art-generator/src/art-cli.ts validate",
+    "collection:plan": "node --experimental-strip-types packages/art-generator/src/art-cli.ts plan",
+    "collection:render-fixture": "node --experimental-strip-types packages/art-generator/src/art-cli.ts render-fixture",
+    "collection:art:readiness": "node --experimental-strip-types packages/art-generator/src/art-cli.ts readiness"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

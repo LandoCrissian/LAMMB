@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 2,
+  "purpose": "DEVELOPMENT_ONLY",
+  "assets": [
+    {
+      "id": "dev-asset-base",
+      "category": "base_anatomy",
+      "path": "dev-asset-base.txt",
+      "sha256": "683b9a21d4b44276bda50ae565a533b0a38e8263e2531b47e0a5811f9722d489",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 0,
+        "slot": "dev-base-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-wool",
+      "category": "wool",
+      "path": "dev-asset-wool.txt",
+      "sha256": "d5194b9699496c381dc52f23dcb5b1c19da4caea0167d6f134c0d0e7299fa763",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 1,
+        "slot": "dev-wool-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-eye",
+      "category": "eyes",
+      "path": "dev-asset-eye.txt",
+      "sha256": "a8304e318823a37c9c82544f77cc9a84d944dac312652c47a4f10001007b1f8a",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 2,
+        "slot": "dev-eye-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-expression",
+      "category": "expressions",
+      "path": "dev-asset-expression.txt",
+      "sha256": "246fb06701e0931b93c5b208cbc7c45a02b1924ac8c760f6caef553e805fdb19",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 3,
+        "slot": "dev-expression-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-clothing",
+      "category": "clothing",
+      "path": "dev-asset-clothing.txt",
+      "sha256": "ef95a4376875f1fefb2c7b49647e213a80eb53dd53ec821af9a0b16817f8bfd7",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 4,
+        "slot": "dev-clothing-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-accessory",
+      "category": "accessories",
+      "path": "dev-asset-accessory.txt",
+      "sha256": "eba8301ff1e1e99943c32d844ea362227787a9411237c7ca8226715508455288",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "REFERENCE",
+        "order": 5,
+        "slot": "dev-accessory-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-mutation",
+      "category": "mutations",
+      "path": "dev-asset-mutation.txt",
+      "sha256": "939d1d7ce10c87af33e554ec35acce28cb4711bf356cac3464a92b558e3646dd",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "EFFECT",
+        "order": 6,
+        "slot": "dev-mutation-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-pixel",
+      "category": "pixel_corruption",
+      "path": "dev-asset-pixel.txt",
+      "sha256": "9650fb28ae46d848ab0e58b4fbbdacee5206569113027c939d89daa596731e07",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "EFFECT",
+        "order": 7,
+        "slot": "dev-pixel-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-environment",
+      "category": "environments",
+      "path": "dev-asset-environment.txt",
+      "sha256": "f80d3d524c8cd22cf3df69b1d597c31a1eaffac1b9a178682adb68bdab381115",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "SCENE",
+        "order": 8,
+        "slot": "dev-environment-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": [],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-mutation-wool",
+      "category": "wool",
+      "path": "dev-asset-mutation-wool.txt",
+      "sha256": "f75191b34517d102530ec61636330dc5e6922b78982f601a239008612256dab2",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "EFFECT",
+        "order": 1,
+        "slot": "dev-wool-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": ["dev-replacement-wool"],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "dev-asset-mutation-clothing",
+      "category": "clothing",
+      "path": "dev-asset-mutation-clothing.txt",
+      "sha256": "65cfa86f1666a26b96d2c729785c41c33a759ac5fab8ab93a0e9bb62b5bce20c",
+      "purpose": "DEVELOPMENT_ONLY",
+      "composition": {
+        "role": "EFFECT",
+        "order": 4,
+        "slot": "dev-clothing-slot",
+        "referenceFrame": "dev-reference-frame",
+        "placement": {
+          "mode": "FULL_FRAME",
+          "x": 0,
+          "y": 0,
+          "scaling": {
+            "mode": "NONE"
+          }
+        },
+        "blend": "SOURCE_OVER"
+      },
+      "compatibilityTags": ["dev-replacement-clothing"],
+      "state": "APPROVED",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "mediaType": "text/plain",
+      "alpha": {
+        "capability": "SUPPORTED",
+        "policy": "ALLOWED"
+      },
+      "colorProfile": "NONE",
+      "requiresTags": [],
+      "rendererRequirements": [
+        {
+          "id": "dev-text-renderer",
+          "version": "1.0.0"
+        }
+      ]
+    }
+  ],
+  "referenceFrames": [
+    {
+      "id": "dev-reference-frame",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      }
+    }
+  ]
+}

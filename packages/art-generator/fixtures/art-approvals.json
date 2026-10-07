@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "purpose": "DEVELOPMENT_ONLY",
+  "records": [
+    {
+      "assetId": "dev-asset-base",
+      "sha256": "683b9a21d4b44276bda50ae565a533b0a38e8263e2531b47e0a5811f9722d489",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-wool",
+      "sha256": "d5194b9699496c381dc52f23dcb5b1c19da4caea0167d6f134c0d0e7299fa763",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-eye",
+      "sha256": "a8304e318823a37c9c82544f77cc9a84d944dac312652c47a4f10001007b1f8a",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-expression",
+      "sha256": "246fb06701e0931b93c5b208cbc7c45a02b1924ac8c760f6caef553e805fdb19",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-clothing",
+      "sha256": "ef95a4376875f1fefb2c7b49647e213a80eb53dd53ec821af9a0b16817f8bfd7",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-accessory",
+      "sha256": "eba8301ff1e1e99943c32d844ea362227787a9411237c7ca8226715508455288",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-mutation",
+      "sha256": "939d1d7ce10c87af33e554ec35acce28cb4711bf356cac3464a92b558e3646dd",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-pixel",
+      "sha256": "9650fb28ae46d848ab0e58b4fbbdacee5206569113027c939d89daa596731e07",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-environment",
+      "sha256": "f80d3d524c8cd22cf3df69b1d597c31a1eaffac1b9a178682adb68bdab381115",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-mutation-wool",
+      "sha256": "f75191b34517d102530ec61636330dc5e6922b78982f601a239008612256dab2",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    },
+    {
+      "assetId": "dev-asset-mutation-clothing",
+      "sha256": "65cfa86f1666a26b96d2c729785c41c33a759ac5fab8ab93a0e9bb62b5bce20c",
+      "state": "APPROVED",
+      "reviewReference": "dev-local-review-declaration"
+    }
+  ]
+}

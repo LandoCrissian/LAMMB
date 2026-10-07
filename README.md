@@ -1,6 +1,6 @@
 # LAMMB
 
-LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 003 extends the reviewed foundation for `lammb.fun` with deterministic offline logical construction and a DEVELOPMENT_ONLY stress collection. Launch/data-authority/fairness boundaries from Task 002 remain intact.
+LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 004 extends the reviewed foundation for `lammb.fun` with production art ingestion declarations, approval-bound planning and a DEVELOPMENT_ONLY text renderer, preserving Task 003 logical construction. Launch/data-authority/fairness boundaries from Task 002 remain intact.
 
 ## Canonical product facts
 
@@ -73,7 +73,7 @@ npm start
 - Exactly 100 synthetic DEVELOPMENT_ONLY stress specimens; committed fixture inputs, PRNG vectors and golden summary. Generated bulk artifacts remain ignored. No final artwork or production rarity.
 - Formatting, strict linting/typechecking, unit tests, deterministic dependency installation, and GitHub Actions verification.
 
-## Task 003 boundaries
+## Task 003 logical boundaries
 
 No NFT contracts, deployment, chain reads/writes, wallet SDKs, production eligibility, mint/reveal actions, admin endpoint, analytics, final artwork, final traits, production rarity or production generation. No tokenomics, staking, games, points, DAO mechanics or roadmap promises. Construction PCG32 is separate from future assignment/reveal randomness. Launch authority, eligibility/deduplication, final fairness, rendering and publication remain unresolved. Task 003 adds only a reference to the existing `collection` workspace; no external dependency is added.
 
@@ -86,5 +86,9 @@ npm run collection:summarize -- --out task-003-stress-final-a --json
 Commands use committed fixture inputs, require a fresh relative output directory under ignored `artifacts/generated/`, run offline after installation and exit nonzero on failure. [Generator documentation](docs/GENERATOR.md) explains exact deterministic bytes, constraints, stress results and production limitations.
 
 The review route renders simultaneous static studies, not a simulated live launch or client state selector. Altitude/history fixtures carry source labels and synthetic dates. Recovery shows an unavailable count, not a fake live number. The same labels remain visible in a production build.
+
+## Task 004 art boundary
+
+V2 source manifests, digest-bound local approval declarations, explicit frame/placement/order validation, structural composition plans, a versioned renderer interface and render provenance now connect the logical engine to future approved artwork. The fixture renderer emits deterministic text; no artwork or production image renderer exists. Production V1/unapproved/development assets fail closed. Readiness checks all supplied plans and orphans without claiming pixel readiness. No external dependencies were added. [Art ingestion documentation](docs/ART_INGESTION.md) covers the offline commands, declaration-only checks and unresolved art decisions.
 
 Read [architecture](docs/ARCHITECTURE.md), [collection](docs/COLLECTION.md), [launch lifecycle](docs/LAUNCH_LIFECYCLE.md), [art pipeline](docs/ART_PIPELINE.md), [generator](docs/GENERATOR.md) and [security](docs/SECURITY.md) before extending the foundation.

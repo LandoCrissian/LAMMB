@@ -9,6 +9,7 @@ import {
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canonicalJson } from './canonical.ts';
+import { distinct } from './art-inputs.ts';
 import { assetManifestSchema } from './engine-schema.ts';
 import { relativePathSchema } from './schema.ts';
 import type { EngineArtifacts } from './engine.ts';
@@ -55,6 +56,7 @@ export async function readJson(
   path: string,
   byteLimit = MAX_JSON_BYTES,
 ): Promise<unknown> {
+  await noLinks(REPOSITORY_ROOT, resolve(path));
   const info = await lstat(path);
   if (!info.isFile() || info.isSymbolicLink() || info.size > byteLimit)
     throw new Error('Input JSON must be a bounded regular file');
@@ -77,6 +79,19 @@ export async function readAssetBytes(
     throw new Error('Source asset root is not approved');
   await noLinks(REPOSITORY_ROOT, root);
   const manifest = assetManifestSchema.parse(manifestInput);
+  distinct(
+    manifest.assets.map((a) => a.id),
+    'asset ID',
+  );
+  distinct(
+    manifest.assets.map((a) => a.path.toLowerCase()),
+    'asset path',
+  );
+  if (
+    manifest.purpose === 'PRODUCTION' &&
+    root === join(REPOSITORY_ROOT, 'packages/art-generator/fixtures/assets')
+  )
+    throw new Error('Development source root cannot be production');
   const result = new Map<string, Uint8Array>();
   let totalBytes = 0;
   for (const asset of manifest.assets) {
@@ -110,11 +125,32 @@ async function generatedPath(relativeDirectory: string, createRoot: boolean) {
   return directory;
 }
 
-export async function writeArtifacts(
+export async function writeGeneratedBundle(
   relativeDirectory: string,
-  artifacts: EngineArtifacts,
+  artifacts: Record<string, unknown>,
+  files: Readonly<Record<string, string>>,
+  rawTextKeys: readonly string[] = [],
 ): Promise<string> {
+  for (const key of rawTextKeys)
+    if (!(key in files) || typeof artifacts[key] !== 'string')
+      throw new Error('Raw output must be text in a declared file');
+  for (const filename of Object.values(files)) {
+    relativePathSchema.parse(filename);
+    if (filename.includes('/'))
+      throw new Error('Generated filenames must be flat');
+  }
+  distinct(Object.values(files), 'generated filename');
   const destination = await generatedPath(relativeDirectory, true);
+  const serialized = new Map(
+    Object.keys(files).map((key) => {
+      const content = rawTextKeys.includes(key)
+        ? (artifacts[key] as string)
+        : canonicalJson(artifacts[key]);
+      if (Buffer.byteLength(content, 'utf8') > 64 * 1024 * 1024)
+        throw new Error('Generated file byte budget exceeded');
+      return [key, content] as const;
+    }),
+  );
   try {
     await lstat(destination);
     throw new Error('Output directory already exists; choose a new directory');
@@ -127,14 +163,11 @@ export async function writeArtifacts(
   // Fixed staging suffix, exclusive creation, constant filenames, no overwrite.
   const staging = `${destination}-staging`;
   await mkdir(staging);
-  for (const [key, filename] of Object.entries(artifactFiles)) {
+  for (const [key, filename] of Object.entries(files)) {
     await noLinks(GENERATED_ROOT, staging);
     const file = await open(join(staging, filename), 'wx');
     try {
-      await file.writeFile(
-        canonicalJson(artifacts[key as keyof EngineArtifacts]),
-        'utf8',
-      );
+      await file.writeFile(serialized.get(key)!, 'utf8');
     } finally {
       await file.close();
     }
@@ -142,6 +175,13 @@ export async function writeArtifacts(
   await noLinks(GENERATED_ROOT, destination, true);
   await rename(staging, destination);
   return destination;
+}
+
+export async function writeArtifacts(
+  relativeDirectory: string,
+  artifacts: EngineArtifacts,
+) {
+  return writeGeneratedBundle(relativeDirectory, artifacts, artifactFiles);
 }
 
 export async function readArtifacts(

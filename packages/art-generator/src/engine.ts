@@ -30,6 +30,7 @@ export type EngineInputs = {
   manifest: unknown;
   request: unknown;
   assetBytes: ReadonlyMap<string, Uint8Array>;
+  approvals?: unknown;
 };
 export type LogicalSpecimen = {
   index: number;
@@ -127,6 +128,7 @@ export function generateCollection(inputs: EngineInputs) {
       inputs.manifest,
       inputs.request,
       inputs.assetBytes,
+      inputs.approvals,
     );
     requestedCount = request.outputCount;
     if (
