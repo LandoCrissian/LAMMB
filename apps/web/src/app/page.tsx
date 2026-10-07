@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { collection } from '@lammb/collection/config';
 import { robinhoodChain } from '@lammb/collection/network';
+import { createLaunchPresentation } from '@lammb/collection/presentation';
 import { AscentArt } from '../components/ascent-art';
 import { LaunchStatus } from '../components/launch-status';
-import { currentLaunchState } from '../config/launch';
+import { currentLaunchSnapshot } from '../config/launch';
 
 const supplyLabel = collection.supply.toLocaleString('en-US');
+const launchPresentation = createLaunchPresentation(currentLaunchSnapshot);
 
 export default function Home() {
   return (
@@ -29,6 +31,10 @@ export default function Home() {
           </a>
         </nav>
       </header>
+      <p className="mode-banner">
+        DEVELOPMENT / NOT LIVE{' '}
+        <span>Launch experience study. No wallet required.</span>
+      </p>
       <main id="main" tabIndex={-1}>
         <section className="hero" aria-labelledby="hero-heading">
           <div className="hero-copy">
@@ -99,11 +105,15 @@ export default function Home() {
             <span>ASCENT.</span>
           </h2>
           <p>
-            From the ground to the seal. The launch experience is taking shape;
-            exact mechanics and timing are still being defined.
+            0 FT. Halfway. One foot left. The last foot opens the intended mint.
+            Sealed specimens follow, then blackout and Break the Seal.
+            Progression is deliberate; authority and timing remain unresolved.
+            <Link className="study-link" href="/development/launch">
+              Explore all seven launch studies <span aria-hidden="true">↗</span>
+            </Link>
           </p>
         </section>
-        <LaunchStatus state={currentLaunchState} />
+        <LaunchStatus presentation={launchPresentation} />
       </main>
       <footer className="site-footer">
         <span className="wordmark">

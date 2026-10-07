@@ -6,7 +6,10 @@
   "exports": {
     "./collection": "./src/collection.ts",
     "./launch": "./src/launch.ts",
-    "./eligibility": "./src/eligibility.ts"
+    "./eligibility": "./src/eligibility.ts",
+    "./authority": "./src/authority.ts",
+    "./fairness": "./src/fairness.ts",
+    "./share-card": "./src/share-card.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

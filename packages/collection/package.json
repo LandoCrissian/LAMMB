@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     "./config": "./src/config.ts",
-    "./network": "./src/network.ts"
+    "./network": "./src/network.ts",
+    "./launch": "./src/launch.ts",
+    "./presentation": "./src/presentation.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

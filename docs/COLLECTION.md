@@ -1,6 +1,6 @@
 # Collection configuration
 
-## Approved facts
+## Locked product decisions
 
 LAMMB (`LAMMB`) has a supply of **5,280** and targets **Robinhood Chain mainnet**, chain ID **4663**. The primary mint price is **0 ETH**, represented as **0 wei**; network gas still applies. The domain is **lammb.fun**, the marketplace/drop target is **OpenSea**, and the launch model is **delayed reveal**. LAMMB means **Let's All Make Money Bitches**.
 
@@ -12,7 +12,21 @@ The access model consists of **Partner GTD**, **allowlist if required**, and **p
 
 `packages/collection/src/network.ts` derives the network ID/name from that object. It describes mainnet and ETH currency units. It provides no RPC URL, credentials, block explorer guess, wallet configuration, signer, or transport. Nothing connects to mainnet.
 
-The shared access schema contains three approved groups. No wallet records, hidden allocation logic, counters, proofs, or eligibility infrastructure are live. The future eligibility service should consume these shared types when its requirements are approved.
+The shared access schema contains exactly PARTNER_GTD, ALLOWLIST and PUBLIC. No wallet records, hidden allocation logic, proofs or eligibility infrastructure are live.
+
+## Current design direction: Partner GTD model
+
+There is one consolidated PARTNER_GTD group. Partner declarations are inputs to future policy, never one mint stage per partner. `partnerDeclarationSchema` requires version, development environment, partner ID, display name, opaque project/collection reference, chain name/ID, eligibility source type, snapshot policy/reference status and declaration status; a visual reference is optional. A snapshot source requires both policy and snapshot references. Strict objects reject wallet lists and extra allocation fields.
+
+Current declarations are DEVELOPMENT_ONLY, with `dev-` IDs. `packages/collection/src/development-partners.ts` contains one synthetic schema example, no real project enrollment. Declarations do not check ownership, query holders, scrape wallets, generate allowlists or make eligibility decisions. Qualifying through multiple communities must eventually be deduplicated by an approved policy. No deduplication rule or entitlement quantity is selected here. Production declarations require separately reviewed authority and schema evolution.
+
+## Current design direction: Share experience
+
+Version `1` requires explicit fixture authority. It cannot represent a live ownership or provenance claim; a future authorized revealed-data adapter and reviewed schema evolution are required for production cards.
+
+The intended collector share experience follows reveal. `shareCardSchema` version `1` accepts only PUBLIC_REVEALED public fields: opaque token identifier, LAMMB name/number, image reference, selected public label/value traits, optional mutation/pixel-corruption/environment label/value descriptors, and provenance reference. Optional descriptors represent future public data; no actual traits or identifier convention are supplied. Internal fields are rejected at the top level and inside trait/descriptor objects.
+
+Public references accept HTTPS without credentials, IPFS references or opaque URNs. These references are validated structurally and never fetched/published by Task 002. There is no share image renderer, download/share action, wallet address, private recipe, seed, generation index or internal metadata in this boundary. A future adapter must explicitly choose approved public fields and obtain revealed data from an authorized source before card generation. Schema validity alone does not establish reveal status, ownership, reference trust or provenance correctness.
 
 ## Unresolved decisions
 

@@ -38,3 +38,23 @@ An eventual independent verifier must recompute hashes, reproduce generation, co
 ## Unresolved decisions
 
 Canonical anatomy/artwork and taxonomy, frequency targets, grail design, source asset formats, layer/scene compositing, PRNG, seed derivation, duplicate policy, renderer, metadata schema/encoding, content addressing/storage, commitment format, licensing, and verifier/publication process remain unresolved.
+
+## Fairness commitment boundary
+
+### Locked product decision
+
+Rare/grail assignment is intended to be independently auditable. **A commitment proves only what the eventual protocol actually binds.** A digest alone does not prove random, unbiased or fair assignment; it does not establish when a commitment was published, which inputs were bound, whether the operator could choose among outcomes, or whether assignment followed the disclosed process.
+
+### Current design direction
+
+The preferred research sequence is **commit → mint/allocation → reveal shuffle → public verification**. The final algorithm is UNAPPROVED. Task 002's `fairnessCommitmentSchema` requires version `1`, record ID, DEVELOPMENT_FIXTURE authority and UNAPPROVED protocol status. There is no production record, hash computation, verifier or web fairness claim.
+
+Three independently staged slots represent collection input commitment, art/catalog commitment and assignment commitment. Each is explicitly NOT_PUBLISHED or PUBLISHED with a generic digest boundary (algorithm reference, hex encoding and value), UTC publication timestamp and public publication reference. Distinct slots can represent distinct publication times; this does not choose the final commitment chronology. Unknown fields, missing versions, malformed hex, missing publication evidence and unsafe references fail closed. Algorithm-specific digest lengths and correctness cannot be checked until the protocol is approved; syntax validation is not cryptographic validation.
+
+Reveal verification material is UNAVAILABLE or PUBLISHED with a protocol specification reference and material references. Verification status can be NOT_RUN, UNVERIFIABLE, FAILED or REPORTED_VERIFIED. The latter requires all commitment slots and protocol material plus a verifier/report reference and timestamp. It records an external assertion in development data; parsing it does not perform verification, approve a protocol or establish fairness. No schema status is presented as a fairness badge in the website.
+
+Task 001's offline art recipe conventions remain separate from launch assignment fairness. The existing seed/digest structural schemas do not approve a launch PRNG, entropy source or commitment algorithm. Public commitments must eventually specify canonical encoding, covered inputs, exact assignment semantics, publication evidence and an independently reproducible verifier.
+
+### Unresolved decisions
+
+PRNG, entropy source, VRF/provider choice, token-ID convention, allocation/assignment mapping, shuffle algorithm, commitment algorithm, exact bound inputs, publication chronology/channel, independent verifier, contract linkage and adversarial fairness review remain unresolved. None is locked or implemented by these interfaces.
