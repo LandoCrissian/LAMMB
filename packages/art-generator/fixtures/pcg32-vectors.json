@@ -1,0 +1,14 @@
+{
+  "algorithm": "pcg32-xsh-rr/1",
+  "initialState": "42",
+  "sequence": "54",
+  "nextUint32Hex": [
+    "a15c02b7",
+    "7b47f409",
+    "ba1d3330",
+    "83d2f293",
+    "bfa4784b",
+    "cbed606e"
+  ],
+  "reference": "https://www.pcg-random.org/using-pcg-c-basic.html"
+}

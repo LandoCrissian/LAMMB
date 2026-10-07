@@ -14,6 +14,14 @@ The access model consists of **Partner GTD**, **allowlist if required**, and **p
 
 The shared access schema contains exactly PARTNER_GTD, ALLOWLIST and PUBLIC. No wallet records, hidden allocation logic, proofs or eligibility infrastructure are live.
 
+## DEVELOPMENT IMPLEMENTATION: collection construction
+
+Task 003 adds an offline logical engine using this canonical configuration, without changing any collection facts. A DEVELOPMENT_ONLY stress fixture produces exactly 100 unique specimens with generic `dev-` IDs, all nine categories, all six approved corruption system levels, structural mutation/scene constraints and two curated grails. Synthetic text references are not LAMMB art or a production preview; observed frequencies are not production rarity.
+
+Construction indices are internal ordered positions, not token IDs or mint assignments. Integer construction PCG32 and exact ordinary quotas operate only within this versioned development engine. Final production assets, rendering, identity/cardinality policy, rarity, seed/publication and reveal assignment remain unapproved. [Generator documentation](GENERATOR.md) contains the reproducibility protocol, fixture evidence and CLI.
+
+Development public metadata has an explicit strict presentation boundary with specimen identifier/name, logical image reference, selected public traits, optional public mutation/corruption/environment descriptors and provenance reference. Internal recipe/seed/debug information is separate. This DTO does not approve OpenSea encoding, final NFT URI formats, ownership claims or production share-card data.
+
 ## Current design direction: Partner GTD model
 
 There is one consolidated PARTNER_GTD group. Partner declarations are inputs to future policy, never one mint stage per partner. `partnerDeclarationSchema` requires version, development environment, partner ID, display name, opaque project/collection reference, chain name/ID, eligibility source type, snapshot policy/reference status and declaration status; a visual reference is optional. A snapshot source requires both policy and snapshot references. Strict objects reject wallet lists and extra allocation fields.
@@ -36,4 +44,4 @@ Public references accept HTTPS without credentials, IPFS references or opaque UR
 - Metadata storage, sealed metadata, commitment format, reveal authorization, and irreversibility.
 - License, artwork usage rights, royalty policy, and operational permissions.
 
-No contract or metadata URI is invented in Task 001. Converting the bigint price to JSON requires an explicit string boundary; direct `JSON.stringify(collection)` is intentionally unsupported. Canonical JSON encoding for future hashes remains to be designed.
+No contract or published NFT metadata URI is invented. Converting the bigint price to JSON requires an explicit decimal-string boundary; direct `JSON.stringify(collection)` is intentionally unsupported. Task 003 defines versioned canonical logical encoding for offline integrity hashes. Final fairness commitments and public NFT metadata encoding still require approval.

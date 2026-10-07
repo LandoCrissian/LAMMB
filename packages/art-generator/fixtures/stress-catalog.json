@@ -1,0 +1,752 @@
+{
+  "schemaVersion": 2,
+  "purpose": "DEVELOPMENT_ONLY",
+  "categories": [
+    {
+      "category": "base_anatomy",
+      "selectionCount": 1
+    },
+    {
+      "category": "wool",
+      "selectionCount": 1
+    },
+    {
+      "category": "eyes",
+      "selectionCount": 1
+    },
+    {
+      "category": "expressions",
+      "selectionCount": 1
+    },
+    {
+      "category": "clothing",
+      "selectionCount": 1
+    },
+    {
+      "category": "accessories",
+      "selectionCount": 1
+    },
+    {
+      "category": "mutations",
+      "selectionCount": 1
+    },
+    {
+      "category": "pixel_corruption",
+      "selectionCount": 1
+    },
+    {
+      "category": "environments",
+      "selectionCount": 1
+    }
+  ],
+  "plannedCountScope": "ORDINARY_ONLY",
+  "traits": [
+    {
+      "id": "dev-base-a",
+      "category": "base_anatomy",
+      "label": "Development base a",
+      "assetIds": ["dev-asset-base"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": ["dev-scene-ready"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 0
+    },
+    {
+      "id": "dev-base-b",
+      "category": "base_anatomy",
+      "label": "Development base b",
+      "assetIds": ["dev-asset-base"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": ["dev-scene-ready"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 0
+    },
+    {
+      "id": "dev-base-c",
+      "category": "base_anatomy",
+      "label": "Development base c",
+      "assetIds": ["dev-asset-base"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 0
+    },
+    {
+      "id": "dev-base-d",
+      "category": "base_anatomy",
+      "label": "Development base d",
+      "assetIds": ["dev-asset-base"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 0
+    },
+    {
+      "id": "dev-wool-a",
+      "category": "wool",
+      "label": "Development wool a",
+      "assetIds": ["dev-asset-wool"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "dev-wool-b",
+      "category": "wool",
+      "label": "Development wool b",
+      "assetIds": ["dev-asset-wool"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "dev-wool-c",
+      "category": "wool",
+      "label": "Development wool c",
+      "assetIds": ["dev-asset-wool"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "dev-wool-d",
+      "category": "wool",
+      "label": "Development wool d",
+      "assetIds": ["dev-asset-wool"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": ["dev-unsupported-wool"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "dev-eye-a",
+      "category": "eyes",
+      "label": "Development eye a",
+      "assetIds": ["dev-asset-eye"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": ["dev-effect-ready"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "dev-eye-b",
+      "category": "eyes",
+      "label": "Development eye b",
+      "assetIds": ["dev-asset-eye"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": ["dev-effect-ready"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "dev-eye-c",
+      "category": "eyes",
+      "label": "Development eye c",
+      "assetIds": ["dev-asset-eye"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "dev-eye-d",
+      "category": "eyes",
+      "label": "Development eye d",
+      "assetIds": ["dev-asset-eye"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "dev-expression-a",
+      "category": "expressions",
+      "label": "Development expression a",
+      "assetIds": ["dev-asset-expression"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 3
+    },
+    {
+      "id": "dev-expression-b",
+      "category": "expressions",
+      "label": "Development expression b",
+      "assetIds": ["dev-asset-expression"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 3
+    },
+    {
+      "id": "dev-clothing-a",
+      "category": "clothing",
+      "label": "Development clothing a",
+      "assetIds": ["dev-asset-clothing"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 4
+    },
+    {
+      "id": "dev-clothing-b",
+      "category": "clothing",
+      "label": "Development clothing b",
+      "assetIds": ["dev-asset-clothing"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 4
+    },
+    {
+      "id": "dev-clothing-c",
+      "category": "clothing",
+      "label": "Development clothing c",
+      "assetIds": ["dev-asset-clothing"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 4
+    },
+    {
+      "id": "dev-clothing-d",
+      "category": "clothing",
+      "label": "Development clothing d",
+      "assetIds": ["dev-asset-clothing"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": ["dev-heavy-clothing"],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 4
+    },
+    {
+      "id": "dev-accessory-a",
+      "category": "accessories",
+      "label": "Development accessory a",
+      "assetIds": ["dev-asset-accessory"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 5
+    },
+    {
+      "id": "dev-accessory-b",
+      "category": "accessories",
+      "label": "Development accessory b",
+      "assetIds": ["dev-asset-accessory"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 5
+    },
+    {
+      "id": "dev-accessory-c",
+      "category": "accessories",
+      "label": "Development accessory c",
+      "assetIds": ["dev-asset-accessory"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": ["dev-scene-ready"],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 5
+    },
+    {
+      "id": "dev-accessory-d",
+      "category": "accessories",
+      "label": "Development accessory d",
+      "assetIds": ["dev-asset-accessory"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 5
+    },
+    {
+      "id": "dev-mutation-a",
+      "category": "mutations",
+      "label": "Development mutation a",
+      "assetIds": ["dev-asset-mutation"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": false,
+      "displayOrder": 6
+    },
+    {
+      "id": "dev-mutation-b",
+      "category": "mutations",
+      "label": "Development mutation b",
+      "assetIds": ["dev-asset-mutation"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": ["dev-effect-ready"],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 6,
+      "mutation": {
+        "categoryEffects": [
+          {
+            "category": "base_anatomy",
+            "allowedTraitIds": ["dev-base-a", "dev-base-b"],
+            "replacementAssetIds": null
+          },
+          {
+            "category": "wool",
+            "allowedTraitIds": ["dev-wool-a", "dev-wool-b"],
+            "replacementAssetIds": ["dev-asset-mutation-wool"]
+          },
+          {
+            "category": "clothing",
+            "allowedTraitIds": ["dev-clothing-a", "dev-clothing-b"],
+            "replacementAssetIds": ["dev-asset-mutation-clothing"]
+          },
+          {
+            "category": "accessories",
+            "allowedTraitIds": ["dev-accessory-a", "dev-accessory-c"],
+            "replacementAssetIds": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dev-pixel-a",
+      "category": "pixel_corruption",
+      "label": "Development pixel a",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 8,
+        "plannedCount": 15
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": false,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "NONE"
+      }
+    },
+    {
+      "id": "dev-pixel-b",
+      "category": "pixel_corruption",
+      "label": "Development pixel b",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 3,
+        "plannedCount": 16
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "TOUCH"
+      }
+    },
+    {
+      "id": "dev-pixel-c",
+      "category": "pixel_corruption",
+      "label": "Development pixel c",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 1,
+        "plannedCount": 17
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": ["dev-effect-ready"],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "BLEED"
+      }
+    },
+    {
+      "id": "dev-pixel-d",
+      "category": "pixel_corruption",
+      "label": "Development pixel d",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 1,
+        "plannedCount": 17
+      },
+      "tags": [],
+      "requiresTraitIds": ["dev-wool-a"],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "FRACTURE"
+      }
+    },
+    {
+      "id": "dev-pixel-e",
+      "category": "pixel_corruption",
+      "label": "Development pixel e",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 1,
+        "plannedCount": 16
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": ["dev-effect-ready"],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "GLITCHED"
+      }
+    },
+    {
+      "id": "dev-pixel-f",
+      "category": "pixel_corruption",
+      "label": "Development pixel f",
+      "assetIds": ["dev-asset-pixel"],
+      "frequency": {
+        "weight": 1,
+        "plannedCount": 17
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": ["dev-base-d"],
+      "requiresTags": ["dev-effect-ready"],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 7,
+      "corruption": {
+        "level": "REALITY_FAILURE"
+      }
+    },
+    {
+      "id": "dev-environment-a",
+      "category": "environments",
+      "label": "Development environment a",
+      "assetIds": ["dev-asset-environment"],
+      "frequency": {
+        "weight": 8
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 8,
+      "scene": {
+        "compositionReference": "dev-scene-a",
+        "constraints": []
+      }
+    },
+    {
+      "id": "dev-environment-b",
+      "category": "environments",
+      "label": "Development environment b",
+      "assetIds": ["dev-asset-environment"],
+      "frequency": {
+        "weight": 3
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 8,
+      "scene": {
+        "compositionReference": "dev-scene-b",
+        "constraints": [
+          {
+            "category": "base_anatomy",
+            "allowedTraitIds": ["dev-base-a", "dev-base-b"],
+            "replacementAssetIds": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dev-environment-c",
+      "category": "environments",
+      "label": "Development environment c",
+      "assetIds": ["dev-asset-environment"],
+      "frequency": {
+        "weight": 1
+      },
+      "tags": [],
+      "requiresTraitIds": [],
+      "incompatibleTraitIds": [],
+      "requiresTags": [],
+      "excludesTags": [],
+      "identityAffecting": true,
+      "publicMetadata": true,
+      "displayOrder": 8,
+      "scene": {
+        "compositionReference": "dev-scene-c",
+        "constraints": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "dev-base-accessory-exclusion",
+      "type": "INCOMPATIBLE",
+      "traitIds": ["dev-base-c", "dev-accessory-d"],
+      "reason": "Development base/accessory incompatibility"
+    },
+    {
+      "id": "dev-accessory-clothing-requirement",
+      "type": "REQUIRES",
+      "whenTraitId": "dev-accessory-b",
+      "requiredTraitIds": ["dev-clothing-b"],
+      "reason": "Development accessory requires matching clothing"
+    },
+    {
+      "id": "dev-scene-capability",
+      "type": "REQUIRES_TAG",
+      "whenTraitId": "dev-environment-b",
+      "tag": "dev-scene-ready",
+      "reason": "Development scene requires compatible base capability"
+    },
+    {
+      "id": "dev-scene-clothing-exclusion",
+      "type": "EXCLUDES_TAG",
+      "whenTraitId": "dev-environment-c",
+      "tag": "dev-heavy-clothing",
+      "reason": "Development scene excludes heavy clothing tag"
+    },
+    {
+      "id": "dev-pixel-wool-exclusion",
+      "type": "EXCLUDES_TAG",
+      "whenTraitId": "dev-pixel-e",
+      "tag": "dev-unsupported-wool",
+      "reason": "Development corruption level excludes unsupported wool"
+    }
+  ],
+  "grails": [
+    {
+      "id": "dev-grail-a",
+      "label": "Development curated composition a",
+      "frequencyScope": "EXCLUDE_FROM_ORDINARY",
+      "reservations": [
+        {
+          "index": 0,
+          "traitIds": [
+            "dev-base-a",
+            "dev-wool-a",
+            "dev-eye-a",
+            "dev-expression-a",
+            "dev-clothing-a",
+            "dev-accessory-a",
+            "dev-mutation-b",
+            "dev-pixel-e",
+            "dev-environment-b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-grail-b",
+      "label": "Development curated composition b",
+      "frequencyScope": "EXCLUDE_FROM_ORDINARY",
+      "reservations": [
+        {
+          "index": 99,
+          "traitIds": [
+            "dev-base-b",
+            "dev-wool-b",
+            "dev-eye-b",
+            "dev-expression-b",
+            "dev-clothing-b",
+            "dev-accessory-b",
+            "dev-mutation-a",
+            "dev-pixel-f",
+            "dev-environment-c"
+          ]
+        }
+      ]
+    }
+  ]
+}

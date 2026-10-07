@@ -1,18 +1,24 @@
 import { z } from 'zod';
 
 export const sha256Schema = z.string().regex(/^[a-f0-9]{64}$/);
-const identifierSchema = z.string().regex(/^[a-z][a-z0-9_-]*$/);
-const relativePathSchema = z
+export const identifierSchema = z
+  .string()
+  .max(128)
+  .regex(/^[a-z][a-z0-9_-]*$/);
+export const relativePathSchema = z
   .string()
   .min(1)
+  .max(240)
   .refine(
     (path) =>
-      !path.startsWith('/') &&
-      !path.includes('\\') &&
-      !path.includes(':') &&
       path
         .split('/')
-        .every((part) => part !== '..' && part !== '.' && part !== ''),
+        .every(
+          (part) =>
+            /^[a-zA-Z0-9][a-zA-Z0-9._-]*$/.test(part) &&
+            !part.endsWith('.') &&
+            !/^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(part),
+        ),
     'Expected a portable relative path without traversal',
   );
 

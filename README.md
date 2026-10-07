@@ -1,6 +1,6 @@
 # LAMMB
 
-LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 002 extends the reviewed Task 001 foundation for `lammb.fun` with validated launch presentations and future fairness/access/share boundaries.
+LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 003 extends the reviewed foundation for `lammb.fun` with deterministic offline logical construction and a DEVELOPMENT_ONLY stress collection. Launch/data-authority/fairness boundaries from Task 002 remain intact.
 
 ## Canonical product facts
 
@@ -25,7 +25,7 @@ LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch
 apps/web/                    Next.js App Router application
 packages/collection/         Canonical collection and descriptive network configuration
 packages/schema/             Collection, launch, authority, fairness, access and share schemas
-packages/art-generator/      Art input, recipe, and provenance schemas; empty dev fixture
+packages/art-generator/      Offline constructor/verifier, versioned schemas and dev fixtures
 packages/contracts/          Documented future contract boundary; no contract package yet
 docs/                        Decisions, security principles, and unresolved work
 tests/                       Unit tests for validation and foundation boundaries
@@ -67,15 +67,24 @@ npm start
 
 - Responsive homepage at `PRE_ASCENT`, plus seven static presentations at `/development/launch`, visibly marked DEVELOPMENT / NOT LIVE.
 - Versioned strict launch payloads and a pure typed presentation model, with authority-labeled altitude/history and unavailable future onchain recovery supply. No automatic transitions or state writer.
-- Validated unowned collector reveal presentations, development-only consolidated PARTNER_GTD declarations, generic fairness commitment records and a public share-card schema. No eligibility decisions, cryptographic verifier or share-card generation.
+- Validated unowned collector reveal presentations, development-only consolidated PARTNER_GTD declarations, generic fairness commitment records and a public share-card schema. No eligibility decisions, assignment fairness verifier or share-card generation.
 - Validated collection configuration and network description, with no RPC/provider or wallet integration.
-- Schemas for art categories, frequency inputs, incompatibilities, grails, generation recipes, output hashes, and provenance manifests. The development catalog is intentionally empty.
+- Offline deterministic logical construction with integer PCG32, compatibility/structural mutation/scene enforcement, exact ordinary quotas, reserved grails, uniqueness, strict public metadata and independently reconstructed provenance.
+- Exactly 100 synthetic DEVELOPMENT_ONLY stress specimens; committed fixture inputs, PRNG vectors and golden summary. Generated bulk artifacts remain ignored. No final artwork or production rarity.
 - Formatting, strict linting/typechecking, unit tests, deterministic dependency installation, and GitHub Actions verification.
 
-## Task 002 boundaries
+## Task 003 boundaries
 
-No NFT contracts, deployment, chain reads/writes, wallet SDKs, production eligibility, mint/reveal actions, admin endpoint, analytics, final artwork, generator execution, final traits, rarity assignment, or working provenance verification. No tokenomics, staking, games, points, DAO mechanics, or roadmap promises. Launch authority, eligibility/deduplication policy, fairness algorithms and reveal integration remain unresolved. No dependencies were added by Task 002.
+No NFT contracts, deployment, chain reads/writes, wallet SDKs, production eligibility, mint/reveal actions, admin endpoint, analytics, final artwork, final traits, production rarity or production generation. No tokenomics, staking, games, points, DAO mechanics or roadmap promises. Construction PCG32 is separate from future assignment/reveal randomness. Launch authority, eligibility/deduplication, final fairness, rendering and publication remain unresolved. Task 003 adds only a reference to the existing `collection` workspace; no external dependency is added.
+
+```sh
+npm run collection:generate -- --out task-003-stress-final-a --json
+npm run collection:verify -- --out task-003-stress-final-a --json
+npm run collection:summarize -- --out task-003-stress-final-a --json
+```
+
+Commands use committed fixture inputs, require a fresh relative output directory under ignored `artifacts/generated/`, run offline after installation and exit nonzero on failure. [Generator documentation](docs/GENERATOR.md) explains exact deterministic bytes, constraints, stress results and production limitations.
 
 The review route renders simultaneous static studies, not a simulated live launch or client state selector. Altitude/history fixtures carry source labels and synthetic dates. Recovery shows an unavailable count, not a fake live number. The same labels remain visible in a production build.
 
-Read [architecture](docs/ARCHITECTURE.md), [collection](docs/COLLECTION.md), [launch lifecycle](docs/LAUNCH_LIFECYCLE.md), [art pipeline](docs/ART_PIPELINE.md), and [security](docs/SECURITY.md) before extending the foundation.
+Read [architecture](docs/ARCHITECTURE.md), [collection](docs/COLLECTION.md), [launch lifecycle](docs/LAUNCH_LIFECYCLE.md), [art pipeline](docs/ART_PIPELINE.md), [generator](docs/GENERATOR.md) and [security](docs/SECURITY.md) before extending the foundation.

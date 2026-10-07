@@ -1,0 +1,3 @@
+DEVELOPMENT_ONLY
+category: base_anatomy
+Synthetic logical reference. No collection artwork.

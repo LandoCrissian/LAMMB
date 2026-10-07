@@ -1,0 +1,3 @@
+DEVELOPMENT_ONLY
+category: pixel_corruption
+Synthetic logical reference. No collection artwork.
