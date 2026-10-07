@@ -1,6 +1,6 @@
 # LAMMB
 
-LAMMB means **Let's All Make Money Bitches**. It is a new NFT collection and launch experience built exclusively for Robinhood Chain mainnet. This repository starts from an empty baseline and contains the Task 001 foundation for `lammb.fun`.
+LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 002 extends the reviewed Task 001 foundation for `lammb.fun` with validated launch presentations and future fairness/access/share boundaries.
 
 ## Canonical product facts
 
@@ -24,7 +24,7 @@ LAMMB means **Let's All Make Money Bitches**. It is a new NFT collection and lau
 ```text
 apps/web/                    Next.js App Router application
 packages/collection/         Canonical collection and descriptive network configuration
-packages/schema/             Shared collection, launch, and access schemas/types
+packages/schema/             Collection, launch, authority, fairness, access and share schemas
 packages/art-generator/      Art input, recipe, and provenance schemas; empty dev fixture
 packages/contracts/          Documented future contract boundary; no contract package yet
 docs/                        Decisions, security principles, and unresolved work
@@ -65,15 +65,17 @@ npm start
 
 ## Current implementation status
 
-- Responsive web shell with canonical collection facts and initial `PRE_ASCENT` presentation.
-- Exhaustive rendering foundation for the seven approved launch states; no automatic transitions or live state writer.
-- Shared access vocabulary only; no eligibility decisions or allocation counts.
+- Responsive homepage at `PRE_ASCENT`, plus seven static presentations at `/development/launch`, visibly marked DEVELOPMENT / NOT LIVE.
+- Versioned strict launch payloads and a pure typed presentation model, with authority-labeled altitude/history and unavailable future onchain recovery supply. No automatic transitions or state writer.
+- Validated unowned collector reveal presentations, development-only consolidated PARTNER_GTD declarations, generic fairness commitment records and a public share-card schema. No eligibility decisions, cryptographic verifier or share-card generation.
 - Validated collection configuration and network description, with no RPC/provider or wallet integration.
 - Schemas for art categories, frequency inputs, incompatibilities, grails, generation recipes, output hashes, and provenance manifests. The development catalog is intentionally empty.
 - Formatting, strict linting/typechecking, unit tests, deterministic dependency installation, and GitHub Actions verification.
 
-## Task 001 non-goals
+## Task 002 boundaries
 
-No NFT contracts, deployment, mainnet transactions, production wallets, mint/reveal integration, eligibility service, final artwork, generator execution, final traits, rarity assignment, or working provenance verification. No tokenomics, staking, games, points, DAO mechanics, or roadmap promises. Exact launch progression mechanics, eligibility policy, state authorization, art determinism algorithms, and reveal commitments remain unresolved.
+No NFT contracts, deployment, chain reads/writes, wallet SDKs, production eligibility, mint/reveal actions, admin endpoint, analytics, final artwork, generator execution, final traits, rarity assignment, or working provenance verification. No tokenomics, staking, games, points, DAO mechanics, or roadmap promises. Launch authority, eligibility/deduplication policy, fairness algorithms and reveal integration remain unresolved. No dependencies were added by Task 002.
+
+The review route renders simultaneous static studies, not a simulated live launch or client state selector. Altitude/history fixtures carry source labels and synthetic dates. Recovery shows an unavailable count, not a fake live number. The same labels remain visible in a production build.
 
 Read [architecture](docs/ARCHITECTURE.md), [collection](docs/COLLECTION.md), [launch lifecycle](docs/LAUNCH_LIFECYCLE.md), [art pipeline](docs/ART_PIPELINE.md), and [security](docs/SECURITY.md) before extending the foundation.

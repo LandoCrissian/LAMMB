@@ -1,5 +1,6 @@
-import { launchStateSchema } from '@lammb/schema/launch';
+import { developmentLaunchSnapshots } from './development-launch';
 
 // Static foundation state, changed deliberately through reviewed source only.
 // Replace with an authorized, audited state source in a future task.
-export const currentLaunchState = launchStateSchema.parse('PRE_ASCENT');
+export const currentLaunchSnapshot = developmentLaunchSnapshots.PRE_ASCENT;
+export const currentLaunchState = currentLaunchSnapshot.state;

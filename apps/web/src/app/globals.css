@@ -12,6 +12,13 @@
 * {
   box-sizing: border-box;
 }
+/* Intrinsic content must fit 320px; never conceal page overflow. */
+main,
+section,
+.launch-layout > *,
+.gallery-foundation > * {
+  min-width: 0;
+}
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
@@ -52,6 +59,7 @@ main:focus {
 }
 .site-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -256,13 +264,6 @@ dd small {
   padding: 3.5rem var(--page-gutter);
   border-top: 1px solid var(--line);
 }
-.status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 0.4rem;
-  background: var(--accent);
-}
 .launch-panel h2 {
   margin: 0 0 1rem;
   font-size: clamp(2rem, 4vw, 3.5rem);
@@ -283,6 +284,296 @@ dd small {
   padding: 2rem var(--page-gutter);
   border-top: 1px solid var(--line);
 }
+.mode-banner {
+  margin: 0;
+  padding: 0.85rem var(--page-gutter);
+  border-bottom: 1px solid var(--line);
+  color: var(--accent);
+  font:
+    0.68rem/1.7 'Courier New',
+    monospace;
+}
+.mode-banner span {
+  display: block;
+  color: var(--muted);
+}
+.study-link,
+.study-home {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 0.75rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+.study-link {
+  margin-top: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.launch-panel-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+.launch-panel-heading .section-kicker {
+  margin: 0;
+}
+.authority-badge {
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font:
+    0.65rem 'Courier New',
+    monospace;
+}
+.launch-layout {
+  display: grid;
+  gap: 2rem;
+}
+.launch-copy h2 {
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 0.95;
+  overflow-wrap: anywhere;
+}
+.launch-copy > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 35rem;
+}
+.launch-copy .collector-label {
+  color: var(--accent);
+  margin: 2rem 0 0;
+  font:
+    0.72rem/1.6 'Courier New',
+    monospace;
+}
+.launch-copy .ownership-note {
+  font-size: 0.7rem;
+}
+.data-label,
+.visual-caption,
+.next-milestone {
+  color: var(--muted);
+  font:
+    0.68rem/1.7 'Courier New',
+    monospace;
+  overflow-wrap: anywhere;
+}
+.data-label {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+}
+.large-value {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+.data-meter {
+  height: 6px;
+  width: 100%;
+  background: var(--line);
+}
+.data-meter > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.unavailable-meter {
+  background: transparent;
+  border: 1px dashed var(--muted);
+}
+.milestone-list {
+  padding: 0;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+.milestone-list li {
+  padding: 0.9rem 0 0.9rem 1rem;
+  border-left: 2px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+.milestone-list li[data-reached='true'] {
+  border-left-color: var(--accent);
+}
+.milestone-list strong {
+  color: var(--accent);
+}
+.milestone-list small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font:
+    0.6rem/1.6 'Courier New',
+    monospace;
+  overflow-wrap: anywhere;
+}
+.recovery-markers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 1rem;
+}
+.recovery-markers li {
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  font:
+    0.75rem 'Courier New',
+    monospace;
+}
+.specimen-study {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  min-height: 250px;
+  padding: 2rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.specimen-study p {
+  font:
+    0.75rem/1.6 'Courier New',
+    monospace;
+  text-align: center;
+  color: var(--accent);
+}
+.seal-mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 50px;
+  height: 50px;
+  transform: rotate(-8deg);
+}
+.seal-mark span {
+  border: 1px solid var(--accent);
+}
+.seal-mark span:first-child {
+  background: var(--accent);
+}
+.specimen-rule {
+  height: 1px;
+  width: 40%;
+  background: var(--line);
+}
+.boundary-list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.collector-studies {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+.collector-studies li {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+}
+.collector-studies strong {
+  color: var(--accent);
+  font:
+    0.65rem/1.7 'Courier New',
+    monospace;
+}
+.collector-studies p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.boundary-list dd {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 45rem;
+}
+.launch-panel[data-state='BLACKOUT'] {
+  background: #050605;
+}
+.launch-panel[data-state='BLACKOUT'] .specimen-study {
+  background: transparent;
+}
+.gallery-foundation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.gallery-study {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0.4rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-align: center;
+  min-height: 160px;
+  font:
+    0.65rem/1.6 'Courier New',
+    monospace;
+}
+.gallery-study small {
+  font-size: 0.55rem;
+  color: var(--muted);
+}
+.gallery-pixel {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--accent);
+  margin-bottom: 1.5rem;
+}
+.study-intro {
+  padding: 4rem var(--page-gutter) 2rem;
+}
+.study-intro h1 {
+  font-size: clamp(2.6rem, 8vw, 7rem);
+  overflow-wrap: anywhere;
+}
+.study-intro > p:not(.section-kicker) {
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 2rem 0;
+}
+.lifecycle-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.lifecycle-nav a {
+  padding: 0.5rem;
+  border-top: 1px solid var(--line);
+  gap: 0.6rem;
+  font-size: 0.75rem;
+}
+.lifecycle-nav span {
+  font:
+    0.6rem 'Courier New',
+    monospace;
+  color: var(--muted);
+}
 .site-footer > span:not(.wordmark) {
   color: var(--muted);
   font-family: 'Courier New', monospace;
@@ -291,6 +582,26 @@ dd small {
 }
 
 @media (min-width: 768px) {
+  .collector-studies {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .mode-banner span {
+    display: inline;
+    margin-left: 1.5rem;
+  }
+  .launch-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+  .boundary-list {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+  .lifecycle-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .gallery-study {
+    min-height: 240px;
+  }
   .hero {
     padding-top: 5rem;
   }
