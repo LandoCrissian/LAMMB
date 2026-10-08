@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { navigation } from '../config/navigation';
+import { navigation, navigationDestinationPath } from '../config/navigation';
 import { useDialog } from './use-dialog';
 import { cinematicAsset } from '../config/cinematic-art';
 
@@ -10,11 +10,8 @@ const wordmark = cinematicAsset('wordmark');
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const destination = navigation.find(
-    (item) =>
-      item.href === pathname ||
-      (item.href !== '/' && pathname.startsWith(`${item.href}/`)),
-  );
+  const destinationPath = navigationDestinationPath(pathname);
+  const destination = navigation.find((item) => item.href === destinationPath);
   return (
     <header className="global-header">
       <Link className="brand-mark" href="/" aria-label="LAMMB home">
@@ -31,7 +28,7 @@ export function SiteHeader() {
         <span>YOU ARE HERE</span>
         <strong>{destination?.label ?? 'Beyond the map'}</strong>
       </span>
-      <NavigationMenu key={pathname} pathname={pathname} />
+      <NavigationMenu key={pathname} pathname={destinationPath} />
     </header>
   );
 }
@@ -100,12 +97,7 @@ function NavigationMenu({ pathname }: { pathname: string }) {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={
-                  pathname === item.href ||
-                  (item.href !== '/' && pathname.startsWith(`${item.href}/`))
-                    ? 'page'
-                    : undefined
-                }
+                aria-current={pathname === item.href ? 'page' : undefined}
                 onClick={close}
               >
                 <span className="navigation-index" aria-hidden="true">
