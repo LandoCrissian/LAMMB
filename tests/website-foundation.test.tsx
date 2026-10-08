@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
 import RootLayout from '../apps/web/src/app/layout';
 import Home from '../apps/web/src/app/page';
+import Vault from '../apps/web/src/app/vault/page';
 import Universe from '../apps/web/src/app/universe/page';
 import Collection from '../apps/web/src/app/collection/page';
 import Ascent from '../apps/web/src/app/ascent/page';
@@ -23,6 +24,7 @@ vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
 
 const routes = {
   '/': Home,
+  '/vault': Vault,
   '/universe': Universe,
   '/collection': Collection,
   '/ascent': Ascent,
@@ -81,7 +83,9 @@ describe('website foundation boundaries', () => {
       expect(html.match(/<header\b/g)).toHaveLength(1);
       expect(html.match(/<footer\b/g)).toHaveLength(1);
       expect(html).toContain('Skip to content');
-      expect(html).toContain('MINT NOT LIVE');
+      expect(html).toContain('THE VAULT IS SEALED.');
+      expect(html).toContain('MINT UNAVAILABLE');
+      expect(html).not.toContain('WEBSITE FOUNDATION');
       expect(html).toContain('aria-controls="global-navigation"');
       expect(html).toContain('aria-expanded="false"');
       expect(html).not.toMatch(/<form\b|<input\b|<iframe\b/);
@@ -149,7 +153,7 @@ describe('website foundation boundaries', () => {
   });
 
   it('exposes FAQ answers with native keyboard-capable disclosure semantics', () => {
-    const html = markup(FAQ);
+    const html = renderToStaticMarkup(createElement(FAQ));
     expect(html.match(/<details\b/g)).toHaveLength(questions.length);
     expect(html.match(/<summary\b/g)).toHaveLength(questions.length);
     expect(html).toContain('Network gas still applies');
@@ -157,7 +161,7 @@ describe('website foundation boundaries', () => {
   });
 
   it('distinguishes authorized sealed previews from final artwork and keeps character art unavailable', () => {
-    for (const Page of [Home, Collection, Mint]) {
+    for (const Page of [Home, Vault, Collection, Mint]) {
       const html = markup(Page);
       expect(html).toContain('Concept preview / not final NFT artwork');
       expect(html).toContain(
@@ -171,6 +175,31 @@ describe('website foundation boundaries', () => {
     expect(markup(Profile)).toContain('approved artwork pending');
     expect(markup(Universe)).toContain(
       'Final characters and traits are not exposed here',
+    );
+  });
+
+  it('provides real destination links and all specimen views without requiring JavaScript', () => {
+    const html = markup(Vault);
+    expect(html).toContain('Destinations without JavaScript');
+    expect(html).toContain('id="specimen-views"');
+    expect(html).toContain('View all three illustrations');
+    for (const view of specimenViews) {
+      expect(html).toContain(encodeURIComponent(view.path));
+    }
+    for (const destination of navigation) {
+      expect(html).toContain(`href="${destination.href}"`);
+    }
+  });
+
+  it('keeps the World illustration static and explains voluntary, transfer-aware participation', () => {
+    const html = markup(World);
+    expect(html).toContain('ILLUSTRATION / NO LIVE ACTIVITY');
+    expect(html).toContain('aria-labelledby="atlas-title atlas-description"');
+    expect(html).toContain('Nothing is registered here.');
+    expect(html).toContain('A new owner must opt in independently');
+    expect(html).toContain('low-count privacy protections');
+    expect(html).not.toMatch(
+      /<form\b|<input\b|data-(country|coordinates|count)=/,
     );
   });
 

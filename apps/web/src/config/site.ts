@@ -36,12 +36,12 @@ export const questions = [
   },
   {
     question: 'Which chain is LAMMB on?',
-    answer: `${collection.chainName} only. Chain ID ${collection.chainId}. No wallet or network connection is required to explore this foundation.`,
+    answer: `${collection.chainName} only. Chain ID ${collection.chainId}. No wallet or network connection is required to explore LAMMB.`,
   },
   {
     question: 'Is the mint free?',
     answer:
-      'The primary mint price is 0 ETH. Network gas still applies. Minting is unavailable in this website foundation.',
+      'The primary mint price is 0 ETH. Network gas still applies. Minting is currently unavailable.',
   },
   {
     question: 'Can I mint now?',
@@ -51,7 +51,7 @@ export const questions = [
   {
     question: 'What do I receive at mint?',
     answer:
-      'A sealed, unrevealed specimen is the intended experience. Final artwork and public traits are revealed later; this site shows replaceable visual studies.',
+      'A sealed, unrevealed specimen is the intended experience. Final artwork and public traits are revealed later; this site shows sealed-specimen concept previews, not final NFT artwork.',
   },
   {
     question: 'What is The 5280 Ascent?',
@@ -65,7 +65,7 @@ export const questions = [
   },
   {
     question: 'Where will the collection be available?',
-    answer: `${collection.marketplaceTarget} is the marketplace target. An official collection link is not available in this foundation.`,
+    answer: `${collection.marketplaceTarget} is the marketplace target. An official collection link is not available yet.`,
   },
   {
     question: 'Can I register my LAMMB on the world map?',
@@ -75,6 +75,6 @@ export const questions = [
   {
     question: 'Are partners or rarity percentages confirmed?',
     answer:
-      'This foundation announces no production partners, final traits or rarity percentages. Concept references do not establish production promises.',
+      'No production partners, final traits or rarity percentages are announced here. Concept references do not establish production promises.',
   },
 ] as const;

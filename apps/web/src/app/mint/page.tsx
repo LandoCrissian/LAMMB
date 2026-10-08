@@ -4,7 +4,7 @@ import { FactStrip } from '../../components/site-primitives';
 export const metadata = {
   title: 'Mint Information',
   description:
-    'Free primary mint, network gas applies. Minting is not live in this website foundation.',
+    'Free primary mint, network gas applies. The Vault is sealed. Minting is currently unavailable.',
 };
 export default function Mint() {
   return (

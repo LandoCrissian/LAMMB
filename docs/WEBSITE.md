@@ -6,20 +6,21 @@ Canonical facts come from `packages/collection`. The seven launch states, data a
 
 ## DEVELOPMENT IMPLEMENTATION
 
-| Route                 | Presentation                                                                       |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| `/`                   | Compact cinematic viewport, canonical facts and approved sealed concept inspection |
-| `/universe`           | Pre-reveal identity/story and decorative mountain/night-city vector atmosphere     |
-| `/collection`         | Approved sealed concept inspection, delayed reveal and integrity boundaries        |
-| `/ascent`             | Four static canonical milestones and existing PRE_ASCENT presentation              |
-| `/community`          | Flock narrative, access vocabulary, future information links                       |
-| `/faq`                | Native HTML question disclosures                                                   |
-| `/world`              | Country registry information; no actual map or registrations                       |
-| `/profile`            | Collector profile information; no authenticated gallery                            |
-| `/mint`               | Unavailable mint information; no transaction controls                              |
-| `/development/launch` | All seven explicitly labeled static development studies                            |
+| Route                 | Presentation                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| `/`                   | Compact cinematic viewport, canonical facts and approved sealed concept inspection  |
+| `/vault`              | Containment chamber, three illustrated inspection views and native fallback gallery |
+| `/universe`           | Pre-reveal identity/story and decorative mountain/night-city vector atmosphere      |
+| `/collection`         | Approved sealed concept inspection, delayed reveal and integrity boundaries         |
+| `/ascent`             | Four static canonical milestones and existing PRE_ASCENT presentation               |
+| `/community`          | Flock narrative, access vocabulary, future information links                        |
+| `/faq`                | Native HTML question disclosures                                                    |
+| `/world`              | Static schematic world illustration and future privacy/transfer requirements        |
+| `/profile`            | Collector profile information; no authenticated gallery                             |
+| `/mint`               | Unavailable mint information; no transaction controls                               |
+| `/development/launch` | All seven explicitly labeled static development studies                             |
 
-The root layout owns the skip link, one main landmark, global header and compact footer. Pages have individual headings/metadata; a custom not-found page returns visitors home. Desktop and mobile share a nine-destination hamburger navigation in a native modal dialog. Ordinary links retain Tab order; explicit Tab/Shift+Tab wrapping prevents focus leaving the dialog. Escape and the visible close control restore the trigger's focus. Native modal inertness prevents background interaction, and body scrolling is temporarily locked with cleanup on close/unmount. Selecting a destination closes navigation. Footer links and native FAQ disclosures remain usable without JavaScript.
+The root layout owns the skip link, one main landmark, global header and compact footer. Pages have individual headings/metadata; a custom not-found page returns visitors home. Desktop and mobile share a ten-destination hamburger navigation in a native modal dialog. The sticky header identifies the current destination. Ordinary links retain Tab order; explicit Tab/Shift+Tab wrapping prevents focus leaving the dialog. Escape and the visible close control restore the trigger's focus. Native modal inertness prevents background interaction, and body scrolling is temporarily locked with cleanup on close/unmount. Selecting a destination closes navigation. The menu instance is keyed by pathname so browser history changes also dismiss it. A native `noscript` destination disclosure, static specimen and Vault gallery preserve navigation and art access without JavaScript.
 
 The server-rendered architecture remains intact. Small client components handle only navigation and specimen view selection; no launch state, ownership or transaction authority moves to the client. CSS is local, mobile-first and content-driven. Natural vertical scrolling remains when a short/narrow viewport cannot fit content. No page overflow is concealed to hide failures. Focus outlines, minimum 44px actionable targets, contrast-conscious palette and reduced-motion rules are preserved. There are no external fonts/scripts, tracking or autoplay audio.
 
@@ -72,5 +73,7 @@ The existing cinematic layout and all public artwork remain unchanged. Confirmed
 The manual browser runner additionally accepts an explicitly authorized `https://lammb.fun` read-only audit, six widths including 1024/1920px, and a clearly labeled homepage-only lab probe. Fresh contexts restrict requests to the selected origin; no existing profiles, credentials, tracking, browser download or deployment are used. Full acceptance still covers all ten routes and existing interaction checks. Route response headers, LCP observations, layout shifts, transferred script/image/CSS bytes, font requests, image geometry and small-text evidence are recorded. These are laboratory observations, not field Core Web Vitals; field INP is unavailable. See [Task 006 review and commands](TASK_006_REVIEW.md).
 
 ## UNRESOLVED PRODUCTION DECISIONS
+
+Task 007 introduces `/vault`, a compact mobile homepage, truthful sealed/mint-unavailable language and an original static geographic illustration. It does not add registration or ownership verification. See [Task 007 review](TASK_007_REVIEW.md) for architecture, browser acceptance and evidence reproduction.
 
 Approved art/brand assets/framing; verified social/marketplace links; editorial review; launch authority/timing; geography/privacy/transfer rules; authentication/ownership/OAuth; profile visibility; contract/mint/reveal integration; hosting/CSP. No production readiness or delivery promise is made. See [Netlify diagnosis](NETLIFY_DIAGNOSIS.md).

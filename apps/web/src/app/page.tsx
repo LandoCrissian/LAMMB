@@ -56,28 +56,21 @@ export default function Home() {
               width={wordmark.width}
               height={wordmark.height}
               preload
-              sizes="(min-width: 1100px) 480px, (min-width: 768px) 46vw, 90vw"
+              sizes="(min-width: 1100px) 480px, (min-width: 768px) 46vw, (min-width: 385px) 250px, 65vw"
             />
           </h1>
-          <p className="cinema-meaning">
-            LET&apos;S ALL MAKE
-            <br />
-            MONEY BITCHES.
-          </p>
+          <p className="cinema-meaning">LET&apos;S ALL MAKE MONEY BITCHES.</p>
           <div className="cinema-story">
             <h2>
               SEALED.
               <br />
               <span>FOR NOW.</span>
             </h2>
-            <p>
-              {supplyLabel} LAMMBs. A whole universe on the other side of the
-              seal.
-            </p>
+            <p>{supplyLabel} LAMMBs. Waiting behind the seal.</p>
           </div>
           <div className="cinema-actions">
-            <Link className="primary-link" href="/universe">
-              Enter universe <span aria-hidden="true">↗</span>
+            <Link className="primary-link" href="/vault">
+              Enter the Vault <span aria-hidden="true">↗</span>
             </Link>
             <Link className="cinema-secondary" href="/mint">
               Mint details <span aria-hidden="true">↗</span>
@@ -86,7 +79,7 @@ export default function Home() {
         </div>
         <div className="cinema-specimen">
           <p className="cinema-specimen-index">SEALED / UNREVEALED</p>
-          <SealedSpecimen priority />
+          <SealedSpecimen priority compact />
           <p className="cinema-higher">HIGHER TOGETHER.</p>
         </div>
       </div>

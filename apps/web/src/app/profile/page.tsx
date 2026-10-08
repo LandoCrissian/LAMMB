@@ -9,7 +9,7 @@ export default function Profile() {
     <FutureExperience kind="profile">
       <p className="body-copy">
         A future wallet-linked specimen gallery, with optional X identity. No
-        wallet is connected, and no ownership is claimed in this foundation.
+        wallet is connected, and no ownership is claimed here.
       </p>
       <ul className="editorial-list">
         <li>

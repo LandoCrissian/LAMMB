@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   globalIgnores([
+    'artifacts/generated/**',
     '**/.next/**',
     '**/dist/**',
     '**/coverage/**',
