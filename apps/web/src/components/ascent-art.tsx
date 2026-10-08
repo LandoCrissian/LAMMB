@@ -42,9 +42,7 @@ export function AscentArt() {
           <rect x="148" y="364" width="4" height="10" />
         </g>
       </svg>
-      <span className="art-caption">
-        Colorado altitude study / artwork pending
-      </span>
+      <span className="art-caption">Altitude study / artwork pending</span>
     </div>
   );
 }

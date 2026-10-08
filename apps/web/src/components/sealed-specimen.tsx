@@ -49,8 +49,12 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
           alt={specimenDescriptions.front}
           width={front.width}
           height={front.height}
-          unoptimized
           preload={priority}
+          sizes={
+            priority
+              ? '(min-width: 1100px) 300px, (min-width: 768px) 280px, 45vw'
+              : '(min-width: 768px) 240px, 70vw'
+          }
           className="specimen-preview-image"
         />
         <span className="inspect-label">
@@ -86,7 +90,7 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
         <div className="inspection-stage">
           <div className="inspection-coordinate" aria-hidden="true">
             <span>LAMMB / UNREVEALED</span>
-            <span>5280 / COLORADO</span>
+            <span>5280 / SEALED</span>
           </div>
           <figure className="inspection-figure">
             <Image
@@ -94,7 +98,7 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
               alt={specimenDescriptions[current.view as SpecimenView]}
               width={current.width}
               height={current.height}
-              unoptimized
+              sizes="(min-width: 768px) 360px, 80vw"
               className="inspection-image"
             />
             <figcaption aria-live="polite" aria-atomic="true">
@@ -128,8 +132,8 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
           ))}
         </div>
         <p id={`${id}-description`} className="dialog-footnote">
-          Website concept preview. Three extracted 2D views, not a 3D model or a
-          minted NFT.
+          Website concept preview. Three independently illustrated 2D views, not
+          a 3D model or a minted NFT.
           <span>Use the view buttons or arrow keys. Close with Escape.</span>
         </p>
       </dialog>

@@ -6,6 +6,7 @@ import { SiteFooter } from '../components/site-footer';
 import './globals.css';
 import './site.css';
 import './cinematic.css';
+import './homepage.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${collection.domain}`),
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     default: `${collection.name} — Higher Together`,
     template: `%s / ${collection.name}`,
   },
-  description: `${collection.supply.toLocaleString('en-US')} ${collection.name}s. Free mint on ${collection.chainName}. Network gas applies.`,
+  description: `${String(collection.supply)} ${collection.name}s. Free mint on ${collection.chainName}. Network gas applies.`,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

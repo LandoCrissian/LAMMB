@@ -20,7 +20,7 @@ export default function LaunchStudies() {
         <span>Static presentation studies / no state controls</span>
       </p>
       <section className="study-intro" aria-labelledby="study-heading">
-        <p className="section-kicker">The 5,280 Ascent / review foundation</p>
+        <p className="section-kicker">The 5280 Ascent / review foundation</p>
         <h1 id="study-heading">
           FROM THE BASE.
           <br />

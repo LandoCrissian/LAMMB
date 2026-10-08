@@ -36,7 +36,7 @@ export default function FAQ() {
             <p>{item.answer}</p>
           </details>
         ))}
-        <TextLink href="/ascent">Explore The 5,280 Ascent</TextLink>
+        <TextLink href="/ascent">Explore The 5280 Ascent</TextLink>
       </section>
     </>
   );

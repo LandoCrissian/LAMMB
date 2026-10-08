@@ -16,6 +16,7 @@ import { navigation } from '../apps/web/src/config/navigation';
 import { futureExperiences, questions } from '../apps/web/src/config/site';
 import { launchStateSchema } from '@lammb/schema/launch';
 import { specimenViews } from '../apps/web/src/config/specimen';
+import art from '../apps/web/public/art/cinematic-preview/provenance.json';
 
 // Server markup tests do not claim browser layout/menu interaction coverage.
 vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
@@ -36,8 +37,40 @@ const markup = (Page: typeof Home) =>
   renderToStaticMarkup(
     createElement(RootLayout, { children: createElement(Page) }),
   );
+const approvedImagePaths = art.assets.map((asset) => asset.path);
+function imagePath(source: string) {
+  const url = new URL(source.replaceAll('&amp;', '&'), 'http://localhost');
+  return url.pathname === '/_next/image'
+    ? url.searchParams.get('url')
+    : url.pathname;
+}
 
 describe('website foundation boundaries', () => {
+  it('composes the homepage from separate preview assets and genuine destination links, with no low-resolution hero or pretend mint/trailer control', () => {
+    const html = markup(Home);
+    expect(specimenViews.map((view) => view.view)).toEqual([
+      'front',
+      'side',
+      'rear',
+    ]);
+    expect(html).toContain('Explore the LAMMB universe');
+    for (const destination of [
+      'collection',
+      'universe',
+      'ascent',
+      'community',
+    ]) {
+      expect(html).toContain(`href="/${destination}"`);
+      expect(html).toContain(
+        encodeURIComponent(`/art/cinematic-preview/${destination}.webp`),
+      );
+    }
+    expect(html).not.toContain('/art/sealed-specimen/');
+    expect(html).not.toMatch(/Watch trailer|Mint now|Connect wallet/i);
+    expect(html).toContain('5280');
+    expect(html).toContain('Robinhood Chain');
+    expect(html).toContain('network gas applies');
+  });
   it.each(Object.entries(routes))(
     '%s has a single shared landmark shell and an honest unavailable mint',
     (_route, Page) => {
@@ -53,17 +86,18 @@ describe('website foundation boundaries', () => {
       expect(html).toContain('aria-expanded="false"');
       expect(html).not.toMatch(/<form\b|<input\b|<iframe\b/);
       for (const image of html.matchAll(/<img[^>]+src="([^"]+)"/g))
-        expect(specimenViews.map((view) => view.path)).toContain(image[1]);
+        expect(approvedImagePaths).toContain(imagePath(image[1]!));
+      expect(html).not.toContain('5,280');
+      expect(html).not.toMatch(/\bColorado\b/i);
       const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map(
         (match) => match[1],
       );
       for (const href of hrefs) {
         expect(href?.startsWith('/') || href?.startsWith('#')).toBe(true);
         if (href?.startsWith('/'))
-          expect([
-            ...Object.keys(routes),
-            ...specimenViews.map((view) => view.path),
-          ]).toContain(href);
+          expect([...Object.keys(routes), ...approvedImagePaths]).toContain(
+            imagePath(href!),
+          );
       }
     },
   );
@@ -127,7 +161,7 @@ describe('website foundation boundaries', () => {
       const html = markup(Page);
       expect(html).toContain('Concept preview / not final NFT artwork');
       expect(html).toContain(
-        'Three extracted 2D views, not a 3D model or a minted NFT',
+        'Three independently illustrated 2D views, not a 3D model or a minted NFT',
       );
       expect(html).toContain('aria-haspopup="dialog"');
       expect(html).toContain('Close specimen inspection');
