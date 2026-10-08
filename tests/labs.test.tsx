@@ -18,6 +18,7 @@ import Dossier, {
 import Surveillance from '../apps/web/src/app/universe/surveillance/page';
 import Experimental from '../apps/web/src/app/universe/experimental/page';
 import provenance from '../apps/web/public/art/labs-preview/provenance.json';
+import { navigationDestinationPath } from '../apps/web/src/config/navigation';
 
 const published = {
   id: 'EPISODE 002',
@@ -35,6 +36,20 @@ const published = {
   },
 };
 describe('classified fictional universe', () => {
+  it('identifies real laboratory destinations while leaving invalid records on the stable 404 header', () => {
+    for (const route of [
+      ...facilityDestinations.map((room) => room.href),
+      ...labFiles.map((file) => `/universe/archive/${file.id}`),
+    ])
+      expect(navigationDestinationPath(route)).toBe('/universe');
+    for (const route of [
+      '/universe/archive/999',
+      '/universe/missing',
+      '/universe/archive/000/extra',
+      '/vault/missing',
+    ])
+      expect(navigationDestinationPath(route)).toBe(route);
+  });
   it('makes every destination and canonical file accessible through real links and static paths', () => {
     const overview = renderToStaticMarkup(createElement(Universe));
     for (const destination of facilityDestinations)
