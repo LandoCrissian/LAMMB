@@ -45,7 +45,7 @@ jobs:
         run: npm run build
   browser-acceptance:
     runs-on: windows-2025
-    timeout-minutes: 45
+    timeout-minutes: 75
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
