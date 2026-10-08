@@ -101,7 +101,7 @@ export default function Home() {
             Find your place in the flock.
           </p>
         </div>
-        <div className="editorial-grid">
+        <div className="editorial-grid destination-list">
           <EditorialCard
             number="01"
             title="The Universe"

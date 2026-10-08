@@ -36,7 +36,7 @@ export default function Community() {
             unofficial social or partner links are listed here.
           </p>
         </div>
-        <div className="editorial-grid">
+        <div className="editorial-grid destination-list">
           <EditorialCard
             number="01"
             title="The global flock"

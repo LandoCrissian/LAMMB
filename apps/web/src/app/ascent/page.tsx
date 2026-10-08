@@ -1,4 +1,5 @@
 import { ascentMilestones } from '@lammb/collection/launch';
+import { launchStateSchema } from '@lammb/schema/launch';
 import { createLaunchPresentation } from '@lammb/collection/presentation';
 import { PageIntro, TextLink } from '../../components/site-primitives';
 import { LaunchStatus } from '../../components/launch-status';
@@ -80,6 +81,38 @@ export default function Ascent() {
       <LaunchStatus
         presentation={createLaunchPresentation(currentLaunchSnapshot)}
       />
+      <section className="editorial-section" aria-labelledby="chapters-heading">
+        <p className="section-kicker">
+          STATIC CANONICAL / GLOBAL LAUNCH LIFECYCLE
+        </p>
+        <h2 id="chapters-heading">
+          ONE LAUNCH.
+          <br />
+          <span>SEVEN CHAPTERS.</span>
+        </h2>
+        <ol
+          className="launch-chapters"
+          aria-label="Canonical global launch lifecycle"
+        >
+          {launchStateSchema.options.map((state, index) => (
+            <li key={state}>
+              <span aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <strong>{state.replaceAll('_', ' ')}</strong>
+            </li>
+          ))}
+        </ol>
+        <p className="body-copy">
+          These are the intended chapters, not live progress. Transitions
+          require deliberate authority; timing and completion rules remain
+          unresolved. Collector reveal states are distinct from this global
+          lifecycle.
+        </p>
+        <TextLink href="/development/launch">
+          Explore the seven launch studies
+        </TextLink>
+      </section>
       <section
         className="editorial-section final-callout"
         aria-labelledby="seal-heading"

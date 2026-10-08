@@ -14,6 +14,7 @@ import Mint from '../apps/web/src/app/mint/page';
 import LaunchStudies from '../apps/web/src/app/development/launch/page';
 import { navigation } from '../apps/web/src/config/navigation';
 import { futureExperiences, questions } from '../apps/web/src/config/site';
+import { launchStateSchema } from '@lammb/schema/launch';
 
 // Server markup tests do not claim browser layout/menu interaction coverage.
 vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
@@ -122,5 +123,9 @@ describe('website foundation boundaries', () => {
     expect(ascent).toContain('ONE FOOT LEFT');
     expect(ascent).toContain('STATIC CANONICAL / NARRATIVE MILESTONES');
     expect(ascent).toContain('do not move it');
+    expect(ascent).toContain('Canonical global launch lifecycle');
+    expect(ascent).toContain('not live progress');
+    for (const state of launchStateSchema.options)
+      expect(ascent).toContain(state.replaceAll('_', ' '));
   });
 });

@@ -45,7 +45,7 @@ export function ArtSlot({
   code = 'ART / 001',
 }: {
   label?: string;
-  variant?: 'sealed' | 'signal' | 'wool';
+  variant?: 'sealed' | 'signal' | 'wool' | 'environment';
   code?: string;
 }) {
   return (
@@ -58,7 +58,13 @@ export function ArtSlot({
         <div className="slot-orbit" />
         <div className="slot-core">
           <span>
-            {variant === 'sealed' ? '?' : variant === 'signal' ? '+' : '○'}
+            {variant === 'sealed'
+              ? '?'
+              : variant === 'signal'
+                ? '+'
+                : variant === 'environment'
+                  ? '↗'
+                  : '○'}
           </span>
           <i />
           <i />
@@ -119,7 +125,7 @@ export function EditorialCard({
   link: string;
 }) {
   return (
-    <article className="editorial-card">
+    <article className="editorial-card editorial-destination">
       <span className="card-index" aria-hidden="true">
         {number}
       </span>
