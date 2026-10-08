@@ -71,6 +71,10 @@ assert(
   'Use distinct supported acceptance widths',
 );
 const evidence = {
+  environment:
+    process.env.GITHUB_ACTIONS === 'true' ? 'ISOLATED_WINDOWS_CI' : 'LOCAL',
+  runId: process.env.GITHUB_RUN_ID || null,
+  capturedAt: new Date().toISOString(),
   browserChannel: values.browser,
   playwrightVersion: load(
     path.join(values['playwright-module'] || 'playwright', 'package.json'),
