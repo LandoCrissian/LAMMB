@@ -6,7 +6,7 @@ export const facilityDestinations = [
     label: 'Security Terminal',
     href: '/universe/security',
     description: 'The incident is management.',
-    status: 'FICTION / SYSTEM UNRELIABLE',
+    status: 'FICTION / DIAGNOSTIC',
   },
   {
     id: 'archive',
@@ -14,7 +14,7 @@ export const facilityDestinations = [
     label: 'Experiment Archive',
     href: '/universe/archive',
     description: 'Eleven seconds of success. Four files of consequences.',
-    status: 'FICTION / FOUR RECORDS',
+    status: 'FICTION / FOUR FILES',
   },
   {
     id: 'surveillance',
@@ -22,7 +22,7 @@ export const facilityDestinations = [
     label: 'Surveillance Room',
     href: '/universe/surveillance',
     description: 'The footage has questions.',
-    status: 'EPISODE IN DEVELOPMENT',
+    status: 'IN DEVELOPMENT',
   },
   {
     id: 'experimental',
@@ -30,7 +30,7 @@ export const facilityDestinations = [
     label: 'Experimental Wing',
     href: '/universe/experimental',
     description: 'A future game. Present liability.',
-    status: 'GAME NOT AVAILABLE',
+    status: 'NOT PLAYABLE',
   },
 ] as const;
 export type FacilityId = (typeof facilityDestinations)[number]['id'];

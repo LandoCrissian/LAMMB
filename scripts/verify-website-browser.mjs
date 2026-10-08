@@ -1139,8 +1139,12 @@ async function labsChecks(page, width) {
     await page.reload({ waitUntil: 'networkidle' });
     assert(await page.locator('.labs-narrative').isVisible());
     await page.goBack({ waitUntil: 'networkidle' });
+    await page.waitForURL(`${origin}/universe/archive`);
+    await page.locator('.labs-file').first().waitFor();
     assert.equal(new URL(page.url()).pathname, '/universe/archive');
     await page.goForward({ waitUntil: 'networkidle' });
+    await page.waitForURL(`${origin}/universe/archive/${id}`);
+    await page.locator('.labs-narrative').waitFor();
     assert.equal(new URL(page.url()).pathname, `/universe/archive/${id}`);
     await page.getByRole('link', { name: '← All files', exact: true }).click();
     await page.waitForURL(`${origin}/universe/archive`);
