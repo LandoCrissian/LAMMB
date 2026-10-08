@@ -57,7 +57,11 @@ export default function Universe() {
             variant="signal"
             code="SYSTEM / 02"
           />
-          <ArtSlot label="Environment composition slot" code="SCENE / 03" />
+          <ArtSlot
+            label="Environment composition slot"
+            variant="environment"
+            code="SCENE / 03"
+          />
         </div>
       </section>
       <section
