@@ -118,6 +118,9 @@ export function ContainmentChamber() {
   function pause() {
     scene.current?.setPaused(true);
     setPaused(true);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = null;
+    setPhase((current) => (current === 'RUNNING' ? 'READY' : current));
   }
   function resume() {
     if (lost || failure) return;

@@ -51,7 +51,7 @@ describe('containment chamber movement and safety', () => {
       [0, -1],
       [1, 1],
       [-1, 1],
-    ]) {
+    ] as const) {
       const p = walk(chamber.spawn, strafe, forward, 1200);
       expect(validPosition(p)).toBe(true);
       expect(Math.abs(p.x)).toBeLessThanOrEqual(
