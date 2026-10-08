@@ -812,6 +812,7 @@ async function noScriptChecks(width) {
     await page.locator('.atlas-country-directory summary').click();
     assert.equal(await page.locator('.atlas-country-list a').count(), 249);
     assert.equal(await page.locator('.atlas-stage').isVisible(), false);
+    assert.equal(await page.locator('.atlas-filters').isVisible(), false);
     assert(
       await page
         .getByText('REGISTRY NOT YET LIVE', { exact: true })
