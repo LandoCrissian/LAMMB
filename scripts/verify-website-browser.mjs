@@ -693,7 +693,12 @@ async function universeChecks(page, width) {
   assert.equal(await inspection.evaluate((el) => el.open), false);
   assert(await trigger.evaluate((el) => el === document.activeElement));
   assert.equal(await page.evaluate(() => document.body.style.overflow), '');
-  await visit(page, '/vault#specimen-views');
+  await guard();
+  // A same-document fragment navigation correctly has no HTTP response.
+  await page.goto(`${origin}/vault#specimen-views`, {
+    waitUntil: 'networkidle',
+  });
+  assert.equal(new URL(page.url()).hash, '#specimen-views');
   const summary = page.locator('.vault-views summary');
   await summary.focus();
   await page.keyboard.press('Enter');
