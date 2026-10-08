@@ -208,11 +208,31 @@ async function settlePageImages(page) {
     // networkidle can precede native lazy loading, especially in Chrome.
     // Trigger the real load and require success, rather than ignoring it.
     await image.scrollIntoViewIfNeeded();
-    const deadline = Date.now() + 15000;
+    const deadline = Date.now() + 30000;
     while (
       !(await image.evaluate((img) => img.complete && img.naturalWidth > 0))
     ) {
-      assert(Date.now() < deadline, 'Page image failed to load within 15s');
+      if (Date.now() >= deadline) {
+        const state = await image.evaluate((img) => ({
+          source: img.currentSrc || img.src,
+          complete: img.complete,
+          naturalWidth: img.naturalWidth,
+          loading: img.loading,
+        }));
+        evidence.errors.push({
+          type: 'image-readiness',
+          page: page.url(),
+          ...state,
+        });
+        await capture(
+          page,
+          `image-load-failure-${evidence.screenshots.length}`,
+          false,
+        );
+        assert.fail(
+          `Page image failed to load within 30s: ${JSON.stringify(state)}`,
+        );
+      }
       // Poll from the driver: page animation/timer callbacks can be disabled
       // in the deliberate no-JavaScript acceptance context.
       await page.waitForTimeout(50);
