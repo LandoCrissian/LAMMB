@@ -57,7 +57,7 @@ describe('classified fictional universe', () => {
       );
       expect(html).toContain(file.narrative);
       expect(html.match(/<h1\b/g)).toHaveLength(1);
-      expect(html.match(/<summary\b/g)).toHaveLength(3);
+      expect(html.match(/<summary\b/g)).toHaveLength(4);
       expect(html).toContain('<noscript>');
       expect(html).toContain('aria-haspopup="dialog"');
       expect(html).toContain(

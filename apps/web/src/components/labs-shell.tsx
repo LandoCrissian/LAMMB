@@ -51,11 +51,20 @@ export function LabsShell({
         </div>
         {children}
       </div>
-      <p className="labs-disclaimer">
-        Original fictional satire. No actual research, financial products or
-        blockchain events are reported. Story specimen numbers are not token
-        assignments. Final characters and traits are not exposed here.
-      </p>
+      <aside
+        className="labs-disclaimer"
+        aria-label="Fiction and collection boundaries"
+      >
+        <p>Fictional archive. Story IDs are not NFT assignments.</p>
+        <details>
+          <summary>About this fictional archive</summary>
+          <p>
+            Original fictional satire. No actual research, financial products or
+            blockchain events are reported. Story specimen numbers are not token
+            assignments. Final characters and traits are not exposed here.
+          </p>
+        </details>
+      </aside>
     </div>
   );
 }

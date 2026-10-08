@@ -10,7 +10,7 @@ export default function Universe() {
   return (
     <LabsShell
       title="CLASSIFIED. BADLY."
-      eyebrow="THE UNIVERSE / A FICTIONAL LABORATORY"
+      eyebrow="THE UNIVERSE / FICTION"
       overview
     >
       <div className="labs-introduction">
