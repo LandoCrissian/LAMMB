@@ -22,7 +22,7 @@ Approach the console at x=-3.3,z=0.4 within 2.1m. E or the accessible Run button
 
 ## Controls, lifetime and accessibility
 
-The scene opens in a native full-screen dialog. Its background is inert; Exit restores entry focus. Escape releases pointer lock and pauses; it does not trap the user in pointer lock. Tab accesses ordinary DOM controls. Touch uses a movement pad plus independent view drag. Pointer cancellation, focus loss, visibility changes and pause clear movement. Pause cancels the render loop; explicit resume restarts it. Exit/unmount cancels frames and removes listeners, disconnects resizing and disposes all materials, geometries, textures and renderer.
+The scene opens in a native full-screen dialog. Its background is inert; Exit restores entry focus. Escape releases pointer lock and pauses; it does not trap the user in pointer lock. Tab accesses ordinary DOM controls. Touch uses a movement pad plus independent view drag. Pointer cancellation, focus loss, visibility changes and pause clear movement. Pause cancels the render loop and aborts an unfinished assessment back to READY; explicit resume restarts observation. Exit/unmount cancels frames and removes listeners, disconnects resizing and disposes all materials, geometries, textures and renderer.
 
 The non-3D terminal offers the same activate/result/replay/reset interaction, with polite readable status and no movement/proximity barrier. Without JavaScript a native disclosure gives the complete story. No audio, flickering lights or animated alarm. Reduced motion removes decorative transitions; deliberate movement remains user-controlled. Screen-reader and physical-device acceptance must be reported separately from desktop emulation.
 

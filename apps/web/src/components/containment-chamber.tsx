@@ -61,7 +61,7 @@ export function ContainmentChamber() {
             if (!cancelled) setSnapshot(value);
           },
           pause: () => {
-            if (!cancelled) setPaused(true);
+            if (!cancelled) pause();
           },
           interact: () => interact.current(),
           context: (value) => {
