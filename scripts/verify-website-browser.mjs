@@ -133,7 +133,22 @@ async function guard() {
 async function capture(page, name, fullPage = true) {
   await guard();
   const filename = `${name}.png`;
-  await page.screenshot({ path: path.join(output, filename), fullPage });
+  const scroll = await page.evaluate(() => ({ x: scrollX, y: scrollY }));
+  try {
+    if (fullPage)
+      await page.evaluate(() => {
+        // Keep fixed/sticky UI at the page origin in full-page evidence.
+        window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+        return new Promise((resolve) => requestAnimationFrame(resolve));
+      });
+    await page.screenshot({ path: path.join(output, filename), fullPage });
+  } finally {
+    if (fullPage)
+      await page.evaluate(({ x, y }) => {
+        window.scrollTo({ left: x, top: y, behavior: 'instant' });
+        return new Promise((resolve) => requestAnimationFrame(resolve));
+      }, scroll);
+  }
   evidence.screenshots.push({
     filename,
     sha256: createHash('sha256')
