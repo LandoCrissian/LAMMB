@@ -52,7 +52,10 @@ async function capture(page, name) {
   evidence.memoryGiB.push(freemem() / 1024 ** 3);
   assert(freemem() > 1024 ** 3, 'CI RAM guard');
   const filename = name + '.png';
-  await page.screenshot({ path: path.join(output, filename), fullPage: true });
+  await page.screenshot({
+    path: path.join(output, filename),
+    fullPage: !(await page.locator('.chamber-dialog[open]').count()),
+  });
   const bytes = await readFile(path.join(output, filename));
   evidence.screenshots.push({
     filename,

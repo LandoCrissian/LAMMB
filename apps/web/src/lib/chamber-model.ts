@@ -54,7 +54,7 @@ export function moveObserver(
     ((-Math.sin(yaw) * strafe - Math.cos(yaw) * forward) / magnitude) *
     distance;
   // Small fixed maximum step prevents tunnelling; independent axes slide on walls.
-  let next = { ...p };
+  const next = { ...p };
   if (validPosition({ x: next.x + dx, z: next.z })) next.x += dx;
   if (validPosition({ x: next.x, z: next.z + dz })) next.z += dz;
   return next;

@@ -33,6 +33,8 @@ export class ChamberScene {
   private materials = new Set<THREE.Material>();
   private geometries = new Set<THREE.BufferGeometry>();
   private textures = new Set<THREE.Texture>();
+  private cube = this.geometry(new THREE.BoxGeometry(1, 1, 1));
+  private terminalTexture: THREE.Texture | null = null;
   private cleanup: (() => void)[] = [];
   private resizeObserver: ResizeObserver;
   private keys = new Set<string>();
@@ -251,7 +253,7 @@ export class ChamberScene {
     this.box(0.5, 1.1, 0.55, 0, 0.7, 0, steel, terminal);
     this.box(1.3, 0.11, 0.95, 0, 1.18, 0, edges, terminal);
     this.box(1.4, 0.95, 0.15, 0, 1.7, -0.18, black, terminal);
-    this.label(
+    const terminalScreen = this.label(
       'RESEARCH TERMINAL\nSPECIMEN 0004\nFINANCIAL COMPETENCE TEST\nINITIAL BALANCE: $100',
       1.25,
       0.75,
@@ -260,6 +262,7 @@ export class ChamberScene {
       -0.09,
       terminal,
     );
+    this.terminalTexture = terminalScreen.material.map;
     this.box(0.15, 0.025, 0.15, 0.4, 1.26, 0.28, this.signal, terminal);
     // Fixed soft contact shade, not a high-cost realtime shadow map.
     const shade = this.label('shade', 4, 3.6, 0, 0.012, -1);
@@ -360,11 +363,9 @@ export class ChamberScene {
     material: THREE.Material,
     parent: THREE.Object3D = this.scene,
   ) {
-    const mesh = new THREE.Mesh(
-      this.geometry(new THREE.BoxGeometry(w, h, d)),
-      material,
-    );
+    const mesh = new THREE.Mesh(this.cube, material);
     mesh.position.set(x, y, z);
+    mesh.scale.set(w, h, d);
     parent.add(mesh);
     return mesh;
   }
@@ -403,7 +404,7 @@ export class ChamberScene {
         [233, 132],
         [286, 99],
         [355, 46],
-      ])
+      ] as const)
         ctx.fillRect(xx, 337, 9, length);
     } else if (text === 'shade') {
       const gradient = ctx.createRadialGradient(256, 256, 20, 256, 256, 240);
@@ -541,6 +542,33 @@ export class ChamberScene {
     this.light.color.setHex(active ? 0xff2820 : 0xdcff00);
     this.signal.color.setHex(active ? 0xff3828 : 0xdcff00);
     this.signal.emissive.setHex(active ? 0xff2820 : 0xdcff00);
+    const texture = this.terminalTexture;
+    if (texture) {
+      const source = texture.image as HTMLCanvasElement;
+      const ctx = source.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#07121a';
+        ctx.fillRect(0, 0, 512, 512);
+        ctx.fillStyle = active ? '#ff9589' : '#dcff00';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 25px monospace';
+        const lines = active
+          ? [
+              'CURRENT BALANCE: $0.37',
+              'OUTSTANDING LOANS: $48,000',
+              'SPECIMEN CONFIDENCE: 100%',
+              'SUBJECT TECHNICALLY ALIVE',
+            ]
+          : [
+              'RESEARCH TERMINAL',
+              'SPECIMEN 0004',
+              'FINANCIAL COMPETENCE TEST',
+              'INITIAL BALANCE: $100',
+            ];
+        lines.forEach((line, i) => ctx.fillText(line, 256, 150 + i * 48, 480));
+        texture.needsUpdate = true;
+      }
+    }
     this.render();
   }
   private render() {
