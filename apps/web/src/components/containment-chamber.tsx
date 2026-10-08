@@ -352,7 +352,7 @@ export function ContainmentChamber() {
               {result ? 'Replay experiment' : 'Run experiment (E)'}
             </button>
             {result && (
-              <button type="button" onClick={resetExperiment}>
+              <button type="button" onClick={resetExperiment} disabled={!ready}>
                 Reset experiment
               </button>
             )}

@@ -535,6 +535,49 @@ try {
   } finally {
     await unavailable.close();
   }
+  // Hold the lazy script load to exercise completed-story entry and readiness guards.
+  const loading = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+  });
+  try {
+    const p = await loading.newPage();
+    watch(p);
+    await p.goto('http://127.0.0.1:3005/universe/experimental/chamber');
+    await p.getByRole('button', { name: 'Activate text experiment' }).click();
+    await p.getByRole('button', { name: 'Replay text experiment' }).waitFor();
+    let delayedChunks = 0;
+    await p.route('**/_next/static/chunks/*.js', async (route) => {
+      delayedChunks++;
+      await p.waitForTimeout(1500);
+      await route.continue();
+    });
+    await p.getByRole('button', { name: 'Enter 3D chamber' }).click();
+    const resetButton = p
+      .locator('.chamber-console')
+      .getByRole('button', { name: 'Reset experiment', exact: true });
+    assert.equal(await resetButton.isEnabled(), false);
+    await p.waitForFunction(
+      () => document.querySelector('.chamber-dialog').dataset.ready === 'true',
+    );
+    assert(delayedChunks > 0, 'Actual lazy scene script was delayed');
+    assert.equal(await resetButton.isEnabled(), true);
+    await resetButton.click();
+    assert.equal(
+      await p.locator('.chamber-dialog').getAttribute('data-alarm'),
+      'false',
+    );
+    await p.getByRole('button', { name: 'Exit chamber' }).click();
+    assert.equal(
+      await p.locator('.chamber-text-terminal').getAttribute('data-phase'),
+      'READY',
+    );
+    evidence.checks.push({
+      check: 'Delayed 3D load guards experiment reset',
+      result: 'PASS',
+    });
+  } finally {
+    await loading.close();
+  }
   assert.deepEqual(
     evidence.errors,
     [],
