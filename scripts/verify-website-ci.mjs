@@ -96,7 +96,6 @@ async function preview(cwd, baselineOnly) {
         'task-010/acceptance',
       ];
       if (baselineOnly) args.push('--baseline-only');
-      await command(process.execPath, args, cwd);
       if (!baselineOnly)
         await command(
           process.execPath,
@@ -109,6 +108,7 @@ async function preview(cwd, baselineOnly) {
           ],
           cwd,
         );
+      await command(process.execPath, args, cwd);
     }
   } finally {
     if (server.exitCode === null) server.kill('SIGTERM');
