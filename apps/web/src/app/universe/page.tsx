@@ -10,7 +10,7 @@ export default function Universe() {
     <div className="universe-experience">
       <NightAtmosphere />
       <PageIntro
-        eyebrow="COLORADO SPIRIT / NIGHT-CITY ENERGY"
+        eyebrow="NIGHT-CITY ENERGY / HIGHER TOGETHER"
         title="SAME SHEEP."
         accent="DIFFERENT WORLD."
       >
@@ -60,7 +60,7 @@ export default function Universe() {
             </p>
           </article>
           <TextLink href="/collection">Discover the sealed specimen</TextLink>
-          <TextLink href="/ascent">Follow The 5,280 Ascent</TextLink>
+          <TextLink href="/ascent">Follow The 5280 Ascent</TextLink>
         </div>
       </section>
     </div>

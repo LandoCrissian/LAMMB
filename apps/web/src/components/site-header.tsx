@@ -1,8 +1,12 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navigation } from '../config/navigation';
 import { useDialog } from './use-dialog';
+import { cinematicAsset } from '../config/cinematic-art';
+
+const wordmark = cinematicAsset('wordmark');
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -11,10 +15,17 @@ export function SiteHeader() {
   return (
     <header className="global-header">
       <Link className="brand-mark" href="/" aria-label="LAMMB home">
-        LAMMB<span aria-hidden="true">/</span>
+        <Image
+          src={wordmark.path}
+          alt=""
+          width={wordmark.width}
+          height={wordmark.height}
+          sizes="120px"
+          className="brand-image"
+        />
       </Link>
       <span className="header-coordinate" aria-hidden="true">
-        COLORADO / 5,280 FT
+        5280 / HIGHER TOGETHER
       </span>
       <button
         ref={triggerRef}

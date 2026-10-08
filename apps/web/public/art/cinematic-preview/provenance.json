@@ -1,0 +1,203 @@
+{
+  "version": "lammb-cinematic-preview/1",
+  "authorization": "OWNER_TASK_005D_ASSET_PRODUCTION_AND_WEBSITE_PREVIEW",
+  "productionNFTArtworkApproved": false,
+  "creationTool": "image_gen.imagegen",
+  "localGPUInference": false,
+  "sourceReference": {
+    "id": "LAMMB-REF-003",
+    "sha256": "5f7becf4b2effc8c59be38da8d0ab52cfd957d6765a3eb85abdb1933b7a80bd2",
+    "role": "SEALED_SPECIMEN_SHAPE_AND_STYLE_ONLY"
+  },
+  "viewLimitations": "Front, side and rear are independently illustrated 2D previews, not exact 3D geometry or a minted specimen.",
+  "optimization": {
+    "tool": "sharp",
+    "version": "0.35.5",
+    "operation": "DOWNSAMPLE_WHEN_NEEDED_AND_ENCODE_WEBP",
+    "quality": 88,
+    "alphaQuality": 100,
+    "effort": 5
+  },
+  "assets": [
+    {
+      "id": "front",
+      "path": "/art/cinematic-preview/front.webp",
+      "width": 1024,
+      "height": 1536,
+      "format": "webp",
+      "alpha": true,
+      "bytes": 392190,
+      "sha256": "ee0c364cd8740ce879fd0fa939c6fa2ee0616b42ce0afc18935b259e62cdcfbf",
+      "native": {
+        "filename": "front-master.png",
+        "generationIdentifier": "exec-8bd30dbb-0371-4f01-b06e-3f78da0c2a39.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2691048,
+        "sha256": "f3906c265ff26036a64832bb2a3a395f3cd0c02f84dc388ff235a29ad8dd4bd2"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "side",
+      "path": "/art/cinematic-preview/side.webp",
+      "width": 1024,
+      "height": 1536,
+      "format": "webp",
+      "alpha": true,
+      "bytes": 268908,
+      "sha256": "8c18df539c1c7b6f939cd4221235fb057f07c5d5618725eadf76aa313b05fdf2",
+      "native": {
+        "filename": "side-master.png",
+        "generationIdentifier": "exec-d8d48fc4-12f6-48b4-832e-9e815306c36b.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2211604,
+        "sha256": "ec59c94f49f7fb8b601537a72f8f7a9b310b34b13206c123886d3424d3186bef"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "rear",
+      "path": "/art/cinematic-preview/rear.webp",
+      "width": 1024,
+      "height": 1536,
+      "format": "webp",
+      "alpha": true,
+      "bytes": 402924,
+      "sha256": "d5fecc6b92af4251ef814f0022347bd0f19dabbaee48b094a8154fbeb8c8f248",
+      "native": {
+        "filename": "rear-master.png",
+        "generationIdentifier": "exec-f9146cde-8ae5-42a7-b1f8-78c31fbf2d01.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2852560,
+        "sha256": "950ff4c2d0625341e06bf56461f8388d29825569692f057db51da353aa3fa2c2"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "skyline",
+      "path": "/art/cinematic-preview/skyline.webp",
+      "width": 1681,
+      "height": 936,
+      "format": "webp",
+      "alpha": false,
+      "bytes": 232882,
+      "sha256": "dd13d2fc17b1773c2448c9d929920194ff44ffa205ec3d89ccc9abc78becbe6d",
+      "native": {
+        "filename": "skyline-master.png",
+        "generationIdentifier": "exec-55f409aa-dd75-490e-b327-e7ecbb4fc0b7.png",
+        "width": 1681,
+        "height": 936,
+        "bytes": 2355090,
+        "sha256": "ce0377950049cc894f0943b4da835160d93bd83404eebc40f6f573e338859d17"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "wordmark",
+      "path": "/art/cinematic-preview/wordmark.webp",
+      "width": 1536,
+      "height": 640,
+      "format": "webp",
+      "alpha": true,
+      "bytes": 209354,
+      "sha256": "3682a311226d6a71142258daefc717de0d8dd5d421ec4e2cba9df18adf9f997d",
+      "native": {
+        "filename": "wordmark-master.png",
+        "generationIdentifier": "exec-bf1dee1a-18b4-4bae-8d79-c8a1fcf4d9a7.png",
+        "width": 1942,
+        "height": 809,
+        "bytes": 861350,
+        "sha256": "25c473c1fc3a7904333f0e5f3a5f7db0fc494c1fb3f1b05445a9b32c6a8269f7"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "collection",
+      "path": "/art/cinematic-preview/collection.webp",
+      "width": 768,
+      "height": 512,
+      "format": "webp",
+      "alpha": false,
+      "bytes": 95128,
+      "sha256": "d1be73466c9c72817931648f7c8fee5d6677d972f09ecc623d0d0a111b24d8ac",
+      "native": {
+        "filename": "collection-master.png",
+        "generationIdentifier": "exec-8eae8f27-6b4a-40dd-8b58-2d539942c2c7.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2388833,
+        "sha256": "265d0049580a480c7fb2a7a7511032f47cc4e551e746571bc9bd161415d55b77"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "universe",
+      "path": "/art/cinematic-preview/universe.webp",
+      "width": 768,
+      "height": 512,
+      "format": "webp",
+      "alpha": false,
+      "bytes": 82590,
+      "sha256": "40011dc41633b82c4db16681bcfc6dfddacb402c0af0ca47d66b6812bb2cc4ed",
+      "native": {
+        "filename": "universe-master.png",
+        "generationIdentifier": "exec-3caf0652-33df-4279-9fb5-5e18084b1d82.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2418079,
+        "sha256": "7f5c11c22468a948a6d9bb669ae1a8e0aa9eb754c1132696b12b8841c36076cb"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "ascent",
+      "path": "/art/cinematic-preview/ascent.webp",
+      "width": 768,
+      "height": 512,
+      "format": "webp",
+      "alpha": false,
+      "bytes": 79880,
+      "sha256": "97a3ecff28282e631e943cfdeed314c067809b537ff45d73961d5cf5588241da",
+      "native": {
+        "filename": "ascent-master.png",
+        "generationIdentifier": "exec-dcee76c9-2e7a-4b6c-8908-36079677c830.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2554136,
+        "sha256": "74af80c56117fa158ed4b337d0a59d43168b812fad4dc8248a0505e97a12a098"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "community",
+      "path": "/art/cinematic-preview/community.webp",
+      "width": 768,
+      "height": 512,
+      "format": "webp",
+      "alpha": false,
+      "bytes": 109472,
+      "sha256": "5d76144582696afa2b3654e6893fc80661c4f863d71d6378840d1d71f2576313",
+      "native": {
+        "filename": "community-master.png",
+        "generationIdentifier": "exec-95c6839c-ce17-49a6-b772-21c33bfdb4a6.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2734680,
+        "sha256": "81b688bbcdf86d6935fcfa40b74fb4946e1c54631e13cdec867e526b3225259b"
+      },
+      "source": "BUILT_IN_IMAGE_GEN_TASK_005D",
+      "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+    }
+  ]
+}

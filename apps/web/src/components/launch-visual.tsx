@@ -1,4 +1,5 @@
 import type { LaunchVisual as LaunchVisualModel } from '@lammb/collection/presentation';
+import { displayCopy } from '../config/site';
 
 function DataMeter({
   percent,
@@ -30,10 +31,13 @@ export function LaunchVisual({ visual }: { visual: LaunchVisualModel }) {
       return (
         <div className="altitude-display">
           <p className="data-label">{visual.dataLabel}</p>
-          <p className="large-value">{visual.valueLabel}</p>
-          <DataMeter percent={visual.percent} label={visual.valueLabel} />
+          <p className="large-value">{displayCopy(visual.valueLabel)}</p>
+          <DataMeter
+            percent={visual.percent}
+            label={displayCopy(visual.valueLabel)}
+          />
           <p className="next-milestone">
-            Next milestone / {visual.nextMilestoneLabel}
+            Next milestone / {displayCopy(visual.nextMilestoneLabel)}
           </p>
           <ol
             className="milestone-list"
@@ -41,7 +45,7 @@ export function LaunchVisual({ visual }: { visual: LaunchVisualModel }) {
           >
             {visual.milestones.map((milestone) => (
               <li key={milestone.id} data-reached={milestone.reached}>
-                <strong>{milestone.altitudeLabel}</strong>
+                <strong>{displayCopy(milestone.altitudeLabel)}</strong>
                 <span>{milestone.label}</span>
                 <small>{milestone.historyLabel}</small>
               </li>
@@ -56,10 +60,10 @@ export function LaunchVisual({ visual }: { visual: LaunchVisualModel }) {
       return (
         <div className="recovery-display">
           <p className="data-label">{visual.dataLabel}</p>
-          <p className="large-value">{visual.valueLabel}</p>
+          <p className="large-value">{displayCopy(visual.valueLabel)}</p>
           <DataMeter
             percent={visual.percent}
-            label={`Specimens recovered: ${visual.valueLabel}`}
+            label={`Specimens recovered: ${displayCopy(visual.valueLabel)}`}
           />
           <p className="visual-caption">
             Sealed specimens / supply is static canonical
@@ -69,7 +73,7 @@ export function LaunchVisual({ visual }: { visual: LaunchVisualModel }) {
             aria-label="Narrative recovery milestones, static canonical"
           >
             {visual.milestones.map((milestone) => (
-              <li key={milestone}>{milestone}</li>
+              <li key={milestone}>{displayCopy(milestone)}</li>
             ))}
           </ul>
           <p className="visual-caption">
@@ -81,7 +85,7 @@ export function LaunchVisual({ visual }: { visual: LaunchVisualModel }) {
       return (
         <div className="specimen-display">
           {visual.altitudeLabel ? (
-            <p className="large-value">{visual.altitudeLabel}</p>
+            <p className="large-value">{displayCopy(visual.altitudeLabel)}</p>
           ) : null}
           <div className="specimen-study">
             <div className="seal-mark" aria-hidden="true">

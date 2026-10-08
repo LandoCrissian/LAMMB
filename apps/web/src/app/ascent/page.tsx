@@ -4,9 +4,9 @@ import { createLaunchPresentation } from '@lammb/collection/presentation';
 import { PageIntro, TextLink } from '../../components/site-primitives';
 import { LaunchStatus } from '../../components/launch-status';
 import { currentLaunchSnapshot } from '../../config/launch';
-import { supplyLabel } from '../../config/site';
+import { displayCopy, supplyLabel } from '../../config/site';
 export const metadata = {
-  title: 'The 5,280 Ascent',
+  title: 'The 5280 Ascent',
   description:
     'At the base. Halfway. One foot left. The deliberate LAMMB launch experience.',
 };
@@ -59,7 +59,7 @@ export default function Ascent() {
           {ascentMilestones.value.map((milestone) => (
             <li key={milestone.id}>
               <span className="timeline-altitude">
-                {milestone.altitudeFt.toLocaleString('en-US')}
+                {displayCopy(milestone.altitudeFt.toLocaleString('en-US'))}
                 <small>FT</small>
               </span>
               <div>

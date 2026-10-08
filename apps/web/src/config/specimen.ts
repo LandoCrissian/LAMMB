@@ -1,7 +1,11 @@
-import provenance from '../../public/art/sealed-specimen/provenance.json';
+import { cinematicAsset } from './cinematic-art';
 
-// Owner-authorized website preview crops; no mint, owner or token identity.
-export const specimenViews = provenance.derivatives;
+// Task 005D authorizes new website previews, not production NFT artwork.
+// Matching independently illustrated 2D views; no exact 3D geometry claim.
+export const specimenViews = ['front', 'side', 'rear'].map((view) => ({
+  ...cinematicAsset(view as SpecimenView),
+  view: view as SpecimenView,
+}));
 export type SpecimenView = 'front' | 'side' | 'rear';
 export const specimenDescriptions: Record<SpecimenView, string> = {
   front:

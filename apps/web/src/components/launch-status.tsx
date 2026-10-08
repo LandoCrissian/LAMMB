@@ -1,5 +1,6 @@
 import type { LaunchPresentation } from '@lammb/collection/presentation';
 import { LaunchVisual } from './launch-visual';
+import { displayCopy } from '../config/site';
 
 export function LaunchStatus({
   presentation,
@@ -21,8 +22,8 @@ export function LaunchStatus({
       </div>
       <div className="launch-layout">
         <div className="launch-copy">
-          <h2 id={`${id}-heading`}>{presentation.title}</h2>
-          <p>{presentation.detail}</p>
+          <h2 id={`${id}-heading`}>{displayCopy(presentation.title)}</h2>
+          <p>{displayCopy(presentation.detail)}</p>
           <p className="collector-label">{presentation.collectorLabel}</p>
           <p className="ownership-note">
             Unowned presentation / no ownership verified
@@ -47,7 +48,7 @@ export function LaunchStatus({
         {presentation.boundaries.map((boundary) => (
           <div key={boundary.label}>
             <dt>{boundary.label}</dt>
-            <dd>{boundary.detail}</dd>
+            <dd>{displayCopy(boundary.detail)}</dd>
           </div>
         ))}
       </dl>

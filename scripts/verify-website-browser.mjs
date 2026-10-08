@@ -33,6 +33,12 @@ assert(
   'Evidence must stay within artifacts/generated',
 );
 const origin = `http://127.0.0.1:${values.port}`;
+const art = JSON.parse(
+  await readFile(
+    'apps/web/public/art/cinematic-preview/provenance.json',
+    'utf8',
+  ),
+);
 const load = createRequire(import.meta.url);
 const { chromium } = load(values['playwright-module'] || 'playwright');
 const routes = [
@@ -58,6 +64,7 @@ const evidence = {
   pages: [],
   interactions: [],
   screenshots: [],
+  homepageComposition: [],
   errors: [],
   consoleWarnings: [],
   memorySamplesGB: [],
@@ -304,13 +311,20 @@ async function interactionChecks(page, width) {
     else await control.click();
     const image = inspection.locator('.inspection-image');
     await image.waitFor();
-    await page.waitForFunction(
-      (expected) =>
-        document
-          .querySelector('.inspection-dialog[open] .inspection-image')
-          .getAttribute('src') === expected,
-      `/art/sealed-specimen/${view.toLowerCase()}.png`,
-    );
+    const expected = art.assets.find(
+      (asset) => asset.id === view.toLowerCase(),
+    ).path;
+    await page.waitForFunction((expectedPath) => {
+      const source = document
+        .querySelector('.inspection-dialog[open] .inspection-image')
+        .getAttribute('src');
+      const url = new URL(source, location.origin);
+      return (
+        (url.pathname === '/_next/image'
+          ? url.searchParams.get('url')
+          : url.pathname) === expectedPath
+      );
+    }, expected);
     await image.evaluate((el) => el.decode());
     assert.equal(await control.getAttribute('aria-pressed'), 'true');
     assert.equal(
@@ -516,6 +530,14 @@ try {
       return route.continue();
     });
     const page = await context.newPage();
+    await page.addInitScript(() => {
+      window.__lammbLayoutShifts = [];
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries())
+          if (!entry.hadRecentInput)
+            window.__lammbLayoutShifts.push(entry.value);
+      }).observe({ type: 'layout-shift', buffered: true });
+    });
     page.on('pageerror', (error) =>
       evidence.errors.push({
         type: 'pageerror',
@@ -561,7 +583,45 @@ try {
         validateGeometry(layout);
         const name = `${route === '/' ? 'home' : route.slice(1).replaceAll('/', '-')}-${width}`;
         await capture(page, name);
-        if (route === '/') await capture(page, `home-viewport-${width}`, false);
+        if (route === '/') {
+          await capture(page, `home-viewport-${width}`, false);
+          const composition = await page.evaluate(() => {
+            const hero = document
+              .querySelector('.cinema-hero')
+              .getBoundingClientRect();
+            const image = document.querySelector(
+              '.cinema-specimen .specimen-preview-image',
+            );
+            const specimen = image.getBoundingClientRect();
+            return {
+              pageHeight: document.documentElement.scrollHeight,
+              heroHeight: hero.height,
+              specimenWidth: specimen.width,
+              specimenHeight: specimen.height,
+              specimenSource: image.currentSrc,
+              destinationCount: document.querySelectorAll('.cinema-destination')
+                .length,
+              noColoradoLabel: !/\bColorado\b/i.test(document.body.innerText),
+              supplyWithoutComma: !document.body.innerText.includes('5,280'),
+              imageTransferBytes: performance
+                .getEntriesByType('resource')
+                .filter(
+                  (entry) =>
+                    entry.initiatorType === 'img' ||
+                    entry.name.includes('/_next/image'),
+                )
+                .reduce((sum, entry) => sum + entry.transferSize, 0),
+              observedLayoutShift: window.__lammbLayoutShifts.reduce(
+                (sum, value) => sum + value,
+                0,
+              ),
+            };
+          });
+          assert.equal(composition.destinationCount, 4);
+          assert(composition.noColoradoLabel && composition.supplyWithoutComma);
+          assert(!composition.specimenSource.includes('/art/sealed-specimen/'));
+          evidence.homepageComposition.push({ width, ...composition });
+        }
         evidence.pages.push({
           route,
           width,

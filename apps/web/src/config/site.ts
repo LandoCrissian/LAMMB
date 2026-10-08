@@ -1,7 +1,9 @@
 import { collection } from '@lammb/collection/config';
 
 // Static editorial content: no live data, social URLs or launch dates.
-export const supplyLabel = collection.supply.toLocaleString('en-US');
+export const supplyLabel = String(collection.supply);
+// Website typography only. Domain values and launch-state schemas are unchanged.
+export const displayCopy = (value: string) => value.replaceAll('5,280', '5280');
 export const futureExperiences = {
   world: {
     href: '/world',
@@ -52,9 +54,9 @@ export const questions = [
       'A sealed, unrevealed specimen is the intended experience. Final artwork and public traits are revealed later; this site shows replaceable visual studies.',
   },
   {
-    question: 'What is The 5,280 Ascent?',
+    question: 'What is The 5280 Ascent?',
     answer:
-      'A deliberate launch narrative: 0 FT at the base, 2,640 FT halfway, 5,279 FT with one foot left, and 5,280 FT at mint-launch altitude. Social engagement does not move the altitude.',
+      'A deliberate launch narrative: 0 FT at the base, 2,640 FT halfway, 5,279 FT with one foot left, and 5280 FT at mint-launch altitude. Social engagement does not move the altitude.',
   },
   {
     question: 'How does Break the Seal work?',

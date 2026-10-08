@@ -9,7 +9,7 @@ import { supplyLabel } from '../../config/site';
 export const metadata = {
   title: 'The Collection',
   description:
-    '5,280 LAMMBs. Free mint on Robinhood Chain, network gas applies. Sealed first, revealed later.',
+    '5280 LAMMBs. Free mint on Robinhood Chain, network gas applies. Sealed first, revealed later.',
 };
 export default function Collection() {
   return (
