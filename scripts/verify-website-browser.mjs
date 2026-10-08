@@ -13,7 +13,7 @@ const { values } = parseArgs({
   options: {
     'playwright-module': { type: 'string' },
     browser: { type: 'string', default: 'msedge' },
-    output: { type: 'string', default: 'task-005b/final' },
+    output: { type: 'string', default: 'task-005c/final' },
     port: { type: 'string', default: '3005' },
   },
 });
@@ -59,6 +59,7 @@ const evidence = {
   interactions: [],
   screenshots: [],
   errors: [],
+  consoleWarnings: [],
   memorySamplesGB: [],
   result: 'RUNNING',
 };
@@ -143,7 +144,11 @@ async function geometry(page) {
       h1Count: document.querySelectorAll('h1').length,
       title: document.title,
       imageFailures: [...document.images]
-        .filter((img) => !img.complete || img.naturalWidth === 0)
+        .filter(
+          (img) =>
+            img.getClientRects().length &&
+            (!img.complete || img.naturalWidth === 0),
+        )
         .map((img) => img.src),
     };
   });
@@ -166,6 +171,35 @@ async function visit(page, route) {
   });
   assert.equal(response.status(), 200, `Route failed: ${route}`);
   await page.evaluate(() => document.fonts.ready);
+}
+async function assertFocusContained(page, dialog) {
+  assert(await dialog.evaluate((el) => el.contains(document.activeElement)));
+  for (let index = 0; index < 14; index++) {
+    await page.keyboard.press('Tab');
+    assert(
+      await dialog.evaluate((el) => el.contains(document.activeElement)),
+      'Modal focus escaped',
+    );
+  }
+  await page.keyboard.press('Shift+Tab');
+  assert(await dialog.evaluate((el) => el.contains(document.activeElement)));
+  await page.locator('.global-header .brand-mark').focus();
+  assert(
+    await dialog.evaluate((el) => el.contains(document.activeElement)),
+    'Background accepted focus',
+  );
+  await assert.rejects(
+    () =>
+      page
+        .locator('.global-header .brand-mark')
+        .click({ trial: true, timeout: 300 }),
+    /Timeout/,
+    'Background accepted a pointer interaction',
+  );
+  assert.equal(
+    await page.evaluate(() => document.body.style.overflow),
+    'hidden',
+  );
 }
 async function interactionChecks(page, width) {
   await visit(page, '/');
@@ -195,103 +229,154 @@ async function interactionChecks(page, width) {
     true,
   );
   await page.keyboard.press('Tab');
-  if (width < 1100) {
-    const menu = page.locator('.menu-toggle');
-    assert.equal(
-      await menu.evaluate((el) => el === document.activeElement),
-      true,
-    );
-    const focus = await menu.evaluate((el) => ({
-      style: getComputedStyle(el).outlineStyle,
-      width: getComputedStyle(el).outlineWidth,
-    }));
-    assert.notEqual(focus.style, 'none');
-    assert(parseFloat(focus.width) >= 2);
-    await capture(page, `menu-focus-${width}`, false);
-    await page.keyboard.press('Enter');
+  const menu = page.locator('.menu-toggle');
+  assert.equal(
+    await menu.evaluate((el) => el === document.activeElement),
+    true,
+  );
+  const focus = await menu.evaluate((el) => ({
+    style: getComputedStyle(el).outlineStyle,
+    width: getComputedStyle(el).outlineWidth,
+  }));
+  assert.notEqual(focus.style, 'none');
+  assert(parseFloat(focus.width) >= 2);
+  await capture(page, `menu-focus-${width}`, false);
+  await page.keyboard.press('Enter');
+  const navigationDialog = page.locator('.navigation-dialog');
+  assert(await navigationDialog.evaluate((el) => el.open));
+  assert(await page.locator('#global-navigation').isVisible());
+  assert.equal(await page.locator('#global-navigation a').count(), 9);
+  await assertFocusContained(page, navigationDialog);
+  validateGeometry(await geometry(page));
+  await capture(page, `menu-open-${width}`, false);
+  await page.keyboard.press('Escape');
+  assert.equal(await navigationDialog.evaluate((el) => el.open), false);
+  assert.equal(
+    await menu.evaluate((el) => el === document.activeElement),
+    true,
+  );
+  assert.equal(await page.locator('#global-navigation').isVisible(), false);
+  await page.keyboard.press('Space');
+  await page.locator('#global-navigation a[href="/universe"]').focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL(`${origin}/universe`);
+  assert.equal(await navigationDialog.evaluate((el) => el.open), false);
+  assert.equal(
+    await page
+      .locator('#global-navigation a[href="/universe"]')
+      .getAttribute('aria-current'),
+    'page',
+  );
+  if (width < 1100) await menu.tap();
+  else await menu.click();
+  assert(await navigationDialog.evaluate((el) => el.open));
+  const closeMenu = page.getByRole('button', {
+    name: 'Close navigation menu',
+    exact: true,
+  });
+  if (width < 1100) await closeMenu.tap();
+  else await closeMenu.click();
+  assert.equal(
+    await menu.evaluate((el) => el === document.activeElement),
+    true,
+  );
+  evidence.interactions.push({
+    width,
+    check: 'all-width-hamburger-keyboard-touch-focus-escape-route',
+    result: 'PASS',
+    focus,
+  });
+
+  await visit(page, '/');
+  const trigger = page.getByRole('button', {
+    name: 'Inspect sealed specimen concept',
+    exact: true,
+  });
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+  const inspection = page.locator('.inspection-dialog');
+  assert(await inspection.evaluate((el) => el.open));
+  await assertFocusContained(page, inspection);
+  const viewSources = [];
+  for (const view of ['FRONT', 'SIDE', 'REAR']) {
+    const control = inspection.getByRole('button', { name: view, exact: true });
+    if (width < 1100) await control.tap();
+    else await control.click();
+    const image = inspection.locator('.inspection-image');
+    await image.waitFor();
     await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'true',
+      (expected) =>
+        document
+          .querySelector('.inspection-dialog[open] .inspection-image')
+          .getAttribute('src') === expected,
+      `/art/sealed-specimen/${view.toLowerCase()}.png`,
     );
-    assert(await page.locator('#global-navigation').isVisible());
+    await image.evaluate((el) => el.decode());
+    assert.equal(await control.getAttribute('aria-pressed'), 'true');
+    assert.equal(
+      await inspection.locator('button[aria-pressed="true"]').count(),
+      1,
+    );
+    viewSources.push(await image.getAttribute('src'));
     validateGeometry(await geometry(page));
-    await capture(page, `menu-open-${width}`, false);
-    await page.keyboard.press('Tab');
-    assert.equal(
-      await page
-        .locator('#global-navigation a')
-        .first()
-        .evaluate((el) => el === document.activeElement),
-      true,
-    );
-    await page.keyboard.press('Escape');
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'false',
-    );
-    assert.equal(
-      await menu.evaluate((el) => el === document.activeElement),
-      true,
-    );
-    assert.equal(await page.locator('#global-navigation').isVisible(), false);
-    await page.keyboard.press('Space');
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'true',
-    );
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForURL(`${origin}/universe`);
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'false',
-    );
-    assert.equal(
-      await page
-        .locator('#global-navigation a[href="/universe"]')
-        .getAttribute('aria-current'),
-      'page',
-    );
-    await menu.click();
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'true',
-    );
-    await menu.click();
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.menu-toggle').getAttribute('aria-expanded') ===
-        'false',
-    );
-    evidence.interactions.push({
-      width,
-      check: 'menu-keyboard-click-escape-focus-route-transition',
-      result: 'PASS',
-      focus,
-    });
-  } else {
-    assert.equal(await page.locator('.menu-toggle').isVisible(), false);
-    assert(await page.locator('#global-navigation').isVisible());
-    assert.equal(
-      await page
-        .locator('#global-navigation a')
-        .first()
-        .evaluate((el) => el === document.activeElement),
-      true,
-    );
-    await page.keyboard.press('Enter');
-    await page.waitForURL(`${origin}/universe`);
-    evidence.interactions.push({
-      width,
-      check: 'desktop-keyboard-navigation',
-      result: 'PASS',
-    });
+    await capture(page, `inspection-${view.toLowerCase()}-${width}`, false);
   }
+  assert.equal(new Set(viewSources).size, 3);
+  await inspection.getByRole('button', { name: 'FRONT', exact: true }).focus();
+  await page.keyboard.press('Home');
+  await page.keyboard.press('ArrowRight');
+  assert.equal(
+    await inspection
+      .getByRole('button', { name: 'SIDE', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  await page.keyboard.press('End');
+  assert.equal(
+    await inspection
+      .getByRole('button', { name: 'REAR', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  await page.keyboard.press('ArrowRight');
+  assert.equal(
+    await inspection
+      .getByRole('button', { name: 'FRONT', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  await page.keyboard.press('ArrowLeft');
+  assert.equal(
+    await inspection
+      .getByRole('button', { name: 'REAR', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  await page.keyboard.press('Escape');
+  assert.equal(await inspection.evaluate((el) => el.open), false);
+  assert.equal(
+    await trigger.evaluate((el) => el === document.activeElement),
+    true,
+  );
+  assert.equal(await page.evaluate(() => document.body.style.overflow), '');
+  if (width < 1100) await trigger.tap();
+  else await trigger.click();
+  const closeInspection = page.getByRole('button', {
+    name: 'Close specimen inspection',
+    exact: true,
+  });
+  if (width < 1100) await closeInspection.tap();
+  else await closeInspection.click();
+  assert.equal(
+    await trigger.evaluate((el) => el === document.activeElement),
+    true,
+  );
+  evidence.interactions.push({
+    width,
+    check: 'inspection-three-2d-views-keyboard-touch-inertness-focus-return',
+    result: 'PASS',
+    viewSources,
+  });
   await visit(page, '/faq');
   const question = page.locator('.faq-item summary').first();
   await question.focus();
@@ -344,6 +429,15 @@ async function interactionChecks(page, width) {
   assert.equal(reduced.scrollBehavior, 'auto');
   assert.equal(reduced.activeMotion, 0);
   await capture(page, `home-reduced-motion-${width}`, false);
+  await page
+    .getByRole('button', {
+      name: 'Inspect sealed specimen concept',
+      exact: true,
+    })
+    .click();
+  await page.locator('.inspection-image').evaluate((el) => el.decode());
+  await capture(page, `inspection-reduced-motion-${width}`, false);
+  await page.keyboard.press('Escape');
   evidence.interactions.push({
     width,
     check: 'reduced-motion',
@@ -371,7 +465,7 @@ async function interactionChecks(page, width) {
     check: 'seven-launch-presentations',
     result: 'PASS',
   });
-  const missing = await page.goto(`${origin}/unknown-task-005b-route`, {
+  const missing = await page.goto(`${origin}/unknown-task-005c-route`, {
     waitUntil: 'networkidle',
   });
   assert.equal(missing.status(), 404);
@@ -430,13 +524,15 @@ try {
       }),
     );
     page.on('console', (msg) => {
+      if (msg.type() === 'warning')
+        evidence.consoleWarnings.push({ url: page.url(), message: msg.text() });
       if (msg.type() === 'error')
         evidence.errors.push({
           type: 'console',
           url: page.url(),
           message: msg.text(),
           expected404:
-            page.url().endsWith('/unknown-task-005b-route') &&
+            page.url().endsWith('/unknown-task-005c-route') &&
             msg.text().includes('404'),
         });
     });
@@ -450,7 +546,7 @@ try {
     page.on('response', (response) => {
       if (
         response.status() >= 400 &&
-        !response.url().endsWith('/unknown-task-005b-route')
+        !response.url().endsWith('/unknown-task-005c-route')
       )
         evidence.errors.push({
           type: 'http-error',

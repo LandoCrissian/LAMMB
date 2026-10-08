@@ -15,6 +15,7 @@ import LaunchStudies from '../apps/web/src/app/development/launch/page';
 import { navigation } from '../apps/web/src/config/navigation';
 import { futureExperiences, questions } from '../apps/web/src/config/site';
 import { launchStateSchema } from '@lammb/schema/launch';
+import { specimenViews } from '../apps/web/src/config/specimen';
 
 // Server markup tests do not claim browser layout/menu interaction coverage.
 vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
@@ -50,13 +51,19 @@ describe('website foundation boundaries', () => {
       expect(html).toContain('MINT NOT LIVE');
       expect(html).toContain('aria-controls="global-navigation"');
       expect(html).toContain('aria-expanded="false"');
-      expect(html).not.toMatch(/<form\b|<input\b|<iframe\b|<img\b/);
+      expect(html).not.toMatch(/<form\b|<input\b|<iframe\b/);
+      for (const image of html.matchAll(/<img[^>]+src="([^"]+)"/g))
+        expect(specimenViews.map((view) => view.path)).toContain(image[1]);
       const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map(
         (match) => match[1],
       );
       for (const href of hrefs) {
         expect(href?.startsWith('/') || href?.startsWith('#')).toBe(true);
-        if (href?.startsWith('/')) expect(Object.keys(routes)).toContain(href);
+        if (href?.startsWith('/'))
+          expect([
+            ...Object.keys(routes),
+            ...specimenViews.map((view) => view.path),
+          ]).toContain(href);
       }
     },
   );
@@ -100,8 +107,9 @@ describe('website foundation boundaries', () => {
     expect(profile).toContain('PROFILES UNAVAILABLE');
     expect(profile).toContain('no ownership is claimed');
     for (const html of [world, profile, markup(Mint)]) {
-      // Only a navigation disclosure is actionable; no synthetic feature control.
-      expect(html.match(/<button\b/g)).toHaveLength(1);
+      expect(html).not.toMatch(
+        /<button[^>]*>(Connect wallet|Register|Mint now)/i,
+      );
       expect(html).not.toMatch(/data-(wallet|owner|registration-count)=/);
     }
   });
@@ -114,9 +122,25 @@ describe('website foundation boundaries', () => {
     expect(html).toContain('Chain ID 4663');
   });
 
-  it('visibly labels every character/gallery slot and preserves the canonical milestone narrative', () => {
-    for (const Page of [Home, Universe, Collection, Profile, Mint])
-      expect(markup(Page)).toContain('approved artwork pending');
+  it('distinguishes authorized sealed previews from final artwork and keeps character art unavailable', () => {
+    for (const Page of [Home, Collection, Mint]) {
+      const html = markup(Page);
+      expect(html).toContain('Concept preview / not final NFT artwork');
+      expect(html).toContain(
+        'Three extracted 2D views, not a 3D model or a minted NFT',
+      );
+      expect(html).toContain('aria-haspopup="dialog"');
+      expect(html).toContain('Close specimen inspection');
+      for (const view of ['FRONT', 'SIDE', 'REAR'])
+        expect(html).toContain(view);
+    }
+    expect(markup(Profile)).toContain('approved artwork pending');
+    expect(markup(Universe)).toContain(
+      'Final characters and traits are not exposed here',
+    );
+  });
+
+  it('preserves the canonical milestone narrative', () => {
     const ascent = markup(Ascent);
     expect(ascent).toContain('2,640');
     expect(ascent).toContain('5,279');

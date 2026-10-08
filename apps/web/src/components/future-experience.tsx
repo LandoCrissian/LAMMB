@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { futureExperiences } from '../config/site';
 import { ArtSlot, PageIntro, TextLink } from './site-primitives';
+import { SealedSpecimen } from './sealed-specimen';
 export function FutureExperience({
   kind,
   children,
@@ -56,6 +57,8 @@ export function FutureExperience({
               </span>
             </figcaption>
           </figure>
+        ) : kind === 'mint' ? (
+          <SealedSpecimen />
         ) : (
           <ArtSlot
             label={
