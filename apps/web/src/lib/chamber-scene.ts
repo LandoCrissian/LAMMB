@@ -338,7 +338,9 @@ export class ChamberScene {
     this.resize();
   }
   async start(startedAt: number) {
-    await this.renderer.compileAsync(this.scene, this.camera);
+    if (this.renderer.extensions.has('KHR_parallel_shader_compile'))
+      await this.renderer.compileAsync(this.scene, this.camera);
+    else this.renderer.compile(this.scene, this.camera);
     if (this.disposed) return;
     this.render();
     this.loadMs = performance.now() - startedAt;
