@@ -65,6 +65,10 @@ async function capture(page, name) {
   });
 }
 function watch(page) {
+  page.on('response', (response) => {
+    if (response.status() >= 400)
+      evidence.errors.push(`HTTP ${response.status()}: ${response.url()}`);
+  });
   page.on('pageerror', (error) => evidence.errors.push(error.message));
   page.on('console', (message) => {
     if (message.type() === 'error') evidence.errors.push(message.text());
@@ -85,7 +89,15 @@ async function until(page, predicate) {
     if (predicate(await diagnostics(page))) return;
     await page.waitForTimeout(200);
   }
-  throw new Error('Scene condition timed out');
+  const state = await page
+    .locator('.chamber-dialog')
+    .evaluate((el) => ({
+      ...el.dataset,
+      focused: document.activeElement?.outerHTML?.slice(0, 200),
+    }));
+  throw new Error(
+    `Scene condition timed out: ${JSON.stringify({ snapshot: await diagnostics(page), state })}`,
+  );
 }
 async function hold(page, key, predicate) {
   await page.locator('canvas').focus();
