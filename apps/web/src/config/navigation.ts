@@ -1,7 +1,7 @@
 // Kept separate from validated server configuration to keep navigation JS small.
 // Unknown nested URLs must retain the prerendered 404 header on hydration.
 export function navigationDestinationPath(pathname: string) {
-  return /^\/universe\/(security|archive(?:\/00[0-3])?|surveillance|experimental)$/.test(
+  return /^\/universe\/(security|archive(?:\/00[0-3])?|surveillance|experimental(?:\/chamber)?)$/.test(
     pathname,
   )
     ? '/universe'

@@ -1,0 +1,427 @@
+.chamber-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem max(1rem, env(safe-area-inset-left));
+}
+.chamber-page h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin: 1rem 0;
+}
+.chamber-page h2 {
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  line-height: 1.25;
+}
+.chamber-return {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #dcff00;
+}
+.chamber-kicker {
+  font:
+    bold 0.75rem/1.6 'Courier New',
+    monospace;
+  color: #dcff00;
+  letter-spacing: 0.04em;
+}
+.chamber-intro,
+.chamber-entry p,
+.chamber-instructions p {
+  max-width: 70ch;
+  line-height: 1.6;
+}
+.chamber-entry {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid #536168;
+  background: #0e1b20;
+}
+.chamber-page button,
+.chamber-dialog button {
+  min-height: 48px;
+  border: 1px solid #7b9199;
+  padding: 0.65rem 0.85rem;
+  background: #0c191f;
+  color: #f4f5eb;
+  font:
+    bold 0.875rem/1.35 Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.chamber-page button:focus-visible,
+.chamber-dialog button:focus-visible,
+.chamber-dialog canvas:focus-visible,
+.chamber-page summary:focus-visible,
+.chamber-dialog summary:focus-visible {
+  outline: 3px solid #dcff00;
+  outline-offset: 3px;
+}
+.chamber-page button:disabled,
+.chamber-dialog button:disabled {
+  cursor: default;
+  color: #a4b0b5;
+  border-color: #4c5b60;
+  background: #182126;
+}
+.chamber-page button:hover:not(:disabled),
+.chamber-dialog button:hover:not(:disabled) {
+  background: #25363d;
+}
+.chamber-page .chamber-primary {
+  color: #090d10;
+  background: #dcff00;
+  min-width: 180px;
+}
+.chamber-page .chamber-primary:hover {
+  background: #ecff7a;
+}
+.chamber-note {
+  color: #bbc7cb;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.chamber-instructions summary,
+.chamber-text-terminal summary {
+  cursor: pointer;
+  min-height: 48px;
+  padding: 0.75rem 0;
+  color: #dcff00;
+}
+.chamber-text-terminal {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #536168;
+  background: #0e1b20;
+}
+.chamber-text-terminal[data-phase='COMPLETE'] {
+  border-color: #ff7666;
+}
+.chamber-text-terminal [role='status'] {
+  max-width: 70ch;
+  min-height: 3rem;
+  line-height: 1.6;
+}
+.chamber-balances {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.chamber-balances dt {
+  color: #bbc7cb;
+  font-size: 0.875rem;
+}
+.chamber-balances dd {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.chamber-text-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.chamber-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: #080f13;
+  color: #f4f5eb;
+  overflow: hidden;
+}
+.chamber-dialog::backdrop {
+  background: #080f13;
+}
+.chamber-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  isolation: isolate;
+}
+.chamber-stage canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.chamber-hud-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  padding: max(0.8rem, env(safe-area-inset-top))
+    max(0.8rem, env(safe-area-inset-right)) 0.8rem
+    max(0.8rem, env(safe-area-inset-left));
+  background: linear-gradient(#060c13f5, #060c1380, transparent);
+}
+.chamber-hud-top p {
+  margin: 0;
+}
+.chamber-hud-top h2 {
+  margin: 0.25rem 0;
+  font-size: 1.15rem;
+}
+.chamber-hud-top span {
+  font:
+    0.7rem/1.5 'Courier New',
+    monospace;
+  color: #dcff00;
+}
+.chamber-dialog[data-alarm='true'] .chamber-hud-top span {
+  color: #ff9589;
+}
+.chamber-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.chamber-state {
+  position: absolute;
+  z-index: 3;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 480px);
+  padding: 1.5rem;
+  background: #08131cf5;
+  border: 1px solid #95a7af;
+  line-height: 1.6;
+}
+.chamber-crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #dcff00;
+  pointer-events: none;
+}
+.chamber-console {
+  position: absolute;
+  top: 26%;
+  right: max(1rem, env(safe-area-inset-right));
+  width: min(300px, 30%);
+  padding: 1rem;
+  background: #08131deb;
+  border: 1px solid #73888f;
+}
+.chamber-console .chamber-kicker {
+  margin: 0;
+}
+.chamber-console-message {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.chamber-console button {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.chamber-result {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.chamber-result dt {
+  color: #becdd2;
+  font:
+    bold 0.68rem/1.5 'Courier New',
+    monospace;
+}
+.chamber-result dd {
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: bold;
+}
+.chamber-hud-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  padding: 1rem max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  background: linear-gradient(transparent, #060c13cc);
+}
+.chamber-movement {
+  display: grid;
+  gap: 0.35rem;
+  text-align: center;
+}
+.chamber-movement .chamber-pad {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #0d1b22da;
+  border: 2px solid #dcff00;
+  touch-action: none;
+  user-select: none;
+  font: 1.2rem/1.2 monospace;
+}
+.chamber-movement > span {
+  font:
+    0.65rem/1.4 'Courier New',
+    monospace;
+}
+.chamber-bottom-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.chamber-diagnostics {
+  position: absolute;
+  bottom: 10.5rem;
+  left: 1rem;
+  max-width: 250px;
+  background: #061019ed;
+  font: 0.75rem/1.5 monospace;
+}
+.chamber-diagnostics summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  min-height: 44px;
+}
+.chamber-diagnostics pre {
+  margin: 0;
+  padding: 0.5rem;
+  max-height: 35svh;
+  overflow: auto;
+}
+.chamber-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 600px) {
+  .chamber-entry {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .chamber-balances {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chamber-balances > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .chamber-balances dd {
+    font-size: 1.25rem;
+  }
+  .chamber-hud-top {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .chamber-hud-top h2 {
+    font-size: 1rem;
+  }
+  .chamber-controls {
+    align-self: flex-end;
+  }
+  .chamber-controls button {
+    padding: 0.6rem;
+  }
+  .chamber-console {
+    top: auto;
+    bottom: 9rem;
+    right: 0.75rem;
+    width: min(230px, 68%);
+    padding: 0.75rem;
+  }
+  .chamber-console-message {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+  .chamber-console .chamber-kicker {
+    font-size: 0.65rem;
+  }
+  .chamber-result {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+  .chamber-result dt {
+    font-size: 0.6rem;
+  }
+  .chamber-result dd {
+    font-size: 1rem;
+  }
+  .chamber-hud-bottom {
+    padding: 0.75rem 0.75rem max(0.75rem, env(safe-area-inset-bottom));
+    gap: 0.4rem;
+  }
+  .chamber-movement .chamber-pad {
+    width: 88px;
+    height: 88px;
+  }
+  .chamber-bottom-actions {
+    flex-direction: column;
+  }
+  .chamber-bottom-actions button {
+    font-size: 0.8rem;
+    padding: 0.55rem;
+  }
+  .chamber-diagnostics {
+    bottom: auto;
+    top: 10rem;
+    left: 0.75rem;
+  }
+  .chamber-diagnostics[open] {
+    z-index: 5;
+  }
+  .chamber-state {
+    top: 25%;
+  }
+}
+@media (max-height: 520px) and (min-width: 601px) {
+  .chamber-console {
+    top: 22%;
+  }
+  .chamber-console-message {
+    font-size: 0.875rem;
+    margin: 0.3rem 0;
+  }
+  .chamber-console .chamber-kicker {
+    font-size: 0.6rem;
+  }
+  .chamber-result {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .chamber-hud-bottom {
+    padding-top: 0.3rem;
+  }
+  .chamber-diagnostics {
+    bottom: 8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chamber-page *,
+  .chamber-dialog * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
