@@ -8,6 +8,9 @@ import {
   moveObserver,
   nearTerminal,
   validPosition,
+  smoothAxis,
+  safeCameraBoom,
+  nearbyDestination,
   type Position,
 } from '../apps/web/src/lib/chamber-model';
 import Chamber from '../apps/web/src/app/universe/experimental/chamber/page';
@@ -16,6 +19,55 @@ import {
   navigationDestinationPath,
 } from '../apps/web/src/config/navigation';
 import { facilityDestinations } from '../apps/web/src/config/labs';
+import { PointerOwner } from '../apps/web/src/lib/chamber-input';
+
+describe('independent thumb ownership and camera continuity', () => {
+  it('keeps simultaneous thumb owners independent through cancellation and unrelated lost capture', () => {
+    const movement = new PointerOwner(),
+      look = new PointerOwner();
+    expect(movement.claim(11)).toBe(true);
+    expect(look.claim(22)).toBe(true);
+    expect(movement.claim(22)).toBe(false);
+    expect(look.release(11)).toBe(false);
+    expect(look.id).toBe(22);
+    expect(movement.release(11)).toBe(true);
+    expect(look.id).toBe(22);
+    expect(movement.claim(33)).toBe(true);
+    movement.clear();
+    look.clear();
+    expect(movement.claim(44)).toBe(true);
+  });
+  it('accelerates and decelerates smoothly without reversing or depending on frame subdivision', () => {
+    const a = smoothAxis(0, 1, 0.04);
+    expect(a).toBeGreaterThan(0);
+    expect(a).toBeLessThan(1);
+    expect(smoothAxis(a, 0, 0.04)).toBeLessThan(a);
+    expect(smoothAxis(smoothAxis(0, 1, 0.02), 1, 0.02)).toBeCloseTo(a);
+  });
+  it('sweeps a camera sphere before walls, furniture and the ceiling', () => {
+    const origin = { x: 0, y: 1.55, z: 5.5 };
+    expect(
+      safeCameraBoom(origin, { x: 0, y: 2.3, z: 9 }).z,
+    ).toBeLessThanOrEqual(6.75);
+    expect(safeCameraBoom(origin, { x: 0, y: 1.55, z: -2 }).z).toBeGreaterThan(
+      0.48,
+    );
+    expect(
+      safeCameraBoom(origin, { x: 0, y: 9, z: 5.5 }).y,
+    ).toBeLessThanOrEqual(4.6);
+    expect(safeCameraBoom(origin, { x: 0, y: 2.3, z: 6 })).toEqual({
+      x: 0,
+      y: 2.3,
+      z: 6,
+    });
+  });
+  it('exposes distinct reachable destinations without enabling remote interaction', () => {
+    expect(nearbyDestination(chamber.spawn)).toBeNull();
+    expect(nearbyDestination({ x: 0, z: 1.6 })).toBe('specimen');
+    expect(nearbyDestination({ x: -3.3, z: 1.6 })).toBe('research');
+    expect(nearbyDestination({ x: 3.3, z: 1.6 })).toBe('world');
+  });
+});
 describe('containment chamber movement and safety', () => {
   function walk(
     start: Position,

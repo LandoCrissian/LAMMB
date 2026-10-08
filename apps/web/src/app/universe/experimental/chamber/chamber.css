@@ -428,3 +428,306 @@
     scroll-behavior: auto !important;
   }
 }
+/* Evolution HUD: the scene remains the focal point; tools open on demand. */
+.chamber-dialog {
+  height: 100dvh;
+  overscroll-behavior: none;
+}
+.chamber-dialog [hidden],
+.chamber-overlay [hidden] {
+  display: none !important;
+}
+.chamber-hud-top,
+.chamber-hud-bottom {
+  pointer-events: none;
+}
+.chamber-hud-top button,
+.chamber-hud-bottom button,
+.chamber-hud-bottom details {
+  pointer-events: auto;
+}
+.chamber-dialog canvas {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.chamber-console {
+  top: 5.5rem;
+  right: 1rem;
+  width: min(300px, 36%);
+  max-height: calc(100dvh - 14rem);
+  overflow: auto;
+}
+.chamber-diagnostics {
+  bottom: auto;
+  top: 6rem;
+  font-size: 0.75rem;
+}
+.chamber-diagnostics:not([open]) {
+  background: #08131c99;
+}
+.chamber-diagnostics[open] {
+  z-index: 6;
+}
+.chamber-context-actions {
+  position: absolute;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 45%;
+}
+.chamber-context-actions button {
+  color: #dcff00;
+  background: #08131cef;
+}
+.chamber-bottom-actions {
+  flex-direction: row;
+  align-items: end;
+  position: relative;
+}
+.chamber-comfort {
+  background: #08131cef;
+  padding: 0 0.7rem;
+  border: 1px solid #7b9199;
+}
+.chamber-comfort summary {
+  cursor: pointer;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.chamber-comfort[open] {
+  position: absolute;
+  bottom: 3.5rem;
+  right: 0;
+  width: min(250px, 70vw);
+  padding: 0.7rem;
+}
+.chamber-comfort label {
+  display: block;
+  line-height: 1.5;
+  padding-bottom: 0.5rem;
+}
+.chamber-comfort input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+.chamber-comfort button {
+  width: 100%;
+}
+.chamber-rotate {
+  position: absolute;
+  z-index: 4;
+  inset: 6rem 1rem 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #08131cf7;
+  border: 1px solid #7b9199;
+}
+.chamber-rotate h3 {
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  margin: 0.5rem 0;
+}
+.chamber-rotate p {
+  line-height: 1.6;
+  max-width: 35ch;
+}
+.chamber-dialog[data-portrait='true'] .chamber-hud-bottom,
+.chamber-dialog[data-portrait='true'] .chamber-context-actions {
+  visibility: hidden;
+}
+.chamber-overlay {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  border: 0;
+  color: #f4f5eb;
+  background: transparent;
+  overflow: hidden;
+}
+.chamber-overlay::backdrop {
+  background: transparent;
+}
+.chamber-overlay header {
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: max(0.75rem, env(safe-area-inset-top))
+    max(0.75rem, env(safe-area-inset-right)) 0.75rem
+    max(0.75rem, env(safe-area-inset-left));
+  background: linear-gradient(#08131cf5, #08131c80, transparent);
+}
+.chamber-overlay header h2 {
+  margin: 0.15rem 0;
+  font-size: 1.25rem;
+}
+.chamber-overlay header p {
+  margin: 0;
+}
+.chamber-overlay button {
+  min-height: 48px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #7b9199;
+  color: #f4f5eb;
+  background: #0c191f;
+  cursor: pointer;
+}
+.chamber-overlay :focus-visible {
+  outline: 3px solid #dcff00;
+  outline-offset: 3px;
+}
+.chamber-inspection-surface {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+}
+.chamber-overlay footer {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  padding: 0.75rem max(0.75rem, env(safe-area-inset-right))
+    max(0.75rem, env(safe-area-inset-bottom))
+    max(0.75rem, env(safe-area-inset-left));
+  background: linear-gradient(transparent, #08131cf5);
+}
+.chamber-overlay footer p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  max-width: 65ch;
+}
+.chamber-overlay footer div {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.chamber-overlay-world {
+  background: #080f13;
+  overflow-y: auto;
+}
+.chamber-overlay-world header {
+  position: sticky;
+  background: #08131c;
+}
+.chamber-atlas {
+  padding: 0.75rem max(0.75rem, env(safe-area-inset-right))
+    max(0.75rem, env(safe-area-inset-bottom))
+    max(0.75rem, env(safe-area-inset-left));
+}
+.chamber-atlas > p {
+  margin: 0.25rem 0 0.75rem;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+.chamber-atlas a {
+  color: #dcff00;
+}
+@media (max-width: 600px) {
+  .chamber-hud-top {
+    flex-direction: row;
+    gap: 0.4rem;
+    padding: 0.5rem;
+  }
+  .chamber-hud-top > div:first-child {
+    max-width: 42%;
+  }
+  .chamber-hud-top .chamber-kicker,
+  .chamber-hud-top span {
+    display: none;
+  }
+  .chamber-hud-top h2 {
+    font-size: 0.875rem;
+  }
+  .chamber-hud-top button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .chamber-console {
+    top: 4.5rem;
+    bottom: auto;
+    right: 0.5rem;
+    width: min(255px, 75%);
+    max-height: calc(100dvh - 14rem);
+  }
+  .chamber-diagnostics {
+    top: 4.5rem;
+    left: 0.5rem;
+    max-width: 220px;
+  }
+  .chamber-diagnostics summary {
+    font-size: 0.75rem;
+  }
+  .chamber-context-actions {
+    bottom: 7.5rem;
+    max-width: 75%;
+  }
+  .chamber-movement > span {
+    font-size: 0.75rem;
+  }
+  .chamber-bottom-actions {
+    flex-direction: row;
+  }
+  .chamber-comfort summary {
+    font-size: 0.875rem;
+  }
+  .chamber-overlay header h2 {
+    font-size: 1rem;
+  }
+  .chamber-overlay header .chamber-kicker {
+    font-size: 0.75rem;
+  }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .chamber-hud-top {
+    padding: 0.5rem max(0.5rem, env(safe-area-inset-right)) 0.25rem
+      max(0.5rem, env(safe-area-inset-left));
+  }
+  .chamber-hud-top .chamber-kicker,
+  .chamber-hud-top span,
+  .chamber-movement > span {
+    display: none;
+  }
+  .chamber-hud-top h2 {
+    font-size: 1rem;
+  }
+  .chamber-console {
+    top: 4rem;
+    right: 1rem;
+    width: 260px;
+    max-height: calc(100dvh - 10rem);
+    padding: 0.6rem;
+  }
+  .chamber-console .chamber-kicker {
+    display: none;
+  }
+  .chamber-console-message {
+    font-size: 0.875rem;
+  }
+  .chamber-diagnostics {
+    top: 4rem;
+    left: 0.5rem;
+  }
+  .chamber-hud-bottom {
+    padding-top: 0.25rem;
+  }
+  .chamber-context-actions {
+    bottom: 1rem;
+    max-width: 40%;
+  }
+  .chamber-overlay footer p {
+    margin: 0.25rem 0;
+  }
+  .chamber-overlay header .chamber-kicker {
+    display: none;
+  }
+}

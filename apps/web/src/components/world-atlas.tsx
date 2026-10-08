@@ -18,7 +18,7 @@ import {
 } from './atlas-geometry';
 import type { AtlasData, Point, View } from './atlas-geometry';
 
-export function WorldAtlas() {
+export function WorldAtlas({ embedded = false }: { embedded?: boolean } = {}) {
   const [data, setData] = useState<AtlasData | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -64,6 +64,7 @@ export function WorldAtlas() {
   }, [attempt]);
 
   useEffect(() => {
+    if (embedded) return;
     const sync = () => {
       const state = readAtlasFragment(location.hash);
       setSelected(state.country);
@@ -77,16 +78,17 @@ export function WorldAtlas() {
     sync();
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
-  }, [data, applyView]);
+  }, [data, applyView, embedded]);
 
   function choose(code: string, filter = community) {
     const country = countries.find((item) => item.code === code);
     if (!country) return;
     // Native fragment history supports links, refresh and back/forward.
-    location.hash = new URLSearchParams({
-      country: code,
-      community: filter,
-    }).toString();
+    if (!embedded)
+      location.hash = new URLSearchParams({
+        country: code,
+        community: filter,
+      }).toString();
     setSelected(country);
     setCommunity(filter);
     setExpanded(true);
@@ -96,7 +98,8 @@ export function WorldAtlas() {
   function selectCommunity(filter: string) {
     setCommunity(filter);
     if (selected) choose(selected.code, filter);
-    else location.hash = new URLSearchParams({ community: filter }).toString();
+    else if (!embedded)
+      location.hash = new URLSearchParams({ community: filter }).toString();
   }
   function point(event: PointerEvent<SVGSVGElement>): Point {
     const matrix = event.currentTarget.getScreenCTM();

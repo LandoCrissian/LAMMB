@@ -23,7 +23,7 @@ const { chromium } = load(values['playwright-module']);
 const run = promisify(execFile);
 const head = (await run('git', ['rev-parse', 'HEAD'])).stdout.trim();
 const output = path.resolve(
-  'artifacts/generated/task-010/acceptance/chamber',
+  'artifacts/generated/task-010b/acceptance/chamber',
   values.browser,
 );
 await mkdir(output, { recursive: true });
@@ -54,7 +54,10 @@ async function capture(page, name) {
   const running = await page
     .locator('.chamber-dialog[open][data-ready="true"][data-paused="false"]')
     .count();
-  const pauseForCapture = running && page.viewportSize().width === 1920;
+  const pauseForCapture =
+    running &&
+    page.viewportSize().width === 1920 &&
+    !(await page.locator('.chamber-overlay[open]').count());
   if (pauseForCapture)
     await page.getByRole('button', { name: 'Pause', exact: true }).click();
   const filename = name + (pauseForCapture ? '-paused' : '') + '.png';
@@ -120,10 +123,21 @@ async function hold(page, key, predicate) {
     await page.keyboard.up(key);
   }
 }
+async function portraitFallback(page) {
+  const button = page.getByRole('button', { name: 'Continue in portrait' });
+  if (await button.isVisible()) await button.click();
+}
+async function tools(page, open) {
+  const detail = page.locator('.chamber-comfort');
+  if ((await detail.evaluate((el) => el.open)) !== open)
+    await detail.locator('summary').click();
+}
 async function reset(page) {
+  await tools(page, true);
   await page
     .getByRole('button', { name: 'Reset position', exact: true })
     .click();
+  await tools(page, false);
   await until(page, (p) => Math.abs(p.x) < 0.01 && Math.abs(p.z - 5.5) < 0.01);
 }
 async function alignWithConsole(page) {
@@ -153,6 +167,209 @@ async function noOverflow(page) {
     }),
     false,
   );
+}
+async function evolution(page, context, cdp, width) {
+  await reset(page);
+  const start = await diagnostics(page);
+  await page.getByRole('button', { name: 'Third person', exact: true }).click();
+  await until(page, (p) => p.perspective === 'third');
+  assert.equal((await diagnostics(page)).z, start.z);
+  await capture(page, `third-person-${width}`);
+  await hold(page, 's', (p) => p.z > 6.5);
+  await page.waitForTimeout(1100);
+  const camera = (await diagnostics(page)).camera;
+  assert(camera.z <= 6.75 && Math.abs(camera.x) <= 5.75 && camera.y <= 4.6);
+  await page.getByRole('button', { name: 'First person', exact: true }).click();
+  await reset(page);
+  const original = page.viewportSize();
+  const landscape = {
+    width: Math.max(844, width),
+    height: width < 768 ? width : 600,
+  };
+  await page.setViewportSize(landscape);
+  await page.waitForTimeout(1200);
+  await noOverflow(page);
+  await capture(page, `landscape-${width}`);
+  const box = await page.locator('.chamber-pad').boundingBox();
+  const move = { id: 11, x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  const look = {
+    id: 22,
+    x: landscape.width * 0.73,
+    y: landscape.height * 0.55,
+  };
+  const touch = (type, touchPoints) =>
+    cdp.send('Input.dispatchTouchEvent', { type, touchPoints });
+  await touch('touchStart', [move]);
+  await touch('touchStart', [move, look]);
+  const moving = { ...move, y: box.y + 8 },
+    looking = { ...look, x: look.x + 40 };
+  await touch('touchMove', [moving, looking]);
+  await until(page, (p) => p.z < 4.8 && p.yaw < -0.09);
+  // Releasing the right thumb must not cancel the left thumb's movement.
+  await touch('touchEnd', [moving]);
+  await until(page, (p) => p.z < 3.9);
+  await touch('touchCancel', []);
+  await page.waitForTimeout(2200);
+  const stopped = await diagnostics(page);
+  await page.waitForTimeout(1400);
+  assert(
+    Math.abs((await diagnostics(page)).z - stopped.z) < 0.025,
+    'Cancel releases motion',
+  );
+  await reset(page);
+  await touch('touchStart', [move]);
+  await touch('touchStart', [move, look]);
+  await touch('touchMove', [moving, looking]);
+  await page.setViewportSize(original);
+  await touch('touchCancel', []);
+  await page.waitForTimeout(2200);
+  const rotated = await diagnostics(page);
+  await page.waitForTimeout(1200);
+  assert.equal(
+    (await diagnostics(page)).z,
+    rotated.z,
+    'Orientation clears held input',
+  );
+  await portraitFallback(page);
+  await page.setViewportSize(landscape);
+  await reset(page);
+  await hold(page, 'w', (p) => p.destination === 'specimen');
+  await page.getByRole('button', { name: 'Inspect specimen (E)' }).click();
+  const inspecting = await diagnostics(page);
+  await page.locator('.chamber-overlay-specimen[open]').waitFor();
+  assert(inspecting.inspection);
+  await page.keyboard.press('Tab');
+  assert(
+    await page.evaluate(() =>
+      document
+        .querySelector('.chamber-overlay-specimen')
+        .contains(document.activeElement),
+    ),
+  );
+  await page.keyboard.press('w');
+  const surface = await page
+    .locator('.chamber-inspection-surface')
+    .boundingBox();
+  const x = surface.width * 0.5,
+    y = surface.height * 0.5;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x + 70, y + 5, { steps: 6 });
+  await page.mouse.up();
+  assert(Math.abs((await diagnostics(page)).inspectionYaw) > 0.2);
+  await page.mouse.wheel(0, 100);
+  await page.waitForTimeout(250);
+  assert((await diagnostics(page)).inspectionDistance > 5);
+  const a = { id: 31, x: x - 35, y },
+    b = { id: 32, x: x + 35, y };
+  await touch('touchStart', [a]);
+  await touch('touchStart', [a, b]);
+  await touch('touchMove', [
+    { ...a, x: x - 65 },
+    { ...b, x: x + 65 },
+  ]);
+  await touch('touchEnd', []);
+  assert(
+    (await diagnostics(page)).inspectionDistance < 5,
+    'Genuine pinch zooms',
+  );
+  await capture(page, `inspection-${width}`);
+  await page
+    .getByRole('button', { name: 'Reset inspection', exact: true })
+    .click();
+  assert.equal((await diagnostics(page)).inspectionYaw, 0);
+  await page.keyboard.press('Escape');
+  await page
+    .locator('.chamber-overlay-specimen')
+    .waitFor({ state: 'detached' });
+  const returned = await diagnostics(page);
+  for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
+    assert.equal(returned[key], inspecting[key], `Inspection restores ${key}`);
+  assert.equal(
+    await page
+      .getByRole('button', { name: 'Inspect specimen (E)' })
+      .evaluate((el) => el === document.activeElement),
+    true,
+  );
+  await reset(page);
+  await hold(page, 'd', (p) => p.x > 2.7);
+  // Correct overshoot with genuine bounded keys; never teleport the observer.
+  for (let n = 0; n < 60; n++) {
+    await page.waitForTimeout(1100);
+    const p = await diagnostics(page);
+    if (p.x >= 2.8 && p.x <= 3.8) break;
+    await page.locator('canvas').focus();
+    await page.keyboard.press(p.x > 3.8 ? 'a' : 'd', { delay: 120 });
+    if (n === 59) throw Error('World console alignment failed');
+  }
+  await hold(page, 'w', (p) => p.destination === 'world');
+  await page.getByRole('button', { name: 'Open World terminal (E)' }).click();
+  const beforeWorld = await diagnostics(page),
+    url = page.url();
+  const world = page.locator('.chamber-overlay-world');
+  await world.locator('.atlas-map').waitFor();
+  assert.equal(await world.locator('[data-country]').count(), 248);
+  await world.locator('.atlas-country-directory summary').click();
+  const search = world.getByRole('searchbox');
+  await search.fill('Japan');
+  await world.getByRole('link', { name: /Japan.*JP/ }).click();
+  await world.locator('[data-country="JP"].is-selected').waitFor();
+  await world.getByRole('button', { name: 'LAMMB founding' }).click();
+  assert.equal(
+    await world
+      .getByRole('button', { name: 'LAMMB founding' })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  assert.equal(
+    page.url(),
+    url,
+    'Embedded atlas leaves chamber URL/history unchanged',
+  );
+  await world.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await world.getByRole('button', { name: 'Reset view', exact: true }).click();
+  await world.locator('.atlas-map').focus();
+  await page.keyboard.press('+');
+  await page.keyboard.press('ArrowRight');
+  assert(
+    Number(await world.locator('.atlas-map').getAttribute('data-zoom')) > 1,
+  );
+  await capture(page, `world-terminal-${width}`);
+  assert((await world.textContent()).includes('REGISTRY NOT YET LIVE'));
+  await page.keyboard.press('Escape');
+  await world.waitFor({ state: 'detached' });
+  const afterWorld = await diagnostics(page);
+  for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
+    assert.equal(afterWorld[key], beforeWorld[key], `World restores ${key}`);
+  assert.equal(
+    await page
+      .getByRole('button', { name: 'Open World terminal (E)' })
+      .evaluate((el) => el === document.activeElement),
+    true,
+  );
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await until(page, (p) => p.reducedMotion && !p.hovering);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.setViewportSize(original);
+  await portraitFallback(page);
+  await reset(page);
+  evidence.checks.push({
+    width,
+    result: 'PASS',
+    landscape,
+    dualTouch: true,
+    independentRelease: true,
+    cancellation: true,
+    orientation: true,
+    thirdPerson: true,
+    cameraCollision: true,
+    inspectionOrbitWheelPinchReset: true,
+    inspectionRestoration: true,
+    sharedAtlas: true,
+    embeddedHistory: true,
+    worldRestoration: true,
+    reducedHover: true,
+  });
 }
 try {
   for (const width of [320, 390, 768, 1024, 1440, 1920]) {
@@ -203,6 +420,7 @@ try {
         null,
         { timeout: 90000 },
       );
+      await portraitFallback(page);
       assert.equal(
         await page.locator('.chamber-dialog').getAttribute('open'),
         '',
@@ -215,7 +433,10 @@ try {
       );
       assert.equal(
         await page
-          .getByRole('button', { name: 'Run experiment (E)' })
+          .getByRole('button', {
+            name: 'Run experiment (E)',
+            includeHidden: true,
+          })
           .isEnabled(),
         false,
       );
@@ -280,6 +501,7 @@ try {
       await until(page, (p) => p.yaw < -0.1);
       await reset(page);
       // Native lock, genuine Escape release and pause; drag/keyboard remain fallback paths.
+      await tools(page, true);
       await page
         .getByRole('button', { name: 'Lock mouse', exact: true })
         .click();
@@ -301,6 +523,7 @@ try {
       await page.waitForTimeout(1200);
       assert.equal((await diagnostics(page)).frames, paused.frames);
       await page.getByRole('button', { name: 'Resume observation' }).click();
+      await tools(page, false);
       // CDP generates genuine touch events, without calling scene internals.
       const cdp = await context.newCDPSession(page);
       const pad = await page.locator('.chamber-pad').boundingBox();
@@ -332,6 +555,7 @@ try {
       });
       await until(page, (p) => p.yaw < -0.1);
       await reset(page);
+      await evolution(page, context, cdp, width);
       await cdp.detach();
       // Walk to console, activate, replay and reset the complete comedy sequence.
       await hold(page, 'a', (p) => p.x < -2.7);
@@ -403,6 +627,7 @@ try {
         () =>
           document.querySelector('.chamber-dialog').dataset.ready === 'true',
       );
+      await portraitFallback(page);
       await until(page, (p) => p.frames > 0);
       await page.emulateMedia({ reducedMotion: 'reduce' });
       assert.equal(
@@ -443,6 +668,7 @@ try {
         () =>
           document.querySelector('.chamber-dialog').dataset.ready === 'true',
       );
+      await portraitFallback(page);
       await until(page, (p) => p.frames > 0);
       await page.getByRole('button', { name: 'Exit chamber' }).click();
       await page
