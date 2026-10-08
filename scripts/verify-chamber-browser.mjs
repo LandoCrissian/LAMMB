@@ -355,7 +355,6 @@ try {
             .getExtension('WEBGL_lose_context');
           if (!ext) return false;
           ext.loseContext();
-          setTimeout(() => ext.restoreContext(), 2200);
           return true;
         }),
       );
@@ -365,16 +364,17 @@ try {
           'true',
       );
       await capture(page, `context-loss-${width}`);
-      await page.waitForFunction(
-        () =>
-          document.querySelector('.chamber-dialog').dataset.contextLost ===
-          'false',
-      );
       assert.equal(
         await page.locator('.chamber-dialog').getAttribute('data-paused'),
         'true',
       );
-      await page.getByRole('button', { name: 'Resume observation' }).click();
+      await page.getByRole('button', { name: 'Exit chamber' }).click();
+      await page.getByRole('button', { name: 'Enter 3D chamber' }).click();
+      await page.waitForFunction(
+        () =>
+          document.querySelector('.chamber-dialog').dataset.ready === 'true',
+      );
+      await until(page, (p) => p.frames > 0);
       await page.emulateMedia({ reducedMotion: 'reduce' });
       assert.equal(
         await page.locator('.chamber-dialog').evaluate(
@@ -463,11 +463,7 @@ try {
     try {
       const p = await noJS.newPage();
       await p.goto('http://127.0.0.1:3005/universe/experimental/chamber');
-      await p
-        .getByText(
-          'Activate experiment — read the complete result without JavaScript',
-        )
-        .click();
+      await p.getByText('Read the complete fictional result').click();
       assert(
         (await p.locator('.chamber-text-terminal').textContent()).includes(
           '$48,000',
