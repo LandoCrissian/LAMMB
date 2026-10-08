@@ -126,6 +126,19 @@ async function reset(page) {
     .click();
   await until(page, (p) => Math.abs(p.x) < 0.01 && Math.abs(p.z - 5.5) < 0.01);
 }
+async function alignWithConsole(page) {
+  // One-second diagnostics can overshoot a waypoint on the software renderer.
+  // Correct through bounded real key presses, never scene state or teleportation.
+  await page.waitForTimeout(1100);
+  for (let attempt = 0; attempt < 60; attempt++) {
+    const p = await diagnostics(page);
+    if (p.x >= -3.8 && p.x <= -2.8) return;
+    await page.locator('canvas').focus();
+    await page.keyboard.press(p.x < -3.8 ? 'd' : 'a', { delay: 120 });
+    await page.waitForTimeout(1100);
+  }
+  throw new Error('Bounded keyboard console approach failed');
+}
 async function noOverflow(page) {
   assert.equal(
     await page.evaluate(
@@ -322,6 +335,7 @@ try {
       await cdp.detach();
       // Walk to console, activate, replay and reset the complete comedy sequence.
       await hold(page, 'a', (p) => p.x < -2.7);
+      await alignWithConsole(page);
       await hold(page, 'w', (p) => p.near);
       assert.equal(
         await page
