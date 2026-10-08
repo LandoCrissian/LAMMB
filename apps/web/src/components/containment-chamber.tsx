@@ -247,13 +247,15 @@ export function ContainmentChamber() {
         data-alarm={result}
       >
         <div className="chamber-stage">
-          <canvas
-            ref={canvas}
-            tabIndex={0}
-            role="application"
-            aria-label="First-person containment chamber"
-            aria-describedby="chamber-help"
-          />
+          {entered && (
+            <canvas
+              ref={canvas}
+              tabIndex={0}
+              role="application"
+              aria-label="First-person containment chamber"
+              aria-describedby="chamber-help"
+            />
+          )}
           <header className="chamber-hud-top">
             <div>
               <p className="chamber-kicker">LAMMB LABS / EXPERIMENTAL</p>
