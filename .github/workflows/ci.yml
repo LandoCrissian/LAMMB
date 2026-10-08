@@ -45,7 +45,7 @@ jobs:
         run: npm run build
   browser-acceptance:
     runs-on: windows-2025
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
@@ -78,7 +78,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: labs-browser-${{ github.event.pull_request.head.sha || github.sha }}
-          path: artifacts/generated/task-009/acceptance/
+          name: chamber-browser-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/generated/task-010/acceptance/
           if-no-files-found: error
           retention-days: 14

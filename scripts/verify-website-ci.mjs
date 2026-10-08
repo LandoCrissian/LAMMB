@@ -16,10 +16,10 @@ const driver = process.env.LAMMB_PLAYWRIGHT_MODULE;
 assert(driver, 'Pinned temporary Playwright driver required');
 const root = process.cwd();
 const run = promisify(execFile);
-const baselineSHA = '071817903098561e1514d19af3e7ac41b9ac0c69';
-const output = path.resolve('artifacts/generated/task-009/acceptance');
+const baselineSHA = '3be6d332c0270a2b751ba67d8b8e51125869a05f';
+const output = path.resolve('artifacts/generated/task-010/acceptance');
 await mkdir(output, { recursive: true });
-const baseline = path.join(process.env.RUNNER_TEMP, 'lammb-task-009-baseline');
+const baseline = path.join(process.env.RUNNER_TEMP, 'lammb-task-010-baseline');
 await run('git', ['worktree', 'add', '--detach', baseline, baselineSHA]);
 async function command(executable, args, cwd) {
   const code = await new Promise((resolve, reject) => {
@@ -93,10 +93,22 @@ async function preview(cwd, baselineOnly) {
         '--browser',
         browser,
         '--output',
-        'task-009/acceptance',
+        'task-010/acceptance',
       ];
       if (baselineOnly) args.push('--baseline-only');
       await command(process.execPath, args, cwd);
+      if (!baselineOnly)
+        await command(
+          process.execPath,
+          [
+            path.join(root, 'scripts/verify-chamber-browser.mjs'),
+            '--playwright-module',
+            driver,
+            '--browser',
+            browser,
+          ],
+          cwd,
+        );
     }
   } finally {
     if (server.exitCode === null) server.kill('SIGTERM');
@@ -106,7 +118,7 @@ async function preview(cwd, baselineOnly) {
 }
 await preview(baseline, true);
 await cp(
-  path.join(baseline, 'artifacts/generated/task-009/acceptance'),
+  path.join(baseline, 'artifacts/generated/task-010/acceptance'),
   path.join(output, 'baseline'),
   { recursive: true },
 );
