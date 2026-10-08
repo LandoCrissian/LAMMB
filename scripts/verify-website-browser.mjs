@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
+import { freemem } from 'node:os';
 import path from 'node:path';
 import { parseArgs, promisify } from 'node:util';
 
@@ -90,6 +91,7 @@ const evidence = {
   errors: [],
   consoleWarnings: [],
   memorySamplesGB: [],
+  memorySource: 'node:os.freemem (Windows available physical memory), GiB',
   result: 'RUNNING',
 };
 const sourcePaths = (await run('git', ['ls-files', 'apps/web'])).stdout
@@ -110,28 +112,14 @@ evidence.websiteSourceSHA256 = createHash('sha256')
   .digest('hex');
 await mkdir(output, { recursive: true });
 let browser;
-let sampling = false;
 let memoryFloorCrossed = false;
 async function sampleMemory() {
-  if (sampling || process.platform !== 'win32') return;
-  sampling = true;
-  try {
-    const { stdout } = await run(
-      'powershell.exe',
-      [
-        '-NoProfile',
-        '-Command',
-        '(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory',
-      ],
-      { windowsHide: true, timeout: 10000 },
-    );
-    const available = Number(stdout.trim()) / 1048576;
-    assert(Number.isFinite(available) && available > 0, 'Memory sample failed');
-    evidence.memorySamplesGB.push(available);
-    if (available < 1) memoryFloorCrossed = true;
-  } finally {
-    sampling = false;
-  }
+  if (process.platform !== 'win32') return;
+  // Same physical-RAM guard, without spawning a PowerShell process per sample.
+  const available = freemem() / 1024 ** 3;
+  assert(Number.isFinite(available) && available > 0, 'Memory sample failed');
+  evidence.memorySamplesGB.push(available);
+  if (available < 1) memoryFloorCrossed = true;
 }
 async function guard() {
   await sampleMemory();
@@ -955,7 +943,6 @@ try {
 } finally {
   clearInterval(memoryTimer);
   if (browser) await browser.close();
-  while (sampling) await new Promise((resolve) => setTimeout(resolve, 100));
   await sampleMemory();
   evidence.minimumAvailableRAMGB = Math.min(...evidence.memorySamplesGB);
   evidence.browserClosed = true;
