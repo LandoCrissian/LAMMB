@@ -154,6 +154,7 @@ export function ContainmentChamber() {
           type="button"
           className="chamber-primary labs-js-control"
           aria-haspopup="dialog"
+          disabled={phase === 'RUNNING'}
           onClick={enter}
         >
           Enter 3D chamber

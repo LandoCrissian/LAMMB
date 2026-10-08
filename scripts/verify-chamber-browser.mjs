@@ -205,6 +205,19 @@ try {
         measurement:
           'First load includes lazy chunk, procedural assets and first render; 1-second sampled FPS, warm CI software WebGL. Heap is browser JS heap, not scene/GPU bytes.',
       });
+      await page.locator('canvas').focus();
+      await page.keyboard.down('w');
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(1100);
+      const blurred = await diagnostics(page);
+      await page.waitForTimeout(1100);
+      assert.equal(
+        (await diagnostics(page)).z,
+        blurred.z,
+        'Tab clears held movement',
+      );
+      await page.keyboard.up('w');
+      await reset(page);
       // Camera-relative movement and central containment collision through actual keys.
       await hold(page, 'w', (p) => p.z < 0.85);
       await page.locator('canvas').focus();

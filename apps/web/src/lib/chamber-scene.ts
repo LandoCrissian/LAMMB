@@ -269,6 +269,10 @@ export class ChamberScene {
     shade.rotation.x = -Math.PI / 2;
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(canvas);
+    this.listen(canvas, 'blur', () => {
+      this.keys.clear();
+      this.axis = { x: 0, y: 0 };
+    });
     this.listen(window, 'keydown', (event) =>
       this.key(event as KeyboardEvent, true),
     );
