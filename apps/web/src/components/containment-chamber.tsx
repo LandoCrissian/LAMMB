@@ -408,7 +408,7 @@ export function ContainmentChamber() {
                   scene.current?.resetPosition();
                   canvas.current?.focus();
                 }}
-                disabled={!ready}
+                disabled={!ready || lost}
               >
                 Reset position
               </button>

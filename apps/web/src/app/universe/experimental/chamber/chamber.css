@@ -142,6 +142,9 @@
 .chamber-dialog::backdrop {
   background: #080f13;
 }
+.chamber-dialog[data-context-lost='true'] canvas {
+  visibility: hidden;
+}
 .chamber-stage {
   width: 100%;
   height: 100%;
