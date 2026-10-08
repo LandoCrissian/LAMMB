@@ -4,10 +4,23 @@ import {
   chamber,
   moveObserver,
   nearTerminal,
+  nearbyDestination,
+  smoothAxis,
+  safeCameraBoom,
+  type Destination,
   type Position,
 } from './chamber-model';
 export type ChamberSnapshot = Position & {
   yaw: number;
+  pitch: number;
+  perspective: 'first' | 'third';
+  destination: Destination;
+  inspection: boolean;
+  inspectionYaw: number;
+  inspectionDistance: number;
+  camera: { x: number; y: number; z: number };
+  reducedMotion: boolean;
+  hovering: boolean;
   near: boolean;
   fps: number;
   frames: number;
@@ -22,7 +35,7 @@ type Hooks = {
   snapshot: (value: ChamberSnapshot) => void;
   ready: () => void;
   pause: () => void;
-  interact: () => void;
+  interact: (destination: Destination) => void;
   context: (lost: boolean) => void;
   error: () => void;
 };
@@ -44,6 +57,26 @@ export class ChamberScene {
   private axis = { x: 0, y: 0 };
   private drag: { id: number; x: number; y: number } | null = null;
   private frame = 0;
+  private velocity = { x: 0, y: 0 };
+  private perspective: 'first' | 'third' = 'first';
+  private specimen = new THREE.Group();
+  private avatar = new THREE.Group();
+  private inspection = false;
+  private inspectionYaw = 0;
+  private inspectionPitch = 0.1;
+  private inspectionDistance = 5;
+  private savedCamera: {
+    position: THREE.Vector3;
+    quaternion: THREE.Quaternion;
+  } | null = null;
+  private hidden: THREE.Object3D[] = [];
+  private inspectPointers = new Map<number, { x: number; y: number }>();
+  private sensitivity = 0.003;
+  private reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  private elapsed = 0;
+  private follow = new THREE.Vector3();
+  private target = new THREE.Vector3();
+  private desired = new THREE.Vector3();
   private disposed = false;
   private paused = false;
   private lost = false;
@@ -79,12 +112,19 @@ export class ChamberScene {
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
     this.renderer.setClearColor(0x080f13);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.3;
-    this.scene.fog = new THREE.Fog(0x080f13, 11, 28);
-    this.scene.add(new THREE.HemisphereLight(0xb8d5cf, 0x253034, 2.2));
+    this.renderer.toneMappingExposure = 1.65;
+    this.scene.fog = new THREE.Fog(0x080f13, 16, 35);
+    this.scene.add(new THREE.HemisphereLight(0xd7e6ea, 0x57626b, 3.1));
     this.light = new THREE.PointLight(0xdcff00, 16, 12, 2);
     this.light.position.set(0, 3.5, -1);
     this.scene.add(this.light);
+    const practical = new THREE.DirectionalLight(0xd6e6ff, 2.4);
+    practical.position.set(3, 4.5, 4);
+    this.scene.add(practical);
+    const spotlight = new THREE.SpotLight(0xeaf6ff, 65, 14, 0.7, 0.55, 1.5);
+    spotlight.position.set(0, 4.5, -1);
+    spotlight.target.position.set(0, 1.8, -1);
+    this.scene.add(spotlight, spotlight.target);
     const blue = new THREE.PointLight(0x7cafcc, 18, 14, 2);
     blue.position.set(3.5, 3.8, 3.5);
     this.scene.add(blue);
@@ -170,10 +210,12 @@ export class ChamberScene {
       }),
     );
     // Original sealed unit, a procedural interpretation rather than a recovered 3D asset.
-    const specimen = new THREE.Group();
+    const specimen = this.specimen;
     specimen.position.z = -1;
     this.scene.add(specimen);
-    this.box(3.2, 0.22, 2.6, 0, 0.11, 0, edges, specimen);
+    this.box(3.2, 0.22, 2.6, 0, 0.11, -1, edges);
+    this.box(2.9, 0.035, 2.3, 0, 0.235, -1, this.signal);
+    specimen.position.y = 0.48;
     const outline = new THREE.Shape();
     outline.moveTo(-0.82, -1.35);
     outline.lineTo(0.82, -1.35);
@@ -264,6 +306,32 @@ export class ChamberScene {
     );
     this.terminalTexture = terminalScreen.material.map;
     this.box(0.15, 0.025, 0.15, 0.4, 1.26, 0.28, this.signal, terminal);
+    const world = new THREE.Group();
+    world.position.set(3.3, 0, 0.4);
+    this.scene.add(world);
+    this.box(1.4, 0.4, 1.1, 0, 0.2, 0, black, world);
+    this.box(0.5, 1.1, 0.55, 0, 0.7, 0, steel, world);
+    this.box(1.4, 0.95, 0.15, 0, 1.7, -0.18, black, world);
+    this.label(
+      'LAMMB WORLD\nGLOBAL NFT ATLAS\nEXPLORE COUNTRIES\nREGISTRY NOT YET LIVE',
+      1.25,
+      0.75,
+      0,
+      1.72,
+      -0.09,
+      world,
+    );
+    // Temporary original observer: protective suit + opaque visor, no NFT artwork.
+    const suit = this.material({ color: 0x6e838d, roughness: 0.8 });
+    this.box(0.48, 0.65, 0.3, 0, 1.04, 0, suit, this.avatar);
+    this.box(0.36, 0.36, 0.36, 0, 1.58, 0, edges, this.avatar);
+    this.box(0.29, 0.13, 0.035, 0, 1.6, -0.2, black, this.avatar);
+    for (const x of [-0.16, 0.16])
+      this.box(0.18, 0.58, 0.22, x, 0.39, 0, black, this.avatar);
+    for (const x of [-0.34, 0.34])
+      this.box(0.16, 0.64, 0.2, x, 1, 0, suit, this.avatar);
+    this.box(0.15, 0.06, 0.035, 0, 1.2, -0.18, this.signal, this.avatar);
+    this.scene.add(this.avatar);
     // Fixed soft contact shade, not a high-cost realtime shadow map.
     const shade = this.label('shade', 4, 3.6, 0, 0.012, -1);
     shade.rotation.x = -Math.PI / 2;
@@ -271,7 +339,8 @@ export class ChamberScene {
     this.resizeObserver.observe(canvas);
     this.listen(canvas, 'blur', () => {
       this.keys.clear();
-      this.axis = { x: 0, y: 0 };
+      // Keyboard focus may move to the other thumb; keep its owned touch input.
+      if (!this.axis.x && !this.axis.y) this.velocity = { x: 0, y: 0 };
     });
     this.listen(window, 'keydown', (event) =>
       this.key(event as KeyboardEvent, true),
@@ -281,7 +350,7 @@ export class ChamberScene {
     );
     this.listen(document, 'pointerlockchange', () => {
       const locked = document.pointerLockElement === canvas;
-      if (this.locked && !locked) {
+      if (this.locked && !locked && !this.inspection && !this.paused) {
         this.setPaused(true);
         hooks.pause();
       }
@@ -306,9 +375,21 @@ export class ChamberScene {
         this.look(e.movementX, e.movementY);
       }
     });
+    this.listen(window, 'resize', () => this.clearInput());
+    this.listen(this.reducedMotion, 'change', () => {
+      this.specimen.position.y = 0.48;
+      this.render();
+    });
     this.listen(canvas, 'pointerdown', (event) => {
       const e = event as PointerEvent;
-      if (this.paused || this.lost) return;
+      if (
+        this.paused ||
+        this.lost ||
+        this.inspection ||
+        this.drag ||
+        (e.pointerType === 'touch' && e.clientX < canvas.clientWidth * 0.45)
+      )
+        return;
       if (document.pointerLockElement === canvas) return;
       canvas.focus();
       canvas.setPointerCapture(e.pointerId);
@@ -321,8 +402,9 @@ export class ChamberScene {
       this.drag = { id: e.pointerId, x: e.clientX, y: e.clientY };
     });
     for (const type of ['pointerup', 'pointercancel', 'lostpointercapture'])
-      this.listen(canvas, type, () => {
-        this.drag = null;
+      this.listen(canvas, type, (event) => {
+        if (this.drag?.id === (event as PointerEvent).pointerId)
+          this.drag = null;
       });
     this.listen(canvas, 'webglcontextlost', (event) => {
       event.preventDefault();
@@ -339,6 +421,7 @@ export class ChamberScene {
       await this.renderer.compileAsync(this.scene, this.camera);
     else this.renderer.compile(this.scene, this.camera);
     if (this.disposed) return;
+    this.updateCamera(0, true);
     this.render();
     this.loadMs = performance.now() - startedAt;
     this.hooks.ready();
@@ -468,14 +551,8 @@ export class ChamberScene {
     if (target !== this.canvas && document.pointerLockElement !== this.canvas)
       return;
     const key = e.key.toLowerCase();
-    if (
-      key === 'e' &&
-      down &&
-      !e.repeat &&
-      !this.paused &&
-      nearTerminal(this.position)
-    )
-      this.hooks.interact();
+    if (key === 'e' && down && !e.repeat && !this.paused && !this.inspection)
+      this.hooks.interact(nearbyDestination(this.position));
     if (key === 'escape' && down) {
       this.setPaused(true);
       this.hooks.pause();
@@ -494,23 +571,26 @@ export class ChamberScene {
       ].includes(key)
     ) {
       e.preventDefault();
-      if (down && !this.paused) this.keys.add(key);
+      if (down && !this.paused && !this.inspection) this.keys.add(key);
       else this.keys.delete(key);
     }
   }
   private look(dx: number, dy: number) {
-    if (this.paused || this.lost) return;
-    this.yaw -= dx * 0.003;
-    this.pitch = THREE.MathUtils.clamp(this.pitch - dy * 0.003, -1.15, 1.15);
+    if (this.paused || this.lost || this.inspection) return;
+    this.yaw -= dx * this.sensitivity;
+    this.pitch = THREE.MathUtils.clamp(
+      this.pitch - dy * this.sensitivity,
+      -1.15,
+      1.15,
+    );
   }
   setAxis(x: number, y: number) {
-    this.axis = { x, y };
+    if (!this.paused && !this.inspection && !this.disposed)
+      this.axis = { x, y };
   }
   setPaused(value: boolean) {
     this.paused = value;
-    this.keys.clear();
-    this.axis = { x: 0, y: 0 };
-    this.drag = null;
+    this.clearInput();
     if (value) {
       cancelAnimationFrame(this.frame);
       if (document.pointerLockElement === this.canvas)
@@ -522,6 +602,112 @@ export class ChamberScene {
       this.frameCount = 0;
       this.frame = requestAnimationFrame(this.tick);
     }
+  }
+  clearInput() {
+    this.keys.clear();
+    this.axis = { x: 0, y: 0 };
+    this.velocity = { x: 0, y: 0 };
+    if (this.drag && this.canvas.hasPointerCapture(this.drag.id))
+      this.canvas.releasePointerCapture(this.drag.id);
+    this.drag = null;
+    this.inspectPointers.clear();
+  }
+  setSensitivity(value: number) {
+    this.sensitivity = THREE.MathUtils.clamp(value, 0.001, 0.006);
+  }
+  setPerspective(value: 'first' | 'third') {
+    this.perspective = value;
+    this.clearInput();
+    this.updateCamera(0, true);
+    this.render();
+    this.publish();
+  }
+  setInspection(value: boolean) {
+    if (value === this.inspection || this.disposed) return;
+    this.clearInput();
+    this.inspection = value;
+    if (value) {
+      this.savedCamera = {
+        position: this.camera.position.clone(),
+        quaternion: this.camera.quaternion.clone(),
+      };
+      if (document.pointerLockElement === this.canvas)
+        document.exitPointerLock();
+      this.resetInspection();
+      this.hidden = this.scene.children.filter(
+        (o) => o.visible && o !== this.specimen && !(o instanceof THREE.Light),
+      );
+      this.hidden.forEach((o) => (o.visible = false));
+    } else {
+      this.hidden.forEach((o) => (o.visible = true));
+      this.hidden = [];
+      if (this.savedCamera) {
+        this.camera.position.copy(this.savedCamera.position);
+        this.camera.quaternion.copy(this.savedCamera.quaternion);
+        this.follow.copy(this.camera.position);
+      }
+      this.savedCamera = null;
+    }
+    this.render();
+    this.publish();
+  }
+  resetInspection() {
+    this.inspectionYaw = 0;
+    this.inspectionPitch = 0.1;
+    this.inspectionDistance = 5;
+    this.updateCamera(0);
+    this.render();
+    this.publish();
+  }
+  inspectPointer(
+    type: 'down' | 'move' | 'up',
+    id: number,
+    x: number,
+    y: number,
+  ) {
+    if (!this.inspection || this.paused) return;
+    const prior = this.inspectPointers.get(id);
+    if (type === 'up') {
+      this.inspectPointers.delete(id);
+      return;
+    }
+    if (type === 'down') {
+      this.inspectPointers.set(id, { x, y });
+      return;
+    }
+    if (!prior) return;
+    if (this.inspectPointers.size === 2) {
+      const other = [...this.inspectPointers].find(([key]) => key !== id)![1];
+      const before = Math.hypot(prior.x - other.x, prior.y - other.y);
+      const after = Math.hypot(x - other.x, y - other.y);
+      if (after > 5 && before > 5)
+        this.inspectionDistance = THREE.MathUtils.clamp(
+          (this.inspectionDistance * before) / after,
+          3.3,
+          8,
+        );
+    } else if (this.inspectPointers.size === 1) {
+      this.inspectionYaw -= (x - prior.x) * 0.008;
+      this.inspectionPitch = THREE.MathUtils.clamp(
+        this.inspectionPitch + (y - prior.y) * 0.008,
+        -0.5,
+        0.65,
+      );
+    }
+    this.inspectPointers.set(id, { x, y });
+    this.updateCamera(0);
+    this.render();
+    this.publish();
+  }
+  zoomInspection(delta: number) {
+    this.inspectionDistance = THREE.MathUtils.clamp(
+      this.inspectionDistance + delta,
+      3.3,
+      8,
+    );
+    this.updateCamera(0);
+    this.render();
+    this.publish();
   }
   async lockPointer() {
     if (this.paused || this.lost) return;
@@ -536,8 +722,8 @@ export class ChamberScene {
     this.position = { ...chamber.spawn };
     this.yaw = 0;
     this.pitch = 0;
-    this.keys.clear();
-    this.axis = { x: 0, y: 0 };
+    this.clearInput();
+    this.updateCamera(0, true);
     this.render();
     this.publish();
   }
@@ -574,14 +760,59 @@ export class ChamberScene {
     }
     this.render();
   }
+  private updateCamera(seconds: number, snap = false) {
+    this.avatar.visible = this.perspective === 'third' && !this.inspection;
+    this.avatar.position.set(this.position.x, 0, this.position.z);
+    this.avatar.rotation.y = this.yaw;
+    if (this.inspection) {
+      this.target.set(0, 2.15, -1);
+      this.camera.position.set(
+        Math.sin(this.inspectionYaw) * this.inspectionDistance,
+        2.15 + Math.sin(this.inspectionPitch) * this.inspectionDistance,
+        -1 +
+          Math.cos(this.inspectionYaw) *
+            Math.cos(this.inspectionPitch) *
+            this.inspectionDistance,
+      );
+      this.camera.lookAt(this.target);
+      return;
+    }
+    if (this.perspective === 'first') {
+      this.camera.position.set(
+        this.position.x,
+        chamber.eyeHeight,
+        this.position.z,
+      );
+      this.camera.rotation.set(this.pitch, this.yaw, 0, 'YXZ');
+      return;
+    }
+    this.target.set(this.position.x, 1.55, this.position.z);
+    this.desired.set(
+      this.position.x + Math.sin(this.yaw) * 2.8,
+      2.25 - Math.sin(this.pitch) * 1.4,
+      this.position.z + Math.cos(this.yaw) * 2.8,
+    );
+    const safe = safeCameraBoom(
+      { x: this.target.x, y: this.target.y, z: this.target.z },
+      { x: this.desired.x, y: this.desired.y, z: this.desired.z },
+    );
+    this.desired.set(safe.x, safe.y, safe.z);
+    if (snap) this.follow.copy(this.desired);
+    else this.follow.lerp(this.desired, 1 - Math.exp(-10 * seconds));
+    const final = safeCameraBoom(
+      { x: this.target.x, y: this.target.y, z: this.target.z },
+      { x: this.follow.x, y: this.follow.y, z: this.follow.z },
+    );
+    this.camera.position.set(final.x, final.y, final.z);
+    this.target.y += Math.sin(this.pitch) * 1.2;
+    this.camera.lookAt(this.target);
+    // Collapse gracefully when the camera boom cannot fit beside a wall.
+    this.avatar.visible =
+      this.camera.position.distanceTo(this.avatar.position) > 1.8;
+  }
   private render() {
     if (this.disposed || this.lost) return;
-    this.camera.position.set(
-      this.position.x,
-      chamber.eyeHeight,
-      this.position.z,
-    );
-    this.camera.rotation.set(this.pitch, this.yaw, 0, 'YXZ');
+
     this.renderer.render(this.scene, this.camera);
   }
   private publish() {
@@ -589,6 +820,19 @@ export class ChamberScene {
     this.hooks.snapshot({
       ...this.position,
       yaw: this.yaw,
+      pitch: this.pitch,
+      perspective: this.perspective,
+      destination: nearbyDestination(this.position),
+      inspection: this.inspection,
+      inspectionYaw: this.inspectionYaw,
+      inspectionDistance: this.inspectionDistance,
+      camera: {
+        x: this.camera.position.x,
+        y: this.camera.position.y,
+        z: this.camera.position.z,
+      },
+      reducedMotion: this.reducedMotion.matches,
+      hovering: !this.reducedMotion.matches,
       near: nearTerminal(this.position),
       fps: this.fps,
       frames: this.totalFrames,
@@ -605,29 +849,46 @@ export class ChamberScene {
     try {
       const seconds = Math.min((now - this.previous) / 1000, 0.05);
       this.previous = now;
-      this.yaw +=
-        ((this.keys.has('arrowleft') ? 1 : 0) -
-          (this.keys.has('arrowright') ? 1 : 0)) *
-        seconds;
-      this.pitch = THREE.MathUtils.clamp(
-        this.pitch +
-          ((this.keys.has('arrowup') ? 1 : 0) -
-            (this.keys.has('arrowdown') ? 1 : 0)) *
-            seconds,
-        -1.15,
-        1.15,
-      );
-      this.position = moveObserver(
-        this.position,
-        this.yaw,
-        (this.keys.has('d') ? 1 : 0) -
-          (this.keys.has('a') ? 1 : 0) +
-          this.axis.x,
-        (this.keys.has('w') ? 1 : 0) -
-          (this.keys.has('s') ? 1 : 0) +
-          this.axis.y,
-        seconds,
-      );
+      if (!this.inspection) {
+        this.yaw +=
+          ((this.keys.has('arrowleft') ? 1 : 0) -
+            (this.keys.has('arrowright') ? 1 : 0)) *
+          seconds;
+        this.pitch = THREE.MathUtils.clamp(
+          this.pitch +
+            ((this.keys.has('arrowup') ? 1 : 0) -
+              (this.keys.has('arrowdown') ? 1 : 0)) *
+              seconds,
+          -1.15,
+          1.15,
+        );
+        this.velocity.x = smoothAxis(
+          this.velocity.x,
+          (this.keys.has('d') ? 1 : 0) -
+            (this.keys.has('a') ? 1 : 0) +
+            this.axis.x,
+          seconds,
+        );
+        this.velocity.y = smoothAxis(
+          this.velocity.y,
+          (this.keys.has('w') ? 1 : 0) -
+            (this.keys.has('s') ? 1 : 0) +
+            this.axis.y,
+          seconds,
+        );
+        this.position = moveObserver(
+          this.position,
+          this.yaw,
+          this.velocity.x,
+          this.velocity.y,
+          seconds,
+        );
+      }
+      this.elapsed += seconds;
+      this.specimen.position.y =
+        0.48 +
+        (this.reducedMotion.matches ? 0 : Math.sin(this.elapsed * 0.9) * 0.055);
+      this.updateCamera(seconds);
       this.render();
       this.totalFrames++;
       this.frameCount++;

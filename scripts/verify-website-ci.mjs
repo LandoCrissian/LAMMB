@@ -16,10 +16,10 @@ const driver = process.env.LAMMB_PLAYWRIGHT_MODULE;
 assert(driver, 'Pinned temporary Playwright driver required');
 const root = process.cwd();
 const run = promisify(execFile);
-const baselineSHA = '3be6d332c0270a2b751ba67d8b8e51125869a05f';
-const output = path.resolve('artifacts/generated/task-010/acceptance');
+const baselineSHA = '723807c813270c193c95ae12afbfced3ef952d26';
+const output = path.resolve('artifacts/generated/task-010b/acceptance');
 await mkdir(output, { recursive: true });
-const baseline = path.join(process.env.RUNNER_TEMP, 'lammb-task-010-baseline');
+const baseline = path.join(process.env.RUNNER_TEMP, 'lammb-task-010b-baseline');
 await run('git', ['worktree', 'add', '--detach', baseline, baselineSHA]);
 async function command(executable, args, cwd) {
   const code = await new Promise((resolve, reject) => {
@@ -93,7 +93,7 @@ async function preview(cwd, baselineOnly) {
         '--browser',
         browser,
         '--output',
-        'task-010/acceptance',
+        'task-010b/acceptance',
       ];
       if (baselineOnly) args.push('--baseline-only');
       if (!baselineOnly)
@@ -118,7 +118,7 @@ async function preview(cwd, baselineOnly) {
 }
 await preview(baseline, true);
 await cp(
-  path.join(baseline, 'artifacts/generated/task-010/acceptance'),
+  path.join(baseline, 'artifacts/generated/task-010b/acceptance'),
   path.join(output, 'baseline'),
   { recursive: true },
 );

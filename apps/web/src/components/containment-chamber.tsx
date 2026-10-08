@@ -1,9 +1,42 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { experiment, type ExperimentPhase } from '../lib/chamber-model';
+import {
+  experiment,
+  type ExperimentPhase,
+  type Destination,
+} from '../lib/chamber-model';
 import type { ChamberScene, ChamberSnapshot } from '../lib/chamber-scene';
+import { PointerOwner } from '../lib/chamber-input';
+import { ChamberOverlay } from './chamber-overlay';
 export function ContainmentChamber() {
   const [entered, setEntered] = useState(false);
+  const [perspective, setPerspective] = useState<'first' | 'third'>('first');
+  const [overlay, setOverlay] = useState<'specimen' | 'world' | null>(null);
+  const [portrait, setPortrait] = useState(false);
+  const [portraitBypass, setPortraitBypass] = useState(false);
+  const movement = useRef(new PointerOwner());
+  const overlayTrigger = useRef<HTMLElement | null>(null);
+  const pad = useRef<HTMLButtonElement>(null);
+  const portraitContinue = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const media = matchMedia('(pointer: coarse) and (orientation: portrait)');
+    const update = () => {
+      setPortrait(media.matches);
+      movement.current.clear();
+      scene.current?.clearInput();
+    };
+    update();
+    media.addEventListener('change', update);
+    const clear = () => {
+      movement.current.clear();
+      scene.current?.clearInput();
+    };
+    window.addEventListener('resize', clear);
+    return () => {
+      media.removeEventListener('change', update);
+      window.removeEventListener('resize', clear);
+    };
+  }, []);
   const [ready, setReady] = useState(false);
   const [paused, setPaused] = useState(false);
   const [lost, setLost] = useState(false);
@@ -15,7 +48,7 @@ export function ContainmentChamber() {
   const entry = useRef<HTMLButtonElement>(null);
   const scene = useRef<ChamberScene | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const interact = useRef<() => void>(() => {});
+  const interact = useRef<(destination: Destination) => void>(() => {});
   const resetExperiment = useCallback(() => {
     if (timer.current) clearTimeout(timer.current);
     timer.current = null;
@@ -30,8 +63,20 @@ export function ContainmentChamber() {
     }, 1400);
   }, [phase]);
   useEffect(() => {
-    interact.current = activate;
-  }, [activate]);
+    interact.current = (destination) => {
+      if (destination === 'research') activate();
+      else if (destination) openOverlay(destination);
+    };
+  });
+  useEffect(() => {
+    if (ready)
+      scene.current?.setPaused(
+        paused || Boolean(overlay === 'world') || (portrait && !portraitBypass),
+      );
+  }, [ready, paused, overlay, portrait, portraitBypass]);
+  useEffect(() => {
+    if (ready && portrait && !portraitBypass) portraitContinue.current?.focus();
+  }, [ready, portrait, portraitBypass]);
   useEffect(
     () => () => {
       if (timer.current) clearTimeout(timer.current);
@@ -63,10 +108,11 @@ export function ContainmentChamber() {
           pause: () => {
             if (!cancelled) pause();
           },
-          interact: () => interact.current(),
+          interact: (destination) => interact.current(destination),
           context: (value) => {
             if (!cancelled) {
               setLost(value);
+              setOverlay(null);
               setPaused(true);
             }
           },
@@ -105,10 +151,16 @@ export function ContainmentChamber() {
     setLost(false);
     setFailure('');
     setSnapshot(null);
+    setOverlay(null);
+    setPerspective('first');
+    setPortraitBypass(false);
+    movement.current.clear();
     dialog.current?.showModal();
     setEntered(true);
   }
   function exit() {
+    setOverlay(null);
+    movement.current.clear();
     scene.current?.setPaused(true);
     if (phase === 'RUNNING') resetExperiment();
     dialog.current?.close();
@@ -116,6 +168,7 @@ export function ContainmentChamber() {
     entry.current?.focus();
   }
   function pause() {
+    movement.current.clear();
     scene.current?.setPaused(true);
     setPaused(true);
     if (timer.current) clearTimeout(timer.current);
@@ -124,9 +177,31 @@ export function ContainmentChamber() {
   }
   function resume() {
     if (lost || failure) return;
-    scene.current?.setPaused(false);
+    scene.current?.setPaused(portrait && !portraitBypass);
     setPaused(false);
     canvas.current?.focus();
+  }
+  function openOverlay(kind: 'specimen' | 'world') {
+    if (!ready || paused || lost || failure) return;
+    overlayTrigger.current = document.activeElement as HTMLElement;
+    movement.current.clear();
+    scene.current?.clearInput();
+    if (kind === 'specimen') scene.current?.setInspection(true);
+    else scene.current?.setPaused(true);
+    setOverlay(kind);
+  }
+  function closeOverlay() {
+    if (overlay === 'specimen') scene.current?.setInspection(false);
+    scene.current?.setPaused(paused || (portrait && !portraitBypass));
+    setOverlay(null);
+    requestAnimationFrame(() => {
+      const target = overlayTrigger.current;
+      if (target?.isConnected && !target.matches(':disabled')) target.focus();
+      else canvas.current?.focus();
+    });
+  }
+  function endMovement(id: number) {
+    if (movement.current.release(id)) scene.current?.setAxis(0, 0);
   }
   const result = phase === 'COMPLETE';
   const status =
@@ -169,10 +244,13 @@ export function ContainmentChamber() {
           position returns to the entrance.
         </p>
         <p>
-          Touch: drag the movement pad on the left; drag the scene to look. Tap
-          Run experiment near the console. Pause and Exit are always available.
-          There is no camera bob, flashing alarm or autoplay sound. Reduced
-          motion disables decorative transitions.
+          Touch: left thumb moves, right thumb looks; both work together.
+          Landscape is recommended, with a portrait fallback. Tap Run experiment
+          near the console. Approach the central specimen to inspect, or the
+          right console for LAMMB World. First / third person share one observer
+          position. Pause and Exit are always available. There is no camera bob,
+          flashing alarm or autoplay sound. Reduced motion disables decorative
+          transitions.
         </p>
       </details>
       <section
@@ -241,6 +319,9 @@ export function ContainmentChamber() {
         data-paused={paused}
         data-context-lost={lost}
         data-alarm={result}
+        data-perspective={perspective}
+        data-overlay={overlay ?? 'none'}
+        data-portrait={portrait && !portraitBypass}
       >
         <div className="chamber-stage">
           {entered && (
@@ -248,7 +329,7 @@ export function ContainmentChamber() {
               ref={canvas}
               tabIndex={0}
               role="application"
-              aria-label="First-person containment chamber"
+              aria-label={`${perspective === 'first' ? 'First' : 'Third'}-person containment chamber`}
               aria-describedby="chamber-help"
             />
           )}
@@ -299,10 +380,31 @@ export function ContainmentChamber() {
               )}
             </div>
           )}
+          {portrait && !portraitBypass && ready && !lost && (
+            <section className="chamber-rotate" aria-labelledby="rotate-title">
+              <p className="chamber-kicker">OBSERVER ORIENTATION</p>
+              <h3 id="rotate-title">Rotate to explore.</h3>
+              <p>
+                Landscape leaves room for both thumbs. Rotation is optional;
+                your browser stays in control.
+              </p>
+              <button
+                ref={portraitContinue}
+                type="button"
+                onClick={() => {
+                  setPortraitBypass(true);
+                  requestAnimationFrame(() => canvas.current?.focus());
+                }}
+              >
+                Continue in portrait
+              </button>
+            </section>
+          )}
           <div className="chamber-crosshair" aria-hidden="true">
             +
           </div>
           <aside
+            hidden={!snapshot?.near && !result}
             className="chamber-console"
             aria-label="Research terminal"
             data-near={snapshot?.near ?? false}
@@ -357,6 +459,27 @@ export function ContainmentChamber() {
               </button>
             )}
           </aside>
+          <div
+            className="chamber-context-actions"
+            aria-label="Nearby destination"
+          >
+            <button
+              type="button"
+              hidden={snapshot?.destination !== 'specimen'}
+              disabled={!ready || paused || lost}
+              onClick={() => openOverlay('specimen')}
+            >
+              Inspect specimen (E)
+            </button>
+            <button
+              type="button"
+              hidden={snapshot?.destination !== 'world'}
+              disabled={!ready || paused || lost}
+              onClick={() => openOverlay('world')}
+            >
+              Open World terminal (E)
+            </button>
+          </div>
           <div className="chamber-hud-bottom">
             <div
               className="chamber-movement"
@@ -364,15 +487,21 @@ export function ContainmentChamber() {
               role="group"
             >
               <button
+                ref={pad}
                 type="button"
                 className="chamber-pad"
                 aria-label="Movement pad: drag forward, backward, left or right; keyboard users use WASD in the scene"
                 disabled={!ready || paused || lost}
                 onPointerDown={(event) => {
+                  if (!movement.current.claim(event.pointerId)) return;
+                  event.preventDefault();
                   event.currentTarget.setPointerCapture(event.pointerId);
                 }}
                 onPointerMove={(event) => {
-                  if (!event.currentTarget.hasPointerCapture(event.pointerId))
+                  if (
+                    movement.current.id !== event.pointerId ||
+                    !event.currentTarget.hasPointerCapture(event.pointerId)
+                  )
                     return;
                   const box = event.currentTarget.getBoundingClientRect();
                   const x =
@@ -384,9 +513,9 @@ export function ContainmentChamber() {
                   const length = Math.max(1, Math.hypot(x, y));
                   scene.current?.setAxis(x / length, y / length);
                 }}
-                onPointerUp={() => scene.current?.setAxis(0, 0)}
-                onPointerCancel={() => scene.current?.setAxis(0, 0)}
-                onLostPointerCapture={() => scene.current?.setAxis(0, 0)}
+                onPointerUp={(event) => endMovement(event.pointerId)}
+                onPointerCancel={(event) => endMovement(event.pointerId)}
+                onLostPointerCapture={(event) => endMovement(event.pointerId)}
               >
                 <span aria-hidden="true">
                   ↑<br />← · →<br />↓
@@ -397,21 +526,52 @@ export function ContainmentChamber() {
             <div className="chamber-bottom-actions">
               <button
                 type="button"
-                onClick={() => void scene.current?.lockPointer()}
-                disabled={!ready || paused || lost}
-              >
-                Lock mouse
-              </button>
-              <button
-                type="button"
+                aria-pressed={perspective === 'third'}
+                disabled={!ready || lost}
                 onClick={() => {
-                  scene.current?.resetPosition();
+                  const next = perspective === 'first' ? 'third' : 'first';
+                  scene.current?.setPerspective(next);
+                  setPerspective(next);
                   canvas.current?.focus();
                 }}
-                disabled={!ready || lost}
               >
-                Reset position
+                {' '}
+                {perspective === 'first' ? 'Third person' : 'First person'}{' '}
               </button>
+              <details className="chamber-comfort">
+                <summary>Controls</summary>
+                <label>
+                  Look sensitivity{' '}
+                  <input
+                    type="range"
+                    min="1"
+                    max="6"
+                    defaultValue="3"
+                    onChange={(event) =>
+                      scene.current?.setSensitivity(
+                        Number(event.target.value) / 1000,
+                      )
+                    }
+                  />
+                </label>
+                <button
+                  type="button"
+                  onClick={() => void scene.current?.lockPointer()}
+                  disabled={!ready || paused || lost}
+                >
+                  Lock mouse
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    scene.current?.resetPosition();
+                    canvas.current?.focus();
+                  }}
+                  disabled={!ready || lost}
+                >
+                  Reset position
+                </button>
+              </details>
             </div>
           </div>
           <p id="chamber-help" className="chamber-sr">
@@ -428,6 +588,13 @@ export function ContainmentChamber() {
                 : 'Awaiting first frame.'}
             </pre>
           </details>
+          {overlay && (
+            <ChamberOverlay
+              kind={overlay}
+              scene={scene.current}
+              close={closeOverlay}
+            />
+          )}
         </div>
       </dialog>
     </>
