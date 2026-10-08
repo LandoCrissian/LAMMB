@@ -117,6 +117,8 @@
   height: clamp(350px, 48vw, 610px);
   touch-action: none;
   cursor: grab;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .atlas-map:active {
   cursor: grabbing;
