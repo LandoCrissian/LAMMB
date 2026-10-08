@@ -18,7 +18,7 @@ Two small client components enhance the fiction: a local diagnostic cycles throu
 
 ## Art
 
-`public/art/labs-preview/provenance.json` records authorized imagegen environmental sources, full prompts, source and derivative dimensions, byte sizes and hashes. Masters remain unchanged in the recorded local generated-image archive and ignored evidence directory. Only WebP derivatives ship. Empty laboratory environments show no revealed characters or invented specimen geometry. The Experimental Wing schematic is original SVG source, explicitly a fictional planning diagram.
+`public/art/labs-preview/provenance.json` records authorized imagegen environmental sources, full prompts, source and derivative dimensions, byte sizes and hashes. Masters remain unchanged in the recorded local generated-image archive and ignored evidence directory. Only WebP derivatives ship. Empty laboratory environments show no revealed characters or invented specimen geometry. The Experimental Wing schematic and File 002 signal-corruption study are original inline SVG source, explicitly fictional technical illustrations. Neither represents live telemetry or specimen geometry.
 
 ## Episode catalog
 

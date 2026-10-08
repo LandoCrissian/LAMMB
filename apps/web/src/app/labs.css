@@ -291,6 +291,17 @@
 .labs-evidence {
   margin-bottom: 1.4rem;
 }
+.labs-signal {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  border: 1px solid #71877b80;
+  background: #030b08;
+}
+.labs-signal svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .labs-action {
   display: inline-flex;
   align-items: center;
