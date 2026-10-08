@@ -139,14 +139,12 @@ async function capture(page, name, fullPage = true) {
       await page.evaluate(() => {
         // Keep fixed/sticky UI at the page origin in full-page evidence.
         window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
-        return new Promise((resolve) => requestAnimationFrame(resolve));
       });
     await page.screenshot({ path: path.join(output, filename), fullPage });
   } finally {
     if (fullPage)
       await page.evaluate(({ x, y }) => {
         window.scrollTo({ left: x, top: y, behavior: 'instant' });
-        return new Promise((resolve) => requestAnimationFrame(resolve));
       }, scroll);
   }
   evidence.screenshots.push({
@@ -210,21 +208,19 @@ async function settlePageImages(page) {
     // networkidle can precede native lazy loading, especially in Chrome.
     // Trigger the real load and require success, rather than ignoring it.
     await image.scrollIntoViewIfNeeded();
-    const handle = await image.elementHandle();
-    try {
-      await page.waitForFunction(
-        (img) => img.complete && img.naturalWidth > 0,
-        handle,
-        { timeout: 15000 },
-      );
-      await image.evaluate((img) => img.decode());
-    } finally {
-      await handle.dispose();
+    const deadline = Date.now() + 15000;
+    while (
+      !(await image.evaluate((img) => img.complete && img.naturalWidth > 0))
+    ) {
+      assert(Date.now() < deadline, 'Page image failed to load within 15s');
+      // Poll from the driver: page animation/timer callbacks can be disabled
+      // in the deliberate no-JavaScript acceptance context.
+      await page.waitForTimeout(50);
     }
+    await image.evaluate((img) => img.decode());
   }
   await page.evaluate(({ x, y }) => {
     window.scrollTo({ left: x, top: y, behavior: 'instant' });
-    return new Promise((resolve) => requestAnimationFrame(resolve));
   }, scroll);
 }
 async function visit(page, route) {
