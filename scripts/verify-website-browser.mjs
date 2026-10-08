@@ -92,6 +92,8 @@ const evidence = {
   consoleWarnings: [],
   memorySamplesGB: [],
   memorySource: 'node:os.freemem (Windows available physical memory), GiB',
+  imageReadiness:
+    'Laid-out page images scrolled into view and decoded before geometry/capture; closed disclosures and dialogs stay closed',
   result: 'RUNNING',
 };
 const sourcePaths = (await run('git', ['ls-files', 'apps/web'])).stdout
@@ -182,6 +184,34 @@ function validateGeometry(result) {
   assert.equal(result.mainCount, 1);
   assert.equal(result.h1Count, 1);
 }
+async function settlePageImages(page) {
+  const scroll = await page.evaluate(() => ({ x: scrollX, y: scrollY }));
+  for (const image of await page.locator('img').all()) {
+    const laidOut = await image.evaluate(
+      (img) =>
+        img.getClientRects().length > 0 && !img.closest('details:not([open])'),
+    );
+    if (!laidOut) continue;
+    // networkidle can precede native lazy loading, especially in Chrome.
+    // Trigger the real load and require success, rather than ignoring it.
+    await image.scrollIntoViewIfNeeded();
+    const handle = await image.elementHandle();
+    try {
+      await page.waitForFunction(
+        (img) => img.complete && img.naturalWidth > 0,
+        handle,
+        { timeout: 15000 },
+      );
+      await image.evaluate((img) => img.decode());
+    } finally {
+      await handle.dispose();
+    }
+  }
+  await page.evaluate(({ x, y }) => {
+    window.scrollTo({ left: x, top: y, behavior: 'instant' });
+    return new Promise((resolve) => requestAnimationFrame(resolve));
+  }, scroll);
+}
 async function visit(page, route) {
   await guard();
   const response = await page.goto(`${origin}${route}`, {
@@ -189,6 +219,7 @@ async function visit(page, route) {
   });
   assert.equal(response.status(), 200, `Route failed: ${route}`);
   await page.evaluate(() => document.fonts.ready);
+  await settlePageImages(page);
   return response;
 }
 async function auditPage(page) {
@@ -199,7 +230,8 @@ async function auditPage(page) {
         .filter(predicate)
         .reduce((sum, entry) => sum + entry.transferSize, 0);
     return {
-      measurement: 'LAB_UNTHROTTLED_DPR1_AFTER_NETWORKIDLE_NOT_FIELD_DATA',
+      measurement:
+        'LAB_UNTHROTTLED_DPR1_AFTER_NETWORKIDLE_AND_IMAGE_READINESS_NOT_FIELD_DATA',
       lcpMs: window.__lammbLCP?.startTime ?? null,
       lcpElement: window.__lammbLCP?.element ?? null,
       cls: window.__lammbLayoutShifts.reduce((sum, value) => sum + value, 0),
@@ -763,6 +795,7 @@ async function noScriptChecks(width) {
     for (const image of await page.locator('.vault-view-grid img').all())
       await image.evaluate((el) => el.decode());
     assert.equal(await page.locator('.vault-view-grid img:visible').count(), 3);
+    await settlePageImages(page);
     validateGeometry(await geometry(page));
     await capture(page, `vault-without-javascript-${width}`);
     evidence.interactions.push({
