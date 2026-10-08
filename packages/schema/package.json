@@ -10,7 +10,8 @@
     "./authority": "./src/authority.ts",
     "./fairness": "./src/fairness.ts",
     "./share-card": "./src/share-card.ts",
-    "./atlas": "./src/atlas.ts"
+    "./atlas": "./src/atlas.ts",
+    "./labs": "./src/labs.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
