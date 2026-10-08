@@ -238,7 +238,7 @@ export function WorldAtlas() {
               onClick={() => selectCommunity(item.id)}
             >
               {item.name}
-              {item.role === 'FOUNDING' && <span>founding</span>}
+              {item.role === 'FOUNDING' && <span> founding</span>}
             </button>
           ))}
         </div>
