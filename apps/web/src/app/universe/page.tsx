@@ -1,85 +1,68 @@
-import { PageIntro, ArtSlot, TextLink } from '../../components/site-primitives';
+import { NightAtmosphere } from '../../components/night-atmosphere';
+import { PageIntro, TextLink } from '../../components/site-primitives';
 export const metadata = {
   title: 'The Universe',
   description:
-    'One species. Different personalities. Explore the visual direction of LAMMB.',
+    'One species. Different personalities. Explore the world of LAMMB.',
 };
 export default function Universe() {
   return (
-    <>
+    <div className="universe-experience">
+      <NightAtmosphere />
       <PageIntro
-        eyebrow="THE WORLD OF LAMMB"
-        title="ONE SPECIES."
-        accent="INFINITE PERSONALITIES."
+        eyebrow="COLORADO SPIRIT / NIGHT-CITY ENERGY"
+        title="SAME SHEEP."
+        accent="DIFFERENT WORLD."
       >
         <p>
-          Born from a shared silhouette. Defined by different mindsets. LAMMB
-          carries the same character DNA from one encounter to the next.
+          Altitude in the bones. Attitude in the eyes. A whole universe of
+          personalities waiting behind the seal.
         </p>
       </PageIntro>
-      <section className="editorial-section" aria-labelledby="universe-dna">
-        <div className="split-copy">
-          <h2 id="universe-dna">
-            ATTITUDE
-            <br />
-            <span>BY NATURE.</span>
-          </h2>
-          <div>
-            <p className="large-copy">
-              Lateral ears. Low-set lids.
-              <br />
-              Heavy wool. A compact muzzle.
-            </p>
-            <p className="body-copy">
-              The underlying lamb character comes first. Presentation,
-              structural mutations, pixel corruption and environments have
-              different roles in the art direction. They are not interchangeable
-              accessories.
-            </p>
-            <p className="body-copy">
-              The finished art is still being developed. These abstract slots
-              preserve room for approved artwork without inventing collection
-              characters.
-            </p>
-            <TextLink href="/collection">
-              Discover the collection foundation
-            </TextLink>
-          </div>
-        </div>
-        <div className="art-grid">
-          <ArtSlot
-            label="Character identity slot"
-            variant="wool"
-            code="IDENTITY / 01"
-          />
-          <ArtSlot
-            label="Pixel language slot"
-            variant="signal"
-            code="SYSTEM / 02"
-          />
-          <ArtSlot
-            label="Environment composition slot"
-            variant="environment"
-            code="SCENE / 03"
-          />
-        </div>
-      </section>
       <section
-        className="editorial-section final-callout"
-        aria-labelledby="universe-altitude"
+        className="editorial-section universe-manifesto"
+        aria-labelledby="universe-dna"
       >
-        <p className="section-kicker">COLORADO / HIGHER TOGETHER</p>
-        <h2 id="universe-altitude">
-          A HIGHER
-          <br />
-          <span>PERSPECTIVE.</span>
-        </h2>
-        <p className="body-copy">
-          Night. Mountain silhouettes. Radioactive chartreuse. A restrained
-          visual language shaped by the 5,280 altitude narrative.
-        </p>
-        <TextLink href="/ascent">Enter The 5,280 Ascent</TextLink>
+        <div>
+          <p className="section-kicker">ONE UNDERLYING CHARACTER</p>
+          <h2 id="universe-dna">
+            BUILT
+            <br />
+            <span>DIFFERENT.</span>
+          </h2>
+          <p className="large-copy">
+            Lateral ears. Heavy lids.
+            <br />
+            Sculpted wool. Unmistakable attitude.
+          </p>
+        </div>
+        <div className="universe-notes">
+          <article>
+            <h3>The identity</h3>
+            <p>
+              A stylized lamb with a compact muzzle and strong silhouette. Room
+              for masculine, feminine and neutral presentation.
+            </p>
+          </article>
+          <article>
+            <h3>The possibilities</h3>
+            <p>
+              Structural mutations, selective pixel corruption and environments
+              are distinct parts of the creative direction. Final characters and
+              traits are not exposed here.
+            </p>
+          </article>
+          <article>
+            <h3>The first encounter</h3>
+            <p>
+              Sealed first. A deliberate Ascent. A reveal still to come. The
+              launch itself is part of the story.
+            </p>
+          </article>
+          <TextLink href="/collection">Discover the sealed specimen</TextLink>
+          <TextLink href="/ascent">Follow The 5,280 Ascent</TextLink>
+        </div>
       </section>
-    </>
+    </div>
   );
 }

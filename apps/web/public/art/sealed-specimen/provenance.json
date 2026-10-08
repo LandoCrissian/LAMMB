@@ -1,0 +1,50 @@
+{
+  "version": "lammb-sealed-preview/1",
+  "authorization": "OWNER_TASK_005C_WEBSITE_PREVIEW_ONLY",
+  "productionNFTArtworkApproved": false,
+  "source": {
+    "id": "LAMMB-REF-003",
+    "originalFilename": "3-Photo-3.jpg",
+    "attachmentIdentifier": "01a114b7-7fce-7830-8e15-0054cd40bb6d/40EE5D54-FD1A-448A-BF53-1FFCFD49A853/3-Photo-3.jpg",
+    "sha256": "5f7becf4b2effc8c59be38da8d0ab52cfd957d6765a3eb85abdb1933b7a80bd2",
+    "width": 1280,
+    "height": 853,
+    "bytes": 523211,
+    "provenance": "OWNER_SUPPLIED_CONCEPT_SHEET; original preserved byte-for-byte offline, not publicly served"
+  },
+  "coordinates": "Native decoded RGB pixels; [left, top, right, bottom], right/bottom exclusive",
+  "excluded": "Captions, arrows, borders, post-reveal character example, other sheet panels, rarity and partner claims",
+  "limitations": "Small JPEG source panels; no enhancement or reconstructed detail. Three 2D concept views, not a 3D model or minted specimen.",
+  "derivatives": [
+    {
+      "view": "front",
+      "path": "/art/sealed-specimen/front.png",
+      "cropBounds": [899, 43, 1013, 190],
+      "width": 114,
+      "height": 147,
+      "sha256": "766e9f7cfebd75c610cb16bc91c996a29901c185c5a450c79e293f94a0045e15",
+      "bytes": 33228,
+      "operation": "NATIVE_PIXEL_CROP_TO_LOSSLESS_PNG"
+    },
+    {
+      "view": "side",
+      "path": "/art/sealed-specimen/side.png",
+      "cropBounds": [1015, 43, 1114, 190],
+      "width": 99,
+      "height": 147,
+      "sha256": "10298df9539031ce027567dd51d4571381a24a349c2fb3b63fdfd2a93980fb85",
+      "bytes": 29039,
+      "operation": "NATIVE_PIXEL_CROP_TO_LOSSLESS_PNG"
+    },
+    {
+      "view": "rear",
+      "path": "/art/sealed-specimen/rear.png",
+      "cropBounds": [1120, 43, 1224, 190],
+      "width": 104,
+      "height": 147,
+      "sha256": "6b85ee8af9c2a2035ca541fe7baa00495e5aeeb5014d20699c12053a9babca11",
+      "bytes": 31789,
+      "operation": "NATIVE_PIXEL_CROP_TO_LOSSLESS_PNG"
+    }
+  ]
+}

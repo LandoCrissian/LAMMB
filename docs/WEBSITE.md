@@ -6,26 +6,32 @@ Canonical facts come from `packages/collection`. The seven launch states, data a
 
 ## DEVELOPMENT IMPLEMENTATION
 
-| Route                 | Presentation                                                               |
-| --------------------- | -------------------------------------------------------------------------- |
-| `/`                   | Identity, canonical facts, sealed visual slot, Ascent and PRE_ASCENT study |
-| `/universe`           | Character DNA and visual direction; replaceable artwork slots              |
-| `/collection`         | Sealed/reveal narrative, gallery and provenance boundaries                 |
-| `/ascent`             | Four static canonical milestones and existing PRE_ASCENT presentation      |
-| `/community`          | Flock narrative, access vocabulary, future information links               |
-| `/faq`                | Native HTML question disclosures                                           |
-| `/world`              | Country registry information; no actual map or registrations               |
-| `/profile`            | Collector profile information; no authenticated gallery                    |
-| `/mint`               | Unavailable mint information; no transaction controls                      |
-| `/development/launch` | All seven explicitly labeled static development studies                    |
+| Route                 | Presentation                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| `/`                   | Compact cinematic viewport, canonical facts and approved sealed concept inspection |
+| `/universe`           | Pre-reveal identity/story and decorative mountain/night-city vector atmosphere     |
+| `/collection`         | Approved sealed concept inspection, delayed reveal and integrity boundaries        |
+| `/ascent`             | Four static canonical milestones and existing PRE_ASCENT presentation              |
+| `/community`          | Flock narrative, access vocabulary, future information links                       |
+| `/faq`                | Native HTML question disclosures                                                   |
+| `/world`              | Country registry information; no actual map or registrations                       |
+| `/profile`            | Collector profile information; no authenticated gallery                            |
+| `/mint`               | Unavailable mint information; no transaction controls                              |
+| `/development/launch` | All seven explicitly labeled static development studies                            |
 
-The root layout owns the skip link, one main landmark, global header and footer. Pages have individual headings/metadata; a custom not-found page returns visitors home. The only client component is navigation: ordinary keyboard activation, `aria-expanded`/`aria-controls`, route indication, Escape closes and restores button focus, and choosing a link closes it. It is a disclosure, not a modal or ARIA menu; links retain ordinary Tab order. Below 1100px navigation collapses; footer links remain accessible without JavaScript. FAQ disclosures require no client JavaScript.
+The root layout owns the skip link, one main landmark, global header and compact footer. Pages have individual headings/metadata; a custom not-found page returns visitors home. Desktop and mobile share a nine-destination hamburger navigation in a native modal dialog. Ordinary links retain Tab order; explicit Tab/Shift+Tab wrapping prevents focus leaving the dialog. Escape and the visible close control restore the trigger's focus. Native modal inertness prevents background interaction, and body scrolling is temporarily locked with cleanup on close/unmount. Selecting a destination closes navigation. Footer links and native FAQ disclosures remain usable without JavaScript.
 
-CSS is local and mobile-first. Grid tracks use `minmax(0, ...)`; content wraps and page overflow is never hidden to mask failures. Only decorative drawings clip their own bounds. Focus outlines, 44px navigation targets, contrast-conscious palette and reduced-motion rules are included. There are no external fonts/images/scripts, tracking or animations. Client navigation imports only a small array, not collection validation or offline generation tools.
+The server-rendered architecture remains intact. Small client components handle only navigation and specimen view selection; no launch state, ownership or transaction authority moves to the client. CSS is local, mobile-first and content-driven. Natural vertical scrolling remains when a short/narrow viewport cannot fit content. No page overflow is concealed to hide failures. Focus outlines, minimum 44px actionable targets, contrast-conscious palette and reduced-motion rules are preserved. There are no external fonts/scripts, tracking or autoplay audio.
 
-## Artwork provenance
+## Artwork provenance — owner-authorized preview
 
-No approved web-ready character assets exist in the repository. Owner concept sheets in LAMMB Studio are not implicitly publication-approved. The site uses explicitly captioned CSS specimen/identity/system/scene slots and the existing decorative altitude SVG. These are abstract studies, not NFT art. No mockup, panel, new character art or extracted portrait is copied to public assets. Replacement requires approved web artwork, source/permission reference, digest, accessible text and crop/sizing review. Historical concept percentages and trait labels establish no production promise.
+Task 005C explicitly authorizes the sealed specimen portion of owner-supplied `LAMMB-REF-003` for website preview. This does not approve production NFT artwork or the rest of the concept sheet. Original SHA-256: `5f7becf4b2effc8c59be38da8d0ab52cfd957d6765a3eb85abdb1933b7a80bd2`. The Studio original stays unchanged; a byte-identical preservation copy is under ignored `artifacts/generated/task-005c/source`. The whole sheet is not publicly served.
+
+`apps/web/public/art/sealed-specimen/provenance.json` records the authorization, attachment ID, source size/dimensions/hash, native crop coordinates, output dimensions/bytes/hashes and limitations. Front (114×147), side (99×147), and rear (104×147) are crops converted to lossless RGB PNG. No repainting, upscaling, sharpening, color changes, inference or reconstructed geometry is performed. `scripts/extract-sealed-specimen.py` reproduces the extraction using an existing Pillow installation and fails on a source hash mismatch or conflicting output. Pillow is preparation tooling, not a new project/runtime dependency. Public image delivery bypasses optimization to preserve these PNG bytes.
+
+The hero, Collection and Mint use the front view as a labeled concept preview. Activating it opens a full-screen inspection dialog; FRONT/SIDE/REAR buttons and Left/Right/Home/End keys select actual extracted 2D views. Touch activates the same buttons. A polite live caption announces the selected view. Escape/visible close restore trigger focus. This is not a 3D rotation, minted NFT, live supply display or revealed character gallery.
+
+These source panels are small JPEG-derived previews. CSS display sizing cannot restore detail; larger screens expose that resolution limit. The post-reveal example, adjacent captions/arrows/borders, unapproved portraits, crowns, rarity charts and partner claims are excluded. All final character artwork remains pending. Decorative vector mountains/city silhouettes are atmosphere, not collection environments or final art. The owner must independently review visual fidelity and eventual larger approved web assets.
 
 ## CURRENT DESIGN DIRECTION: LAMMB World
 
@@ -51,7 +57,7 @@ Run `npm ci`, `npm run format`, `npm run format:check`, `npm run lint`, `npm run
 
 Task 005B adds `scripts/verify-website-browser.mjs`, a manual acceptance runner using an existing official Playwright installation and installed Edge/Chrome channels. It adds no package dependency, browser download or global configuration. It checks ten routes at 320/390/768/1440px, document scroll/client width, heading clipping, unique IDs, landmarks, navigation, Tab/Enter/Space/Escape/focus return, skip link, native FAQ, reduced-motion emulation, console/network errors, missing assets and 404 return navigation. Touch/mobile contexts emulate narrower devices; they do not certify physical iPhone/Safari behavior. Browser inputs and screenshots are actual engine evidence, not HTTP/string snapshots. See [review record and exact commands](TASK_005_REVIEW.md).
 
-Screenshots and digest-bound results stay under ignored `artifacts/generated/task-005b`. Run against the production build on localhost; never production deployment. The runner records HEAD and a digest of tracked web source files at execution and exits nonzero on failure. Browser sessions are fresh and sequential, requests outside the local origin are blocked, and Windows memory guards stop further operations under pressure. The app keeps its server-rendered architecture; the manual runner is not a runtime dependency. Screenshot review refines editorial layouts, legible supporting labels and abstract Colorado/pixel/scene treatments while retaining all approval labels. Ascent renders the existing schema's seven lifecycle names as static narrative chapters, without modifying domain state or transition authority.
+Task 005B evidence stays under ignored `artifacts/generated/task-005b`; Task 005C evidence uses `artifacts/generated/task-005c`. Run against the production build on localhost; never production deployment. The runner records HEAD and a digest of tracked web source files at execution and exits nonzero on failure. Browser sessions are fresh and sequential, requests outside the local origin are blocked, and Windows memory guards stop further operations under pressure. The app keeps its server-rendered architecture; the manual runner is not a runtime dependency. Task 005C adds modal inertness/focus containment, all three 2D inspection views, keyboard/touch switching and screenshots at every width. Screenshot review checks the compact composition against the owner concept direction; passing automated checks does not establish visual equivalence or owner art approval. Ascent renders the existing schema's seven lifecycle names as static narrative chapters, without modifying domain state or transition authority.
 
 ## UNRESOLVED PRODUCTION DECISIONS
 

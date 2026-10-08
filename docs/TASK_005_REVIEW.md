@@ -47,10 +47,45 @@ Mobile widths use touch/mobile viewport emulation in real Edge and Chrome engine
 
 Initial root requests returned generic Netlify 404 with working DNS/TLS and www redirect. After the owner linked the new repository, root and `/development/launch` were independently verified as HTTP 200; the latter retains seven states. Account settings and deploy history remain inaccessible: NETLIFY_ACCOUNT_ACCESS_UNAVAILABLE. No causal claim about unobserved publish/routing settings. Evidence and exact owner inspection steps: [Netlify diagnosis](NETLIFY_DIAGNOSIS.md).
 
-## Scope and unresolved decisions
+## Task 005 / 005B scope history and unresolved decisions
 
 No web-ready character art is approved in the repository; clearly labeled abstract CSS slots and the existing altitude SVG are used. No concept mockup or AI character artwork is introduced. Future World, Profile and Mint are information-only routes, without registration, wallet/authentication/OAuth, ownership, database, counts or transactions. Country registry privacy, opt-in identity linking and transfer-aware invalidation are documented, not implemented.
 
 No launch authority changes, state mutation, partner/rarity/date promises, chain/RPC/wallet code, tracking, credentials, domain/production configuration changes or deployment. The existing five high-severity development lint-chain advisories are reported by locked install; no forced dependency change is made.
 
 Pending: owner visual review, approved artwork/framing, physical-device/Safari and assistive-technology review, official social/marketplace links, final editorial review, hosting/runtime/CSP review, registry geography/privacy/transfer rules and later authenticated mint/reveal/profile integrations. See [website boundaries](WEBSITE.md). Draft PR is for exact-head owner review, not production acceptance.
+
+## Task 005C — cinematic sealed specimen experience
+
+Authorized start: main `5d7d35556d672452ab5755834ef68319835b3447`, PR #5 head `62fd457ce671d380cc0830951d107f38543e610d`. Existing branch and draft PR only. No merge, deployment, account/domain configuration, dependency graph, canonical schema or offline generator changes.
+
+The homepage now presents one desktop composition rather than a long sequence of landing-page sections: LAMMB typography, collection facts, deliberate exploration links, mountain/night-city vector atmosphere and the actual sealed specimen concept. Narrow screens put the specimen beside the sealed/reveal narrative and retain natural scrolling for facts/footer. The global footer is compact. Universe becomes a pre-reveal narrative; Collection and Mint present the sealed concept rather than repeated abstract gallery boxes. World/Profile remain future information pages. The seven existing launch presentations remain unchanged.
+
+The owner explicitly authorized only the sealed views from `LAMMB-REF-003` for website preview. The 523,211-byte source is 1280×853 JPEG, SHA-256 `5f7becf4b2effc8c59be38da8d0ab52cfd957d6765a3eb85abdb1933b7a80bd2`. Original bytes remain unchanged in Studio and are preserved in ignored `artifacts/generated/task-005c/source/LAMMB-REF-003.jpg`. Native crop bounds (right/bottom exclusive): front `[899,43,1013,190]`, side `[1015,43,1114,190]`, rear `[1120,43,1224,190]`. Exact derivative hashes/dimensions and permission are in `apps/web/public/art/sealed-specimen/provenance.json`. The full sheet, adjacent annotations, reveal transformation and post-reveal character are not publicly served. No source art is repainted, resized, filtered or regenerated. Reproduction command using already-installed tooling:
+
+```powershell
+& C:/Users/RMT/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe scripts/extract-sealed-specimen.py C:/LAMMB-Studio/references/originals/LAMMB-REF-003.jpg
+```
+
+Desktop/mobile hamburger navigation and specimen inspection use native full-screen modal dialogs, explicit Tab wrapping, background inertness, scroll lock with cleanup, visible close controls and Escape/focus restoration. Inspection uses three actual 2D views, not simulated rotation or missing geometry. Buttons, touch and Left/Right/Home/End keys switch views, with a polite live caption. Only local presentation state changes; there are no wallet/mint/ownership/registration actions.
+
+An initial browser review exposed native Tab traversal reaching browser chrome and a low mobile focal point. Explicit focus wrapping and a mobile two-column narrative/specimen composition corrected them. A second Edge review passed 40 route/viewport cases, 32 interaction checks and 80 screenshots; minimum sampled available RAM was 3.501 GiB. Screenshots then identified a decorative label overlapping the specimen heading at mobile/tablet widths; spacing was corrected. Final evidence is captured on the committed head, separately from these preliminary reviews:
+
+```powershell
+npm ci
+npm run format
+npm run format:check
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run start --workspace @lammb/web -- --hostname 127.0.0.1 --port 3005
+node scripts/verify-website-browser.mjs --playwright-module C:/Users/RMT/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright --browser msedge --output task-005c/final
+node scripts/verify-website-browser.mjs --playwright-module C:/Users/RMT/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright --browser chrome --output task-005c/final
+```
+
+The existing isolated browser setup adds no binaries/dependencies and uses no personal profiles. Each browser runs sequentially against localhost only. The acceptance runner records exact HEAD/web source digest, screenshot hashes, geometry, console warnings/errors and RAM samples. It checks all ten routes, nine navigation destinations, keyboard/touch modal controls, Tab/Shift+Tab containment and blocked background focus, Escape/focus return, three distinct image sources, reduced motion, FAQ, seven launch studies and custom 404. Full-page route images, viewport home/menu and all specimen views are in ignored `artifacts/generated/task-005c/final/{msedge,chrome}`. `ACCEPTANCE.md`/`ACCEPTANCE.json` record final outcomes, changed paths, asset provenance, exact-head CI and screenshot index; the final ZIP provides a local review bundle.
+
+Vitest now has 198 tests across 12 files, including exact public asset digests/dimensions, native crop bounds, three-view-only publication, preview authorization and explicit separation from final art. These tests do not substitute for browser behavior. Locked install retains five inherited high-severity development lint-chain advisories; no forced upgrade is performed.
+
+Visual differences from the owner concept are explicit: source specimen panels are only 99–114×147 pixels and remain soft at larger display sizes; the backdrop is decorative vector mountain/city atmosphere rather than the concept's detailed illustrated scenery; typography uses installed font fallbacks rather than a finalized custom graffiti wordmark; no revealed character, countdown, connected wallet, named partners or rarity chart appears. The compact page and inspection are a functional interpretation, not a claim of visual equivalence or approved final production art. A larger owner-approved specimen export, final brand assets and independent physical iPhone/Safari/screen-reader review remain unresolved. Final visual approval belongs to the owner.

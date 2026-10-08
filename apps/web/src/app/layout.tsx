@@ -5,6 +5,7 @@ import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
 import './globals.css';
 import './site.css';
+import './cinematic.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${collection.domain}`),
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SiteHeader />
         <p className="foundation-banner">
           WEBSITE FOUNDATION / MINT NOT LIVE{' '}
-          <span>No wallet required. Artwork slots are placeholders.</span>
+          <span>Sealed specimen concept preview. No wallet required.</span>
         </p>
         <main id="main" tabIndex={-1}>
           {children}
