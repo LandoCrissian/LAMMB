@@ -208,6 +208,21 @@ async function assertFocusContained(page, dialog) {
     'hidden',
   );
 }
+async function awaitInspectionView(page, view) {
+  const expected = art.assets.find((asset) => asset.id === view).path;
+  await page.waitForFunction((expectedPath) => {
+    const source = document
+      .querySelector('.inspection-dialog[open] .inspection-image')
+      .getAttribute('src');
+    const url = new URL(source, location.origin);
+    return (
+      (url.pathname === '/_next/image'
+        ? url.searchParams.get('url')
+        : url.pathname) === expectedPath
+    );
+  }, expected);
+  await page.locator('.inspection-image').evaluate((el) => el.decode());
+}
 async function interactionChecks(page, width) {
   await visit(page, '/');
   await page.keyboard.press('Tab');
@@ -338,7 +353,9 @@ async function interactionChecks(page, width) {
   assert.equal(new Set(viewSources).size, 3);
   await inspection.getByRole('button', { name: 'FRONT', exact: true }).focus();
   await page.keyboard.press('Home');
+  await awaitInspectionView(page, 'front');
   await page.keyboard.press('ArrowRight');
+  await awaitInspectionView(page, 'side');
   assert.equal(
     await inspection
       .getByRole('button', { name: 'SIDE', exact: true })
@@ -346,6 +363,7 @@ async function interactionChecks(page, width) {
     'true',
   );
   await page.keyboard.press('End');
+  await awaitInspectionView(page, 'rear');
   assert.equal(
     await inspection
       .getByRole('button', { name: 'REAR', exact: true })
@@ -353,6 +371,7 @@ async function interactionChecks(page, width) {
     'true',
   );
   await page.keyboard.press('ArrowRight');
+  await awaitInspectionView(page, 'front');
   assert.equal(
     await inspection
       .getByRole('button', { name: 'FRONT', exact: true })
@@ -360,6 +379,7 @@ async function interactionChecks(page, width) {
     'true',
   );
   await page.keyboard.press('ArrowLeft');
+  await awaitInspectionView(page, 'rear');
   assert.equal(
     await inspection
       .getByRole('button', { name: 'REAR', exact: true })
@@ -375,6 +395,7 @@ async function interactionChecks(page, width) {
   assert.equal(await page.evaluate(() => document.body.style.overflow), '');
   if (width < 1100) await trigger.tap();
   else await trigger.click();
+  await awaitInspectionView(page, 'front');
   const closeInspection = page.getByRole('button', {
     name: 'Close specimen inspection',
     exact: true,
@@ -488,6 +509,10 @@ async function interactionChecks(page, width) {
   await capture(page, `not-found-${width}`);
   await page.getByRole('link', { name: 'Return to LAMMB' }).click();
   await page.waitForURL(`${origin}/`);
+  await page.waitForLoadState('networkidle');
+  await page
+    .locator('.cinema-specimen .specimen-preview-image')
+    .evaluate((el) => el.decode());
   evidence.interactions.push({
     width,
     check: '404-and-return-navigation',
@@ -562,6 +587,8 @@ try {
       evidence.errors.push({
         type: 'requestfailed',
         url: request.url(),
+        pageUrl: page.url(),
+        width,
         message: request.failure()?.errorText,
       }),
     );
