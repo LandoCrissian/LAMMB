@@ -3,10 +3,12 @@ import type { ReactNode } from 'react';
 import { collection } from '@lammb/collection/config';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
+import { navigation } from '../config/navigation';
 import './globals.css';
 import './site.css';
 import './cinematic.css';
 import './homepage.css';
+import './experience.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${collection.domain}`),
@@ -25,9 +27,25 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <SiteHeader />
+        <noscript>
+          <style>
+            {
+              '.menu-toggle, .specimen-trigger, .specimen-caption { display: none !important; }'
+            }
+          </style>
+          <details className="fallback-navigation">
+            <summary>Explore LAMMB destinations</summary>
+            <nav aria-label="Destinations without JavaScript">
+              {navigation.map((item) => (
+                <a key={item.href} href={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </details>
+        </noscript>
         <p className="foundation-banner">
-          WEBSITE FOUNDATION / MINT NOT LIVE{' '}
-          <span>Sealed specimen concept preview. No wallet required.</span>
+          THE VAULT IS SEALED.<span>MINT UNAVAILABLE</span>
         </p>
         <main id="main" tabIndex={-1}>
           {children}

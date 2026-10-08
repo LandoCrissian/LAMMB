@@ -52,7 +52,7 @@ export function ArtSlot({
     <figure className={`art-slot art-slot-${variant}`}>
       <div className="slot-topline">
         <span>{code}</span>
-        <span>REPLACEABLE VISUAL</span>
+        <span>CONCEPT STUDY</span>
       </div>
       <div className="slot-composition" aria-hidden="true">
         <div className="slot-orbit" />

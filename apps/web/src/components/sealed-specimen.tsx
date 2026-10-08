@@ -8,7 +8,15 @@ import {
 } from '../config/specimen';
 import { useDialog } from './use-dialog';
 
-export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
+export function SealedSpecimen({
+  priority = false,
+  chamber = false,
+  compact = false,
+}: {
+  priority?: boolean;
+  chamber?: boolean;
+  compact?: boolean;
+}) {
   const { dialogRef, triggerRef, show, close, containFocus } = useDialog();
   const [index, setIndex] = useState(0);
   const controls = useRef<(HTMLButtonElement | null)[]>([]);
@@ -51,9 +59,11 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
           height={front.height}
           preload={priority}
           sizes={
-            priority
-              ? '(min-width: 1100px) 300px, (min-width: 768px) 280px, 45vw'
-              : '(min-width: 768px) 240px, 70vw'
+            chamber
+              ? '(min-width: 768px) 340px, (min-width: 452px) 280px, 62vw'
+              : priority
+                ? '(min-width: 1100px) 300px, (min-width: 768px) 280px, 45vw'
+                : '(min-width: 768px) 240px, 70vw'
           }
           className="specimen-preview-image"
         />
@@ -62,8 +72,22 @@ export function SealedSpecimen({ priority = false }: { priority?: boolean }) {
         </span>
       </button>
       <p className="specimen-caption">
-        SEALED SPECIMEN<span>Concept preview / not final NFT artwork</span>
+        {!compact && 'SEALED SPECIMEN'}
+        <span>Concept preview / not final NFT artwork</span>
       </p>
+      <noscript>
+        <figure className="specimen-static-fallback">
+          <Image
+            src={front.path}
+            alt={specimenDescriptions.front}
+            width={front.width}
+            height={front.height}
+            sizes="(min-width: 768px) 340px, 70vw"
+          />
+          <figcaption>Concept preview / not final NFT artwork</figcaption>
+          <a href="/vault#specimen-views">See all three specimen views</a>
+        </figure>
+      </noscript>
       <dialog
         ref={dialogRef}
         id={`${id}-inspection`}

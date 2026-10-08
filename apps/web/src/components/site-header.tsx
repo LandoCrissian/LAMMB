@@ -10,8 +10,7 @@ const wordmark = cinematicAsset('wordmark');
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { dialogRef, triggerRef, open, show, close, containFocus } =
-    useDialog();
+  const destination = navigation.find((item) => item.href === pathname);
   return (
     <header className="global-header">
       <Link className="brand-mark" href="/" aria-label="LAMMB home">
@@ -24,9 +23,22 @@ export function SiteHeader() {
           className="brand-image"
         />
       </Link>
-      <span className="header-coordinate" aria-hidden="true">
-        5280 / HIGHER TOGETHER
+      <span className="current-location">
+        <span>YOU ARE HERE</span>
+        <strong>{destination?.label ?? 'Beyond the map'}</strong>
       </span>
+      <NavigationMenu key={pathname} pathname={pathname} />
+    </header>
+  );
+}
+
+// Route changes reset only the ephemeral overlay, including browser back/forward.
+// The native links and Next router retain history, deep links and refresh behavior.
+function NavigationMenu({ pathname }: { pathname: string }) {
+  const { dialogRef, triggerRef, open, show, close, containFocus } =
+    useDialog();
+  return (
+    <>
       <button
         ref={triggerRef}
         className="menu-toggle"
@@ -88,9 +100,12 @@ export function SiteHeader() {
                 onClick={close}
               >
                 <span className="navigation-index" aria-hidden="true">
-                  0{index + 1}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-                {item.label}
+                <span className="navigation-link-copy">
+                  <span>{item.label}</span>
+                  <small>{item.detail}</small>
+                </span>
                 <span className="navigation-arrow" aria-hidden="true">
                   ↗
                 </span>
@@ -99,9 +114,9 @@ export function SiteHeader() {
           </nav>
         </div>
         <p className="dialog-footnote">
-          lammb.fun / SEALED FIRST. REVEALED LATER. / MINT NOT LIVE
+          THE VAULT IS SEALED. THE FLOCK IS COMING. / MINT UNAVAILABLE
         </p>
       </dialog>
-    </header>
+    </>
   );
 }

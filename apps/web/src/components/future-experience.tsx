@@ -6,7 +6,7 @@ export function FutureExperience({
   kind,
   children,
 }: {
-  kind: keyof typeof futureExperiences;
+  kind: 'profile' | 'mint';
   children: ReactNode;
 }) {
   const experience = futureExperiences[kind];
@@ -14,20 +14,8 @@ export function FutureExperience({
     <>
       <PageIntro
         eyebrow={experience.eyebrow}
-        title={
-          kind === 'world'
-            ? 'SAME WORLD.'
-            : kind === 'profile'
-              ? 'YOUR LAMMB.'
-              : 'FIRST, SEALED.'
-        }
-        accent={
-          kind === 'world'
-            ? 'GLOBAL FLOCK.'
-            : kind === 'profile'
-              ? 'YOUR MINDSET.'
-              : 'THEN, REVEALED.'
-        }
+        title={kind === 'profile' ? 'YOUR LAMMB.' : 'FIRST, SEALED.'}
+        accent={kind === 'profile' ? 'YOUR MINDSET.' : 'THEN, REVEALED.'}
       >
         <p>{experience.detail}</p>
         <p className="availability-label">{experience.status}</p>
@@ -42,31 +30,12 @@ export function FutureExperience({
           {children}
           <TextLink href="/faq">Read the FAQ</TextLink>
         </div>
-        {kind === 'world' ? (
-          <figure className="world-study">
-            <div className="world-orb" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-              <span>W</span>
-            </div>
-            <figcaption>
-              <strong>WORLD VIEW / VISUAL PLACEHOLDER</strong>
-              <span>
-                No country registry or collector counts are available.
-              </span>
-            </figcaption>
-          </figure>
-        ) : kind === 'mint' ? (
+        {kind === 'mint' ? (
           <SealedSpecimen />
         ) : (
           <ArtSlot
-            label={
-              kind === 'profile'
-                ? 'Collector gallery artwork slot'
-                : 'Sealed specimen artwork slot'
-            }
-            code="FUTURE / FOUNDATION"
+            label="Your collection, after reveal"
+            code="FUTURE / COLLECTOR PROFILE"
           />
         )}
       </section>

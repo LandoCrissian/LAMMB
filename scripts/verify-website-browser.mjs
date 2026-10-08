@@ -13,10 +13,10 @@ const { values } = parseArgs({
   options: {
     'playwright-module': { type: 'string' },
     browser: { type: 'string', default: 'msedge' },
-    output: { type: 'string', default: 'task-005c/final' },
+    output: { type: 'string', default: 'task-007/acceptance' },
     port: { type: 'string', default: '3005' },
     origin: { type: 'string' },
-    widths: { type: 'string', default: '320,390,768,1440' },
+    widths: { type: 'string', default: '320,390,768,1024,1440,1920' },
     'home-only': { type: 'boolean', default: false },
   },
 });
@@ -51,6 +51,7 @@ const load = createRequire(import.meta.url);
 const { chromium } = load(values['playwright-module'] || 'playwright');
 const routes = [
   '/',
+  '/vault',
   '/universe',
   '/collection',
   '/ascent',
@@ -171,6 +172,7 @@ async function geometry(page) {
         .filter(
           (img) =>
             img.getClientRects().length &&
+            !img.closest('details:not([open])') &&
             (!img.complete || img.naturalWidth === 0),
         )
         .map((img) => img.src),
@@ -367,7 +369,7 @@ async function interactionChecks(page, width) {
   const navigationDialog = page.locator('.navigation-dialog');
   assert(await navigationDialog.evaluate((el) => el.open));
   assert(await page.locator('#global-navigation').isVisible());
-  assert.equal(await page.locator('#global-navigation a').count(), 9);
+  assert.equal(await page.locator('#global-navigation a').count(), 10);
   await assertFocusContained(page, navigationDialog);
   validateGeometry(await geometry(page));
   await capture(page, `menu-open-${width}`, false);
@@ -512,6 +514,7 @@ async function interactionChecks(page, width) {
     result: 'PASS',
     viewSources,
   });
+  await universeChecks(page, width);
   await visit(page, '/faq');
   const question = page.locator('.faq-item summary').first();
   await question.focus();
@@ -618,6 +621,161 @@ async function interactionChecks(page, width) {
     check: '404-and-return-navigation',
     result: 'PASS',
   });
+}
+
+async function universeChecks(page, width) {
+  await visit(page, '/');
+  await page.getByRole('link', { name: 'Enter the Vault' }).click();
+  await page.waitForURL(`${origin}/vault`);
+  await page.reload({ waitUntil: 'networkidle' });
+  assert.equal(
+    await page.locator('.current-location strong').innerText(),
+    'The Vault',
+  );
+  await page.getByRole('link', { name: 'Discover the collection' }).click();
+  await page.waitForURL(`${origin}/collection`);
+  await page.goBack({ waitUntil: 'networkidle' });
+  await page.waitForURL(`${origin}/vault`);
+  assert.equal(new URL(page.url()).pathname, '/vault');
+  await page.goForward({ waitUntil: 'networkidle' });
+  await page.waitForURL(`${origin}/collection`);
+  assert.equal(new URL(page.url()).pathname, '/collection');
+  await page.locator('.menu-toggle').click();
+  assert(await page.locator('.navigation-dialog').evaluate((el) => el.open));
+  await page.goBack({ waitUntil: 'networkidle' });
+  await page.waitForURL(`${origin}/vault`);
+  assert.equal(new URL(page.url()).pathname, '/vault');
+  assert.equal(
+    await page.locator('.navigation-dialog').evaluate((el) => el.open),
+    false,
+  );
+  assert.equal(await page.evaluate(() => document.body.style.overflow), '');
+  assert.equal(
+    await page
+      .locator('#global-navigation a[aria-current="page"]')
+      .getAttribute('href'),
+    '/vault',
+  );
+  evidence.interactions.push({
+    width,
+    check: 'vault-deep-link-refresh-back-forward-menu-reset',
+    result: 'PASS',
+  });
+
+  const trigger = page.getByRole('button', {
+    name: 'Inspect sealed specimen concept',
+    exact: true,
+  });
+  if (width < 1100) await trigger.tap();
+  else await trigger.click();
+  const inspection = page.locator('.inspection-dialog');
+  await assertFocusContained(page, inspection);
+  for (const view of ['front', 'side', 'rear']) {
+    const control = inspection.getByRole('button', {
+      name: view.toUpperCase(),
+      exact: true,
+    });
+    if (width < 1100) await control.tap();
+    else await control.click();
+    await awaitInspectionView(page, view);
+    assert.equal(await control.getAttribute('aria-pressed'), 'true');
+    await capture(page, `vault-inspection-${view}-${width}`, false);
+  }
+  await page.keyboard.press('Home');
+  await awaitInspectionView(page, 'front');
+  await page.keyboard.press('ArrowRight');
+  await awaitInspectionView(page, 'side');
+  await page.keyboard.press('Escape');
+  assert.equal(await inspection.evaluate((el) => el.open), false);
+  assert(await trigger.evaluate((el) => el === document.activeElement));
+  assert.equal(await page.evaluate(() => document.body.style.overflow), '');
+  await visit(page, '/vault#specimen-views');
+  const summary = page.locator('.vault-views summary');
+  await summary.focus();
+  await page.keyboard.press('Enter');
+  for (const image of await page.locator('.vault-view-grid img').all())
+    await image.evaluate((el) => el.decode());
+  assert.equal(await page.locator('.vault-view-grid figure').count(), 3);
+  validateGeometry(await geometry(page));
+  await capture(page, `vault-static-views-${width}`);
+  await page.keyboard.press('Space');
+  assert.equal(await page.locator('.vault-views').getAttribute('open'), null);
+  assert.equal(
+    await page
+      .locator('.global-header')
+      .evaluate((el) => Math.round(el.getBoundingClientRect().top)),
+    0,
+  );
+  evidence.interactions.push({
+    width,
+    check: 'vault-inspection-touch-keyboard-static-views-sticky-navigation',
+    result: 'PASS',
+  });
+
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await visit(page, '/vault');
+  const activeMotion = await page.evaluate(
+    () =>
+      [...document.querySelectorAll('*')]
+        .flatMap((el) =>
+          [null, '::before', '::after'].map((pseudo) =>
+            getComputedStyle(el, pseudo),
+          ),
+        )
+        .filter(
+          (style) =>
+            style.animationName !== 'none' ||
+            style.transitionDuration
+              .split(',')
+              .some((duration) => parseFloat(duration) > 0),
+        ).length,
+  );
+  assert.equal(activeMotion, 0);
+  await capture(page, `vault-reduced-motion-${width}`, false);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  evidence.interactions.push({
+    width,
+    check: 'vault-reduced-motion-including-pseudo-elements',
+    result: 'PASS',
+    activeMotion,
+  });
+}
+
+async function noScriptChecks(width) {
+  await guard();
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width, height: 844 },
+  });
+  await context.route('**/*', (route) =>
+    new URL(route.request().url()).origin === origin
+      ? route.continue()
+      : route.abort(),
+  );
+  try {
+    const page = await context.newPage();
+    await visit(page, '/');
+    assert.equal(await page.locator('.menu-toggle').isVisible(), false);
+    assert.equal(await page.locator('.specimen-trigger').isVisible(), false);
+    assert(await page.locator('.specimen-static-fallback img').isVisible());
+    await page.locator('.fallback-navigation summary').click();
+    assert.equal(await page.locator('.fallback-navigation a').count(), 10);
+    await page.locator('.fallback-navigation a[href="/vault"]').click();
+    await page.waitForURL(`${origin}/vault`);
+    await page.locator('.vault-views summary').click();
+    for (const image of await page.locator('.vault-view-grid img').all())
+      await image.evaluate((el) => el.decode());
+    assert.equal(await page.locator('.vault-view-grid img:visible').count(), 3);
+    validateGeometry(await geometry(page));
+    await capture(page, `vault-without-javascript-${width}`);
+    evidence.interactions.push({
+      width,
+      check: 'no-javascript-native-navigation-static-specimen-gallery',
+      result: 'PASS',
+    });
+  } finally {
+    await context.close();
+  }
 }
 let memoryTimer;
 try {
@@ -772,6 +930,7 @@ try {
     } finally {
       await context.close();
     }
+    if (!values['home-only']) await noScriptChecks(width);
   }
   assert.deepEqual(
     evidence.errors.filter((error) => !error.expected404),
