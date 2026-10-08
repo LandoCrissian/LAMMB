@@ -21,6 +21,9 @@ jobs:
       NEXT_TELEMETRY_DISABLED: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
@@ -39,3 +42,41 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+  browser-acceptance:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Pin npm in the disposable runner
+        run: npm install --global npm@10.9.8
+      - name: Install locked application dependencies
+        run: npm ci
+      - name: Build local production preview
+        run: npm run build
+      - name: Install pinned test driver outside the repository
+        shell: pwsh
+        run: |
+          $driver = Join-Path $env:RUNNER_TEMP 'lammb-browser'
+          npm install --prefix $driver --no-save --package-lock=false --ignore-scripts playwright-core@1.62.1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "LAMMB_PLAYWRIGHT_MODULE=$driver/node_modules/playwright-core" >> $env:GITHUB_ENV
+      - name: Test installed Edge and Chrome sequentially
+        run: node scripts/verify-website-ci.mjs
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: universe-browser-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/generated/task-007/acceptance/
+          if-no-files-found: error
+          retention-days: 14
