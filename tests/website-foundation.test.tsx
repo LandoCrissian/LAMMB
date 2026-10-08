@@ -88,7 +88,12 @@ describe('website foundation boundaries', () => {
       expect(html).not.toContain('WEBSITE FOUNDATION');
       expect(html).toContain('aria-controls="global-navigation"');
       expect(html).toContain('aria-expanded="false"');
-      expect(html).not.toMatch(/<form\b|<input\b|<iframe\b/);
+      expect(html).not.toMatch(/<form\b|<iframe\b/);
+      if (_route === '/world') {
+        expect(html.match(/<input\b/g)).toHaveLength(1);
+        expect(html).toContain('id="atlas-search"');
+        expect(html).toContain('type="search"');
+      } else expect(html).not.toMatch(/<input\b/);
       for (const image of html.matchAll(/<img[^>]+src="([^"]+)"/g))
         expect(approvedImagePaths).toContain(imagePath(image[1]!));
       expect(html).not.toContain('5,280');
@@ -136,9 +141,9 @@ describe('website foundation boundaries', () => {
 
   it('does not present country registration or profile ownership as implemented', () => {
     const world = markup(World);
-    expect(world).toContain('REGISTRATION UNAVAILABLE');
+    expect(world).toContain('REGISTRY NOT YET LIVE');
     expect(world).toContain(
-      'No country registry or collector counts are available.',
+      'No live registry or collector counts are available.',
     );
     expect(world).toContain('Country selection does not verify residence.');
     const profile = markup(Profile);
@@ -191,16 +196,14 @@ describe('website foundation boundaries', () => {
     }
   });
 
-  it('keeps the World illustration static and explains voluntary, transfer-aware participation', () => {
+  it('separates geographic exploration from voluntary, transfer-aware registration', () => {
     const html = markup(World);
-    expect(html).toContain('ILLUSTRATION / NO LIVE ACTIVITY');
-    expect(html).toContain('aria-labelledby="atlas-title atlas-description"');
+    expect(html).toContain('GEOGRAPHY, NOT PARTICIPATION');
+    expect(html).toContain('Search &amp; country list');
     expect(html).toContain('Nothing is registered here.');
     expect(html).toContain('A new owner must opt in independently');
     expect(html).toContain('low-count privacy protections');
-    expect(html).not.toMatch(
-      /<form\b|<input\b|data-(country|coordinates|count)=/,
-    );
+    expect(html).not.toMatch(/<form\b|data-(wallet|coordinates|count)=/);
   });
 
   it('preserves the canonical milestone narrative', () => {

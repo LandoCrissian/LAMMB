@@ -14,7 +14,7 @@ const { values } = parseArgs({
   options: {
     'playwright-module': { type: 'string' },
     browser: { type: 'string', default: 'msedge' },
-    output: { type: 'string', default: 'task-007/acceptance' },
+    output: { type: 'string', default: 'task-008/acceptance' },
     port: { type: 'string', default: '3005' },
     origin: { type: 'string' },
     widths: { type: 'string', default: '320,390,768,1024,1440,1920' },
@@ -550,6 +550,7 @@ async function interactionChecks(page, width) {
     viewSources,
   });
   await universeChecks(page, width);
+  await atlasChecks(page, width);
   await visit(page, '/faq');
   const question = page.locator('.faq-item summary').first();
   await question.focus();
@@ -574,9 +575,7 @@ async function interactionChecks(page, width) {
   await page.keyboard.press('Enter');
   await page.waitForURL(`${origin}/world`);
   assert(
-    await page
-      .getByText('PLANNED / REGISTRATION UNAVAILABLE', { exact: true })
-      .isVisible(),
+    await page.getByText('REGISTRY NOT YET LIVE', { exact: true }).isVisible(),
   );
   evidence.interactions.push({
     width,
@@ -809,6 +808,16 @@ async function noScriptChecks(width) {
     await settlePageImages(page);
     validateGeometry(await geometry(page));
     await capture(page, `vault-without-javascript-${width}`);
+    await visit(page, '/world');
+    await page.locator('.atlas-country-directory summary').click();
+    assert.equal(await page.locator('.atlas-country-list a').count(), 249);
+    assert.equal(await page.locator('.atlas-stage').isVisible(), false);
+    assert(
+      await page
+        .getByText('REGISTRY NOT YET LIVE', { exact: true })
+        .isVisible(),
+    );
+    await capture(page, `world-without-javascript-${width}`);
     evidence.interactions.push({
       width,
       check: 'no-javascript-native-navigation-static-specimen-gallery',
@@ -1004,4 +1013,283 @@ try {
       report: path.join(output, 'results.json'),
     }),
   );
+}
+
+async function atlasChecks(page, width) {
+  await visit(page, '/world');
+  const map = page.locator('.atlas-map');
+  await map.waitFor();
+  assert.equal(await page.locator('.atlas-country').count(), 248);
+  assert.equal(await page.locator('.atlas-exception').count(), 4);
+  const source = await page.evaluate(async () => {
+    const response = await fetch('/maps/countries-v1.json');
+    return response.json();
+  });
+  const mapLab = await auditPage(page);
+  const resource = await page.evaluate(() => {
+    const entry = performance
+      .getEntriesByType('resource')
+      .find((entry) => entry.name.endsWith('/maps/countries-v1.json'));
+    return entry
+      ? { transferSize: entry.transferSize, duration: entry.duration }
+      : null;
+  });
+  evidence.audits.push({
+    route: '/world',
+    width,
+    atlas: true,
+    boundaryTransferBytes: resource?.transferSize ?? null,
+    boundaryDurationMs: resource?.duration ?? null,
+    ...mapLab,
+  });
+  await capture(page, `world-viewport-${width}`, false);
+  // Native SVG hit testing at a known interior point, not a programmatic click.
+  await map.scrollIntoViewIfNeeded();
+  const us = source.acceptancePoints.find((point) => point.code === 'US');
+  const clickPoint = await map.evaluate((el, xy) => {
+    const p = new DOMPoint(...xy).matrixTransform(el.getScreenCTM());
+    return {
+      x: p.x,
+      y: p.y,
+      hit: document.elementFromPoint(p.x, p.y)?.getAttribute('data-country'),
+    };
+  }, us.xy);
+  assert.equal(clickPoint.hit, 'US', 'Country polygon hit test failed');
+  if (width < 1100) await page.touchscreen.tap(clickPoint.x, clickPoint.y);
+  else await page.mouse.click(clickPoint.x, clickPoint.y);
+  await page.waitForURL(/country=US/);
+  assert.equal(
+    await page
+      .locator('.atlas-country.is-selected')
+      .getAttribute('data-country'),
+    'US',
+  );
+  assert(
+    await page
+      .getByRole('heading', { name: 'United States of America', exact: true })
+      .isVisible(),
+  );
+  await capture(page, `world-selected-us-${width}`);
+  await page
+    .getByRole('button', { name: 'LAMMB founding', exact: true })
+    .click();
+  assert.equal(
+    await page
+      .getByRole('button', { name: 'LAMMB founding', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  assert(
+    await page
+      .getByText('LAMMB / founding collection concept.', { exact: false })
+      .isVisible(),
+  );
+  await page
+    .getByRole('button', { name: 'All communities', exact: true })
+    .click();
+
+  await page.locator('.atlas-country-directory summary').click();
+  const input = page.getByRole('searchbox', {
+    name: 'Find a country or ISO code',
+  });
+  await input.fill('Brazil');
+  const result = page.locator('.atlas-country-list a').first();
+  assert.equal(await page.locator('.atlas-country-list a').count(), 1);
+  await result.focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL(/country=BR/);
+  assert(
+    await page
+      .getByRole('heading', { name: 'Brazil', exact: true })
+      .isVisible(),
+  );
+  await page.goBack();
+  await page.waitForURL(/country=US/);
+  await page.goForward();
+  await page.waitForURL(/country=BR/);
+  await page.reload({ waitUntil: 'networkidle' });
+  await map.waitFor();
+  assert.equal(
+    await page
+      .locator('.atlas-country.is-selected')
+      .getAttribute('data-country'),
+    'BR',
+  );
+
+  await page.getByRole('button', { name: 'Reset view', exact: true }).click();
+  assert.equal(await map.getAttribute('data-zoom'), '1.000');
+  await map.focus();
+  await page.keyboard.press('+');
+  assert.equal(await map.getAttribute('data-zoom'), '1.500');
+  const beforePan = await map.locator('g').getAttribute('transform');
+  await page.keyboard.press('ArrowRight');
+  assert.notEqual(await map.locator('g').getAttribute('transform'), beforePan);
+  await page.keyboard.press('Home');
+  assert.equal(await map.getAttribute('data-zoom'), '1.000');
+  await page.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await map.scrollIntoViewIfNeeded();
+  const box = await map.boundingBox();
+  const beforeDrag = await map.locator('g').getAttribute('transform');
+  await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.6, box.y + box.height * 0.55, {
+    steps: 10,
+  });
+  await page.mouse.up();
+  assert.notEqual(await map.locator('g').getAttribute('transform'), beforeDrag);
+  assert(
+    new URL(page.url()).hash.includes('country=BR'),
+    'Dragging must not select a different country',
+  );
+  let pinch = 'NOT_APPLICABLE_DESKTOP_TOUCH_DISABLED';
+  if (width < 1100) {
+    await page.getByRole('button', { name: 'Reset view', exact: true }).click();
+    await map.scrollIntoViewIfNeeded();
+    const rect = await map.boundingBox();
+    const cx = rect.x + rect.width / 2,
+      cy = rect.y + rect.height / 2;
+    const client = await page.context().newCDPSession(page);
+    await client.send('Input.dispatchTouchEvent', {
+      type: 'touchStart',
+      touchPoints: [
+        { x: cx - 25, y: cy, id: 1 },
+        { x: cx + 25, y: cy, id: 2 },
+      ],
+    });
+    for (let step = 1; step <= 5; step++) {
+      const offset = 25 + step * 8;
+      await client.send('Input.dispatchTouchEvent', {
+        type: 'touchMove',
+        touchPoints: [
+          { x: cx - offset, y: cy, id: 1 },
+          { x: cx + offset, y: cy, id: 2 },
+        ],
+      });
+      await page.waitForTimeout(30);
+    }
+    await client.send('Input.dispatchTouchEvent', {
+      type: 'touchEnd',
+      touchPoints: [],
+    });
+    assert(
+      Number(await map.getAttribute('data-zoom')) > 1.8,
+      'Native two-pointer pinch failed',
+    );
+    await client.detach();
+    pinch = 'PASS_CDP_NATIVE_TOUCH_EMULATION_NOT_PHYSICAL_DEVICE';
+  }
+  await page.getByRole('button', { name: 'Reset view', exact: true }).click();
+  // Island, microstate, missing boundary and source-policy exceptions.
+  for (const [query, code] of [
+    ['Fiji', 'FJ'],
+    ['Vatican', 'VA'],
+    ['Gibraltar', 'GI'],
+    ['Bouvet', 'BV'],
+    ['Taiwan', 'TW'],
+    ['Palestine', 'PS'],
+    ['United States Minor', 'UM'],
+  ]) {
+    if (
+      !(await page
+        .locator('.atlas-country-directory')
+        .evaluate((el) => el.open))
+    )
+      await page.locator('.atlas-country-directory summary').click();
+    await input.fill(query);
+    await page
+      .locator(`.atlas-country-list a[href^="#country=${code}&"]`)
+      .click();
+    await page.waitForURL(new RegExp(`country=${code}`));
+    if (code === 'UM')
+      assert(await page.locator('.atlas-boundary-warning').isVisible());
+    else
+      assert.equal(
+        await page
+          .locator('.atlas-country.is-selected')
+          .getAttribute('data-country'),
+        code,
+      );
+    if (code === 'FJ') await capture(page, `world-fiji-antimeridian-${width}`);
+    if (code === 'VA') await capture(page, `world-vatican-${width}`);
+  }
+  await input.fill('no-such-country');
+  assert.equal(await page.locator('.atlas-country-list a').count(), 0);
+  assert(
+    await page
+      .getByText('No countries match. Try another name or code.')
+      .isVisible(),
+  );
+  await input.fill('');
+  if (width < 1024) {
+    const sheet = page.locator('.atlas-sheet-toggle');
+    await sheet.click();
+    assert.equal(await sheet.getAttribute('aria-expanded'), 'false');
+    assert.equal(
+      await page.locator('#atlas-country-details').isVisible(),
+      false,
+    );
+    await sheet.focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await sheet.getAttribute('aria-expanded'), 'true');
+    assert(await page.locator('#atlas-country-details').isVisible());
+  }
+  validateGeometry(await geometry(page));
+  await capture(page, `world-country-sheet-${width}`);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const motion = await page.evaluate(
+    () =>
+      [...document.querySelectorAll('.atlas-experience *')].filter((el) => {
+        const style = getComputedStyle(el);
+        return (
+          style.animationName !== 'none' ||
+          style.transitionDuration.split(',').some((n) => parseFloat(n) > 0)
+        );
+      }).length,
+  );
+  assert.equal(motion, 0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  evidence.interactions.push({
+    width,
+    check:
+      'atlas-real-hit-test-search-keyboard-pan-zoom-pinch-reset-country-sheet-filters-history-edge-cases',
+    result: 'PASS',
+    pinch,
+    motion,
+  });
+
+  // Broken data remains a recoverable map error, with an independent country alternative.
+  const fallback = await browser.newContext({
+    viewport: { width, height: 844 },
+  });
+  let requests = 0;
+  await fallback.route('**/maps/countries-v1.json', (route) =>
+    ++requests === 1
+      ? route.fulfill({ status: 503, body: 'temporarily unavailable' })
+      : route.continue(),
+  );
+  try {
+    const errorPage = await fallback.newPage();
+    await visit(errorPage, '/world');
+    await errorPage.getByRole('button', { name: 'Retry map' }).waitFor();
+    await errorPage.locator('.atlas-country-directory summary').click();
+    await errorPage.getByRole('searchbox').fill('Japan');
+    await errorPage.locator('.atlas-country-list a').first().click();
+    assert(await errorPage.locator('.atlas-country-status').isVisible());
+    await errorPage.getByRole('button', { name: 'Retry map' }).click();
+    await errorPage.locator('.atlas-map').waitFor();
+    assert.equal(
+      await errorPage
+        .locator('.atlas-country.is-selected')
+        .getAttribute('data-country'),
+      'JP',
+    );
+    evidence.interactions.push({
+      width,
+      check: 'atlas-broken-boundary-fallback-and-retry',
+      result: 'PASS',
+      intentional503: true,
+    });
+  } finally {
+    await fallback.close();
+  }
 }

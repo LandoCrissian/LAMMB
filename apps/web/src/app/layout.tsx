@@ -9,6 +9,7 @@ import './site.css';
 import './cinematic.css';
 import './homepage.css';
 import './experience.css';
+import './atlas.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${collection.domain}`),
