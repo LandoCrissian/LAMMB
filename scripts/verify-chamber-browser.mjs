@@ -283,6 +283,11 @@ async function evolution(page, context, cdp, width) {
     .locator('.chamber-overlay-specimen')
     .waitFor({ state: 'detached' });
   const returned = await diagnostics(page);
+  assert.equal(
+    await page.locator('.chamber-dialog').getAttribute('data-paused'),
+    'false',
+    'Escape closes only the top inspection modal',
+  );
   for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
     assert.equal(returned[key], inspecting[key], `Inspection restores ${key}`);
   assert.equal(
@@ -339,6 +344,11 @@ async function evolution(page, context, cdp, width) {
   await page.keyboard.press('Escape');
   await world.waitFor({ state: 'detached' });
   const afterWorld = await diagnostics(page);
+  assert.equal(
+    await page.locator('.chamber-dialog').getAttribute('data-paused'),
+    'false',
+    'World close restores active gameplay',
+  );
   for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
     assert.equal(afterWorld[key], beforeWorld[key], `World restores ${key}`);
   assert.equal(

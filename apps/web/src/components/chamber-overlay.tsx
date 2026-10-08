@@ -24,8 +24,10 @@ export function ChamberOverlay({
       aria-labelledby="chamber-overlay-title"
       onCancel={(event) => {
         event.preventDefault();
+        event.stopPropagation();
         close();
       }}
+      onClose={(event) => event.stopPropagation()}
     >
       <header>
         <div>
