@@ -89,12 +89,10 @@ async function until(page, predicate) {
     if (predicate(await diagnostics(page))) return;
     await page.waitForTimeout(200);
   }
-  const state = await page
-    .locator('.chamber-dialog')
-    .evaluate((el) => ({
-      ...el.dataset,
-      focused: document.activeElement?.outerHTML?.slice(0, 200),
-    }));
+  const state = await page.locator('.chamber-dialog').evaluate((el) => ({
+    ...el.dataset,
+    focused: document.activeElement?.outerHTML?.slice(0, 200),
+  }));
   throw new Error(
     `Scene condition timed out: ${JSON.stringify({ snapshot: await diagnostics(page), state })}`,
   );
@@ -410,6 +408,14 @@ try {
         await page.locator('.chamber-dialog').getAttribute('open'),
         null,
       );
+      assert.equal(await page.locator('.chamber-dialog canvas').count(), 0);
+      await page.getByRole('button', { name: 'Enter 3D chamber' }).click();
+      await page.waitForFunction(
+        () =>
+          document.querySelector('.chamber-dialog').dataset.ready === 'true',
+      );
+      await until(page, (p) => p.frames > 0);
+      await page.getByRole('button', { name: 'Exit chamber' }).click();
       await page
         .getByRole('link', { name: 'Return to the Experimental Wing' })
         .click();
