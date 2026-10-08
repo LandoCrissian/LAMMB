@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'An isolated fictional LAMMB Labs prototype. Not a released game.',
   robots: { index: false, follow: false },
+  icons: { icon: '/art/cinematic-preview/wordmark.webp' },
 };
 export default function ChamberPage() {
   return (

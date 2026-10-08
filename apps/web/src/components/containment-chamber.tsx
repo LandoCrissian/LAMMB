@@ -212,22 +212,18 @@ export function ContainmentChamber() {
           </button>
         </div>
         <p className="chamber-note">{experiment.disclaimer}</p>
-        <noscript>
-          <details>
-            <summary>
-              Activate experiment — read the complete result without JavaScript
-            </summary>
-            <p>
-              The subject has completed its assessment. CURRENT BALANCE: $0.37.
-              OUTSTANDING LOANS: $48,000. SPECIMEN CONFIDENCE: 100%.
-            </p>
-            <p>{experiment.conclusion}</p>
-            <p>
-              The containment lights turn red. Close and reopen this evidence to
-              replay the story.
-            </p>
-          </details>
-        </noscript>
+        <details className="chamber-native-evidence">
+          <summary>Read the complete fictional result</summary>
+          <p>
+            Initial balance: $100. CURRENT BALANCE: $0.37. OUTSTANDING LOANS:
+            $48,000. SPECIMEN CONFIDENCE: 100%.
+          </p>
+          <p>{experiment.conclusion}</p>
+          <p>
+            The containment lights turn red. Close and reopen this evidence to
+            replay the story without graphics or JavaScript.
+          </p>
+        </details>
       </section>
       <dialog
         ref={dialog}
@@ -293,7 +289,7 @@ export function ContainmentChamber() {
                 {failure
                   ? 'Exit the chamber and use the text experiment below. No graphics hardware is required for the complete story.'
                   : lost
-                    ? 'The text terminal remains available. Exit to use it; if graphics recover, resume manually.'
+                    ? 'Exit and re-enter to create a fresh graphics scene, or use the complete text terminal.'
                     : 'WASD + mouse / arrows, or touch movement + drag. No time pressure.'}
               </p>
               {ready && !lost && !failure && paused && (

@@ -26,7 +26,7 @@ The scene opens in a native full-screen dialog. Its background is inert; Exit re
 
 The non-3D terminal offers the same activate/result/replay/reset interaction, with polite readable status and no movement/proximity barrier. Without JavaScript a native disclosure gives the complete story. No audio, flickering lights or animated alarm. Reduced motion removes decorative transitions; deliberate movement remains user-controlled. Screen-reader and physical-device acceptance must be reported separately from desktop emulation.
 
-Context loss prevents further rendering and pauses safely. Context restoration does not automatically resume. Users can exit to the text alternative or explicitly resume after recovery. Unsupported WebGL offers a readable failure with the alternative. No automatic reload or retry.
+Context loss stops rendering and releases GPU caches safely. Recovery uses an explicit Exit and re-entry with a fresh canvas/context, or the complete text alternative. The lost context is never resumed or retried automatically. Unsupported WebGL offers a readable failure with the alternative. No automatic reload or retry.
 
 ## Performance and verification
 

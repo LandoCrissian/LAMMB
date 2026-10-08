@@ -98,7 +98,7 @@ describe('isolated fictional prototype', () => {
     const html = renderToStaticMarkup(createElement(Chamber));
     expect(html).toContain('OWNER REVIEW PROTOTYPE');
     expect(html).toContain('COMPLETE NON-3D ALTERNATIVE');
-    expect(html).toContain('<noscript>');
+    expect(html).toContain('chamber-native-evidence');
     for (const text of [
       experiment.initialBalance,
       experiment.balance,

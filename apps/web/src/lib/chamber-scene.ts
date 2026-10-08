@@ -329,11 +329,8 @@ export class ChamberScene {
       this.lost = true;
       this.setPaused(true);
       hooks.context(true);
-    });
-    this.listen(canvas, 'webglcontextrestored', () => {
-      this.lost = false;
-      hooks.context(false);
-      this.render();
+      // Release caches while the context is lost; recover through a fresh surface.
+      this.dispose();
     });
     this.resize();
   }
@@ -658,6 +655,7 @@ export class ChamberScene {
     }
   };
   dispose() {
+    if (this.disposed) return;
     this.disposed = true;
     cancelAnimationFrame(this.frame);
     this.resizeObserver.disconnect();
@@ -666,8 +664,12 @@ export class ChamberScene {
     this.geometries.forEach((g) => g.dispose());
     this.materials.forEach((m) => m.dispose());
     this.textures.forEach((t) => t.dispose());
+    this.scene.traverse((object) => {
+      if (object instanceof THREE.InstancedMesh) object.dispose();
+    });
     this.scene.clear();
     this.renderer.dispose();
-    this.renderer.forceContextLoss();
+    if (!this.renderer.getContext().isContextLost())
+      this.renderer.forceContextLoss();
   }
 }
