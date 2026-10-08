@@ -14,7 +14,7 @@ assert.equal(
 );
 const driver = process.env.LAMMB_PLAYWRIGHT_MODULE;
 assert(driver, 'Pinned temporary Playwright driver required');
-const output = path.resolve('artifacts/generated/task-007/acceptance');
+const output = path.resolve('artifacts/generated/task-008/acceptance');
 await mkdir(output, { recursive: true });
 const log = createWriteStream(path.join(output, 'preview-server.log'));
 const server = spawn(
@@ -76,7 +76,7 @@ try {
           '--browser',
           browser,
           '--output',
-          'task-007/acceptance',
+          'task-008/acceptance',
         ],
         { windowsHide: true, stdio: 'inherit' },
       );

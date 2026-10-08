@@ -9,7 +9,8 @@
     "./eligibility": "./src/eligibility.ts",
     "./authority": "./src/authority.ts",
     "./fairness": "./src/fairness.ts",
-    "./share-card": "./src/share-card.ts"
+    "./share-card": "./src/share-card.ts",
+    "./atlas": "./src/atlas.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

@@ -10,8 +10,8 @@ export const futureExperiences = {
     eyebrow: 'The global flock',
     title: 'LAMMB WORLD',
     detail:
-      'A future country-level view of the flock. Choose what you share, and where your LAMMB belongs.',
-    status: 'PLANNED / REGISTRATION UNAVAILABLE',
+      'Explore the global atlas. Country registration is not yet live; choosing where to belong will always be voluntary.',
+    status: 'ATLAS OPEN / REGISTRY NOT YET LIVE',
   },
   profile: {
     href: '/profile',

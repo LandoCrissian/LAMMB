@@ -6,7 +6,7 @@ export const navigation = [
   { href: '/collection', label: 'The Collection', detail: '5280 stories' },
   { href: '/ascent', label: 'The Ascent', detail: 'Follow the climb' },
   { href: '/community', label: 'Community', detail: 'Higher together' },
-  { href: '/world', label: 'LAMMB World', detail: 'A future global flock' },
+  { href: '/world', label: 'LAMMB World', detail: 'Explore the global atlas' },
   {
     href: '/profile',
     label: 'Collector Profile',

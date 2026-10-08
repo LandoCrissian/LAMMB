@@ -1,0 +1,55 @@
+{
+  "version": "lammb-atlas-1",
+  "sources": [
+    {
+      "file": "ne_50m_admin_0_map_units.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_50m_admin_0_map_units.geojson",
+      "sha256": "b8d421aca6e9e08e8cdf09cc26af111cc3e0deba4fe915611d58ade71e8a4db0",
+      "license": "Public domain",
+      "version": "Natural Earth v5.1.2",
+      "bytes": 3179420
+    },
+    {
+      "file": "ne_10m_admin_0_map_units.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_10m_admin_0_map_units.geojson",
+      "sha256": "57da82be755f4afccd8f3b14251bb2752f5df1395f47d2d86f817470c4a48862",
+      "license": "Public domain",
+      "version": "Natural Earth v5.1.2",
+      "bytes": 13526439
+    },
+    {
+      "file": "iso-codes.json",
+      "url": "https://raw.githubusercontent.com/michaelwittig/node-i18n-iso-countries/v7.14.0/codes.json",
+      "sha256": "736d7666e943e0bca25c518e3903e2b328ce54b94662553a6472c379dbfb50aa",
+      "license": "MIT",
+      "version": "i18n-iso-countries v7.14.0",
+      "bytes": 10253
+    },
+    {
+      "file": "iso-names-en.json",
+      "url": "https://raw.githubusercontent.com/michaelwittig/node-i18n-iso-countries/v7.14.0/langs/en.json",
+      "sha256": "7445185d6424e574027a7cd14029e000784eaa03a2b83ab097742079f701e702",
+      "license": "MIT",
+      "version": "i18n-iso-countries v7.14.0",
+      "bytes": 6734
+    }
+  ],
+  "projection": "Equal Earth",
+  "engine": "d3-geo 3.1.1 / ISC / build-time only",
+  "output": {
+    "file": "countries-v1.json",
+    "sha256": "106e2841cbd6ae1e8a27f28c5de502f8533a9631e2edba14cece78d6702d765a",
+    "bytes": 1596776,
+    "gzipBytes": 603448
+  },
+  "isoEntries": 249,
+  "polygonCountries": 248,
+  "nonIsoAreas": [
+    "Somaliland",
+    "Kosovo",
+    "Turkish Republic of Northern Cyprus",
+    "Siachen Glacier"
+  ],
+  "missingGeometry": ["UM"],
+  "derivation": "ISO_A2_EH map units grouped by ISO code; GI and BV supplemented from 10m; original vertices projected, not hand drawn. Largest component bounds used only for focus. Default de facto boundaries. Country names/aliases from versioned ISO metadata; XK excluded from ISO list."
+}

@@ -1,0 +1,4 @@
+Natural Earth geographic data is in the public domain.
+No permission is needed to use, modify or redistribute the data.
+Source and license: https://www.naturalearthdata.com/about/terms-of-use/
+Version and source SHA-256 records are in provenance.json.

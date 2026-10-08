@@ -5,3 +5,4 @@ coverage
 dist
 artifacts/generated
 apps/web/next-env.d.ts
+apps/web/public/maps/countries-v1.json

@@ -1,87 +1,68 @@
 import { WorldAtlas } from '../../components/world-atlas';
 import { TextLink } from '../../components/site-primitives';
-import { futureExperiences } from '../../config/site';
 
 export const metadata = {
-  title: 'LAMMB World',
+  title: 'LAMMB World — Global NFT Atlas',
   description:
-    'A future global flock. Optional country-level participation, with privacy and ownership protections still to be built.',
+    'Explore real country geography. LAMMB is the founding collection concept. The voluntary NFT country registry is not yet live.',
 };
 
 export default function World() {
   return (
-    <section className="world-experience" aria-labelledby="world-heading">
-      <div className="world-introduction">
-        <div className="world-copy">
-          <p className="section-kicker">LAMMB WORLD / THE GLOBAL FLOCK</p>
+    <section className="global-atlas" aria-labelledby="world-heading">
+      <div className="atlas-introduction">
+        <div>
+          <p className="section-kicker">LAMMB WORLD / GLOBAL NFT ATLAS</p>
           <h1 id="world-heading">
-            SAME WORLD.
-            <br />
-            <span>
-              DIFFERENT
-              <br />
-              MINDSETS.
-            </span>
+            ONE WORLD.<span> MANY MINDSETS.</span>
           </h1>
-          <p className="body-copy">
-            A flock without borders. One day, a place to show where your LAMMB
-            belongs. Always your choice.
-          </p>
-          <p className="availability-label">{futureExperiences.world.status}</p>
         </div>
-        <WorldAtlas />
+        <p>
+          Find your place in the future flock.
+          <br />
+          Explore now. Register later.
+        </p>
       </div>
-      <ol
-        className="world-steps"
-        aria-label="How the future experience could work"
-      >
-        <li>
-          <h2>Choose a country</h2>
-          <p>
-            Opt in at country level. No precise location or automatic
-            geolocation.
-          </p>
-        </li>
-        <li>
-          <h2>Choose your LAMMBs</h2>
-          <p>
-            A future ownership check would let you select eligible specimens you
-            hold.
-          </p>
-        </li>
-        <li>
-          <h2>Join the global flock</h2>
-          <p>
-            Help illuminate a shared world, with visibility and withdrawal under
-            your control.
-          </p>
-        </li>
-      </ol>
-      <details className="world-privacy">
-        <summary>Your location. Your choice. Your privacy.</summary>
+      <WorldAtlas />
+      <details className="atlas-notes" id="map-notes">
+        <summary>Geography, privacy &amp; the future registry</summary>
+        <p>
+          Natural Earth v5.1.2 country map units, projected with Equal Earth.
+          249 ISO countries and territories are searchable; 248 have boundaries.
+          U.S. Minor Outlying Islands has no polygon in this dataset. Small
+          islands and microstates are easier to find through search; these
+          generalized boundaries are not suitable for navigation or legal use.
+        </p>
+        <p>
+          Boundaries follow the source’s de facto treatment and do not settle
+          territorial claims. Kosovo, Somaliland, Northern Cyprus and Siachen
+          Glacier are shown as separate geographic areas without assigned ISO
+          country codes. Overseas map units sharing one ISO code are grouped.
+          Fiji and other antimeridian countries retain their separated islands.
+          Country outlines do not represent community activity.
+        </p>
         <p>
           Nothing is registered here. Country selection does not verify
-          residence. Public participation must be optional, and no precise
-          location will be requested.
+          residence. Public participation must be optional. Ownership
+          verification must account for transfers; a former owner’s active
+          display must expire when a specimen changes hands. A new owner must
+          opt in independently. Withdrawal, public visibility and low-count
+          privacy protections require review before any totals appear.
         </p>
         <p>
-          Before launch, ownership verification must account for transfers. A
-          former owner’s registration must stop contributing when a specimen
-          changes hands. A new owner must opt in independently; location choices
-          must never carry over automatically.
-        </p>
-        <p>
-          Withdrawal, public visibility and low-count privacy protections need
-          review before any live country totals appear. Only authoritative,
-          eligible registrations could contribute to those totals.
+          LAMMB is the founding collection concept, with no live contract
+          declared. Other projects are candidates only. Collection admission,
+          verified ownership, country registration and public display are
+          separate requirements. The interactive map does not connect wallets or
+          send location choices to a registry.
         </p>
       </details>
       <nav
-        className="world-connections"
+        className="atlas-connections"
         aria-label="Continue through the universe"
       >
-        <TextLink href="/community">Meet the idea behind the flock</TextLink>
-        <TextLink href="/profile">Your future collector profile</TextLink>
+        <TextLink href="/community">Meet the flock</TextLink>
+        <TextLink href="/profile">Future collector profile</TextLink>
       </nav>
     </section>
   );
