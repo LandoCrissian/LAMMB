@@ -115,12 +115,13 @@
 }
 .labs-directory {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   background: #66797666;
   border: 1px solid #71877b88;
 }
 .labs-destination {
+  min-width: 0;
   display: flex;
   gap: 1.2rem;
   align-items: center;
@@ -441,17 +442,18 @@
     display: none;
   }
   .labs-directory {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .labs-destination {
     gap: 0.4rem;
     align-items: flex-start;
     min-height: 142px;
-    padding: 1rem;
+    padding: 0.75rem;
   }
   .labs-destination h2 {
     font-size: 1rem;
     line-height: 1.25;
+    overflow-wrap: anywhere;
   }
   .labs-destination p {
     font-size: 0.85rem;

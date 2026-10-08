@@ -1056,6 +1056,11 @@ try {
     }
     if (!values['home-only'] && !values['baseline-only'])
       await noScriptChecks(width);
+    assert.deepEqual(
+      evidence.errors.filter((error) => !error.expected404),
+      [],
+      'Unexpected browser/network errors at current viewport',
+    );
   }
   assert.deepEqual(
     evidence.errors.filter((error) => !error.expected404),
@@ -1093,6 +1098,16 @@ try {
 async function labsChecks(page, width) {
   await visit(page, '/universe');
   assert.equal(await page.locator('.labs-directory a').count(), 4);
+  const directoryFits = await page
+    .locator('.labs-directory')
+    .evaluate((grid) => {
+      const bounds = grid.getBoundingClientRect();
+      return [...grid.querySelectorAll('a')].every((link) => {
+        const rect = link.getBoundingClientRect();
+        return rect.left >= bounds.left - 1 && rect.right <= bounds.right + 1;
+      });
+    });
+  assert(directoryFits, 'Facility destinations overflow their directory');
   assert(
     await page.getByText('FICTIONAL ARCHIVE', { exact: true }).isVisible(),
   );
