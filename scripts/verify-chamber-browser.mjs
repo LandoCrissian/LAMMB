@@ -51,11 +51,25 @@ evidence.version = browser.version();
 async function capture(page, name) {
   evidence.memoryGiB.push(freemem() / 1024 ** 3);
   assert(freemem() > 1024 ** 3, 'CI RAM guard');
-  const filename = name + '.png';
-  await page.screenshot({
-    path: path.join(output, filename),
-    fullPage: !(await page.locator('.chamber-dialog[open]').count()),
-  });
+  const running = await page
+    .locator('.chamber-dialog[open][data-ready="true"][data-paused="false"]')
+    .count();
+  const pauseForCapture = running && page.viewportSize().width === 1920;
+  if (pauseForCapture)
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  const filename = name + (pauseForCapture ? '-paused' : '') + '.png';
+  try {
+    await page.screenshot({
+      path: path.join(output, filename),
+      fullPage: !(await page.locator('.chamber-dialog[open]').count()),
+      timeout: 90000,
+    });
+  } finally {
+    if (pauseForCapture)
+      await page
+        .getByRole('button', { name: 'Resume observation', exact: true })
+        .click();
+  }
   const bytes = await readFile(path.join(output, filename));
   evidence.screenshots.push({
     filename,
@@ -193,8 +207,8 @@ try {
         false,
       );
       await page.waitForTimeout(1100);
-      await capture(page, `scene-${width}`);
       await noOverflow(page);
+      await until(page, (p) => p.fps > 0);
       const initial = await diagnostics(page);
       assert(initial.frames > 0);
       assert(initial.triangles > 0);
@@ -215,6 +229,7 @@ try {
         measurement:
           'First load includes lazy chunk, procedural assets and first render; 1-second sampled FPS, warm CI software WebGL. Heap is browser JS heap, not scene/GPU bytes.',
       });
+      await capture(page, `scene-${width}`);
       await page.locator('canvas').focus();
       await page.keyboard.down('w');
       await page.keyboard.press('Tab');
