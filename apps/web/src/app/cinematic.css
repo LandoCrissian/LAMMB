@@ -203,13 +203,13 @@
 .specimen-caption {
   margin: 0.5rem 0 0;
   font:
-    0.72rem/1.7 'Courier New',
+    0.75rem/1.7 'Courier New',
     monospace;
 }
 .specimen-caption span {
   display: block;
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 .global-footer.compact-footer {
   display: flex;
@@ -224,7 +224,7 @@
   margin: 0;
   color: var(--accent);
   font:
-    0.7rem/1.5 'Courier New',
+    0.75rem/1.5 'Courier New',
     monospace;
 }
 .compact-footer p span {
@@ -240,12 +240,12 @@
 }
 .compact-footer nav a {
   min-height: 44px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 .footer-status {
   color: var(--muted);
   font:
-    0.65rem/1.6 'Courier New',
+    0.75rem/1.6 'Courier New',
     monospace;
 }
 .inspection-dialog {
@@ -374,6 +374,7 @@
   font-size: clamp(2.5rem, 6vw, 5rem);
 }
 .universe-manifesto .large-copy {
+  margin-top: 1rem;
   font-size: 1.15rem;
 }
 .universe-notes article {

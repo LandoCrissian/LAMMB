@@ -34,7 +34,7 @@
 }
 .foundation-banner {
   color: #d4f700;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
   border-color: #dcff0022;
 }
@@ -171,14 +171,14 @@
   color: var(--accent);
   background: #030609d9;
   border: 1px solid #dcff004d;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .cinema-specimen .specimen-caption {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   text-shadow: 0 1px 8px #000;
 }
 .cinema-specimen .specimen-caption span {
-  font-size: 0.58rem;
+  font-size: 0.75rem;
   color: #d0d8c9;
 }
 .cinema-higher {
@@ -203,7 +203,7 @@
 }
 .cinema-facts dt {
   font:
-    0.55rem/1.6 'Courier New',
+    0.75rem/1.6 'Courier New',
     monospace;
   letter-spacing: 0.06em;
   color: #b5c0b5;
@@ -216,7 +216,7 @@
 }
 .cinema-facts small {
   display: block;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: #bcc8b9;
   line-height: 1.7;
@@ -267,7 +267,7 @@
   color: #f6f7ed;
 }
 .destination-copy > span {
-  font-size: 0.59rem;
+  font-size: 0.75rem;
   color: #d0dbcf;
   line-height: 1.5;
 }
@@ -328,7 +328,7 @@
     font-size: clamp(1.4rem, 6.2vw, 1.75rem);
   }
   .cinema-story p {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
   .cinema-specimen {
     grid-column: 2;
@@ -339,7 +339,7 @@
     width: 100%;
   }
   .cinema-specimen .inspect-label {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     gap: 0.65rem;
     padding: 0.3rem 0.5rem;
   }
@@ -370,9 +370,6 @@
     background:
       linear-gradient(90deg, #03070caf, #03070c10 65%),
       linear-gradient(180deg, #03070c00 65%, #080c10);
-  }
-  .cinema-scenery {
-    object-position: center top;
   }
   .cinema-meaning {
     font-size: clamp(1.2rem, 2vw, 1.6rem);
@@ -409,9 +406,6 @@
   }
   .destination-copy strong {
     font-size: 1.2rem;
-  }
-  .destination-copy > span {
-    font-size: 0.65rem;
   }
   .inspection-image {
     width: 360px;
