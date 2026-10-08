@@ -496,7 +496,7 @@ export function WorldAtlas() {
       <noscript>
         <style>
           {
-            '.atlas-stage,.atlas-help,.atlas-search-status,.atlas-country-directory input,.atlas-country-directory label,.atlas-sheet-toggle { display: none !important; }'
+            '.atlas-stage,.atlas-help,.atlas-filters,.atlas-country-sheet,.atlas-search-status,.atlas-country-directory input,.atlas-country-directory label { display: none !important; }'
           }
         </style>
         <p>
