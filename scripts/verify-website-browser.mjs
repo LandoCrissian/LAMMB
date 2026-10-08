@@ -15,6 +15,9 @@ const { values } = parseArgs({
     browser: { type: 'string', default: 'msedge' },
     output: { type: 'string', default: 'task-005c/final' },
     port: { type: 'string', default: '3005' },
+    origin: { type: 'string' },
+    widths: { type: 'string', default: '320,390,768,1440' },
+    'home-only': { type: 'boolean', default: false },
   },
 });
 assert(
@@ -32,7 +35,12 @@ assert(
   relative && !relative.startsWith('..') && !path.isAbsolute(relative),
   'Evidence must stay within artifacts/generated',
 );
-const origin = `http://127.0.0.1:${values.port}`;
+const origin = values.origin || `http://127.0.0.1:${values.port}`;
+assert(
+  origin === 'https://lammb.fun' ||
+    origin === `http://127.0.0.1:${values.port}`,
+  'Audit only the authorized production or localhost origin',
+);
 const art = JSON.parse(
   await readFile(
     'apps/web/public/art/cinematic-preview/provenance.json',
@@ -53,7 +61,14 @@ const routes = [
   '/mint',
   '/development/launch',
 ];
-const widths = [320, 390, 768, 1440];
+const widths = values.widths.split(',').map(Number);
+assert(
+  widths.length > 0 &&
+    widths.length <= 6 &&
+    new Set(widths).size === widths.length &&
+    widths.every((width) => [320, 390, 768, 1024, 1440, 1920].includes(width)),
+  'Use distinct supported acceptance widths',
+);
 const evidence = {
   browserChannel: values.browser,
   playwrightVersion: load(
@@ -61,10 +76,12 @@ const evidence = {
   ).version,
   headAtRun: (await run('git', ['rev-parse', 'HEAD'])).stdout.trim(),
   origin,
+  scope: values['home-only'] ? 'HOMEPAGE_LAB_ONLY' : 'FULL_ACCEPTANCE',
   pages: [],
   interactions: [],
   screenshots: [],
   homepageComposition: [],
+  audits: [],
   errors: [],
   consoleWarnings: [],
   memorySamplesGB: [],
@@ -178,6 +195,89 @@ async function visit(page, route) {
   });
   assert.equal(response.status(), 200, `Route failed: ${route}`);
   await page.evaluate(() => document.fonts.ready);
+  return response;
+}
+async function auditPage(page) {
+  return page.evaluate(() => {
+    const resources = performance.getEntriesByType('resource');
+    const transfer = (predicate) =>
+      resources
+        .filter(predicate)
+        .reduce((sum, entry) => sum + entry.transferSize, 0);
+    return {
+      measurement: 'LAB_UNTHROTTLED_DPR1_AFTER_NETWORKIDLE_NOT_FIELD_DATA',
+      lcpMs: window.__lammbLCP?.startTime ?? null,
+      lcpElement: window.__lammbLCP?.element ?? null,
+      cls: window.__lammbLayoutShifts.reduce((sum, value) => sum + value, 0),
+      inp: null,
+      inpReason:
+        'No valid field dataset available; interactions are functional checks only',
+      jsTransferBytes: transfer((entry) => entry.initiatorType === 'script'),
+      cssTransferBytes: transfer((entry) => /\.css(\?|$)/.test(entry.name)),
+      imageTransferBytes: transfer(
+        (entry) =>
+          entry.initiatorType === 'img' ||
+          entry.name.includes('/_next/image') ||
+          entry.name.includes('/.netlify/images'),
+      ),
+      fontResourceCount: resources.filter((entry) =>
+        /\.(woff2?|ttf|otf)(\?|$)/.test(entry.name),
+      ).length,
+      stylesheets: [...document.querySelectorAll('link[rel="stylesheet"]')].map(
+        (el) => el.href,
+      ),
+      renderBlockingResources: resources
+        .filter((entry) => entry.renderBlockingStatus === 'blocking')
+        .map((entry) => ({
+          url: entry.name,
+          transferBytes: entry.transferSize,
+          durationMs: entry.duration,
+        })),
+      headings: [...document.querySelectorAll('h1,h2,h3,h4')].map((el) => ({
+        level: Number(el.tagName.slice(1)),
+        text: el.innerText,
+      })),
+      linkDestinations: [
+        ...new Set(
+          [...document.querySelectorAll('a[href]')].map((el) =>
+            el.getAttribute('href'),
+          ),
+        ),
+      ],
+      smallText: [
+        ...document.querySelectorAll(
+          'p,dt,small,.destination-copy > span,.footer-status',
+        ),
+      ]
+        .filter(
+          (el) =>
+            el.getClientRects().length &&
+            parseFloat(getComputedStyle(el).fontSize) < 12,
+        )
+        .map((el) => ({
+          selector: el.className || el.tagName.toLowerCase(),
+          text: el.innerText,
+          fontSizePx: parseFloat(getComputedStyle(el).fontSize),
+        })),
+      images: [...document.images]
+        .filter((el) => el.getClientRects().length)
+        .map((el) => ({
+          alt: el.alt,
+          source: el.currentSrc,
+          displayWidth: el.getBoundingClientRect().width,
+          displayHeight: el.getBoundingClientRect().height,
+          naturalWidth: el.naturalWidth,
+          naturalHeight: el.naturalHeight,
+        })),
+      controls: [...document.querySelectorAll('button,summary,a[href]')]
+        .filter((el) => el.getClientRects().length)
+        .map((el) => ({
+          name: el.getAttribute('aria-label') || el.innerText,
+          width: el.getBoundingClientRect().width,
+          height: el.getBoundingClientRect().height,
+        })),
+    };
+  });
 }
 async function assertFocusContained(page, dialog) {
   assert(await dialog.evaluate((el) => el.contains(document.activeElement)));
@@ -216,7 +316,7 @@ async function awaitInspectionView(page, view) {
       .getAttribute('src');
     const url = new URL(source, location.origin);
     return (
-      (url.pathname === '/_next/image'
+      (['/_next/image', '/.netlify/images'].includes(url.pathname)
         ? url.searchParams.get('url')
         : url.pathname) === expectedPath
     );
@@ -335,7 +435,7 @@ async function interactionChecks(page, width) {
         .getAttribute('src');
       const url = new URL(source, location.origin);
       return (
-        (url.pathname === '/_next/image'
+        (['/_next/image', '/.netlify/images'].includes(url.pathname)
           ? url.searchParams.get('url')
           : url.pathname) === expectedPath
       );
@@ -557,6 +657,14 @@ try {
     const page = await context.newPage();
     await page.addInitScript(() => {
       window.__lammbLayoutShifts = [];
+      window.__lammbLCP = null;
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries())
+          window.__lammbLCP = {
+            startTime: entry.startTime,
+            element: entry.element?.className || entry.element?.tagName || null,
+          };
+      }).observe({ type: 'largest-contentful-paint', buffered: true });
       new PerformanceObserver((list) => {
         for (const entry of list.getEntries())
           if (!entry.hadRecentInput)
@@ -604,12 +712,13 @@ try {
         });
     });
     try {
-      for (const route of routes) {
-        await visit(page, route);
+      for (const route of values['home-only'] ? ['/'] : routes) {
+        const response = await visit(page, route);
         const layout = await geometry(page);
         validateGeometry(layout);
         const name = `${route === '/' ? 'home' : route.slice(1).replaceAll('/', '-')}-${width}`;
         await capture(page, name);
+        evidence.audits.push({ route, width, ...(await auditPage(page)) });
         if (route === '/') {
           await capture(page, `home-viewport-${width}`, false);
           const composition = await page.evaluate(() => {
@@ -654,11 +763,12 @@ try {
           width,
           height: width < 768 ? 844 : 1000,
           status: 200,
+          responseHeaders: await response.allHeaders(),
           ...layout,
         });
         console.log(`${values.browser} ${width}px ${route}: PASS`);
       }
-      await interactionChecks(page, width);
+      if (!values['home-only']) await interactionChecks(page, width);
     } finally {
       await context.close();
     }

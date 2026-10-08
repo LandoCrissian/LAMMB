@@ -56,7 +56,7 @@ export default function Home() {
               width={wordmark.width}
               height={wordmark.height}
               preload
-              sizes="(min-width: 1100px) 42vw, (min-width: 768px) 46vw, 90vw"
+              sizes="(min-width: 1100px) 480px, (min-width: 768px) 46vw, 90vw"
             />
           </h1>
           <p className="cinema-meaning">
