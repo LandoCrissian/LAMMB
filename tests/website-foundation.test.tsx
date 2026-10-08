@@ -18,6 +18,8 @@ import { futureExperiences, questions } from '../apps/web/src/config/site';
 import { launchStateSchema } from '@lammb/schema/launch';
 import { specimenViews } from '../apps/web/src/config/specimen';
 import art from '../apps/web/public/art/cinematic-preview/provenance.json';
+import labsArt from '../apps/web/public/art/labs-preview/provenance.json';
+import { facilityDestinations, labFiles } from '../apps/web/src/config/labs';
 
 // Server markup tests do not claim browser layout/menu interaction coverage.
 vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
@@ -39,7 +41,13 @@ const markup = (Page: typeof Home) =>
   renderToStaticMarkup(
     createElement(RootLayout, { children: createElement(Page) }),
   );
-const approvedImagePaths = art.assets.map((asset) => asset.path);
+const approvedImagePaths = [...art.assets, ...labsArt.assets].map(
+  (asset) => asset.path,
+);
+const labsRoutes = [
+  ...facilityDestinations.map((item) => item.href),
+  ...labFiles.map((file) => `/universe/archive/${file.id}`),
+];
 function imagePath(source: string) {
   const url = new URL(source.replaceAll('&amp;', '&'), 'http://localhost');
   return url.pathname === '/_next/image'
@@ -104,9 +112,11 @@ describe('website foundation boundaries', () => {
       for (const href of hrefs) {
         expect(href?.startsWith('/') || href?.startsWith('#')).toBe(true);
         if (href?.startsWith('/'))
-          expect([...Object.keys(routes), ...approvedImagePaths]).toContain(
-            imagePath(href!),
-          );
+          expect([
+            ...Object.keys(routes),
+            ...labsRoutes,
+            ...approvedImagePaths,
+          ]).toContain(imagePath(href!));
       }
     },
   );

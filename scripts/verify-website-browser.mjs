@@ -14,11 +14,12 @@ const { values } = parseArgs({
   options: {
     'playwright-module': { type: 'string' },
     browser: { type: 'string', default: 'msedge' },
-    output: { type: 'string', default: 'task-008/acceptance' },
+    output: { type: 'string', default: 'task-009/acceptance' },
     port: { type: 'string', default: '3005' },
     origin: { type: 'string' },
     widths: { type: 'string', default: '320,390,768,1024,1440,1920' },
     'home-only': { type: 'boolean', default: false },
+    'baseline-only': { type: 'boolean', default: false },
   },
 });
 assert(
@@ -54,6 +55,14 @@ const routes = [
   '/',
   '/vault',
   '/universe',
+  '/universe/security',
+  '/universe/archive',
+  '/universe/archive/000',
+  '/universe/archive/001',
+  '/universe/archive/002',
+  '/universe/archive/003',
+  '/universe/surveillance',
+  '/universe/experimental',
   '/collection',
   '/ascent',
   '/community',
@@ -82,7 +91,11 @@ const evidence = {
   ).version,
   headAtRun: (await run('git', ['rev-parse', 'HEAD'])).stdout.trim(),
   origin,
-  scope: values['home-only'] ? 'HOMEPAGE_LAB_ONLY' : 'FULL_ACCEPTANCE',
+  scope: values['baseline-only']
+    ? 'AUTHORIZED_MAIN_BASELINE_LAB'
+    : values['home-only']
+      ? 'HOMEPAGE_LAB_ONLY'
+      : 'FULL_ACCEPTANCE',
   pages: [],
   interactions: [],
   screenshots: [],
@@ -839,6 +852,37 @@ async function noScriptChecks(width) {
         .isVisible(),
     );
     await capture(page, `world-without-javascript-${width}`);
+    await visit(page, '/universe');
+    assert.equal(await page.locator('.labs-directory a').count(), 4);
+    await page.locator('.labs-directory a[href="/universe/archive"]').click();
+    await page.waitForURL(`${origin}/universe/archive`);
+    for (const id of ['000', '001', '002', '003']) {
+      await visit(page, `/universe/archive/${id}`);
+      assert(await page.locator('.labs-narrative').isVisible());
+      assert.equal(await page.locator('.labs-js-control').isVisible(), false);
+      const annex = page.locator('.labs-annex details');
+      await annex.locator('summary').click();
+      assert(await annex.locator('p').isVisible());
+      await page.locator('.labs-evidence summary').first().click();
+      assert(await page.locator('.labs-evidence details[open] p').isVisible());
+      validateGeometry(await geometry(page));
+    }
+    await capture(page, `labs-without-javascript-${width}`);
+    await visit(page, '/universe/security');
+    assert.equal(await page.locator('.labs-js-control').isVisible(), false);
+    await visit(page, '/universe/surveillance');
+    assert.equal(await page.locator('video').count(), 0);
+    await visit(page, '/universe/experimental');
+    assert(
+      await page
+        .getByText('FUTURE GAME / NOT PLAYABLE', { exact: true })
+        .isVisible(),
+    );
+    evidence.interactions.push({
+      width,
+      check: 'labs-no-javascript-all-records-annexes-and-destinations',
+      result: 'PASS',
+    });
     evidence.interactions.push({
       width,
       check: 'no-javascript-native-navigation-static-specimen-gallery',
@@ -916,7 +960,8 @@ try {
           url: page.url(),
           message: msg.text(),
           expected404:
-            page.url().endsWith('/unknown-task-005c-route') &&
+            (page.url().endsWith('/unknown-task-005c-route') ||
+              page.url().endsWith('/universe/archive/999')) &&
             msg.text().includes('404'),
         });
     });
@@ -932,7 +977,8 @@ try {
     page.on('response', (response) => {
       if (
         response.status() >= 400 &&
-        !response.url().endsWith('/unknown-task-005c-route')
+        !response.url().endsWith('/unknown-task-005c-route') &&
+        !response.url().endsWith('/universe/archive/999')
       )
         evidence.errors.push({
           type: 'http-error',
@@ -941,7 +987,11 @@ try {
         });
     });
     try {
-      for (const route of values['home-only'] ? ['/'] : routes) {
+      for (const route of values['baseline-only']
+        ? ['/', '/vault', '/universe']
+        : values['home-only']
+          ? ['/']
+          : routes) {
         const response = await visit(page, route);
         const layout = await geometry(page);
         validateGeometry(layout);
@@ -997,11 +1047,15 @@ try {
         });
         console.log(`${values.browser} ${width}px ${route}: PASS`);
       }
-      if (!values['home-only']) await interactionChecks(page, width);
+      if (!values['home-only'] && !values['baseline-only']) {
+        await interactionChecks(page, width);
+        await labsChecks(page, width);
+      }
     } finally {
       await context.close();
     }
-    if (!values['home-only']) await noScriptChecks(width);
+    if (!values['home-only'] && !values['baseline-only'])
+      await noScriptChecks(width);
   }
   assert.deepEqual(
     evidence.errors.filter((error) => !error.expected404),
@@ -1034,6 +1088,130 @@ try {
       report: path.join(output, 'results.json'),
     }),
   );
+}
+
+async function labsChecks(page, width) {
+  await visit(page, '/universe');
+  assert.equal(await page.locator('.labs-directory a').count(), 4);
+  assert(
+    await page.getByText('FICTIONAL ARCHIVE', { exact: true }).isVisible(),
+  );
+  const archiveLink = page.locator(
+    '.labs-directory a[href="/universe/archive"]',
+  );
+  await archiveLink.focus();
+  assert(
+    await archiveLink.evaluate(
+      (el) => getComputedStyle(el).outlineStyle !== 'none',
+    ),
+  );
+  await page.keyboard.press('Enter');
+  await page.waitForURL(`${origin}/universe/archive`);
+  assert.equal(await page.locator('.labs-file').count(), 4);
+  for (const id of ['000', '001', '002', '003']) {
+    await page.locator(`.labs-file[href="/universe/archive/${id}"]`).click();
+    await page.waitForURL(`${origin}/universe/archive/${id}`);
+    await page.waitForLoadState('networkidle');
+    assert(await page.locator('.labs-narrative').isVisible());
+    const summary = page.locator('.labs-evidence summary').first();
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    assert(await page.locator('.labs-evidence details[open] p').isVisible());
+    await capture(page, `labs-file-${id}-opened-${width}`);
+    const trigger = page.getByRole('button', {
+      name: `Inspect annex / FILE ${id}`,
+      exact: true,
+    });
+    if (width < 1100) await trigger.tap();
+    else await trigger.click();
+    const dialog = page.locator('.labs-dialog');
+    assert(await dialog.evaluate((el) => el.open));
+    await assertFocusContained(page, dialog);
+    await capture(page, `labs-annex-${id}-${width}`, false);
+    await page.keyboard.press('Escape');
+    assert.equal(await dialog.evaluate((el) => el.open), false);
+    assert(await trigger.evaluate((el) => el === document.activeElement));
+    await trigger.click();
+    await page
+      .getByRole('button', { name: 'Close dossier annex', exact: true })
+      .click();
+    assert(await trigger.evaluate((el) => el === document.activeElement));
+    await page.reload({ waitUntil: 'networkidle' });
+    assert(await page.locator('.labs-narrative').isVisible());
+    await page.goBack({ waitUntil: 'networkidle' });
+    assert.equal(new URL(page.url()).pathname, '/universe/archive');
+    await page.goForward({ waitUntil: 'networkidle' });
+    assert.equal(new URL(page.url()).pathname, `/universe/archive/${id}`);
+    await page.getByRole('link', { name: '← All files', exact: true }).click();
+    await page.waitForURL(`${origin}/universe/archive`);
+  }
+  await visit(page, '/universe/security');
+  const diagnostic = page.getByRole('button', {
+    name: /Run competence diagnostic/,
+  });
+  await diagnostic.focus();
+  await page.keyboard.press('Enter');
+  assert(
+    (await page.locator('.labs-readout').innerText()).includes(
+      'eleven seconds',
+    ),
+  );
+  if (width < 1100) await diagnostic.tap();
+  else await diagnostic.click();
+  assert(
+    (await page.locator('.labs-readout').innerText()).includes('disappearance'),
+  );
+  await page.getByText('Inspect the coffee-ring memo', { exact: true }).click();
+  assert(await page.locator('.labs-paper details[open] p').isVisible());
+  await capture(page, `labs-security-diagnostic-${width}`);
+  for (const destination of ['surveillance', 'experimental']) {
+    await page
+      .locator(`.labs-navigation a[href="/universe/${destination}"]`)
+      .click();
+    await page.waitForURL(`${origin}/universe/${destination}`);
+    await settlePageImages(page);
+    assert.equal(
+      await page.locator('.labs-navigation a[aria-current="page"]').count(),
+      1,
+    );
+    assert.equal(
+      await page.locator('video,audio,iframe,input,form').count(),
+      0,
+    );
+    validateGeometry(await geometry(page));
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await visit(page, '/universe/archive/002');
+  const motion = await page.locator('.labs').evaluate(
+    (root) =>
+      [...root.querySelectorAll('*')].filter((el) => {
+        const style = getComputedStyle(el);
+        return (
+          style.animationName !== 'none' ||
+          style.transitionDuration
+            .split(',')
+            .some((duration) => parseFloat(duration) > 0)
+        );
+      }).length,
+  );
+  assert.equal(motion, 0);
+  await page
+    .getByRole('button', { name: 'Inspect annex / FILE 002', exact: true })
+    .click();
+  await capture(page, `labs-reduced-motion-${width}`, false);
+  await page.keyboard.press('Escape');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  const missing = await page.goto(`${origin}/universe/archive/999`, {
+    waitUntil: 'networkidle',
+  });
+  assert.equal(missing.status(), 404);
+  validateGeometry(await geometry(page));
+  evidence.interactions.push({
+    width,
+    check:
+      'labs-four-destinations-four-dossiers-native-history-refresh-keyboard-touch-dialog-inertness-focus-return-evidence-diagnostic-reduced-motion-invalid-record-404',
+    result: 'PASS',
+  });
 }
 
 async function atlasChecks(page, width) {

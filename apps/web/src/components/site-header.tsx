@@ -10,7 +10,11 @@ const wordmark = cinematicAsset('wordmark');
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const destination = navigation.find((item) => item.href === pathname);
+  const destination = navigation.find(
+    (item) =>
+      item.href === pathname ||
+      (item.href !== '/' && pathname.startsWith(`${item.href}/`)),
+  );
   return (
     <header className="global-header">
       <Link className="brand-mark" href="/" aria-label="LAMMB home">
@@ -96,7 +100,12 @@ function NavigationMenu({ pathname }: { pathname: string }) {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={pathname === item.href ? 'page' : undefined}
+                aria-current={
+                  pathname === item.href ||
+                  (item.href !== '/' && pathname.startsWith(`${item.href}/`))
+                    ? 'page'
+                    : undefined
+                }
                 onClick={close}
               >
                 <span className="navigation-index" aria-hidden="true">

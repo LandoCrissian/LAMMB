@@ -10,6 +10,7 @@ import './cinematic.css';
 import './homepage.css';
 import './experience.css';
 import './atlas.css';
+import './labs.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${collection.domain}`),
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <noscript>
           <style>
             {
-              '.menu-toggle, .specimen-trigger, .specimen-caption { display: none !important; }'
+              '.menu-toggle, .specimen-trigger, .specimen-caption, .labs-js-control { display: none !important; }'
             }
           </style>
           <details className="fallback-navigation">

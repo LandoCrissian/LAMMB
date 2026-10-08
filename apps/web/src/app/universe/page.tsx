@@ -1,68 +1,50 @@
-import { NightAtmosphere } from '../../components/night-atmosphere';
-import { PageIntro, TextLink } from '../../components/site-primitives';
+import Link from 'next/link';
+import { LabsShell } from '../../components/labs-shell';
+import { facilityDestinations } from '../../config/labs';
 export const metadata = {
-  title: 'The Universe',
+  title: 'LAMMB Labs — The Classified Universe',
   description:
-    'One species. Different personalities. Explore the world of LAMMB.',
+    'Eleven seconds of success. An entire facility of consequences. Enter the fictional LAMMB Labs archive.',
 };
 export default function Universe() {
   return (
-    <div className="universe-experience">
-      <NightAtmosphere />
-      <PageIntro
-        eyebrow="NIGHT-CITY ENERGY / HIGHER TOGETHER"
-        title="SAME SHEEP."
-        accent="DIFFERENT WORLD."
-      >
-        <p>
-          Altitude in the bones. Attitude in the eyes. A whole universe of
-          personalities waiting behind the seal.
-        </p>
-      </PageIntro>
+    <LabsShell
+      title="CLASSIFIED. BADLY."
+      eyebrow="THE UNIVERSE / A FICTIONAL LABORATORY"
+      overview
+    >
+      <div className="labs-introduction">
+        <p>We engineered perfect financial judgment.</p>
+        <p className="labs-punchline">It lasted eleven seconds.</p>
+      </div>
       <section
-        className="editorial-section universe-manifesto"
-        aria-labelledby="universe-dna"
+        className="labs-directory"
+        aria-label="Choose a facility destination"
       >
-        <div>
-          <p className="section-kicker">ONE UNDERLYING CHARACTER</p>
-          <h2 id="universe-dna">
-            BUILT
-            <br />
-            <span>DIFFERENT.</span>
-          </h2>
-          <p className="large-copy">
-            Lateral ears. Heavy lids.
-            <br />
-            Sculpted wool. Unmistakable attitude.
-          </p>
-        </div>
-        <div className="universe-notes">
-          <article>
-            <h3>The identity</h3>
-            <p>
-              A stylized lamb with a compact muzzle and strong silhouette. Room
-              for masculine, feminine and neutral presentation.
-            </p>
-          </article>
-          <article>
-            <h3>The possibilities</h3>
-            <p>
-              Structural mutations, selective pixel corruption and environments
-              are distinct parts of the creative direction. Final characters and
-              traits are not exposed here.
-            </p>
-          </article>
-          <article>
-            <h3>The first encounter</h3>
-            <p>
-              Sealed first. A deliberate Ascent. A reveal still to come. The
-              launch itself is part of the story.
-            </p>
-          </article>
-          <TextLink href="/collection">Discover the sealed specimen</TextLink>
-          <TextLink href="/ascent">Follow The 5280 Ascent</TextLink>
-        </div>
+        {facilityDestinations.map((item) => (
+          <Link
+            key={item.id}
+            href={item.href}
+            className={`labs-destination labs-destination-${item.id}`}
+          >
+            <span className="labs-room-code" aria-hidden="true">
+              {item.code}
+            </span>
+            <div>
+              <p className="labs-kicker">{item.status}</p>
+              <h2>{item.label}</h2>
+              <p>{item.description}</p>
+            </div>
+            <span className="labs-room-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </Link>
+        ))}
       </section>
-    </div>
+      <div className="labs-overview-foot">
+        <span>5280 SEALED / ZERO USEFUL QUALIFICATIONS</span>
+        <Link href="/universe/archive/000">Start with FILE 000 →</Link>
+      </div>
+    </LabsShell>
   );
 }

@@ -1,0 +1,57 @@
+{
+  "version": "lammb-labs-preview/1",
+  "authorization": "OWNER_TASK_009_ENVIRONMENTAL_ASSET_CREATION",
+  "productionNFTArtworkApproved": false,
+  "creationTool": "image_gen.imagegen",
+  "localGPUInference": false,
+  "content": "Original empty fictional laboratory environments; no characters, specimens or episode footage",
+  "optimization": {
+    "tool": "sharp",
+    "version": "0.35.5",
+    "operation": "WEBP_ENCODING_ONLY_NO_UPSCALE_OR_REPAINT",
+    "quality": 85,
+    "effort": 5
+  },
+  "assets": [
+    {
+      "id": "facility",
+      "path": "/art/labs-preview/facility.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "webp",
+      "bytes": 79824,
+      "sha256": "4af9c9f7a17dbb4d9e12104256911e47c50cf86e6d7188bf89d3c6f50f05838d",
+      "source": {
+        "identifier": "exec-503f5dce-7d8f-4707-b89e-fbe0479af524.png",
+        "archivePath": "C:/Users/RMT/.codex/generated_images/01a114b7-7fce-7830-8e15-0054cd40bb6d/exec-503f5dce-7d8f-4707-b89e-fbe0479af524.png",
+        "preservedCopy": "artifacts/generated/task-009/masters/facility-master.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1687366,
+        "sha256": "2c9126c91c67b4cef60ea97ecce79b49c5656411776ea128a3582aa2fd85e6b6",
+        "prompt": "Create an original premium cinematic environmental illustration for LAMMB Labs, a fictional dark-comedy science-fiction archive website. Landscape 1536x1024 composition. Empty classified underground industrial laboratory viewed through dark containment glass, a central corridor with a low heavy doorway at the far end, graphite metal, precision cables and archive storage, sparse radioactive chartreuse light strips and a few amber warning lights, atmospheric haze, convincing material detail and depth. Front left and bottom are dark negative space for semantic website directory labels placed later. Not a website mockup: environment artwork only. No words, letters, numbers, logos, signage, characters, animals, humans, NFT portraits, crowns, Colorado imagery, recognizable television franchise elements, or user interface. Restrained sophisticated lighting, near-black palette, cinematic realism as environment art, no flashing effects. This is fictional scenery, no specimen designs."
+      },
+      "approval": "OWNER_AUTHORIZED_TASK_009_ENVIRONMENTAL_ART_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "id": "surveillance",
+      "path": "/art/labs-preview/surveillance.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "webp",
+      "bytes": 162436,
+      "sha256": "edc7fb8bbb23637586ab902176ad4fabe99cfceea3a6fae1f2bfbc2278ad14e9",
+      "source": {
+        "identifier": "exec-a24e31f1-09ce-4e8e-b701-d2f6a73fca1e.png",
+        "archivePath": "C:/Users/RMT/.codex/generated_images/01a114b7-7fce-7830-8e15-0054cd40bb6d/exec-a24e31f1-09ce-4e8e-b701-d2f6a73fca1e.png",
+        "preservedCopy": "artifacts/generated/task-009/masters/surveillance-master.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2031868,
+        "sha256": "88c80b3bba60ead5b8c73294c4523490d17a900ced7293311920589fd4155176",
+        "prompt": "Original standalone environmental artwork for the fictional LAMMB Labs Surveillance Room website. Landscape 1536x1024, premium cinematic science fiction illustration. Empty industrial surveillance control room, a bank of dark inactive glass monitors arranged asymmetrically on a battered black metal console, an empty chair, a sealed observation window behind, precise radioactive chartreuse edge lighting and restrained amber status lamps. Detailed cables, screws, containment glass reflections and dark metal materials, subtle atmospheric depth. Monitors are dark, reflecting room lights only: absolutely no text, diagrams, faces, footage, live screens, interface labels or pretend video controls. No characters, animals, NFT specimens, humans, logos, lettering, numbers, crowns or Colorado signage. Original visual design independent of TV franchises. Near-black sophisticated atmosphere, low clutter, substantial negative space at edges. The artwork is an environment only, not a mockup or game."
+      },
+      "approval": "OWNER_AUTHORIZED_TASK_009_ENVIRONMENTAL_ART_PENDING_VISUAL_REVIEW"
+    }
+  ]
+}
