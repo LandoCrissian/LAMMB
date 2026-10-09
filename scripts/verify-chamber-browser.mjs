@@ -467,6 +467,30 @@ async function evolution(page, context, cdp, width) {
       .evaluate((el) => el === document.activeElement),
     true,
   );
+  if (width === 1440) {
+    // A new portrait recommendation can appear behind the World modal. Closing
+    // must focus that usable fallback, never its now-hidden gameplay trigger.
+    await page.getByRole('button', { name: 'Open World terminal (E)' }).click();
+    await world.waitFor();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.waitForFunction(
+      () =>
+        document.querySelector('.chamber-dialog').dataset.portrait === 'true',
+    );
+    await page.keyboard.press('Escape');
+    await world.waitFor({ state: 'detached' });
+    const fallback = page.getByRole('button', { name: 'Continue in portrait' });
+    await page.waitForFunction(
+      () => document.activeElement?.textContent === 'Continue in portrait',
+    );
+    assert(await fallback.isVisible());
+    await fallback.click();
+    await page.setViewportSize(original);
+    const held = await diagnostics(page);
+    await until(page, (p) => p.frames > held.frames);
+    assert.equal((await diagnostics(page)).x, beforeWorld.x);
+    assert.equal((await diagnostics(page)).z, beforeWorld.z);
+  }
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await until(page, (p) => p.reducedMotion && !p.hovering);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -508,6 +532,7 @@ async function evolution(page, context, cdp, width) {
     sharedAtlas: true,
     embeddedHistory: true,
     worldRestoration: true,
+    modalOrientationFocus: width === 1440 ? true : null,
     reducedHover: true,
   });
 }

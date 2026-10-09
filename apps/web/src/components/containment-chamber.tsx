@@ -78,10 +78,14 @@ export function ContainmentChamber() {
   useEffect(() => {
     if (overlay || !restorePending.current) return;
     restorePending.current = false;
+    if (portrait && !portraitBypass && portraitContinue.current) {
+      portraitContinue.current.focus();
+      return;
+    }
     const target = overlayTrigger.current;
     if (target?.isConnected && !target.matches(':disabled')) target.focus();
     else canvas.current?.focus();
-  }, [overlay]);
+  }, [overlay, portrait, portraitBypass]);
   useEffect(() => {
     if (ready && portrait && !portraitBypass) portraitContinue.current?.focus();
   }, [ready, portrait, portraitBypass]);
