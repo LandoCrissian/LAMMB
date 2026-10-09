@@ -9,6 +9,7 @@ import type { ChamberScene, ChamberSnapshot } from '../lib/chamber-scene';
 import { PointerOwner } from '../lib/chamber-input';
 import { ChamberOverlay } from './chamber-overlay';
 import { ChamberGuide } from './chamber-guide';
+import { ChamberEntryArt } from './chamber-entry-art';
 import { Icon } from './icon';
 export function ContainmentChamber() {
   const [entered, setEntered] = useState(false);
@@ -224,7 +225,9 @@ export function ContainmentChamber() {
   return (
     <>
       <section className="chamber-entry" aria-labelledby="chamber-entry-title">
-        <div>
+        <ChamberEntryArt scene="observer-access" />
+        <div className="chamber-panel-content">
+          <p className="chamber-kicker">LAMMB LABS / PUBLIC PREVIEW</p>
           <h2 id="chamber-entry-title">Observer access.</h2>
           <p>
             A small original 3D room. Approach the console to your left, run the
@@ -234,19 +237,28 @@ export function ContainmentChamber() {
             Experimental, not a released game. No audio, wallet, tracking or
             real financial activity.
           </p>
+          <div className="chamber-entry-action">
+            <p
+              className="chamber-landscape-guidance"
+              id="chamber-landscape-guidance"
+            >
+              PLAY IN LANDSCAPE FOR THE BEST EXPERIENCE
+            </p>
+            <button
+              ref={entry}
+              type="button"
+              className="chamber-primary labs-js-control"
+              aria-haspopup="dialog"
+              aria-describedby="chamber-landscape-guidance"
+              disabled={phase === 'RUNNING'}
+              onClick={enter}
+            >
+              Enter 3D chamber
+            </button>
+          </div>
         </div>
-        <button
-          ref={entry}
-          type="button"
-          className="chamber-primary labs-js-control"
-          aria-haspopup="dialog"
-          disabled={phase === 'RUNNING'}
-          onClick={enter}
-        >
-          Enter 3D chamber
-        </button>
       </section>
-      <ChamberGuide />
+      <ChamberGuide cinematic />
       <details className="chamber-instructions">
         <summary>Controls and comfort</summary>
         <p>

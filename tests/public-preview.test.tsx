@@ -8,6 +8,7 @@ import { ChamberGuide } from '../apps/web/src/components/chamber-guide';
 import { labsDestinationArt } from '../apps/web/src/config/labs-art';
 import cinematic from '../apps/web/public/art/cinematic-preview/provenance.json';
 import labs from '../apps/web/public/art/labs-preview/provenance.json';
+import entryArt from '../apps/web/public/art/chamber-entry/provenance.json';
 
 describe('public preview security and presentation boundaries', () => {
   it('retains existing response protections and restricts new resource capabilities', () => {
@@ -69,5 +70,44 @@ describe('public preview security and presentation boundaries', () => {
     ])
       expect(html).toContain(instruction);
     expect(html).not.toMatch(/<button|<form|<iframe|<script/);
+  });
+  it('preserves two distinct native PNG masters and binds the entry assets to their digests', async () => {
+    const { default: sharp } = await import('sharp');
+    expect(entryArt.creationTool).toBe('image_gen.imagegen');
+    expect(entryArt.assets).toHaveLength(2);
+    expect(new Set(entryArt.assets.map((art) => art.native.sha256)).size).toBe(
+      2,
+    );
+    for (const art of entryArt.assets) {
+      expect(art.referenceInputs).toEqual([]);
+      for (const [file, expected, format] of [
+        [art.native.path, art.native, 'png'],
+        [`apps/web/public${art.path}`, art, 'webp'],
+      ] as const) {
+        const bytes = readFileSync(file);
+        expect(createHash('sha256').update(bytes).digest('hex')).toBe(
+          expected.sha256,
+        );
+        const image = sharp(bytes);
+        const metadata = await image.metadata();
+        expect(metadata.format).toBe(format);
+        expect(metadata.width).toBe(expected.width);
+        expect(metadata.height).toBe(expected.height);
+        await image.raw().toBuffer();
+      }
+      expect(art.width).toBeLessThanOrEqual(art.native.width);
+      expect(art.height).toBeLessThanOrEqual(art.native.height);
+      expect(art.bytes).toBeLessThan(150000);
+    }
+    const entry = renderToStaticMarkup(
+      createElement(ChamberGuide, { cinematic: true }),
+    );
+    expect(entry).toContain(
+      encodeURIComponent('/art/chamber-entry/quick-orientation.webp'),
+    );
+    expect(entry).toContain('alt=""');
+    expect(renderToStaticMarkup(createElement(ChamberGuide))).not.toContain(
+      'chamber-entry-art',
+    );
   });
 });

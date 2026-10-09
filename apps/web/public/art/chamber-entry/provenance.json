@@ -1,0 +1,71 @@
+{
+  "version": "lammb-chamber-entry/1",
+  "authorization": "OWNER_TASK_011B_PR_14_PENDING_ART_REVIEW",
+  "creationTool": "image_gen.imagegen",
+  "localGPUInference": false,
+  "model": null,
+  "seed": null,
+  "costVerification": {
+    "documentation": "https://learn.chatgpt.com/docs/pricing",
+    "basis": "Built-in image generation shares included Codex usage; account ordinary usage allowed, 66% remaining before both calls, zero purchased credit balance. No API keys, paid API calls, credits purchases or services used.",
+    "beforeUsedPercent": 34,
+    "afterUsedPercent": 34,
+    "additionalPurchases": 0
+  },
+  "optimization": {
+    "tool": "sharp",
+    "version": "0.35.5",
+    "operation": "DOWNSAMPLE_ONLY_AND_ENCODE_WEBP",
+    "maximumWidth": 1440,
+    "quality": 84,
+    "effort": 5
+  },
+  "limitations": [
+    "Built-in tool does not expose underlying model version, seed or deterministic replay settings.",
+    "Scenic illustrations represent art direction, not an exact rendering of playable chamber geometry."
+  ],
+  "assets": [
+    {
+      "id": "observer-access",
+      "path": "/art/chamber-entry/observer-access.webp",
+      "format": "webp",
+      "native": {
+        "path": "docs/art-source/chamber-entry/observer-access-master.png",
+        "width": 1672,
+        "height": 941,
+        "bytes": 2033790,
+        "sha256": "028053fe69fe21a4fc698c1a42b770dfe022c3c948fbd00699fa155cc28c2d2b",
+        "generationIdentifier": "exec-75336dbf-301c-43dc-8f26-ea8f659451cb.png"
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: original cinematic website background for the Observer Access panel of LAMMB Labs' playable 3D chamber entry.\nPrimary request: Generate an entirely new premium cinematic industrial containment chamber, with a sealed specimen floating beneath dramatic overhead spotlights. No text embedded anywhere in the artwork.\nScene: a cavernous near-black science-fiction laboratory with credible heavy containment machinery, graphite steel, restrained industrial detail, cinematic environmental depth and subtle atmospheric haze.\nSubject: one fully closed black armored specimen containment capsule hovering above a circular containment plinth, recognizable as a sealed industrial specimen, with restrained radioactive chartreuse luminous seams. No exposed creature or revealed character.\nComposition: native high-resolution landscape 16:9 scenic plate; dramatic low three-quarter observer viewpoint. Place the capsule and strongest illuminated architecture in the right half, leaving the left half darker and quieter for readable website content. Preserve scene depth and useful mobile crops.\nLighting: overhead spotlights make the specimen float against deep shadow; radioactive #CCFF00 accents and reflected chartreuse light, premium controlled contrast.\nMaterials: matte graphite, blackened steel, finely worn metal and polished highlights, intentional forms, high-quality science-fiction environment rendering.\nConstraints: entirely original artwork generated from this written brief, not a reuse, recolor, crop or restoration of an existing website image. No text, lettering, numbers, signage, logos, watermarks, UI, crowns, Colorado signs, people or exposed characters. No generic cartoon placeholder. Do not make the background transparent.",
+      "referenceInputs": [],
+      "transparentBackground": false,
+      "approval": "PENDING_OWNER_VISUAL_REVIEW",
+      "width": 1440,
+      "height": 810,
+      "bytes": 114214,
+      "sha256": "b892155d98b2c09fab8c41428d0351437cc857ba808bc3348a22364dc039bb3a"
+    },
+    {
+      "id": "quick-orientation",
+      "path": "/art/chamber-entry/quick-orientation.webp",
+      "format": "webp",
+      "native": {
+        "path": "docs/art-source/chamber-entry/quick-orientation-master.png",
+        "width": 1672,
+        "height": 941,
+        "bytes": 1959340,
+        "sha256": "126dc1809ddc79f15db8bc3755c4767e2285b333732deeb0afe037f3ba9da2e1",
+        "generationIdentifier": "exec-3aee2db6-66e4-40d3-9af2-d8cf02370c1a.png"
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: original cinematic website background for the Quick Orientation panel of LAMMB Labs' playable 3D chamber entry.\nPrimary request: Generate an entirely new premium cinematic laboratory interior with an observation station, containment machinery and strong environmental depth. No text embedded anywhere in the artwork.\nScene: a sophisticated near-black industrial research laboratory; an angled observation station in the foreground overlooks layered containment apparatus, thick cables, sealed machine housings and a deep illuminated laboratory passage.\nComposition: native high-resolution landscape 16:9 scenic plate. Distinct from a centered floating specimen chamber: elevated diagonal viewpoint from the observation desk across the laboratory, with the observation station toward the right foreground and a deep perspective passage receding toward the upper right. Left and lower areas remain dark and restrained for website instructions. No central floating capsule. Use purposeful machinery, no clutter.\nLighting: restrained radioactive #CCFF00 instrumentation glow with blank luminous panels, narrow chartreuse environmental strips, soft cool overhead light, volumetric depth and carefully controlled highlights.\nMaterials: tactile graphite and black steel, smoked glass, precision machinery; premium science-fiction environment rendering that belongs to LAMMB Labs.\nConstraints: entirely new original artwork generated from this written brief, not reuse, recolor, crop or restoration of any existing website image. No text, lettering, numbers, signage, logos, watermarks, UI, crowns, Colorado signs, people or exposed characters. Keep observation displays abstract and unlabeled. Do not make background transparent.",
+      "referenceInputs": [],
+      "transparentBackground": false,
+      "approval": "PENDING_OWNER_VISUAL_REVIEW",
+      "width": 1440,
+      "height": 810,
+      "bytes": 122388,
+      "sha256": "76eca3bf4da6594532e9f64144adb3c012204a2ed7eb4deff4fb7305e4b32e4a"
+    }
+  ]
+}

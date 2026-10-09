@@ -45,6 +45,7 @@ const approvedImagePaths = [...art.assets, ...labsArt.assets].map(
   (asset) => asset.path,
 );
 const labsRoutes = [
+  '/universe/experimental/chamber',
   ...facilityDestinations.map((item) => item.href),
   ...labFiles.map((file) => `/universe/archive/${file.id}`),
 ];
