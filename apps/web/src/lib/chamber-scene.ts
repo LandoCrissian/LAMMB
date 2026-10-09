@@ -147,9 +147,9 @@ export class ChamberScene {
       roughness: 0.32,
     });
     this.signal = this.material({
-      color: 0xdcff00,
-      emissive: 0xdcff00,
-      emissiveIntensity: 2.1,
+      color: 0x466000,
+      emissive: 0xbadb00,
+      emissiveIntensity: 0.65,
       roughness: 0.65,
     });
     const amberMaterial = this.material({
@@ -544,6 +544,12 @@ export class ChamberScene {
     this.renderer.setSize(rect.width, rect.height, false);
     this.camera.aspect = rect.width / rect.height;
     this.camera.updateProjectionMatrix();
+    if (this.inspection)
+      this.inspectionDistance = Math.max(
+        this.minimumInspectionDistance(),
+        this.inspectionDistance,
+      );
+    this.updateCamera(0);
     this.render();
   }
   private key(e: KeyboardEvent, down: boolean) {
@@ -654,7 +660,7 @@ export class ChamberScene {
   resetInspection() {
     this.inspectionYaw = 0;
     this.inspectionPitch = 0.1;
-    this.inspectionDistance = 5;
+    this.inspectionDistance = this.minimumInspectionDistance() + 1.5;
     this.updateCamera(0);
     this.render();
     this.publish();
@@ -683,7 +689,7 @@ export class ChamberScene {
       if (after > 5 && before > 5)
         this.inspectionDistance = THREE.MathUtils.clamp(
           (this.inspectionDistance * before) / after,
-          3.3,
+          this.minimumInspectionDistance(),
           8,
         );
     } else if (this.inspectPointers.size === 1) {
@@ -702,12 +708,15 @@ export class ChamberScene {
   zoomInspection(delta: number) {
     this.inspectionDistance = THREE.MathUtils.clamp(
       this.inspectionDistance + delta,
-      3.3,
+      this.minimumInspectionDistance(),
       8,
     );
     this.updateCamera(0);
     this.render();
     this.publish();
+  }
+  private minimumInspectionDistance() {
+    return this.camera.aspect > 1.5 && this.canvas.clientHeight < 600 ? 5 : 3.3;
   }
   async lockPointer() {
     if (this.paused || this.lost) return;
@@ -729,8 +738,8 @@ export class ChamberScene {
   }
   setAlarm(active: boolean) {
     this.light.color.setHex(active ? 0xff2820 : 0xdcff00);
-    this.signal.color.setHex(active ? 0xff3828 : 0xdcff00);
-    this.signal.emissive.setHex(active ? 0xff2820 : 0xdcff00);
+    this.signal.color.setHex(active ? 0xff3828 : 0x466000);
+    this.signal.emissive.setHex(active ? 0xff2820 : 0xbadb00);
     const texture = this.terminalTexture;
     if (texture) {
       const source = texture.image as HTMLCanvasElement;

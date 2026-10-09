@@ -429,6 +429,17 @@
   }
 }
 /* Evolution HUD: the scene remains the focal point; tools open on demand. */
+.chamber-dialog[data-overlay='specimen']
+  .chamber-stage
+  > :not(canvas):not(.chamber-overlay) {
+  visibility: hidden;
+}
+.chamber-overlay {
+  visibility: visible;
+}
+.chamber-overlay-world {
+  scroll-padding-top: 5rem;
+}
 .chamber-dialog {
   height: 100dvh;
   overscroll-behavior: none;
@@ -688,6 +699,21 @@
   }
 }
 @media (orientation: landscape) and (max-height: 600px) {
+  .chamber-atlas .atlas-layout {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    align-items: start;
+  }
+  .chamber-atlas .atlas-map,
+  .chamber-atlas .atlas-load {
+    height: clamp(160px, 45dvh, 280px);
+  }
+  .chamber-atlas .atlas-country-sheet {
+    max-height: calc(100dvh - 10rem);
+    overflow: auto;
+  }
+  .chamber-atlas .atlas-country-list {
+    max-height: 120px;
+  }
   .chamber-hud-top {
     padding: 0.5rem max(0.5rem, env(safe-area-inset-right)) 0.25rem
       max(0.5rem, env(safe-area-inset-left));

@@ -18,7 +18,7 @@ export default function ChamberPage() {
       <p className="chamber-kicker">LAMMB LABS / OWNER REVIEW PROTOTYPE</p>
       <h1>The containment chamber.</h1>
       <p className="chamber-intro">
-        One room. One terminal. A spectacularly inadequate risk department.
+        One room. Two terminals. A spectacularly inadequate risk department.
       </p>
       <ContainmentChamber />
     </div>

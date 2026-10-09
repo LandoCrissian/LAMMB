@@ -16,6 +16,7 @@ export function ContainmentChamber() {
   const [portraitBypass, setPortraitBypass] = useState(false);
   const movement = useRef(new PointerOwner());
   const overlayTrigger = useRef<HTMLElement | null>(null);
+  const restorePending = useRef(false);
   const pad = useRef<HTMLButtonElement>(null);
   const portraitContinue = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -74,6 +75,13 @@ export function ContainmentChamber() {
         paused || Boolean(overlay === 'world') || (portrait && !portraitBypass),
       );
   }, [ready, paused, overlay, portrait, portraitBypass]);
+  useEffect(() => {
+    if (overlay || !restorePending.current) return;
+    restorePending.current = false;
+    const target = overlayTrigger.current;
+    if (target?.isConnected && !target.matches(':disabled')) target.focus();
+    else canvas.current?.focus();
+  }, [overlay]);
   useEffect(() => {
     if (ready && portrait && !portraitBypass) portraitContinue.current?.focus();
   }, [ready, portrait, portraitBypass]);
@@ -152,6 +160,7 @@ export function ContainmentChamber() {
     setFailure('');
     setSnapshot(null);
     setOverlay(null);
+    restorePending.current = false;
     setPerspective('first');
     setPortraitBypass(false);
     movement.current.clear();
@@ -193,12 +202,8 @@ export function ContainmentChamber() {
   function closeOverlay() {
     if (overlay === 'specimen') scene.current?.setInspection(false);
     scene.current?.setPaused(paused || (portrait && !portraitBypass));
+    restorePending.current = true;
     setOverlay(null);
-    requestAnimationFrame(() => {
-      const target = overlayTrigger.current;
-      if (target?.isConnected && !target.matches(':disabled')) target.focus();
-      else canvas.current?.focus();
-    });
   }
   function endMovement(id: number) {
     if (movement.current.release(id)) scene.current?.setAxis(0, 0);
@@ -251,6 +256,25 @@ export function ContainmentChamber() {
           position. Pause and Exit are always available. There is no camera bob,
           flashing alarm or autoplay sound. Reduced motion disables decorative
           transitions.
+        </p>
+      </details>
+      <details className="chamber-instructions">
+        <summary>Specimen description and World alternative</summary>
+        <p>
+          The sealed display is an original black industrial container floating
+          above a chartreuse platform. Its beveled front carries a dripping
+          smile; protective rails run along both sides, and the rear has a
+          maintenance panel. Overhead illumination stays steady. Nothing inside
+          is revealed. The observer suit is a temporary prototype, not a LAMMB
+          character.
+        </p>
+        <p>
+          The right-hand terminal opens the shared country atlas. You can also{' '}
+          <a className="chamber-return" href="/world">
+            explore LAMMB World directly
+          </a>{' '}
+          without entering 3D. Its country list is the accessible alternative to
+          spatial selection. The registry is not live.
         </p>
       </details>
       <section
