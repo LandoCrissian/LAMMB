@@ -234,17 +234,17 @@ async function evolution(page, context, cdp, width) {
         true,
       );
   });
-  await touch('touchStart', [move]);
   await touch('touchStart', [move, look]);
   const moving = { ...move, y: box.y + box.height * 0.3 },
     looking = { ...look, x: look.x + 40 };
   await touch('touchMove', [moving, looking]);
   await until(page, (p) => p.z < 4.8 && p.yaw < -0.09);
   // Releasing the right thumb must not cancel the left thumb's movement.
-  // CDP touchEnd terminates the whole sequence. Its touchMove active-point list
-  // emits individual releases for removed points, retaining the other finger.
+  // Chromium has two CDP implementations: SyntheticPointerActions releases
+  // missing active points; legacy CreateWebTouchEvents names released points
+  // in touchEnd. Observe the actual pointerup in either path, not an assumption.
   await touch('touchMove', [moving]);
-  await page.waitForFunction(() => {
+  const cameraReleased = () => {
     const trace = window.chamberTouchTrace;
     const lookDown = trace.find(
       (event) => event.type === 'pointerdown' && event.target === 'CANVAS',
@@ -252,7 +252,16 @@ async function evolution(page, context, cdp, width) {
     return trace.some(
       (event) => event.type === 'pointerup' && event.id === lookDown?.id,
     );
-  });
+  };
+  let releaseMethod = 'synthetic active-point list';
+  try {
+    await page.waitForFunction(cameraReleased, null, { timeout: 2000 });
+  } catch (error) {
+    if (error.name !== 'TimeoutError') throw error;
+    releaseMethod = 'legacy released-point list';
+    await touch('touchEnd', [looking]);
+    await page.waitForFunction(cameraReleased);
+  }
   const releaseTrace = await page.evaluate(() => window.chamberTouchTrace);
   const moveDown = releaseTrace.find(
     (event) => event.type === 'pointerdown' && event.target === 'movement',
@@ -264,7 +273,7 @@ async function evolution(page, context, cdp, width) {
     ),
     'Only the camera pointer ended; movement remains held',
   );
-  evidence.touchTraces.push({ width, releaseTrace });
+  evidence.touchTraces.push({ width, releaseMethod, releaseTrace });
   const releaseSample = await diagnostics(page);
   await until(page, (p) => p.frames > releaseSample.frames);
   const afterCameraRelease = await diagnostics(page);
@@ -278,7 +287,6 @@ async function evolution(page, context, cdp, width) {
     'Cancel releases motion',
   );
   await reset(page);
-  await touch('touchStart', [move]);
   await touch('touchStart', [move, look]);
   await touch('touchMove', [moving, looking]);
   await page.setViewportSize(original);
