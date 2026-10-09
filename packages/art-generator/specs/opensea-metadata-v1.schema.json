@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "image": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "external_url": {
+      "type": "string",
+      "const": "https://lammb.fun"
+    },
+    "attributes": {
+      "maxItems": 24,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trait_type": {
+            "type": "string",
+            "enum": [
+              "Species",
+              "Wool",
+              "Eyes",
+              "Expression",
+              "Clothing",
+              "Headwear",
+              "Eyewear",
+              "Ear Tag",
+              "Jewelry",
+              "Dental Accent",
+              "Equipment",
+              "Mutation",
+              "Material",
+              "Pixel Corruption",
+              "Background",
+              "Phenomenon"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2400
+          }
+        },
+        "required": ["trait_type", "value"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["name", "description", "image", "external_url", "attributes"],
+  "additionalProperties": false
+}
