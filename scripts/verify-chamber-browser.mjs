@@ -43,6 +43,7 @@ const evidence = {
   metrics: [],
   touchTraces: [],
   researchApproaches: [],
+  focusStops: [],
 };
 const browser = await chromium.launch({
   channel: values.browser,
@@ -732,14 +733,23 @@ try {
       await page.locator('canvas').focus();
       await page.keyboard.down('w');
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(1100);
-      const blurred = await diagnostics(page);
-      await page.waitForTimeout(1100);
-      assert.equal(
-        (await diagnostics(page)).z,
-        blurred.z,
-        'Tab clears held movement',
+      assert(
+        !(await page
+          .locator('canvas')
+          .evaluate((el) => el === document.activeElement)),
+        'Tab leaves the gameplay canvas',
       );
+      // Diagnostics publish once per rendered second. On the software GPU a
+      // fixed delay can still read the snapshot from before Tab. Compare two
+      // fresh rendered samples, retaining the strict no-movement assertion.
+      const released = await diagnostics(page);
+      await until(page, (p) => p.frames >= released.frames + 2);
+      const blurred = await diagnostics(page);
+      await until(page, (p) => p.frames >= blurred.frames + 2);
+      const stopped = await diagnostics(page);
+      evidence.focusStops.push({ width, released, blurred, stopped });
+      assert.equal(stopped.z, blurred.z, 'Tab clears held movement');
+      assert.equal(stopped.x, blurred.x, 'Tab leaves no lateral movement');
       await page.keyboard.up('w');
       await reset(page);
       // Camera-relative movement and central containment collision through actual keys.
