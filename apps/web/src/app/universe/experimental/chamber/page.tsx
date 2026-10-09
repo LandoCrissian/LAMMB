@@ -1,3 +1,4 @@
+import { Icon } from '../../../../components/icon';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ContainmentChamber } from '../../../../components/containment-chamber';
@@ -13,7 +14,7 @@ export default function ChamberPage() {
   return (
     <div className="chamber-page">
       <Link className="chamber-return" href="/universe/experimental">
-        ← Return to the Experimental Wing
+        <Icon name="left" /> Return to the Experimental Wing
       </Link>
       <p className="chamber-kicker">LAMMB LABS / OWNER REVIEW PROTOTYPE</p>
       <h1>The containment chamber.</h1>

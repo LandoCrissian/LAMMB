@@ -1,3 +1,4 @@
+import { Icon } from '../../../../components/icon';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { LabsShell } from '../../../../components/labs-shell';
@@ -44,7 +45,9 @@ export default async function Dossier({
       >
         <div className="labs-dossier-top">
           <span className="labs-stamp">{record.stamp}</span>
-          <Link href="/universe/archive">← All files</Link>
+          <Link href="/universe/archive">
+            <Icon name="left" /> All files
+          </Link>
         </div>
         <p className="labs-narrative">{record.narrative}</p>
         {record.id === '002' && (
@@ -90,15 +93,17 @@ export default async function Dossier({
           <nav aria-label="File sequence">
             {index > 0 && (
               <Link href={`/universe/archive/${labFiles[index - 1]!.id}`}>
-                ← Previous file
+                <Icon name="left" /> Previous file
               </Link>
             )}
             {next ? (
               <Link href={`/universe/archive/${next.id}`}>
-                Next / FILE {next.id} →
+                Next / FILE {next.id} <Icon name="right" />
               </Link>
             ) : (
-              <Link href="/vault">Return to the Vault →</Link>
+              <Link href="/vault">
+                Return to the Vault <Icon name="right" />
+              </Link>
             )}
           </nav>
         </div>

@@ -1,3 +1,4 @@
+import { Icon } from '../../../components/icon';
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
 import { labFiles } from '../../../config/labs';
@@ -32,7 +33,9 @@ export default function Archive() {
               <p>{file.summary}</p>
             </div>
             <span className="labs-stamp">{file.stamp}</span>
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon />
+            </span>
           </Link>
         ))}
       </section>

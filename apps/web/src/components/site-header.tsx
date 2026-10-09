@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { navigation, navigationDestinationPath } from '../config/navigation';
 import { useDialog } from './use-dialog';
 import { cinematicAsset } from '../config/cinematic-art';
+import { Icon } from './icon';
 
 const wordmark = cinematicAsset('wordmark');
 
@@ -50,11 +51,7 @@ function NavigationMenu({ pathname }: { pathname: string }) {
         aria-label="Open navigation menu"
         onClick={show}
       >
-        Explore{' '}
-        <span className="hamburger" aria-hidden="true">
-          <i />
-          <i />
-        </span>
+        Explore <Icon name="menu" />
       </button>
       <dialog
         ref={dialogRef}
@@ -74,7 +71,7 @@ function NavigationMenu({ pathname }: { pathname: string }) {
             aria-label="Close navigation menu"
             onClick={close}
           >
-            Close <span aria-hidden="true">×</span>
+            Close <Icon name="close" />
           </button>
         </div>
         <div className="navigation-layout">
@@ -108,7 +105,7 @@ function NavigationMenu({ pathname }: { pathname: string }) {
                   <small>{item.detail}</small>
                 </span>
                 <span className="navigation-arrow" aria-hidden="true">
-                  ↗
+                  <Icon />
                 </span>
               </Link>
             ))}

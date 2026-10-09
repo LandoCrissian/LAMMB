@@ -1,4 +1,5 @@
 'use client';
+import { Icon } from './icon';
 import Image from 'next/image';
 import { useId, useRef, useState } from 'react';
 import {
@@ -68,7 +69,10 @@ export function SealedSpecimen({
           className="specimen-preview-image"
         />
         <span className="inspect-label">
-          Inspect specimen <span aria-hidden="true">↗</span>
+          Inspect specimen{' '}
+          <span aria-hidden="true">
+            <Icon />
+          </span>
         </span>
       </button>
       <p className="specimen-caption">

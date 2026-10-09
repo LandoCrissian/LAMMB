@@ -1,3 +1,4 @@
+import { Icon } from '../components/icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { collection } from '@lammb/collection/config';
@@ -70,10 +71,16 @@ export default function Home() {
           </div>
           <div className="cinema-actions">
             <Link className="primary-link" href="/vault">
-              Enter the Vault <span aria-hidden="true">↗</span>
+              Enter the Vault{' '}
+              <span aria-hidden="true">
+                <Icon />
+              </span>
             </Link>
             <Link className="cinema-secondary" href="/mint">
-              Mint details <span aria-hidden="true">↗</span>
+              Mint details{' '}
+              <span aria-hidden="true">
+                <Icon />
+              </span>
             </Link>
           </div>
         </div>
@@ -134,7 +141,7 @@ export default function Home() {
                 <span>{destination.detail}</span>
               </span>
               <span className="destination-arrow" aria-hidden="true">
-                ↗
+                <Icon />
               </span>
             </Link>
           );

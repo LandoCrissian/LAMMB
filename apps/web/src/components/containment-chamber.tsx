@@ -8,6 +8,8 @@ import {
 import type { ChamberScene, ChamberSnapshot } from '../lib/chamber-scene';
 import { PointerOwner } from '../lib/chamber-input';
 import { ChamberOverlay } from './chamber-overlay';
+import { ChamberGuide } from './chamber-guide';
+import { Icon } from './icon';
 export function ContainmentChamber() {
   const [entered, setEntered] = useState(false);
   const [perspective, setPerspective] = useState<'first' | 'third'>('first');
@@ -143,12 +145,10 @@ export function ContainmentChamber() {
         owned.setAlarm(phase === 'COMPLETE');
         await owned.start(startedAt);
       })
-      .catch((error) => {
+      .catch(() => {
         if (!cancelled)
           setFailure(
-            error instanceof Error
-              ? error.message
-              : '3D unavailable. Use the complete text terminal.',
+            '3D unavailable. Exit and use the complete text terminal, or try entering again.',
           );
       });
     return () => {
@@ -246,6 +246,7 @@ export function ContainmentChamber() {
           Enter 3D chamber
         </button>
       </section>
+      <ChamberGuide />
       <details className="chamber-instructions">
         <summary>Controls and comfort</summary>
         <p>
@@ -547,9 +548,7 @@ export function ContainmentChamber() {
                 onPointerCancel={(event) => endMovement(event.pointerId)}
                 onLostPointerCapture={(event) => endMovement(event.pointerId)}
               >
-                <span aria-hidden="true">
-                  ↑<br />← · →<br />↓
-                </span>
+                <Icon name="move" />
               </button>
               <span>MOVE / DRAG VIEW</span>
             </div>
@@ -572,6 +571,10 @@ export function ContainmentChamber() {
               </span>
               <details className="chamber-comfort">
                 <summary>Controls</summary>
+                <details className="chamber-guide-disclosure">
+                  <summary>How to explore</summary>
+                  <ChamberGuide />
+                </details>
                 <label>
                   Look sensitivity{' '}
                   <input
