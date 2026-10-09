@@ -89,7 +89,13 @@ function watch(page) {
   });
   page.on('pageerror', (error) => evidence.errors.push(error.message));
   page.on('console', (message) => {
-    if (message.type() === 'error') evidence.errors.push(message.text());
+    if (message.type() === 'error')
+      evidence.errors.push({
+        type: 'console',
+        message: message.text(),
+        location: message.location(),
+        page: page.url(),
+      });
     if (message.type() === 'warning') evidence.warnings.push(message.text());
   });
   page.on('requestfailed', (request) =>
@@ -597,7 +603,20 @@ async function modalOrientation() {
   }
 }
 try {
+  // Browser-native requests (for example icons) are not always exposed through
+  // Page response events. Capture their console locations before expensive 3D.
+  const preflight = await browser.newContext();
+  try {
+    const page = await preflight.newPage();
+    watch(page);
+    await page.goto('http://127.0.0.1:3005/universe/experimental/chamber');
+    await page.waitForTimeout(2000);
+    assert.deepEqual(evidence.errors, [], 'Initial document resources');
+  } finally {
+    await preflight.close();
+  }
   await modalOrientation();
+  assert.deepEqual(evidence.errors, [], 'Mobile entry resources and console');
   for (const width of [1440, 320, 390, 768, 1024, 1920]) {
     const context = await browser.newContext({
       viewport: { width, height: width < 768 ? 844 : 1000 },
@@ -967,6 +986,11 @@ try {
     } finally {
       await context.close();
     }
+    assert.deepEqual(
+      evidence.errors,
+      [],
+      `Chamber ${width}px resources and console`,
+    );
     const noJS = await browser.newContext({
       javaScriptEnabled: false,
       viewport: { width, height: 844 },
