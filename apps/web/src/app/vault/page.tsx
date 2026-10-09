@@ -6,11 +6,13 @@ import { cinematicAsset } from '../../config/cinematic-art';
 import { specimenViews, specimenDescriptions } from '../../config/specimen';
 import { supplyLabel } from '../../config/site';
 
-export const metadata = {
-  title: 'The Vault',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('collection', {
+  path: '/vault',
+  title: 'The Vault / LAMMB',
   description:
     'Enter the LAMMB Vault. Inspect the sealed specimen through three illustrated views. Mint unavailable; delayed reveal.',
-};
+});
 export default function Vault() {
   const chamber = cinematicAsset('universe');
   return (

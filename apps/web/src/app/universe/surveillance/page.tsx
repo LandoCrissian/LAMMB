@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import { LabsShell } from '../../../components/labs-shell';
 import { episodeCatalog } from '../../../config/labs';
-export const metadata = { title: 'Surveillance Room / LAMMB Labs' };
+import { socialMetadata } from '../../../config/social';
+export const metadata = socialMetadata('universe', {
+  path: '/universe/surveillance',
+  title: 'Surveillance Room / LAMMB Labs',
+  description:
+    'The footage has questions. Explore the fictional LAMMB Labs surveillance room. Episodes are in development; no footage is released.',
+});
 export default function Surveillance() {
   return (
     <LabsShell

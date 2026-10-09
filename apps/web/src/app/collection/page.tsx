@@ -6,11 +6,8 @@ import {
   TextLink,
 } from '../../components/site-primitives';
 import { supplyLabel } from '../../config/site';
-export const metadata = {
-  title: 'The Collection',
-  description:
-    '5280 LAMMBs. Free mint on Robinhood Chain, network gas applies. Sealed first, revealed later.',
-};
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('collection');
 export default function Collection() {
   return (
     <>

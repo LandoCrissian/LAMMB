@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
-export const metadata = { title: 'Experimental Wing / LAMMB Labs' };
+import { socialMetadata } from '../../../config/social';
+export const metadata = socialMetadata('universe', {
+  path: '/universe/experimental',
+  title: 'Experimental Wing / LAMMB Labs',
+  description:
+    'A future game. Present liability. Explore the fictional LAMMB Labs experimental wing and its isolated containment chamber prototype.',
+});
 export default function Experimental() {
   return (
     <LabsShell

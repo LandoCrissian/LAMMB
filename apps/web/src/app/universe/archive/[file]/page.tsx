@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { LabsShell } from '../../../../components/labs-shell';
 import { LabsAnnex } from '../../../../components/labs-annex';
 import { labFiles } from '../../../../config/labs';
+import { socialMetadata } from '../../../../config/social';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return labFiles.map(({ id }) => ({ file: id }));
@@ -14,11 +15,12 @@ export async function generateMetadata({
 }) {
   const { file } = await params;
   const record = labFiles.find(({ id }) => id === file);
-  return {
-    title: record
-      ? `FILE ${record.id} — ${record.title} / LAMMB Labs`
-      : 'Record unavailable',
-  };
+  if (!record) notFound();
+  return socialMetadata('universe', {
+    path: `/universe/archive/${record.id}`,
+    title: `FILE ${record.id} — ${record.title} / LAMMB Labs`,
+    description: record.summary,
+  });
 }
 export default async function Dossier({
   params,

@@ -1,9 +1,11 @@
 import { FutureExperience } from '../../components/future-experience';
-export const metadata = {
-  title: 'Collector Profile',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('collection', {
+  path: '/profile',
+  title: 'Collector Profile / LAMMB',
   description:
     'Future specimen galleries, optional X identity and collector privacy controls.',
-};
+});
 export default function Profile() {
   return (
     <FutureExperience kind="profile">

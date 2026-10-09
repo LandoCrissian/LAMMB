@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
 import { LabsTerminal } from '../../../components/labs-terminal';
-export const metadata = { title: 'Security Terminal / LAMMB Labs' };
+import { socialMetadata } from '../../../config/social';
+export const metadata = socialMetadata('universe', {
+  path: '/universe/security',
+  title: 'Security Terminal / LAMMB Labs',
+  description:
+    'The incident is management. Inspect fictional system diagnostics and incident reports at the LAMMB Labs security terminal.',
+});
 export default function Security() {
   return (
     <LabsShell

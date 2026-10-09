@@ -3,11 +3,13 @@ import {
   EditorialCard,
   TextLink,
 } from '../../components/site-primitives';
-export const metadata = {
-  title: 'Community',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('home', {
+  path: '/community',
+  title: 'Community / LAMMB',
   description:
     'Same sheep. Different mindset. Find your place in the LAMMB flock.',
-};
+});
 export default function Community() {
   return (
     <>

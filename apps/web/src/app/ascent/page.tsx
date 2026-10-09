@@ -5,11 +5,13 @@ import { PageIntro, TextLink } from '../../components/site-primitives';
 import { LaunchStatus } from '../../components/launch-status';
 import { currentLaunchSnapshot } from '../../config/launch';
 import { displayCopy, supplyLabel } from '../../config/site';
-export const metadata = {
-  title: 'The 5280 Ascent',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('home', {
+  path: '/ascent',
+  title: 'The 5280 Ascent / LAMMB',
   description:
     'At the base. Halfway. One foot left. The deliberate LAMMB launch experience.',
-};
+});
 const milestoneCopy = {
   GROUND: {
     title: 'AT THE BASE',
