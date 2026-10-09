@@ -323,7 +323,10 @@ try {
       .isEnabled(),
   );
   assert(
-    await brokenPage.getByText('Three ways to get your bearings.').isVisible(),
+    await brokenPage
+      .locator('.chamber-page > .chamber-quick-guide')
+      .getByText('Three ways to get your bearings.', { exact: true })
+      .isVisible(),
   );
   await noOverflow(brokenPage);
   await capture(brokenPage, 'entry-image-fallback');
