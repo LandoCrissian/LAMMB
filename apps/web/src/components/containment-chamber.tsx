@@ -550,7 +550,6 @@ export function ContainmentChamber() {
             <div className="chamber-bottom-actions">
               <button
                 type="button"
-                aria-pressed={perspective === 'third'}
                 disabled={!ready || lost}
                 onClick={() => {
                   const next = perspective === 'first' ? 'third' : 'first';
@@ -562,6 +561,9 @@ export function ContainmentChamber() {
                 {' '}
                 {perspective === 'first' ? 'Third person' : 'First person'}{' '}
               </button>
+              <span className="chamber-sr" role="status">
+                Current perspective: {perspective} person.
+              </span>
               <details className="chamber-comfort">
                 <summary>Controls</summary>
                 <label>
