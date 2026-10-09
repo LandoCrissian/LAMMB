@@ -467,30 +467,6 @@ async function evolution(page, context, cdp, width) {
       .evaluate((el) => el === document.activeElement),
     true,
   );
-  if (width === 1440) {
-    // A new portrait recommendation can appear behind the World modal. Closing
-    // must focus that usable fallback, never its now-hidden gameplay trigger.
-    await page.getByRole('button', { name: 'Open World terminal (E)' }).click();
-    await world.waitFor();
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.waitForFunction(
-      () =>
-        document.querySelector('.chamber-dialog').dataset.portrait === 'true',
-    );
-    await page.keyboard.press('Escape');
-    await world.waitFor({ state: 'detached' });
-    const fallback = page.getByRole('button', { name: 'Continue in portrait' });
-    await page.waitForFunction(
-      () => document.activeElement?.textContent === 'Continue in portrait',
-    );
-    assert(await fallback.isVisible());
-    await fallback.click();
-    await page.setViewportSize(original);
-    const held = await diagnostics(page);
-    await until(page, (p) => p.frames > held.frames);
-    assert.equal((await diagnostics(page)).x, beforeWorld.x);
-    assert.equal((await diagnostics(page)).z, beforeWorld.z);
-  }
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await until(page, (p) => p.reducedMotion && !p.hovering);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -532,11 +508,96 @@ async function evolution(page, context, cdp, width) {
     sharedAtlas: true,
     embeddedHistory: true,
     worldRestoration: true,
-    modalOrientationFocus: width === 1440 ? true : null,
     reducedHover: true,
   });
 }
+async function modalOrientation() {
+  // Fresh touch/mobile entry in landscape: no earlier portrait opt-out or
+  // full-page capture can change the recommendation state being exercised.
+  const context = await browser.newContext({
+    viewport: { width: 844, height: 390 },
+    deviceScaleFactor: 1,
+    hasTouch: true,
+    isMobile: true,
+  });
+  try {
+    const page = await context.newPage();
+    watch(page);
+    await page.goto('http://127.0.0.1:3005/universe/experimental/chamber');
+    await page.getByRole('button', { name: 'Enter 3D chamber' }).click();
+    await page.waitForFunction(
+      () => document.querySelector('.chamber-dialog').dataset.ready === 'true',
+      null,
+      { timeout: 90000 },
+    );
+    assert.equal(
+      await page.locator('.chamber-dialog').getAttribute('data-portrait'),
+      'false',
+    );
+    await hold(page, 'd', (p) => p.x > 2.7);
+    for (let n = 0; n < 60; n++) {
+      await page.waitForTimeout(1100);
+      const p = await diagnostics(page);
+      if (p.x >= 2.8 && p.x <= 3.8) break;
+      await page.locator('canvas').focus();
+      await page.keyboard.press(p.x > 3.8 ? 'a' : 'd', { delay: 120 });
+      if (n === 59) throw Error('Mobile World approach failed');
+    }
+    await hold(page, 'w', (p) => p.destination === 'world');
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(1200);
+    const pose = await diagnostics(page);
+    await page.getByRole('button', { name: 'Open World terminal (E)' }).click();
+    const world = page.locator('.chamber-overlay-world');
+    await world.locator('.atlas-map').waitFor();
+    await page.setViewportSize({ width: 390, height: 844 });
+    const media = await page.evaluate(() => ({
+      coarse: matchMedia('(pointer: coarse)').matches,
+      portrait: matchMedia('(orientation: portrait)').matches,
+      width: innerWidth,
+      height: innerHeight,
+      touchPoints: navigator.maxTouchPoints,
+    }));
+    assert(
+      media.coarse && media.portrait,
+      `Mobile media: ${JSON.stringify(media)}`,
+    );
+    await page.waitForFunction(
+      () =>
+        document.querySelector('.chamber-dialog').dataset.portrait === 'true',
+    );
+    await page.keyboard.press('Escape');
+    await world.waitFor({ state: 'detached' });
+    const fallback = page.getByRole('button', { name: 'Continue in portrait' });
+    await page.waitForFunction(
+      () =>
+        document.activeElement?.tagName === 'BUTTON' &&
+        document.activeElement.textContent.trim() === 'Continue in portrait',
+    );
+    assert(await fallback.isVisible());
+    await capture(page, 'world-portrait-return');
+    await fallback.click();
+    const held = await diagnostics(page);
+    await until(page, (p) => p.frames > held.frames);
+    for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
+      assert.equal(
+        (await diagnostics(page))[key],
+        pose[key],
+        `Portrait return preserves ${key}`,
+      );
+    await noOverflow(page);
+    await page.getByRole('button', { name: 'Exit chamber' }).click();
+    evidence.checks.push({
+      check: 'World rotation focuses portrait fallback and resumes',
+      result: 'PASS',
+      media,
+    });
+  } finally {
+    await context.close();
+  }
+}
 try {
+  await modalOrientation();
   for (const width of [1440, 320, 390, 768, 1024, 1920]) {
     const context = await browser.newContext({
       viewport: { width, height: width < 768 ? 844 : 1000 },
