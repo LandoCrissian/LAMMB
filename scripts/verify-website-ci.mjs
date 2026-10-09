@@ -22,7 +22,8 @@ assert(
 const browsers = selectedBrowser ? [selectedBrowser] : ['msedge', 'chrome'];
 const root = process.cwd();
 const run = promisify(execFile);
-const baselineSHA = '723807c813270c193c95ae12afbfced3ef952d26';
+// Compare Task 011 with its authorized main, including merged Tasks 010B/010S.
+const baselineSHA = '6deee126a07150305dea3d5645082fdc5142b1b2';
 const output = path.resolve('artifacts/generated/task-010b/acceptance');
 await mkdir(output, { recursive: true });
 const baseline = path.join(process.env.RUNNER_TEMP, 'lammb-task-010b-baseline');
