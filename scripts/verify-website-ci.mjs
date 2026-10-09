@@ -91,6 +91,26 @@ async function preview(cwd, baselineOnly) {
       await delay(500);
     }
     assert(ready, 'Local preview did not become ready');
+    if (!baselineOnly) {
+      await command(
+        process.execPath,
+        [
+          path.join(root, 'scripts/verify-social-metadata.mjs'),
+          '--base-url',
+          'http://127.0.0.1:3005',
+          '--output',
+          path.join(output, 'social', 'http-metadata.json'),
+        ],
+        cwd,
+      );
+      await cp(
+        path.join(
+          root,
+          'artifacts/generated/task-010s/acceptance/built-metadata.json',
+        ),
+        path.join(output, 'social', 'built-metadata.json'),
+      );
+    }
     for (const browser of browsers) {
       const args = [
         path.join(root, 'scripts/verify-website-browser.mjs'),
@@ -102,6 +122,33 @@ async function preview(cwd, baselineOnly) {
         'task-010b/acceptance',
       ];
       if (baselineOnly) args.push('--baseline-only');
+      if (!baselineOnly) {
+        try {
+          await command(
+            process.execPath,
+            [
+              path.join(root, 'scripts/verify-social-browser.mjs'),
+              '--playwright-module',
+              driver,
+              '--browser',
+              browser,
+              '--port',
+              '3005',
+            ],
+            cwd,
+          );
+        } finally {
+          await cp(
+            path.join(
+              root,
+              'artifacts/generated/task-010s/acceptance',
+              browser,
+            ),
+            path.join(output, 'social', browser),
+            { recursive: true },
+          );
+        }
+      }
       if (!baselineOnly)
         await command(
           process.execPath,

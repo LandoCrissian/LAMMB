@@ -1,10 +1,11 @@
 // Optional browser evidence using an existing driver and installed browser.
 // Does not install software, use personal profiles, or start a server.
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
-import { parseArgs } from 'node:util';
+import { parseArgs, promisify } from 'node:util';
 
 const { values } = parseArgs({
   options: {
@@ -36,6 +37,9 @@ const browser = await chromium.launch({
   headless: true,
 });
 const results = {
+  headAtRun: (
+    await promisify(execFile)('git', ['rev-parse', 'HEAD'])
+  ).stdout.trim(),
   browser: values.browser,
   audits: [],
   screenshots: [],
