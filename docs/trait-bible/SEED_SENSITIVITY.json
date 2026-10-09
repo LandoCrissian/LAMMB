@@ -1,0 +1,374 @@
+{
+  "purpose": "LOGICAL_SEED_SENSITIVITY_NOT_ARTWORK",
+  "specSha256": "bad1d98e10447db617fc733729de35e2101a5eea526cb743e7b18c79598fefb0",
+  "seeds": [
+    {
+      "seedHex": "0150015001500150015001500150015001500150015001500150015001500150",
+      "ok": true,
+      "generated": 5280,
+      "unique": 5280,
+      "logicalCollectionSha256": "91908d1c96774d28abb5d4bcb2a95b28a8d69344a7bc79d5dd6336e761296cac",
+      "totalCandidates": 7055,
+      "maxSpecimenAttempts": 66,
+      "frequencies": {
+        "base_anatomy": {
+          "dev-lammb-base-anatomy-sheep": 5280
+        },
+        "wool": {
+          "dev-lammb-wool-ash": 1053,
+          "dev-lammb-wool-charcoal": 841,
+          "dev-lammb-wool-chartreuse": 436,
+          "dev-lammb-wool-frosted": 315,
+          "dev-lammb-wool-ivory": 1687,
+          "dev-lammb-wool-locks": 253,
+          "dev-lammb-wool-pink": 558,
+          "dev-lammb-wool-singed": 137
+        },
+        "eyes": {
+          "dev-lammb-eyes-amber": 1061,
+          "dev-lammb-eyes-compound": 1,
+          "dev-lammb-eyes-ice": 706,
+          "dev-lammb-eyes-onyx": 303,
+          "dev-lammb-eyes-radioactive": 1723,
+          "dev-lammb-eyes-red": 724,
+          "dev-lammb-eyes-split": 225,
+          "dev-lammb-eyes-violet": 537
+        },
+        "expressions": {
+          "dev-lammb-expressions-amused": 552,
+          "dev-lammb-expressions-defiant": 211,
+          "dev-lammb-expressions-heavy-lidded": 1784,
+          "dev-lammb-expressions-side-eye": 1041,
+          "dev-lammb-expressions-smirk": 901,
+          "dev-lammb-expressions-stoic": 791
+        },
+        "clothing": {
+          "dev-lammb-clothing-bomber": 1061,
+          "dev-lammb-clothing-crewneck": 413,
+          "dev-lammb-clothing-hoodie": 1732,
+          "dev-lammb-clothing-lab-jacket": 834,
+          "dev-lammb-clothing-long-coat": 289,
+          "dev-lammb-clothing-none": 96,
+          "dev-lammb-clothing-shell": 195,
+          "dev-lammb-clothing-utility-vest": 660
+        },
+        "accessories": {
+          "dev-lammb-accessories-backward-cap": 711,
+          "dev-lammb-accessories-beanie": 800,
+          "dev-lammb-accessories-cap-shades": 439,
+          "dev-lammb-accessories-ear-cuff": 85,
+          "dev-lammb-accessories-ear-tag": 363,
+          "dev-lammb-accessories-gold-tooth": 72,
+          "dev-lammb-accessories-headset": 150,
+          "dev-lammb-accessories-none": 1505,
+          "dev-lammb-accessories-shades": 499,
+          "dev-lammb-accessories-silver-chain": 308,
+          "dev-lammb-accessories-visor": 215,
+          "dev-lammb-accessories-work-cap": 133
+        },
+        "mutations": {
+          "dev-lammb-mutations-botanical": 64,
+          "dev-lammb-mutations-crystalline": 72,
+          "dev-lammb-mutations-cybernetic": 180,
+          "dev-lammb-mutations-magma": 100,
+          "dev-lammb-mutations-multi-eye": 1,
+          "dev-lammb-mutations-none": 4600,
+          "dev-lammb-mutations-skeletal": 220,
+          "dev-lammb-mutations-void": 43
+        },
+        "pixel_corruption": {
+          "dev-lammb-pixel-corruption-bleed": 900,
+          "dev-lammb-pixel-corruption-fracture": 400,
+          "dev-lammb-pixel-corruption-glitched": 150,
+          "dev-lammb-pixel-corruption-none": 2200,
+          "dev-lammb-pixel-corruption-reality-failure": 30,
+          "dev-lammb-pixel-corruption-touch": 1600
+        },
+        "environments": {
+          "dev-lammb-environments-chartreuse": 3600,
+          "dev-lammb-environments-event-horizon": 80,
+          "dev-lammb-environments-graphite": 400,
+          "dev-lammb-environments-lab": 240,
+          "dev-lammb-environments-near-black": 800,
+          "dev-lammb-environments-night": 160
+        }
+      }
+    },
+    {
+      "seedHex": "0151015101510151015101510151015101510151015101510151015101510151",
+      "ok": true,
+      "generated": 5280,
+      "unique": 5280,
+      "logicalCollectionSha256": "2a9bbb497e8f8ba086dfff2142a7d6c1f50a6220fa0e528720550bf310c0afdb",
+      "totalCandidates": 6921,
+      "maxSpecimenAttempts": 56,
+      "frequencies": {
+        "base_anatomy": {
+          "dev-lammb-base-anatomy-sheep": 5280
+        },
+        "wool": {
+          "dev-lammb-wool-ash": 1087,
+          "dev-lammb-wool-charcoal": 834,
+          "dev-lammb-wool-chartreuse": 473,
+          "dev-lammb-wool-frosted": 309,
+          "dev-lammb-wool-ivory": 1598,
+          "dev-lammb-wool-locks": 238,
+          "dev-lammb-wool-pink": 608,
+          "dev-lammb-wool-singed": 133
+        },
+        "eyes": {
+          "dev-lammb-eyes-amber": 1030,
+          "dev-lammb-eyes-compound": 1,
+          "dev-lammb-eyes-ice": 679,
+          "dev-lammb-eyes-onyx": 337,
+          "dev-lammb-eyes-radioactive": 1762,
+          "dev-lammb-eyes-red": 725,
+          "dev-lammb-eyes-split": 229,
+          "dev-lammb-eyes-violet": 517
+        },
+        "expressions": {
+          "dev-lammb-expressions-amused": 619,
+          "dev-lammb-expressions-defiant": 184,
+          "dev-lammb-expressions-heavy-lidded": 1724,
+          "dev-lammb-expressions-side-eye": 1015,
+          "dev-lammb-expressions-smirk": 868,
+          "dev-lammb-expressions-stoic": 870
+        },
+        "clothing": {
+          "dev-lammb-clothing-bomber": 1064,
+          "dev-lammb-clothing-crewneck": 418,
+          "dev-lammb-clothing-hoodie": 1690,
+          "dev-lammb-clothing-lab-jacket": 838,
+          "dev-lammb-clothing-long-coat": 306,
+          "dev-lammb-clothing-none": 100,
+          "dev-lammb-clothing-shell": 191,
+          "dev-lammb-clothing-utility-vest": 673
+        },
+        "accessories": {
+          "dev-lammb-accessories-backward-cap": 707,
+          "dev-lammb-accessories-beanie": 808,
+          "dev-lammb-accessories-cap-shades": 431,
+          "dev-lammb-accessories-ear-cuff": 104,
+          "dev-lammb-accessories-ear-tag": 352,
+          "dev-lammb-accessories-gold-tooth": 71,
+          "dev-lammb-accessories-headset": 154,
+          "dev-lammb-accessories-none": 1465,
+          "dev-lammb-accessories-shades": 510,
+          "dev-lammb-accessories-silver-chain": 317,
+          "dev-lammb-accessories-visor": 214,
+          "dev-lammb-accessories-work-cap": 147
+        },
+        "mutations": {
+          "dev-lammb-mutations-botanical": 64,
+          "dev-lammb-mutations-crystalline": 72,
+          "dev-lammb-mutations-cybernetic": 180,
+          "dev-lammb-mutations-magma": 100,
+          "dev-lammb-mutations-multi-eye": 1,
+          "dev-lammb-mutations-none": 4600,
+          "dev-lammb-mutations-skeletal": 220,
+          "dev-lammb-mutations-void": 43
+        },
+        "pixel_corruption": {
+          "dev-lammb-pixel-corruption-bleed": 900,
+          "dev-lammb-pixel-corruption-fracture": 400,
+          "dev-lammb-pixel-corruption-glitched": 150,
+          "dev-lammb-pixel-corruption-none": 2200,
+          "dev-lammb-pixel-corruption-reality-failure": 30,
+          "dev-lammb-pixel-corruption-touch": 1600
+        },
+        "environments": {
+          "dev-lammb-environments-chartreuse": 3600,
+          "dev-lammb-environments-event-horizon": 80,
+          "dev-lammb-environments-graphite": 400,
+          "dev-lammb-environments-lab": 240,
+          "dev-lammb-environments-near-black": 800,
+          "dev-lammb-environments-night": 160
+        }
+      }
+    },
+    {
+      "seedHex": "0152015201520152015201520152015201520152015201520152015201520152",
+      "ok": true,
+      "generated": 5280,
+      "unique": 5280,
+      "logicalCollectionSha256": "8c3668b0099a5968cd3bad25600a340a25c02145fe24d714debbe52558550f3b",
+      "totalCandidates": 6961,
+      "maxSpecimenAttempts": 45,
+      "frequencies": {
+        "base_anatomy": {
+          "dev-lammb-base-anatomy-sheep": 5280
+        },
+        "wool": {
+          "dev-lammb-wool-ash": 1066,
+          "dev-lammb-wool-charcoal": 856,
+          "dev-lammb-wool-chartreuse": 418,
+          "dev-lammb-wool-frosted": 335,
+          "dev-lammb-wool-ivory": 1622,
+          "dev-lammb-wool-locks": 262,
+          "dev-lammb-wool-pink": 586,
+          "dev-lammb-wool-singed": 135
+        },
+        "eyes": {
+          "dev-lammb-eyes-amber": 1026,
+          "dev-lammb-eyes-compound": 1,
+          "dev-lammb-eyes-ice": 650,
+          "dev-lammb-eyes-onyx": 333,
+          "dev-lammb-eyes-radioactive": 1748,
+          "dev-lammb-eyes-red": 777,
+          "dev-lammb-eyes-split": 242,
+          "dev-lammb-eyes-violet": 503
+        },
+        "expressions": {
+          "dev-lammb-expressions-amused": 628,
+          "dev-lammb-expressions-defiant": 214,
+          "dev-lammb-expressions-heavy-lidded": 1743,
+          "dev-lammb-expressions-side-eye": 995,
+          "dev-lammb-expressions-smirk": 893,
+          "dev-lammb-expressions-stoic": 807
+        },
+        "clothing": {
+          "dev-lammb-clothing-bomber": 1087,
+          "dev-lammb-clothing-crewneck": 404,
+          "dev-lammb-clothing-hoodie": 1647,
+          "dev-lammb-clothing-lab-jacket": 861,
+          "dev-lammb-clothing-long-coat": 305,
+          "dev-lammb-clothing-none": 113,
+          "dev-lammb-clothing-shell": 189,
+          "dev-lammb-clothing-utility-vest": 674
+        },
+        "accessories": {
+          "dev-lammb-accessories-backward-cap": 680,
+          "dev-lammb-accessories-beanie": 848,
+          "dev-lammb-accessories-cap-shades": 420,
+          "dev-lammb-accessories-ear-cuff": 82,
+          "dev-lammb-accessories-ear-tag": 381,
+          "dev-lammb-accessories-gold-tooth": 81,
+          "dev-lammb-accessories-headset": 155,
+          "dev-lammb-accessories-none": 1418,
+          "dev-lammb-accessories-shades": 557,
+          "dev-lammb-accessories-silver-chain": 318,
+          "dev-lammb-accessories-visor": 218,
+          "dev-lammb-accessories-work-cap": 122
+        },
+        "mutations": {
+          "dev-lammb-mutations-botanical": 64,
+          "dev-lammb-mutations-crystalline": 72,
+          "dev-lammb-mutations-cybernetic": 180,
+          "dev-lammb-mutations-magma": 100,
+          "dev-lammb-mutations-multi-eye": 1,
+          "dev-lammb-mutations-none": 4600,
+          "dev-lammb-mutations-skeletal": 220,
+          "dev-lammb-mutations-void": 43
+        },
+        "pixel_corruption": {
+          "dev-lammb-pixel-corruption-bleed": 900,
+          "dev-lammb-pixel-corruption-fracture": 400,
+          "dev-lammb-pixel-corruption-glitched": 150,
+          "dev-lammb-pixel-corruption-none": 2200,
+          "dev-lammb-pixel-corruption-reality-failure": 30,
+          "dev-lammb-pixel-corruption-touch": 1600
+        },
+        "environments": {
+          "dev-lammb-environments-chartreuse": 3600,
+          "dev-lammb-environments-event-horizon": 80,
+          "dev-lammb-environments-graphite": 400,
+          "dev-lammb-environments-lab": 240,
+          "dev-lammb-environments-near-black": 800,
+          "dev-lammb-environments-night": 160
+        }
+      }
+    },
+    {
+      "seedHex": "0153015301530153015301530153015301530153015301530153015301530153",
+      "ok": true,
+      "generated": 5280,
+      "unique": 5280,
+      "logicalCollectionSha256": "eaffdda2e4c73f22e9f3cb30181180a2a82e0cedf4ca3dcd2f4fe6f1a568fea9",
+      "totalCandidates": 6978,
+      "maxSpecimenAttempts": 33,
+      "frequencies": {
+        "base_anatomy": {
+          "dev-lammb-base-anatomy-sheep": 5280
+        },
+        "wool": {
+          "dev-lammb-wool-ash": 1048,
+          "dev-lammb-wool-charcoal": 896,
+          "dev-lammb-wool-chartreuse": 454,
+          "dev-lammb-wool-frosted": 342,
+          "dev-lammb-wool-ivory": 1617,
+          "dev-lammb-wool-locks": 241,
+          "dev-lammb-wool-pink": 545,
+          "dev-lammb-wool-singed": 137
+        },
+        "eyes": {
+          "dev-lammb-eyes-amber": 1058,
+          "dev-lammb-eyes-compound": 1,
+          "dev-lammb-eyes-ice": 711,
+          "dev-lammb-eyes-onyx": 346,
+          "dev-lammb-eyes-radioactive": 1690,
+          "dev-lammb-eyes-red": 701,
+          "dev-lammb-eyes-split": 253,
+          "dev-lammb-eyes-violet": 520
+        },
+        "expressions": {
+          "dev-lammb-expressions-amused": 604,
+          "dev-lammb-expressions-defiant": 198,
+          "dev-lammb-expressions-heavy-lidded": 1762,
+          "dev-lammb-expressions-side-eye": 1015,
+          "dev-lammb-expressions-smirk": 916,
+          "dev-lammb-expressions-stoic": 785
+        },
+        "clothing": {
+          "dev-lammb-clothing-bomber": 1069,
+          "dev-lammb-clothing-crewneck": 398,
+          "dev-lammb-clothing-hoodie": 1715,
+          "dev-lammb-clothing-lab-jacket": 839,
+          "dev-lammb-clothing-long-coat": 300,
+          "dev-lammb-clothing-none": 112,
+          "dev-lammb-clothing-shell": 203,
+          "dev-lammb-clothing-utility-vest": 644
+        },
+        "accessories": {
+          "dev-lammb-accessories-backward-cap": 686,
+          "dev-lammb-accessories-beanie": 810,
+          "dev-lammb-accessories-cap-shades": 421,
+          "dev-lammb-accessories-ear-cuff": 86,
+          "dev-lammb-accessories-ear-tag": 370,
+          "dev-lammb-accessories-gold-tooth": 70,
+          "dev-lammb-accessories-headset": 146,
+          "dev-lammb-accessories-none": 1502,
+          "dev-lammb-accessories-shades": 540,
+          "dev-lammb-accessories-silver-chain": 319,
+          "dev-lammb-accessories-visor": 192,
+          "dev-lammb-accessories-work-cap": 138
+        },
+        "mutations": {
+          "dev-lammb-mutations-botanical": 64,
+          "dev-lammb-mutations-crystalline": 72,
+          "dev-lammb-mutations-cybernetic": 180,
+          "dev-lammb-mutations-magma": 100,
+          "dev-lammb-mutations-multi-eye": 1,
+          "dev-lammb-mutations-none": 4600,
+          "dev-lammb-mutations-skeletal": 220,
+          "dev-lammb-mutations-void": 43
+        },
+        "pixel_corruption": {
+          "dev-lammb-pixel-corruption-bleed": 900,
+          "dev-lammb-pixel-corruption-fracture": 400,
+          "dev-lammb-pixel-corruption-glitched": 150,
+          "dev-lammb-pixel-corruption-none": 2200,
+          "dev-lammb-pixel-corruption-reality-failure": 30,
+          "dev-lammb-pixel-corruption-touch": 1600
+        },
+        "environments": {
+          "dev-lammb-environments-chartreuse": 3600,
+          "dev-lammb-environments-event-horizon": 80,
+          "dev-lammb-environments-graphite": 400,
+          "dev-lammb-environments-lab": 240,
+          "dev-lammb-environments-near-black": 800,
+          "dev-lammb-environments-night": 160
+        }
+      }
+    }
+  ]
+}

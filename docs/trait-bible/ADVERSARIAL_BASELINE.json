@@ -1,0 +1,1766 @@
+{
+  "schemaVersion": 1,
+  "purpose": "ADVERSARIAL_LOGICAL_REVIEW",
+  "productionApproved": false,
+  "artworkGenerated": false,
+  "specSha256": "fc06a21e48ea16f25371ef31e6368bca109b67e4aaa52fc9ee419868463a236c",
+  "logicalCollectionSha256": "ba802b623abcd9a93af17184e2751d964c8c2536f6cefcaf7610c5f8b7c3e080",
+  "supply": 5280,
+  "uniqueLogicalFingerprints": 5280,
+  "frequency": [
+    {
+      "id": "lammb-base-anatomy-sheep",
+      "category": "base_anatomy",
+      "proposedTotal": 5280,
+      "rawDrawWeight": 5280,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 5280,
+      "delta": 0,
+      "drawn": 7062,
+      "accepted": 5274,
+      "rejected": 1788
+    },
+    {
+      "id": "lammb-wool-ivory",
+      "category": "wool",
+      "proposedTotal": 1700,
+      "rawDrawWeight": 1700,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1627,
+      "delta": -73,
+      "drawn": 2306,
+      "accepted": 1625,
+      "rejected": 681
+    },
+    {
+      "id": "lammb-wool-ash",
+      "category": "wool",
+      "proposedTotal": 1050,
+      "rawDrawWeight": 1050,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1075,
+      "delta": 25,
+      "drawn": 1430,
+      "accepted": 1074,
+      "rejected": 356
+    },
+    {
+      "id": "lammb-wool-charcoal",
+      "category": "wool",
+      "proposedTotal": 850,
+      "rawDrawWeight": 850,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 833,
+      "delta": -17,
+      "drawn": 1097,
+      "accepted": 833,
+      "rejected": 264
+    },
+    {
+      "id": "lammb-wool-pink",
+      "category": "wool",
+      "proposedTotal": 600,
+      "rawDrawWeight": 600,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 577,
+      "delta": -23,
+      "drawn": 766,
+      "accepted": 577,
+      "rejected": 189
+    },
+    {
+      "id": "lammb-wool-chartreuse",
+      "category": "wool",
+      "proposedTotal": 420,
+      "rawDrawWeight": 420,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 439,
+      "delta": 19,
+      "drawn": 550,
+      "accepted": 439,
+      "rejected": 111
+    },
+    {
+      "id": "lammb-wool-frosted",
+      "category": "wool",
+      "proposedTotal": 300,
+      "rawDrawWeight": 300,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 325,
+      "delta": 25,
+      "drawn": 414,
+      "accepted": 324,
+      "rejected": 90
+    },
+    {
+      "id": "lammb-wool-locks",
+      "category": "wool",
+      "proposedTotal": 240,
+      "rawDrawWeight": 240,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 259,
+      "delta": 19,
+      "drawn": 323,
+      "accepted": 258,
+      "rejected": 65
+    },
+    {
+      "id": "lammb-wool-singed",
+      "category": "wool",
+      "proposedTotal": 120,
+      "rawDrawWeight": 120,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 145,
+      "delta": 25,
+      "drawn": 176,
+      "accepted": 144,
+      "rejected": 32
+    },
+    {
+      "id": "lammb-eyes-radioactive",
+      "category": "eyes",
+      "proposedTotal": 1800,
+      "rawDrawWeight": 1800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1737,
+      "delta": -63,
+      "drawn": 2390,
+      "accepted": 1736,
+      "rejected": 654
+    },
+    {
+      "id": "lammb-eyes-amber",
+      "category": "eyes",
+      "proposedTotal": 1050,
+      "rawDrawWeight": 1050,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1002,
+      "delta": -48,
+      "drawn": 1349,
+      "accepted": 1001,
+      "rejected": 348
+    },
+    {
+      "id": "lammb-eyes-red",
+      "category": "eyes",
+      "proposedTotal": 750,
+      "rawDrawWeight": 750,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 802,
+      "delta": 52,
+      "drawn": 1072,
+      "accepted": 802,
+      "rejected": 270
+    },
+    {
+      "id": "lammb-eyes-ice",
+      "category": "eyes",
+      "proposedTotal": 650,
+      "rawDrawWeight": 650,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 627,
+      "delta": -23,
+      "drawn": 840,
+      "accepted": 626,
+      "rejected": 214
+    },
+    {
+      "id": "lammb-eyes-violet",
+      "category": "eyes",
+      "proposedTotal": 500,
+      "rawDrawWeight": 500,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 541,
+      "delta": 41,
+      "drawn": 678,
+      "accepted": 540,
+      "rejected": 138
+    },
+    {
+      "id": "lammb-eyes-onyx",
+      "category": "eyes",
+      "proposedTotal": 300,
+      "rawDrawWeight": 300,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 319,
+      "delta": 19,
+      "drawn": 422,
+      "accepted": 318,
+      "rejected": 104
+    },
+    {
+      "id": "lammb-eyes-split",
+      "category": "eyes",
+      "proposedTotal": 229,
+      "rawDrawWeight": 229,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 251,
+      "delta": 22,
+      "drawn": 311,
+      "accepted": 251,
+      "rejected": 60
+    },
+    {
+      "id": "lammb-eyes-compound",
+      "category": "eyes",
+      "proposedTotal": 1,
+      "rawDrawWeight": 1,
+      "policy": "RESERVED_ONLY",
+      "observedTotal": 1,
+      "delta": 0,
+      "drawn": 0,
+      "accepted": 0,
+      "rejected": 0
+    },
+    {
+      "id": "lammb-expressions-heavy-lidded",
+      "category": "expressions",
+      "proposedTotal": 1800,
+      "rawDrawWeight": 1800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1734,
+      "delta": -66,
+      "drawn": 2392,
+      "accepted": 1732,
+      "rejected": 660
+    },
+    {
+      "id": "lammb-expressions-side-eye",
+      "category": "expressions",
+      "proposedTotal": 1000,
+      "rawDrawWeight": 1000,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1015,
+      "delta": 15,
+      "drawn": 1348,
+      "accepted": 1014,
+      "rejected": 334
+    },
+    {
+      "id": "lammb-expressions-smirk",
+      "category": "expressions",
+      "proposedTotal": 900,
+      "rawDrawWeight": 900,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 918,
+      "delta": 18,
+      "drawn": 1230,
+      "accepted": 918,
+      "rejected": 312
+    },
+    {
+      "id": "lammb-expressions-stoic",
+      "category": "expressions",
+      "proposedTotal": 800,
+      "rawDrawWeight": 800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 820,
+      "delta": 20,
+      "drawn": 1093,
+      "accepted": 818,
+      "rejected": 275
+    },
+    {
+      "id": "lammb-expressions-amused",
+      "category": "expressions",
+      "proposedTotal": 600,
+      "rawDrawWeight": 600,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 601,
+      "delta": 1,
+      "drawn": 774,
+      "accepted": 601,
+      "rejected": 173
+    },
+    {
+      "id": "lammb-expressions-defiant",
+      "category": "expressions",
+      "proposedTotal": 180,
+      "rawDrawWeight": 180,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 192,
+      "delta": 12,
+      "drawn": 225,
+      "accepted": 191,
+      "rejected": 34
+    },
+    {
+      "id": "lammb-clothing-hoodie",
+      "category": "clothing",
+      "proposedTotal": 1800,
+      "rawDrawWeight": 1800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1704,
+      "delta": -96,
+      "drawn": 2459,
+      "accepted": 1704,
+      "rejected": 755
+    },
+    {
+      "id": "lammb-clothing-bomber",
+      "category": "clothing",
+      "proposedTotal": 1100,
+      "rawDrawWeight": 1100,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1134,
+      "delta": 34,
+      "drawn": 1537,
+      "accepted": 1134,
+      "rejected": 403
+    },
+    {
+      "id": "lammb-clothing-lab-jacket",
+      "category": "clothing",
+      "proposedTotal": 800,
+      "rawDrawWeight": 800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 856,
+      "delta": 56,
+      "drawn": 1049,
+      "accepted": 854,
+      "rejected": 195
+    },
+    {
+      "id": "lammb-clothing-utility-vest",
+      "category": "clothing",
+      "proposedTotal": 600,
+      "rawDrawWeight": 600,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 603,
+      "delta": 3,
+      "drawn": 754,
+      "accepted": 602,
+      "rejected": 152
+    },
+    {
+      "id": "lammb-clothing-crewneck",
+      "category": "clothing",
+      "proposedTotal": 400,
+      "rawDrawWeight": 400,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 413,
+      "delta": 13,
+      "drawn": 542,
+      "accepted": 412,
+      "rejected": 130
+    },
+    {
+      "id": "lammb-clothing-long-coat",
+      "category": "clothing",
+      "proposedTotal": 300,
+      "rawDrawWeight": 300,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 300,
+      "delta": 0,
+      "drawn": 385,
+      "accepted": 298,
+      "rejected": 87
+    },
+    {
+      "id": "lammb-clothing-shell",
+      "category": "clothing",
+      "proposedTotal": 180,
+      "rawDrawWeight": 180,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 162,
+      "delta": -18,
+      "drawn": 212,
+      "accepted": 162,
+      "rejected": 50
+    },
+    {
+      "id": "lammb-clothing-none",
+      "category": "clothing",
+      "proposedTotal": 100,
+      "rawDrawWeight": 100,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 108,
+      "delta": 8,
+      "drawn": 124,
+      "accepted": 108,
+      "rejected": 16
+    },
+    {
+      "id": "lammb-accessories-none",
+      "category": "accessories",
+      "proposedTotal": 1500,
+      "rawDrawWeight": 1500,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 1453,
+      "delta": -47,
+      "drawn": 2002,
+      "accepted": 1447,
+      "rejected": 555
+    },
+    {
+      "id": "lammb-accessories-beanie",
+      "category": "accessories",
+      "proposedTotal": 800,
+      "rawDrawWeight": 800,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 845,
+      "delta": 45,
+      "drawn": 1104,
+      "accepted": 845,
+      "rejected": 259
+    },
+    {
+      "id": "lammb-accessories-backward-cap",
+      "category": "accessories",
+      "proposedTotal": 650,
+      "rawDrawWeight": 650,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 666,
+      "delta": 16,
+      "drawn": 859,
+      "accepted": 666,
+      "rejected": 193
+    },
+    {
+      "id": "lammb-accessories-shades",
+      "category": "accessories",
+      "proposedTotal": 500,
+      "rawDrawWeight": 500,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 515,
+      "delta": 15,
+      "drawn": 652,
+      "accepted": 515,
+      "rejected": 137
+    },
+    {
+      "id": "lammb-accessories-cap-shades",
+      "category": "accessories",
+      "proposedTotal": 400,
+      "rawDrawWeight": 400,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 387,
+      "delta": -13,
+      "drawn": 502,
+      "accepted": 387,
+      "rejected": 115
+    },
+    {
+      "id": "lammb-accessories-ear-tag",
+      "category": "accessories",
+      "proposedTotal": 350,
+      "rawDrawWeight": 350,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 392,
+      "delta": 42,
+      "drawn": 454,
+      "accepted": 392,
+      "rejected": 62
+    },
+    {
+      "id": "lammb-accessories-silver-chain",
+      "category": "accessories",
+      "proposedTotal": 300,
+      "rawDrawWeight": 300,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 327,
+      "delta": 27,
+      "drawn": 403,
+      "accepted": 327,
+      "rejected": 76
+    },
+    {
+      "id": "lammb-accessories-gold-tooth",
+      "category": "accessories",
+      "proposedTotal": 240,
+      "rawDrawWeight": 240,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 82,
+      "delta": -158,
+      "drawn": 335,
+      "accepted": 82,
+      "rejected": 253
+    },
+    {
+      "id": "lammb-accessories-visor",
+      "category": "accessories",
+      "proposedTotal": 200,
+      "rawDrawWeight": 200,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 211,
+      "delta": 11,
+      "drawn": 252,
+      "accepted": 211,
+      "rejected": 41
+    },
+    {
+      "id": "lammb-accessories-headset",
+      "category": "accessories",
+      "proposedTotal": 140,
+      "rawDrawWeight": 140,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 163,
+      "delta": 23,
+      "drawn": 203,
+      "accepted": 163,
+      "rejected": 40
+    },
+    {
+      "id": "lammb-accessories-work-cap",
+      "category": "accessories",
+      "proposedTotal": 120,
+      "rawDrawWeight": 120,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 146,
+      "delta": 26,
+      "drawn": 183,
+      "accepted": 146,
+      "rejected": 37
+    },
+    {
+      "id": "lammb-accessories-ear-cuff",
+      "category": "accessories",
+      "proposedTotal": 80,
+      "rawDrawWeight": 80,
+      "policy": "WEIGHTED_TARGET",
+      "observedTotal": 93,
+      "delta": 13,
+      "drawn": 113,
+      "accepted": 93,
+      "rejected": 20
+    },
+    {
+      "id": "lammb-mutations-none",
+      "category": "mutations",
+      "proposedTotal": 4600,
+      "rawDrawWeight": 4600,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 4600,
+      "delta": 0,
+      "drawn": 5190,
+      "accepted": 4600,
+      "rejected": 590
+    },
+    {
+      "id": "lammb-mutations-skeletal",
+      "category": "mutations",
+      "proposedTotal": 220,
+      "rawDrawWeight": 220,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 220,
+      "delta": 0,
+      "drawn": 325,
+      "accepted": 220,
+      "rejected": 105
+    },
+    {
+      "id": "lammb-mutations-cybernetic",
+      "category": "mutations",
+      "proposedTotal": 180,
+      "rawDrawWeight": 180,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 180,
+      "delta": 0,
+      "drawn": 189,
+      "accepted": 179,
+      "rejected": 10
+    },
+    {
+      "id": "lammb-mutations-magma",
+      "category": "mutations",
+      "proposedTotal": 100,
+      "rawDrawWeight": 100,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 100,
+      "delta": 0,
+      "drawn": 1073,
+      "accepted": 99,
+      "rejected": 974
+    },
+    {
+      "id": "lammb-mutations-crystalline",
+      "category": "mutations",
+      "proposedTotal": 72,
+      "rawDrawWeight": 72,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 72,
+      "delta": 0,
+      "drawn": 73,
+      "accepted": 71,
+      "rejected": 2
+    },
+    {
+      "id": "lammb-mutations-botanical",
+      "category": "mutations",
+      "proposedTotal": 64,
+      "rawDrawWeight": 64,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 64,
+      "delta": 0,
+      "drawn": 75,
+      "accepted": 63,
+      "rejected": 12
+    },
+    {
+      "id": "lammb-mutations-void",
+      "category": "mutations",
+      "proposedTotal": 43,
+      "rawDrawWeight": 43,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 43,
+      "delta": 0,
+      "drawn": 137,
+      "accepted": 42,
+      "rejected": 95
+    },
+    {
+      "id": "lammb-mutations-multi-eye",
+      "category": "mutations",
+      "proposedTotal": 1,
+      "rawDrawWeight": 1,
+      "policy": "RESERVED_ONLY",
+      "observedTotal": 1,
+      "delta": 0,
+      "drawn": 0,
+      "accepted": 0,
+      "rejected": 0
+    },
+    {
+      "id": "lammb-pixel-corruption-none",
+      "category": "pixel_corruption",
+      "proposedTotal": 2200,
+      "rawDrawWeight": 2200,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 2200,
+      "delta": 0,
+      "drawn": 3171,
+      "accepted": 2199,
+      "rejected": 972
+    },
+    {
+      "id": "lammb-pixel-corruption-touch",
+      "category": "pixel_corruption",
+      "proposedTotal": 1600,
+      "rawDrawWeight": 1600,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 1600,
+      "delta": 0,
+      "drawn": 2210,
+      "accepted": 1599,
+      "rejected": 611
+    },
+    {
+      "id": "lammb-pixel-corruption-bleed",
+      "category": "pixel_corruption",
+      "proposedTotal": 900,
+      "rawDrawWeight": 900,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 900,
+      "delta": 0,
+      "drawn": 1046,
+      "accepted": 899,
+      "rejected": 147
+    },
+    {
+      "id": "lammb-pixel-corruption-fracture",
+      "category": "pixel_corruption",
+      "proposedTotal": 400,
+      "rawDrawWeight": 400,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 400,
+      "delta": 0,
+      "drawn": 446,
+      "accepted": 399,
+      "rejected": 47
+    },
+    {
+      "id": "lammb-pixel-corruption-glitched",
+      "category": "pixel_corruption",
+      "proposedTotal": 150,
+      "rawDrawWeight": 150,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 150,
+      "delta": 0,
+      "drawn": 160,
+      "accepted": 149,
+      "rejected": 11
+    },
+    {
+      "id": "lammb-pixel-corruption-reality-failure",
+      "category": "pixel_corruption",
+      "proposedTotal": 30,
+      "rawDrawWeight": 30,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 30,
+      "delta": 0,
+      "drawn": 29,
+      "accepted": 29,
+      "rejected": 0
+    },
+    {
+      "id": "lammb-environments-chartreuse",
+      "category": "environments",
+      "proposedTotal": 3600,
+      "rawDrawWeight": 3600,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 3600,
+      "delta": 0,
+      "drawn": 5189,
+      "accepted": 3599,
+      "rejected": 1590
+    },
+    {
+      "id": "lammb-environments-near-black",
+      "category": "environments",
+      "proposedTotal": 800,
+      "rawDrawWeight": 800,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 800,
+      "delta": 0,
+      "drawn": 879,
+      "accepted": 798,
+      "rejected": 81
+    },
+    {
+      "id": "lammb-environments-graphite",
+      "category": "environments",
+      "proposedTotal": 400,
+      "rawDrawWeight": 400,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 400,
+      "delta": 0,
+      "drawn": 439,
+      "accepted": 399,
+      "rejected": 40
+    },
+    {
+      "id": "lammb-environments-lab",
+      "category": "environments",
+      "proposedTotal": 240,
+      "rawDrawWeight": 240,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 240,
+      "delta": 0,
+      "drawn": 265,
+      "accepted": 239,
+      "rejected": 26
+    },
+    {
+      "id": "lammb-environments-night",
+      "category": "environments",
+      "proposedTotal": 160,
+      "rawDrawWeight": 160,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 160,
+      "delta": 0,
+      "drawn": 174,
+      "accepted": 160,
+      "rejected": 14
+    },
+    {
+      "id": "lammb-environments-event-horizon",
+      "category": "environments",
+      "proposedTotal": 80,
+      "rawDrawWeight": 80,
+      "policy": "EXACT_TOTAL",
+      "observedTotal": 80,
+      "delta": 0,
+      "drawn": 116,
+      "accepted": 79,
+      "rejected": 37
+    }
+  ],
+  "trace": {
+    "totalCandidates": 7062,
+    "rejectedCandidates": 1788,
+    "ordinaryAccepted": 5274,
+    "gold": {
+      "drawn": 335,
+      "accepted": 82,
+      "rejected": 253,
+      "rejectionsByCodeOverlapping": {
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 114,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing": 40,
+        "STRUCTURE:dev-lammb-mutations-magma:wool": 28,
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 75,
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 44,
+        "STRUCTURE:dev-lammb-mutations-void:expressions": 1,
+        "STRUCTURE:dev-lammb-mutations-void:wool": 1,
+        "STRUCTURE:dev-lammb-mutations-skeletal:expressions": 4,
+        "RULE:dev-lammb-dental-refraction": 2
+      },
+      "disjointRejectionSets": {
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 96,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|STRUCTURE:dev-lammb-mutations-magma:wool|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 8,
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 39,
+        "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 64,
+        "STRUCTURE:dev-lammb-mutations-void:expressions|STRUCTURE:dev-lammb-mutations-void:wool": 1,
+        "STRUCTURE:dev-lammb-mutations-skeletal:expressions": 4,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|STRUCTURE:dev-lammb-mutations-magma:wool|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 7,
+        "RULE:dev-lammb-dental-refraction": 1,
+        "RULE:dev-lammb-dental-refraction|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 1,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 9,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 3,
+        "STRUCTURE:dev-lammb-mutations-magma:wool": 5,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|STRUCTURE:dev-lammb-mutations-magma:wool": 4,
+        "STRUCTURE:dev-lammb-mutations-magma:wool|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 1,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 2,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing": 5,
+        "STRUCTURE:dev-lammb-mutations-magma:clothing|STRUCTURE:dev-lammb-mutations-magma:wool|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 2,
+        "STRUCTURE:dev-lammb-mutations-magma:wool|TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 1
+      },
+      "byExpression": {
+        "lammb-expressions-heavy-lidded": {
+          "drawn": 114,
+          "accepted": 0
+        },
+        "lammb-expressions-smirk": {
+          "drawn": 54,
+          "accepted": 42
+        },
+        "lammb-expressions-side-eye": {
+          "drawn": 75,
+          "accepted": 0
+        },
+        "lammb-expressions-stoic": {
+          "drawn": 44,
+          "accepted": 0
+        },
+        "lammb-expressions-amused": {
+          "drawn": 44,
+          "accepted": 37
+        },
+        "lammb-expressions-defiant": {
+          "drawn": 4,
+          "accepted": 3
+        }
+      },
+      "byMutation": {
+        "lammb-mutations-cybernetic": {
+          "drawn": 8,
+          "accepted": 3
+        },
+        "lammb-mutations-none": {
+          "drawn": 247,
+          "accepted": 76
+        },
+        "lammb-mutations-magma": {
+          "drawn": 56,
+          "accepted": 2
+        },
+        "lammb-mutations-void": {
+          "drawn": 2,
+          "accepted": 0
+        },
+        "lammb-mutations-skeletal": {
+          "drawn": 17,
+          "accepted": 0
+        },
+        "lammb-mutations-botanical": {
+          "drawn": 3,
+          "accepted": 1
+        },
+        "lammb-mutations-crystalline": {
+          "drawn": 2,
+          "accepted": 0
+        }
+      }
+    },
+    "traitSelections": [
+      {
+        "id": "lammb-base-anatomy-sheep",
+        "drawn": 7062,
+        "accepted": 5274,
+        "rejected": 1788
+      },
+      {
+        "id": "lammb-wool-ivory",
+        "drawn": 2306,
+        "accepted": 1625,
+        "rejected": 681
+      },
+      {
+        "id": "lammb-wool-ash",
+        "drawn": 1430,
+        "accepted": 1074,
+        "rejected": 356
+      },
+      {
+        "id": "lammb-wool-charcoal",
+        "drawn": 1097,
+        "accepted": 833,
+        "rejected": 264
+      },
+      {
+        "id": "lammb-wool-pink",
+        "drawn": 766,
+        "accepted": 577,
+        "rejected": 189
+      },
+      {
+        "id": "lammb-wool-chartreuse",
+        "drawn": 550,
+        "accepted": 439,
+        "rejected": 111
+      },
+      {
+        "id": "lammb-wool-frosted",
+        "drawn": 414,
+        "accepted": 324,
+        "rejected": 90
+      },
+      {
+        "id": "lammb-wool-locks",
+        "drawn": 323,
+        "accepted": 258,
+        "rejected": 65
+      },
+      {
+        "id": "lammb-wool-singed",
+        "drawn": 176,
+        "accepted": 144,
+        "rejected": 32
+      },
+      {
+        "id": "lammb-eyes-radioactive",
+        "drawn": 2390,
+        "accepted": 1736,
+        "rejected": 654
+      },
+      {
+        "id": "lammb-eyes-amber",
+        "drawn": 1349,
+        "accepted": 1001,
+        "rejected": 348
+      },
+      {
+        "id": "lammb-eyes-red",
+        "drawn": 1072,
+        "accepted": 802,
+        "rejected": 270
+      },
+      {
+        "id": "lammb-eyes-ice",
+        "drawn": 840,
+        "accepted": 626,
+        "rejected": 214
+      },
+      {
+        "id": "lammb-eyes-violet",
+        "drawn": 678,
+        "accepted": 540,
+        "rejected": 138
+      },
+      {
+        "id": "lammb-eyes-onyx",
+        "drawn": 422,
+        "accepted": 318,
+        "rejected": 104
+      },
+      {
+        "id": "lammb-eyes-split",
+        "drawn": 311,
+        "accepted": 251,
+        "rejected": 60
+      },
+      {
+        "id": "lammb-eyes-compound",
+        "drawn": 0,
+        "accepted": 0,
+        "rejected": 0
+      },
+      {
+        "id": "lammb-expressions-heavy-lidded",
+        "drawn": 2392,
+        "accepted": 1732,
+        "rejected": 660
+      },
+      {
+        "id": "lammb-expressions-side-eye",
+        "drawn": 1348,
+        "accepted": 1014,
+        "rejected": 334
+      },
+      {
+        "id": "lammb-expressions-smirk",
+        "drawn": 1230,
+        "accepted": 918,
+        "rejected": 312
+      },
+      {
+        "id": "lammb-expressions-stoic",
+        "drawn": 1093,
+        "accepted": 818,
+        "rejected": 275
+      },
+      {
+        "id": "lammb-expressions-amused",
+        "drawn": 774,
+        "accepted": 601,
+        "rejected": 173
+      },
+      {
+        "id": "lammb-expressions-defiant",
+        "drawn": 225,
+        "accepted": 191,
+        "rejected": 34
+      },
+      {
+        "id": "lammb-clothing-hoodie",
+        "drawn": 2459,
+        "accepted": 1704,
+        "rejected": 755
+      },
+      {
+        "id": "lammb-clothing-bomber",
+        "drawn": 1537,
+        "accepted": 1134,
+        "rejected": 403
+      },
+      {
+        "id": "lammb-clothing-lab-jacket",
+        "drawn": 1049,
+        "accepted": 854,
+        "rejected": 195
+      },
+      {
+        "id": "lammb-clothing-utility-vest",
+        "drawn": 754,
+        "accepted": 602,
+        "rejected": 152
+      },
+      {
+        "id": "lammb-clothing-crewneck",
+        "drawn": 542,
+        "accepted": 412,
+        "rejected": 130
+      },
+      {
+        "id": "lammb-clothing-long-coat",
+        "drawn": 385,
+        "accepted": 298,
+        "rejected": 87
+      },
+      {
+        "id": "lammb-clothing-shell",
+        "drawn": 212,
+        "accepted": 162,
+        "rejected": 50
+      },
+      {
+        "id": "lammb-clothing-none",
+        "drawn": 124,
+        "accepted": 108,
+        "rejected": 16
+      },
+      {
+        "id": "lammb-accessories-none",
+        "drawn": 2002,
+        "accepted": 1447,
+        "rejected": 555
+      },
+      {
+        "id": "lammb-accessories-beanie",
+        "drawn": 1104,
+        "accepted": 845,
+        "rejected": 259
+      },
+      {
+        "id": "lammb-accessories-backward-cap",
+        "drawn": 859,
+        "accepted": 666,
+        "rejected": 193
+      },
+      {
+        "id": "lammb-accessories-shades",
+        "drawn": 652,
+        "accepted": 515,
+        "rejected": 137
+      },
+      {
+        "id": "lammb-accessories-cap-shades",
+        "drawn": 502,
+        "accepted": 387,
+        "rejected": 115
+      },
+      {
+        "id": "lammb-accessories-ear-tag",
+        "drawn": 454,
+        "accepted": 392,
+        "rejected": 62
+      },
+      {
+        "id": "lammb-accessories-silver-chain",
+        "drawn": 403,
+        "accepted": 327,
+        "rejected": 76
+      },
+      {
+        "id": "lammb-accessories-gold-tooth",
+        "drawn": 335,
+        "accepted": 82,
+        "rejected": 253
+      },
+      {
+        "id": "lammb-accessories-visor",
+        "drawn": 252,
+        "accepted": 211,
+        "rejected": 41
+      },
+      {
+        "id": "lammb-accessories-headset",
+        "drawn": 203,
+        "accepted": 163,
+        "rejected": 40
+      },
+      {
+        "id": "lammb-accessories-work-cap",
+        "drawn": 183,
+        "accepted": 146,
+        "rejected": 37
+      },
+      {
+        "id": "lammb-accessories-ear-cuff",
+        "drawn": 113,
+        "accepted": 93,
+        "rejected": 20
+      },
+      {
+        "id": "lammb-mutations-none",
+        "drawn": 5190,
+        "accepted": 4600,
+        "rejected": 590
+      },
+      {
+        "id": "lammb-mutations-skeletal",
+        "drawn": 325,
+        "accepted": 220,
+        "rejected": 105
+      },
+      {
+        "id": "lammb-mutations-cybernetic",
+        "drawn": 189,
+        "accepted": 179,
+        "rejected": 10
+      },
+      {
+        "id": "lammb-mutations-magma",
+        "drawn": 1073,
+        "accepted": 99,
+        "rejected": 974
+      },
+      {
+        "id": "lammb-mutations-crystalline",
+        "drawn": 73,
+        "accepted": 71,
+        "rejected": 2
+      },
+      {
+        "id": "lammb-mutations-botanical",
+        "drawn": 75,
+        "accepted": 63,
+        "rejected": 12
+      },
+      {
+        "id": "lammb-mutations-void",
+        "drawn": 137,
+        "accepted": 42,
+        "rejected": 95
+      },
+      {
+        "id": "lammb-mutations-multi-eye",
+        "drawn": 0,
+        "accepted": 0,
+        "rejected": 0
+      },
+      {
+        "id": "lammb-pixel-corruption-none",
+        "drawn": 3171,
+        "accepted": 2199,
+        "rejected": 972
+      },
+      {
+        "id": "lammb-pixel-corruption-touch",
+        "drawn": 2210,
+        "accepted": 1599,
+        "rejected": 611
+      },
+      {
+        "id": "lammb-pixel-corruption-bleed",
+        "drawn": 1046,
+        "accepted": 899,
+        "rejected": 147
+      },
+      {
+        "id": "lammb-pixel-corruption-fracture",
+        "drawn": 446,
+        "accepted": 399,
+        "rejected": 47
+      },
+      {
+        "id": "lammb-pixel-corruption-glitched",
+        "drawn": 160,
+        "accepted": 149,
+        "rejected": 11
+      },
+      {
+        "id": "lammb-pixel-corruption-reality-failure",
+        "drawn": 29,
+        "accepted": 29,
+        "rejected": 0
+      },
+      {
+        "id": "lammb-environments-chartreuse",
+        "drawn": 5189,
+        "accepted": 3599,
+        "rejected": 1590
+      },
+      {
+        "id": "lammb-environments-near-black",
+        "drawn": 879,
+        "accepted": 798,
+        "rejected": 81
+      },
+      {
+        "id": "lammb-environments-graphite",
+        "drawn": 439,
+        "accepted": 399,
+        "rejected": 40
+      },
+      {
+        "id": "lammb-environments-lab",
+        "drawn": 265,
+        "accepted": 239,
+        "rejected": 26
+      },
+      {
+        "id": "lammb-environments-night",
+        "drawn": 174,
+        "accepted": 160,
+        "rejected": 14
+      },
+      {
+        "id": "lammb-environments-event-horizon",
+        "drawn": 116,
+        "accepted": 79,
+        "rejected": 37
+      }
+    ]
+  },
+  "diversity": {
+    "caution": "Projections of logical selections, not image/perceptual duplicates or rarity scores. Omitted effects may be visually strong; unproduced assets prevent visual certification.",
+    "ignoringBackgroundAndPixel": {
+      "distinctSignatures": 4059,
+      "repeatedGroups": 779,
+      "specimensInRepeatedGroups": 2000,
+      "pairsSharingSignature": 1950,
+      "largestGroup": 9,
+      "examples": [
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-ivory",
+          "count": 9,
+          "logicalIndices": [100, 121, 1497, 2098, 3920, 4290, 4421, 4785, 4832]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-bomber|lammb-expressions-heavy-lidded|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-ash",
+          "count": 8,
+          "logicalIndices": [102, 185, 1130, 1356, 1970, 2344, 2659, 3820]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-bomber|lammb-expressions-heavy-lidded|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-ivory",
+          "count": 8,
+          "logicalIndices": [408, 547, 1043, 1633, 2184, 2322, 2810, 2880]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-ash",
+          "count": 8,
+          "logicalIndices": [278, 783, 933, 1291, 2527, 2567, 4982, 5072]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-bomber|lammb-expressions-side-eye|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-ivory",
+          "count": 7,
+          "logicalIndices": [30, 736, 1152, 1358, 1650, 3353, 4778]
+        },
+        {
+          "key": "lammb-accessories-beanie|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-eyes-radioactive|lammb-mutations-none|lammb-wool-charcoal",
+          "count": 6,
+          "logicalIndices": [18, 1568, 1676, 2105, 3419, 3475]
+        }
+      ]
+    },
+    "alsoIgnoringEyeColor": {
+      "distinctSignatures": 2340,
+      "repeatedGroups": 955,
+      "specimensInRepeatedGroups": 3895,
+      "pairsSharingSignature": 11541,
+      "largestGroup": 32,
+      "examples": [
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-mutations-none|lammb-wool-ivory",
+          "count": 32,
+          "logicalIndices": [
+            100, 113, 121, 578, 636, 738, 773, 1170, 1266, 1337, 1405, 1497
+          ]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-bomber|lammb-expressions-heavy-lidded|lammb-mutations-none|lammb-wool-ash",
+          "count": 29,
+          "logicalIndices": [
+            97, 102, 130, 185, 256, 660, 980, 1130, 1356, 1576, 1769, 1873
+          ]
+        },
+        {
+          "key": "lammb-accessories-beanie|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-mutations-none|lammb-wool-ivory",
+          "count": 26,
+          "logicalIndices": [
+            25, 263, 431, 478, 564, 1017, 1193, 1334, 1359, 1745, 1843, 1872
+          ]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-mutations-none|lammb-wool-ash",
+          "count": 25,
+          "logicalIndices": [
+            278, 466, 783, 904, 933, 1005, 1142, 1291, 1504, 1829, 1932, 1960
+          ]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-bomber|lammb-expressions-side-eye|lammb-mutations-none|lammb-wool-ivory",
+          "count": 22,
+          "logicalIndices": [
+            30, 203, 595, 683, 736, 824, 1076, 1152, 1358, 1650, 1923, 2378
+          ]
+        },
+        {
+          "key": "lammb-accessories-none|lammb-base-anatomy-sheep|lammb-clothing-hoodie|lammb-expressions-heavy-lidded|lammb-mutations-none|lammb-wool-charcoal",
+          "count": 22,
+          "logicalIndices": [
+            3, 335, 981, 1188, 1233, 1290, 1338, 1420, 1735, 1870, 1954, 1993
+          ]
+        }
+      ]
+    },
+    "coarseSilhouetteRisk": {
+      "distinctSignatures": 854,
+      "repeatedGroups": 452,
+      "specimensInRepeatedGroups": 4878,
+      "pairsSharingSignature": 102944,
+      "largestGroup": 195,
+      "examples": [
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-heavy-lidded|lammb-clothing-hoodie",
+          "count": 195,
+          "logicalIndices": [
+            3, 77, 92, 100, 113, 121, 278, 335, 346, 440, 466, 503
+          ]
+        },
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-heavy-lidded|lammb-clothing-bomber",
+          "count": 140,
+          "logicalIndices": [
+            29, 34, 97, 102, 109, 111, 130, 154, 156, 185, 186, 224
+          ]
+        },
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-smirk|lammb-clothing-hoodie",
+          "count": 122,
+          "logicalIndices": [
+            28, 64, 76, 87, 147, 262, 270, 301, 317, 409, 416, 445
+          ]
+        },
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-side-eye|lammb-clothing-hoodie",
+          "count": 107,
+          "logicalIndices": [
+            16, 22, 125, 135, 151, 184, 225, 229, 265, 275, 296, 365
+          ]
+        },
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-side-eye|lammb-clothing-bomber",
+          "count": 93,
+          "logicalIndices": [
+            30, 150, 203, 212, 294, 313, 363, 555, 573, 595, 683, 735
+          ]
+        },
+        {
+          "key": "lammb-mutations-none|clustered-curls|lammb-expressions-amused|lammb-clothing-hoodie",
+          "count": 88,
+          "logicalIndices": [
+            31, 58, 79, 128, 133, 232, 310, 337, 339, 398, 406, 475
+          ]
+        }
+      ]
+    },
+    "coarseDefinition": "Retain family, expression, clothing, headwear/eyewear/equipment; map rolled wool separately from clustered curls. Omit wool color/material, eye color, minor jewelry/tag/dental, background and corruption. No claim of identical pixels.",
+    "configurationSizes": {
+      "0": 1453,
+      "1": 3440,
+      "2": 387
+    },
+    "facetCooccurrence": {
+      "Eyewear + Headwear": 387
+    },
+    "visibleSelectionsByFamily": {
+      "lammb-mutations-none": {
+        "wool": [
+          "lammb-wool-ash",
+          "lammb-wool-charcoal",
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory",
+          "lammb-wool-locks",
+          "lammb-wool-pink",
+          "lammb-wool-singed"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-amused",
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-smirk",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-none",
+          "lammb-clothing-shell",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-cuff",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-gold-tooth",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-skeletal": {
+        "wool": [
+          "lammb-wool-ash",
+          "lammb-wool-charcoal",
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory",
+          "lammb-wool-locks",
+          "lammb-wool-pink",
+          "lammb-wool-singed"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-none",
+          "lammb-clothing-shell",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-cuff",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-cybernetic": {
+        "wool": [
+          "lammb-wool-ash",
+          "lammb-wool-charcoal",
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory",
+          "lammb-wool-locks",
+          "lammb-wool-pink",
+          "lammb-wool-singed"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-amused",
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-smirk",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-none",
+          "lammb-clothing-shell",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-cuff",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-gold-tooth",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-magma": {
+        "wool": ["lammb-wool-ash", "lammb-wool-charcoal", "lammb-wool-singed"],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-amused",
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-smirk",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-none",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-cuff",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-gold-tooth",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-crystalline": {
+        "wool": [
+          "lammb-wool-ash",
+          "lammb-wool-charcoal",
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory",
+          "lammb-wool-locks",
+          "lammb-wool-pink",
+          "lammb-wool-singed"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-amused",
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-smirk",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-none",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-botanical": {
+        "wool": [
+          "lammb-wool-ash",
+          "lammb-wool-charcoal",
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory",
+          "lammb-wool-locks",
+          "lammb-wool-pink",
+          "lammb-wool-singed"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-ice",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-amused",
+          "lammb-expressions-defiant",
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-smirk",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-none",
+          "lammb-clothing-shell",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-cuff",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-gold-tooth",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-void": {
+        "wool": [
+          "lammb-wool-chartreuse",
+          "lammb-wool-frosted",
+          "lammb-wool-ivory"
+        ],
+        "eyes": [
+          "lammb-eyes-amber",
+          "lammb-eyes-onyx",
+          "lammb-eyes-radioactive",
+          "lammb-eyes-red",
+          "lammb-eyes-split",
+          "lammb-eyes-violet"
+        ],
+        "expressions": [
+          "lammb-expressions-heavy-lidded",
+          "lammb-expressions-side-eye",
+          "lammb-expressions-stoic"
+        ],
+        "clothing": [
+          "lammb-clothing-bomber",
+          "lammb-clothing-crewneck",
+          "lammb-clothing-hoodie",
+          "lammb-clothing-lab-jacket",
+          "lammb-clothing-long-coat",
+          "lammb-clothing-shell",
+          "lammb-clothing-utility-vest"
+        ],
+        "accessories": [
+          "lammb-accessories-backward-cap",
+          "lammb-accessories-beanie",
+          "lammb-accessories-cap-shades",
+          "lammb-accessories-ear-tag",
+          "lammb-accessories-headset",
+          "lammb-accessories-none",
+          "lammb-accessories-shades",
+          "lammb-accessories-silver-chain",
+          "lammb-accessories-visor",
+          "lammb-accessories-work-cap"
+        ]
+      },
+      "lammb-mutations-multi-eye": {
+        "wool": ["lammb-wool-ivory"],
+        "eyes": ["lammb-eyes-compound"],
+        "expressions": ["lammb-expressions-heavy-lidded"],
+        "clothing": ["lammb-clothing-lab-jacket"],
+        "accessories": ["lammb-accessories-none"]
+      }
+    }
+  },
+  "assets": {
+    "templates": 76,
+    "templatesByMethod": {
+      "BUILT_IN_IMAGEGEN_AND_ALIGNMENT": 68,
+      "DETERMINISTIC_CLEAR_LAYER": 4,
+      "DETERMINISTIC_VECTOR": 4
+    },
+    "variantBindings": 267,
+    "variantParentTemplates": 39,
+    "variantBindingsByFamily": {
+      "lammb-mutations-none": 38,
+      "lammb-mutations-skeletal": 36,
+      "lammb-mutations-cybernetic": 37,
+      "lammb-mutations-crystalline": 37,
+      "lammb-mutations-botanical": 37,
+      "lammb-mutations-void": 30,
+      "lammb-mutations-multi-eye": 24,
+      "lammb-mutations-magma": 28
+    },
+    "expandedSourceBindings": 304,
+    "expandedSourceBindingsMeaning": "Replace parent templates with family bindings; this is a planning inventory, not unique PNGs, ImageGen calls or a usage estimate.",
+    "allMissing": true
+  }
+}
