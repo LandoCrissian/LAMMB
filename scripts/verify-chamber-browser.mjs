@@ -1111,7 +1111,7 @@ try {
     await p.getByRole('button', { name: 'Enter 3D chamber' }).click();
     await p
       .getByText(
-        'WebGL 2 is unavailable. The text terminal remains fully playable.',
+        '3D unavailable. Exit and use the complete text terminal, or try entering again.',
       )
       .waitFor();
     await capture(p, 'webgl-unavailable-390');
