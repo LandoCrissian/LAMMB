@@ -690,7 +690,7 @@ export class ChamberScene {
         this.inspectionDistance = THREE.MathUtils.clamp(
           (this.inspectionDistance * before) / after,
           this.minimumInspectionDistance(),
-          8,
+          Math.max(8, this.minimumInspectionDistance() + 3),
         );
     } else if (this.inspectPointers.size === 1) {
       this.inspectionYaw -= (x - prior.x) * 0.008;
@@ -709,14 +709,22 @@ export class ChamberScene {
     this.inspectionDistance = THREE.MathUtils.clamp(
       this.inspectionDistance + delta,
       this.minimumInspectionDistance(),
-      8,
+      Math.max(8, this.minimumInspectionDistance() + 3),
     );
     this.updateCamera(0);
     this.render();
     this.publish();
   }
   private minimumInspectionDistance() {
-    return this.camera.aspect > 1.5 && this.canvas.clientHeight < 600 ? 5 : 3.3;
+    const widthFit =
+      1.35 /
+        (Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)) *
+          this.camera.aspect) +
+      0.8;
+    return Math.max(
+      widthFit,
+      this.camera.aspect > 1.5 && this.canvas.clientHeight < 600 ? 5 : 3.3,
+    );
   }
   async lockPointer() {
     if (this.paused || this.lost) return;

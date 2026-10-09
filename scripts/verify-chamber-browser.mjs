@@ -154,6 +154,14 @@ async function alignWithConsole(page) {
   throw new Error('Bounded keyboard console approach failed');
 }
 async function noOverflow(page) {
+  assert(
+    await page
+      .locator('.chamber-overlay[open]')
+      .evaluateAll((nodes) =>
+        nodes.every((el) => el.scrollWidth <= el.clientWidth),
+      ),
+    'No overlay horizontal overflow',
+  );
   assert.equal(
     await page.evaluate(
       () => document.documentElement.scrollWidth > innerWidth,
@@ -234,6 +242,13 @@ async function evolution(page, context, cdp, width) {
   await page.setViewportSize(landscape);
   await reset(page);
   await hold(page, 'w', (p) => p.destination === 'specimen');
+  await page.keyboard.press('Tab');
+  await page.waitForTimeout(1200);
+  if (width >= 768)
+    await page
+      .getByRole('button', { name: 'Third person', exact: true })
+      .click();
+  const priorInspection = await diagnostics(page);
   await page.getByRole('button', { name: 'Inspect specimen (E)' }).click();
   const inspecting = await diagnostics(page);
   await page.locator('.chamber-overlay-specimen[open]').waitFor();
@@ -278,6 +293,7 @@ async function evolution(page, context, cdp, width) {
     'Genuine pinch zooms',
   );
   await capture(page, `inspection-${width}`);
+  await noOverflow(page);
   await page
     .getByRole('button', { name: 'Reset inspection', exact: true })
     .click();
@@ -287,6 +303,9 @@ async function evolution(page, context, cdp, width) {
     .locator('.chamber-overlay-specimen')
     .waitFor({ state: 'detached' });
   const returned = await diagnostics(page);
+  await page.waitForFunction(() =>
+    document.activeElement?.textContent?.includes('Inspect specimen (E)'),
+  );
   assert.equal(
     await page.locator('.chamber-dialog').getAttribute('data-paused'),
     'false',
@@ -294,6 +313,11 @@ async function evolution(page, context, cdp, width) {
   );
   for (const key of ['x', 'z', 'yaw', 'pitch', 'perspective'])
     assert.equal(returned[key], inspecting[key], `Inspection restores ${key}`);
+  for (const key of ['x', 'y', 'z'])
+    assert(
+      Math.abs(returned.camera[key] - priorInspection.camera[key]) < 0.000001,
+      `Restores prior camera ${key}`,
+    );
   assert.equal(
     await page
       .getByRole('button', { name: 'Inspect specimen (E)' })
@@ -344,6 +368,10 @@ async function evolution(page, context, cdp, width) {
     Number(await world.locator('.atlas-map').getAttribute('data-zoom')) > 1,
   );
   await capture(page, `world-terminal-${width}`);
+  await noOverflow(page);
+  await page.setViewportSize(original);
+  await capture(page, `world-original-${width}`);
+  await noOverflow(page);
   assert((await world.textContent()).includes('REGISTRY NOT YET LIVE'));
   await page.keyboard.press('Escape');
   await world.waitFor({ state: 'detached' });
@@ -369,6 +397,26 @@ async function evolution(page, context, cdp, width) {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.setViewportSize(original);
   await portraitFallback(page);
+  await reset(page);
+  await hold(page, 'w', (p) => p.destination === 'specimen');
+  await page.getByRole('button', { name: 'Inspect specimen (E)' }).click();
+  await page.locator('.chamber-overlay-specimen[open]').waitFor();
+  await capture(page, `inspection-original-${width}`);
+  await noOverflow(page);
+  await page
+    .getByRole('button', { name: 'Close inspection', exact: true })
+    .click();
+  await page
+    .locator('.chamber-overlay-specimen')
+    .waitFor({ state: 'detached' });
+  if (
+    await page
+      .getByRole('button', { name: 'First person', exact: true })
+      .isVisible()
+  )
+    await page
+      .getByRole('button', { name: 'First person', exact: true })
+      .click();
   await reset(page);
   evidence.checks.push({
     width,
