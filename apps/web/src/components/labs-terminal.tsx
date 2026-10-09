@@ -1,4 +1,5 @@
 'use client';
+import { Icon } from './icon';
 import { useState } from 'react';
 const diagnostic = [
   'RESULT: Rational behavior lasted eleven seconds. The warranty required twelve.',
@@ -28,7 +29,10 @@ export function LabsTerminal() {
         type="button"
         onClick={() => setScan((scan + 1) % diagnostic.length)}
       >
-        Run competence diagnostic <span aria-hidden="true">↗</span>
+        Run competence diagnostic{' '}
+        <span aria-hidden="true">
+          <Icon />
+        </span>
       </button>
       <noscript>
         <p>

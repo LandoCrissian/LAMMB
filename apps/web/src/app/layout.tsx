@@ -14,6 +14,7 @@ import './atlas.css';
 
 export const metadata: Metadata = {
   ...socialMetadata('home'),
+  icons: { icon: '/art/cinematic-preview/wordmark.webp' },
   metadataBase: new URL(`https://${collection.domain}`),
   title: {
     default: `${collection.name} — Higher Together`,

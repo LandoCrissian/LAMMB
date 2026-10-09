@@ -162,6 +162,31 @@ async function preview(cwd, baselineOnly) {
           );
         }
       }
+      if (!baselineOnly) {
+        await command(
+          process.execPath,
+          [
+            path.join(root, 'scripts/audit-public-preview.mjs'),
+            '--base-url',
+            'http://127.0.0.1:3005',
+            '--strict',
+            '--output',
+            path.join(output, 'public-preview', 'security.json'),
+          ],
+          cwd,
+        );
+        await command(
+          process.execPath,
+          [
+            path.join(root, 'scripts/verify-public-preview-browser.mjs'),
+            '--playwright-module',
+            driver,
+            '--browser',
+            browser,
+          ],
+          cwd,
+        );
+      }
       if (!baselineOnly)
         await command(
           process.execPath,

@@ -1,3 +1,4 @@
+import { Icon } from '../../../components/icon';
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
 import { LabsTerminal } from '../../../components/labs-terminal';
@@ -25,7 +26,7 @@ export default function Security() {
             restricted.
           </p>
           <Link className="labs-action" href="/universe/archive">
-            Open the experiment archive →
+            Open the experiment archive <Icon name="right" />
           </Link>
           <details>
             <summary>Inspect the coffee-ring memo</summary>

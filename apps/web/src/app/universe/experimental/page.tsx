@@ -1,3 +1,4 @@
+import { Icon } from '../../../components/icon';
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
 import { socialMetadata } from '../../../config/social';
@@ -61,7 +62,7 @@ export default function Experimental() {
             </p>
           </details>
           <Link className="labs-action" href="/universe/archive/002">
-            Investigate the corruption →
+            Investigate the corruption <Icon name="right" />
           </Link>
         </section>
       </div>

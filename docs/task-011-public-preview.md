@@ -1,0 +1,75 @@
+# Task 011 — controlled public preview
+
+## Baseline and scope
+
+Main at start: `6deee126a07150305dea3d5645082fdc5142b1b2`. Task 010B merged as PR #11 (`b55d0dcd5a3c42cf04cbc7a9f66dc72a194b52d7`); Task 010S merged as PR #12 into this baseline. Branch: `codex/task-011-public-preview-readiness`. Implementation preserves the chamber simulation, shared D3/SVG atlas, all four social JPEGs, mint status, registration boundaries and NFT construction contracts. No new dependency, paid service, generation, Netlify setting, merge or deployment is authorized. Commits and draft PR title include `[skip netlify]`.
+
+## Evidence-based security review
+
+Public observations below were made on 2026-10-09 at approximately 14:38–14:44 UTC. Raw evidence is retained in ignored `artifacts/generated/task-011/audit`. Passive requests cover known pages, robots, one missing page, one private-file path and one source-map path. No load testing, credential attempt, transaction, account change or destructive probe was performed.
+
+| Finding                                            | Severity / evidence                                                                                                                                                                                                                       | Remediation                                                                                                                                                                                            | Remaining risk                                                                                                                                                                                                              |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No production CSP                                  | Moderate hardening gap: no CSP on five sampled HTML routes; X-Frame-Options already DENY                                                                                                                                                  | Next response headers now limit resources to self, forbid script attributes, eval, objects, frames, base changes and form submissions. Browser checks exercise real CSP refusals and normal hydration. | Inline Next bootstrap scripts and React inline styles remain allowed. This policy does not eliminate script-injection risk. Strict nonce deployment requires dynamic rendering and a separate performance/caching decision. |
+| Unpatched braces recursion advisory                | Upstream High, repository exposure limited to development tooling: `GHSA-vfj7-8cjw-p6xm`; npm reports five affected dependency nodes through Next ESLint. No patched version is published. Production-only audit reports zero advisories. | No unsafe downgrade, forced audit fix, advisory suppression or fabricated override. Reviewed call path: lint scans repository-owned patterns; public inputs do not reach this dependency.              | Untrusted repository glob patterns can still affect tooling. Track an upstream patch; dependency advisories can change.                                                                                                     |
+| Raw renderer initialization error disclosure       | Low: loader catch previously surfaced arbitrary `Error.message` in public UI                                                                                                                                                              | Generic recovery message and complete text alternative                                                                                                                                                 | Detailed renderer diagnostics remain intentionally available, limited to graphics/observer state, without credentials or stack traces.                                                                                      |
+| Deployment revision cannot be established publicly | Operational evidence gap: GitHub deployment list empty, no commit statuses for baseline, live `/build-info.json` 404                                                                                                                      | Build emits public revision/dirty-state/policy JSON, using Git only, without credentials or environment values                                                                                         | Current Netlify production commit is unverified until the owner reads the deploy log; future marker must be checked against the actual published deploy.                                                                    |
+
+Verified existing controls: certificate validated by Node's trust store, TLS 1.3; HTTP and www return 301 to canonical HTTPS; HSTS `max-age=31536000`; nosniff, DENY and strict-origin referrer policy. Existing permissions deny camera/microphone/geolocation; expanded policy denies unused sensors/payment/USB/display capture/autoplay/XR. Added same-origin opener isolation. No wildcard CORS header observed. No cross-origin resource policy is added to public social images.
+
+Repository inspection found no API route, server action, transaction endpoint, wallet connector, registration endpoint, public environment variable, third-party script, dynamic HTML injection or external runtime data origin. The sole environment boundary validates NODE_ENV without echoing inputs. Atlas data loads from a same-origin static JSON file; UI strings use React escaping. Gitleaks 8.30.1 scanned 122 baseline commits (approximately 5.96 MB) with full redaction and reported no leaks. This is tool evidence, not a guarantee that every possible secret format is recognized.
+
+Live `/.env` and sampled source-map URL return 404. Three sampled production JS files have no sourceMappingURL. Next browser source maps remain disabled by default; server-side build maps are not public assets. Error routes return 404. Collection, profile, mint and World remain informational and do not authorize a financial operation. The fictional game runs client-side, only imports its renderer on explicit entry, makes no external request and retains its full non-3D/no-JS alternative.
+
+Deployment-level access policies, genuine crawler-IP behavior, DNS administration and authenticated Netlify logs cannot be verified from passive public HTTP or GitHub evidence. No hosting configuration was changed. This is a bounded audit, not a claim of perfect security.
+
+## X card investigation
+
+Current public primary pages return 200 to Twitterbot/1.0 and facebookexternalhit/1.1. Initial server HTML includes `summary_large_image`, accurate OG/Twitter titles/descriptions, canonical URLs and absolute `https://lammb.fun/social/*-v1.jpg` URLs. All four images return image/jpeg, decode to 1200×630 and match committed SHA-256 bytes. Public robots allows `/`; no authentication or X-Robots-Tag restriction is observed. Root cache-control is `public,max-age=0,must-revalidate`; the sampled CDN Age was about 2671 seconds. This CDN age does not establish X's cache state.
+
+The previous Task 010S pre-deployment record observed missing images and metadata. That defect is **not present now**. The current production response is consistent with Task 010S artifacts; exact Netlify commit is not exposed. No confirmed current website defect explains the owner's bare-link observation. Stale X cache, presentation differences and genuine crawler access are hypotheses; the actual X-side cause remains unresolved without the affected post/composer context and crawler logs. Do not relabel an inference as a proven root cause or replace valid artwork/metadata speculatively. X controls cache and display timing; no refresh deadline or validator behavior is guaranteed. Old X Cards documentation URLs currently redirect or fail.
+
+Reproduce the site evidence:
+
+```powershell
+node scripts/verify-social-metadata.mjs --base-url https://lammb.fun --audit --output artifacts/generated/task-011/audit/production-social.json
+node scripts/audit-public-preview.mjs
+```
+
+After a separately owner-authorized deployment:
+
+1. Read Netlify's published deploy commit and compare `/build-info.json` with the approved commit, requiring dirty=false. This task does not perform that deployment.
+2. Run strict `node scripts/verify-social-metadata.mjs --base-url https://lammb.fun`; verify all routes, image bytes/MIME and crawler metadata again.
+3. Run `node scripts/audit-public-preview.mjs --strict` and inspect security headers on actual CDN responses. Same-origin local acceptance cannot prove adapter/CDN propagation.
+4. Open a fresh X composer with each canonical URL; record the exact URL, time, client and presentation. The owner decides whether to publish a test post. A fresh query URL can be a diagnostic comparison, not a promised cache purge or a canonical change.
+5. Inspect Netlify request/security logs read-only for genuine Twitterbot visits and denials, including page and image requests. Spoofed user agents do not test real X IP access. Preserve IDs/timestamps without exposing visitor credentials.
+6. If site evidence still passes, escalate the observed X result with these records. Keep the four immutable social assets intact; change a version only for an actual new asset.
+
+## Cinematic interaction and artwork
+
+An undeclared favicon produced a normal-navigation 404 during the new browser checks. Root metadata now declares the preserved wordmark (the chamber already used it), eliminating that failed request without introducing new artwork. The pre-fix diagnostic result is retained separately.
+
+All directional UI glyphs now use original, currentColor SVG paths with fixed viewBox and decorative accessibility attributes; movement uses the same system. Navigation retains native links/dialogs, selected state, Escape close, focus containment/restoration and no-JS links. Chartreuse is #CCFF00. Mobile Universe cards form a single column with generous art crops; semantic copy remains over a dark scrim with explicit IN DEVELOPMENT / NOT PLAYABLE states. No new playable destinations are advertised.
+
+| Destination        | Preserved original source  | Source dimensions | SHA-256                                                            |
+| ------------------ | -------------------------- | ----------------- | ------------------------------------------------------------------ |
+| Security Terminal  | Task 009 facility.webp     | 1536×1024         | `4af9c9f7a17dbb4d9e12104256911e47c50cf86e6d7188bf89d3c6f50f05838d` |
+| Experiment Archive | Task 005D collection.webp  | 768×512           | `d1be73466c9c72817931648f7c8fee5d6677d972f09ecc623d0d0a111b24d8ac` |
+| Surveillance Room  | Task 009 surveillance.webp | 1536×1024         | `edc7fb8bbb23637586ab902176ad4fabe99cfceea3a6fae1f2bfbc2278ad14e9` |
+| Experimental Wing  | Task 005D universe.webp    | 768×512           | `40011dc41633b82c4db16681bcfc6dfddacb402c0af0ca47d66b6812bb2cc4ed` |
+
+Original image provenance remains in the existing manifests. These independently generated environment scenes are already used by the website; no new ImageGen call, recompression, character reveal, fake footage or native-resolution claim is made. Responsive Next Image and lazy loading provide smaller device variants. Source dimensions limit large/high-DPR presentation; full-resolution original masters are not added or upscaled. Website-preview artwork is distinct from approved NFT production artwork.
+
+Chamber entry now displays three short steps for movement/look, perspective/interactions and pause/exit. Landscape guidance is optional; portrait fallback remains. The same guide reopens in native Controls → How to explore. Neither permissions nor a forced orientation or a new mechanic is introduced. The renderer, multitouch ownership, camera collision, inspection and shared World logic are preserved. Controls disclosure is bounded and scrollable on small landscape screens.
+
+## Design-reference decisions
+
+Evaluated [shadcn navigation](https://ui.shadcn.com/docs/components/radix/navigation-menu) for native link composition and [Component Gallery cards](https://component.gallery/components/card/) for one-destination card structure. Existing native dialog/links are sufficient; no Radix/Tailwind migration. [Motion Primitives](https://motion-primitives.com/) was considered for transitions (direct documentation fetch was blocked); motion components offer no demonstrated benefit over restrained CSS and reduced-motion rules here. [MicroKit](https://microkit.co/) documents MIT components and some icon dependencies; use state-feedback ideas only, no source copy or dependency. [mapcn](https://www.mapcn.dev/) uses MapLibre/Tailwind; retain the working D3/SVG atlas. No third-party code was copied, so no imported code/license obligation is introduced.
+
+## Verification and owner-review boundary
+
+`npm ci`, formatting, lint, typecheck, tests and production build run locally and in exact-head CI. The existing complete Chrome/Edge website, social and chamber acceptance remains mandatory; new public-preview browser checks add six-width SVG/navigation/focus/crop/reduced-motion/overflow/onboarding/no-JS evidence and deliberate CSP rejection checks. Full chamber acceptance additionally reopens the in-room guide at every width. The disclosure helper now selects its direct summary so nested instructions cannot create an ambiguous target.
+
+Widths: 320, 390, 768, 1024, 1440, 1920; existing chamber tests also exercise landscape touch, independent multitouch, first/third-person movement, inspection, World restoration, pause/exit, pointer cancellation and context-loss recovery. Full heavy browser acceptance runs on disposable Windows CI, not on the RAM-constrained Legion. Local lightweight checks retain the 2.75 GiB prelaunch RAM gate. Browser screenshots and results stay under ignored artifacts. Software-rendered Chromium evidence does not establish physical iPhone/Safari behavior or a real GPU performance budget. Performance samples are unthrottled localhost lab measurements; source dimensions and extra card image transfers are explicitly reviewable.
+
+Final commit, PR number, exact-head CI result, screenshot hashes, end-main verification and remaining limitations are recorded in the owner delivery report after validation. Stop for owner review; do not merge, deploy or activate mint/registration.

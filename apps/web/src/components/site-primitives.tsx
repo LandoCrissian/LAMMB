@@ -1,3 +1,4 @@
+import { Icon } from './icon';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { collection } from '@lammb/collection/config';
@@ -35,7 +36,9 @@ export function TextLink({
   return (
     <Link className="text-link" href={href}>
       {children}
-      <span aria-hidden="true">↗</span>
+      <span aria-hidden="true">
+        <Icon />
+      </span>
     </Link>
   );
 }
@@ -58,13 +61,15 @@ export function ArtSlot({
         <div className="slot-orbit" />
         <div className="slot-core">
           <span>
-            {variant === 'sealed'
-              ? '?'
-              : variant === 'signal'
-                ? '+'
-                : variant === 'environment'
-                  ? '↗'
-                  : '○'}
+            {variant === 'sealed' ? (
+              '?'
+            ) : variant === 'signal' ? (
+              '+'
+            ) : variant === 'environment' ? (
+              <Icon />
+            ) : (
+              '○'
+            )}
           </span>
           <i />
           <i />

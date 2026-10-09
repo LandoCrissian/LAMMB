@@ -1,8 +1,9 @@
 import type { NextConfig } from 'next';
 import { parseEnvironment } from './src/config/env';
+import { securityHeaders } from './src/config/security';
 
 // Validated when Next starts, builds, generates types, or serves production.
-parseEnvironment(process.env);
+const environment = parseEnvironment(process.env);
 
 const config: NextConfig = {
   reactStrictMode: true,
@@ -12,15 +13,14 @@ const config: NextConfig = {
     return [
       {
         source: '/:path*',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-        ],
+        // Development tooling needs eval; the production policy never permits it.
+        // No pre-existing development CSP is removed.
+        headers:
+          environment.NODE_ENV === 'production'
+            ? securityHeaders
+            : securityHeaders.filter(
+                (header) => header.key !== 'Content-Security-Policy',
+              ),
       },
     ];
   },

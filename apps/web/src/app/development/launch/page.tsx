@@ -1,3 +1,4 @@
+import { Icon } from '../../../components/icon';
 import Link from 'next/link';
 import { launchStateSchema } from '@lammb/schema/launch';
 import {
@@ -57,7 +58,7 @@ export default function LaunchStudies() {
       ))}
       <div className="study-intro">
         <Link className="text-link" href="/">
-          Return to the base ↗
+          Return to the base <Icon />
         </Link>
       </div>
     </>

@@ -4,7 +4,7 @@
   --surface: #11150f;
   --ink: #f4f5eb;
   --muted: #a5af9b;
-  --accent: #daff00;
+  --accent: #ccff00;
   --line: #30362a;
   --page-gutter: clamp(1.25rem, 5vw, 5rem);
 }

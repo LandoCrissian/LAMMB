@@ -140,7 +140,7 @@ async function portraitFallback(page) {
 async function tools(page, open) {
   const detail = page.locator('.chamber-comfort');
   if ((await detail.evaluate((el) => el.open)) !== open)
-    await detail.locator('summary').click();
+    await detail.locator(':scope > summary').click();
 }
 async function reset(page) {
   await tools(page, true);
@@ -714,6 +714,21 @@ try {
       assert(initial.frames > 0);
       assert(initial.triangles > 0);
       assert(initial.calls > 0);
+      await tools(page, true);
+      const guide = page.locator('.chamber-guide-disclosure');
+      await guide.locator(':scope > summary').click();
+      assert(await guide.getByText('Move + look', { exact: true }).isVisible());
+      assert(
+        await guide.getByText('Choose your view', { exact: true }).isVisible(),
+      );
+      assert(
+        await guide.getByText('Take your time', { exact: true }).isVisible(),
+      );
+      assert(await guide.getByText(/Portrait works too/).isVisible());
+      assert(await guide.evaluate((el) => el.scrollWidth <= el.clientWidth));
+      await capture(page, `controls-guide-${width}`);
+      await guide.locator(':scope > summary').click();
+      await tools(page, false);
       const gpu = await page.locator('canvas').evaluate((el) => {
         const gl = el.getContext('webgl2'),
           e = gl.getExtension('WEBGL_debug_renderer_info');

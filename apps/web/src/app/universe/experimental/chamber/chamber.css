@@ -84,6 +84,68 @@
   font-size: 0.875rem;
   line-height: 1.6;
 }
+.chamber-quick-guide {
+  border: 1px solid #526168;
+  background: #0a151a;
+  padding: 1rem;
+  margin-block: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.chamber-quick-guide h3 {
+  margin: 0 0 0.85rem;
+}
+.chamber-quick-guide ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.chamber-quick-guide li {
+  display: flex;
+  gap: 0.65rem;
+}
+.chamber-quick-guide strong {
+  display: block;
+  color: #ccff00;
+  margin-bottom: 0.25rem;
+}
+.chamber-guide-orientation {
+  margin-bottom: 0;
+  color: #c3cdd0;
+}
+.chamber-guide-disclosure {
+  border-block: 1px solid #536168;
+}
+.chamber-guide-disclosure .chamber-quick-guide {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.chamber-guide-disclosure ol {
+  grid-template-columns: 1fr;
+}
+.chamber-comfort[open] {
+  max-height: min(64svh, 540px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.chamber-page button:active:not(:disabled),
+.chamber-dialog button:active:not(:disabled) {
+  border-color: #ccff00;
+  background: #283c34;
+}
+.chamber-pad .ui-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+@media (max-width: 767px) {
+  .chamber-quick-guide ol {
+    grid-template-columns: 1fr;
+  }
+}
 .chamber-instructions summary,
 .chamber-text-terminal summary {
   cursor: pointer;
