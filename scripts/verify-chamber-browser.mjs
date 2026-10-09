@@ -41,6 +41,7 @@ const evidence = {
   warnings: [],
   memoryGiB: [],
   metrics: [],
+  touchTraces: [],
 };
 const browser = await chromium.launch({
   channel: values.browser,
@@ -214,15 +215,60 @@ async function evolution(page, context, cdp, width) {
   };
   const touch = (type, touchPoints) =>
     cdp.send('Input.dispatchTouchEvent', { type, touchPoints });
+  // Observe browser-generated pointer lifecycles, rather than inferring a release
+  // from position alone (the one-second diagnostic sample can overshoot).
+  await page.evaluate(() => {
+    window.chamberTouchTrace = [];
+    for (const type of ['pointerdown', 'pointerup', 'pointercancel'])
+      document.addEventListener(
+        type,
+        (event) => {
+          window.chamberTouchTrace.push({
+            type: event.type,
+            id: event.pointerId,
+            target: event.target.closest('.chamber-pad')
+              ? 'movement'
+              : event.target.tagName,
+          });
+        },
+        true,
+      );
+  });
   await touch('touchStart', [move]);
   await touch('touchStart', [move, look]);
-  const moving = { ...move, y: box.y + 8 },
+  const moving = { ...move, y: box.y + box.height * 0.3 },
     looking = { ...look, x: look.x + 40 };
   await touch('touchMove', [moving, looking]);
   await until(page, (p) => p.z < 4.8 && p.yaw < -0.09);
   // Releasing the right thumb must not cancel the left thumb's movement.
-  await touch('touchEnd', [moving]);
-  await until(page, (p) => p.z < 3.9);
+  // CDP touchEnd terminates the whole sequence. Its touchMove active-point list
+  // emits individual releases for removed points, retaining the other finger.
+  await touch('touchMove', [moving]);
+  await page.waitForFunction(() => {
+    const trace = window.chamberTouchTrace;
+    const lookDown = trace.find(
+      (event) => event.type === 'pointerdown' && event.target === 'CANVAS',
+    );
+    return trace.some(
+      (event) => event.type === 'pointerup' && event.id === lookDown?.id,
+    );
+  });
+  const releaseTrace = await page.evaluate(() => window.chamberTouchTrace);
+  const moveDown = releaseTrace.find(
+    (event) => event.type === 'pointerdown' && event.target === 'movement',
+  );
+  assert(moveDown, 'Browser dispatched the movement pointer');
+  assert(
+    !releaseTrace.some(
+      (event) => event.type !== 'pointerdown' && event.id === moveDown.id,
+    ),
+    'Only the camera pointer ended; movement remains held',
+  );
+  evidence.touchTraces.push({ width, releaseTrace });
+  const releaseSample = await diagnostics(page);
+  await until(page, (p) => p.frames > releaseSample.frames);
+  const afterCameraRelease = await diagnostics(page);
+  await until(page, (p) => p.z < afterCameraRelease.z - 0.2);
   await touch('touchCancel', []);
   await page.waitForTimeout(2200);
   const stopped = await diagnostics(page);
@@ -444,7 +490,7 @@ async function evolution(page, context, cdp, width) {
   });
 }
 try {
-  for (const width of [320, 390, 768, 1024, 1440, 1920]) {
+  for (const width of [1440, 320, 390, 768, 1024, 1920]) {
     const context = await browser.newContext({
       viewport: { width, height: width < 768 ? 844 : 1000 },
       deviceScaleFactor: 1,
