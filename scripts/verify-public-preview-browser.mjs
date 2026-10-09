@@ -60,7 +60,103 @@ async function noOverflow(page) {
     ),
   );
 }
+async function verifyEntry(page) {
+  const entry = page.locator('.chamber-entry');
+  const guide = page.locator('.chamber-page > .chamber-quick-guide');
+  for (const panel of [entry, guide]) {
+    const img = panel.locator('img');
+    await img.evaluate((el) => el.decode());
+    assert(await img.evaluate((el) => el.naturalWidth > 0));
+    assert.equal(await img.getAttribute('alt'), '');
+    assert.equal(await img.locator('..').getAttribute('aria-hidden'), 'true');
+    assert.equal(
+      await panel.evaluate((el) => getComputedStyle(el).animationName),
+      'none',
+    );
+  }
+  const guidance = entry.getByText(
+    'PLAY IN LANDSCAPE FOR THE BEST EXPERIENCE',
+    { exact: true },
+  );
+  const button = entry.getByRole('button', { name: 'Enter 3D chamber' });
+  assert(await guidance.isVisible());
+  assert.equal(
+    await button.getAttribute('aria-describedby'),
+    'chamber-landscape-guidance',
+  );
+  const guidanceBox = await guidance.boundingBox();
+  const buttonBox = await button.boundingBox();
+  assert(guidanceBox.y + guidanceBox.height <= buttonBox.y);
+  assert(
+    await guidance.evaluate(
+      (el) => parseFloat(getComputedStyle(el).fontSize) >= 13,
+    ),
+  );
+  // Compute a conservative contrast bound over the brightest possible image.
+  // The text region ends before the gradient's 55% stop on desktop; mobile
+  // uses a uniform dark overlay. Quick Orientation uses its own uniform veil.
+  const contrast = await page.evaluate(() => {
+    const luminance = (rgb) =>
+      rgb
+        .map((n) => {
+          const s = n / 255;
+          return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+        })
+        .reduce((sum, n, i) => sum + n * [0.2126, 0.7152, 0.0722][i], 0);
+    return [
+      ...document.querySelectorAll('.chamber-entry, .chamber-cinematic-panel'),
+    ].map((panel) => {
+      const art = panel.querySelector('.chamber-entry-art');
+      const veil = getComputedStyle(art, '::after');
+      const solid = veil.backgroundColor
+        .match(/rgba?\(([^)]+)\)/)?.[1]
+        .split(',')
+        .map(Number);
+      const isGradient = veil.backgroundImage !== 'none';
+      const rect = panel.getBoundingClientRect();
+      const textRect = panel
+        .querySelector('.chamber-panel-content')
+        .getBoundingClientRect();
+      const farthest = Math.min(1, (textRect.right - rect.left) / rect.width);
+      const alpha = isGradient
+        ? farthest <= 0.55
+          ? 209 / 255
+          : (209 - ((209 - 128) * (farthest - 0.55)) / 0.45) / 255
+        : (solid[3] ?? 1);
+      const backdrop = [5, 10, 12].map((n) => n * alpha + 255 * (1 - alpha));
+      const backgroundLum = luminance(backdrop);
+      const ratios = [
+        ...panel.querySelectorAll('h2, h3, p, li span, strong'),
+      ].map((el) => {
+        const rgb = getComputedStyle(el)
+          .color.match(/[\d.]+/g)
+          .slice(0, 3)
+          .map(Number);
+        return (luminance(rgb) + 0.05) / (backgroundLum + 0.05);
+      });
+      return { panel: panel.className, minimumRatio: Math.min(...ratios) };
+    });
+  });
+  for (const item of contrast)
+    assert(item.minimumRatio >= 4.5, JSON.stringify(item));
+  await button.focus();
+  assert(
+    await button.evaluate(
+      (el) =>
+        el === document.activeElement &&
+        getComputedStyle(el).outlineStyle !== 'none',
+    ),
+  );
+  await noOverflow(page);
+  return contrast;
+}
 try {
+  for (const scene of ['observer-access', 'quick-orientation']) {
+    const response = await fetch(base + `/art/chamber-entry/${scene}.webp`);
+    assert.equal(response.status, 200);
+    assert(response.headers.get('content-type').startsWith('image/webp'));
+    await response.arrayBuffer();
+  }
   for (const width of [320, 390, 768, 1024, 1440, 1920]) {
     evidence.memoryGiB.push(freemem() / 1024 ** 3);
     assert(freemem() >= ramGate, 'STOP_FOR_OWNER_REVIEW_RAM');
@@ -159,6 +255,7 @@ try {
         .isVisible(),
     );
     await noOverflow(page);
+    const entryContrast = await verifyEntry(page);
     await capture(page, `entry-guide-${width}`);
     evidence.checks.push({
       width,
@@ -169,9 +266,69 @@ try {
       reducedMotion: 'PASS',
       overflow: 'PASS',
       entryGuide: 'PASS',
+      entryArt: 'PASS',
+      landscapeGuidance: 'PASS',
+      entryContrast,
     });
     await context.close();
   }
+  for (const viewport of [
+    { width: 844, height: 390 },
+    { width: 667, height: 320 },
+  ]) {
+    const context = await browser.newContext({
+      viewport,
+      hasTouch: true,
+      isMobile: true,
+      reducedMotion: 'reduce',
+    });
+    const page = await context.newPage();
+    page.on('pageerror', (error) => evidence.errors.push(error.message));
+    await page.goto(base + '/universe/experimental/chamber', {
+      waitUntil: 'load',
+    });
+    const contrast = await verifyEntry(page);
+    await capture(page, `entry-landscape-${viewport.width}`);
+    evidence.checks.push({ viewport, landscapeEntry: 'PASS', contrast });
+    await context.close();
+  }
+  // Deliberate image failures are isolated from ordinary error acceptance.
+  const brokenContext = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+  });
+  await brokenContext.route('**/*', (route) => {
+    const url = decodeURIComponent(route.request().url());
+    return url.includes('/art/chamber-entry/')
+      ? route.fulfill({
+          status: 404,
+          contentType: 'text/plain',
+          body: 'Deliberate image fallback test',
+        })
+      : route.continue();
+  });
+  const brokenPage = await brokenContext.newPage();
+  await brokenPage.goto(base + '/universe/experimental/chamber', {
+    waitUntil: 'networkidle',
+  });
+  for (const image of await brokenPage.locator('.chamber-entry-art img').all())
+    assert(await image.evaluate((el) => el.hidden));
+  assert(
+    await brokenPage
+      .getByText('PLAY IN LANDSCAPE FOR THE BEST EXPERIENCE', { exact: true })
+      .isVisible(),
+  );
+  assert(
+    await brokenPage
+      .getByRole('button', { name: 'Enter 3D chamber' })
+      .isEnabled(),
+  );
+  assert(
+    await brokenPage.getByText('Three ways to get your bearings.').isVisible(),
+  );
+  await noOverflow(brokenPage);
+  await capture(brokenPage, 'entry-image-fallback');
+  evidence.checks.push({ imageFailureFallback: 'PASS' });
+  await brokenContext.close();
   const noJS = await browser.newContext({
     javaScriptEnabled: false,
     viewport: { width: 390, height: 844 },
