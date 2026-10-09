@@ -827,6 +827,13 @@ try {
       );
       await reset(page);
       // Real context extension loss / recovery, with no automatic simulation resume.
+      if (width === 1440) {
+        await tools(page, true);
+        await page.getByRole('slider', { name: 'Look sensitivity' }).focus();
+        await page.keyboard.press('End');
+        assert.equal(await page.getByRole('slider').inputValue(), '6');
+        await tools(page, false);
+      }
       assert(
         await page.locator('canvas').evaluate((el) => {
           const ext = el
@@ -855,6 +862,29 @@ try {
       );
       await portraitFallback(page);
       await until(page, (p) => p.frames > 0);
+      if (width === 1440) {
+        await tools(page, true);
+        assert.equal(await page.getByRole('slider').inputValue(), '6');
+        await tools(page, false);
+        const beforeLook = await diagnostics(page);
+        await page.mouse.move(1100, 400);
+        await page.mouse.down();
+        await page.mouse.move(1120, 400);
+        await page.mouse.up();
+        await until(page, (p) => p.frames > beforeLook.frames);
+        assert(
+          Math.abs((await diagnostics(page)).yaw - beforeLook.yaw + 0.12) <
+            0.001,
+          'Selected sensitivity controls the fresh renderer after context-loss re-entry',
+        );
+        await tools(page, true);
+        await page.getByRole('slider').focus();
+        await page.keyboard.press('Home');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        assert.equal(await page.getByRole('slider').inputValue(), '3');
+        await tools(page, false);
+      }
       await page.emulateMedia({ reducedMotion: 'reduce' });
       assert.equal(
         await page.locator('.chamber-dialog').evaluate(
