@@ -82,20 +82,32 @@ afterAll(async () => {
 });
 
 describe('offline art CLI and protected output boundary', () => {
-  it('validates, plans, renders, and checks readiness with network functions disabled', async () => {
+  it('validates, plans and checks readiness with network functions disabled', async () => {
     const sourceBefore = await readFile(
       join(fixtureRoot, 'assets/dev-asset-base.txt'),
     );
-    for (const command of ['validate', 'plan', 'readiness']) {
+    for (const command of ['validate', 'plan']) {
       const result = cli(command, '--logical-dir', logicalDir, '--json');
       expect(result.status, result.stderr).toBe(0);
       expect(() => JSON.parse(result.stdout)).not.toThrow();
     }
-    const readiness = JSON.parse(
-      cli('readiness', '--logical-dir', logicalDir, '--json').stdout,
-    ) as { plannedSpecimens: number; productionReady100: boolean };
+    const result = cli('readiness', '--logical-dir', logicalDir, '--json');
+    expect(result.status, result.stderr).toBe(0);
+    expect(() => JSON.parse(result.stdout)).not.toThrow();
+    const readiness = JSON.parse(result.stdout) as {
+      plannedSpecimens: number;
+      productionReady100: boolean;
+    };
     expect(readiness.plannedSpecimens).toBe(100);
     expect(readiness.productionReady100).toBe(false);
+    expect(
+      await readFile(join(fixtureRoot, 'assets/dev-asset-base.txt')),
+    ).toEqual(sourceBefore);
+  });
+  it('renders deterministically offline, refuses overwrites and retains source bytes', async () => {
+    const sourceBefore = await readFile(
+      join(fixtureRoot, 'assets/dev-asset-base.txt'),
+    );
     const out = `${directory}/render`;
     const result = cli(
       'render-fixture',
