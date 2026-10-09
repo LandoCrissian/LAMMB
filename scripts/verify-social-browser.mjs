@@ -70,6 +70,10 @@ try {
         'summary_large_image',
       );
       assert(!(await page.locator('body').innerText()).includes('5,280'));
+      if (javaScriptEnabled && expected.route === '/world') {
+        await page.locator('.atlas-map').waitFor({ state: 'visible' });
+        assert.equal(await page.locator('[data-country]').count(), 248);
+      }
       results.audits.push({
         route: expected.route,
         javaScriptEnabled,
@@ -104,11 +108,16 @@ try {
     hasTouch: true,
   });
   const phone = await mobile.newPage();
+  phone.on('pageerror', (error) => results.errors.push(error.message));
   for (const asset of manifest.assets) {
     const response = await phone.goto(origin + asset.route, {
       waitUntil: 'load',
     });
     assert.equal(response.status(), 200);
+    if (asset.route === '/world') {
+      await phone.locator('.atlas-map').waitFor({ state: 'visible' });
+      assert.equal(await phone.locator('[data-country]').count(), 248);
+    }
     const metrics = await phone.evaluate(() => ({
       scroll: document.documentElement.scrollWidth,
       client: document.documentElement.clientWidth,
