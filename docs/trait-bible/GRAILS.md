@@ -8,7 +8,7 @@ Stable ID `lammb-grail-event-horizon`; proposed count 1; logical reservation 0; 
 
 A single bounded negative-space neck suspended within a coherent luminous sheep outline. A radial void is visibly tied to the neck silhouette, not an accessory or random hole.
 
-Silhouette gate: Negative-space neck and light ear/wool frame remain identifiable at 64px.
+Silhouette gate: At 64px expose a novel neck feature at least 6px high by 4px wide (12px by 8px at 128px), with a continuous readable boundary. It must read without jewelry, a title or a rarity label.
 
 Material gate: A continuous void boundary, material-aware rim and coherent primary eye pair.
 
@@ -22,7 +22,7 @@ Stable ID `lammb-grail-recursion`; proposed count 1; logical reservation 1055; a
 
 An intentional open graphite cervical lattice with one recursive chartreuse light path. Sheep muzzle and two low ears remain organic and expressive.
 
-Silhouette gate: The geometric neck aperture is distinctive at thumbnail size without extra headwear.
+Silhouette gate: At 64px expose a novel neck feature at least 6px high by 4px wide (12px by 8px at 128px), with a continuous readable boundary. It must read without jewelry, a title or a rarity label.
 
 Material gate: Titanium, fiber and embedded light form a deliberate bounded mechanism.
 
@@ -36,7 +36,7 @@ Stable ID `lammb-grail-cooled-core`; proposed count 1; logical reservation 2111;
 
 Swept cooled basalt horns and a single internally lit throat core. Heat is contained away from wool; silhouette matters more than flames.
 
-Silhouette gate: The swept horn and throat shape remains unmistakably sheep at 64px.
+Silhouette gate: At 64px expose a novel neck feature at least 6px high by 4px wide (12px by 8px at 128px), with a continuous readable boundary. It must read without jewelry, a title or a rarity label.
 
 Material gate: Cooled basalt shell and internal chartreuse emission have separate surfaces.
 
@@ -50,7 +50,7 @@ Stable ID `lammb-grail-refraction`; proposed count 1; logical reservation 3167; 
 
 A deliberate transparent neck prism bends one chartreuse beam while preserving a coherent quartz sheep muzzle and intact wool.
 
-Silhouette gate: A single neck prism creates a clear geometric silhouette, not a pile of crystals.
+Silhouette gate: At 64px expose a novel neck feature at least 6px high by 4px wide (12px by 8px at 128px), with a continuous readable boundary. It must read without jewelry, a title or a rarity label.
 
 Material gate: Controlled optical thickness and consistent refraction; no random rainbow glitter.
 
@@ -64,7 +64,7 @@ Stable ID `lammb-grail-seed-vault`; proposed count 1; logical reservation 4223; 
 
 A woven living bark neck chamber with one embedded seed light, small controlled buds and a heavy-lidded sheep face.
 
-Silhouette gate: A continuous branching neck structure remains legible independently of foliage decoration.
+Silhouette gate: At 64px expose a novel neck feature at least 6px high by 4px wide (12px by 8px at 128px), with a continuous readable boundary. It must read without jewelry, a title or a rarity label.
 
 Material gate: Bark, moss, wool and a single seed light have exceptional distinct treatment.
 
@@ -78,7 +78,7 @@ Stable ID `lammb-grail-observer-array`; proposed count 1; logical reservation 52
 
 Two expressive primary sheep eyes and exactly three smaller anatomically integrated orbital eyes. No duplication of the face or muzzle; one intentional array.
 
-Silhouette gate: One integrated orbital arch produces a memorable sheep silhouette at 64px.
+Silhouette gate: At 64px count two primary plus three secondary eyes; each secondary eye has at least a 2px visible extent (4px at 128px). The orbital arch changes the silhouette without adding another face.
 
 Material gate: Coherent organic lids and optical wet surfaces; no accessory-based extravagance.
 

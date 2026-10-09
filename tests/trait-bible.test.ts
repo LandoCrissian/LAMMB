@@ -12,6 +12,7 @@ import {
 import {
   productionSpecSchema,
   simulationInputs,
+  validateArtworkPilot,
   validateProposalComposition,
 } from '../packages/art-generator/src/production-spec.ts';
 import type { ProductionSpec } from '../packages/art-generator/src/production-spec.ts';
@@ -94,10 +95,7 @@ describe('Task 015A adversarial evidence', () => {
     const report = adversarialAudit(spec, result.artifacts);
     const stored = JSON.parse(
       readFileSync(
-        new URL(
-          '../docs/trait-bible/ADVERSARIAL_CURRENT.json',
-          import.meta.url,
-        ),
+        new URL('../docs/trait-bible/ADVERSARIAL_015B.json', import.meta.url),
         'utf8',
       ),
     );
@@ -105,6 +103,16 @@ describe('Task 015A adversarial evidence', () => {
     expect(report.trace.gold.drawn).toBe(
       report.trace.gold.accepted + report.trace.gold.rejected,
     );
+    expect(report.trace.gold.accepted).toBe(119);
+    const goldIds = spec.traits
+      .filter((t) => t.metadata.some((a) => a.trait_type === 'Dental Accent'))
+      .map((t) => `dev-${t.id}`);
+    expect(goldIds).toHaveLength(2);
+    expect(
+      result.artifacts.logicalCollection.specimens.filter((s) =>
+        s.traitIds.some((id) => goldIds.includes(id)),
+      ),
+    ).toHaveLength(report.trace.gold.accepted);
     expect(
       report.diversity.ignoringBackgroundAndPixel.distinctSignatures,
     ).toBeLessThan(5280);
@@ -122,11 +130,307 @@ describe('Task 015A adversarial evidence', () => {
   }, 20000);
 });
 
+describe('Task 015B owner-authorized refinement', () => {
+  it('preserves eight canonical wool values with three meaningful geometry profiles', () => {
+    const expected = {
+      ivory: 'COMPACT_CROWN',
+      charcoal: 'COMPACT_CROWN',
+      frosted: 'COMPACT_CROWN',
+      singed: 'COMPACT_CROWN',
+      ash: 'BROAD_OFFSET_CROWN',
+      pink: 'BROAD_OFFSET_CROWN',
+      chartreuse: 'BROAD_OFFSET_CROWN',
+      locks: 'ROLLED_LOCKS',
+    };
+    expect(
+      spec.traits
+        .filter((t) => t.category === 'wool')
+        .map((t) => [t.id, t.woolSpecification!.silhouette])
+        .sort(),
+    ).toEqual(
+      Object.entries(expected)
+        .map(([key, profile]) => [id('wool', key), profile])
+        .sort(),
+    );
+    for (const wool of spec.traits.filter((t) => t.category === 'wool')) {
+      expect(wool.woolSpecification!.preservedLandmarks).toEqual(
+        expect.arrayContaining(spec.species.landmarks),
+      );
+      expect(wool.woolSpecification!.sourceRequirements.length).toBeGreaterThan(
+        0,
+      );
+    }
+    expect(inputs.catalog.categories.every((c) => c.selectionCount === 1)).toBe(
+      true,
+    );
+    expect(
+      spec.traits.filter((t) => t.category === 'accessories'),
+    ).toHaveLength(15);
+  });
+
+  it.each([
+    { accessories: 'cap-tag', wool: 'ivory' },
+    { accessories: 'cap-tag', wool: 'ash' },
+    { accessories: 'cap-tag', wool: 'locks' },
+    { accessories: 'beanie-chain' },
+    { accessories: 'beanie-chain', clothing: 'utility-vest' },
+    { accessories: 'shades-gold', expressions: 'smirk' },
+    { accessories: 'shades-gold', expressions: 'amused' },
+    { accessories: 'shades-gold', expressions: 'defiant' },
+    {
+      accessories: 'shades-gold',
+      expressions: 'defiant',
+      mutations: 'skeletal',
+    },
+    {
+      accessories: 'beanie-chain',
+      expressions: 'defiant',
+      mutations: 'magma',
+      wool: 'singed',
+      eyes: 'amber',
+      clothing: 'utility-vest',
+    },
+  ])('accepts deliberate supported bundle fit %j', (changes) => {
+    expect(() =>
+      validateProposalComposition(spec, composition(changes)),
+    ).not.toThrow();
+  });
+
+  it.each([
+    ...['ash', 'pink', 'chartreuse', 'locks'].flatMap((wool) =>
+      ['beanie', 'beanie-chain'].map((accessories) => ({ accessories, wool })),
+    ),
+    ...['lab-jacket', 'long-coat', 'shell', 'none'].map((clothing) => ({
+      accessories: 'beanie-chain',
+      clothing,
+    })),
+    ...['heavy-lidded', 'side-eye', 'stoic'].map((expressions) => ({
+      accessories: 'shades-gold',
+      expressions,
+    })),
+    { accessories: 'beanie-chain', mutations: 'botanical' },
+    { accessories: 'shades-gold', expressions: 'smirk', mutations: 'skeletal' },
+    {
+      accessories: 'shades-gold',
+      expressions: 'stoic',
+      mutations: 'crystalline',
+      eyes: 'ice',
+    },
+    { accessories: 'shades-gold', mutations: 'void' },
+    ...['cap-tag', 'beanie-chain', 'shades-gold'].map((accessories) => ({
+      accessories,
+      mutations: 'multi-eye',
+      eyes: 'compound',
+      clothing: 'lab-jacket',
+    })),
+  ])('rejects hidden anatomy and unsafe bundle contacts %j', (changes) => {
+    expect(() =>
+      validateProposalComposition(spec, composition(changes)),
+    ).toThrow();
+  });
+
+  it.each(['cap-tag', 'beanie-chain', 'shades-gold'])(
+    'publishes exactly the visible bundle facets: %s',
+    (accessories) => {
+      const trait = spec.traits.find(
+        (t) => t.id === id('accessories', accessories),
+      )!;
+      const metadata = adapter.revealed(
+        'SIM-0000',
+        composition({ accessories, expressions: 'defiant' }),
+        'https://example.invalid/art.png',
+      );
+      const facets = [
+        'Headwear',
+        'Eyewear',
+        'Jewelry',
+        'Ear Tag',
+        'Dental Accent',
+        'Equipment',
+      ];
+      expect(
+        metadata.attributes.filter((a) => facets.includes(a.trait_type)),
+      ).toEqual(trait.metadata);
+      expect(trait.metadata).toHaveLength(2);
+    },
+  );
+
+  it('preserves the six pre-refinement reservation recipes and adds visibility gates without approval', () => {
+    const baseline = [
+      [
+        'event-horizon',
+        0,
+        {
+          eyes: 'violet',
+          expressions: 'stoic',
+          clothing: 'long-coat',
+          mutations: 'void',
+          pixel_corruption: 'reality-failure',
+          environments: 'event-horizon',
+        },
+      ],
+      [
+        'recursion',
+        1055,
+        {
+          wool: 'ash',
+          expressions: 'side-eye',
+          clothing: 'lab-jacket',
+          mutations: 'cybernetic',
+          pixel_corruption: 'fracture',
+          environments: 'lab',
+        },
+      ],
+      [
+        'cooled-core',
+        2111,
+        {
+          wool: 'singed',
+          eyes: 'amber',
+          expressions: 'defiant',
+          clothing: 'utility-vest',
+          mutations: 'magma',
+          pixel_corruption: 'touch',
+          environments: 'near-black',
+        },
+      ],
+      [
+        'refraction',
+        3167,
+        {
+          wool: 'frosted',
+          eyes: 'ice',
+          expressions: 'stoic',
+          clothing: 'crewneck',
+          mutations: 'crystalline',
+          pixel_corruption: 'bleed',
+          environments: 'graphite',
+        },
+      ],
+      [
+        'seed-vault',
+        4223,
+        {
+          wool: 'locks',
+          eyes: 'onyx',
+          clothing: 'long-coat',
+          mutations: 'botanical',
+        },
+      ],
+      [
+        'observer-array',
+        5279,
+        {
+          eyes: 'compound',
+          clothing: 'lab-jacket',
+          mutations: 'multi-eye',
+          pixel_corruption: 'glitched',
+          environments: 'near-black',
+        },
+      ],
+    ] as const;
+    for (const [key, index, changes] of baseline) {
+      const grail = spec.grails.find((g) => g.id === `lammb-grail-${key}`)!;
+      expect(grail.index).toBe(index);
+      expect(grail.traitIds).toEqual(composition(changes));
+      expect(grail.approval.status).toBe('PROPOSED');
+      expect(grail.visibilitySpecification!.reviewSizes).toEqual([64, 128]);
+      expect(grail.visibilitySpecification!.approvalGate).toBe(
+        'OWNER_ART_REVIEW_REQUIRED',
+      );
+    }
+  });
+
+  it('proves the declared pilot covers each context with no unused sources and no generation permission', () => {
+    expect(validateArtworkPilot(spec)).toMatchObject({
+      status: 'NOT_EXECUTED',
+      generationAuthorized: false,
+      sourceBindings: 38,
+      imagegenOrAlignmentBindings: 32,
+      deterministicBindings: 6,
+      reviewCompositions: 18,
+      derivativeRequirements: 24,
+      compatibilityFailures: 0,
+    });
+    const missing = structuredClone(spec);
+    missing.artworkPilot!.sourceBindings.shift();
+    expect(() => validateArtworkPilot(missing)).toThrow('lacks source binding');
+    const badFit = structuredClone(spec);
+    const review = badFit.artworkPilot!.reviewCompositions.find(
+      (c) => c.id === 'pilot-review-beanie-chain-hoodie',
+    )!;
+    review.traitIds = composition({ wool: 'ash', accessories: 'beanie-chain' });
+    expect(() => validateArtworkPilot(badFit)).toThrow(
+      'Pilot pilot-review-beanie-chain-hoodie',
+    );
+  });
+
+  it.each([
+    [
+      'missing silhouette',
+      (s: ProductionSpec) => {
+        delete s.traits.find((t) => t.category === 'wool')!.woolSpecification;
+      },
+    ],
+    [
+      'wrong bundle facet',
+      (s: ProductionSpec) => {
+        s.traits.find((t) => t.accessoryBundle)!.metadata[0]!.value = 'Crown';
+      },
+    ],
+    [
+      'hidden dental permission',
+      (s: ProductionSpec) => {
+        s.traits.find((t) =>
+          t.id.endsWith('shades-gold'),
+        )!.accessoryBundle!.mouthVisibility = 'NOT_REQUIRED';
+      },
+    ],
+    [
+      'missing visibility gate',
+      (s: ProductionSpec) => {
+        delete s.grails[0]!.visibilitySpecification;
+      },
+    ],
+    [
+      'duplicate source binding',
+      (s: ProductionSpec) => {
+        s.artworkPilot!.sourceBindings.push(s.artworkPilot!.sourceBindings[0]!);
+      },
+    ],
+    [
+      'unsupported family binding',
+      (s: ProductionSpec) => {
+        s.artworkPilot!.sourceBindings.find((b) =>
+          b.assetRequirementId.endsWith('shades-gold'),
+        )!.mutationTraitId = id('mutations', 'void');
+      },
+    ],
+    [
+      'changed grail pilot recipe',
+      (s: ProductionSpec) => {
+        s.artworkPilot!.reviewCompositions.find((c) => c.grailId)!.traitIds[1] =
+          id('wool', 'ivory');
+      },
+    ],
+    [
+      'generation authorization',
+      (s: ProductionSpec) => {
+        Object.assign(s.artworkPilot!, { generationAuthorized: true });
+      },
+    ],
+  ])('rejects forged refinement: %s', (_label, alter) => {
+    const changed = structuredClone(spec);
+    alter(changed);
+    expect(productionSpecSchema.safeParse(changed).success).toBe(false);
+  });
+});
+
 describe('Task 015 collection specification boundaries', () => {
   it('covers all existing categories and keeps all artistic decisions unapproved', () => {
     expect(spec.categories).toHaveLength(9);
     expect(spec.editorialSections).toHaveLength(12);
-    expect(spec.traits).toHaveLength(63);
+    expect(spec.traits).toHaveLength(66);
     expect(spec.mutationSpecifications).toHaveLength(7);
     expect(spec.grails).toHaveLength(6);
     for (const category of spec.categories)
@@ -146,7 +450,8 @@ describe('Task 015 collection specification boundaries', () => {
         (a) => a.status === 'MISSING' && a.sha256 === null,
       ),
     ).toBe(true);
-    expect(spec.variantRequirements).toHaveLength(266);
+    expect(spec.assetRequirements).toHaveLength(79);
+    expect(spec.variantRequirements).toHaveLength(284);
     expect(
       validateInputs(
         inputs.catalog,

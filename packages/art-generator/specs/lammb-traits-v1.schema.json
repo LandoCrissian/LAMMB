@@ -8,7 +8,7 @@
     },
     "specVersion": {
       "type": "string",
-      "const": "1.0.0"
+      "enum": ["1.0.0", "1.1.0"]
     },
     "id": {
       "type": "string",
@@ -25,6 +25,34 @@
     "constructorPolicy": {
       "type": "string",
       "const": "ONE_TRAIT_PER_EXISTING_CATEGORY"
+    },
+    "designRefinement": {
+      "type": "object",
+      "properties": {
+        "ownerAuthorization": {
+          "type": "string",
+          "const": "TASK_015B_OWNER_REQUEST"
+        },
+        "status": {
+          "type": "string",
+          "const": "DIRECTION_APPROVED_ASSETS_AND_COUNTS_UNAPPROVED"
+        },
+        "woolPolicy": {
+          "type": "string",
+          "const": "THREE_PROFILES_EIGHT_VALUES"
+        },
+        "accessoryPolicy": {
+          "type": "string",
+          "const": "THREE_BUNDLES_ONE_CONFIGURATION"
+        }
+      },
+      "required": [
+        "ownerAuthorization",
+        "status",
+        "woolPolicy",
+        "accessoryPolicy"
+      ],
+      "additionalProperties": false
     },
     "referenceEvidence": {
       "minItems": 1,
@@ -393,6 +421,143 @@
             "required": ["level"],
             "additionalProperties": false
           },
+          "woolSpecification": {
+            "type": "object",
+            "properties": {
+              "silhouette": {
+                "type": "string",
+                "enum": ["COMPACT_CROWN", "BROAD_OFFSET_CROWN", "ROLLED_LOCKS"]
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "earClearance": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "preservedLandmarks": {
+                "minItems": 4,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2400
+                }
+              },
+              "headwearRule": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "sourceRequirements": {
+                "minItems": 3,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2400
+                }
+              }
+            },
+            "required": [
+              "silhouette",
+              "definition",
+              "earClearance",
+              "preservedLandmarks",
+              "headwearRule",
+              "sourceRequirements"
+            ],
+            "additionalProperties": false
+          },
+          "accessoryBundle": {
+            "type": "object",
+            "properties": {
+              "components": {
+                "minItems": 2,
+                "maxItems": 2,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "trait_type": {
+                      "type": "string",
+                      "enum": [
+                        "Species",
+                        "Wool",
+                        "Eyes",
+                        "Expression",
+                        "Clothing",
+                        "Headwear",
+                        "Eyewear",
+                        "Ear Tag",
+                        "Jewelry",
+                        "Dental Accent",
+                        "Equipment",
+                        "Mutation",
+                        "Material",
+                        "Pixel Corruption",
+                        "Background",
+                        "Phenomenon"
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2400
+                    }
+                  },
+                  "required": ["trait_type", "value"],
+                  "additionalProperties": false
+                }
+              },
+              "mouthVisibility": {
+                "type": "string",
+                "enum": ["NOT_REQUIRED", "VISIBLE_DENTAL_ARCADE"]
+              },
+              "headwearClearance": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "earClearance": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "collarClearance": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "structuralRule": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "sourceRequirements": {
+                "minItems": 3,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2400
+                }
+              }
+            },
+            "required": [
+              "components",
+              "mouthVisibility",
+              "headwearClearance",
+              "earClearance",
+              "collarClearance",
+              "structuralRule",
+              "sourceRequirements"
+            ],
+            "additionalProperties": false
+          },
           "corruptionSpecification": {
             "type": "object",
             "properties": {
@@ -744,6 +909,60 @@
             "minLength": 1,
             "maxLength": 2400
           },
+          "visibilitySpecification": {
+            "type": "object",
+            "properties": {
+              "reviewSizes": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "const": 64
+                  },
+                  {
+                    "type": "number",
+                    "const": 128
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "silhouetteRequirement": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "collarAndCrop": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "protectedPhenomenon": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "ordinaryFamilyComparison": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              },
+              "approvalGate": {
+                "type": "string",
+                "const": "OWNER_ART_REVIEW_REQUIRED"
+              }
+            },
+            "required": [
+              "reviewSizes",
+              "silhouetteRequirement",
+              "collarAndCrop",
+              "protectedPhenomenon",
+              "ordinaryFamilyComparison",
+              "approvalGate"
+            ],
+            "additionalProperties": false
+          },
           "assetRequirementIds": {
             "minItems": 1,
             "maxItems": 2048,
@@ -974,6 +1193,157 @@
         ],
         "additionalProperties": false
       }
+    },
+    "artworkPilot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "const": "lammb-pilot-015b"
+        },
+        "status": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "generationAuthorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "nativeResolutionPolicy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2400
+        },
+        "sourceBindings": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "assetRequirementId": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "mutationTraitId": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "method": {
+                "type": "string",
+                "enum": [
+                  "BUILT_IN_IMAGEGEN_AND_ALIGNMENT",
+                  "DETERMINISTIC_VECTOR",
+                  "DETERMINISTIC_CLEAR_LAYER"
+                ]
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              }
+            },
+            "required": [
+              "id",
+              "assetRequirementId",
+              "mutationTraitId",
+              "method",
+              "purpose"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "reviewCompositions": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "traitIds": {
+                "minItems": 9,
+                "maxItems": 9,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                }
+              },
+              "grailId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 128,
+                    "pattern": "^[a-z][a-z0-9_-]*$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              }
+            },
+            "required": ["id", "traitIds", "grailId", "purpose"],
+            "additionalProperties": false
+          }
+        },
+        "derivativeRequirements": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2400
+              }
+            },
+            "required": ["id", "definition"],
+            "additionalProperties": false
+          }
+        },
+        "acceptance": {
+          "minItems": 5,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2400
+          }
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "generationAuthorized",
+        "nativeResolutionPolicy",
+        "sourceBindings",
+        "reviewCompositions",
+        "derivativeRequirements",
+        "acceptance"
+      ],
+      "additionalProperties": false
     },
     "production": {
       "type": "object",

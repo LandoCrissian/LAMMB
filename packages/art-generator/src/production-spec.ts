@@ -46,11 +46,19 @@ const proposal = z.strictObject({
 export const productionSpecSchema = z
   .strictObject({
     schemaVersion: z.literal(1),
-    specVersion: z.literal('1.0.0'),
+    specVersion: z.enum(['1.0.0', '1.1.0']),
     id: z.literal('lammb-trait-bible'),
     supply: z.literal(collection.supply),
     status: z.literal('OWNER_REVIEW_REQUIRED'),
     constructorPolicy: z.literal('ONE_TRAIT_PER_EXISTING_CATEGORY'),
+    designRefinement: z
+      .strictObject({
+        ownerAuthorization: z.literal('TASK_015B_OWNER_REQUEST'),
+        status: z.literal('DIRECTION_APPROVED_ASSETS_AND_COUNTS_UNAPPROVED'),
+        woolPolicy: z.literal('THREE_PROFILES_EIGHT_VALUES'),
+        accessoryPolicy: z.literal('THREE_BUNDLES_ONE_CONFIGURATION'),
+      })
+      .optional(),
     referenceEvidence: z
       .array(
         z.strictObject({
@@ -100,6 +108,34 @@ export const productionSpecSchema = z
           excludesTags: ids,
           mutation: engineTraitSchema.shape.mutation,
           corruption: engineTraitSchema.shape.corruption,
+          woolSpecification: z
+            .strictObject({
+              silhouette: z.enum([
+                'COMPACT_CROWN',
+                'BROAD_OFFSET_CROWN',
+                'ROLLED_LOCKS',
+              ]),
+              definition: text,
+              earClearance: text,
+              preservedLandmarks: z.array(text).min(4),
+              headwearRule: text,
+              sourceRequirements: z.array(text).min(3),
+            })
+            .optional(),
+          accessoryBundle: z
+            .strictObject({
+              components: z.array(visibleAttributeSchema).length(2),
+              mouthVisibility: z.enum([
+                'NOT_REQUIRED',
+                'VISIBLE_DENTAL_ARCADE',
+              ]),
+              headwearClearance: text,
+              earClearance: text,
+              collarClearance: text,
+              structuralRule: text,
+              sourceRequirements: z.array(text).min(3),
+            })
+            .optional(),
           corruptionSpecification: z
             .strictObject({
               maskCoverageBasisPoints: z.strictObject({
@@ -155,6 +191,16 @@ export const productionSpecSchema = z
           visualDefinition: text,
           silhouetteTest: text,
           materialTest: text,
+          visibilitySpecification: z
+            .strictObject({
+              reviewSizes: z.tuple([z.literal(64), z.literal(128)]),
+              silhouetteRequirement: text,
+              collarAndCrop: text,
+              protectedPhenomenon: text,
+              ordinaryFamilyComparison: text,
+              approvalGate: z.literal('OWNER_ART_REVIEW_REQUIRED'),
+            })
+            .optional(),
           assetRequirementIds: ids.min(1),
           metadata: z.array(visibleAttributeSchema),
           approval: proposal,
@@ -199,6 +245,43 @@ export const productionSpecSchema = z
         }),
       )
       .max(4096),
+    artworkPilot: z
+      .strictObject({
+        id: z.literal('lammb-pilot-015b'),
+        status: z.literal('NOT_EXECUTED'),
+        generationAuthorized: z.literal(false),
+        nativeResolutionPolicy: text,
+        sourceBindings: z
+          .array(
+            z.strictObject({
+              id: identifierSchema,
+              assetRequirementId: identifierSchema,
+              mutationTraitId: identifierSchema,
+              method: z.enum([
+                'BUILT_IN_IMAGEGEN_AND_ALIGNMENT',
+                'DETERMINISTIC_VECTOR',
+                'DETERMINISTIC_CLEAR_LAYER',
+              ]),
+              purpose: text,
+            }),
+          )
+          .min(1),
+        reviewCompositions: z
+          .array(
+            z.strictObject({
+              id: identifierSchema,
+              traitIds: ids.length(9),
+              grailId: identifierSchema.nullable(),
+              purpose: text,
+            }),
+          )
+          .min(1),
+        derivativeRequirements: z
+          .array(z.strictObject({ id: identifierSchema, definition: text }))
+          .min(1),
+        acceptance: z.array(text).min(5),
+      })
+      .optional(),
     production: z.strictObject({
       masterResolution: z.literal(3072),
       presentationResolution: z.literal(1024),
@@ -332,6 +415,154 @@ export const productionSpecSchema = z
       )
         issue('Unresolved or category-mismatched asset requirement');
     };
+    if (spec.specVersion === '1.1.0') {
+      if (!spec.designRefinement || !spec.artworkPilot)
+        issue(
+          'Refinement requires owner direction and an unexecuted artwork pilot',
+        );
+      const wool = spec.traits.filter((t) => t.category === 'wool');
+      const woolIds = [
+        'ivory',
+        'ash',
+        'charcoal',
+        'pink',
+        'chartreuse',
+        'frosted',
+        'locks',
+        'singed',
+      ].map((key) => `lammb-wool-${key}`);
+      if (
+        canonicalJson(wool.map((t) => t.id).sort()) !==
+          canonicalJson(woolIds.sort()) ||
+        wool.some((t) => !t.woolSpecification) ||
+        new Set(wool.map((t) => t.woolSpecification?.silhouette)).size !== 3
+      )
+        issue('Preserve eight wool values and all three defined silhouettes');
+      for (const trait of wool)
+        if (
+          spec.species.landmarks.some(
+            (l) => !trait.woolSpecification?.preservedLandmarks.includes(l),
+          )
+        )
+          issue('Wool silhouette must preserve every species landmark');
+      const expectedBundles = new Map([
+        [
+          'lammb-accessories-cap-tag',
+          [
+            { trait_type: 'Headwear', value: 'Backward Cap' },
+            { trait_type: 'Ear Tag', value: '5280' },
+          ],
+        ],
+        [
+          'lammb-accessories-beanie-chain',
+          [
+            { trait_type: 'Headwear', value: 'Black Beanie' },
+            { trait_type: 'Jewelry', value: 'Silver Chain' },
+          ],
+        ],
+        [
+          'lammb-accessories-shades-gold',
+          [
+            { trait_type: 'Eyewear', value: 'Dark Shades' },
+            { trait_type: 'Dental Accent', value: 'Gold Tooth' },
+          ],
+        ],
+      ]);
+      const bundles = spec.traits.filter((t) => t.accessoryBundle);
+      if (
+        canonicalJson(bundles.map((t) => t.id).sort()) !==
+        canonicalJson([...expectedBundles.keys()].sort())
+      )
+        issue(
+          'Refinement requires precisely the three authorized accessory bundles',
+        );
+      for (const trait of bundles) {
+        if (
+          trait.category !== 'accessories' ||
+          canonicalJson(trait.metadata) !==
+            canonicalJson(expectedBundles.get(trait.id) ?? []) ||
+          canonicalJson(trait.accessoryBundle!.components) !==
+            canonicalJson(trait.metadata)
+        )
+          issue('Bundle facets must match the visible components exactly');
+        if (
+          (trait.id === 'lammb-accessories-shades-gold') !==
+          (trait.accessoryBundle!.mouthVisibility === 'VISIBLE_DENTAL_ARCADE')
+        )
+          issue('Dental bundle must require visible dentition');
+      }
+      if (spec.grails.some((g) => !g.visibilitySpecification))
+        issue('Every unapproved grail needs 64px/128px visibility gates');
+      const pilot = spec.artworkPilot;
+      if (pilot) {
+        unique(
+          pilot.sourceBindings.map((b) => b.id),
+          'pilot source IDs',
+        );
+        unique(
+          pilot.sourceBindings.map(
+            (b) => `${b.assetRequirementId}:${b.mutationTraitId}`,
+          ),
+          'pilot source bindings',
+        );
+        unique(
+          pilot.reviewCompositions.map((c) => c.id),
+          'pilot review IDs',
+        );
+        unique(
+          pilot.derivativeRequirements.map((d) => d.id),
+          'pilot derivative IDs',
+        );
+        for (const binding of pilot.sourceBindings) {
+          checkAssets([binding.assetRequirementId]);
+          checkTraits([binding.mutationTraitId]);
+          const asset = assets.get(binding.assetRequirementId);
+          if (
+            traits.get(binding.mutationTraitId)?.category !== 'mutations' ||
+            asset?.method !== binding.method
+          )
+            issue(
+              'Pilot family/method must match a declared production source',
+            );
+          if (
+            asset?.method === 'BUILT_IN_IMAGEGEN_AND_ALIGNMENT' &&
+            ['wool', 'eyes', 'expressions', 'clothing', 'accessories'].includes(
+              asset.category,
+            ) &&
+            !spec.variantRequirements.some(
+              (v) =>
+                v.assetRequirementId === binding.assetRequirementId &&
+                v.mutationTraitId === binding.mutationTraitId,
+            )
+          )
+            issue('Pilot source needs an explicit supported family binding');
+        }
+        for (const composition of pilot.reviewCompositions) {
+          checkTraits(composition.traitIds);
+          if (
+            new Set(composition.traitIds.map((id) => traits.get(id)?.category))
+              .size !== 9
+          )
+            issue('Pilot composition must fill nine categories exactly once');
+          const grail = spec.grails.find((g) => g.id === composition.grailId);
+          if (
+            composition.grailId &&
+            (!grail ||
+              canonicalJson([...grail.traitIds].sort()) !==
+                canonicalJson([...composition.traitIds].sort()))
+          )
+            issue('Pilot cannot silently change the curated grail composition');
+        }
+      }
+    } else if (
+      spec.designRefinement ||
+      spec.artworkPilot ||
+      spec.traits.some((t) => t.woolSpecification || t.accessoryBundle) ||
+      spec.grails.some((g) => g.visibilitySpecification)
+    )
+      issue('Task 015B refinement requires spec version 1.1.0');
+    if (spec.traits.some((t) => t.woolSpecification && t.category !== 'wool'))
+      issue('Wool specification belongs only to wool traits');
     for (const category of spec.categories) {
       const values = spec.traits.filter(
         (t) => t.category === category.category,
@@ -649,4 +880,75 @@ export function validateProposalComposition(
   );
   if (result.rejections.length)
     throw new Error(result.rejections.map((r) => r.code).join('; '));
+}
+
+// A pilot is a reviewed source checklist, never an authorization to generate art.
+export function validateArtworkPilot(input: unknown) {
+  const spec = productionSpecSchema.parse(input);
+  const pilot = spec.artworkPilot;
+  if (!pilot) throw new Error('No artwork pilot declared');
+  const inputs = simulationInputs(spec);
+  const traits = new Map(inputs.catalog.traits.map((t) => [t.id, t]));
+  const assets = new Map(inputs.manifest.assets.map((a) => [a.id, a]));
+  const consumed = new Set<string>();
+  const contextualCategories = new Set([
+    'base_anatomy',
+    'wool',
+    'eyes',
+    'expressions',
+    'clothing',
+    'accessories',
+    'mutations',
+  ]);
+  for (const review of pilot.reviewCompositions) {
+    const selected = review.traitIds.map((id) => traits.get(`dev-${id}`)!);
+    const evaluated = evaluateComposition(selected, inputs.catalog, assets);
+    if (evaluated.rejections.length)
+      throw new Error(
+        `Pilot ${review.id}: ${evaluated.rejections.map((r) => r.code).join('; ')}`,
+      );
+    const family = selected
+      .find((t) => t.category === 'mutations')!
+      .id.slice(4);
+    const required = review.grailId
+      ? spec.grails.find((g) => g.id === review.grailId)!.assetRequirementIds
+      : evaluated.composition.flatMap((node) =>
+          node.assetIds.map((id) => id.slice(4)),
+        );
+    for (const assetId of required) {
+      const asset = spec.assetRequirements.find((a) => a.id === assetId)!;
+      const binding = pilot.sourceBindings.find(
+        (b) =>
+          b.assetRequirementId === assetId &&
+          (!contextualCategories.has(asset.category) ||
+            asset.method !== 'BUILT_IN_IMAGEGEN_AND_ALIGNMENT' ||
+            b.mutationTraitId === family),
+      );
+      if (!binding)
+        throw new Error(
+          `Pilot ${review.id} lacks source binding ${assetId}:${family}`,
+        );
+      consumed.add(binding.id);
+    }
+  }
+  const unused = pilot.sourceBindings.filter((b) => !consumed.has(b.id));
+  if (unused.length)
+    throw new Error(
+      `Unused pilot sources: ${unused.map((b) => b.id).join(', ')}`,
+    );
+  return {
+    id: pilot.id,
+    status: pilot.status,
+    generationAuthorized: false,
+    sourceBindings: pilot.sourceBindings.length,
+    imagegenOrAlignmentBindings: pilot.sourceBindings.filter(
+      (b) => b.method === 'BUILT_IN_IMAGEGEN_AND_ALIGNMENT',
+    ).length,
+    deterministicBindings: pilot.sourceBindings.filter(
+      (b) => b.method !== 'BUILT_IN_IMAGEGEN_AND_ALIGNMENT',
+    ).length,
+    reviewCompositions: pilot.reviewCompositions.length,
+    derivativeRequirements: pilot.derivativeRequirements.length,
+    compatibilityFailures: 0,
+  };
 }
