@@ -96,6 +96,19 @@ async function preview(cwd, baselineOnly) {
         process.execPath,
         [
           path.join(root, 'scripts/verify-social-metadata.mjs'),
+          '--built',
+          '--output',
+          path.join(
+            root,
+            'artifacts/generated/task-010s/acceptance/built-metadata.json',
+          ),
+        ],
+        cwd,
+      );
+      await command(
+        process.execPath,
+        [
+          path.join(root, 'scripts/verify-social-metadata.mjs'),
           '--base-url',
           'http://127.0.0.1:3005',
           '--output',
