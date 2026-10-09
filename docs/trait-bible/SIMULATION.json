@@ -1,18 +1,29 @@
 {
   "artworkGenerated": false,
+  "artworkPilot": {
+    "compatibilityFailures": 0,
+    "derivativeRequirements": 24,
+    "deterministicBindings": 6,
+    "generationAuthorized": false,
+    "id": "lammb-pilot-015b",
+    "imagegenOrAlignmentBindings": 32,
+    "reviewCompositions": 18,
+    "sourceBindings": 38,
+    "status": "NOT_EXECUTED"
+  },
   "attemptStatistics": {
     "grailReservations": 6,
-    "maxSpecimenAttempts": 66,
+    "maxSpecimenAttempts": 57,
     "ordinaryAccepted": 5274,
-    "rejectedCandidates": 1781,
-    "totalCandidates": 7055
+    "rejectedCandidates": 2529,
+    "totalCandidates": 7803
   },
   "compatibilityFailuresInAcceptedSpecimens": 0,
-  "engineMetadataSha256": "ad9b0552c39f23ba252b83b4abde06ff7e03127767bf4cd3f1042fbd0065fc9e",
+  "engineMetadataSha256": "b1035e121eaaa6a9a1796d6fa5f1dda9b9b9f23a48f5c773f1df4e8c64049c04",
   "engineRecipe": {
-    "assetsManifestSha256": "bd4a54931d6e63bc73f25e367d7b490cb564845b9f117b6afcd8497307cf7eaf",
+    "assetsManifestSha256": "6c29b5a57b2e7bd464b9b74c062d3f7c3dbd410f0d89cbd124aef6a314c9a3d4",
     "canonicalVersion": "normalized-json-integers/1",
-    "catalogSha256": "2883c2848cec0437b43d1a435a96eeee24e02ef49d0e8f834c2381f28e25648d",
+    "catalogSha256": "06500a0f5d3daedd5bf2b5fb8b425a735cbe4f0588db6a905936dfa62813ba25",
     "collectionConfigSha256": "4da319e6d2761a222cd3d206b9fa8438b9edb5e07f2e5efe031b94d4d1d981e1",
     "expectedOutputCount": 5280,
     "generatorVersion": "lammb-logical-constructor/1",
@@ -24,7 +35,7 @@
     "schemaVersion": 2,
     "seedDerivationVersion": "sha256-recipe/1",
     "seedHex": "0150015001500150015001500150015001500150015001500150015001500150",
-    "sourceReference": "urn:lammb:proposal:task-015-bad1d98e10447db617fc733729de35e2101a5eea526cb743e7b18c79598fefb0"
+    "sourceReference": "urn:lammb:proposal:task-015-2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a"
   },
   "frequencies": [
     {
@@ -41,10 +52,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": -13,
+      "delta": 85,
       "id": "lammb-wool-ivory",
-      "observedOrdinary": 1685,
-      "observedTotal": 1687,
+      "observedOrdinary": 1783,
+      "observedTotal": 1785,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1700,
       "reservedCount": 2
@@ -52,10 +63,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": 3,
+      "delta": -122,
       "id": "lammb-wool-ash",
-      "observedOrdinary": 1052,
-      "observedTotal": 1053,
+      "observedOrdinary": 927,
+      "observedTotal": 928,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1050,
       "reservedCount": 1
@@ -63,10 +74,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": -9,
+      "delta": 132,
       "id": "lammb-wool-charcoal",
-      "observedOrdinary": 841,
-      "observedTotal": 841,
+      "observedOrdinary": 982,
+      "observedTotal": 982,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 850,
       "reservedCount": 0
@@ -74,10 +85,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": -42,
+      "delta": -76,
       "id": "lammb-wool-pink",
-      "observedOrdinary": 558,
-      "observedTotal": 558,
+      "observedOrdinary": 524,
+      "observedTotal": 524,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 600,
       "reservedCount": 0
@@ -85,10 +96,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": 16,
+      "delta": -39,
       "id": "lammb-wool-chartreuse",
-      "observedOrdinary": 436,
-      "observedTotal": 436,
+      "observedOrdinary": 381,
+      "observedTotal": 381,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 420,
       "reservedCount": 0
@@ -96,10 +107,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": 15,
+      "delta": 28,
       "id": "lammb-wool-frosted",
-      "observedOrdinary": 314,
-      "observedTotal": 315,
+      "observedOrdinary": 327,
+      "observedTotal": 328,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 300,
       "reservedCount": 1
@@ -107,10 +118,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": 13,
+      "delta": -20,
       "id": "lammb-wool-locks",
-      "observedOrdinary": 252,
-      "observedTotal": 253,
+      "observedOrdinary": 219,
+      "observedTotal": 220,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 240,
       "reservedCount": 1
@@ -118,10 +129,10 @@
     {
       "approvedTotal": null,
       "category": "wool",
-      "delta": 17,
+      "delta": 12,
       "id": "lammb-wool-singed",
-      "observedOrdinary": 136,
-      "observedTotal": 137,
+      "observedOrdinary": 131,
+      "observedTotal": 132,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 120,
       "reservedCount": 1
@@ -129,10 +140,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": -77,
+      "delta": -72,
       "id": "lammb-eyes-radioactive",
-      "observedOrdinary": 1722,
-      "observedTotal": 1723,
+      "observedOrdinary": 1727,
+      "observedTotal": 1728,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1800,
       "reservedCount": 1
@@ -140,10 +151,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": 11,
+      "delta": -11,
       "id": "lammb-eyes-amber",
-      "observedOrdinary": 1060,
-      "observedTotal": 1061,
+      "observedOrdinary": 1038,
+      "observedTotal": 1039,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1050,
       "reservedCount": 1
@@ -151,10 +162,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": -26,
+      "delta": 38,
       "id": "lammb-eyes-red",
-      "observedOrdinary": 724,
-      "observedTotal": 724,
+      "observedOrdinary": 788,
+      "observedTotal": 788,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 750,
       "reservedCount": 0
@@ -162,10 +173,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": 56,
+      "delta": 6,
       "id": "lammb-eyes-ice",
-      "observedOrdinary": 705,
-      "observedTotal": 706,
+      "observedOrdinary": 655,
+      "observedTotal": 656,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 650,
       "reservedCount": 1
@@ -173,10 +184,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": 37,
+      "delta": 24,
       "id": "lammb-eyes-violet",
-      "observedOrdinary": 536,
-      "observedTotal": 537,
+      "observedOrdinary": 523,
+      "observedTotal": 524,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 500,
       "reservedCount": 1
@@ -184,10 +195,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": 3,
+      "delta": 14,
       "id": "lammb-eyes-onyx",
-      "observedOrdinary": 302,
-      "observedTotal": 303,
+      "observedOrdinary": 313,
+      "observedTotal": 314,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 300,
       "reservedCount": 1
@@ -195,10 +206,10 @@
     {
       "approvedTotal": null,
       "category": "eyes",
-      "delta": -4,
+      "delta": 1,
       "id": "lammb-eyes-split",
-      "observedOrdinary": 225,
-      "observedTotal": 225,
+      "observedOrdinary": 230,
+      "observedTotal": 230,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 229,
       "reservedCount": 0
@@ -217,10 +228,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": -16,
+      "delta": -96,
       "id": "lammb-expressions-heavy-lidded",
-      "observedOrdinary": 1782,
-      "observedTotal": 1784,
+      "observedOrdinary": 1702,
+      "observedTotal": 1704,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1800,
       "reservedCount": 2
@@ -228,10 +239,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": 41,
+      "delta": 38,
       "id": "lammb-expressions-side-eye",
-      "observedOrdinary": 1040,
-      "observedTotal": 1041,
+      "observedOrdinary": 1037,
+      "observedTotal": 1038,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1000,
       "reservedCount": 1
@@ -239,10 +250,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": 1,
+      "delta": 24,
       "id": "lammb-expressions-smirk",
-      "observedOrdinary": 901,
-      "observedTotal": 901,
+      "observedOrdinary": 924,
+      "observedTotal": 924,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 900,
       "reservedCount": 0
@@ -250,10 +261,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": -9,
+      "delta": -19,
       "id": "lammb-expressions-stoic",
-      "observedOrdinary": 789,
-      "observedTotal": 791,
+      "observedOrdinary": 779,
+      "observedTotal": 781,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 800,
       "reservedCount": 2
@@ -261,10 +272,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": -48,
+      "delta": 30,
       "id": "lammb-expressions-amused",
-      "observedOrdinary": 552,
-      "observedTotal": 552,
+      "observedOrdinary": 630,
+      "observedTotal": 630,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 600,
       "reservedCount": 0
@@ -272,10 +283,10 @@
     {
       "approvedTotal": null,
       "category": "expressions",
-      "delta": 31,
+      "delta": 23,
       "id": "lammb-expressions-defiant",
-      "observedOrdinary": 210,
-      "observedTotal": 211,
+      "observedOrdinary": 202,
+      "observedTotal": 203,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 180,
       "reservedCount": 1
@@ -283,10 +294,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": -68,
+      "delta": -86,
       "id": "lammb-clothing-hoodie",
-      "observedOrdinary": 1732,
-      "observedTotal": 1732,
+      "observedOrdinary": 1714,
+      "observedTotal": 1714,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1800,
       "reservedCount": 0
@@ -294,10 +305,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": -39,
+      "delta": -78,
       "id": "lammb-clothing-bomber",
-      "observedOrdinary": 1061,
-      "observedTotal": 1061,
+      "observedOrdinary": 1022,
+      "observedTotal": 1022,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1100,
       "reservedCount": 0
@@ -305,10 +316,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": 34,
+      "delta": 18,
       "id": "lammb-clothing-lab-jacket",
-      "observedOrdinary": 832,
-      "observedTotal": 834,
+      "observedOrdinary": 816,
+      "observedTotal": 818,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 800,
       "reservedCount": 2
@@ -316,10 +327,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": 60,
+      "delta": 61,
       "id": "lammb-clothing-utility-vest",
-      "observedOrdinary": 659,
-      "observedTotal": 660,
+      "observedOrdinary": 660,
+      "observedTotal": 661,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 600,
       "reservedCount": 1
@@ -327,10 +338,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": 13,
+      "delta": 28,
       "id": "lammb-clothing-crewneck",
-      "observedOrdinary": 412,
-      "observedTotal": 413,
+      "observedOrdinary": 427,
+      "observedTotal": 428,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 400,
       "reservedCount": 1
@@ -338,10 +349,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": -11,
+      "delta": 17,
       "id": "lammb-clothing-long-coat",
-      "observedOrdinary": 287,
-      "observedTotal": 289,
+      "observedOrdinary": 315,
+      "observedTotal": 317,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 300,
       "reservedCount": 2
@@ -349,10 +360,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": 15,
+      "delta": 16,
       "id": "lammb-clothing-shell",
-      "observedOrdinary": 195,
-      "observedTotal": 195,
+      "observedOrdinary": 196,
+      "observedTotal": 196,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 180,
       "reservedCount": 0
@@ -360,10 +371,10 @@
     {
       "approvedTotal": null,
       "category": "clothing",
-      "delta": -4,
+      "delta": 24,
       "id": "lammb-clothing-none",
-      "observedOrdinary": 96,
-      "observedTotal": 96,
+      "observedOrdinary": 124,
+      "observedTotal": 124,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 100,
       "reservedCount": 0
@@ -371,10 +382,10 @@
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 5,
+      "delta": 112,
       "id": "lammb-accessories-none",
-      "observedOrdinary": 1499,
-      "observedTotal": 1505,
+      "observedOrdinary": 1606,
+      "observedTotal": 1612,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 1500,
       "reservedCount": 6
@@ -382,43 +393,43 @@
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 0,
+      "delta": -243,
       "id": "lammb-accessories-beanie",
-      "observedOrdinary": 800,
-      "observedTotal": 800,
+      "observedOrdinary": 467,
+      "observedTotal": 467,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 800,
+      "proposedTotal": 710,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 61,
+      "delta": 82,
       "id": "lammb-accessories-backward-cap",
-      "observedOrdinary": 711,
-      "observedTotal": 711,
+      "observedOrdinary": 632,
+      "observedTotal": 632,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 650,
+      "proposedTotal": 550,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": -1,
+      "delta": 38,
       "id": "lammb-accessories-shades",
-      "observedOrdinary": 499,
-      "observedTotal": 499,
+      "observedOrdinary": 478,
+      "observedTotal": 478,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 500,
+      "proposedTotal": 440,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 39,
+      "delta": 94,
       "id": "lammb-accessories-cap-shades",
-      "observedOrdinary": 439,
-      "observedTotal": 439,
+      "observedOrdinary": 494,
+      "observedTotal": 494,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 400,
       "reservedCount": 0
@@ -426,43 +437,43 @@
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 13,
+      "delta": 50,
       "id": "lammb-accessories-ear-tag",
-      "observedOrdinary": 363,
-      "observedTotal": 363,
+      "observedOrdinary": 300,
+      "observedTotal": 300,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 350,
+      "proposedTotal": 250,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 8,
+      "delta": 38,
       "id": "lammb-accessories-silver-chain",
-      "observedOrdinary": 308,
-      "observedTotal": 308,
+      "observedOrdinary": 248,
+      "observedTotal": 248,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 300,
+      "proposedTotal": 210,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": -168,
+      "delta": -108,
       "id": "lammb-accessories-gold-tooth",
       "observedOrdinary": 72,
       "observedTotal": 72,
       "policy": "WEIGHTED_TARGET",
-      "proposedTotal": 240,
+      "proposedTotal": 180,
       "reservedCount": 0
     },
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 15,
+      "delta": 24,
       "id": "lammb-accessories-visor",
-      "observedOrdinary": 215,
-      "observedTotal": 215,
+      "observedOrdinary": 224,
+      "observedTotal": 224,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 200,
       "reservedCount": 0
@@ -481,10 +492,10 @@
     {
       "approvedTotal": null,
       "category": "accessories",
-      "delta": 13,
+      "delta": 29,
       "id": "lammb-accessories-work-cap",
-      "observedOrdinary": 133,
-      "observedTotal": 133,
+      "observedOrdinary": 149,
+      "observedTotal": 149,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 120,
       "reservedCount": 0
@@ -498,6 +509,39 @@
       "observedTotal": 85,
       "policy": "WEIGHTED_TARGET",
       "proposedTotal": 80,
+      "reservedCount": 0
+    },
+    {
+      "approvedTotal": null,
+      "category": "accessories",
+      "delta": 41,
+      "id": "lammb-accessories-cap-tag",
+      "observedOrdinary": 241,
+      "observedTotal": 241,
+      "policy": "WEIGHTED_TARGET",
+      "proposedTotal": 200,
+      "reservedCount": 0
+    },
+    {
+      "approvedTotal": null,
+      "category": "accessories",
+      "delta": -99,
+      "id": "lammb-accessories-beanie-chain",
+      "observedOrdinary": 81,
+      "observedTotal": 81,
+      "policy": "WEIGHTED_TARGET",
+      "proposedTotal": 180,
+      "reservedCount": 0
+    },
+    {
+      "approvedTotal": null,
+      "category": "accessories",
+      "delta": -73,
+      "id": "lammb-accessories-shades-gold",
+      "observedOrdinary": 47,
+      "observedTotal": 47,
+      "policy": "WEIGHTED_TARGET",
+      "proposedTotal": 120,
       "reservedCount": 0
     },
     {
@@ -730,32 +774,50 @@
     { "id": "lammb-grail-seed-vault", "index": 4223 },
     { "id": "lammb-grail-observer-array", "index": 5279 }
   ],
-  "logicalCollectionSha256": "91908d1c96774d28abb5d4bcb2a95b28a8d69344a7bc79d5dd6336e761296cac",
-  "metadataPreviewSha256": "7ded10c906a015fe5d722b28b0a16808a3cd8c4827c3e85d916fc8789536a788",
+  "logicalCollectionSha256": "a94dbc1eaec03e00c662b6b2d04ee941c623f14e8e0eb5e412df1a1038a16d84",
+  "metadataPreviewSha256": "c9628e3b414c4e6ea9065b902aa33e3a9f50e031019b43f164f0f817176e16b1",
   "mutationCount": 680,
   "productionApproved": false,
-  "provenanceSha256": "48f34a17594b1d94e003bd812c294baff206d4020d34c2a2bc2836dcfdf36b2c",
+  "provenanceSha256": "76d1150b480d8a3d859e0d7758a07a6a6071ccf10b9cb5d9f0300262a46bcb71",
   "purpose": "DEVELOPMENT_ONLY",
   "rejectionCounts": {
-    "DUPLICATE_IDENTITY": 434,
-    "RULE:dev-lammb-botanical-beanie-clearance": 18,
-    "RULE:dev-lammb-cyber-headset-clearance": 8,
-    "RULE:dev-lammb-dental-refraction": 3,
-    "RULE:dev-lammb-void-dental-visibility": 8,
-    "STRUCTURE:dev-lammb-mutations-magma:clothing": 750,
-    "STRUCTURE:dev-lammb-mutations-magma:wool": 651,
-    "STRUCTURE:dev-lammb-mutations-skeletal:expressions": 84,
+    "DUPLICATE_IDENTITY": 424,
+    "RULE:dev-lammb-botanical-beanie-chain-clearance": 5,
+    "RULE:dev-lammb-botanical-beanie-clearance": 10,
+    "RULE:dev-lammb-crystalline-shades-gold-clearance": 5,
+    "RULE:dev-lammb-cyber-headset-clearance": 5,
+    "RULE:dev-lammb-dental-refraction": 5,
+    "RULE:dev-lammb-void-dental-visibility": 1,
+    "RULE:dev-lammb-void-shades-gold-clearance": 5,
+    "STRUCTURE:dev-lammb-mutations-magma:clothing": 893,
+    "STRUCTURE:dev-lammb-mutations-magma:wool": 784,
+    "STRUCTURE:dev-lammb-mutations-skeletal:expressions": 120,
     "STRUCTURE:dev-lammb-mutations-void:expressions": 48,
-    "STRUCTURE:dev-lammb-mutations-void:wool": 85,
-    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 107,
-    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 61,
-    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 51
+    "STRUCTURE:dev-lammb-mutations-void:wool": 86,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-clothing-lab-jacket": 32,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-clothing-long-coat": 12,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-clothing-none": 6,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-clothing-shell": 6,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-wool-ash": 53,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-wool-chartreuse": 18,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-wool-locks": 13,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie-chain:dev-lammb-wool-pink": 23,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie:dev-lammb-wool-ash": 241,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie:dev-lammb-wool-chartreuse": 62,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie:dev-lammb-wool-locks": 59,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-beanie:dev-lammb-wool-pink": 110,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-heavy-lidded": 99,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-side-eye": 37,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-gold-tooth:dev-lammb-expressions-stoic": 38,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-shades-gold:dev-lammb-expressions-heavy-lidded": 47,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-shades-gold:dev-lammb-expressions-side-eye": 31,
+    "TRAIT_INCOMPATIBLE:dev-lammb-accessories-shades-gold:dev-lammb-expressions-stoic": 27
   },
   "requested": 5280,
   "schemaVersion": 1,
   "seedHex": "0150015001500150015001500150015001500150015001500150015001500150",
-  "sourceReference": "urn:lammb:proposal:task-015-bad1d98e10447db617fc733729de35e2101a5eea526cb743e7b18c79598fefb0",
-  "specSha256": "bad1d98e10447db617fc733729de35e2101a5eea526cb743e7b18c79598fefb0",
+  "sourceReference": "urn:lammb:proposal:task-015-2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
   "uniqueIdentities": 5280,
   "visibleMetadataFrequencies": {
     "Background": {
@@ -767,39 +829,39 @@
       "Near Black": 800
     },
     "Clothing": {
-      "Black Bomber": 1061,
-      "Black Crewneck": 413,
-      "Black Hoodie": 1732,
-      "Lab Coat": 289,
-      "Lab Jacket": 834,
-      "No Clothing": 96,
-      "Reflective Shell": 195,
-      "Utility Vest": 660
+      "Black Bomber": 1022,
+      "Black Crewneck": 428,
+      "Black Hoodie": 1714,
+      "Lab Coat": 317,
+      "Lab Jacket": 818,
+      "No Clothing": 124,
+      "Reflective Shell": 196,
+      "Utility Vest": 661
     },
-    "Dental Accent": { "Gold Tooth": 72 },
-    "Ear Tag": { "5280": 363 },
+    "Dental Accent": { "Gold Tooth": 119 },
+    "Ear Tag": { "5280": 541 },
     "Equipment": { "Utility Headset": 150 },
     "Expression": {
-      "Amused": 552,
-      "Defiant": 211,
-      "Heavy Lidded": 1784,
-      "Side Eye": 1041,
-      "Smirk": 901,
-      "Stoic": 791
+      "Amused": 630,
+      "Defiant": 203,
+      "Heavy Lidded": 1704,
+      "Side Eye": 1038,
+      "Smirk": 924,
+      "Stoic": 781
     },
     "Eyes": {
-      "Amber": 1061,
-      "Ice Blue": 706,
+      "Amber": 1039,
+      "Ice Blue": 656,
       "Observer Array": 1,
-      "Onyx": 303,
-      "Oxide Red": 724,
-      "Radioactive Green": 1723,
-      "Split Signal": 225,
-      "Violet": 537
+      "Onyx": 314,
+      "Oxide Red": 788,
+      "Radioactive Green": 1728,
+      "Split Signal": 230,
+      "Violet": 524
     },
-    "Eyewear": { "Dark Shades": 938, "Signal Visor": 215 },
-    "Headwear": { "Backward Cap": 1150, "Black Beanie": 800, "Work Cap": 133 },
-    "Jewelry": { "Silver Chain": 308, "Silver Ear Cuff": 85 },
+    "Eyewear": { "Dark Shades": 1019, "Signal Visor": 224 },
+    "Headwear": { "Backward Cap": 1367, "Black Beanie": 548, "Work Cap": 149 },
+    "Jewelry": { "Silver Chain": 329, "Silver Ear Cuff": 85 },
     "Material": {
       "Bark and Wool": 64,
       "Basalt and Wool": 100,
@@ -836,14 +898,14 @@
     },
     "Species": { "Sheep": 5280 },
     "Wool": {
-      "Ash Curls": 1053,
-      "Charcoal Curls": 841,
-      "Chartreuse Tips": 436,
-      "Frosted Curls": 315,
-      "Ivory Curls": 1687,
-      "Pink Curls": 558,
-      "Rolled Locks": 253,
-      "Singed Curls": 137
+      "Ash Curls": 928,
+      "Charcoal Curls": 982,
+      "Chartreuse Tips": 381,
+      "Frosted Curls": 328,
+      "Ivory Curls": 1785,
+      "Pink Curls": 524,
+      "Rolled Locks": 220,
+      "Singed Curls": 132
     }
   }
 }

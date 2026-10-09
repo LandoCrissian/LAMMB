@@ -5,11 +5,18 @@ frequency conditioning, accessory restrictions and unresolved joint asset bindin
 Its baseline and revised evidence are separate; simulation success does not clear
 the artwork-production gates.
 
+[Task 015B refinement](FINAL_REFINEMENT.md) implements the owner-authorized three
+wool profiles and three curated bundles. The [pilot manifest](ARTWORK_PILOT.md)
+defines 38 source bindings, 18 review contexts and 24 derivative requirements.
+Start with normal identity and three silhouettes; pause for approval before bundle,
+skeletal, magma and one potential Cooled Core grail stages. No artwork is generated
+or approved here.
+
 ## Completed proposal specification
 
-Version 1.0.0 specifies 9 constructor categories, 63 stable selected values, 12
+Version 1.1.0 specifies 9 constructor categories, 66 stable selected values, 12
 editorial sections, 7 exclusive structural mutation rules, 6 curated singleton
-reservation designs, 76 logical source templates and 266 anatomy-family variant
+reservation designs, 79 logical source templates and 284 anatomy-family variant
 bindings. Every trait has visual intent, metadata values, compatibility, source
 requirements, proposed count and explicit unapproved status. Category totals are 5280. Exact and weighted frequency policies are distinguished. No public rarity
 classification is introduced.
@@ -30,8 +37,9 @@ does not certify visual uniqueness, real image alignment or mint assignment.
 1. Choose and approve primary identity/anatomy references, shared pose and usage
    rights. All recovered active approved roles are null. ART 005 is not a compliant
    production base; do not recycle it as one.
-2. Approve/revise each trait and material definition, accessory configuration,
-   background palette, corruption mask range and frame/output size.
+2. Review implementation of the authorized wool/bundle direction and approve
+   concrete artwork, material definitions, background palette, corruption mask
+   range and frame/output size. Direction authorization does not approve bytes.
 3. Approve exact quotas and decide whether weighted realized counts are acceptable.
    Gold dental accents are strongly conditioned by mouth visibility; the report
    exposes that difference. If exact targets are required for dependent axes,
@@ -44,8 +52,8 @@ does not certify visual uniqueness, real image alignment or mint assignment.
 
 ## Required artwork and ImageGen production pack
 
-All 76 templates and 266 variant bindings are MISSING. The variant rows substitute
-for their generic template during future production compilation; they are not 266
+All 79 templates and 284 variant bindings are MISSING. The variant rows substitute
+for their generic template during future production compilation; they are not 284
 additional trait values. [Asset inventory](ASSET_REQUIREMENTS.md) lists stable IDs,
 methods, frame, alpha and order, while the JSON holds definitions and acceptance
 gates. The union is an explicit source-production checklist, not proof of files.
@@ -54,6 +62,13 @@ Use the proven built-in ImageGen only after checking current included access,
 allowance and the zero-spending policy. Do not use API keys, paid APIs, purchased
 credits, rented GPU, downloads or new subscriptions. Do not assume enough included
 usage for a collection batch. Task 015 performs no ImageGen call or GPU inference.
+
+The pilot's 32 ImageGen/alignment bindings plus 6 deterministic bindings are source
+requirements, not a promise of 32 generation calls or sufficient included usage.
+Extracting registered layers from approved family masters may satisfy several
+bindings. Native resolution must be recorded honestly; 3072px is a proposed shared
+canvas, not a proven native ImageGen output. Recheck included access before any
+separately authorized generation stage.
 
 Start with an approved normal turnaround/bust and registered anatomy masks. Produce
 one controlled anatomy-family pack, preserving native PNG masters and exact tool
@@ -76,10 +91,15 @@ Simple resampling must never be labeled as newly generated detail.
   evolution, not a second collection constructor.
 - Structural category replacement accepts a **fixed source set**. It cannot select
   an expression/eyewear/collar source based on both the selected trait and mutation.
-  The 266 family bindings are declared, but unresolved for real production.
+  The 284 family bindings are declared, but unresolved for real production.
   A reviewed compiler could expand definitions into explicit compatible variants
   and rebalance shared quotas; it must preserve display values, identity and counts.
   No renderer may silently substitute unbound variants.
+- Wool/headwear, iris/lid and chain/collar fit also depend on multiple selected
+  traits within one family. The pilot specifies explicit contact masks/registered
+  derivatives for these intersections. Family bindings alone do not solve them;
+  an approved compiler/renderer must bind each required joint fit without changing
+  the one-configuration constructor or hiding visible metadata facets.
 - A selected anatomy is replaced for every structural family, preserving the Sheep
   species value. Normal/family expression assets must implement real skeletal
   sockets, quartz refraction and void cutouts. Logical source descriptors cannot

@@ -1,6 +1,6 @@
 # Production source asset inventory
 
-76 logical source templates are MISSING. No SHA256 or approval declaration is fabricated. All proposed sources use `lammb-bust-three-quarter-v1`, 3072×3072, sRGB, full-frame source-over placement without implicit scaling. Backgrounds/curated scenes are opaque; character/effect sources require actual alpha. Layer order: background 0, anatomy 10, clothing 20, wool 30, expression 40, eyes 50, accessory configuration 60, structural effects 70, pixel effects 80. Replacement anatomy reuses its exclusive slot.
+79 logical source templates are MISSING. No SHA256 or approval declaration is fabricated. All proposed sources use `lammb-bust-three-quarter-v1`, 3072×3072, sRGB, full-frame source-over placement without implicit scaling. Backgrounds/curated scenes are opaque; character/effect sources require actual alpha. Layer order: background 0, anatomy 10, clothing 20, wool 30, expression 40, eyes 50, accessory configuration 60, structural effects 70, pixel effects 80. Replacement anatomy reuses its exclusive slot.
 
 ImageGen must not be assumed to return aligned layers or requested native resolution. Preserve native masters, record actual dimensions and generation evidence, align/mask deliberately, decode/QA and obtain digest-bound approval before ingestion. Clear layers and exact backgrounds/tag typography use reviewed deterministic tools rather than hallucinated pixels.
 
@@ -82,8 +82,11 @@ ImageGen must not be assumed to return aligned layers or requested native resolu
 | asset-lammb-grail-refraction                 | environments     | SCENE  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | FORBIDDEN | 0     | 0                    |
 | asset-lammb-grail-seed-vault                 | environments     | SCENE  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | FORBIDDEN | 0     | 0                    |
 | asset-lammb-grail-observer-array             | environments     | SCENE  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | FORBIDDEN | 0     | 0                    |
+| asset-lammb-accessories-cap-tag              | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 7                    |
+| asset-lammb-accessories-beanie-chain         | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 6                    |
+| asset-lammb-accessories-shades-gold          | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 5                    |
 
-266 anatomy-family variant bindings are explicitly listed in `lammb-traits-v1.json`. These replace the corresponding generic templates during future reviewed production compilation, not additional independent traits. Their absence blocks pixel production. The current engine cannot condition an asset substitution on both the selected expression/accessory and mutation; no automatic variant resolution is implemented here.
+284 anatomy-family variant bindings are explicitly listed in `lammb-traits-v1.json`. These replace the corresponding generic templates during future reviewed production compilation, not additional independent traits. Their absence blocks pixel production. The current engine cannot condition an asset substitution on both the selected expression/accessory and mutation; no automatic variant resolution is implemented here.
 
 | Variant ID                                         | Template                             | Anatomy family              | Status  |
 | -------------------------------------------------- | ------------------------------------ | --------------------------- | ------- |
@@ -353,3 +356,21 @@ ImageGen must not be assumed to return aligned layers or requested native resolu
 | variant-lammb-accessories-ear-cuff-botanical       | asset-lammb-accessories-ear-cuff     | lammb-mutations-botanical   | MISSING |
 | variant-lammb-accessories-ear-cuff-void            | asset-lammb-accessories-ear-cuff     | lammb-mutations-void        | MISSING |
 | variant-lammb-accessories-ear-cuff-multi-eye       | asset-lammb-accessories-ear-cuff     | lammb-mutations-multi-eye   | MISSING |
+| variant-lammb-accessories-cap-tag-none             | asset-lammb-accessories-cap-tag      | lammb-mutations-none        | MISSING |
+| variant-lammb-accessories-cap-tag-skeletal         | asset-lammb-accessories-cap-tag      | lammb-mutations-skeletal    | MISSING |
+| variant-lammb-accessories-cap-tag-cybernetic       | asset-lammb-accessories-cap-tag      | lammb-mutations-cybernetic  | MISSING |
+| variant-lammb-accessories-cap-tag-magma            | asset-lammb-accessories-cap-tag      | lammb-mutations-magma       | MISSING |
+| variant-lammb-accessories-cap-tag-crystalline      | asset-lammb-accessories-cap-tag      | lammb-mutations-crystalline | MISSING |
+| variant-lammb-accessories-cap-tag-botanical        | asset-lammb-accessories-cap-tag      | lammb-mutations-botanical   | MISSING |
+| variant-lammb-accessories-cap-tag-void             | asset-lammb-accessories-cap-tag      | lammb-mutations-void        | MISSING |
+| variant-lammb-accessories-beanie-chain-none        | asset-lammb-accessories-beanie-chain | lammb-mutations-none        | MISSING |
+| variant-lammb-accessories-beanie-chain-skeletal    | asset-lammb-accessories-beanie-chain | lammb-mutations-skeletal    | MISSING |
+| variant-lammb-accessories-beanie-chain-cybernetic  | asset-lammb-accessories-beanie-chain | lammb-mutations-cybernetic  | MISSING |
+| variant-lammb-accessories-beanie-chain-magma       | asset-lammb-accessories-beanie-chain | lammb-mutations-magma       | MISSING |
+| variant-lammb-accessories-beanie-chain-crystalline | asset-lammb-accessories-beanie-chain | lammb-mutations-crystalline | MISSING |
+| variant-lammb-accessories-beanie-chain-void        | asset-lammb-accessories-beanie-chain | lammb-mutations-void        | MISSING |
+| variant-lammb-accessories-shades-gold-none         | asset-lammb-accessories-shades-gold  | lammb-mutations-none        | MISSING |
+| variant-lammb-accessories-shades-gold-skeletal     | asset-lammb-accessories-shades-gold  | lammb-mutations-skeletal    | MISSING |
+| variant-lammb-accessories-shades-gold-cybernetic   | asset-lammb-accessories-shades-gold  | lammb-mutations-cybernetic  | MISSING |
+| variant-lammb-accessories-shades-gold-magma        | asset-lammb-accessories-shades-gold  | lammb-mutations-magma       | MISSING |
+| variant-lammb-accessories-shades-gold-botanical    | asset-lammb-accessories-shades-gold  | lammb-mutations-botanical   | MISSING |

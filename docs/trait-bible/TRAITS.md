@@ -1,6 +1,6 @@
-# Complete trait definitions — proposal v1.0.0
+# Complete trait definitions — proposal 1.1.0
 
-All 63 values are PROPOSED. No artwork or count is owner-approved. One selected configuration per existing engine category; headwear, materials and effects are facets, not extra independent draws.
+All 66 values are PROPOSED. No artwork or count is owner-approved. One selected configuration per existing engine category; headwear, materials and effects are facets, not extra independent draws.
 
 ## Species (base_anatomy)
 
@@ -28,7 +28,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Ivory Curls
 
 - Stable ID: `lammb-wool-ivory`.
-- Visual definition: Warm ivory clustered wool with rounded distinct curls, visible roots and continuous crown-to-temple silhouette.
+- Visual definition: Warm ivory clustered wool with rounded distinct curls, visible roots and continuous crown-to-temple silhouette. Silhouette: Low continuous crown of tight clustered curls; crown rise is approximately 18–24 percent of skull height. Center the top on the muzzle axis, without an offset crest or long hanging rolls.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-ivory`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 1700/5280 (32.20%); integer weight 1700; WEIGHTED_TARGET. Approved count: unset.
@@ -39,7 +39,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Ash Curls
 
 - Stable ID: `lammb-wool-ash`.
-- Visual definition: Cool ash-grey curl clusters with clean separation from black clothing and no dirty texture noise.
+- Visual definition: Cool ash-grey curl clusters with clean separation from black clothing and no dirty texture noise. Silhouette: Broad continuous crown with one deliberately offset upper lobe on viewer left; crown rise is approximately 30–40 percent of skull height and peak offset 10–15 percent of skull width. Widen the crown above the ears, not the muzzle or ear-root spacing.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-ash`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 1050/5280 (19.89%); integer weight 1050; WEIGHTED_TARGET. Approved count: unset.
@@ -50,7 +50,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Charcoal Curls
 
 - Stable ID: `lammb-wool-charcoal`.
-- Visual definition: Deep charcoal wool with controlled rim light; curls remain readable against dark clothing.
+- Visual definition: Deep charcoal wool with controlled rim light; curls remain readable against dark clothing. Silhouette: Low continuous crown of tight clustered curls; crown rise is approximately 18–24 percent of skull height. Center the top on the muzzle axis, without an offset crest or long hanging rolls.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-charcoal`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 850/5280 (16.10%); integer weight 850; WEIGHTED_TARGET. Approved count: unset.
@@ -61,7 +61,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Pink Curls
 
 - Stable ID: `lammb-wool-pink`.
-- Visual definition: Dusty pink wool in the same species proportions; no heart props or bows automatically added.
+- Visual definition: Dusty pink wool in the same species proportions; no heart props or bows automatically added. Silhouette: Broad continuous crown with one deliberately offset upper lobe on viewer left; crown rise is approximately 30–40 percent of skull height and peak offset 10–15 percent of skull width. Widen the crown above the ears, not the muzzle or ear-root spacing.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-pink`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 600/5280 (11.36%); integer weight 600; WEIGHTED_TARGET. Approved count: unset.
@@ -72,7 +72,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Chartreuse Tips
 
 - Stable ID: `lammb-wool-chartreuse`.
-- Visual definition: Ivory curl roots with selective exact CCFF00 tip accents; no dripping rainbow material.
+- Visual definition: Ivory curl roots with selective exact CCFF00 tip accents; no dripping rainbow material. Silhouette: Broad continuous crown with one deliberately offset upper lobe on viewer left; crown rise is approximately 30–40 percent of skull height and peak offset 10–15 percent of skull width. Widen the crown above the ears, not the muzzle or ear-root spacing.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-chartreuse`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 420/5280 (7.95%); integer weight 420; WEIGHTED_TARGET. Approved count: unset.
@@ -83,7 +83,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Frosted Curls
 
 - Stable ID: `lammb-wool-frosted`.
-- Visual definition: Pale grey wool with restrained frost at outer curls; soft fiber remains visible, not solid crystal anatomy.
+- Visual definition: Pale grey wool with restrained frost at outer curls; soft fiber remains visible, not solid crystal anatomy. Silhouette: Low continuous crown of tight clustered curls; crown rise is approximately 18–24 percent of skull height. Center the top on the muzzle axis, without an offset crest or long hanging rolls.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-frosted`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 300/5280 (5.68%); integer weight 300; WEIGHTED_TARGET. Approved count: unset.
@@ -94,7 +94,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Rolled Locks
 
 - Stable ID: `lammb-wool-locks`.
-- Visual definition: Larger rolled wool clusters, not human braids; preserve ear roots and the sheep crown.
+- Visual definition: Larger rolled wool clusters, not human braids; preserve ear roots and the sheep crown. Silhouette: Three to five large clearly separated rolled wool clusters along crown and temples, with visible curl centers and descending side contours. Preserve continuous roots; these are sheep wool rolls, not human braids or disconnected tubes.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-locks`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 240/5280 (4.55%); integer weight 240; WEIGHTED_TARGET. Approved count: unset.
@@ -105,7 +105,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 ### Singed Curls
 
 - Stable ID: `lammb-wool-singed`.
-- Visual definition: Intact charcoal curls with cooled brown edges; no active flames, melted loops or missing wool.
+- Visual definition: Intact charcoal curls with cooled brown edges; no active flames, melted loops or missing wool. Silhouette: Low continuous crown of tight clustered curls; crown rise is approximately 18–24 percent of skull height. Center the top on the muzzle axis, without an offset crest or long hanging rolls.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-wool-singed`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 120/5280 (2.27%); integer weight 120; WEIGHTED_TARGET. Approved count: unset.
@@ -394,9 +394,9 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 
 - Stable ID: `lammb-accessories-beanie`.
 - Visual definition: Unbranded black ribbed beanie sitting above ear roots with visible crown wool.
-- Compatibility: lammb-botanical-beanie-clearance: Beanie covers the required integrated crown growth and wool boundaries.
+- Compatibility: Excludes Ash Curls (lammb-wool-ash). Excludes Pink Curls (lammb-wool-pink). Excludes Chartreuse Tips (lammb-wool-chartreuse). Excludes Rolled Locks (lammb-wool-locks). lammb-botanical-beanie-clearance: Beanie covers the required integrated crown growth and wool boundaries.
 - Production source requirements: `asset-lammb-accessories-beanie`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 800/5280 (15.15%); integer weight 800; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 710/5280 (13.45%); integer weight 710; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Headwear = Black Beanie.
 - Evidence: LAMMB-EX-013. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -407,7 +407,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Visual definition: Original black backward cap with chartreuse strap; no crown symbols or generated lettering.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-accessories-backward-cap`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 650/5280 (12.31%); integer weight 650; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 550/5280 (10.42%); integer weight 550; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Headwear = Backward Cap.
 - Evidence: LAMMB-EX-030. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -418,7 +418,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Visual definition: Single coherent dark frame with transparent tinted lenses; eyes remain visible.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-accessories-shades`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 500/5280 (9.47%); integer weight 500; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 440/5280 (8.33%); integer weight 440; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Eyewear = Dark Shades.
 - Evidence: LAMMB-EX-039. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -440,7 +440,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Visual definition: Single small clean metal tag fixed to one ear. Exact 5280 numerals applied deterministically after generation, never guessed by AI.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-accessories-ear-tag`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 350/5280 (6.63%); integer weight 350; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 250/5280 (4.73%); integer weight 250; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Ear Tag = 5280.
 - Evidence: LAMMB-EX-037. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -451,7 +451,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Visual definition: One coherent short silver chain below the wool collar; no text pendant or hidden skull shapes.
 - Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
 - Production source requirements: `asset-lammb-accessories-silver-chain`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 300/5280 (5.68%); integer weight 300; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 210/5280 (3.98%); integer weight 210; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Jewelry = Silver Chain.
 - Evidence: LAMMB-EX-030. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -462,7 +462,7 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Visual definition: One gold dental accent integrated into the selected visible dental arcade. No oversized grill or additional teeth.
 - Compatibility: Excludes Heavy Lidded (lammb-expressions-heavy-lidded). Excludes Side Eye (lammb-expressions-side-eye). Excludes Stoic (lammb-expressions-stoic). lammb-dental-refraction: An opaque dental accent must not obscure the proposed refractive quartz mouth structure. lammb-void-dental-visibility: Void allows only closed-mouth expressions, all of which exclude visible gold teeth. Do not commission an unreachable dental asset binding.
 - Production source requirements: `asset-lammb-accessories-gold-tooth`; all MISSING. Family variants are explicitly inventoried in the machine specification.
-- Proposed total: 240/5280 (4.55%); integer weight 240; WEIGHTED_TARGET. Approved count: unset.
+- Proposed total: 180/5280 (3.41%); integer weight 180; WEIGHTED_TARGET. Approved count: unset.
 - Metadata: Dental Accent = Gold Tooth.
 - Evidence: LAMMB-EX-015. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
@@ -511,6 +511,39 @@ Frequency policy: WEIGHTED_TARGET; proposed totals cover 5280.
 - Evidence: LAMMB-EX-031. References are REVIEW, not source art.
 - Approval: PROPOSED; owner approval reference absent.
 
+### Cap with 5280 Ear Tag
+
+- Stable ID: `lammb-accessories-cap-tag`.
+- Visual definition: One fitted original backward black cap and one metal 5280 ear tag on the viewer-left ear. Keep the cap strap/brim clear of the tag hanger and both ear roots; preserve the selected wool silhouette. Apply exact numerals deterministically after no-text artwork generation. No chain or eyewear is added.
+- Compatibility: Shared registered sheep frame, protected landmarks and anatomy-family variant requirements. No additional logical exclusion.
+- Production source requirements: `asset-lammb-accessories-cap-tag`; all MISSING. Family variants are explicitly inventoried in the machine specification.
+- Proposed total: 200/5280 (3.79%); integer weight 200; WEIGHTED_TARGET. Approved count: unset.
+- Metadata: Headwear = Backward Cap; Ear Tag = 5280.
+- Evidence: LAMMB-EX-030, LAMMB-EX-037. References are REVIEW, not source art.
+- Approval: PROPOSED; owner approval reference absent.
+
+### Beanie with Short Chain
+
+- Stable ID: `lammb-accessories-beanie-chain`.
+- Visual definition: One original black ribbed beanie over compact crown wool plus one short silver chain resting below the wool collar on a low neckline. No pendant, lettering, ear tag or glasses. Preserve both ears and the visible compact curl islands.
+- Compatibility: Excludes Ash Curls (lammb-wool-ash). Excludes Pink Curls (lammb-wool-pink). Excludes Chartreuse Tips (lammb-wool-chartreuse). Excludes Rolled Locks (lammb-wool-locks). Excludes Lab Jacket (lammb-clothing-lab-jacket). Excludes Lab Coat (lammb-clothing-long-coat). Excludes Reflective Shell (lammb-clothing-shell). Excludes No Clothing (lammb-clothing-none). lammb-botanical-beanie-chain-clearance: Beanie would cover required botanical crown growth and wool boundaries.
+- Production source requirements: `asset-lammb-accessories-beanie-chain`; all MISSING. Family variants are explicitly inventoried in the machine specification.
+- Proposed total: 180/5280 (3.41%); integer weight 180; WEIGHTED_TARGET. Approved count: unset.
+- Metadata: Headwear = Black Beanie; Jewelry = Silver Chain.
+- Evidence: LAMMB-EX-013, LAMMB-EX-030. References are REVIEW, not source art.
+- Approval: PROPOSED; owner approval reference absent.
+
+### Shades with Gold Dental Accent
+
+- Stable ID: `lammb-accessories-shades-gold`.
+- Visual definition: One coherent dark sunglasses frame with transparent tinted lenses plus one integrated gold dental accent on an actually visible tooth. Keep the primary eyes, pupil direction, brows and mouth expression readable; no full grill, duplicate teeth, headwear or jewelry.
+- Compatibility: Excludes Heavy Lidded (lammb-expressions-heavy-lidded). Excludes Side Eye (lammb-expressions-side-eye). Excludes Stoic (lammb-expressions-stoic). lammb-crystalline-shades-gold-clearance: Gold must not occlude the refractive quartz mouth structure. lammb-void-shades-gold-clearance: All Void-compatible expressions have closed mouths and exclude visible dental accents.
+- Production source requirements: `asset-lammb-accessories-shades-gold`; all MISSING. Family variants are explicitly inventoried in the machine specification.
+- Proposed total: 120/5280 (2.27%); integer weight 120; WEIGHTED_TARGET. Approved count: unset.
+- Metadata: Eyewear = Dark Shades; Dental Accent = Gold Tooth.
+- Evidence: LAMMB-EX-015, LAMMB-EX-039. References are REVIEW, not source art.
+- Approval: PROPOSED; owner approval reference absent.
+
 ## Mutation (mutations)
 
 One exclusive anatomy family. No overlay-only mutation or automatic artistic grail classification.
@@ -532,7 +565,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-skeletal`.
 - Visual definition: Replace face, muzzle and visible neck with a coherent sheep skull and vertebral structure. Lateral ears and continuous wool remain.
-- Compatibility: base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-skeletal. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-stoic, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-skeletal. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-stoic, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-skeletal`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 220/5280 (4.17%); integer weight 220; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Skeletal; Material = Bone and Wool.
@@ -543,7 +576,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-cybernetic`.
 - Visual definition: Replace one cheek/neck structure with fitted graphite titanium mechanisms. Preserve sheep muzzle, two ear roots and meaningful eyelids.
-- Compatibility: lammb-cyber-headset-clearance: Headset attachment cannot intersect the structural cybernetic ear-root mechanism. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-cybernetic. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: lammb-cyber-headset-clearance: Headset attachment cannot intersect the structural cybernetic ear-root mechanism. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-cybernetic. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-cybernetic`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 180/5280 (3.41%); integer weight 180; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Cybernetic; Material = Titanium and Wool.
@@ -554,7 +587,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-magma`.
 - Visual definition: Cooled basalt sheep structure with localized interior chartreuse heat fissures and an intentional low swept horn pair. No ambient inferno.
-- Compatibility: base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-magma. wool: allowed lammb-wool-ash, lammb-wool-charcoal, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-magma. wool: allowed lammb-wool-ash, lammb-wool-charcoal, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-magma`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 100/5280 (1.89%); integer weight 100; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Magma; Material = Basalt and Wool.
@@ -565,7 +598,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-crystalline`.
 - Visual definition: Faceted translucent quartz cheek and neck structure, preserving muzzle and ear silhouette. Refraction stays localized and readable.
-- Compatibility: lammb-dental-refraction: An opaque dental accent must not obscure the proposed refractive quartz mouth structure. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-crystalline. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: lammb-dental-refraction: An opaque dental accent must not obscure the proposed refractive quartz mouth structure. lammb-crystalline-shades-gold-clearance: Gold must not occlude the refractive quartz mouth structure. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-crystalline. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-crystalline`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 72/5280 (1.36%); integer weight 72; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Crystalline; Material = Quartz and Wool.
@@ -576,7 +609,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-botanical`.
 - Visual definition: Integrated bark cheek/neck plates and small moss growth between retained wool clusters; no face-obscuring foliage.
-- Compatibility: lammb-botanical-beanie-clearance: Beanie covers the required integrated crown growth and wool boundaries. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-botanical. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: lammb-botanical-beanie-clearance: Beanie covers the required integrated crown growth and wool boundaries. lammb-botanical-beanie-chain-clearance: Beanie would cover required botanical crown growth and wool boundaries. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-botanical. wool: allowed lammb-wool-ivory, lammb-wool-ash, lammb-wool-charcoal, lammb-wool-pink, lammb-wool-chartreuse, lammb-wool-frosted, lammb-wool-locks, lammb-wool-singed; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-smirk, lammb-expressions-stoic, lammb-expressions-amused, lammb-expressions-defiant; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-botanical`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 64/5280 (1.21%); integer weight 64; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Botanical; Material = Bark and Wool.
@@ -587,7 +620,7 @@ Frequency policy: EXACT_TOTAL; proposed totals cover 5280.
 
 - Stable ID: `lammb-mutations-void`.
 - Visual definition: Localized negative-space muzzle and neck held by a bright sheep outline; preserve primary eyes, ear roots and continuous wool.
-- Compatibility: lammb-void-dental-visibility: Void allows only closed-mouth expressions, all of which exclude visible gold teeth. Do not commission an unreachable dental asset binding. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-void. wool: allowed lammb-wool-ivory, lammb-wool-chartreuse, lammb-wool-frosted; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-stoic; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff; retain selected registered assets.
+- Compatibility: lammb-void-dental-visibility: Void allows only closed-mouth expressions, all of which exclude visible gold teeth. Do not commission an unreachable dental asset binding. lammb-void-shades-gold-clearance: All Void-compatible expressions have closed mouths and exclude visible dental accents. base_anatomy: allowed lammb-base-anatomy-sheep; replace with asset-lammb-anatomy-void. wool: allowed lammb-wool-ivory, lammb-wool-chartreuse, lammb-wool-frosted; retain selected registered assets. eyes: allowed lammb-eyes-radioactive, lammb-eyes-amber, lammb-eyes-red, lammb-eyes-ice, lammb-eyes-violet, lammb-eyes-onyx, lammb-eyes-split; retain selected registered assets. expressions: allowed lammb-expressions-heavy-lidded, lammb-expressions-side-eye, lammb-expressions-stoic; retain selected registered assets. clothing: allowed lammb-clothing-hoodie, lammb-clothing-bomber, lammb-clothing-lab-jacket, lammb-clothing-utility-vest, lammb-clothing-crewneck, lammb-clothing-long-coat, lammb-clothing-shell, lammb-clothing-none; retain selected registered assets. accessories: allowed lammb-accessories-none, lammb-accessories-beanie, lammb-accessories-backward-cap, lammb-accessories-shades, lammb-accessories-cap-shades, lammb-accessories-ear-tag, lammb-accessories-silver-chain, lammb-accessories-gold-tooth, lammb-accessories-visor, lammb-accessories-headset, lammb-accessories-work-cap, lammb-accessories-ear-cuff, lammb-accessories-cap-tag, lammb-accessories-beanie-chain, lammb-accessories-shades-gold; retain selected registered assets.
 - Production source requirements: `asset-lammb-mutations-void`; all MISSING. Family variants are explicitly inventoried in the machine specification.
 - Proposed total: 43/5280 (0.81%); integer weight 43; EXACT_TOTAL. Approved count: unset.
 - Metadata: Mutation = Void; Material = Void and Wool.

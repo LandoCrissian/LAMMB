@@ -25,6 +25,7 @@ import {
 import {
   productionSpecSchema,
   simulationInputs,
+  validateArtworkPilot,
 } from '../src/production-spec.ts';
 import type { ProductionSpec } from '../src/production-spec.ts';
 import { relativePathSchema } from '../src/schema.ts';
@@ -46,6 +47,7 @@ const traits = new Map(spec.traits.map((t) => [t.id, t]));
 const engineTraits = new Map(inputs.catalog.traits.map((t) => [t.id, t]));
 const assets = new Map(inputs.manifest.assets.map((a) => [a.id, a]));
 const metadata = createProposalMetadataAdapter(spec);
+const pilotValidation = spec.artworkPilot ? validateArtworkPilot(spec) : null;
 
 export function auditSimulation(artifacts: EngineArtifacts) {
   assert.equal(artifacts.logicalCollection.specimens.length, spec.supply);
@@ -157,6 +159,7 @@ export function auditSimulation(artifacts: EngineArtifacts) {
       purpose: 'DEVELOPMENT_ONLY',
       artworkGenerated: false,
       productionApproved: false,
+      ...(pilotValidation ? { artworkPilot: pilotValidation } : {}),
       specSha256: canonicalSha256(spec),
       requested: spec.supply,
       generated: spec.supply,
@@ -212,8 +215,68 @@ async function documents(check: boolean) {
     canonicalSha256(spec),
     'Simulation snapshot does not match the specification; run a fresh simulation',
   );
+  if (spec.artworkPilot) {
+    const wool = spec.traits.filter((t) => t.woolSpecification);
+    outputs.set(
+      'docs/trait-bible/WOOL_SILHOUETTES.md',
+      '# Wool silhouette specification — Task 015B\n\nThe owner authorized three silhouettes within the existing eight wool values. These are geometry specifications, not extra metadata values or approved artwork. Ratios are design requirements to test against the approved pilot frame.\n\n' +
+        wool
+          .map(
+            (t) =>
+              `## ${t.displayName}\n\nStable ID: \`${t.id}\`; profile: **${t.woolSpecification!.silhouette}**.\n\n${t.woolSpecification!.definition}\n\nEars: ${t.woolSpecification!.earClearance}\n\nHeadwear: ${t.woolSpecification!.headwearRule}\n\nPreserved landmarks: ${t.woolSpecification!.preservedLandmarks.join('; ')}.\n\nSources: ${t.assetRequirementIds.join(', ')}; family variants MISSING.\n\n${t.woolSpecification!.sourceRequirements.map((r) => `- ${r}`).join('\n')}\n`,
+          )
+          .join('\n'),
+    );
+    outputs.set(
+      'docs/trait-bible/ACCESSORY_BUNDLES.md',
+      '# Accessory bundle specification — Task 015B\n\nOne configuration per specimen is preserved. Three approved design directions add deliberate pairs; artwork and counts remain unapproved. Existing single configurations and Cap and Shades remain available. This is not unrestricted layering.\n\n' +
+        spec.traits
+          .filter((t) => t.accessoryBundle)
+          .map(
+            (t) =>
+              `## ${t.displayName}\n\nStable ID: \`${t.id}\`. Proposed preference/raw weight ${t.proposedTotalCount}; approved count unset.\n\n${t.visualDefinition}\n\nVisible metadata: ${t.metadata.map((a) => `${a.trait_type} = ${a.value}`).join('; ')}.\n\nMouth: ${t.accessoryBundle!.mouthVisibility}.\n\nHeadwear: ${t.accessoryBundle!.headwearClearance}\n\nEars: ${t.accessoryBundle!.earClearance}\n\nCollar: ${t.accessoryBundle!.collarClearance}\n\nStructure: ${t.accessoryBundle!.structuralRule}\n\nExecutable constraints: ${compatibility(t)}\n\nSources: ${t.assetRequirementIds.join(', ')}; family variants and joint contact derivatives MISSING.\n\n${t.accessoryBundle!.sourceRequirements.map((r) => `- ${r}`).join('\n')}\n`,
+          )
+          .join('\n'),
+    );
+    outputs.set(
+      'docs/trait-bible/GRAIL_VISIBILITY.md',
+      '# Grail visibility gates — Task 015B\n\nAll six proposals, reservation indices and exact trait vectors remain unapproved and unchanged. Review at 64px and 128px, square and circular crops. A numerical singleton or Phenomenon label cannot approve art.\n\n' +
+        spec.grails
+          .map(
+            (g) =>
+              `## ${g.displayName}\n\nReservation ${g.index}; approval PROPOSED.\n\n${g.visibilitySpecification!.silhouetteRequirement}\n\nCrop/collar: ${g.visibilitySpecification!.collarAndCrop}\n\nProtected feature: ${g.visibilitySpecification!.protectedPhenomenon}\n\nComparison: ${g.visibilitySpecification!.ordinaryFamilyComparison}\n\nClassification gate: ${g.visibilitySpecification!.approvalGate}. Source ${g.assetRequirementIds.join(', ')} remains MISSING.\n`,
+          )
+          .join('\n'),
+    );
+    const pilot = spec.artworkPilot;
+    const manifest = new Map(spec.assetRequirements.map((a) => [a.id, a]));
+    outputs.set(
+      'docs/trait-bible/ARTWORK_PILOT.md',
+      `# Minimum viable artwork pilot — Task 015B\n\nStatus **${pilot.status}**; generation authorized **false**. This task generates zero images. Future pilot work needs separate authorization, confirmed included usage and staged owner review.\n\n${pilot.nativeResolutionPolicy}\n\n## Stages and exact source inventory\n\nStage 1: normal identity plus Ivory/compact, Ash/broad-offset and Rolled Locks wool; stop for owner review. Stage 2: remaining normal expression/iris/clothing sources, three bundles and deterministic controls, after stage 1 approval. Stage 3: skeletal and magma family packs, then one unapproved Cooled Core comparison, after stage 2 approval. There are ${pilot.sourceBindings.length} source bindings: ${pilotValidation!.imagegenOrAlignmentBindings} art/alignment bindings and ${pilotValidation!.deterministicBindings} deterministic bindings. Some art bindings can be extracted from an approved native master; these are not ImageGen call or cost estimates. A failed early gate stops later stages.\n\n| Pilot source | Required template | Anatomy family | Method | Purpose |\n| --- | --- | --- | --- | --- |\n` +
+        pilot.sourceBindings
+          .map(
+            (b) =>
+              `| ${b.id} | ${b.assetRequirementId} | ${b.mutationTraitId} | ${b.method} | ${b.purpose} |`,
+          )
+          .join('\n') +
+        '\n\nAll templates are MISSING. Preserve no-text native PNG masters and approve registered lossless source/derivative bytes separately. Anatomical replacements own structure; mutation EFFECT sources contain only contact emission/drips, never a second skull/face.\n\n## Mandatory registered derivatives\n\n' +
+        pilot.derivativeRequirements
+          .map((d) => `- **${d.id}:** ${d.definition}`)
+          .join('\n') +
+        '\n\n## Review compositions\n\nThese are pilot studies, not collection assignments. Closed-mouth and other incompatible combinations are negative test cases; do not commission them. A full-frame curated source supplies the potential grail instead of stacking every ordinary layer over it. Every visible attribute must still match.\n\n' +
+        pilot.reviewCompositions
+          .map(
+            (c) =>
+              `### ${c.id}\n\n${c.purpose}\n\n${c.traitIds.map((id) => `\`${id}\``).join(', ')}. Curated source: ${c.grailId ? spec.grails.find((g) => g.id === c.grailId)!.assetRequirementIds.join(', ') : 'ordinary registered source pack'}.\n`,
+          )
+          .join('\n') +
+        '\n## Acceptance and stop gates\n\n' +
+        pilot.acceptance.map((r) => `- ${r}`).join('\n') +
+        `\n\nLogical validation: ${pilotValidation!.reviewCompositions} compatible review compositions; all ${manifest.size} production templates remain unapproved. No PNG, alpha, native resolution, likeness or visual diversity gate is claimed as passed by logical validation. Save prompts, references, exposed model/tool IDs, actual native dimensions, hashes, masks, offsets and processing versions; quarantine defects. The pilot does not clear the remaining family sources, all eight colors, untested collars/expressions or the other five grails.\n`,
+    );
+  }
   let frequencies =
-    '# Proposed and observed collection frequencies\n\nAll proposed per-category totals cover 5280; all approved counts remain unset. EXACT_TOTAL values are hard quotas after reserved contributions are subtracted. For WEIGHTED_TARGET, proposed totals are owner preferences and selectionWeight is a raw draw weight; neither is the compatibility-conditioned expected final count. Observed totals belong to this exact recipe only. See [the adversarial frequency audit](ADVERSARIAL_REVIEW.md#frequency-audit) for the original 240/82 dental discrepancy, revised results and seed sensitivity. Do not substitute these tables for owner frequency approval or a custom rarity ranking.\n\n';
+    '# Proposed and observed collection frequencies\n\nAll proposed per-category totals cover 5280; all approved counts remain unset. EXACT_TOTAL values are hard quotas after reserved contributions are subtracted. For WEIGHTED_TARGET, proposed totals are owner preferences and selectionWeight is a raw draw weight; neither is the compatibility-conditioned expected final count. Observed totals belong to this exact recipe only. See [the adversarial frequency audit](ADVERSARIAL_REVIEW.md#frequency-audit) for historical 240/82 evidence. [Task 015B results](FINAL_REFINEMENT.md) cover current bundles, silhouettes, provisional dental preferences and seed sensitivity. Do not substitute these tables for owner frequency approval or a custom rarity ranking.\n\n';
   for (const category of spec.categories) {
     frequencies += `## ${category.displayName}\n\n| Stable trait ID | Display name | Proposed total | Observed total | Ordinary | Reserved | Difference | Policy |\n| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |\n`;
     for (const row of simulation.frequencies.filter(
@@ -239,13 +302,23 @@ async function documents(check: boolean) {
   for (const name of Object.keys(proposedFacets).sort())
     for (const value of Object.keys(proposedFacets[name]!).sort())
       frequencies += `| ${name} | ${value} | ${proposedFacets[name]![value]} | ${simulation.visibleMetadataFrequencies[name]?.[value] ?? 0} |\n`;
-  const gold = simulation.frequencies.find(
-    (r) => r.id === 'lammb-accessories-gold-tooth',
-  )!;
-  frequencies += `\nThe Gold Dental Accent target is ${gold.proposedTotal}; ${gold.observedTotal} were accepted. The accent requires a visible dental expression and excludes refractive crystal mouths; compatibility substantially reduces its weighted realization; whole-collection uniqueness and quotas also condition the draws. Owner must approve realized counts or request a separately feasible exact-count schedule. No constraint or timeout was relaxed to meet a target.\n\n## Actual logical simulation\n\n- Requested / generated / unique: ${simulation.requested} / ${simulation.generated} / ${simulation.uniqueIdentities}.\n- Structural specimens: ${simulation.mutationCount}; proposed reserved compositions: ${simulation.grailReservations.length}.\n- Ordinary accepted: ${simulation.attemptStatistics.ordinaryAccepted}; total candidates ${simulation.attemptStatistics.totalCandidates}; rejected ${simulation.attemptStatistics.rejectedCandidates}; maximum per specimen ${simulation.attemptStatistics.maxSpecimenAttempts}.\n- Accepted incompatibilities: ${simulation.compatibilityFailuresInAcceptedSpecimens}.\n- Exact quota categories and reserved Observer Array matched their specified totals.\n- Logical collection SHA256: \`${simulation.logicalCollectionSha256}\`.\n- Metadata preview SHA256: \`${simulation.metadataPreviewSha256}\`.\n\nTwo fresh runs produced nine byte-identical files. Stored-bundle reconstruction, effective replacements, reserved slots, all metadata records and all per-category counts were checked. The two complete bundles and raw hashes remain under ignored \`artifacts/generated/task-015a/validation-a\`, \`validation-b\` and \`reproducibility.json\`. [Full committed evidence](SIMULATION.json) contains recipe versions, input digests, rejection counts and detailed frequencies. Zero artwork was generated. The disclosed seed proves this construction instance, not every possible seed or final image/assignment correctness.\n`;
+  const dentalIds = new Set(
+    spec.traits
+      .filter((t) => t.metadata.some((a) => a.trait_type === 'Dental Accent'))
+      .map((t) => t.id),
+  );
+  const gold = simulation.frequencies
+    .filter((r) => dentalIds.has(r.id))
+    .reduce(
+      (n, r) => ({
+        proposedTotal: n.proposedTotal + r.proposedTotal,
+        observedTotal: n.observedTotal + r.observedTotal,
+      }),
+      { proposedTotal: 0, observedTotal: 0 },
+    );
+  frequencies += `\nAcross standalone and bundled gold accents the provisional nominal preference is ${gold.proposedTotal}; ${gold.observedTotal} visible accents were accepted. Neither the old 240 preference nor this aggregate is an enforced quota. The accent requires a visible dental expression and excludes refractive crystal mouths; compatibility substantially reduces its weighted realization; whole-collection uniqueness and quotas also condition the draws. Owner must approve realized counts or request a separately feasible exact-count schedule. No constraint or timeout was relaxed to meet a target.\n\n## Actual logical simulation\n\n- Requested / generated / unique: ${simulation.requested} / ${simulation.generated} / ${simulation.uniqueIdentities}.\n- Structural specimens: ${simulation.mutationCount}; proposed reserved compositions: ${simulation.grailReservations.length}.\n- Ordinary accepted: ${simulation.attemptStatistics.ordinaryAccepted}; total candidates ${simulation.attemptStatistics.totalCandidates}; rejected ${simulation.attemptStatistics.rejectedCandidates}; maximum per specimen ${simulation.attemptStatistics.maxSpecimenAttempts}.\n- Accepted incompatibilities: ${simulation.compatibilityFailuresInAcceptedSpecimens}.\n- Exact quota categories and reserved Observer Array matched their specified totals.\n- Logical collection SHA256: \`${simulation.logicalCollectionSha256}\`.\n- Metadata preview SHA256: \`${simulation.metadataPreviewSha256}\`.\n\nTwo fresh runs produced nine byte-identical files. Stored-bundle reconstruction, effective replacements, reserved slots, all metadata records and all per-category counts were checked. The two complete bundles and raw hashes remain under ignored \`artifacts/generated/task-015b/validation-a\`, \`validation-b\` and \`reproducibility.json\`. [Full committed evidence](SIMULATION.json) contains recipe versions, input digests, rejection counts and detailed frequencies. Zero artwork was generated. The disclosed seed proves this construction instance, not every possible seed or final image/assignment correctness.\n`;
   outputs.set('docs/trait-bible/FREQUENCIES.md', frequencies);
-  let definitions =
-    '# Complete trait definitions — proposal v1.0.0\n\nAll 63 values are PROPOSED. No artwork or count is owner-approved. One selected configuration per existing engine category; headwear, materials and effects are facets, not extra independent draws.\n\n';
+  let definitions = `# Complete trait definitions — proposal ${spec.specVersion}\n\nAll ${spec.traits.length} values are PROPOSED. No artwork or count is owner-approved. One selected configuration per existing engine category; headwear, materials and effects are facets, not extra independent draws.\n\n`;
   for (const category of spec.categories) {
     definitions += `## ${category.displayName} (${category.category})\n\n${category.definition}\n\nFrequency policy: ${category.frequencyPolicy}; proposed totals cover 5280.\n\n`;
     for (const t of spec.traits.filter(
@@ -275,8 +348,7 @@ async function documents(check: boolean) {
         )
         .join('\n'),
   );
-  let requirements =
-    '# Production source asset inventory\n\n76 logical source templates are MISSING. No SHA256 or approval declaration is fabricated. All proposed sources use `lammb-bust-three-quarter-v1`, 3072×3072, sRGB, full-frame source-over placement without implicit scaling. Backgrounds/curated scenes are opaque; character/effect sources require actual alpha. Layer order: background 0, anatomy 10, clothing 20, wool 30, expression 40, eyes 50, accessory configuration 60, structural effects 70, pixel effects 80. Replacement anatomy reuses its exclusive slot.\n\nImageGen must not be assumed to return aligned layers or requested native resolution. Preserve native masters, record actual dimensions and generation evidence, align/mask deliberately, decode/QA and obtain digest-bound approval before ingestion. Clear layers and exact backgrounds/tag typography use reviewed deterministic tools rather than hallucinated pixels.\n\n| Stable source ID | Category | Role | Production method | Alpha | Order | Variant declarations |\n| --- | --- | --- | --- | --- | --- | --- |\n';
+  let requirements = `# Production source asset inventory\n\n${spec.assetRequirements.length} logical source templates are MISSING. No SHA256 or approval declaration is fabricated. All proposed sources use \`lammb-bust-three-quarter-v1\`, 3072×3072, sRGB, full-frame source-over placement without implicit scaling. Backgrounds/curated scenes are opaque; character/effect sources require actual alpha. Layer order: background 0, anatomy 10, clothing 20, wool 30, expression 40, eyes 50, accessory configuration 60, structural effects 70, pixel effects 80. Replacement anatomy reuses its exclusive slot.\n\nImageGen must not be assumed to return aligned layers or requested native resolution. Preserve native masters, record actual dimensions and generation evidence, align/mask deliberately, decode/QA and obtain digest-bound approval before ingestion. Clear layers and exact backgrounds/tag typography use reviewed deterministic tools rather than hallucinated pixels.\n\n| Stable source ID | Category | Role | Production method | Alpha | Order | Variant declarations |\n| --- | --- | --- | --- | --- | --- | --- |\n`;
   for (const a of spec.assetRequirements)
     requirements += `| ${a.id} | ${a.category} | ${a.role} | ${a.method} | ${a.alpha} | ${a.order} | ${spec.variantRequirements.filter((v) => v.assetRequirementId === a.id).length} |\n`;
   requirements += `\n${spec.variantRequirements.length} anatomy-family variant bindings are explicitly listed in \`lammb-traits-v1.json\`. These replace the corresponding generic templates during future reviewed production compilation, not additional independent traits. Their absence blocks pixel production. The current engine cannot condition an asset substitution on both the selected expression/accessory and mutation; no automatic variant resolution is implemented here.\n\n| Variant ID | Template | Anatomy family | Status |\n| --- | --- | --- | --- |\n`;
@@ -346,6 +418,7 @@ if (command === 'validate') {
       grails: spec.grails.length,
       missingTemplates: spec.assetRequirements.length,
       missingVariants: spec.variantRequirements.length,
+      artworkPilot: pilotValidation,
       productionApproved: false,
     }),
   );

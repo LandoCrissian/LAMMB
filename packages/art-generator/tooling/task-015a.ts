@@ -67,7 +67,27 @@ export function auditCandidateTrace(
   let ordinaryAccepted = 0;
   let total = 0;
   let rejected = 0;
-  const goldId = 'dev-lammb-accessories-gold-tooth';
+  const goldIds = new Set(
+    spec.traits
+      .filter((t) =>
+        t.metadata.some(
+          (a) => a.trait_type === 'Dental Accent' && a.value === 'Gold Tooth',
+        ),
+      )
+      .map((t) => `dev-${t.id}`),
+  );
+  const goldTotals = () =>
+    [...goldIds].reduce(
+      (n, id) => {
+        const value = selections.get(id)!;
+        return {
+          drawn: n.drawn + value.drawn,
+          accepted: n.accepted + value.accepted,
+          rejected: n.rejected + value.rejected,
+        };
+      },
+      { drawn: 0, accepted: 0, rejected: 0 },
+    );
   for (const specimen of artifacts.logicalCollection.specimens) {
     if (specimen.grailId) {
       seen.add(specimen.fingerprint);
@@ -125,7 +145,7 @@ export function auditCandidateTrace(
         s.drawn++;
         s[accepted ? 'accepted' : 'rejected']++;
       }
-      const gold = candidate.some((t) => t.id === goldId);
+      const gold = candidate.some((t) => goldIds.has(t.id));
       if (gold) {
         for (const [category, breakdown] of [
           ['expressions', goldByExpression],
@@ -173,14 +193,21 @@ export function auditCandidateTrace(
   );
   assert.equal(
     Object.values(goldRejectSets).reduce((a, b) => a + b, 0),
-    selections.get(goldId)!.rejected,
+    goldTotals().rejected,
   );
   return {
     totalCandidates: total,
     rejectedCandidates: rejected,
     ordinaryAccepted,
     gold: {
-      ...selections.get(goldId)!,
+      ...goldTotals(),
+      ...(spec.specVersion === '1.1.0'
+        ? {
+            byConfiguration: Object.fromEntries(
+              [...goldIds].map((id) => [id.slice(4), selections.get(id)!]),
+            ),
+          }
+        : {}),
       rejectionsByCodeOverlapping: goldReasons,
       disjointRejectionSets: goldRejectSets,
       byExpression: goldByExpression,
@@ -249,9 +276,10 @@ export function adversarialAudit(
         index: s.index,
         key: [
           byCategory.get('mutations')!.id,
-          byCategory.get('wool')!.id.endsWith('-locks')
-            ? 'rolled-wool'
-            : 'clustered-curls',
+          byCategory.get('wool')!.woolSpecification?.silhouette ??
+            (byCategory.get('wool')!.id.endsWith('-locks')
+              ? 'rolled-wool'
+              : 'clustered-curls'),
           byCategory.get('expressions')!.id,
           byCategory.get('clothing')!.id,
           ...accessory.metadata
@@ -362,7 +390,9 @@ export function adversarialAudit(
       ]),
       coarseSilhouetteRisk: coarse,
       coarseDefinition:
-        'Retain family, expression, clothing, headwear/eyewear/equipment; map rolled wool separately from clustered curls. Omit wool color/material, eye color, minor jewelry/tag/dental, background and corruption. No claim of identical pixels.',
+        spec.specVersion === '1.1.0'
+          ? 'Retain family, expression, clothing, three specified wool silhouette profiles and headwear/eyewear/equipment. Omit wool color/material, eye color, minor jewelry/tag/dental, background and corruption. Logical profile differences are not yet certified artwork.'
+          : 'Retain family, expression, clothing, headwear/eyewear/equipment; map rolled wool separately from clustered curls. Omit wool color/material, eye color, minor jewelry/tag/dental, background and corruption. No claim of identical pixels.',
       configurationSizes,
       facetCooccurrence,
       visibleSelectionsByFamily,
@@ -441,9 +471,14 @@ if (
             ? {
                 generated: s.generated,
                 unique: s.unique,
-                gold: s.frequencies.accessories[
-                  'dev-lammb-accessories-gold-tooth'
-                ],
+                gold: spec.traits
+                  .filter((t) =>
+                    t.metadata.some((a) => a.trait_type === 'Dental Accent'),
+                  )
+                  .reduce(
+                    (n, t) => n + s.frequencies.accessories[`dev-${t.id}`]!,
+                    0,
+                  ),
               }
             : { error: s.error }),
         })),
