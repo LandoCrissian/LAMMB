@@ -44,6 +44,7 @@ const evidence = {
   touchTraces: [],
   researchApproaches: [],
   focusStops: [],
+  sensitivityChecks: [],
 };
 const browser = await chromium.launch({
   channel: values.browser,
@@ -916,14 +917,53 @@ try {
         assert.equal(await page.getByRole('slider').inputValue(), '6');
         await tools(page, false);
         const beforeLook = await diagnostics(page);
+        const hitTargets = await page.evaluate(() =>
+          [1100, 1120].map((x) => ({
+            x,
+            canvas: document.elementFromPoint(x, 400)?.tagName === 'CANVAS',
+          })),
+        );
+        assert(
+          hitTargets.every((target) => target.canvas),
+          'Sensitivity drag reaches the canvas',
+        );
+        const sensitivityCheck = {
+          width,
+          selected: 6,
+          dragPixels: 20,
+          expectedYawDelta: -0.12,
+          before: beforeLook,
+          hitTargets,
+          firstNewerFrame: null,
+          after: null,
+        };
+        evidence.sensitivityChecks.push(sensitivityCheck);
         await page.mouse.move(1100, 400);
         await page.mouse.down();
         await page.mouse.move(1120, 400);
         await page.mouse.up();
-        await until(page, (p) => p.frames > beforeLook.frames);
+        // Diagnostics publish once per rendered second. A frame published during
+        // the drag can be newer than beforeLook while still containing old yaw.
+        // Wait for the same exact rotation asserted below, within the existing
+        // bound; an incorrect sensitivity still fails rather than passing early.
+        try {
+          await until(page, (p) => {
+            if (
+              p.frames > beforeLook.frames &&
+              !sensitivityCheck.firstNewerFrame
+            )
+              sensitivityCheck.firstNewerFrame = p;
+            return (
+              p.frames > beforeLook.frames &&
+              Math.abs(p.yaw - beforeLook.yaw + 0.12) < 0.001
+            );
+          });
+        } finally {
+          sensitivityCheck.after = await diagnostics(page);
+        }
+        const afterLook = await diagnostics(page);
         assert(
-          Math.abs((await diagnostics(page)).yaw - beforeLook.yaw + 0.12) <
-            0.001,
+          Math.abs(afterLook.yaw - beforeLook.yaw + 0.12) < 0.001,
           'Selected sensitivity controls the fresh renderer after context-loss re-entry',
         );
         await tools(page, true);

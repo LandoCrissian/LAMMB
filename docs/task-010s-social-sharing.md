@@ -10,6 +10,16 @@ The homepage, Universe, World and Collection now have distinct 1200 × 630 JPEG 
 - Mint availability, launch state, NFT metadata, wallets, country registry, RMT and Netlify settings are unchanged. No merge or deployment is authorized.
 - Commit and draft PR title include `[skip netlify]` to suppress branch deploys and Deploy Previews. This follows [Netlify's documented skip behavior](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/); no hosting configuration changes are needed.
 
+## PR #12 recovery onto merged Task 010B
+
+Recovery uses authorized main `b55d0dcd5a3c42cf04cbc7a9f66dc72a194b52d7`. Both original social commits replayed without conflicts or patch changes. All Task 010B chamber, controls, gameplay and WorldAtlas application code remains unchanged relative to this main. The existing draft PR and social image bytes are retained.
+
+Failed run [37878494237](https://github.com/LandoCrissian/LAMMB/actions/runs/37878494237) exceeded the inherited art CLI integration test's default 5000 ms budget at 5099 ms. Its command assertions did not report an art validation error. On the new authorized main, the full 232-test suite passed twice locally, and its Linux CI passed the same test in 2870 ms. The test and its timeout remain unchanged.
+
+The old sequential browser run passed Edge, then Chrome timed out focusing a missing canvas during the console approach. Its artifact does not record why the canvas disappeared. Recovery inherits Task 010B's isolated browser jobs and focus fixes. Authorized main also exposed a sensitivity assertion that waited for any newer diagnostic frame, although diagnostics publish once per rendered second and that frame can precede completion of a drag. The check now waits for the original exact yaw delta, with the original tolerance and bounded wait, verifies both drag positions hit the canvas, and records before/after and first-newer-frame evidence. Gameplay and renderer settings are unchanged.
+
+Each installed-browser CI job additionally runs the social HTTP crawler checks and social browser review before the complete inherited chamber and website suites. The uploaded browser artifact includes these results and screenshots under `social/`; social browser results record the exact checkout SHA. No check is skipped or relaxed. The PR handoff records final local and exact-head CI outcomes separately from the original validation below.
+
 ## Asset inventory and provenance
 
 All four files are JPEG, 1200 × 630, opaque, fully decoded and visually inspected. Sharp 0.35.5 renders original graphic compositions directly at delivery resolution. Existing raster sources are losslessly decoded for composition and downsampled; none are enlarged, repainted or enhanced. The world geography is vector data rasterized at delivery resolution. The typography and framing use near-black `#080B09`, chartreuse `#CCFF00`, and warm-white `#F4F5EB`.
@@ -62,7 +72,7 @@ The existing front WebP was also publicly retrieved with Twitterbot: 200, image/
 
 These requests simulate crawler user agents. They do not prove that real X crawler IPs can bypass an account-level Netlify firewall or rate limit. Netlify account rules were not inspected or changed. **Public acceptance of the new image URLs remains pending an owner-authorized deployment.** This is an intentional limit of the no-deploy instruction.
 
-## Validation and evidence
+## Original implementation validation and evidence
 
 - `npm run build`: passed; Next 16.3.8 production compilation/static generation and the social checker passed. 20 page metadata results, four fully decoded JPEGs.
 - `npm test`: 16 files, 230 tests passed.
@@ -70,7 +80,7 @@ These requests simulate crawler user agents. They do not prove that real X crawl
 - Local production HTTP: 40 page metadata checks plus 10 robots/image checks across Twitterbot and facebookexternalhit, all passed.
 - Chrome and Edge: each passed 44 desktop page audits (20 routes plus two expected 404s with JavaScript both enabled and disabled), four mobile overflow checks at 390 × 844, and four natural-image dimension checks. No page errors.
 - Repository formatting and whitespace checks passed before the draft PR.
-- CI runs the production metadata/image check automatically through the existing root build command; the existing workflow and Task 010B's CI files are untouched. The final handoff records the actual PR CI status.
+- CI runs the production metadata/image check automatically through the existing root build command. Recovery also integrates HTTP and browser social checks into the inherited CI driver; the workflow YAML remains unchanged. The final handoff records the actual PR CI status.
 
 Evidence is under ignored `artifacts/generated/task-010s/acceptance`:
 
