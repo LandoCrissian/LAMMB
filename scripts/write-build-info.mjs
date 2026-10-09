@@ -8,7 +8,7 @@ await writeFile(
     {
       schema: 'lammb-build/1',
       commit: git('rev-parse', 'HEAD'),
-      dirty: Boolean(git('status', '--porcelain', '--untracked-files=no')),
+      dirty: Boolean(git('status', '--porcelain')),
       securityPolicy: 'public-preview-v1',
     },
     null,
