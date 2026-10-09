@@ -603,6 +603,9 @@
   inset: 0;
   touch-action: none;
 }
+.chamber-overlay header .chamber-inspection-hint {
+  display: none;
+}
 .chamber-overlay footer {
   position: absolute;
   z-index: 2;
@@ -752,6 +755,20 @@
   }
   .chamber-overlay footer p {
     margin: 0.25rem 0;
+  }
+  .chamber-overlay-specimen footer p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .chamber-overlay header .chamber-inspection-hint {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
   .chamber-overlay header .chamber-kicker {
     display: none;
