@@ -289,7 +289,17 @@ async function evolution(page, context, cdp, width) {
     releaseTrace,
     afterCameraRelease,
   });
-  await until(page, (p) => p.x < afterCameraRelease.x - 0.2);
+  // Delayed software-renderer samples may already reach a side wall. Continued
+  // wall-parallel motion still proves the held thumb survives the other release.
+  await until(
+    page,
+    (p) =>
+      Math.hypot(p.x - afterCameraRelease.x, p.z - afterCameraRelease.z) > 0.2,
+  );
+  assert(
+    Math.abs((await diagnostics(page)).yaw - afterCameraRelease.yaw) < 0.001,
+    'Released camera remains stable while movement continues',
+  );
   await touch('touchCancel', []);
   await page.waitForTimeout(2200);
   const stopped = await diagnostics(page);
