@@ -1,11 +1,8 @@
 import Link from 'next/link';
 import { LabsShell } from '../../components/labs-shell';
 import { facilityDestinations } from '../../config/labs';
-export const metadata = {
-  title: 'LAMMB Labs — The Classified Universe',
-  description:
-    'Eleven seconds of success. An entire facility of consequences. Enter the fictional LAMMB Labs archive.',
-};
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('universe');
 export default function Universe() {
   return (
     <LabsShell

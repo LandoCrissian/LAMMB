@@ -1,0 +1,111 @@
+{
+  "version": "lammb-social/1",
+  "authorization": "OWNER_TASK_010S_CINEMATIC_SOCIAL_SHARING",
+  "approval": "TASK_010S_COMPOSITIONS_PENDING_OWNER_VISUAL_REVIEW",
+  "productionNFTArtworkApproved": false,
+  "creation": "Original code-native graphic compositions; existing owner-authorized website art and real atlas geometry. No new scene generation, no source repaint, no enlargement of raster sources.",
+  "recipe": "scripts/prepare-social-cards.mjs",
+  "tool": "sharp 0.35.5 / librsvg",
+  "typography": "Arial / Courier New; preview encoding authored on Windows. Font rasterization can vary across operating systems; committed JPEGs are the runtime source of truth.",
+  "palette": {
+    "background": "#080B09",
+    "accent": "#CCFF00",
+    "type": "#F4F5EB"
+  },
+  "assets": [
+    {
+      "id": "home",
+      "route": "/",
+      "path": "/social/home-v1.jpg",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "bytes": 175674,
+      "sha256": "f7844403adafd9a3180fecf8205ea2b84f1d91f5e475e7d5127dd8ee40c51d2e",
+      "composition": "Sealed front specimen with the existing LAMMB graffiti identity; studio spotlight and precision type.",
+      "sources": [
+        {
+          "path": "/art/cinematic-preview/front.webp",
+          "sha256": "ee0c364cd8740ce879fd0fa939c6fa2ee0616b42ce0afc18935b259e62cdcfbf",
+          "width": 1024,
+          "height": 1536,
+          "provenance": "/art/cinematic-preview/provenance.json",
+          "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+        },
+        {
+          "path": "/art/cinematic-preview/wordmark.webp",
+          "sha256": "3682a311226d6a71142258daefc717de0d8dd5d421ec4e2cba9df18adf9f997d",
+          "width": 1536,
+          "height": 640,
+          "provenance": "/art/cinematic-preview/provenance.json",
+          "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "universe",
+      "route": "/universe",
+      "path": "/social/universe-v1.jpg",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "bytes": 137150,
+      "sha256": "f95f7ee4f6a7211e382b71cb416cc8bb009c2703b5807813cd8c39a16effe831",
+      "composition": "Existing empty classified laboratory with original typographic dossier and redaction treatment; fictional leaked research.",
+      "sources": [
+        {
+          "path": "/art/labs-preview/facility.webp",
+          "sha256": "4af9c9f7a17dbb4d9e12104256911e47c50cf86e6d7188bf89d3c6f50f05838d",
+          "width": 1536,
+          "height": 1024,
+          "provenance": "/art/labs-preview/provenance.json",
+          "approval": "OWNER_AUTHORIZED_TASK_009_ENVIRONMENTAL_ART_PENDING_VISUAL_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "route": "/world",
+      "path": "/social/world-v1.jpg",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "bytes": 180013,
+      "sha256": "16c69364c69740f86d1bd8344f511159889110a2ab99201538441a00c9f8b630",
+      "composition": "Actual Equal Earth country geometry rasterized natively, with no invented participants, activity pins or registry totals.",
+      "sources": [
+        {
+          "path": "/maps/countries-v1.json",
+          "sha256": "106e2841cbd6ae1e8a27f28c5de502f8533a9631e2edba14cece78d6702d765a",
+          "provenance": "/maps/provenance.json",
+          "license": "Natural Earth public domain; ISO metadata MIT; d3-geo ISC"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "route": "/collection",
+      "path": "/social/collection-v1.jpg",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "bytes": 135895,
+      "sha256": "790498d9fd687a15dd90298683b77376b59b671f7d581ddc39110834192dc1c1",
+      "composition": "Existing unrevealed side specimen in an industrial evidence frame; 5280 collection supply without a comma.",
+      "sources": [
+        {
+          "path": "/art/cinematic-preview/side.webp",
+          "sha256": "8c18df539c1c7b6f939cd4221235fb057f07c5d5618725eadf76aa313b05fdf2",
+          "width": 1024,
+          "height": 1536,
+          "provenance": "/art/cinematic-preview/provenance.json",
+          "approval": "OWNER_AUTHORIZED_WEBSITE_PREVIEW_PENDING_VISUAL_REVIEW"
+        }
+      ]
+    }
+  ]
+}

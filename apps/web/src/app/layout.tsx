@@ -4,6 +4,7 @@ import { collection } from '@lammb/collection/config';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
 import { navigation } from '../config/navigation';
+import { socialMetadata } from '../config/social';
 import './globals.css';
 import './site.css';
 import './cinematic.css';
@@ -12,12 +13,12 @@ import './experience.css';
 import './atlas.css';
 
 export const metadata: Metadata = {
+  ...socialMetadata('home'),
   metadataBase: new URL(`https://${collection.domain}`),
   title: {
     default: `${collection.name} — Higher Together`,
     template: `%s / ${collection.name}`,
   },
-  description: `${String(collection.supply)} ${collection.name}s. Free mint on ${collection.chainName}. Network gas applies.`,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -7,8 +7,14 @@ import {
 import { LaunchStatus } from '../../../components/launch-status';
 import { developmentLaunchSnapshots } from '../../../config/development-launch';
 
+import { socialMetadata } from '../../../config/social';
 export const metadata = {
-  title: 'Launch studies',
+  ...socialMetadata('home', {
+    path: '/development/launch',
+    title: 'Launch studies / LAMMB',
+    description:
+      'Static LAMMB launch studies for owner review. Mint unavailable.',
+  }),
   robots: { index: false, follow: false },
 };
 

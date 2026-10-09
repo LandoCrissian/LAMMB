@@ -1,11 +1,8 @@
 import { WorldAtlas } from '../../components/world-atlas';
 import { TextLink } from '../../components/site-primitives';
+import { socialMetadata } from '../../config/social';
 
-export const metadata = {
-  title: 'LAMMB World — Global NFT Atlas',
-  description:
-    'Explore real country geography. LAMMB is the founding collection concept. The voluntary NFT country registry is not yet live.',
-};
+export const metadata = socialMetadata('world');
 
 export default function World() {
   return (

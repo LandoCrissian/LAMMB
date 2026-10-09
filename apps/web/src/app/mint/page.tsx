@@ -1,11 +1,13 @@
 import { collection } from '@lammb/collection/config';
 import { FutureExperience } from '../../components/future-experience';
 import { FactStrip } from '../../components/site-primitives';
-export const metadata = {
-  title: 'Mint Information',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('collection', {
+  path: '/mint',
+  title: 'Mint Information / LAMMB',
   description:
     'Free primary mint, network gas applies. The Vault is sealed. Minting is currently unavailable.',
-};
+});
 export default function Mint() {
   return (
     <>

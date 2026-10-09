@@ -15,7 +15,9 @@
   "scripts": {
     "dev": "npm run dev --workspace @lammb/web",
     "start": "npm run start --workspace @lammb/web",
-    "build": "npm run build --workspace @lammb/web",
+    "build": "npm run build --workspace @lammb/web && node scripts/verify-social-metadata.mjs --built",
+    "social:verify": "node scripts/verify-social-metadata.mjs",
+    "social:prepare": "node scripts/prepare-social-cards.mjs",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --project tsconfig.json --noEmit && npm run typecheck --workspaces --if-present",
     "test": "vitest run",

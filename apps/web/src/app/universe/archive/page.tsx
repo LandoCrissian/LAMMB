@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { LabsShell } from '../../../components/labs-shell';
 import { labFiles } from '../../../config/labs';
-export const metadata = { title: 'Experiment Archive / LAMMB Labs' };
+import { socialMetadata } from '../../../config/social';
+export const metadata = socialMetadata('universe', {
+  path: '/universe/archive',
+  title: 'Experiment Archive / LAMMB Labs',
+  description:
+    'Four fictional research files. Eleven seconds of success and a paper trail of consequences. Explore the LAMMB Labs experiment archive.',
+});
 export default function Archive() {
   return (
     <LabsShell

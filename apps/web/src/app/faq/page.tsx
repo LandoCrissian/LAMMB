@@ -1,10 +1,12 @@
 import { PageIntro, TextLink } from '../../components/site-primitives';
 import { questions } from '../../config/site';
-export const metadata = {
-  title: 'FAQ',
+import { socialMetadata } from '../../config/social';
+export const metadata = socialMetadata('home', {
+  path: '/faq',
+  title: 'FAQ / LAMMB',
   description:
     'LAMMB collection, mint, chain, Ascent and delayed-reveal questions.',
-};
+});
 export default function FAQ() {
   return (
     <>
