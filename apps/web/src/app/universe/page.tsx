@@ -17,6 +17,17 @@ export default function Universe() {
         <p>We engineered perfect financial judgment.</p>
         <p className="labs-punchline">It lasted eleven seconds.</p>
       </div>
+      <section aria-label="Play LAMMB Labs" style={{ marginBlock: '1.5rem' }}>
+        <Link
+          href="/universe/experimental/chamber"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.9rem 1.25rem', minHeight: '48px', border: '1px solid #ccff00', borderRadius: '0.5rem', color: '#ccff00', background: '#101710', fontWeight: 800, textDecoration: 'none', letterSpacing: '0.04em' }}
+        >
+          ENTER THE 3D LAB <Icon name="right" />
+        </Link>
+        <p style={{ marginTop: '0.6rem', fontSize: '0.875rem' }}>
+          Playable public preview. Best experienced in landscape on mobile.
+        </p>
+      </section>
       <section
         className="labs-directory"
         aria-label="Choose a facility destination"
