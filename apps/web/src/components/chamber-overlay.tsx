@@ -49,6 +49,11 @@ export function ChamberOverlay({
           <h2 id="chamber-overlay-title">
             {kind === 'world' ? 'LAMMB World' : 'Specimen inspection'}
           </h2>
+          {kind === 'specimen' && (
+            <p className="chamber-inspection-hint">
+              Drag to orbit · Pinch to zoom
+            </p>
+          )}
         </div>
         <button type="button" autoFocus onClick={close}>
           Close {kind === 'world' ? 'World terminal' : 'inspection'}
@@ -73,6 +78,7 @@ export function ChamberOverlay({
             className="chamber-inspection-surface"
             role="img"
             aria-label="Original sealed industrial specimen. Black beveled shell, chartreuse dripping smile, side rails and rear maintenance panel. No character is revealed."
+            aria-describedby="chamber-inspection-help"
             onPointerDown={(event) => {
               event.currentTarget.setPointerCapture(event.pointerId);
               scene?.inspectPointer(
@@ -101,7 +107,7 @@ export function ChamberOverlay({
             }
           />
           <footer>
-            <p>
+            <p id="chamber-inspection-help">
               Drag to orbit · Pinch / wheel to zoom. Original 3D prototype, not
               a production NFT.
             </p>
