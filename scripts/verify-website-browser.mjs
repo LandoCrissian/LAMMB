@@ -1161,7 +1161,7 @@ async function labsChecks(page, width) {
     await page.waitForURL(`${origin}/universe/archive/${id}`);
     await page.locator('.labs-narrative').waitFor();
     assert.equal(new URL(page.url()).pathname, `/universe/archive/${id}`);
-    await page.getByRole('link', { name: '← All files', exact: true }).click();
+    await page.getByRole('link', { name: 'All files', exact: true }).click();
     await page.waitForURL(`${origin}/universe/archive`);
   }
   await visit(page, '/universe/security');
