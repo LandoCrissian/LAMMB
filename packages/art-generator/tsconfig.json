@@ -1,5 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": { "types": ["node"] },
-  "include": ["src/**/*.ts", "fixtures/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "fixtures/**/*.ts",
+    "tooling/**/*.ts",
+    "../../tests/trait-bible.test.ts"
+  ]
 }
