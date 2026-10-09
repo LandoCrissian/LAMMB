@@ -14,6 +14,12 @@ assert.equal(
 );
 const driver = process.env.LAMMB_PLAYWRIGHT_MODULE;
 assert(driver, 'Pinned temporary Playwright driver required');
+const selectedBrowser = process.env.LAMMB_BROWSER;
+assert(
+  !selectedBrowser || ['msedge', 'chrome'].includes(selectedBrowser),
+  'Only installed CI browsers are supported',
+);
+const browsers = selectedBrowser ? [selectedBrowser] : ['msedge', 'chrome'];
 const root = process.cwd();
 const run = promisify(execFile);
 const baselineSHA = '723807c813270c193c95ae12afbfced3ef952d26';
@@ -85,7 +91,7 @@ async function preview(cwd, baselineOnly) {
       await delay(500);
     }
     assert(ready, 'Local preview did not become ready');
-    for (const browser of ['msedge', 'chrome']) {
+    for (const browser of browsers) {
       const args = [
         path.join(root, 'scripts/verify-website-browser.mjs'),
         '--playwright-module',
@@ -129,7 +135,7 @@ const comparison = {
     'Same disposable runner, sequential production builds and installed browsers; unthrottled DPR1 localhost, warm navigation. Not field data; one sample per width/browser, timing variance expected.',
   rows: [],
 };
-for (const browser of ['msedge', 'chrome']) {
+for (const browser of browsers) {
   const before = JSON.parse(
     await readFile(
       path.join(output, 'baseline', browser, 'results.json'),
