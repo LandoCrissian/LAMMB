@@ -15,6 +15,7 @@ export function ContainmentChamber() {
   const [portrait, setPortrait] = useState(false);
   const [portraitBypass, setPortraitBypass] = useState(false);
   const movement = useRef(new PointerOwner());
+  const sensitivity = useRef(0.003);
   const overlayTrigger = useRef<HTMLElement | null>(null);
   const restorePending = useRef(false);
   const pad = useRef<HTMLButtonElement>(null);
@@ -138,6 +139,7 @@ export function ContainmentChamber() {
           },
         });
         scene.current = owned;
+        owned.setSensitivity(sensitivity.current);
         owned.setAlarm(phase === 'COMPLETE');
         await owned.start(startedAt);
       })
@@ -577,11 +579,10 @@ export function ContainmentChamber() {
                     min="1"
                     max="6"
                     defaultValue="3"
-                    onChange={(event) =>
-                      scene.current?.setSensitivity(
-                        Number(event.target.value) / 1000,
-                      )
-                    }
+                    onChange={(event) => {
+                      sensitivity.current = Number(event.target.value) / 1000;
+                      scene.current?.setSensitivity(sensitivity.current);
+                    }}
                   />
                 </label>
                 <button
