@@ -259,7 +259,10 @@ async function evolution(page, context, cdp, width) {
   assert(Math.abs((await diagnostics(page)).inspectionYaw) > 0.2);
   await page.mouse.wheel(0, 100);
   await page.waitForTimeout(250);
-  assert((await diagnostics(page)).inspectionDistance > 5);
+  assert(
+    (await diagnostics(page)).inspectionDistance >
+      inspecting.inspectionDistance,
+  );
   const a = { id: 31, x: x - 35, y },
     b = { id: 32, x: x + 35, y };
   await touch('touchStart', [a]);
@@ -270,7 +273,8 @@ async function evolution(page, context, cdp, width) {
   ]);
   await touch('touchEnd', []);
   assert(
-    (await diagnostics(page)).inspectionDistance < 5,
+    (await diagnostics(page)).inspectionDistance <
+      inspecting.inspectionDistance,
     'Genuine pinch zooms',
   );
   await capture(page, `inspection-${width}`);
@@ -343,6 +347,9 @@ async function evolution(page, context, cdp, width) {
   assert((await world.textContent()).includes('REGISTRY NOT YET LIVE'));
   await page.keyboard.press('Escape');
   await world.waitFor({ state: 'detached' });
+  await page.waitForFunction(() =>
+    document.activeElement?.textContent?.includes('Open World terminal (E)'),
+  );
   const afterWorld = await diagnostics(page);
   assert.equal(
     await page.locator('.chamber-dialog').getAttribute('data-paused'),

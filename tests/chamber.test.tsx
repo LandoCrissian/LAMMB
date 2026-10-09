@@ -151,6 +151,8 @@ describe('isolated fictional prototype', () => {
     expect(html).toContain('OWNER REVIEW PROTOTYPE');
     expect(html).toContain('COMPLETE NON-3D ALTERNATIVE');
     expect(html).toContain('chamber-native-evidence');
+    expect(html).toContain('Specimen description and World alternative');
+    expect(html).toContain('href="/world"');
     for (const text of [
       experiment.initialBalance,
       experiment.balance,

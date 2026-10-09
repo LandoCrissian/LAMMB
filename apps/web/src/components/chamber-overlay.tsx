@@ -14,9 +14,20 @@ export function ChamberOverlay({
   close: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const surface = useRef<HTMLDivElement>(null);
   useEffect(() => {
     dialog.current?.showModal();
   }, []);
+  useEffect(() => {
+    const node = surface.current;
+    if (!node || kind !== 'specimen') return;
+    const wheel = (event: WheelEvent) => {
+      event.preventDefault();
+      scene?.zoomInspection(event.deltaY * 0.003);
+    };
+    node.addEventListener('wheel', wheel, { passive: false });
+    return () => node.removeEventListener('wheel', wheel);
+  }, [kind, scene]);
   return (
     <dialog
       ref={dialog}
@@ -58,6 +69,7 @@ export function ChamberOverlay({
       ) : (
         <>
           <div
+            ref={surface}
             className="chamber-inspection-surface"
             role="img"
             aria-label="Original sealed industrial specimen. Black beveled shell, chartreuse dripping smile, side rails and rear maintenance panel. No character is revealed."
@@ -87,10 +99,6 @@ export function ChamberOverlay({
             onLostPointerCapture={(event) =>
               scene?.inspectPointer('up', event.pointerId, 0, 0)
             }
-            onWheel={(event) => {
-              event.preventDefault();
-              scene?.zoomInspection(event.deltaY * 0.003);
-            }}
           />
           <footer>
             <p>
