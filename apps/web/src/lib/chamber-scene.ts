@@ -21,6 +21,7 @@ export type ChamberSnapshot = Position & {
   camera: { x: number; y: number; z: number };
   reducedMotion: boolean;
   hovering: boolean;
+  avatarVisible: boolean;
   near: boolean;
   fps: number;
   frames: number;
@@ -824,8 +825,7 @@ export class ChamberScene {
     this.target.y += Math.sin(this.pitch) * 1.2;
     this.camera.lookAt(this.target);
     // Collapse gracefully when the camera boom cannot fit beside a wall.
-    this.avatar.visible =
-      this.camera.position.distanceTo(this.avatar.position) > 1.8;
+    this.avatar.visible = this.camera.position.distanceTo(this.target) > 1.8;
   }
   private render() {
     if (this.disposed || this.lost) return;
@@ -850,6 +850,7 @@ export class ChamberScene {
       },
       reducedMotion: this.reducedMotion.matches,
       hovering: !this.reducedMotion.matches,
+      avatarVisible: this.avatar.visible,
       near: nearTerminal(this.position),
       fps: this.fps,
       frames: this.totalFrames,

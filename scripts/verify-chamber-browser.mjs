@@ -182,10 +182,17 @@ async function evolution(page, context, cdp, width) {
   await page.getByRole('button', { name: 'Third person', exact: true }).click();
   await until(page, (p) => p.perspective === 'third');
   assert.equal((await diagnostics(page)).z, start.z);
+  await hold(page, 'w', (p) => p.z < 3.9);
+  await until(page, (p) => p.avatarVisible);
   await capture(page, `third-person-${width}`);
   await hold(page, 's', (p) => p.z > 6.5);
   await page.waitForTimeout(1100);
   const camera = (await diagnostics(page)).camera;
+  assert.equal(
+    (await diagnostics(page)).avatarVisible,
+    false,
+    'Shortened boom hides obstructing observer',
+  );
   assert(camera.z <= 6.75 && Math.abs(camera.x) <= 5.75 && camera.y <= 4.6);
   await page.getByRole('button', { name: 'First person', exact: true }).click();
   await reset(page);
