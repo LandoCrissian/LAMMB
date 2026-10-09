@@ -44,7 +44,7 @@ ImageGen must not be assumed to return aligned layers or requested native resolu
 | asset-lammb-accessories-cap-shades           | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 7                    |
 | asset-lammb-accessories-ear-tag              | accessories      | LAYER  | DETERMINISTIC_VECTOR            | REQUIRED  | 60    | 0                    |
 | asset-lammb-accessories-silver-chain         | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 8                    |
-| asset-lammb-accessories-gold-tooth           | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 6                    |
+| asset-lammb-accessories-gold-tooth           | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 5                    |
 | asset-lammb-accessories-visor                | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 7                    |
 | asset-lammb-accessories-headset              | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 6                    |
 | asset-lammb-accessories-work-cap             | accessories      | LAYER  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | REQUIRED  | 60    | 7                    |
@@ -83,7 +83,7 @@ ImageGen must not be assumed to return aligned layers or requested native resolu
 | asset-lammb-grail-seed-vault                 | environments     | SCENE  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | FORBIDDEN | 0     | 0                    |
 | asset-lammb-grail-observer-array             | environments     | SCENE  | BUILT_IN_IMAGEGEN_AND_ALIGNMENT | FORBIDDEN | 0     | 0                    |
 
-267 anatomy-family variant bindings are explicitly listed in `lammb-traits-v1.json`. These replace the corresponding generic templates during future reviewed production compilation, not additional independent traits. Their absence blocks pixel production. The current engine cannot condition an asset substitution on both the selected expression/accessory and mutation; no automatic variant resolution is implemented here.
+266 anatomy-family variant bindings are explicitly listed in `lammb-traits-v1.json`. These replace the corresponding generic templates during future reviewed production compilation, not additional independent traits. Their absence blocks pixel production. The current engine cannot condition an asset substitution on both the selected expression/accessory and mutation; no automatic variant resolution is implemented here.
 
 | Variant ID                                         | Template                             | Anatomy family              | Status  |
 | -------------------------------------------------- | ------------------------------------ | --------------------------- | ------- |
@@ -325,7 +325,6 @@ ImageGen must not be assumed to return aligned layers or requested native resolu
 | variant-lammb-accessories-gold-tooth-cybernetic    | asset-lammb-accessories-gold-tooth   | lammb-mutations-cybernetic  | MISSING |
 | variant-lammb-accessories-gold-tooth-magma         | asset-lammb-accessories-gold-tooth   | lammb-mutations-magma       | MISSING |
 | variant-lammb-accessories-gold-tooth-botanical     | asset-lammb-accessories-gold-tooth   | lammb-mutations-botanical   | MISSING |
-| variant-lammb-accessories-gold-tooth-void          | asset-lammb-accessories-gold-tooth   | lammb-mutations-void        | MISSING |
 | variant-lammb-accessories-visor-none               | asset-lammb-accessories-visor        | lammb-mutations-none        | MISSING |
 | variant-lammb-accessories-visor-skeletal           | asset-lammb-accessories-visor        | lammb-mutations-skeletal    | MISSING |
 | variant-lammb-accessories-visor-cybernetic         | asset-lammb-accessories-visor        | lammb-mutations-cybernetic  | MISSING |

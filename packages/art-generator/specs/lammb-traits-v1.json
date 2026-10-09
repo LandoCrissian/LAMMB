@@ -2882,6 +2882,12 @@
         "lammb-accessories-gold-tooth"
       ],
       "reason": "An opaque dental accent must not obscure the proposed refractive quartz mouth structure."
+    },
+    {
+      "id": "lammb-void-dental-visibility",
+      "type": "INCOMPATIBLE",
+      "traitIds": ["lammb-mutations-void", "lammb-accessories-gold-tooth"],
+      "reason": "Void allows only closed-mouth expressions, all of which exclude visible gold teeth. Do not commission an unreachable dental asset binding."
     }
   ],
   "mutationSpecifications": [
@@ -6691,13 +6697,6 @@
       "id": "variant-lammb-accessories-gold-tooth-botanical",
       "assetRequirementId": "asset-lammb-accessories-gold-tooth",
       "mutationTraitId": "lammb-mutations-botanical",
-      "status": "MISSING",
-      "reason": "Explicit anatomy-family alignment, expression/eye geometry or occlusion variant; no renderer may infer an unapproved substitution."
-    },
-    {
-      "id": "variant-lammb-accessories-gold-tooth-void",
-      "assetRequirementId": "asset-lammb-accessories-gold-tooth",
-      "mutationTraitId": "lammb-mutations-void",
       "status": "MISSING",
       "reason": "Explicit anatomy-family alignment, expression/eye geometry or occlusion variant; no renderer may infer an unapproved substitution."
     },

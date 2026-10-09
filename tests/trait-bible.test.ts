@@ -15,6 +15,7 @@ import {
   validateProposalComposition,
 } from '../packages/art-generator/src/production-spec.ts';
 import type { ProductionSpec } from '../packages/art-generator/src/production-spec.ts';
+import { adversarialAudit } from '../packages/art-generator/tooling/task-015a.ts';
 
 const spec = productionSpecSchema.parse(
   JSON.parse(
@@ -45,6 +46,82 @@ const composition = (changes: Record<string, string> = {}) =>
     ...changes,
   }).map(([category, key]) => id(category, key));
 
+describe('Task 015A adversarial evidence', () => {
+  it('removes the unreachable Void dental binding without admitting a new composition', () => {
+    expect(
+      spec.variantRequirements.some(
+        (v) => v.id === 'variant-lammb-accessories-gold-tooth-void',
+      ),
+    ).toBe(false);
+    const oldCatalog = structuredClone(inputs.catalog);
+    oldCatalog.rules = oldCatalog.rules.filter(
+      (r) => r.id !== 'dev-lammb-void-dental-visibility',
+    );
+    const assets = new Map(inputs.manifest.assets.map((a) => [a.id, a]));
+    for (const expression of spec.traits.filter(
+      (t) => t.category === 'expressions',
+    )) {
+      const ids = composition({
+        mutations: 'void',
+        accessories: 'gold-tooth',
+      }).filter((id) => !id.startsWith('lammb-expressions-'));
+      ids.push(expression.id);
+      const selected = ids.map((id) =>
+        inputs.catalog.traits.find((t) => t.id === `dev-${id}`)!,
+      );
+      expect(
+        evaluateComposition(selected, oldCatalog, assets).rejections.length,
+      ).toBeGreaterThan(0);
+      expect(
+        evaluateComposition(selected, inputs.catalog, assets).rejections.length,
+      ).toBeGreaterThan(0);
+    }
+    const extra = structuredClone(spec);
+    extra.variantRequirements.push({
+      id: 'variant-lammb-accessories-gold-tooth-void',
+      assetRequirementId: 'asset-lammb-accessories-gold-tooth',
+      mutationTraitId: 'lammb-mutations-void',
+      status: 'MISSING',
+      reason: 'Unreachable binding',
+    });
+    expect(productionSpecSchema.safeParse(extra).success).toBe(false);
+  });
+
+  it('reconstructs the adversarial evidence and rejects forged attempt/identity records', () => {
+    const result = generateCollection(inputs);
+    expect(result.ok).toBe(true);
+    if (!result.ok) throw new Error(result.error.message);
+    const report = adversarialAudit(spec, result.artifacts);
+    const stored = JSON.parse(
+      readFileSync(
+        new URL(
+          '../docs/trait-bible/ADVERSARIAL_CURRENT.json',
+          import.meta.url,
+        ),
+        'utf8',
+      ),
+    );
+    expect(report).toEqual(stored);
+    expect(report.trace.gold.drawn).toBe(
+      report.trace.gold.accepted + report.trace.gold.rejected,
+    );
+    expect(
+      report.diversity.ignoringBackgroundAndPixel.distinctSignatures,
+    ).toBeLessThan(5280);
+    for (const forge of ['attempts', 'identity'] as const) {
+      const fake = structuredClone(result.artifacts);
+      if (forge === 'attempts')
+        fake.summary.attemptStatistics.perSpecimenAttempts[1]!++;
+      else
+        fake.logicalCollection.specimens[1]!.traitIds[0] =
+          'dev-lammb-accessories-gold-tooth';
+      expect(() => adversarialAudit(spec, fake)).toThrow(
+        'Audit input fails engine reconstruction',
+      );
+    }
+  }, 20000);
+});
+
 describe('Task 015 collection specification boundaries', () => {
   it('covers all existing categories and keeps all artistic decisions unapproved', () => {
     expect(spec.categories).toHaveLength(9);
@@ -69,7 +146,7 @@ describe('Task 015 collection specification boundaries', () => {
         (a) => a.status === 'MISSING' && a.sha256 === null,
       ),
     ).toBe(true);
-    expect(spec.variantRequirements).toHaveLength(267);
+    expect(spec.variantRequirements).toHaveLength(266);
     expect(
       validateInputs(
         inputs.catalog,

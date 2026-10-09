@@ -1,10 +1,15 @@
 # Production handoff and remaining gates
 
-## Completed technical specification
+The [Task 015A adversarial review](ADVERSARIAL_REVIEW.md) identifies repetition,
+frequency conditioning, accessory restrictions and unresolved joint asset binding.
+Its baseline and revised evidence are separate; simulation success does not clear
+the artwork-production gates.
+
+## Completed proposal specification
 
 Version 1.0.0 specifies 9 constructor categories, 63 stable selected values, 12
 editorial sections, 7 exclusive structural mutation rules, 6 curated singleton
-reservation designs, 76 logical source templates and 267 anatomy-family variant
+reservation designs, 76 logical source templates and 266 anatomy-family variant
 bindings. Every trait has visual intent, metadata values, compatibility, source
 requirements, proposed count and explicit unapproved status. Category totals are 5280. Exact and weighted frequency policies are distinguished. No public rarity
 classification is introduced.
@@ -39,8 +44,8 @@ does not certify visual uniqueness, real image alignment or mint assignment.
 
 ## Required artwork and ImageGen production pack
 
-All 76 templates and 267 variant bindings are MISSING. The variant rows substitute
-for their generic template during future production compilation; they are not 267
+All 76 templates and 266 variant bindings are MISSING. The variant rows substitute
+for their generic template during future production compilation; they are not 266
 additional trait values. [Asset inventory](ASSET_REQUIREMENTS.md) lists stable IDs,
 methods, frame, alpha and order, while the JSON holds definitions and acceptance
 gates. The union is an explicit source-production checklist, not proof of files.
@@ -71,7 +76,7 @@ Simple resampling must never be labeled as newly generated detail.
   evolution, not a second collection constructor.
 - Structural category replacement accepts a **fixed source set**. It cannot select
   an expression/eyewear/collar source based on both the selected trait and mutation.
-  The 267 required family bindings are declared, but unresolved for real production.
+  The 266 family bindings are declared, but unresolved for real production.
   A reviewed compiler could expand definitions into explicit compatible variants
   and rebalance shared quotas; it must preserve display values, identity and counts.
   No renderer may silently substitute unbound variants.
