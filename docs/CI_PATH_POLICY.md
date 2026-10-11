@@ -20,7 +20,7 @@ are denied before checking allowed paths, including deeply nested files.
 
 ## Policy tests
 
-`tests/ci-path-classifier.test.ts` extracts and executes the actual workflow Bash
+`.github/ci/path-classifier.test.mjs` extracts and executes the actual workflow Bash
 body against inert temporary Git histories. It includes the original 23 review
 scenarios and additional source additions/deletions, nested dependency changes,
 renames, unknown paths and malformed base references. A workflow-invariant test
@@ -29,7 +29,7 @@ also checks unconditional core verification and the browser dependency gate.
 Run the focused suite with:
 
 ```sh
-npm test -- tests/ci-path-classifier.test.ts --maxWorkers=1 --no-file-parallelism
+node --test .github/ci/path-classifier.test.mjs
 ```
 
 Existing Bash and Git are required; the suite does not install either. On Windows
@@ -37,6 +37,12 @@ it locates Bash in the existing Git for Windows installation. The tests perform
 no browser launches, image rendering or application builds. The classifier itself
 and its tests are outside the NFT skip allowlist, so changes to either require
 full browser validation.
+
+Policy tests use Node's built-in test runner in the classifier job, on a separate
+runner from core verification. This prevents synthetic Git fixture work from
+competing with the collection simulation tests. A failed policy test fails
+classification and the workflow. Core verification's test command and all
+existing timeouts and assertions remain unchanged.
 
 ## Acceptance and required checks
 
