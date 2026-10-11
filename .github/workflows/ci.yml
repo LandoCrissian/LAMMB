@@ -34,17 +34,22 @@ jobs:
           set -euo pipefail
           required=true
           if [[ "$EVENT_NAME" == "pull_request" && -n "$BASE_SHA" ]]; then
+            # Only an exact commit ID may define the comparison; never a ref or option.
+            [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
             git cat-file -e "${BASE_SHA}^{commit}"
+            # Disabling rename detection exposes BOTH sides, including deletions.
             git diff --no-renames --name-only -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.zlist"
             # Only narrowly scoped collection changes may skip browser acceptance.
             # Unknown, shared, dependency, workflow and game changes fail closed.
             if [[ -s "$RUNNER_TEMP/changed-files.zlist" ]]; then
               required=false
               while IFS= read -r -d '' path; do
-                case "$path" in
-                  packages/art-generator/package.json|packages/art-generator/package-lock.json|packages/art-generator/npm-shrinkwrap.json|packages/art-generator/pnpm-lock.yaml|packages/art-generator/yarn.lock|packages/art-generator/bun.lock|packages/art-generator/bun.lockb|packages/art-generator/*/package.json|packages/art-generator/*/package-lock.json|packages/art-generator/*/npm-shrinkwrap.json|packages/art-generator/*/pnpm-lock.yaml|packages/art-generator/*/yarn.lock|packages/art-generator/*/bun.lock|packages/art-generator/*/bun.lockb)
+                case "${path##*/}" in
+                  package.json|package-lock.json|npm-shrinkwrap.json|pnpm-lock.yaml|yarn.lock|bun.lock|bun.lockb|.npmrc|.yarnrc|.yarnrc.yml|pnpm-workspace.yaml)
                     required=true; break ;;
-                  packages/art-generator/*|docs/art-production/*|tests/asset-registry.test.ts|tests/png-proof.test.ts|tests/generator.test.ts)
+                esac
+                case "$path" in
+                  packages/art-generator/src/*.ts|packages/art-generator/tooling/*.ts|packages/art-generator/fixtures/*.ts|packages/art-generator/fixtures/*.json|packages/art-generator/fixtures/*.txt|packages/art-generator/fixtures/*.png|packages/art-generator/specs/*.json|packages/art-generator/assets/*.md|docs/art-production/*.md|docs/art-production/*.json|docs/trait-bible/*.md|tests/asset-registry.test.ts|tests/png-proof.test.ts|tests/generator.test.ts|tests/generator-io.test.ts|tests/art-ingestion.test.ts|tests/art-ingestion-io.test.ts|tests/art-pipeline.test.ts|tests/trait-bible.test.ts)
                     ;;
                   *) required=true; break ;;
                 esac
