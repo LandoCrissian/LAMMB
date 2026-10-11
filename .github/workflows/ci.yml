@@ -35,13 +35,15 @@ jobs:
           required=true
           if [[ "$EVENT_NAME" == "pull_request" && -n "$BASE_SHA" ]]; then
             git cat-file -e "${BASE_SHA}^{commit}"
-            git diff --name-only -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.zlist"
+            git diff --no-renames --name-only -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.zlist"
             # Only narrowly scoped collection changes may skip browser acceptance.
             # Unknown, shared, dependency, workflow and game changes fail closed.
             if [[ -s "$RUNNER_TEMP/changed-files.zlist" ]]; then
               required=false
               while IFS= read -r -d '' path; do
                 case "$path" in
+                  packages/art-generator/package.json|packages/art-generator/package-lock.json|packages/art-generator/npm-shrinkwrap.json|packages/art-generator/pnpm-lock.yaml|packages/art-generator/yarn.lock|packages/art-generator/bun.lock|packages/art-generator/bun.lockb)
+                    required=true; break ;;
                   packages/art-generator/*|docs/art-production/*|tests/asset-registry.test.ts|tests/png-proof.test.ts|tests/generator.test.ts)
                     ;;
                   *) required=true; break ;;
