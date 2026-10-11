@@ -19,12 +19,152 @@ import {
 import { pngProofSchema } from '../packages/art-generator/src/png-proof-schema.ts';
 import type { PngProofRequest } from '../packages/art-generator/src/png-proof-schema.ts';
 import { createPngProofMetadata } from '../packages/art-generator/src/png-proof-metadata.ts';
+import {
+  decodePilotOutput,
+  encodePilotOutput,
+  framingPilotProfile,
+  inspectPilotOutput,
+  translatePilotRgb,
+} from '../packages/art-generator/src/framing-pilot.ts';
 
 // Tiny synthetic pixels only: no collection artwork, production approval or GPU.
 const encode = (bytes: Buffer, w: number, h: number, c: 3 | 4) =>
   sharp(bytes, { raw: { width: w, height: h, channels: c } })
     .png({ compressionLevel: 9, adaptiveFiltering: false, palette: false })
     .toBuffer();
+
+describe('isolated output-only framing pilot', () => {
+  it('preserves every source row at integer coordinates and leaves padding alone', () => {
+    const p = framingPilotProfile;
+    const native = Buffer.alloc(p.sourceSide ** 2 * 3);
+    for (let i = 0; i < native.length; i++) native[i] = i % 251;
+    const background = Buffer.alloc(p.maxPixels * 3, 23);
+    const translated = translatePilotRgb(native, background);
+    for (let y = 0; y < p.sourceSide; y++) {
+      const start = ((y + p.dy) * p.canvasSide + p.dx) * 3;
+      expect(
+        translated
+          .subarray(start, start + p.sourceSide * 3)
+          .equals(
+            native.subarray(y * p.sourceSide * 3, (y + 1) * p.sourceSide * 3),
+          ),
+      ).toBe(true);
+    }
+    expect(
+      translated
+        .subarray(0, p.dy * p.canvasSide * 3)
+        .equals(background.subarray(0, p.dy * p.canvasSide * 3)),
+    ).toBe(true);
+    for (let y = 0; y < p.canvasSide; y++) {
+      const start = y * p.canvasSide * 3;
+      const sourceRow = y >= p.dy && y < p.dy + p.sourceSide;
+      if (!sourceRow) {
+        expect(
+          translated
+            .subarray(start, start + p.canvasSide * 3)
+            .equals(background.subarray(start, start + p.canvasSide * 3)),
+        ).toBe(true);
+      } else {
+        expect(
+          translated
+            .subarray(start, start + p.dx * 3)
+            .equals(background.subarray(start, start + p.dx * 3)),
+        ).toBe(true);
+        const right = start + (p.dx + p.sourceSide) * 3;
+        expect(
+          translated
+            .subarray(right, start + p.canvasSide * 3)
+            .equals(background.subarray(right, start + p.canvasSide * 3)),
+        ).toBe(true);
+      }
+    }
+    expect(native[0]).toBe(0);
+    expect(background[0]).toBe(23);
+  });
+  it('rejects wrong raw source and canvas sizes', async () => {
+    expect(() => translatePilotRgb(Buffer.alloc(3), Buffer.alloc(3))).toThrow(
+      'PILOT_SOURCE_LAYOUT',
+    );
+    expect(() =>
+      translatePilotRgb(Buffer.alloc(1254 ** 2 * 3), Buffer.alloc(3)),
+    ).toThrow('PILOT_CANVAS_LAYOUT');
+    await expect(
+      decodePilotOutput(
+        Buffer.alloc(framingPilotProfile.maxBytes + 1),
+        '0'.repeat(64),
+      ),
+    ).rejects.toThrow('PILOT_ENCODED_BUDGET');
+  });
+  it('decodes reproducible RGB output without widening production limits', async () => {
+    const raw = Buffer.alloc(framingPilotProfile.maxPixels * 3, 47);
+    const first = await encodePilotOutput(raw);
+    const second = await encodePilotOutput(raw);
+    expect(first.equals(second)).toBe(true);
+    expect(
+      (await decodePilotOutput(first, sha256Bytes(first))).equals(raw),
+    ).toBe(true);
+    expect(() => inspectPng(first)).toThrow('PIXEL_BUDGET');
+    expect(pngProofBudget.maxDimension).toBe(1254);
+    await expect(decodePilotOutput(first, '0'.repeat(64))).rejects.toThrow(
+      'PILOT_OUTPUT_SHA256',
+    );
+  });
+  it.each([
+    ['signature', () => Buffer.alloc(50), 'PILOT_SIGNATURE'],
+    ['truncation', () => tinyPng().subarray(0, 17), 'PILOT_SIGNATURE'],
+    [
+      'CRC',
+      () => {
+        const b = tinyPng({ width: 1392, height: 1392 });
+        b[29] = b[29]! ^ 1;
+        return b;
+      },
+      'PILOT_CRC',
+    ],
+    [
+      'oversized dimensions',
+      () => tinyPng({ width: 3072, height: 3072 }),
+      'PILOT_PIXEL_BUDGET',
+    ],
+    [
+      'RGBA',
+      () => tinyPng({ width: 1392, height: 1392, type: 6 }),
+      'PILOT_COLOR_MODE',
+    ],
+    [
+      'short scanlines',
+      () => tinyPng({ width: 1392, height: 1392 }),
+      'PILOT_BOUNDED_DEFLATE',
+    ],
+    [
+      'APNG',
+      () =>
+        tinyPng({
+          width: 1392,
+          height: 1392,
+          extras: [chunk('acTL', Buffer.alloc(8))],
+        }),
+      'PILOT_UNSUPPORTED_CHUNK',
+    ],
+    [
+      'decompression bomb',
+      () =>
+        tinyPng({
+          width: 1392,
+          height: 1392,
+          scan: Buffer.alloc((1392 * 3 + 1) * 1392 + 65536),
+        }),
+      'PILOT_BOUNDED_DEFLATE',
+    ],
+    [
+      'encoded byte budget',
+      () => Buffer.alloc(framingPilotProfile.maxBytes + 1),
+      'PILOT_ENCODED_BUDGET',
+    ],
+  ])('rejects %s before native decoding', (_name, bytes, code) => {
+    expect(() => inspectPilotOutput(bytes())).toThrow(code);
+  });
+});
 let request: PngProofRequest;
 let sources: Map<string, Uint8Array>;
 let expectedRaw: Buffer;
