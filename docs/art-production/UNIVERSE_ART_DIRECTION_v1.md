@@ -36,7 +36,7 @@ Official documentation says built-in image generation uses general Codex include
 
 Ovine dental QA uses university anatomy evidence: sheep lack upper incisors and have a lower incisiform arcade, with grinding cheek teeth farther back. This is a constraint on the stylized interpretation, not a claim that speculative mutation tissue is veterinary anatomy. [New Mexico State sheep dentition](https://pubs.nmsu.edu/_b/B412/index.html).
 
-The actual Stage 21 outputs are all native 1254×1254 PNGs. Magma Hoodie and Pixel Drip are promising owner-review studies. The skeletal attempt still fails ovine skull/dental direction despite improved upper-front-tooth and collarbone avoidance; preserve it as quarantined negative evidence. Three calls are complete, with no retry or production promotion.
+The actual Stage 21 outputs are all native 1254×1254 PNGs. At Stage 21 delivery, Magma Hoodie and Pixel Drip awaited owner review. Stage 22 appends the owner's art-direction approvals for both and explicit rejection/quarantine of the skeletal attempt. The latter still fails ovine skull/dental direction despite improved upper-front-tooth and collarbone avoidance. Three historical calls are complete; Stage 22 makes no ImageGen calls, retries or production promotions. See `STAGE22_PRODUCTION_MODEL.md` for current compatibility and source-registration boundaries and `SHEEP_SKELETAL_ANATOMY_v1.md` before any separately authorized skeletal study.
 
 ## Collection diversity gaps
 
