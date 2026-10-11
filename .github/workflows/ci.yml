@@ -14,6 +14,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  classify:
+    runs-on: ubuntu-latest
+    outputs:
+      browser_required: ${{ steps.scope.outputs.browser_required }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Determine browser acceptance scope (fail closed)
+        id: scope
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          required=true
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$BASE_SHA" ]]; then
+            git cat-file -e "${BASE_SHA}^{commit}"
+            git diff --name-only -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.zlist"
+            # Only narrowly scoped collection changes may skip browser acceptance.
+            # Unknown, shared, dependency, workflow and game changes fail closed.
+            if [[ -s "$RUNNER_TEMP/changed-files.zlist" ]]; then
+              required=false
+              while IFS= read -r -d '' path; do
+                case "$path" in
+                  packages/art-generator/*|docs/art-production/*|tests/asset-registry.test.ts|tests/png-proof.test.ts|tests/generator.test.ts)
+                    ;;
+                  *) required=true; break ;;
+                esac
+              done < "$RUNNER_TEMP/changed-files.zlist"
+            fi
+          fi
+          echo "browser_required=$required" >> "$GITHUB_OUTPUT"
+          echo "Browser acceptance required: $required"
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -44,6 +81,8 @@ jobs:
       - name: Build
         run: npm run build
   browser-acceptance:
+    needs: [classify, verify]
+    if: needs.classify.outputs.browser_required == 'true'
     strategy:
       fail-fast: false
       matrix:
