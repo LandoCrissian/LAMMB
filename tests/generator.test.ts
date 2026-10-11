@@ -578,6 +578,8 @@ describe('stress determinism and independent provenance verification', () => {
     ) as { dependencies: Record<string, string> };
     expect(packageJson.dependencies).toEqual({
       '@lammb/collection': '0.0.0',
+      // Local PNG codec, already locked; the allowlist still excludes network/EVM SDKs.
+      sharp: '0.35.5',
       zod: '4.6.5',
     });
   });
