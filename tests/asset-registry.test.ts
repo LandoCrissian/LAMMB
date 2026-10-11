@@ -17,6 +17,245 @@ import {
   sha256Bytes,
 } from '../packages/art-generator/src/canonical.ts';
 import { configurePngProofWorker } from '../packages/art-generator/src/png-proof.ts';
+import pilotFixture from '../packages/art-generator/fixtures/stage20-production-pilot.json';
+import {
+  productionPilotSchema,
+  createPilotMetadata,
+  verifyPilotApproval,
+  renderPilotCandidate,
+} from '../packages/art-generator/src/production-pilot.ts';
+
+describe('bounded development artwork pilot', () => {
+  const pilot = () =>
+    productionPilotSchema.parse(structuredClone(pilotFixture));
+  const candidate = () => {
+    const c = pilot().candidates[0]!;
+    c.source.sha256 = sha256Bytes(Buffer.from('test output'));
+    c.source.approval.sha256 = c.source.sha256;
+    return c;
+  };
+  it('keeps authored variants separate from registered contacts and final approval', () => {
+    const p = pilot();
+    expect(p.candidates).toHaveLength(19);
+    expect(
+      p.candidates.filter((c) => c.mode === 'REGISTERED_CONTACT'),
+    ).toHaveLength(3);
+    expect(
+      p.candidates.filter((c) => c.observed.mutation !== 'NONE'),
+    ).toHaveLength(5);
+    expect(
+      p.candidates.every(
+        (c) => !c.productionRegistered && c.qa.finalOwnerApproval === null,
+      ),
+    ).toBe(true);
+  });
+  it.each([
+    'duplicate identity',
+    'duplicate image',
+    'production promotion',
+    'token assignment',
+    'unsafe path',
+    'unregistered contact',
+    'missing art approval',
+    'oversized dimensions',
+    'batch expansion',
+  ])('rejects %s', (kind) => {
+    const p = pilot();
+    switch (kind) {
+      case 'duplicate identity':
+        p.candidates[1]!.id = p.candidates[0]!.id;
+        break;
+      case 'duplicate image':
+        p.candidates[1]!.source.sha256 = p.candidates[0]!.source.sha256;
+        break;
+      case 'production promotion':
+        Object.assign(p.candidates[0]!, { productionRegistered: true });
+        break;
+      case 'token assignment':
+        Object.assign(p.candidates[0]!, { tokenId: 1 });
+        break;
+      case 'unsafe path':
+        p.candidates[0]!.source.path = '../outside.png';
+        break;
+      case 'unregistered contact':
+        p.candidates[0]!.mode = 'REGISTERED_CONTACT';
+        break;
+      case 'missing art approval':
+        p.candidates[0]!.source.approval.state =
+          'VALIDATED_RECONSTRUCTION_INPUT';
+        break;
+      case 'oversized dimensions':
+        p.candidates[0]!.source.dimensions.width = 1392;
+        break;
+      case 'batch expansion':
+        p.candidates.push(p.candidates[0]!, p.candidates[1]!);
+        break;
+    }
+    expect(productionPilotSchema.safeParse(p).success).toBe(false);
+  });
+  it('rejects unknown, absent, incompatible and incomplete visible facets', () => {
+    for (const [traitId, facets] of [
+      ['made-up', ['Species']],
+      ['lammb-clothing-none', ['Clothing']],
+      ['lammb-wool-ash', ['Background']],
+      ['lammb-accessories-beanie-chain', ['Headwear']],
+    ] as const) {
+      const c = candidate();
+      c.visibleClaims = [
+        { traitId, facets: [...facets], observation: 'Unit test observation' },
+      ];
+      expect(() =>
+        createPilotMetadata(spec, c, Buffer.from('test output')),
+      ).toThrow();
+    }
+    const c = candidate();
+    c.visibleClaims.push({
+      traitId: 'lammb-mutations-magma',
+      facets: ['Mutation'],
+      observation: 'Incompatible with Ivory and hoodie',
+    });
+    expect(() =>
+      createPilotMetadata(spec, c, Buffer.from('test output')),
+    ).toThrow('PILOT_MUTATION_CATEGORY');
+  });
+  it('rejects duplicate categories and closed-mouth gold claims', () => {
+    const c = candidate();
+    c.visibleClaims.push({
+      traitId: 'lammb-wool-ash',
+      facets: ['Wool'],
+      observation: 'Conflicts with Ivory',
+    });
+    expect(() =>
+      createPilotMetadata(spec, c, Buffer.from('test output')),
+    ).toThrow('PILOT_DUPLICATE_CATEGORY');
+    c.visibleClaims.pop();
+    c.visibleClaims.push(
+      {
+        traitId: 'lammb-expressions-heavy-lidded',
+        facets: ['Expression'],
+        observation: 'Closed mouth',
+      },
+      {
+        traitId: 'lammb-accessories-shades-gold',
+        facets: ['Eyewear', 'Dental Accent'],
+        observation: 'Gold not visible',
+      },
+    );
+    expect(() =>
+      createPilotMetadata(spec, c, Buffer.from('test output')),
+    ).toThrow('PILOT_INCOMPATIBLE_TRAITS');
+  });
+  it('binds image bytes and omits unmapped expressions and absent facets', () => {
+    const c = candidate();
+    expect(() => createPilotMetadata(spec, c, Buffer.from('wrong'))).toThrow(
+      'PILOT_METADATA_IMAGE_SHA256',
+    );
+    const m = createPilotMetadata(spec, c, Buffer.from('test output'));
+    expect(m.metadata.attributes.map((a) => a.trait_type)).toEqual([
+      'Species',
+      'Wool',
+      'Clothing',
+    ]);
+    expect(m.binding.completeCollectionVector).toBe(false);
+    expect(m.binding.tokenAssignment).toBeNull();
+    expect(m.metadata.image).toContain('.invalid/');
+  });
+  it('decodes approved authored PNG and preserves exact bytes; rejects evidence and source changes', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'lammb-pilot-'));
+    try {
+      const bytes = await sharp({
+        create: { width: 3, height: 3, channels: 3, background: '#222222' },
+      })
+        .png()
+        .toBuffer();
+      const p = pilot(),
+        c = p.candidates[0]!;
+      p.candidates = [c];
+      c.source.path = 'source.png';
+      c.source.dimensions = { width: 3, height: 3 };
+      c.source.sha256 = sha256Bytes(bytes);
+      c.source.approval.sha256 = c.source.sha256;
+      p.approvalInventory.path = 'approval.json';
+      const record = {
+        assets: [
+          {
+            assetId: c.historicalAssetId,
+            sha256: c.source.sha256,
+            aliases: [join(root, c.source.path)],
+            principalArtwork: true,
+            approvalStatus: 'APPROVED_ART_DIRECTION',
+          },
+        ],
+      };
+      // Historical inventories also contain long hash-derived reference IDs.
+      record.assets.push({
+        ...record.assets[0]!,
+        assetId: `lammb-audit-sha256-${'a'.repeat(64)}`,
+        principalArtwork: false,
+      });
+      const withReference = Buffer.from(JSON.stringify(record));
+      p.approvalInventory.sha256 = sha256Bytes(withReference);
+      const initialApproval = withReference;
+      await writeFile(join(root, c.source.path), bytes);
+      await writeFile(join(root, 'approval.json'), initialApproval);
+      const digest = canonicalSha256(p);
+      const result = await renderPilotCandidate(
+        root,
+        p,
+        c.id,
+        digest,
+        spec,
+        registryFixture,
+      );
+      expect(Buffer.from(result.bytes).equals(bytes)).toBe(true);
+      expect(result.receipt.decodedBytes).toBe(27);
+      await expect(
+        verifyPilotApproval(root, p, c.id, '0'.repeat(64)),
+      ).rejects.toThrow('PILOT_MANIFEST_SHA256');
+      for (const status of [
+        'REJECTED',
+        'CONDITIONAL_APPROVAL',
+        'PRODUCTION_REGISTERED',
+      ]) {
+        record.assets[0]!.approvalStatus = status;
+        const updated = Buffer.from(JSON.stringify(record));
+        p.approvalInventory.sha256 = sha256Bytes(updated);
+        await writeFile(join(root, 'approval.json'), updated);
+        await expect(
+          verifyPilotApproval(root, p, c.id, canonicalSha256(p)),
+        ).rejects.toThrow('PILOT_ART_APPROVAL');
+      }
+      await writeFile(join(root, 'approval.json'), initialApproval);
+      p.approvalInventory.sha256 = sha256Bytes(initialApproval);
+      await writeFile(join(root, 'source.png'), Buffer.from('changed'));
+      await expect(
+        renderPilotCandidate(root, p, c.id, digest, spec, registryFixture),
+      ).rejects.toThrow('SOURCE_SHA256');
+      const malformed = Buffer.from('not PNG');
+      c.source.sha256 = sha256Bytes(malformed);
+      c.source.approval.sha256 = c.source.sha256;
+      record.assets[0]!.approvalStatus = 'APPROVED_ART_DIRECTION';
+      record.assets[0]!.sha256 = c.source.sha256;
+      const newApproval = Buffer.from(JSON.stringify(record));
+      p.approvalInventory.sha256 = sha256Bytes(newApproval);
+      await writeFile(join(root, 'approval.json'), newApproval);
+      await writeFile(join(root, 'source.png'), malformed);
+      await expect(
+        renderPilotCandidate(
+          root,
+          p,
+          c.id,
+          canonicalSha256(p),
+          spec,
+          registryFixture,
+        ),
+      ).rejects.toThrow('PNG_SIGNATURE');
+    } finally {
+      expect(root.startsWith(join(tmpdir(), 'lammb-pilot-'))).toBe(true);
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+});
 
 const clone = () => structuredClone(assetRegistrySchema.parse(registryFixture));
 describe('source-specific registry trust and compatibility boundaries', () => {
