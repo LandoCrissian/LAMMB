@@ -49,7 +49,9 @@ jobs:
             if [[ -s "$RUNNER_TEMP/changed-files.zlist" ]]; then
               required=false
               while IFS= read -r -d '' path; do
-                case "${path##*/}" in
+                # Windows dependency filenames are case-insensitive.
+                dependency_name=${path##*/}
+                case "${dependency_name,,}" in
                   package.json|package-lock.json|npm-shrinkwrap.json|pnpm-lock.yaml|yarn.lock|bun.lock|bun.lockb|.npmrc|.yarnrc|.yarnrc.yml|pnpm-workspace.yaml)
                     required=true; break ;;
                 esac
