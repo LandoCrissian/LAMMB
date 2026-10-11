@@ -17,6 +17,8 @@ Diffs use NUL-separated paths and disable rename detection. A rename is therefor
 examined as a deletion and addition: moving website or dependency code into an NFT
 directory cannot conceal its original path. Dependency/configuration filenames
 are denied before checking allowed paths, including deeply nested files.
+The dependency filename comparison is case-insensitive to cover Windows names
+such as `Package.json` and `Npm-shrinkwrap.json` inside fixture directories.
 
 ## Policy tests
 

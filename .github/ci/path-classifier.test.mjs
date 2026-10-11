@@ -209,6 +209,16 @@ const original = [
 /** @type {Scenario[]} */
 const additional = [
   {
+    name: 'case-insensitive nested dependency manifest on Windows',
+    edits: ['packages/art-generator/fixtures/deeper/Package.json'],
+    required: true,
+  },
+  {
+    name: 'case-insensitive nested shrinkwrap on Windows',
+    edits: ['packages/art-generator/fixtures/deeper/Npm-shrinkwrap.json'],
+    required: true,
+  },
+  {
     name: 'NFT source addition',
     edits: ['packages/art-generator/src/new.ts'],
     required: false,
