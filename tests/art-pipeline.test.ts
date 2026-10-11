@@ -1,9 +1,25 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
+import { mkdtemp, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { dirname, join, resolve as resolvePath } from 'node:path';
+import sharp from 'sharp';
 import backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
 import { sha256Bytes } from '../packages/art-generator/src/canonical.ts';
-import { validateArtworkBacklog } from '../packages/art-generator/tooling/artwork-backlog.ts';
+import {
+  validateArtworkBacklog,
+  validateArtworkBacklogUpdate,
+} from '../packages/art-generator/tooling/artwork-backlog.ts';
+import ownerDecisions from '../docs/art-production/STAGE22_OWNER_DECISIONS.json';
+import authoredRegistry from '../packages/art-generator/fixtures/stage22-authored-mutations.json';
+import {
+  authoredMutationRegistrySchema,
+  createAuthoredDevelopmentMetadata,
+  resolveAuthoredMutations,
+  validateAuthoredMutationSources,
+} from '../packages/art-generator/tooling/mutation-registration.ts';
+import { canonicalSha256 } from '../packages/art-generator/src/canonical.ts';
 import { developmentCatalog } from '@lammb/art-generator/fixtures';
 import {
   generationRecipeSchema,
@@ -91,6 +107,9 @@ describe('durable artwork backlog approval and source boundaries', () => {
         break;
       case 'approval from generation authorization':
         s.artisticApproval = 'ART_DIRECTION_APPROVED';
+        s.ownerDecisionHistory = s.ownerDecisionHistory.filter(
+          (h) => h.decision !== 'ART_DIRECTION_APPROVED',
+        );
         break;
       case 'positive rejected reference':
         b.items.find(
@@ -129,6 +148,376 @@ describe('durable artwork backlog approval and source boundaries', () => {
     b.items[0]!.traitIds = ['lammb-new-unapproved-family'];
     expect(() => validateArtworkBacklog(b, spec, specHash)).toThrow(
       'ARTWORK_BACKLOG_UNKNOWN_TRAIT',
+    );
+  });
+});
+
+describe('Stage22 authored mutation declarations and owner transitions', () => {
+  const specHash = sha256Bytes(
+    readFileSync(
+      new URL(
+        '../packages/art-generator/specs/lammb-traits-v1.json',
+        import.meta.url,
+      ),
+    ),
+  );
+  const resolve = (
+    r: unknown = authoredRegistry,
+    b: unknown = backlog,
+    owner: unknown = ownerDecisions,
+  ) => resolveAuthoredMutations(r, b, spec, specHash, owner);
+  it('keeps two approved frames separate from contact registration and logical eligibility', () => {
+    const r = resolve();
+    expect(r.resolved).toHaveLength(2);
+    expect(r.resolved.map((a) => a.asset.productionRegistered)).toEqual([
+      false,
+      false,
+    ]);
+    expect(r.resolved[0]!.compatibility).toBe(
+      'BLOCKED_BY_EXISTING_MAGMA_CLOTHING_RULE',
+    );
+    expect(r.resolved[1]!.compatibility).toBe('INCOMPLETE_TRAIT_VECTOR');
+    expect(
+      backlog.items.find((i) => i.id === 'backlog-study21-skeletal-correction')!
+        .artisticApproval,
+    ).toBe('REJECTED');
+    expect(
+      backlog.items.find((i) => i.id === 'backlog-stage12-03-magma')!
+        .artisticApproval,
+    ).toBe('ART_DIRECTION_APPROVED');
+    expect(
+      sha256Bytes(
+        readFileSync(
+          new URL(
+            '../docs/art-production/STAGE22_OWNER_DECISIONS.json',
+            import.meta.url,
+          ),
+        ),
+      ),
+    ).toBe(authoredRegistry.ownerEvidence.sha256);
+  });
+  it.each([
+    'duplicate source',
+    'production promotion',
+    'token assignment',
+    'contact inheritance',
+    'wrong family',
+    'wrong wool',
+    'unmeasured pixel facet',
+    'invented eyes',
+    'coverage promotion',
+    'wrong source hash',
+    'missing provenance',
+    'missing owner',
+    'rejected source',
+    'owner hash mismatch',
+    'owner rejection',
+  ])('rejects %s', (test) => {
+    const r = structuredClone(authoredRegistry),
+      b = structuredClone(backlog),
+      owner = structuredClone(ownerDecisions);
+    switch (test) {
+      case 'duplicate source':
+        r.assets.push(structuredClone(r.assets[0]!));
+        break;
+      case 'production promotion':
+        Object.assign(r.assets[0]!, { productionRegistered: true });
+        break;
+      case 'token assignment':
+        Object.assign(r.assets[0]!, { tokenId: 1 });
+        break;
+      case 'contact inheritance':
+        r.assets[0]!.contactReuse = 'STAGE17_ANY_CONTACT';
+        break;
+      case 'wrong family':
+        r.assets[0]!.family = 'NORMAL_LOCALIZED_PIXEL_DRIP';
+        break;
+      case 'wrong wool':
+        r.assets[0]!.visibleTraitIds.push('lammb-wool-ivory');
+        break;
+      case 'unmeasured pixel facet':
+        r.assets[1]!.visibleTraitIds.push('lammb-pixel-corruption-touch');
+        break;
+      case 'invented eyes':
+        r.assets[1]!.visibleTraitIds.push('lammb-eyes-radioactive');
+        break;
+      case 'coverage promotion':
+        r.assets[1]!.coverage = 'CERTIFIED_TOUCH';
+        break;
+      case 'wrong source hash':
+        r.assets[0]!.sourceSha256 = '0'.repeat(64);
+        break;
+      case 'missing provenance':
+        r.provenanceEvidence.sha256 = '0'.repeat(64);
+        break;
+      case 'missing owner':
+        b.items
+          .find((i) => i.id === r.assets[0]!.backlogId)!
+          .ownerDecisionHistory.pop();
+        break;
+      case 'rejected source':
+        r.assets[0]!.backlogId = 'backlog-study21-skeletal-correction';
+        break;
+      case 'owner hash mismatch':
+        owner.decisions[0]!.sourceSha256 = '0'.repeat(64);
+        break;
+      case 'owner rejection':
+        owner.decisions[0]!.decision = 'REJECTED';
+        break;
+    }
+    expect(() => resolve(r, b, owner)).toThrow();
+  });
+  it('excludes negative hashes even when a forged backlog declares that source approved', () => {
+    const r = structuredClone(authoredRegistry),
+      b = structuredClone(backlog),
+      owner = structuredClone(ownerDecisions);
+    const target = b.items
+      .find((i) => i.id === r.assets[0]!.backlogId)!
+      .sources.find((s) => s.role === 'GENERATED_NATIVE_STUDY')!;
+    const rejected = b.items
+      .find((i) => i.id === 'backlog-study21-skeletal-correction')!
+      .sources.find((s) => s.role === 'NEGATIVE_QA_ONLY')!;
+    target.sha256 = rejected.sha256;
+    r.assets[0]!.sourceSha256 = rejected.sha256;
+    owner.decisions[0]!.sourceSha256 = rejected.sha256;
+    r.backlogSha256 = canonicalSha256(b);
+    expect(() => resolve(r, b, owner)).toThrow('AUTHORED_SOURCE');
+  });
+  it('publishes no unsupported or absent facets in development metadata and binds image bytes', () => {
+    const resolved = resolve();
+    expect(() =>
+      createAuthoredDevelopmentMetadata(
+        resolved.resolved[0]!,
+        Buffer.from('not native'),
+      ),
+    ).toThrow('AUTHORED_METADATA_IMAGE');
+    // Synthetic digest-only input for metadata shape, never a production source.
+    const bytes = Buffer.from('synthetic visible metadata fixture');
+    for (const asset of resolved.resolved) {
+      const synthetic = {
+        ...asset,
+        source: { ...asset.source, sha256: sha256Bytes(bytes) },
+      };
+      const result = createAuthoredDevelopmentMetadata(synthetic, bytes);
+      const categories = result.metadata.attributes.map((a) => a.trait_type);
+      expect(categories).toContain('Clothing');
+      expect(categories).not.toContain('Pixel Corruption');
+      expect(categories).not.toContain('Eyes');
+      expect(categories).not.toContain('Accessories');
+      expect(result.binding.productionRegistered).toBe(false);
+      expect(result.binding.completeCollectionVector).toBe(false);
+      expect(result.binding.imageSha256).toBe(sha256Bytes(bytes));
+    }
+  });
+  it('checks the registry digest before private I/O', async () => {
+    await expect(
+      validateAuthoredMutationSources(
+        'nonexistent',
+        authoredRegistry,
+        backlog,
+        spec,
+        specHash,
+        '0'.repeat(64),
+      ),
+    ).rejects.toThrow('AUTHORED_REGISTRY_SHA256');
+    expect(authoredMutationRegistrySchema.parse(authoredRegistry).purpose).toBe(
+      'DEVELOPMENT_ONLY',
+    );
+    expect(canonicalSha256(authoredRegistry)).toMatch(/^[a-f0-9]{64}$/);
+  });
+  it('rejects altered specification or backlog contents even with an unchanged raw-spec claim', () => {
+    const changedSpec = structuredClone(spec);
+    changedSpec.traits.find(
+      (t) => t.id === 'lammb-clothing-hoodie',
+    )!.metadata[0]!.value = 'Invented garment';
+    expect(() =>
+      resolveAuthoredMutations(
+        authoredRegistry,
+        backlog,
+        changedSpec,
+        specHash,
+        ownerDecisions,
+      ),
+    ).toThrow('AUTHORED_SPEC_CONTENT');
+    const changedBacklog = structuredClone(backlog);
+    changedBacklog.items[0]!.nextAction = 'Altered declared context';
+    expect(() => resolve(authoredRegistry, changedBacklog)).toThrow(
+      'AUTHORED_BACKLOG_CONTENT',
+    );
+  });
+  it.each([
+    'valid',
+    'malformed native',
+    'source byte tampering',
+    'dimension mismatch',
+    'oversized native',
+    'missing generation',
+    'wrong raster reference',
+    'missing reference file',
+    'owner evidence tampering',
+  ])('bounded authored I/O: %s', async (scenario) => {
+    // Entirely synthetic development files: these are never LAMMB artwork.
+    const parent = resolvePath(tmpdir());
+    const root = await mkdtemp(join(parent, 'lammb-stage22-test-'));
+    try {
+      const r = structuredClone(authoredRegistry),
+        b = structuredClone(backlog),
+        owner = structuredClone(ownerDecisions);
+      r.assets = r.assets.slice(0, 1);
+      const item = b.items.find((i) => i.id === r.assets[0]!.backlogId)!;
+      const target = item.sources.find((s) => s.id === r.assets[0]!.sourceId)!;
+      const png = await sharp({
+        create: { width: 8, height: 8, channels: 3, background: '#123456' },
+      })
+        .png()
+        .toBuffer();
+      let native = png;
+      if (scenario === 'malformed native') {
+        native = Buffer.from(png);
+        native[0] = 0;
+      }
+      if (scenario === 'oversized native')
+        native = Buffer.alloc(4 * 1024 * 1024 + 1);
+      target.path = 'native.png';
+      target.sha256 = sha256Bytes(native);
+      target.dimensions = { width: 8, height: 8 };
+      if (scenario === 'dimension mismatch') target.dimensions.width = 7;
+      r.assets[0]!.sourceSha256 = target.sha256;
+      owner.decisions[0]!.sourceSha256 = target.sha256;
+      const refs = item.sources.filter(
+        (s) =>
+          s.role === 'PRIMARY_RASTER_REFERENCE' ||
+          s.role === 'SUPPORTING_APPROVED_RASTER_REFERENCE',
+      );
+      for (const [index, ref] of refs.entries()) {
+        ref.path = `ref-${index}.png`;
+        ref.sha256 = sha256Bytes(png);
+        if (!(scenario === 'missing reference file' && index === 0))
+          await writeFile(join(root, ref.path), png);
+      }
+      const provenance = [
+        {
+          tool: 'image_gen.imagegen',
+          outputSha256: target.sha256,
+          actualNativeDimensions: target.dimensions,
+          references: refs.map((ref) => ({
+            sha256: ref.sha256,
+            role: ref.role,
+          })),
+        },
+      ];
+      if (scenario === 'missing generation')
+        provenance[0]!.outputSha256 = '0'.repeat(64);
+      if (scenario === 'wrong raster reference')
+        provenance[0]!.references[0]!.sha256 = '0'.repeat(64);
+      const ownerBytes = Buffer.from(JSON.stringify(owner)),
+        provenanceBytes = Buffer.from(JSON.stringify(provenance));
+      const ownerEvidence = b.evidence.find(
+        (e) => e.id === 'evidence-stage22-owner-decisions',
+      )!;
+      const generationEvidence = b.evidence.find(
+        (e) => e.id === 'evidence-stage21-provenance',
+      )!;
+      Object.assign(ownerEvidence, {
+        path: 'owner.json',
+        sha256: sha256Bytes(ownerBytes),
+        bytes: ownerBytes.length,
+      });
+      Object.assign(generationEvidence, {
+        path: 'provenance.json',
+        sha256: sha256Bytes(provenanceBytes),
+        bytes: provenanceBytes.length,
+      });
+      r.ownerEvidence = {
+        path: ownerEvidence.path,
+        sha256: ownerEvidence.sha256,
+      };
+      r.provenanceEvidence = {
+        path: generationEvidence.path,
+        sha256: generationEvidence.sha256,
+      };
+      await writeFile(
+        join(root, 'owner.json'),
+        scenario === 'owner evidence tampering'
+          ? Buffer.from('{}')
+          : ownerBytes,
+      );
+      await writeFile(join(root, 'provenance.json'), provenanceBytes);
+      await writeFile(
+        join(root, 'native.png'),
+        scenario === 'source byte tampering' ? Buffer.from('tampered') : native,
+      );
+      r.backlogSha256 = canonicalSha256(b);
+      const validation = validateAuthoredMutationSources(
+        root,
+        r,
+        b,
+        spec,
+        specHash,
+        canonicalSha256(r),
+      );
+      if (scenario === 'valid') {
+        const receipt = await validation;
+        expect(receipt.verified).toHaveLength(1);
+        expect(receipt.verified[0]!.decodedBytes).toBe(8 * 8 * 3);
+        expect(receipt.productionRegisteredCount).toBe(0);
+      } else await expect(validation).rejects.toThrow();
+    } finally {
+      if (dirname(resolvePath(root)) !== parent)
+        throw new Error('Unsafe test cleanup path');
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+  it('requires an append-only dated owner decision and prevents rejection rehabilitation', () => {
+    const previous = structuredClone(backlog);
+    previous.evidence = previous.evidence.filter(
+      (e) => e.id !== 'evidence-stage22-owner-decisions',
+    );
+    previous.backlogVersion = '0.1.0';
+    for (const item of previous.items) {
+      item.ownerDecisionHistory = item.ownerDecisionHistory.filter(
+        (h) => h.evidence !== 'evidence-stage22-owner-decisions',
+      );
+      if (item.kind === 'AUTHORIZED_NEW_STUDY')
+        item.artisticApproval = 'UNREVIEWED';
+    }
+    expect(validateArtworkBacklogUpdate(previous, backlog).items).toHaveLength(
+      109,
+    );
+    const edited = structuredClone(backlog);
+    edited.items[0]!.ownerDecisionHistory[0]!.scope = 'rewritten';
+    expect(() => validateArtworkBacklogUpdate(previous, edited)).toThrow(
+      'BACKLOG_HISTORY_REWRITE',
+    );
+    const noEvent = structuredClone(backlog);
+    noEvent.items
+      .find((i) => i.id === 'backlog-study21-magma-hoodie')!
+      .ownerDecisionHistory.pop();
+    expect(() => validateArtworkBacklogUpdate(previous, noEvent)).toThrow(
+      'Art approval requires inherited or explicit owner evidence',
+    );
+    const undated = structuredClone(backlog);
+    undated.items
+      .find((i) => i.id === 'backlog-study21-magma-hoodie')!
+      .ownerDecisionHistory.at(-1)!.date = null;
+    expect(() => validateArtworkBacklogUpdate(previous, undated)).toThrow(
+      'BACKLOG_OWNER_TRANSITION',
+    );
+    const restored = structuredClone(backlog);
+    const rejected = restored.items.find(
+      (i) => i.id === 'backlog-study21-skeletal-correction',
+    )!;
+    rejected.artisticApproval = 'UNREVIEWED';
+    expect(() => validateArtworkBacklogUpdate(backlog, restored)).toThrow(
+      'BACKLOG_HISTORY_REWRITE',
+    );
+    const positive = structuredClone(backlog);
+    positive.items
+      .find((i) => i.id === 'backlog-study21-skeletal-correction')!
+      .sources.find((s) => s.role === 'NEGATIVE_QA_ONLY')!.role =
+      'GENERATED_NATIVE_STUDY';
+    expect(() => validateArtworkBacklog(positive, spec, specHash)).toThrow(
+      'ARTWORK_BACKLOG_SCHEMA',
     );
   });
 });

@@ -30,7 +30,7 @@ const source = z.strictObject({
 export const artworkBacklogSchema = z
   .strictObject({
     schemaVersion: z.literal('lammb-artwork-backlog/1.0.0'),
-    backlogVersion: z.literal('0.1.0'),
+    backlogVersion: z.enum(['0.1.0', '0.2.0']),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
     collectionSupply: z.literal(5280),
@@ -111,6 +111,8 @@ export const artworkBacklogSchema = z
       fail('Duplicate evidence ID');
     const evidence = new Set(b.evidence.map((e) => e.id));
     for (const i of b.items) {
+      if (new Set(i.sources.map((s) => s.id)).size !== i.sources.length)
+        fail('Duplicate item source ID');
       if (
         new Set(i.ownerDecisionHistory.map((h) => h.id)).size !==
         i.ownerDecisionHistory.length
@@ -136,7 +138,14 @@ export const artworkBacklogSchema = z
         fail('Art approval requires inherited or explicit owner evidence');
       if (
         i.artisticApproval === 'REJECTED' &&
-        i.sources[0]?.role !== 'NEGATIVE_QA_ONLY'
+        (i.kind === 'AUTHORIZED_NEW_STUDY'
+          ? !i.sources.some((s) => s.role === 'NEGATIVE_QA_ONLY') ||
+            i.sources.some(
+              (s) =>
+                s.role === 'GENERATED_NATIVE_STUDY' ||
+                s.role === 'SOURCE_ARTWORK',
+            )
+          : i.sources[0]?.role !== 'NEGATIVE_QA_ONLY')
       )
         fail('Rejected master cannot be a positive reference');
       if (
@@ -151,6 +160,50 @@ export const artworkBacklogSchema = z
         fail('Study requires primary raster reference');
     }
   });
+
+// Append-only owner-decision update. A prior rejection cannot be silently
+// rehabilitated, and approved input references retain their original roles.
+export function validateArtworkBacklogUpdate(previous: unknown, next: unknown) {
+  const before = artworkBacklogSchema.parse(previous);
+  const after = artworkBacklogSchema.parse(next);
+  const same = (a: unknown, b: unknown) =>
+    JSON.stringify(a) === JSON.stringify(b);
+  if (
+    before.items.length !== after.items.length ||
+    !before.evidence.every((e, i) => same(e, after.evidence[i])) ||
+    before.traitBibleSha256 !== after.traitBibleSha256 ||
+    before.mainSha !== after.mainSha
+  )
+    throw new Error('BACKLOG_HISTORY_REWRITE');
+  for (let index = 0; index < before.items.length; index++) {
+    const a = before.items[index]!,
+      b = after.items[index]!;
+    if (
+      a.id !== b.id ||
+      a.kind !== b.kind ||
+      a.family !== b.family ||
+      !same(a.sources, b.sources) ||
+      !same(a.traitIds, b.traitIds) ||
+      !a.ownerDecisionHistory.every((h, i) =>
+        same(h, b.ownerDecisionHistory[i]),
+      ) ||
+      (a.artisticApproval === 'REJECTED' && b.artisticApproval !== 'REJECTED')
+    )
+      throw new Error('BACKLOG_HISTORY_REWRITE');
+    if (a.artisticApproval !== b.artisticApproval) {
+      const event = b.ownerDecisionHistory.at(-1);
+      if (
+        b.ownerDecisionHistory.length <= a.ownerDecisionHistory.length ||
+        event?.authority !== 'CURRENT_OWNER_DIRECTIVE' ||
+        event.decision !== b.artisticApproval ||
+        !event.evidence ||
+        !event.date
+      )
+        throw new Error('BACKLOG_OWNER_TRANSITION');
+    }
+  }
+  return after;
+}
 
 export function validateArtworkBacklog(
   input: unknown,

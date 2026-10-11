@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.1.0",
+  "backlogVersion": "0.2.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -93,6 +93,13 @@
       "sha256": "90cac5602dc5d0287f627e67014bfb37006c37f52894b496152bdf9d7f1b9b9a",
       "bytes": 2979,
       "kind": "SOURCE_BOUND_RECONSTRUCTION_NOT_PRODUCTION_APPROVAL"
+    },
+    {
+      "id": "evidence-stage22-owner-decisions",
+      "path": "reports/TASK_022_STAGE22_MUTATION_REGISTRATION_001/OWNER_DECISIONS.json",
+      "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223",
+      "bytes": 1526,
+      "kind": "Explicit Stage22 owner message transcription. recordedAt is capture time, not an inferred original approval timestamp. Not signed owner authentication."
     }
   ],
   "items": [
@@ -1469,6 +1476,14 @@
           "scope": "PROPOSED_REVIEW_CLASS_NOT_OWNER_ACCEPTANCE",
           "evidence": "evidence-7",
           "date": null
+        },
+        {
+          "id": "stage22-retain-exposed-magma",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "RETAIN_EXISTING_APPROVED_ART_DIRECTION",
+          "scope": "RETAIN_EXPOSED_VARIANT_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage22-owner-decisions",
+          "date": "2026-10-11T23:03:23.893Z"
         }
       ],
       "finalProductionApproval": null
@@ -3799,9 +3814,9 @@
         }
       ],
       "traitIds": [],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
-      "technicalStatus": "PNG_VALIDATED_ART_REVIEW_PENDING",
+      "technicalStatus": "AUTHORED_SOURCE_VALIDATED_NOT_PRODUCTION_REGISTERED",
       "knownLimitations": [
         "Magma with Black Hoodie conflicts with current mutation clothing whitelist; artistic study only.",
         "Current Magma clothing whitelist excludes Black Hoodie. No compatibility or metadata change authorized.",
@@ -3809,9 +3824,10 @@
         "Native/64/128 quality does not establish registration or layer portability."
       ],
       "requiredImprovements": [
-        "One bounded reference-conditioned generation, native/128/64 QA, immutable provenance and owner review."
+        "Keep integrated garment source-specific; current Magma clothing whitelist blocks a complete eligible trait vector.",
+        "Register source-specific landmarks/contacts separately; explicit owner production approval required."
       ],
-      "nextAction": "OWNER_ART_REVIEW_BEFORE_ANY_PRODUCTION_REGISTRATION",
+      "nextAction": "OWNER_COMPATIBILITY_DECISION_BEFORE_COLLECTION_ASSIGNMENT",
       "ownerDecisionHistory": [
         {
           "id": "stage21-generation-authorization",
@@ -3828,6 +3844,14 @@
           "scope": "TECHNICAL_ART_QA_NOT_OWNER_ACCEPTANCE",
           "evidence": "evidence-stage21-qa",
           "date": null
+        },
+        {
+          "id": "stage22-owner-art-decision",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage22-owner-decisions",
+          "date": "2026-10-11T23:03:23.893Z"
         }
       ],
       "finalProductionApproval": null
@@ -3870,9 +3894,9 @@
         }
       ],
       "traitIds": [],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "REJECTED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
-      "technicalStatus": "REJECTED_FOR_SPECIES_ANATOMY",
+      "technicalStatus": "QUARANTINED_REJECTED_SHEEP_ANATOMY",
       "knownLimitations": [
         "Rejected Stage12/13 skeletons remain negative evidence only; ovine dentition and no clavicles require adversarial QA.",
         "Broad frontal skull and nasal aperture still read predominantly stylized human rather than an ovine rostrum/maxilla.",
@@ -3880,9 +3904,9 @@
         "Prominent pointed lateral dental forms do not clearly resolve as posterior grinding cheek teeth."
       ],
       "requiredImprovements": [
-        "One bounded reference-conditioned generation, native/128/64 QA, immutable provenance and owner review."
+        "Use the Stage22 reference-backed sheep anatomy guide before any separately authorized new skeletal study. Preserve rejection and native source; no positive reference use."
       ],
-      "nextAction": "QUARANTINE_NO_AUTOMATIC_RETRY",
+      "nextAction": "ANATOMICALLY_GROUNDED_SHEEP_SKELETAL_DESIGN_NO_GENERATION_AUTHORIZED",
       "ownerDecisionHistory": [
         {
           "id": "stage21-generation-authorization",
@@ -3899,6 +3923,14 @@
           "scope": "TECHNICAL_ART_QA_NOT_OWNER_ACCEPTANCE",
           "evidence": "evidence-stage21-qa",
           "date": null
+        },
+        {
+          "id": "stage22-owner-art-decision",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "REJECTED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage22-owner-decisions",
+          "date": "2026-10-11T23:03:23.893Z"
         }
       ],
       "finalProductionApproval": null
@@ -3941,9 +3973,9 @@
         }
       ],
       "traitIds": [],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
-      "technicalStatus": "PNG_VALIDATED_ART_REVIEW_PENDING",
+      "technicalStatus": "AUTHORED_SOURCE_VALIDATED_NOT_PRODUCTION_REGISTERED",
       "knownLimitations": [
         "Corruption coverage and visible trait mapping remain unverified; no new trait value or frequency.",
         "Some adjacent cubes float a short distance from material roots; local pattern still coherent, but owner may prefer fewer decorative particles.",
@@ -3951,9 +3983,10 @@
         "No certified effect mask or exact TOUCH/BLEED percentage. No facet exported."
       ],
       "requiredImprovements": [
-        "One bounded reference-conditioned generation, native/128/64 QA, immutable provenance and owner review."
+        "Review a subject silhouette and separate wool/clothing effect masks before TOUCH/BLEED/etc. metadata.",
+        "Validate source-specific effect bounds and registration; explicit owner production approval required."
       ],
-      "nextAction": "OWNER_ART_REVIEW_BEFORE_ANY_PRODUCTION_REGISTRATION",
+      "nextAction": "REVIEW_PIXEL_COVERAGE_BEFORE_EFFECT_FACET_OR_PRODUCTION_PROMOTION",
       "ownerDecisionHistory": [
         {
           "id": "stage21-generation-authorization",
@@ -3970,6 +4003,14 @@
           "scope": "TECHNICAL_ART_QA_NOT_OWNER_ACCEPTANCE",
           "evidence": "evidence-stage21-qa",
           "date": null
+        },
+        {
+          "id": "stage22-owner-art-decision",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage22-owner-decisions",
+          "date": "2026-10-11T23:03:23.893Z"
         }
       ],
       "finalProductionApproval": null

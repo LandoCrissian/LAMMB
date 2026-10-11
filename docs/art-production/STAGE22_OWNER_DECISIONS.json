@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "lammb-stage22-owner-decisions/1.0.0",
+  "recordedAt": "2026-10-11T23:03:23.893Z",
+  "authority": "CURRENT_OWNER_DIRECTIVE",
+  "authentication": "TRUSTED_OPERATOR_TRANSCRIPTION_NOT_SIGNED_OWNER_AUTH",
+  "productionApproval": false,
+  "decisions": [
+    {
+      "backlogId": "backlog-study21-magma-hoodie",
+      "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+      "decision": "ART_DIRECTION_APPROVED",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Owner approves Magma Hoodie art direction only; production registration NOT_APPROVED. Retain existing magma/no-hoodie design."
+    },
+    {
+      "backlogId": "backlog-study21-refined-pixel-drip",
+      "sourceSha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+      "decision": "ART_DIRECTION_APPROVED",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Owner approves Refined Pixel Drip art direction only; production registration NOT_APPROVED. Pixel coverage REQUIRES_VALIDATION."
+    },
+    {
+      "backlogId": "backlog-study21-skeletal-correction",
+      "sourceSha256": "ac797d8411e3ef015d2fe2311d3fb3a05690898ef8f357d26aa82e5c689bda81",
+      "decision": "REJECTED",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Owner rejects and quarantines Skeletal Correction for human-like skull/dentition. Next action: anatomically grounded sheep skeletal design."
+    }
+  ]
+}

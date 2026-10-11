@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "lammb-authored-mutation-development/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "specSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+  "ownerEvidence": {
+    "path": "reports/TASK_022_STAGE22_MUTATION_REGISTRATION_001/OWNER_DECISIONS.json",
+    "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223"
+  },
+  "provenanceEvidence": {
+    "path": "reports/TASK_021_STAGE21_UNIVERSE_001/GENERATION_PROVENANCE.json",
+    "sha256": "fca1436f04d516545cb21af588ee3c79597316db7791492fc11f72bb49f8ba79"
+  },
+  "assets": [
+    {
+      "id": "stage22-magma-hoodie",
+      "backlogId": "backlog-study21-magma-hoodie",
+      "sourceId": "source-stage21-magma-hoodie",
+      "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+      "family": "MAGMA_INTEGRATED_HOODIE",
+      "sourceMode": "IMMUTABLE_FULL_FRAME",
+      "pose": "FRONT",
+      "registrationState": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "contactReuse": "NONE_VALIDATED",
+      "coverage": "NOT_APPLICABLE",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-hoodie",
+        "lammb-mutations-magma"
+      ]
+    },
+    {
+      "id": "stage22-pixel-drip",
+      "backlogId": "backlog-study21-refined-pixel-drip",
+      "sourceId": "source-stage21-refined-pixel-drip",
+      "sourceSha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+      "family": "NORMAL_LOCALIZED_PIXEL_DRIP",
+      "sourceMode": "IMMUTABLE_FULL_FRAME",
+      "pose": "FRONT",
+      "registrationState": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "contactReuse": "NONE_VALIDATED",
+      "coverage": "REQUIRES_VALIDATION",
+      "visibleTraitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-hoodie"]
+    }
+  ],
+  "backlogSha256": "029ddfb529330a7d459fa8cc1d9e9d174b2963c8157c16e687775ab74c592744",
+  "specCanonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a"
+}
