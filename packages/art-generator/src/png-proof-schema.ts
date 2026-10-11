@@ -19,7 +19,7 @@ export const pngProofSchema = z
     joint: pngSourceSchema,
     mask: pngSourceSchema,
     registration: z.strictObject({
-      poseFamily: z.literal('FRONT'),
+      poseFamily: z.enum(['FRONT', 'ORIGINAL_THREE_QUARTER']),
       baseSha256: sha256Schema,
       jointSha256: sha256Schema,
       maskSha256: sha256Schema,

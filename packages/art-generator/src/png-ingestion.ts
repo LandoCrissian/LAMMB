@@ -276,8 +276,32 @@ async function readConfinedProofSource(
 ) {
   const parsed = pngSourceSchema.safeParse(declaration);
   requireProof(parsed.success, 'SOURCE_DECLARATION');
+  return readConfinedDigestFile(rootInput, parsed.data);
+}
+
+// Evidence is a bounded local file, never a pretend PNG or a network resource.
+export async function readProofEvidence(
+  rootInput: string,
+  declaration: unknown,
+) {
+  const parsed = z
+    .strictObject({ path: relativePathSchema, sha256: sha256Schema })
+    .safeParse(declaration);
+  requireProof(parsed.success, 'EVIDENCE_DECLARATION');
+  try {
+    return await readConfinedDigestFile(rootInput, parsed.data);
+  } catch (error) {
+    if (error instanceof PngProofError) throw error;
+    throw new PngProofError('EVIDENCE_IO');
+  }
+}
+
+async function readConfinedDigestFile(
+  rootInput: string,
+  declaration: { path: string; sha256: string },
+) {
   const root = resolve(rootInput);
-  const target = resolve(root, parsed.data.path);
+  const target = resolve(root, declaration.path);
   requireProof(contained(root, target), 'SOURCE_PATH');
   const rootStat = await lstat(root);
   requireProof(
@@ -330,7 +354,7 @@ async function readConfinedProofSource(
       after.size === opened.size && after.mtimeMs === opened.mtimeMs,
       'SOURCE_CHANGED',
     );
-    requireProof(sha256Bytes(bytes) === parsed.data.sha256, 'SOURCE_SHA256');
+    requireProof(sha256Bytes(bytes) === declaration.sha256, 'SOURCE_SHA256');
     return bytes;
   } finally {
     await file.close();
