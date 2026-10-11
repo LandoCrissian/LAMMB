@@ -42,7 +42,7 @@ jobs:
               required=false
               while IFS= read -r -d '' path; do
                 case "$path" in
-                  packages/art-generator/package.json|packages/art-generator/package-lock.json|packages/art-generator/npm-shrinkwrap.json|packages/art-generator/pnpm-lock.yaml|packages/art-generator/yarn.lock|packages/art-generator/bun.lock|packages/art-generator/bun.lockb)
+                  packages/art-generator/package.json|packages/art-generator/package-lock.json|packages/art-generator/npm-shrinkwrap.json|packages/art-generator/pnpm-lock.yaml|packages/art-generator/yarn.lock|packages/art-generator/bun.lock|packages/art-generator/bun.lockb|packages/art-generator/*/package.json|packages/art-generator/*/package-lock.json|packages/art-generator/*/npm-shrinkwrap.json|packages/art-generator/*/pnpm-lock.yaml|packages/art-generator/*/yarn.lock|packages/art-generator/*/bun.lock|packages/art-generator/*/bun.lockb)
                     required=true; break ;;
                   packages/art-generator/*|docs/art-production/*|tests/asset-registry.test.ts|tests/png-proof.test.ts|tests/generator.test.ts)
                     ;;
