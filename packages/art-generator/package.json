@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "4.6.5",
-    "@lammb/collection": "0.0.0"
+    "@lammb/collection": "0.0.0",
+    "sharp": "0.35.5",
+    "zod": "4.6.5"
   }
 }

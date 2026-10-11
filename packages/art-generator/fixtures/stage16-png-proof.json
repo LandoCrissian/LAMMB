@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "purpose": "DEVELOPMENT_ONLY",
+  "renderer": {
+    "id": "png-contact-proof",
+    "version": "1.0.0"
+  },
+  "canvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "base": {
+    "id": "dev-png-front-base",
+    "path": "ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+    "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "channels": 3,
+    "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+    "approval": {
+      "state": "APPROVED_ART_DIRECTION",
+      "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+      "evidence": "Owner Task016 Stage7 and Stage16 directives; Stage15 canonical artwork inventory. Artistic approval only."
+    },
+    "productionRegistered": false
+  },
+  "joint": {
+    "id": "dev-png-front-contact",
+    "path": "ART_016_STAGE7_FRONT_TAG_001/front-5280-contact-context-rgba.png",
+    "sha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+    "dimensions": {
+      "width": 235,
+      "height": 350
+    },
+    "channels": 4,
+    "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+    "approval": {
+      "state": "VALIDATED_RECONSTRUCTION_INPUT",
+      "sha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+      "evidence": "Stage7 RECONSTRUCTION_MANIFEST and successful native hybrid; Stage16 explicitly authorizes reuse for this engineering proof."
+    },
+    "productionRegistered": false
+  },
+  "mask": {
+    "id": "dev-png-front-mask",
+    "path": "ART_016_STAGE7_FRONT_TAG_001/front-contact-integration-mask.png",
+    "sha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "channels": 3,
+    "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+    "approval": {
+      "state": "VALIDATED_RECONSTRUCTION_INPUT",
+      "sha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+      "evidence": "Stage7 saved integration mask; exact original digest and geometry. No production registration inferred."
+    },
+    "productionRegistered": false
+  },
+  "registration": {
+    "poseFamily": "FRONT",
+    "baseSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+    "jointSha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+    "maskSha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+    "roi": {
+      "x": 65,
+      "y": 550,
+      "width": 235,
+      "height": 350
+    },
+    "polygon": [
+      [142, 574],
+      [165, 566],
+      [188, 579],
+      [198, 600],
+      [190, 625],
+      [181, 637],
+      [195, 649],
+      [217, 666],
+      [247, 695],
+      [260, 777],
+      [266, 853],
+      [249, 870],
+      [115, 884],
+      [92, 871],
+      [80, 776],
+      [82, 694],
+      [95, 668],
+      [123, 644],
+      [129, 622],
+      [124, 600],
+      [126, 581]
+    ],
+    "transform": "IDENTITY_NO_RESAMPLING",
+    "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+    "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+    "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+    "evidence": "Stage7 RECONSTRUCTION_MANIFEST.json; 6px ear/10px background smoothstep feather is already encoded in the immutable mask."
+  },
+  "expectedOutputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+  "productionRegistered": false
+}
