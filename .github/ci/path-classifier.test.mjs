@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import {
   existsSync,
@@ -12,10 +13,10 @@ import {
 import { tmpdir } from 'node:os';
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { after, before, describe, it } from 'node:test';
 
 // Execute the actual workflow body, not a second implementation of its policy.
-const root = fileURLToPath(new URL('../', import.meta.url));
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const workflow = readFileSync(
   join(root, '.github/workflows/ci.yml'),
   'utf8',
@@ -29,14 +30,15 @@ const body = scopeStep
   .map((line) => line.replace(/^ {10}/, ''))
   .join('\n');
 
-function git(args: string[], cwd: string) {
+/** @param {string[]} args @param {string} cwd */
+function git(args, cwd) {
   const result = spawnSync(
     'git',
     ['-c', 'core.hooksPath=', '-c', 'commit.gpgSign=false', ...args],
-    { cwd, encoding: 'utf8', windowsHide: true },
+    { cwd, encoding: 'utf8', windowsHide: true, timeout: 5000 },
   );
-  expect(result.error).toBeUndefined();
-  expect(result.status, result.stderr).toBe(0);
+  assert.equal(result.error, undefined);
+  assert.equal(result.status, 0, result.stderr);
   return result.stdout.trim();
 }
 
@@ -78,19 +80,21 @@ const initial = {
   '.github/workflows/ci.yml': 'inert workflow\n',
 };
 
-type Scenario = {
-  name: string;
-  required?: boolean;
-  edits?: string[];
-  remove?: string;
-  rename?: [string, string];
-  event?: string;
-  base?: string;
-  error?: boolean;
-};
+/**
+ * @typedef {object} Scenario
+ * @property {string} name
+ * @property {boolean} [required]
+ * @property {string[]} [edits]
+ * @property {string} [remove]
+ * @property {[string, string]} [rename]
+ * @property {string} [event]
+ * @property {string} [base]
+ * @property {boolean} [error]
+ */
 
 // The original 23 review scenarios, including the actual seven-file PR17 scope.
-const original: Scenario[] = [
+/** @type {Scenario[]} */
+const original = [
   {
     name: 'NFT source edit',
     edits: ['packages/art-generator/src/engine.ts'],
@@ -202,7 +206,8 @@ const original: Scenario[] = [
   },
 ];
 
-const additional: Scenario[] = [
+/** @type {Scenario[]} */
+const additional = [
   {
     name: 'NFT source addition',
     edits: ['packages/art-generator/src/new.ts'],
@@ -348,25 +353,26 @@ const additional: Scenario[] = [
   })),
 ];
 
-let temporaryRoot: string;
-let script: string;
-let bash: string;
+let temporaryRoot = '';
+let script = '';
+let bash = '';
 let sequence = 0;
-function write(directory: string, path: string, contents: string) {
+/** @param {string} directory @param {string} path @param {string} contents */
+function write(directory, path, contents) {
   const target = join(directory, path);
   mkdirSync(dirname(target), { recursive: true });
   writeFileSync(target, contents);
 }
 
-beforeAll(() => {
-  expect(body).toBeTruthy();
+before(() => {
+  assert.ok(body);
   temporaryRoot = mkdtempSync(join(tmpdir(), 'lammb-ci-policy-'));
   script = join(temporaryRoot, 'workflow-classifier.sh');
   writeFileSync(script, `${body}\n`);
   bash = bashExecutable();
 });
 
-afterAll(() => {
+after(() => {
   if (!temporaryRoot) return;
   const target = resolve(temporaryRoot);
   const inside = relative(resolve(tmpdir()), target);
@@ -380,7 +386,8 @@ afterAll(() => {
   rmSync(target, { recursive: true, force: true });
 });
 
-function check(scenario: Scenario) {
+/** @param {Scenario} scenario */
+function check(scenario) {
   const directory = join(temporaryRoot, String(++sequence));
   mkdirSync(directory);
   git(['-c', 'init.templateDir=', 'init', '--quiet'], directory);
@@ -406,14 +413,16 @@ function check(scenario: Scenario) {
     directory,
   );
   if (scenario.rename)
-    expect(
+    assert.match(
       git(['diff', '--name-status', '--find-renames', base, 'HEAD'], directory),
-    ).toMatch(/^R100\s/m);
+      /^R100\s/m,
+    );
   const output = join(directory, 'github-output');
   const result = spawnSync(bash, [script], {
     cwd: directory,
     encoding: 'utf8',
     windowsHide: true,
+    timeout: 5000,
     env: {
       ...process.env,
       EVENT_NAME: scenario.event ?? 'pull_request',
@@ -422,33 +431,36 @@ function check(scenario: Scenario) {
       GITHUB_OUTPUT: output,
     },
   });
-  expect(result.error).toBeUndefined();
+  assert.equal(result.error, undefined);
   if (scenario.error) {
-    expect(result.status).not.toBe(0);
-    expect(
-      existsSync(output) ? readFileSync(output, 'utf8') : '',
-    ).not.toContain('browser_required=false');
+    assert.notEqual(result.status, 0);
+    assert.ok(
+      !(existsSync(output) ? readFileSync(output, 'utf8') : '').includes(
+        'browser_required=false',
+      ),
+    );
   } else {
-    expect(result.status, result.stderr).toBe(0);
-    expect(readFileSync(output, 'utf8').trim()).toBe(
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(
+      readFileSync(output, 'utf8').trim(),
       `browser_required=${scenario.required}`,
     );
   }
 }
 
 describe('path-aware CI policy: original 23 scenarios', () => {
-  it.each(original)('$name', check);
+  for (const scenario of original) it(scenario.name, () => check(scenario));
 });
 describe('path-aware CI policy: adversarial additions', () => {
-  it.each(additional)('$name', check);
+  for (const scenario of additional) it(scenario.name, () => check(scenario));
 });
 
 it('keeps core verification unconditional and browser jobs dependent on successful classification and verification', () => {
   const verify = workflow
     .split('\n  verify:\n')[1]
     ?.split('\n  browser-acceptance:')[0];
-  expect(verify).toBeTruthy();
-  expect(verify).not.toMatch(/^    (?:if|needs):/m);
+  assert.ok(verify);
+  assert.doesNotMatch(verify, /^    (?:if|needs):/m);
   for (const command of [
     'npm ci',
     'npm run format:check',
@@ -457,14 +469,23 @@ it('keeps core verification unconditional and browser jobs dependent on successf
     'npm test',
     'npm run build',
   ])
-    expect(verify?.split('\n').map((line) => line.trim())).toContain(
-      `run: ${command}`,
+    assert.ok(
+      verify
+        .split('\n')
+        .map((line) => line.trim())
+        .includes(`run: ${command}`),
     );
   const browsers = workflow.split('\n  browser-acceptance:\n')[1];
-  expect(browsers).toContain('needs: [classify, verify]');
-  expect(browsers).toContain(
-    "if: needs.classify.outputs.browser_required == 'true'",
+  assert.ok(browsers.includes('needs: [classify, verify]'));
+  assert.ok(
+    browsers.includes("if: needs.classify.outputs.browser_required == 'true'"),
   );
-  expect(browsers).toContain('browser: [msedge, chrome]');
-  expect(workflow).toContain('branches: [main, codex/task-001-bootstrap]');
+  assert.ok(browsers.includes('browser: [msedge, chrome]'));
+  assert.ok(workflow.includes('branches: [main, codex/task-001-bootstrap]'));
+  assert.ok(
+    workflow
+      .split('\n  classify:\n')[1]
+      .split('\n  verify:\n')[0]
+      .includes('run: node --test .github/ci/path-classifier.test.mjs'),
+  );
 });
