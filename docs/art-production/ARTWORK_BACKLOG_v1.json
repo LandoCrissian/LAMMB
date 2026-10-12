@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.7.0",
+  "backlogVersion": "0.8.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -177,6 +177,13 @@
       "sha256": "b877cfddb0cc6b86d8f9df61bbf9d9c5a1c8c546e120516e3cc40be914eb1571",
       "bytes": 5982,
       "kind": "TECHNICAL_ART_REVIEW"
+    },
+    {
+      "id": "evidence-stage28-owner-decisions",
+      "path": "reports/TASK_028_STAGE28_PREPARATION_001/OWNER_DECISIONS.json",
+      "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0",
+      "bytes": 2041,
+      "kind": "OWNER_ART_DECISION_TRANSCRIPTION"
     }
   ],
   "items": [
@@ -4827,7 +4834,7 @@
         }
       ],
       "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-bomber"],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "PRODUCTION_CANDIDATE",
       "knownLimitations": [
@@ -4840,7 +4847,7 @@
         "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
         "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
       ],
-      "nextAction": "OWNER_ART_REVIEW_THEN_SOURCE_SPECIFIC_POSE_GARMENT_REGISTRATION",
+      "nextAction": "DEVELOPMENT_ONLY_COLLAR_SHIFT_AUTHORING_PROPOSAL_THEN_OWNER_REGISTRATION_REVIEW",
       "ownerDecisionHistory": [
         {
           "id": "stage27-generation-authorization-01-collar-shift",
@@ -4857,12 +4864,20 @@
           "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
           "evidence": "evidence-stage27-generation",
           "date": "2026-10-12T15:22:01.164Z"
+        },
+        {
+          "id": "stage28-owner-decision-backlog-study27-collar-shift",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage28-owner-decisions",
+          "date": "2026-10-12T15:53:15.448Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "PRODUCTION_CANDIDATE",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "ART_DIRECTION_APPROVED",
         "provenanceEvidence": "evidence-stage27-generation",
         "compatibilityRestrictions": [
           "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
@@ -4913,7 +4928,7 @@
         "lammb-expressions-amused",
         "lammb-clothing-shell"
       ],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "NEEDS_REFINEMENT",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "NEEDS_REFINEMENT",
       "knownLimitations": [
@@ -4926,7 +4941,7 @@
         "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
         "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
       ],
-      "nextAction": "OWNER_REVIEW_OF_WARDROBE_VALUE_AND_SEPARATELY_AUTHORIZED_STRONGER_EMOTIONAL_CONCEPT",
+      "nextAction": "OWNER_REVIEW_OF_DISTINCT_EXPRESSION_PLAN_NO_AUTOMATIC_GENERATION",
       "ownerDecisionHistory": [
         {
           "id": "stage27-generation-authorization-02-delighted-conspirator",
@@ -4943,12 +4958,20 @@
           "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
           "evidence": "evidence-stage27-generation",
           "date": "2026-10-12T15:22:01.164Z"
+        },
+        {
+          "id": "stage28-owner-decision-backlog-study27-delighted-conspirator",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage28-owner-decisions",
+          "date": "2026-10-12T15:53:15.448Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "NEEDS_REFINEMENT",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "NEEDS_REFINEMENT",
         "provenanceEvidence": "evidence-stage27-generation",
         "compatibilityRestrictions": [
           "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
@@ -4999,7 +5022,7 @@
         "lammb-clothing-long-coat",
         "lammb-environments-lab"
       ],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "PRODUCTION_CANDIDATE",
       "knownLimitations": [
@@ -5012,7 +5035,7 @@
         "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
         "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
       ],
-      "nextAction": "OWNER_ART_REVIEW_THEN_AUTHORED_ENVIRONMENT_LIGHTING_AND_VISIBLE_TRAIT_REGISTRATION",
+      "nextAction": "DEVELOPMENT_ONLY_OBSERVER_AUTHORING_PROPOSAL_THEN_OWNER_REGISTRATION_REVIEW",
       "ownerDecisionHistory": [
         {
           "id": "stage27-generation-authorization-03-after-hours-observer",
@@ -5029,12 +5052,20 @@
           "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
           "evidence": "evidence-stage27-generation",
           "date": "2026-10-12T15:22:01.164Z"
+        },
+        {
+          "id": "stage28-owner-decision-backlog-study27-after-hours-observer",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage28-owner-decisions",
+          "date": "2026-10-12T15:53:15.448Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "PRODUCTION_CANDIDATE",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "ART_DIRECTION_APPROVED",
         "provenanceEvidence": "evidence-stage27-generation",
         "compatibilityRestrictions": [
           "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",

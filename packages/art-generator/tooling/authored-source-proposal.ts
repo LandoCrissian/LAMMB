@@ -35,7 +35,12 @@ export const authoredSourceProposalSchema = z
           backlogId: id,
           sourceId: id,
           sourceSha256: sha256Schema,
-          family: z.enum(['AMUSED_HOODIE', 'LAB_COAT']),
+          family: z.enum([
+            'AMUSED_HOODIE',
+            'LAB_COAT',
+            'COLLAR_SHIFT',
+            'AFTER_HOURS_OBSERVER',
+          ]),
           visibleTraitIds: z.array(id).min(2).max(3),
           composition: z.literal('IMMUTABLE_AUTHORED_FULL_FRAME_ONLY'),
           poseContactRegistration: z.literal('NOT_VALIDATED'),
@@ -63,6 +68,7 @@ export const authoredSourceProposalSchema = z
 const families = {
   AMUSED_HOODIE: {
     backlogId: 'backlog-study25-amused',
+    referenceCount: 2,
     traits: [
       'lammb-base-anatomy-sheep',
       'lammb-expressions-amused',
@@ -71,7 +77,22 @@ const families = {
   },
   LAB_COAT: {
     backlogId: 'backlog-study25-lab-coat',
+    referenceCount: 2,
     traits: ['lammb-base-anatomy-sheep', 'lammb-clothing-long-coat'],
+  },
+  COLLAR_SHIFT: {
+    backlogId: 'backlog-study27-collar-shift',
+    referenceCount: 3,
+    traits: ['lammb-base-anatomy-sheep', 'lammb-clothing-bomber'],
+  },
+  AFTER_HOURS_OBSERVER: {
+    backlogId: 'backlog-study27-after-hours-observer',
+    referenceCount: 2,
+    traits: [
+      'lammb-base-anatomy-sheep',
+      'lammb-clothing-long-coat',
+      'lammb-environments-lab',
+    ],
   },
 } as const;
 
@@ -162,7 +183,7 @@ export function resolveAuthoredSourceProposals(
       ].includes(s.role),
     );
     requireProof(
-      references.length === 2 &&
+      references.length === family.referenceCount &&
         references.filter((s) => s.role === 'PRIMARY_RASTER_REFERENCE')
           .length === 1,
       'PROPOSAL_REFERENCES',

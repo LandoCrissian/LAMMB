@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "lammb-proposed-art-studies/1.0.0",
+  "purpose": "OWNER_REVIEW_PLAN_ONLY",
+  "generationAuthorized": false,
+  "imagegenCallsThisTask": 0,
+  "productionPromotionAuthorized": false,
+  "collectionSupply": 5280,
+  "traitFrequenciesChanged": false,
+  "grailReservationsChanged": false,
+  "executionGate": "Future owner authorization plus verified included usage before each call; no paid API, purchases or automatic retries.",
+  "framing": "Character-first waist-up square/circle presentation. Intentional cropping acceptable; two percent/eight percent are diagnostics, not OpenSea requirements.",
+  "studies": [
+    {
+      "id": "stage28-plan-01-soft-chaos",
+      "title": "Soft Chaos / caught-in-the-act delight",
+      "focus": "CUTE_EXPRESSIVE",
+      "references": [
+        {
+          "backlogId": "backlog-approved-three-quarter",
+          "sourceId": "lammb-audit-approved-three-quarter",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_THREE_QUARTER_IDENTITY"
+        },
+        {
+          "backlogId": "backlog-study25-amused",
+          "sourceId": "source-stage25-01-amused",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_FACIAL_MATERIAL_AND_PLAYFULNESS"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-crewneck"
+      ],
+      "unresolvedMetadata": [
+        "Caught-in-the-act surprise is a working expression direction, not a new approved Expression value. Map only after actual visible-output/owner review."
+      ],
+      "sourceRestrictions": [
+        "Authored pose/expression and crewneck full frame; no face, expression or contact layers.",
+        "Inclusive appeal is a proposed design hypothesis; no gender attribute or eyelashes-only interpretation."
+      ],
+      "prompt": "Create ONE distinctive cute and expressive LAMMB waist-up study from the actual raster references. Image 1 is the primary approved three-quarter species identity; image 2 supports freckled muzzle material, recognizable green eyes and playful attitude, not its existing tilted knowing-smile pose. Portray this established sheep caught in an absurdly harmless mischief: shoulders hunched slightly in bashful excitement, head turned three-quarter toward the viewer, one raised brow and lifted upper lid paired with one softly squinting delighted eye, cheeks lifted, and a small astonished sheep mouth rather than the familiar closed smirk or knowing half-laugh. Let the eye/cheek/muzzle coordination convey a warm cheeky personality clearly at 64px. Maintain the original compact curved sheep muzzle, low lateral ears, coherent wool roots and recognizable adult-cartoon proportions; cute comes from emotion and soft tactile material, not a new juvenile mascot skull. Wear a loose ribbed black crewneck with an off-center neckline fold and relaxed sleeves. Keep the bright ivory wool envelope clean, the head dominant and the quiet graphite backdrop subordinate. Genuine perspective-consistent three-quarter anatomy, waist-up portrait with practical square/circular readability. No human upper front teeth, human hands, rabbit ears, monkey muzzle, gigantic ordinary mascot eyes, crown, text, logo, accessories or new mutation. Do not recreate Amused with a recolor; the caught-in-the-act emotional silhouette must visibly differ.",
+      "acceptance": [
+        "Warm playful surprise reads at 64px without depending on props or a caption.",
+        "Different coordinated eyelid/cheek/mouth response from Amused and unrefined Delighted.",
+        "Recognizable ovine face and adult LAMMB personality, no human upper incisor row.",
+        "Three-quarter shoulder/hunched posture and crewneck silhouette distinguish the source."
+      ]
+    },
+    {
+      "id": "stage28-plan-02-storm-warden",
+      "title": "Storm Warden / intimidating technical streetwear",
+      "focus": "BOLD_INTIMIDATING_STREETWEAR",
+      "references": [
+        {
+          "backlogId": "backlog-approved-stage8-01-three-quarter-right",
+          "sourceId": "lammb-audit-approved-stage8-01-three-quarter-right",
+          "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-01-three-quarter-right-native.png",
+          "sha256": "b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_APPROVED_THREE_QUARTER_RIGHT_IDENTITY"
+        },
+        {
+          "backlogId": "backlog-broad-ash",
+          "sourceId": "lammb-audit-broad-ash",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-02-broad-offset-crown-ash-native.png",
+          "sha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_BROAD_ASH_WOOL_ONLY"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-lab-jacket"
+      ],
+      "unresolvedMetadata": [
+        "Broad Ash, Defiant and Midnight Signal are candidate directions; only emit facets actually visible and verified in future output.",
+        "No new utility, lore rank, pose or rarity attributes."
+      ],
+      "sourceRestrictions": [
+        "Integrated authored wool/pose/technical jacket source; no ordinary hoodie layer or tag-contact inheritance.",
+        "Keep the primary face authoritative; Ash reference informs existing wool envelope/material only."
+      ],
+      "prompt": "Create ONE bold intimidating LAMMB streetwear character, using actual input 1 as the primary approved three-quarter-right identity and input 2 only for existing Broad Ash wool envelope/material. Use a grounded three-quarter stance with the near shoulder forward, chin slightly lowered and gaze lifted directly toward the viewer. Give the sheep a firm defiant mouth and coordinated narrowed heavy green eyelids, controlled confidence rather than a generic angry monster. Preserve the recognizable compact ovine muzzle, low lateral ears and characteristic facial proportions. Design the existing Lab Jacket interpretation as a strongly shaped graphite insulated technical garment: a high asymmetrical collar below the jaw, broad padded shoulders, purposeful panel seams and a compact zip. The jacket envelope must differ substantially from an ordinary hoodie at 64px. Keep wool/ear clearance and neck/shoulder joints coherent, with no armor helmet covering the sheep face. A restrained dark Midnight Signal-like abstract environment and one chartreuse edge light may support the intimidating silhouette, without hiding eyes or muzzle or adding signs. Premium tactile cloth and wool, intentional folds, restrained bloom, waist-up head-led square/circular portrait. No random wires, extra limbs, human hands, heavy jewelry, crown, text/logo, generic robot/skull substitution, pixel damage or new structural mutation. Intimidation must come from anatomy-consistent stance, eyes and garment silhouette, not more accessories.",
+      "acceptance": [
+        "Silhouette, shoulder/collar line and direct defiant gaze read as a distinct character at 64px.",
+        "Muzzle and eye anatomy remain sheep-specific and visible under shadow.",
+        "Technical Lab Jacket envelope clearly differs from hoodie, bomber and reflective-shell studies.",
+        "No unsupported background/eye/wool/rarity facet is assigned before output review."
+      ]
+    },
+    {
+      "id": "stage28-plan-03-coil-cascade",
+      "title": "Coil Cascade / asymmetric rolled-wool envelope",
+      "focus": "UNUSUAL_WOOL_SILHOUETTE",
+      "references": [
+        {
+          "backlogId": "backlog-approved-three-quarter",
+          "sourceId": "lammb-audit-approved-three-quarter",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_APPROVED_THREE_QUARTER_IDENTITY"
+        },
+        {
+          "backlogId": "backlog-rolled-locks",
+          "sourceId": "lammb-audit-rolled-locks",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-03-rolled-locks-ivory-native.png",
+          "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_ORIGINAL_APPROVED_ROLLED_WOOL_ROOTS_ONLY"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-locks",
+        "lammb-clothing-crewneck"
+      ],
+      "unresolvedMetadata": [
+        "Working silhouette title is not a new wool/anatomy ID. Existing Rolled Locks rules and headwear exclusions remain unchanged."
+      ],
+      "sourceRestrictions": [
+        "Three to five rooted sheep-wool rolls within existing Rolled Locks; no human hair, anatomical ear elongation or unapproved mutation.",
+        "The unrefined Stage 25 evolution and rejected extraction results are not positive raster inputs.",
+        "Authored whole frame first; no automatic alpha wool extraction or independent layer registration."
+      ],
+      "prompt": "Create ONE unusual but coherent LAMMB rolled-wool silhouette study from the actual raster references. Input 1 anchors the approved three-quarter skull, muzzle, green eye construction and low lateral ears; input 2 supplies original approved rolled-wool roots and fibrous material, not its familiar three dominant front-coil arrangement. Build a visibly different asymmetric envelope with five clearly differentiated rooted wool rolls: a high oblique back roll, two staggered medium rolls descending along one temple, and two lower compact overlapping rolls on the opposite crown side. Different diameters, oblique curl centers and open pockets of negative space must form a cascading diagonal contour readable at 64px and 128px. Keep continuous sheep-wool roots, soft compressed fibers and believable curl-to-curl shadows; the wool is not plastic tubes, polished shells, braids or dreadlocks. All rolls remain connected to the existing crown/temple wool distribution, with eyes and ear roots unobstructed. Preserve the exact species proportions and expressive unimpressed face while a subtle opposite shoulder lean balances the wool envelope. Use the same ivory material, simple black crewneck and established studio light so the variation comes from geometry, not color. Full major ear/crown contours where feasible, head-led waist-up square/circular portrait. Do not silently lengthen ears, add horns or create a new anatomical mutation. No cap/beanie, crown, accessories, lettering, pixel effects, extra eyes/ears or generic sheep redesign. The result must not repeat the failed straight-row/three-front-coil evolution.",
+      "acceptance": [
+        "Five unequal rooted rolls and diagonal cascading envelope visibly differ from the older rolled source at 64px.",
+        "No floating wool, disconnected roots, plastic-looking coils, duplicated ears or hidden eyes.",
+        "Existing Rolled Locks metadata/headwear constraints retained; no new color or anatomy trait.",
+        "Owner reviews silhouette differentiation before any registration or further generation."
+      ]
+    }
+  ]
+}
