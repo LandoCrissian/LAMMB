@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "lammb-logical-capacity/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "supply": 5280,
+  "allValues": {
+    "theoretical": 13271040,
+    "structural": 5907744,
+    "evaluatedLeaves": 368652,
+    "components": [
+      {
+        "categories": [
+          "base_anatomy",
+          "mutations",
+          "eyes",
+          "wool",
+          "expressions",
+          "clothing",
+          "accessories"
+        ],
+        "theoretical": 368640,
+        "evaluated": 368640,
+        "valid": 164104,
+        "mutationCounts": {
+          "dev-lammb-mutations-none": 34272,
+          "dev-lammb-mutations-skeletal": 21952,
+          "dev-lammb-mutations-cybernetic": 31584,
+          "dev-lammb-mutations-magma": 4872,
+          "dev-lammb-mutations-crystalline": 31584,
+          "dev-lammb-mutations-botanical": 32256,
+          "dev-lammb-mutations-void": 6048,
+          "dev-lammb-mutations-multi-eye": 1536
+        }
+      },
+      {
+        "categories": ["pixel_corruption"],
+        "theoretical": 6,
+        "evaluated": 6,
+        "valid": 6,
+        "mutationCounts": {}
+      },
+      {
+        "categories": ["environments"],
+        "theoretical": 6,
+        "evaluated": 6,
+        "valid": 6,
+        "mutationCounts": {}
+      }
+    ],
+    "byMutation": {
+      "dev-lammb-mutations-none": 1233792,
+      "dev-lammb-mutations-skeletal": 790272,
+      "dev-lammb-mutations-cybernetic": 1137024,
+      "dev-lammb-mutations-magma": 175392,
+      "dev-lammb-mutations-crystalline": 1137024,
+      "dev-lammb-mutations-botanical": 1161216,
+      "dev-lammb-mutations-void": 217728,
+      "dev-lammb-mutations-multi-eye": 55296
+    },
+    "method": "EXACT_CONSTRAINT_COMPONENT_ENUMERATION_EXISTING_ENGINE"
+  },
+  "ordinary": {
+    "theoretical": 10160640,
+    "structural": 5852448,
+    "evaluatedLeaves": 282252,
+    "components": [
+      {
+        "categories": [
+          "base_anatomy",
+          "mutations",
+          "eyes",
+          "wool",
+          "expressions",
+          "clothing",
+          "accessories"
+        ],
+        "theoretical": 282240,
+        "evaluated": 282240,
+        "valid": 162568,
+        "mutationCounts": {
+          "dev-lammb-mutations-none": 34272,
+          "dev-lammb-mutations-skeletal": 21952,
+          "dev-lammb-mutations-cybernetic": 31584,
+          "dev-lammb-mutations-magma": 4872,
+          "dev-lammb-mutations-crystalline": 31584,
+          "dev-lammb-mutations-botanical": 32256,
+          "dev-lammb-mutations-void": 6048
+        }
+      },
+      {
+        "categories": ["pixel_corruption"],
+        "theoretical": 6,
+        "evaluated": 6,
+        "valid": 6,
+        "mutationCounts": {}
+      },
+      {
+        "categories": ["environments"],
+        "theoretical": 6,
+        "evaluated": 6,
+        "valid": 6,
+        "mutationCounts": {}
+      }
+    ],
+    "byMutation": {
+      "dev-lammb-mutations-none": 1233792,
+      "dev-lammb-mutations-skeletal": 790272,
+      "dev-lammb-mutations-cybernetic": 1137024,
+      "dev-lammb-mutations-magma": 175392,
+      "dev-lammb-mutations-crystalline": 1137024,
+      "dev-lammb-mutations-botanical": 1161216,
+      "dev-lammb-mutations-void": 217728
+    },
+    "method": "EXACT_CONSTRAINT_COMPONENT_ENUMERATION_EXISTING_ENGINE"
+  },
+  "reservedVectors": 6,
+  "reservedOutsideOrdinary": 1,
+  "constructorSelectableVectors": 5852449,
+  "productionRegisteredCount": 0,
+  "artworkCapacityClaimed": false,
+  "frequencyFeasibleCapacityClaimed": false,
+  "visualUniquenessClaimed": false,
+  "runtimeMs": 1505.7079999999999,
+  "peakRssMiB": 78.625
+}

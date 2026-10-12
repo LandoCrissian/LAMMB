@@ -39,6 +39,7 @@ export const artworkBacklogSchema = z
       '0.6.0',
       '0.7.0',
       '0.8.0',
+      '0.9.0',
     ]),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
@@ -395,7 +396,8 @@ export function validateArtworkStudyAppend(previous: unknown, next: unknown) {
   const generationTransition =
     (before.backlogVersion === '0.2.0' && after.backlogVersion === '0.3.0') ||
     (before.backlogVersion === '0.4.0' && after.backlogVersion === '0.5.0') ||
-    (before.backlogVersion === '0.6.0' && after.backlogVersion === '0.7.0');
+    (before.backlogVersion === '0.6.0' && after.backlogVersion === '0.7.0') ||
+    (before.backlogVersion === '0.8.0' && after.backlogVersion === '0.9.0');
   if (
     !generationTransition ||
     added.length < 1 ||

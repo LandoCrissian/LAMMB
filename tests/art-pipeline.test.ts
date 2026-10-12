@@ -11,7 +11,7 @@ import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.4.0.json'
 import expandedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.5.0.json';
 import stage26Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.6.0.json';
 import stage27Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.7.0.json';
-import stage28Backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage28Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.8.0.json';
 import stage28OwnerDecisions from '../docs/art-production/STAGE28_OWNER_DECISIONS.json';
 import stage28Proposals from '../packages/art-generator/fixtures/stage28-authored-proposals.json';
 import stage28NextStudies from '../docs/art-production/STAGE28_NEXT_STUDIES.json';

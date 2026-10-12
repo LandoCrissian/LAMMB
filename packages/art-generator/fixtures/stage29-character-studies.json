@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "lammb-character-study-metadata/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "productionPromotionAuthorized": false,
+  "sourceBacklogVersion": "0.9.0",
+  "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+  "studies": [
+    {
+      "backlogId": "backlog-study29-soft-chaos",
+      "sourceId": "source-stage29-01-soft-chaos",
+      "imageSha256": "5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-crewneck"
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Study soft-chaos",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Crewneck"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "b2cf8190810117b9483f9cc6a288cd98e3596aeab6b085423c41b479aa4b3bf2",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    },
+    {
+      "backlogId": "backlog-study29-storm-warden",
+      "sourceId": "source-stage29-02-storm-warden",
+      "imageSha256": "13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-lab-jacket"
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Study storm-warden",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Lab Jacket"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "71405f4b566f693dadd1ff8d27bb0a93f5a6f82bcfad3be410130f9457f3e6df",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    },
+    {
+      "backlogId": "backlog-study29-coil-cascade",
+      "sourceId": "source-stage29-03-coil-cascade",
+      "imageSha256": "498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-locks",
+        "lammb-clothing-hoodie"
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Study coil-cascade",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Rolled Locks"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "c006c2e50389349ceec0df178b1fee426118fd65b64e07c805e58dc1566e73c2",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    }
+  ]
+}
