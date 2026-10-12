@@ -30,7 +30,14 @@ const source = z.strictObject({
 export const artworkBacklogSchema = z
   .strictObject({
     schemaVersion: z.literal('lammb-artwork-backlog/1.0.0'),
-    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0']),
+    backlogVersion: z.enum([
+      '0.1.0',
+      '0.2.0',
+      '0.3.0',
+      '0.4.0',
+      '0.5.0',
+      '0.6.0',
+    ]),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
     collectionSupply: z.literal(5280),
@@ -303,9 +310,11 @@ export function validateArtworkOwnerDecisionUpdate(
   };
   const addedEvidence = after.evidence.slice(before.evidence.length);
   const evidence = addedEvidence[0];
+  const ownerTransition =
+    (before.backlogVersion === '0.3.0' && after.backlogVersion === '0.4.0') ||
+    (before.backlogVersion === '0.5.0' && after.backlogVersion === '0.6.0');
   if (
-    before.backlogVersion !== '0.3.0' ||
-    after.backlogVersion !== '0.4.0' ||
+    !ownerTransition ||
     !same(root(before), root(after)) ||
     addedEvidence.length !== 1 ||
     evidence?.kind !== 'OWNER_ART_DECISION_TRANSCRIPTION' ||
