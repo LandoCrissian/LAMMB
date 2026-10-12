@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.2.0",
+  "backlogVersion": "0.3.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -100,6 +100,27 @@
       "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223",
       "bytes": 1526,
       "kind": "Explicit Stage22 owner message transcription. recordedAt is capture time, not an inferred original approval timestamp. Not signed owner authentication."
+    },
+    {
+      "id": "evidence-stage23-generation",
+      "path": "reports/TASK_023_STAGE23_EVOLUTION_001/GENERATION_PROVENANCE.json",
+      "sha256": "5a64364a9cd6eff9e7f74b45008c5d58f84756168786dacb55c216392dffe736",
+      "bytes": 12449,
+      "kind": "IMAGEGEN_GENERATION_PROVENANCE"
+    },
+    {
+      "id": "evidence-stage23-artistic-qa",
+      "path": "reports/TASK_023_STAGE23_EVOLUTION_001/ARTISTIC_QA.json",
+      "sha256": "2a08c8032559799828a72357a7ab322915f310bd92dac5763611e0e710ec73a2",
+      "bytes": 6161,
+      "kind": "TECHNICAL_ART_REVIEW"
+    },
+    {
+      "id": "evidence-stage23-native-decode",
+      "path": "reports/TASK_023_STAGE23_EVOLUTION_001/NATIVE_OUTPUTS.json",
+      "sha256": "8e6b326bde9aae712c3f3d11b5e39364a80ede57685d7756a8d84668690eea19",
+      "bytes": 1577,
+      "kind": "NATIVE_INTEGRITY_RECEIPT"
     }
   ],
   "items": [
@@ -4147,6 +4168,256 @@
       "nextAction": "PRESERVE_HISTORICAL_REFERENCE_OR_NEGATIVE_EVIDENCE",
       "ownerDecisionHistory": [],
       "finalProductionApproval": null
+    },
+    {
+      "id": "backlog-study23-ovine-skeletal",
+      "label": "Stage 23 ovine skeletal construction",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "SKELETAL",
+      "sources": [
+        {
+          "id": "source-stage23-01-ovine-skeletal-reference-1",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-01-ovine-skeletal-reference-2",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-01-ovine-skeletal",
+          "path": "output/TASK_023_STAGE23_STUDIES_001/01-ovine-skeletal-native.png",
+          "sha256": "b42e616701c2b1d9ec8b0c9ad45e6941451d8a84ef7a3187c1923b57631a049f",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-hoodie",
+        "lammb-mutations-skeletal"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "NEEDS_REFINEMENT",
+      "knownLimitations": [
+        "Lower front teeth remain tall, regular rounded columns; sheep-specific fan/splay, flattened incisiform shape and anatomical total cannot be certified from this view. Native dental ROI requires ovine expert and owner review.",
+        "Full wool crown and abundant wool through cheek/neck cavities conceal parts of the jaw articulation and cervical anatomy. Vertebral connection looks continuous, but correct atlas/axis and joint structure are not established.",
+        "Longer muzzle is an intentional family change; nose/muzzle projection and skull proportions need owner acceptance rather than being declared canonical."
+      ],
+      "requiredImprovements": [
+        "Authored full-frame study only; no extraction, anatomy replacement layer or production registration.",
+        "No positive production/reference use until owner art review; older skeletal rejections remain quarantined.",
+        "No definitive Skeletal metadata eligibility or ordinary trait-vector certification until the anatomical concerns are resolved."
+      ],
+      "nextAction": "OWNER_REVIEW_AND_OVINE_DENTAL_NECK_QA_BEFORE_ANY_NEW_REPAIR",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage23-generation-authorization-01-ovine-skeletal",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One bounded reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:14:49.297Z"
+        },
+        {
+          "id": "stage23-technical-art-review-01-ovine-skeletal",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:15:29.023Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "NEEDS_REFINEMENT",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage23-generation",
+        "compatibilityRestrictions": [
+          "Authored full-frame study only; no extraction, anatomy replacement layer or production registration.",
+          "No positive production/reference use until owner art review; older skeletal rejections remain quarantined.",
+          "No definitive Skeletal metadata eligibility or ordinary trait-vector certification until the anatomical concerns are resolved."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study23-pixel-drip-evolution",
+      "label": "Stage 23 localized Pixel Drip evolution",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "PIXEL_CORRUPTION",
+      "sources": [
+        {
+          "id": "source-stage23-02-pixel-drip-evolution-reference-1",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-02-pixel-drip-evolution-reference-2",
+          "path": "output/TASK_021_STAGE21_STUDIES_001/03-refined-pixel-drip-native.png",
+          "sha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-02-pixel-drip-evolution",
+          "path": "output/TASK_023_STAGE23_STUDIES_001/02-pixel-drip-evolution-native.png",
+          "sha256": "33094916e4c946d5f794d47cd078f78ea63b8284bd7fe6b5227311a37b99d74d",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-hoodie"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Small free-floating chartreuse cubes read as decorative overflow and lose definition at 64px; owner may prefer fewer particles.",
+        "Hoodie is newly authored with a zip/seam interpretation, not a pixel-exact edit of the original garment.",
+        "Effect coverage lacks reviewed subject/effect masks; no TOUCH/BLEED/FRACTURE tier or exact CCFF00 raster palette has been certified."
+      ],
+      "requiredImprovements": [
+        "Authored full-frame only; corruption is integrated into wool and garment and cannot be treated as a transferable effect layer.",
+        "Omit Pixel Corruption facet until semantic coverage and existing progression definition are reviewed.",
+        "No certified eye, background, expression or wool metadata value from visual approximation alone."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_SUBJECT_AND_EFFECT_MASK_COVERAGE_REVIEW",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage23-generation-authorization-02-pixel-drip-evolution",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One bounded reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:16:09.859Z"
+        },
+        {
+          "id": "stage23-technical-art-review-02-pixel-drip-evolution",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:16:43.430Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage23-generation",
+        "compatibilityRestrictions": [
+          "Authored full-frame only; corruption is integrated into wool and garment and cannot be treated as a transferable effect layer.",
+          "Omit Pixel Corruption facet until semantic coverage and existing progression definition are reviewed.",
+          "No certified eye, background, expression or wool metadata value from visual approximation alone."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study23-utility-vest",
+      "label": "Stage 23 structured utility vest",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "CLOTHING",
+      "sources": [
+        {
+          "id": "source-stage23-03-utility-vest-reference-1",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-03-utility-vest-reference-2",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage23-03-utility-vest",
+          "path": "output/TASK_023_STAGE23_STUDIES_001/03-utility-vest-native.png",
+          "sha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-utility-vest"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Lower waist/vest hem is outside the intentional portrait crop; pocket hardware becomes indistinct at 64px.",
+        "This is a proposed authored interpretation of Utility Vest, not an approved layer or complete compatibility vector.",
+        "Some facial and wool details differ from the source because ImageGen authored the whole image; no exact pixel lock is claimed."
+      ],
+      "requiredImprovements": [
+        "Pose-specific authored full-frame with integrated crewneck and vest; do not stack two independent Clothing values.",
+        "No cloth/neck joint portability or ordinary hoodie contact reuse demonstrated.",
+        "Existing Utility Vest ID is a proposed mapping; owner artistic review and source-family registration remain required."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_POSE_SPECIFIC_CLOTHING_SOURCE_REGISTRATION",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage23-generation-authorization-03-utility-vest",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One bounded reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:17:14.362Z"
+        },
+        {
+          "id": "stage23-technical-art-review-03-utility-vest",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
+          "evidence": "evidence-stage23-generation",
+          "date": "2026-10-12T01:17:50.910Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage23-generation",
+        "compatibilityRestrictions": [
+          "Pose-specific authored full-frame with integrated crewneck and vest; do not stack two independent Clothing values.",
+          "No cloth/neck joint portability or ordinary hoodie contact reuse demonstrated.",
+          "Existing Utility Vest ID is a proposed mapping; owner artistic review and source-family registration remain required."
+        ]
+      }
     }
   ]
 }

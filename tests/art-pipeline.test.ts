@@ -4,12 +4,15 @@ import { mkdtemp, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve as resolvePath } from 'node:path';
 import sharp from 'sharp';
-import backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+// Keep Stage 22's pinned registration evidence on its immutable snapshot.
+import backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.2.0.json';
+import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
 import { sha256Bytes } from '../packages/art-generator/src/canonical.ts';
 import {
   validateArtworkBacklog,
   validateArtworkBacklogUpdate,
+  validateArtworkStudyAppend,
 } from '../packages/art-generator/tooling/artwork-backlog.ts';
 import ownerDecisions from '../docs/art-production/STAGE22_OWNER_DECISIONS.json';
 import authoredRegistry from '../packages/art-generator/fixtures/stage22-authored-mutations.json';
@@ -30,6 +33,120 @@ import {
 
 // Synthetic fixtures for validation; no fixture here is an approved LAMMB trait.
 const digest = 'a'.repeat(64);
+describe('bounded new-study append and immutable registration snapshots', () => {
+  it('preserves the exact Stage 22 binding and all 109 historical records', () => {
+    expect(canonicalSha256(backlog)).toBe(authoredRegistry.backlogSha256);
+    const b = validateArtworkStudyAppend(backlog, currentBacklog);
+    expect(b.items).toHaveLength(112);
+    expect(b.items.slice(0, 109)).toEqual(backlog.items);
+    expect(b.evidence.slice(0, backlog.evidence.length)).toEqual(
+      backlog.evidence,
+    );
+    const added = b.items.slice(109);
+    expect(added.map((i) => i.studyReview?.qaClassification)).toEqual([
+      'NEEDS_REFINEMENT',
+      'PRODUCTION_CANDIDATE',
+      'PRODUCTION_CANDIDATE',
+    ]);
+    expect(added.every((i) => i.artisticApproval === 'UNREVIEWED')).toBe(true);
+    expect(added.every((i) => i.finalProductionApproval === null)).toBe(true);
+  });
+  it.each([
+    'remove historical item',
+    'rewrite rejected history',
+    'rewrite historical hash',
+    'rewrite evidence',
+    'change baseline',
+    'no additions',
+    'too many additions',
+    'unapproved primary',
+    'mismatched reference dimensions',
+    'duplicate new output',
+    'relabel old output',
+    'unbound generation evidence',
+    'undated QA',
+    'false art approval',
+    'production promotion',
+    'rejected QA positive source',
+    'provenance role substitution',
+  ])('rejects %s', (mode) => {
+    const b = structuredClone(currentBacklog);
+    const study = b.items[109]!;
+    const output = study.sources.at(-1)!;
+    if (mode === 'remove historical item') b.items.splice(0, 1);
+    if (mode === 'rewrite rejected history')
+      b.items.find(
+        (i) => i.id === 'backlog-study21-skeletal-correction',
+      )!.ownerDecisionHistory[0]!.scope = 'rewritten';
+    if (mode === 'rewrite historical hash')
+      b.items[0]!.sources[0]!.sha256 = digest;
+    if (mode === 'rewrite evidence') b.evidence[0]!.sha256 = digest;
+    if (mode === 'change baseline') b.mainSha = 'a'.repeat(40);
+    if (mode === 'no additions') b.items = b.items.slice(0, 109);
+    if (mode === 'too many additions') {
+      const extra = structuredClone(study);
+      extra.id = 'test-extra-study';
+      b.items.push(extra);
+    }
+    if (mode === 'unapproved primary') study.sources[0]!.sha256 = digest;
+    if (mode === 'mismatched reference dimensions')
+      study.sources[0]!.dimensions.width = 64;
+    if (mode === 'duplicate new output')
+      output.sha256 = b.items[110]!.sources.at(-1)!.sha256;
+    if (mode === 'relabel old output')
+      output.sha256 = backlog.items[0]!.sources[0]!.sha256;
+    if (mode === 'unbound generation evidence')
+      study.studyReview!.provenanceEvidence = 'missing-generation';
+    if (mode === 'undated QA') study.ownerDecisionHistory.at(-1)!.date = null;
+    if (mode === 'false art approval') {
+      study.artisticApproval = 'ART_DIRECTION_APPROVED';
+      study.ownerDecisionHistory[0]!.decision = 'ART_DIRECTION_APPROVED';
+    }
+    if (mode === 'production promotion')
+      study.productionRegistration = 'PRODUCTION_REGISTERED';
+    if (mode === 'rejected QA positive source') {
+      study.technicalStatus = 'REJECTED';
+      study.studyReview!.qaClassification = 'REJECTED';
+      study.ownerDecisionHistory.at(-1)!.decision = 'REJECTED';
+    }
+    if (mode === 'provenance role substitution')
+      b.evidence.at(-3)!.kind = 'OWNER_APPROVAL';
+    expect(() => validateArtworkStudyAppend(backlog, b)).toThrow();
+  });
+  it('quarantines a newly technically rejected study without changing old owner decisions', () => {
+    const b = structuredClone(currentBacklog),
+      study = b.items[109]!;
+    study.technicalStatus = 'REJECTED';
+    study.studyReview!.qaClassification = 'REJECTED';
+    study.ownerDecisionHistory.at(-1)!.decision = 'REJECTED';
+    study.sources.at(-1)!.role = 'NEGATIVE_QA_ONLY';
+    expect(
+      validateArtworkStudyAppend(backlog, b).items[109]!.artisticApproval,
+    ).toBe('UNREVIEWED');
+  });
+  it('validates the current specification while refusing it as the historical registry snapshot', () => {
+    const rawHash = sha256Bytes(
+      readFileSync(
+        new URL(
+          '../packages/art-generator/specs/lammb-traits-v1.json',
+          import.meta.url,
+        ),
+      ),
+    );
+    expect(
+      validateArtworkBacklog(currentBacklog, spec, rawHash).items,
+    ).toHaveLength(112);
+    expect(() =>
+      resolveAuthoredMutations(
+        authoredRegistry,
+        currentBacklog,
+        spec,
+        rawHash,
+        ownerDecisions,
+      ),
+    ).toThrow();
+  });
+});
 describe('durable artwork backlog approval and source boundaries', () => {
   const specHash = sha256Bytes(
     readFileSync(
