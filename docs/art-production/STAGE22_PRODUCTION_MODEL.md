@@ -2,6 +2,8 @@
 
 Stage 22 appends explicit owner decisions to the existing 109-item backlog, version 0.2.0. It does not replace the backlog or import unmerged PR #20 tooling. PR #21 remains the dependency branch. Stage 17's three compatible contact proofs and source registry stay unchanged. `STAGE22_OWNER_DECISIONS.json` captures the current owner message and exact output hashes; its timestamp is transcription time, not a reconstructed historical approval date. This is trusted-operator evidence, not signed owner authentication.
 
+Historical snapshot note: after PR #21 merged, Stage 23 preserved `ARTWORK_BACKLOG_v0.2.0.json` before appending new studies to the current backlog. Use that immutable snapshot with this Stage 22 registry. The pinned canonical digest, fixture, owner decisions and native source hashes remain unchanged; the newer backlog is deliberately rejected by this historical registry.
+
 ## Development source registration
 
 `packages/art-generator/fixtures/stage22-authored-mutations.json` and `tooling/mutation-registration.ts` form a narrow authored-frame declaration. Source approval, exact evidence bytes, native SHA256, generation provenance, actual PNG decoding and reviewed partial metadata are checked separately. The registry pins both the raw/canonical Trait Bible digests and canonical backlog snapshot; caller mutation during I/O is rejected. The existing 1254px/4MiB proof decoder limits remain. No source becomes a contact layer, complete eligible specimen or `PRODUCTION_REGISTERED` asset.

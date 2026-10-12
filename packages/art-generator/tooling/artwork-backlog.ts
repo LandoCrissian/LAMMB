@@ -30,7 +30,7 @@ const source = z.strictObject({
 export const artworkBacklogSchema = z
   .strictObject({
     schemaVersion: z.literal('lammb-artwork-backlog/1.0.0'),
-    backlogVersion: z.enum(['0.1.0', '0.2.0']),
+    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0']),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
     collectionSupply: z.literal(5280),
@@ -98,6 +98,18 @@ export const artworkBacklogSchema = z
             )
             .max(128),
           finalProductionApproval: z.null(),
+          studyReview: z
+            .strictObject({
+              qaClassification: z.enum([
+                'PRODUCTION_CANDIDATE',
+                'NEEDS_REFINEMENT',
+                'REJECTED',
+              ]),
+              ownerReviewStatus: z.literal('PENDING'),
+              provenanceEvidence: id,
+              compatibilityRestrictions: z.array(text).min(1).max(32),
+            })
+            .optional(),
         }),
       )
       .min(1)
@@ -158,6 +170,15 @@ export const artworkBacklogSchema = z
         !i.sources.some((s) => s.role === 'PRIMARY_RASTER_REFERENCE')
       )
         fail('Study requires primary raster reference');
+      if (
+        i.studyReview &&
+        (!evidence.has(i.studyReview.provenanceEvidence) ||
+          i.artisticApproval !== 'UNREVIEWED' ||
+          i.technicalStatus !== i.studyReview.qaClassification)
+      )
+        fail(
+          'Pending study review must bind provenance without owner approval',
+        );
     }
   });
 
@@ -201,6 +222,101 @@ export function validateArtworkBacklogUpdate(previous: unknown, next: unknown) {
       )
         throw new Error('BACKLOG_OWNER_TRANSITION');
     }
+  }
+  return after;
+}
+
+// Stage 23 adds new studies without rewriting the pinned Stage 22 snapshot.
+// This is a bounded append contract, separate from owner-decision transitions.
+export function validateArtworkStudyAppend(previous: unknown, next: unknown) {
+  const before = artworkBacklogSchema.parse(previous);
+  const after = artworkBacklogSchema.parse(next);
+  const same = (a: unknown, b: unknown) =>
+    JSON.stringify(a) === JSON.stringify(b);
+  const root = (b: typeof before) => {
+    const { backlogVersion, evidence, items, ...rest } = b;
+    void backlogVersion;
+    void evidence;
+    void items;
+    return rest;
+  };
+  const added = after.items.slice(before.items.length);
+  if (
+    before.backlogVersion !== '0.2.0' ||
+    after.backlogVersion !== '0.3.0' ||
+    added.length < 1 ||
+    added.length > 3 ||
+    !same(root(before), root(after)) ||
+    !before.items.every((i, index) => same(i, after.items[index])) ||
+    !before.evidence.every((e, index) => same(e, after.evidence[index]))
+  )
+    throw new Error('BACKLOG_STUDY_HISTORY_REWRITE');
+  const approved = before.items
+    .filter((i) => i.artisticApproval === 'ART_DIRECTION_APPROVED')
+    .flatMap((i) => i.sources)
+    .filter((s) =>
+      ['SOURCE_ARTWORK', 'GENERATED_NATIVE_STUDY'].includes(s.role),
+    );
+  const priorHashes = new Set(
+    before.items.flatMap((i) => i.sources.map((s) => s.sha256)),
+  );
+  const newEvidence = after.evidence.slice(before.evidence.length);
+  const outputHashes = new Set<string>();
+  for (const item of added) {
+    const review = item.studyReview;
+    const inputs = item.sources.filter((s) =>
+      [
+        'PRIMARY_RASTER_REFERENCE',
+        'SUPPORTING_APPROVED_RASTER_REFERENCE',
+      ].includes(s.role),
+    );
+    const outputs = item.sources.filter((s) => !inputs.includes(s));
+    if (
+      item.kind !== 'AUTHORIZED_NEW_STUDY' ||
+      item.artisticApproval !== 'UNREVIEWED' ||
+      !review ||
+      outputs.length !== 1 ||
+      inputs.filter((s) => s.role === 'PRIMARY_RASTER_REFERENCE').length !==
+        1 ||
+      !inputs.every((s) =>
+        approved.some(
+          (a) =>
+            a.path === s.path &&
+            a.sha256 === s.sha256 &&
+            same(a.dimensions, s.dimensions),
+        ),
+      ) ||
+      !newEvidence.some(
+        (e) =>
+          e.id === review.provenanceEvidence &&
+          e.kind === 'IMAGEGEN_GENERATION_PROVENANCE',
+      ) ||
+      !item.ownerDecisionHistory.some(
+        (h) =>
+          h.authority === 'TECHNICAL_ART_REVIEW' &&
+          h.decision === review.qaClassification &&
+          h.evidence === review.provenanceEvidence &&
+          h.date !== null,
+      ) ||
+      item.ownerDecisionHistory.some((h) =>
+        ['ART_DIRECTION_APPROVED', 'CONDITIONAL_ART_APPROVAL'].includes(
+          h.decision,
+        ),
+      )
+    )
+      throw new Error('BACKLOG_STUDY_PROVENANCE');
+    const output = outputs[0]!;
+    if (
+      !output.path.endsWith('.png') ||
+      output.role !==
+        (review.qaClassification === 'REJECTED'
+          ? 'NEGATIVE_QA_ONLY'
+          : 'GENERATED_NATIVE_STUDY') ||
+      priorHashes.has(output.sha256) ||
+      outputHashes.has(output.sha256)
+    )
+      throw new Error('BACKLOG_STUDY_OUTPUT');
+    outputHashes.add(output.sha256);
   }
   return after;
 }
