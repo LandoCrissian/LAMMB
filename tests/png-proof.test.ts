@@ -26,6 +26,22 @@ import recipeReviews from '../packages/art-generator/fixtures/stage30-recipe-rev
 import bindingEvidence from '../packages/art-generator/fixtures/stage31-trait-bindings.json';
 import sourceExtension from '../packages/art-generator/fixtures/stage31b-source-trait-extension.json';
 import metadataProposals from '../docs/art-production/STAGE31B_METADATA_PROPOSALS.json';
+import ownerSourceApprovals from '../docs/art-production/STAGE31C_OWNER_APPROVAL_HISTORY.json';
+import approvedSourceCatalog from '../packages/art-generator/fixtures/stage31c-approved-source-catalog.json';
+import completeRecipeSnapshots from '../docs/art-production/STAGE31C_COMPLETE_RECIPES.json';
+import {
+  developmentCatalog,
+  sourceBoundDevelopmentCatalog,
+} from '../packages/art-generator/fixtures/development-catalog.ts';
+import { simulationInputs } from '../packages/art-generator/src/production-spec.ts';
+import {
+  approvedSourceCatalogSchema,
+  createApprovedSourceCatalog,
+  createCompleteSourceRecipe,
+  sourceApprovalHistorySchema,
+  validateApprovedSourceCatalog,
+  validateCompleteSourceRecipe,
+} from '../packages/art-generator/tooling/approved-source-traits.ts';
 import { openSeaMetadataSchema } from '../packages/art-generator/src/opensea-metadata.ts';
 import {
   createSourceBoundMetadataProposal,
@@ -155,6 +171,389 @@ beforeAll(async () => {
     [jointSource.id, data[1]!],
     [maskSource.id, data[2]!],
   ]);
+});
+
+describe('Stage31C owner-approved source catalog and complete recipes', () => {
+  // Synthetic receipts test reconciliation/security only. Private native
+  // acceptance independently decodes and reconstructs all four real PNGs.
+  const raw = Buffer.alloc(1254 * 1254 * 3, 40);
+  const context = (i = 0) => {
+    const row = structuredClone(recipeReviews.recipes[i]!),
+      cohort = structuredClone(bindingEvidence),
+      proposal = structuredClone(sourceExtension),
+      history = structuredClone(ownerSourceApprovals),
+      out = Buffer.from('synthetic complete recipe ' + i),
+      e = traitBindingSchema.parse(cohort.records[i]!.evidence);
+    row.request.expectedOutputSha256 = sha256Bytes(out);
+    row.review.requestSha256 = canonicalSha256(row.request);
+    row.reviewSha256 = canonicalSha256(row.review);
+    e.outputSha256 = sha256Bytes(out);
+    e.requestSha256 = canonicalSha256(row.request);
+    e.reviewSha256 = row.reviewSha256;
+    e.decodedSourcePixelSha256 = sha256Bytes(raw);
+    for (const r of [...e.eyes.regions, ...e.background.regions])
+      r.pixelSha256 = measureNativeRegion(raw, 1254, 1254, r.roi).pixelSha256;
+    cohort.records[i] = {
+      ...cohort.records[i]!,
+      evidence: e,
+      evidenceSha256: canonicalSha256(e),
+    };
+    proposal.bindings[i]!.outputSha256 = e.outputSha256;
+    proposal.bindings[i]!.evidenceSha256 = canonicalSha256(e);
+    proposal.priorEvidenceCohortSha256 = canonicalSha256(cohort);
+    const sources = cohort.records.map(({ evidence: r, evidenceSha256 }) => ({
+      proofId: r.proofId,
+      sourceSha256: r.sourceSha256,
+      outputSha256: r.outputSha256,
+      evidenceSha256,
+      requestSha256: r.requestSha256,
+    }));
+    for (const event of history.events) {
+      event.proposalSha256 = canonicalSha256(proposal);
+      event.sources = structuredClone(sources);
+    }
+    history.events[1]!.previousEventSha256 = canonicalSha256(history.events[0]);
+    const catalogArgs: Parameters<typeof createApprovedSourceCatalog> = [
+        history,
+        proposal,
+        cohort,
+        spec,
+        canonicalSha256(history),
+        canonicalSha256(proposal),
+      ],
+      catalog = createApprovedSourceCatalog(...catalogArgs);
+    const recipeArgs: Parameters<typeof assessRegistrationReadiness> = [
+      e,
+      row,
+      spec,
+      raw,
+      out,
+      canonicalSha256(e),
+    ];
+    return {
+      row,
+      e,
+      cohort,
+      proposal,
+      history,
+      catalog,
+      catalogArgs,
+      recipeArgs,
+    };
+  };
+  const create = (c: ReturnType<typeof context>) =>
+    createCompleteSourceRecipe(c.catalog, c.catalogArgs, c.recipeArgs);
+  it('exports two unweighted source-approved traits alongside an unchanged generator catalog', () => {
+    expect(developmentCatalog.traits).toHaveLength(0);
+    expect(sourceBoundDevelopmentCatalog).toEqual(
+      approvedSourceCatalogSchema.parse(approvedSourceCatalog),
+    );
+    expect(sourceBoundDevelopmentCatalog.traits.map((t) => t.id)).toEqual([
+      'lammb-source-eyes-olive-green',
+      'lammb-source-environments-charcoal-studio-gradient',
+    ]);
+    for (const t of sourceBoundDevelopmentCatalog.traits) {
+      expect(t.sources).toHaveLength(4);
+      expect(t.selectionWeight).toBeNull();
+      expect(t.plannedCount).toBeNull();
+      expect(t.generatorEnabled).toBe(false);
+    }
+    expect(
+      simulationInputs(spec).catalog.traits.some((t) =>
+        t.id.includes('lammb-source-'),
+      ),
+    ).toBe(false);
+    expect(spec.traits).toHaveLength(66);
+    expect(
+      spec.traits.find((t) => t.id === 'lammb-eyes-radioactive')!
+        .visualDefinition,
+    ).toBe(
+      'Coherent CCFF00 irises with dark pupils, purposeful eyelids and restrained glow.',
+    );
+  });
+  it('pins the append-only proposal/approval chain to four exact historical sources', () => {
+    expect(canonicalSha256(ownerSourceApprovals)).toBe(
+      '229547e54995112ed5127597db9b1dd830b57fc889593240b0ab2d47164f84c9',
+    );
+    expect(canonicalSha256(approvedSourceCatalog)).toBe(
+      '961940a8df3ae8767fff9c5804455b5e954834f2ba32a24074eeb34567f2b2b3',
+    );
+    expect(ownerSourceApprovals.events[1]!.previousEventSha256).toBe(
+      canonicalSha256(ownerSourceApprovals.events[0]),
+    );
+    expect(() =>
+      validateApprovedSourceCatalog(
+        approvedSourceCatalog,
+        ownerSourceApprovals,
+        sourceExtension,
+        bindingEvidence,
+        spec,
+        canonicalSha256(ownerSourceApprovals),
+        canonicalSha256(sourceExtension),
+      ),
+    ).not.toThrow();
+    expect(sourceExtension.ownerDefinitionApproval).toBe('PENDING');
+    expect(
+      bindingEvidence.records.every(
+        (r) =>
+          r.evidence.eyes.bindingTraitId === null &&
+          r.evidence.background.bindingTraitId === null,
+      ),
+    ).toBe(true);
+  });
+  it('keeps four saved complete recipes bound to the native hashes, renderer and approved metadata', () => {
+    expect(completeRecipeSnapshots.completeMetadataRecipeCount).toBe(4);
+    expect(completeRecipeSnapshots.productionRegisteredCount).toBe(0);
+    expect(completeRecipeSnapshots.generatorActivatedTraitCount).toBe(0);
+    expect(completeRecipeSnapshots.records).toHaveLength(4);
+    for (const [i, r] of completeRecipeSnapshots.records.entries()) {
+      const e = bindingEvidence.records[i]!.evidence,
+        row = recipeReviews.recipes[i]!;
+      expect(r.sourceHashes.base).toBe(e.sourceSha256);
+      expect(r.outputSha256).toBe(e.outputSha256);
+      expect(r.evidenceSha256).toBe(bindingEvidence.records[i]!.evidenceSha256);
+      expect(r.approvedCatalogSha256).toBe(
+        canonicalSha256(approvedSourceCatalog),
+      );
+      expect(r.approvalHistorySha256).toBe(
+        canonicalSha256(ownerSourceApprovals),
+      );
+      expect(r.metadataSha256).toBe(canonicalSha256(r.metadata));
+      expect(r.rendererRecipeReference.requestSha256).toBe(
+        canonicalSha256(row.request),
+      );
+      expect(r.rendererRecipeReference.contactRegistrationSha256).toBe(
+        canonicalSha256(row.request.registration),
+      );
+      expect(openSeaMetadataSchema.safeParse(r.metadata).success).toBe(true);
+      expect(
+        r.metadata.attributes.filter((a) =>
+          ['Eyes', 'Background'].includes(a.trait_type),
+        ),
+      ).toEqual(approvedSourceCatalog.traits.map((t) => t.metadata));
+      expect(r.metadata.attributes).toContainEqual({
+        trait_type: 'Wool',
+        value: ['Ivory Curls', 'Ash Curls', 'Rolled Locks', 'Ivory Curls'][i],
+      });
+      expect(r.completeMetadata).toBe(true);
+      expect(r.productionRegistered).toBe(false);
+      expect(r.generatorEnabled).toBe(false);
+    }
+    expect(() =>
+      requireUniqueRegistrationOutputs(completeRecipeSnapshots.records),
+    ).not.toThrow();
+    expect(() =>
+      requireUniqueRegistrationOutputs([
+        completeRecipeSnapshots.records[0]!,
+        completeRecipeSnapshots.records[0]!,
+      ]),
+    ).toThrow('BINDING_DUPLICATE_OUTPUT');
+  });
+  it.each(['name', 'description', 'image', 'external_url', 'attributes'])(
+    'rejects missing required OpenSea fixture field: %s',
+    (field) => {
+      const metadata: Record<string, unknown> = structuredClone(
+        completeRecipeSnapshots.records[0]!.metadata,
+      );
+      delete metadata[field];
+      expect(openSeaMetadataSchema.safeParse(metadata).success).toBe(false);
+    },
+  );
+  it.each([0, 1, 2, 3])('completes only the approved native recipe %i', (i) => {
+    const c = context(i),
+      r = create(c);
+    expect(r.completeMetadata).toBe(true);
+    expect(r.unresolvedFacets).toEqual([]);
+    expect(r.traitVector).toHaveLength(9);
+    expect(
+      r.traitVector.filter((v) => v.state === 'VERIFIED_PRESENT'),
+    ).toHaveLength(7);
+    expect(
+      r.traitVector.filter((v) => v.state === 'VERIFIED_ABSENT'),
+    ).toHaveLength(2);
+    expect(r.traitVector.find((v) => v.category === 'eyes')!.traitId).toBe(
+      'lammb-source-eyes-olive-green',
+    );
+    expect(
+      r.traitVector.find((v) => v.category === 'environments')!.traitId,
+    ).toBe('lammb-source-environments-charcoal-studio-gradient');
+    expect(r.metadata.attributes).toHaveLength(8);
+    expect(r.metadata.attributes).toContainEqual({
+      trait_type: 'Eyes',
+      value: 'Olive Green',
+    });
+    expect(r.metadata.attributes).toContainEqual({
+      trait_type: 'Background',
+      value: 'Charcoal Studio Gradient',
+    });
+    expect(r.metadata.attributes).toContainEqual({
+      trait_type: 'Wool',
+      value: ['Ivory Curls', 'Ash Curls', 'Rolled Locks', 'Ivory Curls'][i],
+    });
+    expect(r.metadata.attributes).toContainEqual({
+      trait_type: 'Ear Tag',
+      value: '5280',
+    });
+    expect(r.metadata.attributes).toContainEqual({
+      trait_type: 'Pixel Corruption',
+      value: 'NONE',
+    });
+    expect(
+      r.metadata.attributes.some((a) =>
+        ['Mutation', 'Material', 'Pose', 'Rarity'].includes(a.trait_type),
+      ),
+    ).toBe(false);
+    expect(r.metadata.image).toBe(
+      'https://artwork.invalid/lammb/' + r.outputSha256 + '.png',
+    );
+    expect(r.metadata.name).toBe(
+      'LAMMB — ' + ['Canonical', 'Broad Ash', 'Rolled Locks', 'Front'][i],
+    );
+    expect(r.rendererRecipeReference.requestSha256).toBe(c.e.requestSha256);
+    expect(r.dimensions).toEqual({ width: 1254, height: 1254 });
+    expect(r.productionRegistered).toBe(false);
+    expect(r.productionPromotionAuthorized).toBe(false);
+    expect(r.generatorEnabled).toBe(false);
+    expect(r.tokenAssignment).toBeNull();
+    expect(openSeaMetadataSchema.safeParse(r.metadata).success).toBe(true);
+    expect(
+      validateCompleteSourceRecipe(r, c.catalog, c.catalogArgs, c.recipeArgs),
+    ).toEqual(r);
+  });
+  it.each([
+    'history-chain',
+    'old-event',
+    'source',
+    'output',
+    'request',
+    'missing-source',
+  ])('rejects repinned owner history corruption: %s', (scenario) => {
+    const c = context();
+    if (scenario === 'history-chain')
+      c.history.events[1]!.previousEventSha256 = 'a'.repeat(64);
+    if (scenario === 'old-event')
+      c.history.events[0]!.proposalSha256 = 'a'.repeat(64);
+    if (scenario === 'source')
+      c.history.events[1]!.sources[0]!.sourceSha256 = 'a'.repeat(64);
+    if (scenario === 'output')
+      c.history.events[1]!.sources[0]!.outputSha256 = 'a'.repeat(64);
+    if (scenario === 'request')
+      c.history.events[1]!.sources[0]!.requestSha256 = 'a'.repeat(64);
+    if (scenario === 'missing-source') c.history.events[1]!.sources.pop();
+    c.catalogArgs[4] = canonicalSha256(c.history);
+    expect(() => createApprovedSourceCatalog(...c.catalogArgs)).toThrow();
+  });
+  it('rejects stale approval digest and does not reinterpret approvals as production authorization', () => {
+    const c = context();
+    c.history.events[1]!.sources[0]!.outputSha256 = 'a'.repeat(64);
+    expect(() => createApprovedSourceCatalog(...c.catalogArgs)).toThrow(
+      'APPROVAL_HISTORY_SHA256',
+    );
+    const event = {
+      ...ownerSourceApprovals.events[1],
+      productionPromotionAuthorized: true,
+    };
+    expect(
+      sourceApprovalHistorySchema.safeParse({
+        ...ownerSourceApprovals,
+        events: [ownerSourceApprovals.events[0], event],
+      }).success,
+    ).toBe(false);
+    expect(
+      sourceApprovalHistorySchema.safeParse({
+        ...ownerSourceApprovals,
+        events: [ownerSourceApprovals.events[0]],
+      }).success,
+    ).toBe(false);
+  });
+  it.each([
+    'new-source',
+    'wrong-eye',
+    'wrong-background',
+    'weight',
+    'count',
+    'activation',
+    'production',
+    'duplicate-definition',
+  ])('rejects unsupported catalog changes: %s', (scenario) => {
+    const c = context(),
+      bad: Record<string, unknown> = structuredClone(c.catalog),
+      traits = bad.traits as Record<string, unknown>[];
+    if (scenario === 'new-source')
+      (traits[0]!.sources as Record<string, unknown>[])[0]!.sourceSha256 =
+        'a'.repeat(64);
+    if (scenario === 'wrong-eye')
+      traits[0]!.metadata = { trait_type: 'Eyes', value: 'Radioactive Green' };
+    if (scenario === 'wrong-background')
+      traits[1]!.metadata = { trait_type: 'Background', value: 'Graphite' };
+    if (scenario === 'weight') traits[0]!.selectionWeight = 1;
+    if (scenario === 'count') traits[0]!.plannedCount = 5280;
+    if (scenario === 'activation') bad.generatorEnabled = true;
+    if (scenario === 'production') bad.productionRegistered = true;
+    if (scenario === 'duplicate-definition')
+      traits[1] = structuredClone(traits[0]!);
+    expect(() => validateApprovedSourceCatalog(bad, ...c.catalogArgs)).toThrow(
+      'APPROVED_CATALOG_RECORD',
+    );
+  });
+  it.each([
+    'eyes',
+    'background',
+    'wool',
+    'image',
+    'missing-facet',
+    'extra-facet',
+    'numeric-label',
+    'production',
+    'activation',
+    'token',
+  ])('rejects incorrect complete recipe or metadata: %s', (scenario) => {
+    const c = context(),
+      r = create(c),
+      bad: Record<string, unknown> = structuredClone(r),
+      m = bad.metadata as {
+        image: string;
+        attributes: { trait_type: string; value: unknown }[];
+      };
+    if (scenario === 'eyes')
+      m.attributes.find((a) => a.trait_type === 'Eyes')!.value = 'CCFF00 Glow';
+    if (scenario === 'background')
+      m.attributes.find((a) => a.trait_type === 'Background')!.value =
+        'Containment Lab';
+    if (scenario === 'wool')
+      m.attributes.find((a) => a.trait_type === 'Wool')!.value = 'Ash Curls';
+    if (scenario === 'image') m.image = 'https://artwork.invalid/wrong.png';
+    if (scenario === 'missing-facet') m.attributes.pop();
+    if (scenario === 'extra-facet')
+      m.attributes.push({ trait_type: 'Rarity', value: 'Legendary' });
+    if (scenario === 'numeric-label')
+      m.attributes.find((a) => a.trait_type === 'Ear Tag')!.value = 5280;
+    if (scenario === 'production') bad.productionRegistered = true;
+    if (scenario === 'activation') bad.generatorEnabled = true;
+    if (scenario === 'token') bad.tokenAssignment = 1;
+    expect(() =>
+      validateCompleteSourceRecipe(bad, c.catalog, c.catalogArgs, c.recipeArgs),
+    ).toThrow('COMPLETE_RECIPE_RECORD');
+  });
+  it('rejects altered source pixels/output bytes, provenance and mismatched approval scope', () => {
+    const c = context();
+    c.recipeArgs[3] = Buffer.alloc(raw.length, 41);
+    expect(() => create(c)).toThrow('BINDING_SOURCE_PIXELS');
+    const d = context();
+    d.recipeArgs[4] = Buffer.from('wrong PNG receipt');
+    expect(() => create(d)).toThrow('RECIPE_OUTPUT_BINDING');
+    const f = context();
+    f.recipeArgs[0] = { ...f.e, provenance: [] };
+    expect(() => create(f)).toThrow();
+    const h = context(1),
+      g = context(0);
+    expect(() =>
+      createCompleteSourceRecipe(g.catalog, g.catalogArgs, h.recipeArgs),
+    ).toThrow('COMPLETE_RECIPE_SOURCE_RESTRICTION');
+    const p = context();
+    p.row.request.base.approval.state = 'VALIDATED_RECONSTRUCTION_INPUT';
+    expect(() => create(p)).toThrow();
+  });
 });
 
 describe('Stage31B source-bound extension proposals', () => {

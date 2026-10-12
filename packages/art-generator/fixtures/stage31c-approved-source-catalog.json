@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "lammb-approved-source-development-catalog/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baseSpecSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "approvalHistorySha256": "229547e54995112ed5127597db9b1dd830b57fc889593240b0ab2d47164f84c9",
+  "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+  "traits": [
+    {
+      "visualDefinition": "Two coherent primary sheep eyes with shaded olive-green irises, yellow-green crescent detail, dark pupils and white studio catchlights. Heavy eyelids retain their source expression. Describes visible appearance only; no exact CCFF00 albedo or emissive glow is claimed.",
+      "proposalDefinitionSha256": "363a242038aa0f19406c4c9210816c2e909daa69595ebd147699fc4f43502569",
+      "approval": "APPROVED_SOURCE_SPECIFIC",
+      "approvalEventId": "task031c-owner-source-trait-approval",
+      "sources": [
+        {
+          "proofId": "proof-canonical",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61"
+        },
+        {
+          "proofId": "proof-broad-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c"
+        },
+        {
+          "proofId": "proof-rolled-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb"
+        },
+        {
+          "proofId": "proof-front-stage16",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd"
+        }
+      ],
+      "interchangeableLayer": false,
+      "selectionWeight": null,
+      "plannedCount": null,
+      "generatorEnabled": false,
+      "id": "lammb-source-eyes-olive-green",
+      "proposalId": "proposed-lammb-eyes-olive-green",
+      "category": "eyes",
+      "label": "Olive Green",
+      "metadata": {
+        "trait_type": "Eyes",
+        "value": "Olive Green"
+      }
+    },
+    {
+      "visualDefinition": "Integrated charcoal studio background with subtle warm taupe shading, gentle gradient and vignette. No flat exact-color field, laboratory scenery, signal glow or event-horizon phenomenon is claimed. It belongs to the authored frame; no interchangeable background layer is registered.",
+      "proposalDefinitionSha256": "e3c3fed26c5d2b2053e2bc24685b84d2060723e91d51a53a3a060632cd8bd82e",
+      "approval": "APPROVED_SOURCE_SPECIFIC",
+      "approvalEventId": "task031c-owner-source-trait-approval",
+      "sources": [
+        {
+          "proofId": "proof-canonical",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61"
+        },
+        {
+          "proofId": "proof-broad-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c"
+        },
+        {
+          "proofId": "proof-rolled-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb"
+        },
+        {
+          "proofId": "proof-front-stage16",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd"
+        }
+      ],
+      "interchangeableLayer": false,
+      "selectionWeight": null,
+      "plannedCount": null,
+      "generatorEnabled": false,
+      "id": "lammb-source-environments-charcoal-studio-gradient",
+      "proposalId": "proposed-lammb-environments-charcoal-studio-gradient",
+      "category": "environments",
+      "label": "Charcoal Studio Gradient",
+      "metadata": {
+        "trait_type": "Background",
+        "value": "Charcoal Studio Gradient"
+      }
+    }
+  ],
+  "generatorEnabled": false,
+  "productionRegistered": false
+}
