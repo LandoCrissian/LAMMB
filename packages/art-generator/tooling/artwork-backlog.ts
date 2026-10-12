@@ -30,7 +30,7 @@ const source = z.strictObject({
 export const artworkBacklogSchema = z
   .strictObject({
     schemaVersion: z.literal('lammb-artwork-backlog/1.0.0'),
-    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0', '0.4.0']),
+    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0']),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
     collectionSupply: z.literal(5280),
@@ -365,7 +365,7 @@ export function validateArtworkOwnerDecisionUpdate(
   return after;
 }
 
-// Stage 23 adds new studies without rewriting the pinned Stage 22 snapshot.
+// Explicit generation transitions preserve the intervening owner-review snapshots.
 // This is a bounded append contract, separate from owner-decision transitions.
 export function validateArtworkStudyAppend(previous: unknown, next: unknown) {
   const before = artworkBacklogSchema.parse(previous);
@@ -380,9 +380,11 @@ export function validateArtworkStudyAppend(previous: unknown, next: unknown) {
     return rest;
   };
   const added = after.items.slice(before.items.length);
+  const generationTransition =
+    (before.backlogVersion === '0.2.0' && after.backlogVersion === '0.3.0') ||
+    (before.backlogVersion === '0.4.0' && after.backlogVersion === '0.5.0');
   if (
-    before.backlogVersion !== '0.2.0' ||
-    after.backlogVersion !== '0.3.0' ||
+    !generationTransition ||
     added.length < 1 ||
     added.length > 3 ||
     !same(root(before), root(after)) ||
