@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "lammb-proposed-art-studies/1.0.0",
+  "purpose": "OWNER_REVIEW_PLAN_ONLY",
+  "generationAuthorized": false,
+  "imagegenCallsThisTask": 0,
+  "productionPromotionAuthorized": false,
+  "collectionSupply": 5280,
+  "traitFrequenciesChanged": false,
+  "grailReservationsChanged": false,
+  "framing": "Complete ear/wool identity where practical; intentional portrait cropping acceptable. Two percent diagnostic, eight percent aspirational; neither is an OpenSea requirement.",
+  "executionGate": "A future owner task must authorize generation and freshly verify included usage before each call. No paid API, purchases, automatic retries or unlimited-usage assumptions.",
+  "studies": [
+    {
+      "id": "stage26-plan-01-collar-shift",
+      "title": "Collar Shift / confident dynamic pose",
+      "focus": "DYNAMIC_POSE",
+      "rationale": "Diagonal shoulder line and one coherent bent forelimb provide visible posture change at 64px instead of a recolor or flat head rotation.",
+      "references": [
+        {
+          "backlogId": "backlog-approved-front",
+          "sourceId": "lammb-audit-approved-front",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_CHARACTER_IDENTITY"
+        },
+        {
+          "backlogId": "backlog-stage10-03-relaxed-lean",
+          "sourceId": "lammb-audit-stage10-03-relaxed-lean",
+          "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-03-relaxed-lean-native.png",
+          "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_POSTURE"
+        },
+        {
+          "backlogId": "backlog-study25-amused",
+          "sourceId": "source-stage25-01-amused",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_PERSONALITY"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-bomber"
+      ],
+      "unresolvedMetadata": [
+        "New pose has no finalized pose attribute; coordinated confident expression must be reviewed before mapping to an existing expression value."
+      ],
+      "sourceRestrictions": [
+        "Curated authored full frame. New neck, sleeve, hoof and collar geometry requires its own registration.",
+        "No reuse of ear-tag contact patches or crossed-forelimb layers; that older study remains conditional."
+      ],
+      "prompt": "Create ONE new premium illustrated LAMMB waist-up character study. Use raster input 1 as the primary approved facial/species identity, input 2 only for believable relaxed shoulder and neck posture, and input 3 only for the confident expressive attitude. Keep the compact curved sheep muzzle, low lateral ears, heavy green eyelids, tactile ivory wool and established adult cartoon proportions. Build a genuinely new perspective-consistent dynamic pose: one shoulder forward, torso subtly turned, the head meeting the viewer, one forelimb naturally bent with one clearly sheep-like hoof lifting the edge of its own bomber collar. The other forelimb remains naturally outside the waist-up crop. Use a structured matte black bomber with a purposeful zip, believable ribbed collar and sleeve compression, and a very small chartreuse seam accent. The diagonal collar/shoulder gesture must read at 64px while the face stays dominant. Preserve the known lighting and premium material language; quiet neutral studio background. Complete ears and crown where practical, intentional bottom portrait crop. Do not rotate or warp an existing flat portrait. No human hands or fingers, no additional limbs, no duplicate face, no ear tag, no crown, no logos or lettering, no pixel effects or new mutation. Generate fresh coherent anatomy without changing species identity.",
+      "acceptance": [
+        "Immediately distinct shoulder/collar gesture at 64px and 128px.",
+        "Exactly one visible anatomically plausible sheep forelimb/hoof; no human fingers.",
+        "Original LAMMB muzzle, ears, green eye construction and adult personality remain recognizable.",
+        "Garment fit and neck connection coherent; owner approval required."
+      ]
+    },
+    {
+      "id": "stage26-plan-02-delighted-conspirator",
+      "title": "Delighted Conspirator / playful expressive individuality",
+      "focus": "DISTINCTIVE_PERSONALITY",
+      "rationale": "Bright coordinated eye/cheek expression and an asymmetric structured shell offer playful, fashion-conscious appeal beyond repeated unimpressed dark hoodies.",
+      "references": [
+        {
+          "backlogId": "backlog-study25-amused",
+          "sourceId": "source-stage25-01-amused",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_APPROVED_EXPRESSION_AND_IDENTITY"
+        },
+        {
+          "backlogId": "backlog-approved-front",
+          "sourceId": "lammb-audit-approved-front",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_CANONICAL_ANATOMY"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-shell"
+      ],
+      "unresolvedMetadata": [
+        "Delighted is a working art direction, not an approved new Expression ID. Review existing Amused mapping only if the actual output fits its definition.",
+        "No Gender, femininity, eye-color or accessory metadata is inferred from styling."
+      ],
+      "sourceRestrictions": [
+        "Full-frame authored face/expression and garment. No transferable eyelid, mouth or clothing layers claimed.",
+        "Inclusive appeal is a design hypothesis to test with the owner, not a claim about what all women prefer."
+      ],
+      "prompt": "Create ONE premium LAMMB personality study using raster input 1 as the approved identity and amused-expression anchor, with input 2 supporting sheep facial proportions. Portray a delighted conspirator who has just discovered an absurdly clever experiment: a clearly readable coordinated lift of the eyelids and one brow, lifted cheeks, a small asymmetrical sheep-mouth opening with a restrained knowing laugh. The emotion must be visibly stronger and more playful than a subtle closed smirk at 64px, without becoming a juvenile smiling mascot. Preserve the compact sheep muzzle, green eye material, low lateral ears, coherent adult LAMMB skull and tactile wool roots. Wear a sharply shaped satin graphite reflective shell with an asymmetric collar and one narrow chartreuse reflective seam; emphasize tailoring and expressive agency, not decorative accessory clutter. Give the wool an airy offset volume grounded in the approved species curl material, with no new color trait. Keep premium illustrated materials and the established studio light. Quiet neutral background, waist-up, expressive face dominant, ears/crown complete where practical. No human tooth row, human lips, mascara-only personality change, exaggerated facial deformation, rabbit/monkey anatomy, human hands, crown, text, logos, ear tag or mutation. This is a new authored expression/wardrobe study; do not copy or merely recolor the approved portrait.",
+      "acceptance": [
+        "Emotion reads as delight/cheeky agency at 64px, clearly different from neutral and the existing small smirk.",
+        "Sheep mouth and coherent eyelid/cheek motion, no human upper incisor row.",
+        "Reflective-shell outline and offset wool volume are perceptible at 64px/128px.",
+        "Owner judges personality and fashion appeal; unsupported expression facets remain unexported."
+      ]
+    },
+    {
+      "id": "stage26-plan-03-after-hours-observer",
+      "title": "After-hours Observer / environmental universe portrait",
+      "focus": "ENVIRONMENTAL_CHARACTER",
+      "rationale": "A restrained containment-lab depth cue and coat silhouette give a narrative setting while avoiding a background that overwhelms the avatar.",
+      "references": [
+        {
+          "backlogId": "backlog-study25-lab-coat",
+          "sourceId": "source-stage25-03-lab-coat",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+          "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_APPROVED_IDENTITY_AND_LAB_COAT"
+        },
+        {
+          "backlogId": "backlog-approved-front",
+          "sourceId": "lammb-audit-approved-front",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_CANONICAL_ANATOMY"
+        }
+      ],
+      "proposedExistingTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-long-coat",
+        "lammb-environments-lab"
+      ],
+      "unresolvedMetadata": [
+        "Containment Lab and clothing are proposed mappings pending visible output review. No facility access, utility, gameplay or holder promise is implied.",
+        "Any new expression, background sublabel or decorative pocket detail requires review; no new trait IDs in this plan."
+      ],
+      "sourceRestrictions": [
+        "Integrated authored environment/garment portrait. No automatic subject/background separation or ordinary hoodie-layer reuse.",
+        "Use character raster references only; no website, Chamber or public website assets as source inputs."
+      ],
+      "prompt": "Create ONE premium environmental LAMMB PFP character study. Use raster input 1 as the primary approved Lab Coat LAMMB identity and garment-design anchor, input 2 only to reinforce the canonical sheep face and low lateral ears. Place the waist-up character at an after-hours containment-laboratory observation threshold, with a confident curious glance and unmistakable green-eyed LAMMB personality. Retain the compact sheep muzzle, tactile wool, oversized structured near-black laboratory coat, plausible collar, sleeves, buttons and pockets. The coat must remain readable and the expressive head must dominate at 64px. Behind the subject use just two or three quiet distant industrial shapes: a recessed sealed observation window, a broad machine silhouette and a restrained chartreuse guide light. Give the space believable depth and a subtle chartreuse edge reflection that obeys the existing light direction; avoid elaborate environment clutter or bloom. No playable location, signage or instructions. The foreground character stays crisp with strong material separation; background detail stays subdued. Compose a genuine new waist-up illustration with practical square/circular PFP readability, complete ear/crown identity where feasible and intentional bottom portrait crop. No crown, text, logos, random scientific props, human hands, new accessory, new mutation, generic sheep redesign or pixel corruption. Do not borrow existing website artwork.",
+      "acceptance": [
+        "At 64px the first read is the LAMMB face, second the coat, third a simple laboratory depth cue.",
+        "Background/edge lighting coherent without hiding muzzle or eyes.",
+        "Distinct environmental silhouette relative to neutral studio sources.",
+        "Source-specific framing, extraction and final metadata require later owner/technical review."
+      ]
+    }
+  ]
+}

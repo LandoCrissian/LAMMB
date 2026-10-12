@@ -1,6 +1,6 @@
 # Permanent artwork-development backlog
 
-`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.5.0 preserves all 112 Stage 24 records and appends three Stage 25 studies, for 115 items. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
+`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.6.0 preserves all 115 Stage 25 records and appends the three Stage 26 owner decisions. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
 
 `ARTWORK_BACKLOG_v0.2.0.json` preserves the exact Stage 22 snapshot. Its canonical SHA256 remains `029ddfb529330a7d459fa8cc1d9e9d174b2963c8157c16e687775ab74c592744`. The Stage 22 authored registry must resolve against that snapshot, not the evolving current backlog. Its source and owner-evidence bindings have not been rewritten. The original `mainSha` is the historical capture baseline; each new generation records its own provenance separately.
 
@@ -22,7 +22,7 @@ The original Identity Vault still has a historical null canonical field. Later e
 
 Stage 21's source recovery reverified 848 historical artwork paths, 345 Stage 15 evidence records, 19 Stage 16 manifest entries, 142 Stage 20 artifacts and the merged Stage 17 source/evidence declarations. The historical front ear-tag proof and its independent reconstruction match exact bytes. Newly inspected records are baselined explicitly rather than presented as prior hash matches. Source-only/decoder validation and artistic approval remain distinct.
 
-The current backlog digest reader checks 142 source/evidence bindings across 78 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21, 23 and 25 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter decodes the two art-approved outputs again within unchanged proof limits.
+The current backlog digest reader checks 143 source/evidence bindings across 79 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21, 23 and 25 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter and Stage 26 proposal adapter decode their approved outputs again within unchanged proof limits.
 
 ```powershell
 node --experimental-strip-types packages/art-generator/tooling/artwork-backlog.ts docs/art-production/ARTWORK_BACKLOG_v1.json packages/art-generator/specs/lammb-traits-v1.json C:/LAMMB-Studio
@@ -55,3 +55,11 @@ The creative family specification is `UNIVERSE_ART_DIRECTION_v1.md`. Its Burnout
 `STAGE25_CHARACTER_EXPANSION.md` records exactly three new reference-conditioned native studies. Amused and Lab Coat have proposed `PRODUCTION_CANDIDATE` QA; Rolled Locks Evolution is `NEEDS_REFINEMENT` because its dominant coil grammar repeats the old source. All three are owner-review pending and unregistered. The original approved Rolled Locks direction remains intact. No new skeletal candidate, mutation compatibility resolution, trait frequency change or production promotion is implied.
 
 The existing append validator now permits exactly the two explicit generation-version pairs, 0.2.0→0.3.0 and 0.4.0→0.5.0. Each append remains limited to one–three source-bound studies with unchanged prior items/evidence, approved raster references, distinct output hashes and dated technical QA. Other version jumps, owner-approval claims, missing references or production promotion fail closed.
+
+## Stage 26 owner review and source preparation
+
+`ARTWORK_BACKLOG_v0.5.0.json` preserves the exact pre-decision Stage 25 snapshot (raw SHA256 `2976d5fdb1929a4d2697768e5cd5cf3d55d39985abd7770c9b0f42cc4c3e97d0`). Stage 25 append tests remain pinned to it. Historical pending-review wording describes that earlier checkpoint; the current owner states below supersede it without rewriting any event or study source.
+
+`STAGE26_OWNER_DECISIONS.json` records art-direction approval of Amused and Lab Coat, and `NEEDS_REFINEMENT` for Rolled Locks Evolution because its coil geometry is insufficiently distinct. The owner-transition validator adds only the explicit 0.5.0→0.6.0 pair alongside 0.3.0→0.4.0. All 115 source lists and prior history prefixes remain unchanged. All production states remain `NOT_PRODUCTION_REGISTERED`; previous rejected skeletons remain quarantined, and the older approved Rolled Locks source is retained.
+
+`STAGE26_PRODUCTION_PREPARATION.md` documents source-specific authored-frame proposals, actual decoding and unchanged historical reconstruction results. `STAGE26_DIVERSITY_ROADMAP.md` and `STAGE26_NEXT_STUDIES.json` supply three owner-review concepts with exact prompts and approved native reference bindings. These plans authorize no generation. No collection frequencies, compatibility rules, supply or grail reservations change.

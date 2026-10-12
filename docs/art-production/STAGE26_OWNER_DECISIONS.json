@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "lammb-artwork-owner-decisions/1.0.0",
+  "recordedAt": "2026-10-12T05:58:10.439Z",
+  "authority": "CURRENT_OWNER_DIRECTIVE",
+  "authentication": "TRUSTED_OPERATOR_TRANSCRIPTION_NOT_SIGNED_OWNER_AUTH",
+  "mainSha": "6a2f56829471a923021adb47ae107bb5f58f4821",
+  "reviewedHeadSha": "7506bac8f198bf6d5efce255013610f40c460258",
+  "productionApproval": false,
+  "decisions": [
+    {
+      "backlogId": "backlog-study25-amused",
+      "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+      "decision": "ART_DIRECTION_APPROVED",
+      "instruction": "Owner approves Amused artistic direction. Production registration remains false. Prepare only source-specific authored registration proposals.",
+      "nextAction": "DEVELOPMENT_ONLY_AUTHORED_AMUSED_PROPOSAL_THEN_OWNER_PRODUCTION_REVIEW",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    },
+    {
+      "backlogId": "backlog-study25-lab-coat",
+      "sourceSha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+      "decision": "ART_DIRECTION_APPROVED",
+      "instruction": "Owner approves Lab Coat artistic direction. Production registration remains false. Prepare only source-specific authored registration proposals.",
+      "nextAction": "DEVELOPMENT_ONLY_AUTHORED_LAB_COAT_PROPOSAL_THEN_OWNER_PRODUCTION_REVIEW",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    },
+    {
+      "backlogId": "backlog-study25-rolled-locks-evolution",
+      "sourceSha256": "7b68a4b06677da0b13e9484f65a68c85d03917647af81c54544da009e44976d1",
+      "decision": "NEEDS_REFINEMENT",
+      "instruction": "Rolled Locks Evolution needs refinement because its coil geometry is insufficiently distinct. Preserve its native output, prior technical review and the older approved Rolled Locks source.",
+      "nextAction": "DISTINCT_COIL_GEOMETRY_PLAN_NO_AUTOMATIC_GENERATION",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "lammb-authored-source-proposals/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "productionPromotionAuthorized": false,
+  "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+  "specCanonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "backlogSha256": "c662d9019113a57abd385bb625d5e7dfcfbcc743952e64a0d4d3fc0848a6deb1",
+  "ownerEvidence": {
+    "path": "reports/TASK_026_STAGE26_PREPARATION_001/OWNER_DECISIONS.json",
+    "sha256": "ee723d6f2644bf86eb1e2e64c48391ef1fd71b8e1ee2a7b81bd49bfdcb976a20"
+  },
+  "provenanceEvidence": {
+    "path": "reports/TASK_025_STAGE25_EXPANSION_001/GENERATION_PROVENANCE.json",
+    "sha256": "415788a2be16ae48fb586aa466bfcac0f4c1246e53426d06f0c707ed711e3e04"
+  },
+  "assets": [
+    {
+      "id": "dev-authored-amused",
+      "backlogId": "backlog-study25-amused",
+      "sourceId": "source-stage25-01-amused",
+      "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+      "family": "AMUSED_HOODIE",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-expressions-amused",
+        "lammb-clothing-hoodie"
+      ],
+      "composition": "IMMUTABLE_AUTHORED_FULL_FRAME_ONLY",
+      "poseContactRegistration": "NOT_VALIDATED",
+      "extractedLayers": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "dev-authored-lab-coat",
+      "backlogId": "backlog-study25-lab-coat",
+      "sourceId": "source-stage25-03-lab-coat",
+      "sourceSha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+      "family": "LAB_COAT",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-long-coat"
+      ],
+      "composition": "IMMUTABLE_AUTHORED_FULL_FRAME_ONLY",
+      "poseContactRegistration": "NOT_VALIDATED",
+      "extractedLayers": false,
+      "productionRegistered": false
+    }
+  ]
+}
