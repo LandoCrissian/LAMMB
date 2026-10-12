@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "lammb-stage32-delivery-cohort/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "c63631d2659bbe7bb723e57b93f7bcca9786f6c8",
+  "registeredAssets": 0,
+  "records": [
+    {
+      "request": {
+        "schemaVersion": "lammb-development-delivery-request/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-canonical",
+        "parentRecipeSha256": "e989386e38849fb0583d72effe578a59fcab704e483eab83d5a93923a58fce40",
+        "nativeProofSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "dimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "productionRegistered": false
+      },
+      "expectedOutputSha256": "5365e5960de5faecc432fe2bb8ce673d56872f827ae31bbde8eeb44223265c75"
+    },
+    {
+      "request": {
+        "schemaVersion": "lammb-development-delivery-request/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-broad-ash",
+        "parentRecipeSha256": "40b975fe7ae9eef7dd186f2c7ca83b04e753d09ca2c6da08fbf0fcf7518fe7c4",
+        "nativeProofSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "dimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "productionRegistered": false
+      },
+      "expectedOutputSha256": "3ffd97a824f976805e5d7e76e42f39f55627c2671c9c72607893b986dc9866ff"
+    },
+    {
+      "request": {
+        "schemaVersion": "lammb-development-delivery-request/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-rolled-locks",
+        "parentRecipeSha256": "66b07f22b08a300ae3f3d3d3572e97bfe5e242c1c5a891bec9be82bfee22d205",
+        "nativeProofSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "dimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "productionRegistered": false
+      },
+      "expectedOutputSha256": "fd54363d8432253834c4035b32cd4dad80ccdf7a0b58c20081c2f7bccd2c61ba"
+    },
+    {
+      "request": {
+        "schemaVersion": "lammb-development-delivery-request/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-front-stage16",
+        "parentRecipeSha256": "315f73b7701e629d4e431e040bb940c7b0d97fcae192cd667271068a5d6652f6",
+        "nativeProofSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "dimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "productionRegistered": false
+      },
+      "expectedOutputSha256": "0cf18e5bb60758e468cb94b7c6b4f18d03c41f9276ed47e4a29e05671ccaa800"
+    }
+  ]
+}
