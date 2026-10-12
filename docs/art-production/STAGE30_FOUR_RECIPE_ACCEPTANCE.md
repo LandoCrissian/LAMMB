@@ -4,7 +4,35 @@ Development only. Four native PNG recipes reconstruct exactly; **zero recipes
 have a complete truthful nine-category metadata vector**. Eyes and environment
 bindings remain unresolved. No source is promoted to production registration.
 
-## Baseline and dependencies
+## Final integration checkpoint
+
+PR #24 and PR #25 have since merged. This existing PR #26 is now based on
+authorized main `2dc6f9bd1bf282f41f6ab0789f6577c3c4773120`. PR #25's merged
+tree exactly matches its reviewed head `9219952f889ea4a599270c002cfd6703be847afa`.
+The Stage 30 patch rebased without conflicts; all 121 backlog entries and prior
+owner decisions are now on main and remain unchanged by this PR. No duplicate
+backlog or registry records were created.
+
+Fresh independent verification against this baseline checked 169 source/evidence
+bindings across 92 paths and replayed all four native recipes twice. Outputs
+remain 1254×1254 and byte-identical to historical PNGs, with zero outside-mask
+changes and four distinct encoded/decoded hashes. All four metadata recipes
+remain INCOMPLETE for eyes/environment; neither artistic approval nor successful
+reconstruction promotes production registration. The decoder, renderer, registry,
+Trait Bible, frequencies and grail reservations are unchanged.
+
+`STAGE30_RECONCILIATION.json` retains the initial assessment fields as a historical
+snapshot and appends `integrationCheckpoint` for the current merged baseline.
+The earlier open-PR and 115-item-main statements below describe that initial
+snapshot, not the current repository. Original provenance and source pins remain
+intact. Fresh native outputs and receipts are isolated under
+`C:/LAMMB-Studio/reports/PR26_FINAL_INTEGRATION_001`; no original is overwritten.
+
+The current owner checkpoint is separate authorization to merge PR #26 after
+exact-head CI and review. No automatic merge, ImageGen, production promotion,
+manual deployment or Task 017 modification is authorized.
+
+## Historical baseline and dependencies — initial Stage 30
 
 Main was fetched and verified at `5bfbdcaff5dc772d0dba519bdd4579394d400db4`.
 PR #24 is open at `ac48c6cc02fc1917b5c71bb487a54277515f4ebc`; PR #25 is open
@@ -190,6 +218,7 @@ worker, approximately 3.59 seconds and 196.48 MiB peak RSS; this is not batch
 throughput. No ImageGen, local browser suite, website build, merge, manual
 deployment, production promotion or paused Task 017 modification occurred.
 
-Owner checkpoint: PR #24 may be merged only with separate authorization.
+Original owner checkpoint, superseded by the integration checkpoint above:
+PR #24 may be merged only with separate authorization.
 PR #25 remains untouched pending that dependency. Stage 30 proposes no new
 art decisions and leaves all four metadata recipes explicitly incomplete.

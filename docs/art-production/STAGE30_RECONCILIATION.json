@@ -765,5 +765,37 @@
     "existingRendererChanged": false,
     "task017Touched": false
   },
-  "recommendedNextStage": "Separate owner authorization to merge PR24; then integrate/revalidate PR25. Resolve source-specific eyes/environment bindings before any complete-vector or production claim."
+  "recommendedNextStage": "Separate owner authorization to merge PR24; then integrate/revalidate PR25. Resolve source-specific eyes/environment bindings before any complete-vector or production claim.",
+  "historicalSnapshot": true,
+  "integrationCheckpoint": {
+    "authorizedMain": "2dc6f9bd1bf282f41f6ab0789f6577c3c4773120",
+    "pr24": "MERGED",
+    "pr25": "MERGED",
+    "pr25ReviewedHead": "9219952f889ea4a599270c002cfd6703be847afa",
+    "rebaseConflicts": 0,
+    "backlogNowOnMain": true,
+    "backlogEntries": 121,
+    "backlogRawBytesPreserved": true,
+    "backlogCanonicalSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+    "previousOwnerDecisionsPreserved": true,
+    "nativeReceiptByteSha256": "6075965317512a87acda07f5d1bdfb1a3f25fd7e4bd38fe7bd091812a84da92d",
+    "sourceBindingsVerified": 169,
+    "uniquePathsVerified": 92,
+    "nativeDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "historicalOutputsReproduced": 4,
+    "independentReplay": true,
+    "outsideMaskChangedPixels": 0,
+    "encodedAndDecodedOutputHashesUnique": true,
+    "metadataEvidencePreserved": true,
+    "completeMetadataRecipes": 0,
+    "technicallyRenderableRecipes": 4,
+    "productionRegisteredCount": 0,
+    "productionPromotionAuthorized": false,
+    "unresolvedBindings": ["eyes", "environments"],
+    "currentOwnerGate": "PR26_EXACT_HEAD_CI_AND_SEPARATE_OWNER_MERGE_AUTHORIZATION",
+    "historicalFieldsScope": "All original fields outside integrationCheckpoint preserve the initial Stage30 assessment; its earlier dependency/main-location states are not live repository status."
+  }
 }
