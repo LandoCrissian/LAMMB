@@ -29,6 +29,14 @@ import metadataProposals from '../docs/art-production/STAGE31B_METADATA_PROPOSAL
 import ownerSourceApprovals from '../docs/art-production/STAGE31C_OWNER_APPROVAL_HISTORY.json';
 import approvedSourceCatalog from '../packages/art-generator/fixtures/stage31c-approved-source-catalog.json';
 import completeRecipeSnapshots from '../docs/art-production/STAGE31C_COMPLETE_RECIPES.json';
+import deliveryRequests from '../packages/art-generator/fixtures/stage32-delivery-requests.json';
+import {
+  deliveryBudget,
+  deliveryRequestSchema,
+  renderDeliveryDerivative,
+  validateDeliveryDerivative,
+  validateDeliveryParent,
+} from '../packages/art-generator/tooling/delivery-derivative.ts';
 import {
   developmentCatalog,
   sourceBoundDevelopmentCatalog,
@@ -171,6 +179,278 @@ beforeAll(async () => {
     [jointSource.id, data[1]!],
     [maskSource.id, data[2]!],
   ]);
+});
+
+describe('Stage32 bounded delivery derivatives', () => {
+  // One synthetic native RGB fixture exercises the real resampler. It is never
+  // collection artwork or owner approval; real four-proof acceptance is private.
+  const raw = Buffer.alloc(1254 * 1254 * 3, 40);
+  let native: Buffer;
+  let context: Parameters<typeof createCompleteSourceRecipe>;
+  let declaration: ReturnType<typeof deliveryRequestSchema.parse>;
+  let rendered: Awaited<ReturnType<typeof renderDeliveryDerivative>>;
+  const makeContext = (bytes: Buffer) => {
+    const row = structuredClone(recipeReviews.recipes[0]!),
+      cohort = structuredClone(bindingEvidence),
+      proposal = structuredClone(sourceExtension),
+      history = structuredClone(ownerSourceApprovals),
+      e = traitBindingSchema.parse(cohort.records[0]!.evidence);
+    row.request.expectedOutputSha256 = sha256Bytes(bytes);
+    row.review.requestSha256 = canonicalSha256(row.request);
+    row.reviewSha256 = canonicalSha256(row.review);
+    e.outputSha256 = sha256Bytes(bytes);
+    e.requestSha256 = canonicalSha256(row.request);
+    e.reviewSha256 = row.reviewSha256;
+    e.decodedSourcePixelSha256 = sha256Bytes(raw);
+    for (const r of [...e.eyes.regions, ...e.background.regions])
+      r.pixelSha256 = measureNativeRegion(raw, 1254, 1254, r.roi).pixelSha256;
+    cohort.records[0] = {
+      ...cohort.records[0]!,
+      evidence: e,
+      evidenceSha256: canonicalSha256(e),
+    };
+    proposal.bindings[0]!.outputSha256 = e.outputSha256;
+    proposal.bindings[0]!.evidenceSha256 = canonicalSha256(e);
+    proposal.priorEvidenceCohortSha256 = canonicalSha256(cohort);
+    const sources = cohort.records.map(({ evidence: r, evidenceSha256 }) => ({
+      proofId: r.proofId,
+      sourceSha256: r.sourceSha256,
+      outputSha256: r.outputSha256,
+      evidenceSha256,
+      requestSha256: r.requestSha256,
+    }));
+    for (const event of history.events) {
+      event.proposalSha256 = canonicalSha256(proposal);
+      event.sources = structuredClone(sources);
+    }
+    history.events[1]!.previousEventSha256 = canonicalSha256(history.events[0]);
+    const cArgs: Parameters<typeof createApprovedSourceCatalog> = [
+        history,
+        proposal,
+        cohort,
+        spec,
+        canonicalSha256(history),
+        canonicalSha256(proposal),
+      ],
+      catalog = createApprovedSourceCatalog(...cArgs),
+      rArgs: Parameters<typeof assessRegistrationReadiness> = [
+        e,
+        row,
+        spec,
+        raw,
+        bytes,
+        canonicalSha256(e),
+      ];
+    const ctx: Parameters<typeof createCompleteSourceRecipe> = [
+        catalog,
+        cArgs,
+        rArgs,
+      ],
+      parent = createCompleteSourceRecipe(...ctx);
+    const request = deliveryRequestSchema.parse({
+      schemaVersion: 'lammb-development-delivery-request/1.0.0',
+      purpose: 'DEVELOPMENT_ONLY',
+      proofId: parent.id,
+      parentRecipeSha256: canonicalSha256(parent),
+      nativeProofSha256: parent.outputSha256,
+      method: 'NOHALO_EDGE_CLAMP_CPU_AFFINE',
+      dimensions: { width: 3072, height: 3072 },
+      productionRegistered: false,
+    });
+    return { ctx, request };
+  };
+  beforeAll(async () => {
+    native = await encode(raw, 1254, 1254, 3);
+    const c = makeContext(native);
+    context = c.ctx;
+    declaration = c.request;
+    rendered = await renderDeliveryDerivative(declaration, native, context);
+  });
+  it('preserves native bytes and fills the entire output without a dark outer frame', async () => {
+    expect(sha256Bytes(native)).toBe(declaration.nativeProofSha256);
+    const d = await sharp(rendered.output)
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+    expect(d.info.width).toBe(3072);
+    expect(d.info.height).toBe(3072);
+    expect(d.info.channels).toBe(3);
+    expect([...d.data.subarray(0, 3)]).toEqual([40, 40, 40]);
+    expect([...d.data.subarray(-3)]).toEqual([40, 40, 40]);
+    expect(rendered.receipt.nativeDetailCreated).toBe(false);
+    expect(rendered.receipt.classification).toBe(
+      'RESAMPLED_DELIVERY_DERIVATIVE',
+    );
+    expect(rendered.receipt.derivativeOwnerApproval).toBe('PENDING');
+    expect(rendered.receipt.productionRegistered).toBe(false);
+    expect(rendered.receipt.transformation.visibleCanvasPadding).toBe(false);
+    expect(pngProofBudget.maxDimension).toBe(1254);
+    expect(pngProofBudget.maxSourceBytes).toBe(4 * 1024 * 1024);
+  });
+  it('validates decoded output hashes and preserves exact native visible metadata', async () => {
+    const receipt = await validateDeliveryDerivative(
+      rendered.receipt,
+      native,
+      rendered.output,
+      declaration,
+      context,
+      sha256Bytes(rendered.output),
+    );
+    const parent = createCompleteSourceRecipe(...context);
+    expect(receipt.metadata.attributes).toEqual(parent.metadata.attributes);
+    expect(receipt.metadata.image).toBe(
+      'https://artwork.invalid/lammb/delivery/' +
+        sha256Bytes(rendered.output) +
+        '.png',
+    );
+    expect(openSeaMetadataSchema.safeParse(receipt.metadata).success).toBe(
+      true,
+    );
+    expect(receipt.parentRecipeSha256).toBe(canonicalSha256(parent));
+    expect(receipt.nativeProofSha256).toBe(parent.outputSha256);
+  });
+  it('pins all four real declarations to immutable parent recipes', () => {
+    expect(deliveryRequests.records).toHaveLength(4);
+    for (const [i, row] of deliveryRequests.records.entries()) {
+      expect(deliveryRequestSchema.safeParse(row.request).success).toBe(true);
+      expect(row.request.nativeProofSha256).toBe(
+        completeRecipeSnapshots.records[i]!.outputSha256,
+      );
+      expect(row.request.parentRecipeSha256).toBe(
+        canonicalSha256(completeRecipeSnapshots.records[i]),
+      );
+    }
+    expect(() =>
+      requireUniqueRegistrationOutputs(
+        deliveryRequests.records.map((r) => ({
+          outputSha256: r.expectedOutputSha256,
+        })),
+      ),
+    ).not.toThrow();
+  });
+  it.each(['dimensions', 'model', 'production', 'network', 'transform'])(
+    'rejects unsupported delivery request: %s',
+    (scenario) => {
+      const bad: Record<string, unknown> = structuredClone(declaration);
+      if (scenario === 'dimensions')
+        bad.dimensions = { width: 8192, height: 8192 };
+      if (scenario === 'model') bad.method = 'NEURAL_UNREVIEWED_MODEL';
+      if (scenario === 'production') bad.productionRegistered = true;
+      if (scenario === 'network') bad.url = 'https://example.com/source.png';
+      if (scenario === 'transform') bad.rotation = 15;
+      expect(deliveryRequestSchema.safeParse(bad).success).toBe(false);
+    },
+  );
+  it('rejects incorrect native hash, parent binding and native byte budget before decoding', () => {
+    expect(() =>
+      validateDeliveryParent(declaration, Buffer.alloc(50), context),
+    ).toThrow('DELIVERY_NATIVE_SHA256');
+    expect(() =>
+      validateDeliveryParent(
+        { ...declaration, parentRecipeSha256: 'a'.repeat(64) },
+        native,
+        context,
+      ),
+    ).toThrow('DELIVERY_PARENT_BINDING');
+    expect(() =>
+      validateDeliveryParent(
+        declaration,
+        Buffer.alloc(deliveryBudget.maxNativeBytes + 1),
+        context,
+      ),
+    ).toThrow('DELIVERY_NATIVE_BYTES');
+    expect(() =>
+      validateDeliveryParent(
+        { ...declaration, proofId: 'proof-broad-ash' },
+        native,
+        context,
+      ),
+    ).toThrow('DELIVERY_PARENT_BINDING');
+  });
+  it('rejects repinned malformed native input and wrong native dimensions', async () => {
+    const malformed = Buffer.from('not PNG'),
+      bad = makeContext(malformed);
+    expect(() =>
+      validateDeliveryParent(bad.request, malformed, bad.ctx),
+    ).toThrow('PNG_SIGNATURE');
+    const tiny = await encode(Buffer.alloc(3 * 3 * 3), 3, 3, 3),
+      small = makeContext(tiny);
+    expect(() =>
+      validateDeliveryParent(small.request, tiny, small.ctx),
+    ).toThrow('DELIVERY_NATIVE_LAYOUT');
+  });
+  it('rejects corrupted, oversized or misdeclared delivery PNGs', async () => {
+    await expect(
+      validateDeliveryDerivative(
+        rendered.receipt,
+        native,
+        Buffer.from('bad'),
+        declaration,
+        context,
+        sha256Bytes(rendered.output),
+      ),
+    ).rejects.toThrow('DELIVERY_OUTPUT_SHA256');
+    await expect(
+      validateDeliveryDerivative(
+        rendered.receipt,
+        native,
+        Buffer.alloc(deliveryBudget.maxDeliveryBytes + 1),
+        declaration,
+        context,
+        'a'.repeat(64),
+      ),
+    ).rejects.toThrow('DELIVERY_OUTPUT_BYTES');
+    const wrong = Buffer.from(rendered.output);
+    wrong.writeUInt32BE(32768, 16);
+    await expect(
+      validateDeliveryDerivative(
+        rendered.receipt,
+        native,
+        wrong,
+        declaration,
+        context,
+        sha256Bytes(wrong),
+      ),
+    ).rejects.toThrow('DELIVERY_OUTPUT_LAYOUT');
+    const truncated = rendered.output.subarray(0, 100);
+    await expect(
+      validateDeliveryDerivative(
+        rendered.receipt,
+        native,
+        truncated,
+        declaration,
+        context,
+        sha256Bytes(truncated),
+      ),
+    ).rejects.toThrow('DELIVERY_OUTPUT_DECODE');
+  });
+  it.each(['native-detail', 'production', 'metadata', 'boundary'])(
+    'rejects misleading derivative receipt: %s',
+    async (scenario) => {
+      const bad: Record<string, unknown> = structuredClone(rendered.receipt);
+      if (scenario === 'native-detail') bad.nativeDetailCreated = true;
+      if (scenario === 'production') bad.productionRegistered = true;
+      if (scenario === 'metadata')
+        (
+          bad.metadata as {
+            attributes: { trait_type: string; value: string }[];
+          }
+        ).attributes.find((a) => a.trait_type === 'Eyes')!.value =
+          'Radioactive Green';
+      if (scenario === 'boundary')
+        (bad.transformation as Record<string, unknown>).boundaryCondition =
+          'BLACK';
+      await expect(
+        validateDeliveryDerivative(
+          bad,
+          native,
+          rendered.output,
+          declaration,
+          context,
+          sha256Bytes(rendered.output),
+        ),
+      ).rejects.toThrow('DELIVERY_RECEIPT');
+    },
+  );
 });
 
 describe('Stage31C owner-approved source catalog and complete recipes', () => {

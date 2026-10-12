@@ -1,0 +1,374 @@
+{
+  "schemaVersion": "lammb-stage32-delivery-pilot/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "c63631d2659bbe7bb723e57b93f7bcca9786f6c8",
+  "nativeDimension": 1254,
+  "deliveryDimension": 3072,
+  "deliveryCandidates": 4,
+  "productionRegistered": 0,
+  "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+  "nativeDetailCreated": false,
+  "aiModelsUsed": 0,
+  "initialUnclampedMethods": "REJECTED_BOUNDARY_ARTIFACT",
+  "results": [
+    {
+      "proofId": "proof-canonical",
+      "nativeProofSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "deliverySha256": "5365e5960de5faecc432fe2bb8ce673d56872f827ae31bbde8eeb44223265c75",
+      "decodedDeliverySha256": "cfd7fc9e6da79216b0016026f8fa179653f8a2a3605d157c56b96a9ddcd07b1b",
+      "outputBytes": 14181933,
+      "parentRecipeSha256": "e989386e38849fb0583d72effe578a59fcab704e483eab83d5a93923a58fce40",
+      "metadata": {
+        "name": "LAMMB — Canonical",
+        "description": "An unimpressed LAMMB sheep with olive-green eyes, a black hoodie and a 5280 ear tag against a charcoal studio gradient. Unpublished development artwork; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/delivery/5365e5960de5faecc432fe2bb8ce673d56872f827ae31bbde8eeb44223265c75.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "0897ef48b5b8fe69417cc3f2c87e5b38312a6eb18a2e3b9f13ddbc4394fb6784",
+      "nativeOutsideMaskChanges": 0,
+      "deliveryIndependentReplayBytesEqual": true,
+      "boundaryCorrectionChangedPixels": 16781,
+      "interiorChangesOutsideLast8RowsColumns": 0,
+      "qa": "DELIVERY_CANDIDATE_OWNER_REVIEW_PENDING",
+      "performance": {
+        "renderMs": 3713.0685999999996,
+        "reconstructionMs": 3717.6513000000004,
+        "totalMs": 8528.2418,
+        "peakRssMiB": 240.4375,
+        "methodGpuVramMiB": 0
+      },
+      "transformation": {
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "scaleNumerator": 512,
+        "scaleDenominator": 209,
+        "offsetX": 0,
+        "offsetY": 0,
+        "origin": "LIBVIPS_AFFINE_ZERO_OFFSETS",
+        "interpolator": "nohalo",
+        "background": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "sharpen": false,
+        "nativeAnatomyCrop": false,
+        "visibleCanvasPadding": false,
+        "boundaryCondition": "COPY_NATIVE_RIGHT_AND_BOTTOM_EDGE",
+        "supportExtensionNativePixels": 4,
+        "intermediateNativeDimension": 1258,
+        "intermediateDeliveryDimension": 3082,
+        "originalDomainWindow": {
+          "x": 0,
+          "y": 0,
+          "width": 3072,
+          "height": 3072
+        }
+      }
+    },
+    {
+      "proofId": "proof-broad-ash",
+      "nativeProofSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "deliverySha256": "3ffd97a824f976805e5d7e76e42f39f55627c2671c9c72607893b986dc9866ff",
+      "decodedDeliverySha256": "7bf95ce1992a07fd2f09ade2b609374f9d71c5c98504bd4f631d57ff9eab9fe7",
+      "outputBytes": 13961429,
+      "parentRecipeSha256": "40b975fe7ae9eef7dd186f2c7ca83b04e753d09ca2c6da08fbf0fcf7518fe7c4",
+      "metadata": {
+        "name": "LAMMB — Broad Ash",
+        "description": "An unimpressed LAMMB sheep with olive-green eyes, a black hoodie and a 5280 ear tag against a charcoal studio gradient. Unpublished development artwork; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/delivery/3ffd97a824f976805e5d7e76e42f39f55627c2671c9c72607893b986dc9866ff.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ash Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "e87a6a263773499e2bda97d9e16f1e62577569e35b8e4b827451a73a7a294d59",
+      "nativeOutsideMaskChanges": 0,
+      "deliveryIndependentReplayBytesEqual": true,
+      "boundaryCorrectionChangedPixels": 16215,
+      "interiorChangesOutsideLast8RowsColumns": 0,
+      "qa": "DELIVERY_CANDIDATE_OWNER_REVIEW_PENDING",
+      "performance": {
+        "renderMs": 3718.3428000000004,
+        "reconstructionMs": 3718.177100000001,
+        "totalMs": 8562.6672,
+        "peakRssMiB": 239.828125,
+        "methodGpuVramMiB": 0
+      },
+      "transformation": {
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "scaleNumerator": 512,
+        "scaleDenominator": 209,
+        "offsetX": 0,
+        "offsetY": 0,
+        "origin": "LIBVIPS_AFFINE_ZERO_OFFSETS",
+        "interpolator": "nohalo",
+        "background": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "sharpen": false,
+        "nativeAnatomyCrop": false,
+        "visibleCanvasPadding": false,
+        "boundaryCondition": "COPY_NATIVE_RIGHT_AND_BOTTOM_EDGE",
+        "supportExtensionNativePixels": 4,
+        "intermediateNativeDimension": 1258,
+        "intermediateDeliveryDimension": 3082,
+        "originalDomainWindow": {
+          "x": 0,
+          "y": 0,
+          "width": 3072,
+          "height": 3072
+        }
+      }
+    },
+    {
+      "proofId": "proof-rolled-locks",
+      "nativeProofSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "deliverySha256": "fd54363d8432253834c4035b32cd4dad80ccdf7a0b58c20081c2f7bccd2c61ba",
+      "decodedDeliverySha256": "2229f1a072f70a6e70ac94724e995bb8c14a7568f466f9a5913a9a3a85d4599e",
+      "outputBytes": 13888010,
+      "parentRecipeSha256": "66b07f22b08a300ae3f3d3d3572e97bfe5e242c1c5a891bec9be82bfee22d205",
+      "metadata": {
+        "name": "LAMMB — Rolled Locks",
+        "description": "An unimpressed LAMMB sheep with olive-green eyes, a black hoodie and a 5280 ear tag against a charcoal studio gradient. Unpublished development artwork; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/delivery/fd54363d8432253834c4035b32cd4dad80ccdf7a0b58c20081c2f7bccd2c61ba.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Rolled Locks"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "9f2bcbebae654689d7cbd75eaa57dcf3927ad3d66edfd2daa521037f13d406a1",
+      "nativeOutsideMaskChanges": 0,
+      "deliveryIndependentReplayBytesEqual": true,
+      "boundaryCorrectionChangedPixels": 16155,
+      "interiorChangesOutsideLast8RowsColumns": 0,
+      "qa": "DELIVERY_CANDIDATE_OWNER_REVIEW_PENDING",
+      "performance": {
+        "renderMs": 3699.7137999999995,
+        "reconstructionMs": 3697.5846,
+        "totalMs": 8515.0235,
+        "peakRssMiB": 238.4140625,
+        "methodGpuVramMiB": 0
+      },
+      "transformation": {
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "scaleNumerator": 512,
+        "scaleDenominator": 209,
+        "offsetX": 0,
+        "offsetY": 0,
+        "origin": "LIBVIPS_AFFINE_ZERO_OFFSETS",
+        "interpolator": "nohalo",
+        "background": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "sharpen": false,
+        "nativeAnatomyCrop": false,
+        "visibleCanvasPadding": false,
+        "boundaryCondition": "COPY_NATIVE_RIGHT_AND_BOTTOM_EDGE",
+        "supportExtensionNativePixels": 4,
+        "intermediateNativeDimension": 1258,
+        "intermediateDeliveryDimension": 3082,
+        "originalDomainWindow": {
+          "x": 0,
+          "y": 0,
+          "width": 3072,
+          "height": 3072
+        }
+      }
+    },
+    {
+      "proofId": "proof-front-stage16",
+      "nativeProofSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "deliverySha256": "0cf18e5bb60758e468cb94b7c6b4f18d03c41f9276ed47e4a29e05671ccaa800",
+      "decodedDeliverySha256": "e460da6d06629ee6e1f71c26f91dd6e21802ee9fb34c1f3e97d24394280e0fe0",
+      "outputBytes": 14309544,
+      "parentRecipeSha256": "315f73b7701e629d4e431e040bb940c7b0d97fcae192cd667271068a5d6652f6",
+      "metadata": {
+        "name": "LAMMB — Front",
+        "description": "An unimpressed LAMMB sheep with olive-green eyes, a black hoodie and a 5280 ear tag against a charcoal studio gradient. Unpublished development artwork; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/delivery/0cf18e5bb60758e468cb94b7c6b4f18d03c41f9276ed47e4a29e05671ccaa800.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "6eafbe0dd3b1a002741fbd23efbde1a872e24be2309f762456cf6ebcfbdffa4f",
+      "nativeOutsideMaskChanges": 0,
+      "deliveryIndependentReplayBytesEqual": true,
+      "boundaryCorrectionChangedPixels": 16416,
+      "interiorChangesOutsideLast8RowsColumns": 0,
+      "qa": "DELIVERY_CANDIDATE_OWNER_REVIEW_PENDING",
+      "performance": {
+        "renderMs": 3715.8084999999996,
+        "reconstructionMs": 3742.074200000001,
+        "totalMs": 8542.027,
+        "peakRssMiB": 240.4765625,
+        "methodGpuVramMiB": 0
+      },
+      "transformation": {
+        "method": "NOHALO_EDGE_CLAMP_CPU_AFFINE",
+        "scaleNumerator": 512,
+        "scaleDenominator": 209,
+        "offsetX": 0,
+        "offsetY": 0,
+        "origin": "LIBVIPS_AFFINE_ZERO_OFFSETS",
+        "interpolator": "nohalo",
+        "background": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "sharpen": false,
+        "nativeAnatomyCrop": false,
+        "visibleCanvasPadding": false,
+        "boundaryCondition": "COPY_NATIVE_RIGHT_AND_BOTTOM_EDGE",
+        "supportExtensionNativePixels": 4,
+        "intermediateNativeDimension": 1258,
+        "intermediateDeliveryDimension": 3082,
+        "originalDomainWindow": {
+          "x": 0,
+          "y": 0,
+          "width": 3072,
+          "height": 3072
+        }
+      }
+    }
+  ],
+  "sourceChecks": {
+    "declaredBindings": 169,
+    "verifiedUniquePaths": 92,
+    "productionPromotions": 0
+  },
+  "maxRenderPeakRssMiB": 240.4765625,
+  "gpuMethodPeakVramMiB": 0
+}
