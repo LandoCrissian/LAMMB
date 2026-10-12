@@ -93,6 +93,45 @@ describe('integer construction PRNG and canonical bytes', () => {
     expect(() => new Pcg32(42n, 1n << 64n)).toThrow();
   });
 
+  it('validates every object despite repeated key shapes and does not cache mutable data', () => {
+    const changed = { label: 'first' };
+    expect(canonicalJson(changed)).toBe('{"label":"first"}');
+    changed.label = 'second';
+    expect(canonicalJson(changed)).toBe('{"label":"second"}');
+    const accessor = Object.defineProperty({}, 'label', {
+      enumerable: true,
+      get: () => 'unsafe',
+    });
+    expect(() => canonicalJson([{ label: 'safe' }, accessor])).toThrow(
+      'Accessor',
+    );
+    const symbol = { label: 'safe', [Symbol('hidden')]: true };
+    expect(() => canonicalJson([{ label: 'safe' }, symbol])).toThrow('Symbol');
+    const cycle: Record<string, unknown> = { label: 'safe' };
+    cycle.self = cycle;
+    expect(() => canonicalJson([{ label: 'safe' }, cycle])).toThrow('Cyclic');
+  });
+  it('preserves normalization and key-collision rejection across large heterogeneous bundles', () => {
+    const values = Array.from({ length: 1200 }, (_, i) => ({
+      state: 'stable',
+      ['key-' + i]: 'e\u0301\r\nline',
+    }));
+    const expected = values.map((_, i) => ({
+      ['key-' + i]: 'é\nline',
+      state: 'stable',
+    }));
+    expect(canonicalJson(values)).toBe(JSON.stringify(expected));
+    expect(() =>
+      canonicalJson([...values, { 'e\u0301': 'one', é: 'two' }]),
+    ).toThrow('Normalized key collision');
+    expect(() => canonicalJson([...values, '\uD800'])).toThrow(
+      'valid Unicode scalars',
+    );
+    const longKey = 'e\u0301'.repeat(1200);
+    expect(canonicalJson({ [longKey]: true })).toBe(
+      JSON.stringify({ ['é'.repeat(1200)]: true }),
+    );
+  });
   it('canonicalizes key order, Unicode and line endings but preserves meaningful array order', () => {
     expect(canonicalJson({ z: 1, a: { c: 2, b: true } })).toBe(
       '{"a":{"b":true,"c":2},"z":1}',

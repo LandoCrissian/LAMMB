@@ -4,6 +4,8 @@ export const compareText = (a: string, b: string) =>
   a < b ? -1 : a > b ? 1 : 0;
 
 export function normalizeText(value: string): string {
+  // Printable ASCII already has valid scalars, LF policy and NFC form.
+  if (typeof value === 'string' && /^[\x20-\x7E]*$/.test(value)) return value;
   if (
     /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(
       value,
@@ -18,10 +20,26 @@ export function normalizeText(value: string): string {
 // Integers only; no BigInt, undefined, sparse arrays, non-JSON objects or cycles.
 export function canonicalJson(input: unknown): string {
   const ancestors = new Set<object>();
+  // Repeated keys/trait labels dominate large reconstruction bundles. Cache only
+  // immutable short strings within this call, never objects or prior outputs.
+  const strings = new Map<string, { normalized: string; encoded: string }>();
+  const shapes = new Map<
+    string,
+    { original: string; normalized: string; encoded: string }[]
+  >();
+  const encodeText = (original: string) => {
+    const cached = strings.get(original);
+    if (cached) return cached;
+    const normalized = normalizeText(original);
+    const result = { normalized, encoded: JSON.stringify(normalized) };
+    if (original.length <= 256 && strings.size < 512)
+      strings.set(original, result);
+    return result;
+  };
   function encode(value: unknown, depth = 0): string {
     if (depth > 64) throw new Error('Canonical nesting limit exceeded');
     if (value === null) return 'null';
-    if (typeof value === 'string') return JSON.stringify(normalizeText(value));
+    if (typeof value === 'string') return encodeText(value).encoded;
     if (typeof value === 'boolean') return value ? 'true' : 'false';
     if (typeof value === 'number' && Number.isSafeInteger(value))
       return String(value === 0 ? 0 : value);
@@ -55,18 +73,31 @@ export function canonicalJson(input: unknown): string {
       if (Object.getOwnPropertySymbols(value).length)
         throw new Error('Symbol keys are unsupported');
       const object = value as Record<string, unknown>;
+      const originalKeys = Object.keys(object);
       if (
-        Object.keys(object).some(
+        originalKeys.some(
           (key) => !('value' in Object.getOwnPropertyDescriptor(object, key)!),
         )
       )
         throw new Error('Accessor properties are unsupported');
-      const keys = Object.keys(object)
-        .map((key) => ({ original: key, normalized: normalizeText(key) }))
-        .sort((a, b) => compareText(a.normalized, b.normalized));
-      if (new Set(keys.map((key) => key.normalized)).size !== keys.length)
-        throw new Error('Normalized key collision');
-      return `{${keys.map((key) => `${JSON.stringify(key.normalized)}:${encode(object[key.original], depth + 1)}`).join(',')}}`;
+      // Key strings are immutable; descriptors/values/prototypes are checked on
+      // every object. Reusing a validated key order never reuses object data.
+      const shape =
+        originalKeys.length <= 32 &&
+        originalKeys.every((key) => key.length <= 256)
+          ? JSON.stringify(originalKeys)
+          : null;
+      let keys = shape === null ? undefined : shapes.get(shape);
+      if (!keys) {
+        keys = originalKeys
+          .map((key) => ({ original: key, ...encodeText(key) }))
+          .sort((a, b) => compareText(a.normalized, b.normalized));
+        if (new Set(keys.map((key) => key.normalized)).size !== keys.length)
+          throw new Error('Normalized key collision');
+        if (shape !== null && shape.length <= 2048 && shapes.size < 64)
+          shapes.set(shape, keys);
+      }
+      return `{${keys.map((key) => `${key.encoded}:${encode(object[key.original], depth + 1)}`).join(',')}}`;
     } finally {
       ancestors.delete(value);
     }

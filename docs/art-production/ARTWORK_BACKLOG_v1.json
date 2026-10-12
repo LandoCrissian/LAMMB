@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.3.0",
+  "backlogVersion": "0.4.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -121,6 +121,13 @@
       "sha256": "8e6b326bde9aae712c3f3d11b5e39364a80ede57685d7756a8d84668690eea19",
       "bytes": 1577,
       "kind": "NATIVE_INTEGRITY_RECEIPT"
+    },
+    {
+      "id": "evidence-stage24-owner-decisions",
+      "path": "reports/TASK_024_STAGE24_APPROVALS_PERFORMANCE_001/OWNER_DECISIONS.json",
+      "sha256": "dddfa6a391dc5796521b6524b10c22c4acbfe78ee15ad3bae970e2a8e2661fb1",
+      "bytes": 2021,
+      "kind": "OWNER_ART_DECISION_TRANSCRIPTION"
     }
   ],
   "items": [
@@ -4211,7 +4218,7 @@
         "lammb-clothing-hoodie",
         "lammb-mutations-skeletal"
       ],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "NEEDS_REFINEMENT",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "NEEDS_REFINEMENT",
       "knownLimitations": [
@@ -4224,7 +4231,7 @@
         "No positive production/reference use until owner art review; older skeletal rejections remain quarantined.",
         "No definitive Skeletal metadata eligibility or ordinary trait-vector certification until the anatomical concerns are resolved."
       ],
-      "nextAction": "OWNER_REVIEW_AND_OVINE_DENTAL_NECK_QA_BEFORE_ANY_NEW_REPAIR",
+      "nextAction": "ANATOMICALLY_GROUNDED_PROMPT_AND_REFERENCE_PLAN_NO_GENERATION",
       "ownerDecisionHistory": [
         {
           "id": "stage23-generation-authorization-01-ovine-skeletal",
@@ -4241,12 +4248,20 @@
           "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
           "evidence": "evidence-stage23-generation",
           "date": "2026-10-12T01:15:29.023Z"
+        },
+        {
+          "id": "stage24-owner-study23-ovine-skeletal",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage24-owner-decisions",
+          "date": "2026-10-12T02:18:22.272Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "NEEDS_REFINEMENT",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "NEEDS_REFINEMENT",
         "provenanceEvidence": "evidence-stage23-generation",
         "compatibilityRestrictions": [
           "Authored full-frame study only; no extraction, anatomy replacement layer or production registration.",
@@ -4293,7 +4308,7 @@
         }
       ],
       "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-hoodie"],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "PRODUCTION_CANDIDATE",
       "knownLimitations": [
@@ -4306,7 +4321,7 @@
         "Omit Pixel Corruption facet until semantic coverage and existing progression definition are reviewed.",
         "No certified eye, background, expression or wool metadata value from visual approximation alone."
       ],
-      "nextAction": "OWNER_ART_REVIEW_THEN_SUBJECT_AND_EFFECT_MASK_COVERAGE_REVIEW",
+      "nextAction": "PIXEL_COVERAGE_AND_METADATA_REVIEW_BEFORE_PRODUCTION",
       "ownerDecisionHistory": [
         {
           "id": "stage23-generation-authorization-02-pixel-drip-evolution",
@@ -4323,12 +4338,20 @@
           "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
           "evidence": "evidence-stage23-generation",
           "date": "2026-10-12T01:16:43.430Z"
+        },
+        {
+          "id": "stage24-owner-study23-pixel-drip-evolution",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage24-owner-decisions",
+          "date": "2026-10-12T02:18:22.272Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "PRODUCTION_CANDIDATE",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "ART_DIRECTION_APPROVED",
         "provenanceEvidence": "evidence-stage23-generation",
         "compatibilityRestrictions": [
           "Authored full-frame only; corruption is integrated into wool and garment and cannot be treated as a transferable effect layer.",
@@ -4375,7 +4398,7 @@
         }
       ],
       "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-utility-vest"],
-      "artisticApproval": "UNREVIEWED",
+      "artisticApproval": "ART_DIRECTION_APPROVED",
       "productionRegistration": "NOT_PRODUCTION_REGISTERED",
       "technicalStatus": "PRODUCTION_CANDIDATE",
       "knownLimitations": [
@@ -4388,7 +4411,7 @@
         "No cloth/neck joint portability or ordinary hoodie contact reuse demonstrated.",
         "Existing Utility Vest ID is a proposed mapping; owner artistic review and source-family registration remain required."
       ],
-      "nextAction": "OWNER_ART_REVIEW_THEN_POSE_SPECIFIC_CLOTHING_SOURCE_REGISTRATION",
+      "nextAction": "POSE_SPECIFIC_CLOTHING_COMPATIBILITY_REVIEW_BEFORE_PRODUCTION",
       "ownerDecisionHistory": [
         {
           "id": "stage23-generation-authorization-03-utility-vest",
@@ -4405,12 +4428,20 @@
           "scope": "Native and 64/128/256 square/circle review; proposed QA classification only, owner approval pending.",
           "evidence": "evidence-stage23-generation",
           "date": "2026-10-12T01:17:50.910Z"
+        },
+        {
+          "id": "stage24-owner-study23-utility-vest",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage24-owner-decisions",
+          "date": "2026-10-12T02:18:22.272Z"
         }
       ],
       "finalProductionApproval": null,
       "studyReview": {
         "qaClassification": "PRODUCTION_CANDIDATE",
-        "ownerReviewStatus": "PENDING",
+        "ownerReviewStatus": "ART_DIRECTION_APPROVED",
         "provenanceEvidence": "evidence-stage23-generation",
         "compatibilityRestrictions": [
           "Pose-specific authored full-frame with integrated crewneck and vest; do not stack two independent Clothing values.",

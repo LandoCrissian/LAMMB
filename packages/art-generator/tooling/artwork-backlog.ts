@@ -30,7 +30,7 @@ const source = z.strictObject({
 export const artworkBacklogSchema = z
   .strictObject({
     schemaVersion: z.literal('lammb-artwork-backlog/1.0.0'),
-    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0']),
+    backlogVersion: z.enum(['0.1.0', '0.2.0', '0.3.0', '0.4.0']),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
     collectionSupply: z.literal(5280),
@@ -75,6 +75,7 @@ export const artworkBacklogSchema = z
             'CONDITIONAL_ART_APPROVAL',
             'REJECTED',
             'UNREVIEWED',
+            'NEEDS_REFINEMENT',
           ]),
           productionRegistration: z.literal('NOT_PRODUCTION_REGISTERED'),
           technicalStatus: text,
@@ -105,7 +106,11 @@ export const artworkBacklogSchema = z
                 'NEEDS_REFINEMENT',
                 'REJECTED',
               ]),
-              ownerReviewStatus: z.literal('PENDING'),
+              ownerReviewStatus: z.enum([
+                'PENDING',
+                'ART_DIRECTION_APPROVED',
+                'NEEDS_REFINEMENT',
+              ]),
               provenanceEvidence: id,
               compatibilityRestrictions: z.array(text).min(1).max(32),
             })
@@ -122,6 +127,7 @@ export const artworkBacklogSchema = z
     if (new Set(b.evidence.map((e) => e.id)).size !== b.evidence.length)
       fail('Duplicate evidence ID');
     const evidence = new Set(b.evidence.map((e) => e.id));
+    const evidenceById = new Map(b.evidence.map((e) => [e.id, e]));
     for (const i of b.items) {
       if (new Set(i.sources.map((s) => s.id)).size !== i.sources.length)
         fail('Duplicate item source ID');
@@ -173,12 +179,28 @@ export const artworkBacklogSchema = z
       if (
         i.studyReview &&
         (!evidence.has(i.studyReview.provenanceEvidence) ||
-          i.artisticApproval !== 'UNREVIEWED' ||
           i.technicalStatus !== i.studyReview.qaClassification)
       )
-        fail(
-          'Pending study review must bind provenance without owner approval',
-        );
+        fail('Study review must retain bound provenance and technical QA');
+      if (i.studyReview) {
+        const status = i.studyReview.ownerReviewStatus;
+        if (status === 'PENDING') {
+          if (i.artisticApproval !== 'UNREVIEWED')
+            fail('Pending study cannot claim owner art approval');
+        } else {
+          const last = i.ownerDecisionHistory.at(-1);
+          if (
+            i.artisticApproval !== status ||
+            last?.authority !== 'CURRENT_OWNER_DIRECTIVE' ||
+            last.decision !== status ||
+            !last.date ||
+            !last.evidence ||
+            evidenceById.get(last.evidence)?.kind !==
+              'OWNER_ART_DECISION_TRANSCRIPTION'
+          )
+            fail('Reviewed study requires dated bound owner decision');
+        }
+      }
     }
   });
 
@@ -223,6 +245,123 @@ export function validateArtworkBacklogUpdate(previous: unknown, next: unknown) {
         throw new Error('BACKLOG_OWNER_TRANSITION');
     }
   }
+  return after;
+}
+
+export const artworkOwnerDecisionsSchema = z
+  .strictObject({
+    schemaVersion: z.literal('lammb-artwork-owner-decisions/1.0.0'),
+    recordedAt: z.iso.datetime(),
+    authority: z.literal('CURRENT_OWNER_DIRECTIVE'),
+    authentication: z.literal(
+      'TRUSTED_OPERATOR_TRANSCRIPTION_NOT_SIGNED_OWNER_AUTH',
+    ),
+    mainSha: z.string().regex(/^[a-f0-9]{40}$/),
+    reviewedHeadSha: z.string().regex(/^[a-f0-9]{40}$/),
+    productionApproval: z.literal(false),
+    decisions: z
+      .array(
+        z.strictObject({
+          backlogId: id,
+          sourceSha256: sha256Schema,
+          decision: z.enum(['ART_DIRECTION_APPROVED', 'NEEDS_REFINEMENT']),
+          scope: z.literal('ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION'),
+          instruction: text,
+          nextAction: text,
+        }),
+      )
+      .min(1)
+      .max(32),
+  })
+  .refine(
+    (record) =>
+      new Set(record.decisions.map((d) => d.backlogId)).size ===
+      record.decisions.length,
+    'Duplicate owner decision',
+  );
+
+// A source-bound owner review preserves every prior technical decision and
+// source. It does not register artwork or authenticate the human cryptographically.
+export function validateArtworkOwnerDecisionUpdate(
+  previous: unknown,
+  next: unknown,
+  ownerInput: unknown,
+  ownerRawSha256: string,
+) {
+  const before = artworkBacklogSchema.parse(previous);
+  const after = validateArtworkBacklogUpdate(previous, next);
+  const owner = artworkOwnerDecisionsSchema.parse(ownerInput);
+  const digest = sha256Schema.parse(ownerRawSha256);
+  const same = (a: unknown, b: unknown) =>
+    JSON.stringify(a) === JSON.stringify(b);
+  const root = (b: typeof before) => {
+    const { backlogVersion, evidence, items, ...rest } = b;
+    void backlogVersion;
+    void evidence;
+    void items;
+    return rest;
+  };
+  const addedEvidence = after.evidence.slice(before.evidence.length);
+  const evidence = addedEvidence[0];
+  if (
+    before.backlogVersion !== '0.3.0' ||
+    after.backlogVersion !== '0.4.0' ||
+    !same(root(before), root(after)) ||
+    addedEvidence.length !== 1 ||
+    evidence?.kind !== 'OWNER_ART_DECISION_TRANSCRIPTION' ||
+    evidence.sha256 !== digest
+  )
+    throw new Error('BACKLOG_OWNER_EVIDENCE_BINDING');
+  const decisions = new Map(owner.decisions.map((d) => [d.backlogId, d]));
+  let matched = 0;
+  for (let index = 0; index < before.items.length; index++) {
+    const a = before.items[index]!,
+      b = after.items[index]!,
+      d = decisions.get(a.id);
+    if (!d) {
+      if (!same(a, b)) throw new Error('BACKLOG_UNAUTHORIZED_OWNER_CHANGE');
+      continue;
+    }
+    matched++;
+    const withoutDecision = (i: typeof a) => {
+      const {
+        artisticApproval,
+        ownerDecisionHistory,
+        nextAction,
+        studyReview,
+        ...rest
+      } = i;
+      void artisticApproval;
+      void ownerDecisionHistory;
+      void nextAction;
+      const review = studyReview
+        ? { ...studyReview, ownerReviewStatus: 'PENDING' }
+        : null;
+      return { ...rest, studyReview: review };
+    };
+    const event = b.ownerDecisionHistory.at(-1);
+    if (
+      a.kind !== 'AUTHORIZED_NEW_STUDY' ||
+      a.artisticApproval !== 'UNREVIEWED' ||
+      a.studyReview?.ownerReviewStatus !== 'PENDING' ||
+      !same(withoutDecision(a), withoutDecision(b)) ||
+      !a.sources.some(
+        (s) =>
+          s.role === 'GENERATED_NATIVE_STUDY' && s.sha256 === d.sourceSha256,
+      ) ||
+      b.artisticApproval !== d.decision ||
+      b.studyReview?.ownerReviewStatus !== d.decision ||
+      b.nextAction !== d.nextAction ||
+      b.ownerDecisionHistory.length !== a.ownerDecisionHistory.length + 1 ||
+      event?.authority !== 'CURRENT_OWNER_DIRECTIVE' ||
+      event.decision !== d.decision ||
+      event.evidence !== evidence.id ||
+      event.date !== owner.recordedAt ||
+      event.scope !== d.scope
+    )
+      throw new Error('BACKLOG_OWNER_SOURCE_TRANSITION');
+  }
+  if (matched !== decisions.size) throw new Error('BACKLOG_UNKNOWN_OWNER_ITEM');
   return after;
 }
 
