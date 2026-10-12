@@ -23,6 +23,15 @@ import { pngProofSchema } from '../packages/art-generator/src/png-proof-schema.t
 import type { PngProofRequest } from '../packages/art-generator/src/png-proof-schema.ts';
 import { createPngProofMetadata } from '../packages/art-generator/src/png-proof-metadata.ts';
 import recipeReviews from '../packages/art-generator/fixtures/stage30-recipe-reviews.json';
+import bindingEvidence from '../packages/art-generator/fixtures/stage31-trait-bindings.json';
+import {
+  assessRegistrationReadiness,
+  measureNativeRegion,
+  requireUniqueRegistrationOutputs,
+  traitBindingSchema,
+  validateRegistrationExample,
+  validateTraitBinding,
+} from '../packages/art-generator/tooling/trait-binding.ts';
 import stage16Request from '../packages/art-generator/fixtures/stage16-png-proof.json';
 import stage17Registry from '../packages/art-generator/fixtures/stage17-asset-registry.json';
 import { resolveRegisteredProof } from '../packages/art-generator/src/asset-registry.ts';
@@ -137,6 +146,271 @@ beforeAll(async () => {
     [jointSource.id, data[1]!],
     [maskSource.id, data[2]!],
   ]);
+});
+
+describe('Stage31 source-bound observations and registration gates', () => {
+  // Synthetic RGB and receipt bytes exercise gate logic only. Real immutable
+  // artwork decoding/replay is independently verified in the private acceptance.
+  const raw = Buffer.alloc(1254 * 1254 * 3, 40),
+    out = Buffer.from('synthetic receipt only, not native artwork');
+  const context = (index = 0) => {
+    const row = structuredClone(recipeReviews.recipes[index]!);
+    row.request.expectedOutputSha256 = sha256Bytes(out);
+    row.review.requestSha256 = canonicalSha256(row.request);
+    row.reviewSha256 = canonicalSha256(row.review);
+    const e = traitBindingSchema.parse(
+      structuredClone(bindingEvidence.records[index]!.evidence),
+    );
+    e.outputSha256 = sha256Bytes(out);
+    e.requestSha256 = canonicalSha256(row.request);
+    e.reviewSha256 = row.reviewSha256;
+    e.decodedSourcePixelSha256 = sha256Bytes(raw);
+    for (const r of [...e.eyes.regions, ...e.background.regions])
+      r.pixelSha256 = measureNativeRegion(raw, 1254, 1254, r.roi).pixelSha256;
+    return { e, row };
+  };
+  const assess = (
+    { e, row }: ReturnType<typeof context>,
+    pin = canonicalSha256(e),
+  ) => assessRegistrationReadiness(e, row, spec, raw, out, pin);
+  const args = (
+    c: ReturnType<typeof context>,
+  ): Parameters<typeof assessRegistrationReadiness> => [
+    c.e,
+    c.row,
+    spec,
+    raw,
+    out,
+    canonicalSha256(c.e),
+  ];
+  it('keeps native receipts pinned to the unchanged Stage30 context', () => {
+    expect(bindingEvidence.records).toHaveLength(4);
+    expect(bindingEvidence.stage30FixtureSha256).toBe(
+      canonicalSha256(recipeReviews),
+    );
+    expect(bindingEvidence.registrationProposals).toEqual([]);
+    for (const [i, r] of bindingEvidence.records.entries()) {
+      expect(r.evidenceSha256).toBe(canonicalSha256(r.evidence));
+      expect(r.evidence.sourceSha256).toBe(
+        recipeReviews.recipes[i]!.request.base.sha256,
+      );
+      expect(r.evidence.outputSha256).toBe(
+        recipeReviews.recipes[i]!.request.expectedOutputSha256,
+      );
+      expect(traitBindingSchema.safeParse(r.evidence).success).toBe(true);
+    }
+  });
+  it.each([0, 1, 2, 3])(
+    'blocks recipe %i without fabricating missing metadata',
+    (i) => {
+      const c = context(i),
+        r = assess(c);
+      expect(r.status).toBe('BLOCKED_INCOMPLETE_METADATA');
+      expect(r.registrationCandidate).toBe(false);
+      expect(r.completeMetadata).toBe(false);
+      expect(r.productionRegistered).toBe(false);
+      expect(r.unresolved).toEqual(['eyes', 'environments']);
+      expect(r.traitVector).toHaveLength(9);
+      expect(
+        r.traitVector
+          .filter((v) => v.state === 'VERIFIED_ABSENT')
+          .map((v) => v.category),
+      ).toEqual(['mutations', 'pixel_corruption']);
+      expect(r.promotionGate).toBe(
+        'SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED',
+      );
+      expect(r.metadata.attributes).toHaveLength(6);
+      expect(r.metadata.attributes).toContainEqual({
+        trait_type: 'Pixel Corruption',
+        value: 'NONE',
+      });
+      expect(
+        r.metadata.attributes.some((x) =>
+          [
+            'Eyes',
+            'Background',
+            'Mutation',
+            'Pose',
+            'Material',
+            'Rarity',
+          ].includes(x.trait_type),
+        ),
+      ).toBe(false);
+      expect(validateRegistrationExample(r, args(c))).toEqual(r);
+    },
+  );
+  it('checks exact RGB layout, bounds and reproducible cropped-pixel measurements', () => {
+    const pixels = Buffer.from([1, 2, 3, 204, 255, 0]);
+    expect(
+      measureNativeRegion(pixels, 2, 1, { x: 0, y: 0, width: 2, height: 1 }),
+    ).toMatchObject({
+      pixels: 2,
+      uniqueRgbColors: 2,
+      minimumRgb: [1, 2, 0],
+      maximumRgb: [204, 255, 3],
+      exactCcff00Pixels: 1,
+      pixelSha256: sha256Bytes(pixels),
+    });
+    expect(() =>
+      measureNativeRegion(pixels, 2, 1, { x: 1, y: 0, width: 2, height: 1 }),
+    ).toThrow('BINDING_REGION_BOUNDS');
+    expect(() =>
+      measureNativeRegion(pixels, 3, 1, { x: 0, y: 0, width: 1, height: 1 }),
+    ).toThrow('BINDING_RGB_LAYOUT');
+  });
+  it('rejects stale evidence and full decoded-pixel mutation', () => {
+    const c = context(),
+      pin = canonicalSha256(c.e);
+    c.e.eyes.appearance += ' altered';
+    expect(() => assess(c, pin)).toThrow('BINDING_EVIDENCE_SHA256');
+    const d = context();
+    d.e.decodedSourcePixelSha256 = 'a'.repeat(64);
+    expect(() => assess(d)).toThrow('BINDING_SOURCE_PIXELS');
+  });
+  it('rejects incorrect source/output hashes even if evidence is repinned', () => {
+    const c = context();
+    c.e.sourceSha256 = 'a'.repeat(64);
+    expect(() => assess(c)).toThrow('BINDING_SOURCE_CONTEXT');
+    const d = context();
+    d.e.outputSha256 = 'a'.repeat(64);
+    expect(() => assess(d)).toThrow('BINDING_SOURCE_CONTEXT');
+  });
+  it.each(['eyes', 'background'] as const)(
+    'rejects incorrect or invented %s bindings',
+    (category) => {
+      const c = context();
+      expect(() =>
+        traitBindingSchema.parse({
+          ...c.e,
+          [category]: {
+            ...c.e[category],
+            bindingTraitId:
+              category === 'eyes'
+                ? 'lammb-eyes-radioactive'
+                : 'lammb-environments-graphite',
+          },
+        }),
+      ).toThrow();
+      expect(() =>
+        traitBindingSchema.parse({
+          ...c.e,
+          [category]: { ...c.e[category], bindingTraitId: 'invented-trait' },
+        }),
+      ).toThrow();
+    },
+  );
+  it('rejects wrong definition IDs, hashes, evidence regions and pose', () => {
+    const c = context();
+    c.e.eyes.comparedTraitDefinitions[0]!.traitId = 'invented-eye';
+    expect(() => assess(c)).toThrow('BINDING_TRAIT_DEFINITIONS');
+    const d = context();
+    d.e.background.regions[0]!.pixelSha256 = 'a'.repeat(64);
+    expect(() => assess(d)).toThrow('BINDING_REGION_PIXELS');
+    const f = context();
+    f.e.pose.registrationFamily = 'FRONT';
+    expect(() => assess(f)).toThrow('BINDING_POSE');
+    const h = context();
+    h.e.eyes.regions[0]!.roi.x = 1254;
+    expect(() => assess(h)).toThrow('BINDING_REGION_BOUNDS');
+  });
+  it('rejects missing or mismatched provenance', () => {
+    const c = context();
+    expect(() =>
+      traitBindingSchema.parse({ ...c.e, provenance: [] }),
+    ).toThrow();
+    c.e.provenance[0]!.sha256 = 'a'.repeat(64);
+    expect(() => assess(c)).toThrow('BINDING_PROVENANCE');
+  });
+  it('rejects missing source approval, incompatible wool/clothing and invalid contact', () => {
+    const c = context();
+    const p = structuredClone(c.row.request);
+    p.base.approval.state = 'VALIDATED_RECONSTRUCTION_INPUT';
+    expect(() =>
+      validateTraitBinding(
+        c.e,
+        { ...c.row, request: p },
+        spec,
+        raw,
+        canonicalSha256(c.e),
+      ),
+    ).toThrow('Base needs explicit artistic approval');
+    const d = context();
+    d.row.review.slots.find((x) => x.category === 'wool')!.traitId =
+      'lammb-wool-ash';
+    d.row.reviewSha256 = canonicalSha256(d.row.review);
+    d.e.reviewSha256 = d.row.reviewSha256;
+    expect(() => assess(d)).toThrow('RECIPE_SOURCE_FACETS');
+    const f = context();
+    f.row.review.slots.find((x) => x.category === 'clothing')!.traitId =
+      'lammb-clothing-lab-jacket';
+    f.row.reviewSha256 = canonicalSha256(f.row.review);
+    f.e.reviewSha256 = f.row.reviewSha256;
+    expect(() => assess(f)).toThrow('RECIPE_SOURCE_FACETS');
+    const h = context();
+    h.row.request.registration.roi.x = 1254;
+    expect(() => assess(h)).toThrow('Joint would clip or resample');
+  });
+  it('rejects duplicate output hashes and invalid cohort declarations', () => {
+    const c = recipeReviews.recipes.map((x) => ({
+      outputSha256: x.request.expectedOutputSha256,
+    }));
+    expect(() => requireUniqueRegistrationOutputs(c)).not.toThrow();
+    expect(() => requireUniqueRegistrationOutputs([c[0]!, c[0]!])).toThrow(
+      'BINDING_DUPLICATE_OUTPUT',
+    );
+    expect(() => requireUniqueRegistrationOutputs([])).toThrow(
+      'BINDING_COHORT_SIZE',
+    );
+    expect(() =>
+      requireUniqueRegistrationOutputs([{ outputSha256: 'not-a-hash' }]),
+    ).toThrow('BINDING_OUTPUT_HASH');
+  });
+  it.each([
+    'eye',
+    'background',
+    'pose',
+    'malformed',
+    'promotion',
+    'candidate',
+    'complete',
+  ] as const)('rejects forged registration example: %s', (scenario) => {
+    const c = context(),
+      r = assess(c),
+      bad = structuredClone(r);
+    if (scenario === 'eye')
+      bad.metadata.attributes.push({
+        trait_type: 'Eyes',
+        value: 'Radioactive Green',
+      });
+    if (scenario === 'background')
+      bad.metadata.attributes.push({
+        trait_type: 'Background',
+        value: 'Graphite',
+      });
+    if (scenario === 'pose')
+      return expect(() =>
+        validateRegistrationExample(
+          {
+            ...bad,
+            metadata: {
+              ...bad.metadata,
+              attributes: [
+                ...bad.metadata.attributes,
+                { trait_type: 'Pose', value: 'Front' },
+              ],
+            },
+          },
+          args(c),
+        ),
+      ).toThrow('BINDING_REGISTRATION_RECORD');
+    if (scenario === 'malformed') bad.metadata.image = '';
+    if (scenario === 'promotion') bad.productionRegistered = true;
+    if (scenario === 'candidate') bad.registrationCandidate = true;
+    if (scenario === 'complete') bad.completeMetadata = true;
+    expect(() => validateRegistrationExample(bad, args(c))).toThrow(
+      'BINDING_REGISTRATION_RECORD',
+    );
+  });
 });
 
 describe('source-bound development recipe reconciliation', () => {
