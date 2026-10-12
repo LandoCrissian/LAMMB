@@ -1,6 +1,7 @@
 import { traitCatalogSchema } from '../src/schema';
 
-// Intentionally empty. These are neither approved traits nor collection output.
+// Frequency-bearing legacy fixture remains empty. Source-specific owner
+// approvals are exported separately without assigning generator weights.
 export const developmentCatalog = traitCatalogSchema.parse({
   schemaVersion: 1,
   purpose: 'DEVELOPMENT_ONLY',
@@ -8,3 +9,5 @@ export const developmentCatalog = traitCatalogSchema.parse({
   grails: [],
   incompatibilities: [],
 });
+
+export { sourceBoundDevelopmentCatalog } from './source-bound-development-catalog.ts';
