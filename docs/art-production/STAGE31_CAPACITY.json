@@ -1,0 +1,514 @@
+{
+  "schemaVersion": "lammb-stage31-capacity/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "c26017c7160ef947320523542b2c66604fed5b72",
+  "sourceBindingFixtureSha256": "38965cafa67d738198da604c24c23f8426f744adaf510a92a7283212cf9b4479",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "backlogSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+  "backlogEntries": 121,
+  "logicalCartesianVectors": 13271040,
+  "structurallyValidVectors": 5907744,
+  "constructorSelectableVectors": 5852449,
+  "technicallyRenderableRecipes": 4,
+  "completeMetadataRecipes": 0,
+  "registrationCandidateCount": 0,
+  "productionRegisteredCount": 0,
+  "registrationProposals": [],
+  "remainingCompleteMetadataShortfall": 5280,
+  "remainingProductionRegisteredShortfall": 5280,
+  "mechanicalFourRecipeShortfall": 5276,
+  "artisticallyDistinctCount": null,
+  "reason": "All four native sources lack verified existing Eye/Background definition correspondence. No nearest-color or generic-dark-background inference.",
+  "metadataProjection": "Existing Trait Bible explicit clean Pixel Corruption NONE; absent Mutation/derived Material/Pose facets omitted.",
+  "records": [
+    {
+      "id": "proof-canonical",
+      "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceHashes": {
+        "base": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ivory",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "eyes",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "environments",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        }
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Trait Evidence proof-canonical",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          }
+        ]
+      },
+      "metadataSha256": "fe282e277a4ad9b38f3be614bf58d7da196f7d6222f7a9a87005a78466b6acc2",
+      "status": "BLOCKED_INCOMPLETE_METADATA",
+      "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "completeMetadata": false,
+      "registrationCandidate": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-broad-ash",
+      "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceHashes": {
+        "base": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "eyes",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "environments",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        }
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Trait Evidence proof-broad-ash",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ash Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          }
+        ]
+      },
+      "metadataSha256": "87fb8e42adb4c7b521e247cddef4a97eac2f82e142a29ab95e81ab114b43e155",
+      "status": "BLOCKED_INCOMPLETE_METADATA",
+      "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "completeMetadata": false,
+      "registrationCandidate": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-rolled-locks",
+      "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceHashes": {
+        "base": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "eyes",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "environments",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        }
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Trait Evidence proof-rolled-locks",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Rolled Locks"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          }
+        ]
+      },
+      "metadataSha256": "9c54791d53bd29cadfcfbcdaad2b83716c8d2a966c8b9916e9841a9005a87482",
+      "status": "BLOCKED_INCOMPLETE_METADATA",
+      "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "completeMetadata": false,
+      "registrationCandidate": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-front-stage16",
+      "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceHashes": {
+        "base": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+        "joint": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+        "mask": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96"
+      },
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ivory",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "eyes",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "environments",
+          "state": "UNRESOLVED",
+          "traitId": null,
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        }
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Trait Evidence proof-front-stage16",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          }
+        ]
+      },
+      "metadataSha256": "167edc0ea4653408caa457c181c55eec445806e1282b09370d7848cf061f8fca",
+      "status": "BLOCKED_INCOMPLETE_METADATA",
+      "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "completeMetadata": false,
+      "registrationCandidate": false,
+      "productionRegistered": false
+    }
+  ],
+  "ownerDecisionsRequired": [
+    {
+      "facet": "Eyes",
+      "decision": "Review current green/olive native pixels against CCFF00/glow definition; supply binding material evidence or separately authorize semantic/asset work. No new ID or automatic binding."
+    },
+    {
+      "facet": "Background",
+      "decision": "Review integrated shaded studio background against existing flat-color/scene definitions; supply consistent source evidence or separately authorize definition/asset work. No arbitrary layer replacement."
+    }
+  ],
+  "constraints": {
+    "frequenciesChanged": false,
+    "compatibilityRulesChanged": false,
+    "grailReservationsChanged": false,
+    "sourceMasterChanges": false,
+    "imagegenCalls": 0,
+    "mintActivation": false,
+    "tokenAssignments": 0,
+    "metadataPublished": false,
+    "productionPromotionAuthorized": false
+  }
+}

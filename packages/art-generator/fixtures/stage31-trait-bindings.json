@@ -1,0 +1,1277 @@
+{
+  "schemaVersion": "lammb-stage31-trait-binding-cohort/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "c26017c7160ef947320523542b2c66604fed5b72",
+  "stage30FixtureSha256": "c27006b4c4f8f84b1c25fae1d7a67a2eef79b30110631e5c95f34420812a75a8",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "backlogSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+  "records": [
+    {
+      "evidence": {
+        "schemaVersion": "lammb-source-trait-evidence/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-canonical",
+        "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+        "decodedSourcePixelSha256": "e4df708deb3560f8982ea4718cf93766b0c5d55f8e38456eb5f6acf144ac80db",
+        "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61",
+        "reviewSha256": "29c8e006c658f95c082a14712437b2c900c7119896b3bc26073c27d4f72f73ee",
+        "ownerArtApproval": "APPROVED_ART_DIRECTION",
+        "productionRegistered": false,
+        "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+        "provenance": [
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+            "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+          },
+          {
+            "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+            "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+            "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+            "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+          },
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+            "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+          }
+        ],
+        "eyes": {
+          "status": "EYE_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "visibleEyeCount": 2,
+          "appearance": "Green/olive irises with yellow-green lower crescent under studio shading. No reliable albedo/colorway or deliberate glow evidence establishes the CCFF00 Radioactive Green definition.",
+          "structure": "Two coherent sheep primary eyes, dark pupils, heavy pink eyelids and white catchlights; no split colors or secondary sockets.",
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-eyes-radioactive",
+              "definitionSha256": "8576b586768f818a7e3040eeba85b822a3dff3d4d2feb42ea72e4dc23a2b0eb2"
+            },
+            {
+              "traitId": "lammb-eyes-amber",
+              "definitionSha256": "fa687098e75ddf26d02972a3f96094633d326e439c4b7f77d37a040b0f1beecc"
+            },
+            {
+              "traitId": "lammb-eyes-red",
+              "definitionSha256": "d53bda82f50e77a1abe46c0544907e6553090d6fafd77e37b14d1d33ba1d15e5"
+            },
+            {
+              "traitId": "lammb-eyes-ice",
+              "definitionSha256": "e0772f90c7434e627e7bbb9c349810ac456f35a59322cc42d8669da426905e9b"
+            },
+            {
+              "traitId": "lammb-eyes-violet",
+              "definitionSha256": "887451b00d02e8e14293a7fda7676433ec6025a193719526ffdc2bcda6d7ab0d"
+            },
+            {
+              "traitId": "lammb-eyes-onyx",
+              "definitionSha256": "feee997118328020b757cf614b60adc835463882da19efc0837f11519ce979be"
+            },
+            {
+              "traitId": "lammb-eyes-split",
+              "definitionSha256": "bfb1ebe52e519c55670a2ad95de7a9d652035d0ed523ef8ab0adf29e73a075dc"
+            },
+            {
+              "traitId": "lammb-eyes-compound",
+              "definitionSha256": "e56742082fe7f408e0b3a8cbd3e9fd083a2cc61a370d1c4f4ca6a5a75751b96e"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-canonical-iris-0",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 451,
+                "y": 612,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "a5642e9f0636113c0d60539f84789162334a1ffbe33316f82aeb99c0ac6f8428",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-canonical-iris-1",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 855,
+                "y": 512,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "1f1325d2e5310330ed08da88f47ee5c829dccb6055de1156af6f57c29030d654",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed correspondence to the existing definition supported by an artist/material reference, or separately authorized definition/trait work. Do not equate shaded green pixels with CCFF00 albedo or invent an Eye ID."
+        },
+        "background": {
+          "status": "BACKGROUND_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "appearance": "Integrated warm charcoal/taupe neutral studio gradient/vignette. No laboratory shapes, chartreuse signal glow or distinct event-horizon phenomenon.",
+          "integratedAuthoredFrame": true,
+          "interchangeable": false,
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-environments-chartreuse",
+              "definitionSha256": "04416c585ebb7c723adbc2be3d18d815fc7688c1c5ef89f590883d8e3d0a38f4"
+            },
+            {
+              "traitId": "lammb-environments-near-black",
+              "definitionSha256": "c943a40ee08467c5c34d9f50e59c7a99d348a722568d6c0ef0ab32ce01b56d8d"
+            },
+            {
+              "traitId": "lammb-environments-graphite",
+              "definitionSha256": "ba25c7db5f1080579028f5ff844fb9474ed56bca0d98ae71014ac167b4124bb3"
+            },
+            {
+              "traitId": "lammb-environments-lab",
+              "definitionSha256": "bbd10f1da3b3ebe79e0244514198a4c8dc87207796546bd87ef69e368ff49943"
+            },
+            {
+              "traitId": "lammb-environments-night",
+              "definitionSha256": "dc3f84ae30a8d7205dd2e97a05e7943ea4b0a817c15e718637b115cd76a1b277"
+            },
+            {
+              "traitId": "lammb-environments-event-horizon",
+              "definitionSha256": "5a65c31576d85d219b01a1be9bfc19f3b198001fdd550b6a715746dcb7add7e5"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-canonical-background-0",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "61a2c632783c09c2b213d5dd5395aba62aa7ce46b57c75cbde5331c580fe46aa",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-canonical-background-1",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 1170,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "e316199a5e3ae00a041f338431b676aaf6c95de07e706f6812c58f4d5cdc7e8a",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-canonical-background-2",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 1000,
+                "width": 48,
+                "height": 48
+              },
+              "pixelSha256": "54dca1c7767d674fba2c0623db01f6ba5e9e0d5f38b5da43348231e13e45bb44",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed existing definition correspondence supported by a source/material reference, or separately authorized background definition/asset work. The current flat-color descriptions do not confidently match this shaded frame."
+        },
+        "pose": {
+          "registrationFamily": "ORIGINAL_THREE_QUARTER",
+          "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+        }
+      },
+      "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+      "regionMeasurements": [
+        {
+          "id": "proof-canonical-iris-0",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 451,
+            "y": 612,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "a5642e9f0636113c0d60539f84789162334a1ffbe33316f82aeb99c0ac6f8428",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 451,
+              "y": 612,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "a5642e9f0636113c0d60539f84789162334a1ffbe33316f82aeb99c0ac6f8428",
+            "pixels": 84,
+            "uniqueRgbColors": 80,
+            "minimumRgb": [83, 81, 38],
+            "maximumRgb": [135, 134, 86],
+            "meanRgbRounded": [120, 116, 64],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-canonical-iris-1",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 855,
+            "y": 512,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "1f1325d2e5310330ed08da88f47ee5c829dccb6055de1156af6f57c29030d654",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 855,
+              "y": 512,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "1f1325d2e5310330ed08da88f47ee5c829dccb6055de1156af6f57c29030d654",
+            "pixels": 84,
+            "uniqueRgbColors": 81,
+            "minimumRgb": [86, 82, 41],
+            "maximumRgb": [137, 140, 86],
+            "meanRgbRounded": [120, 119, 66],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-canonical-background-0",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "61a2c632783c09c2b213d5dd5395aba62aa7ce46b57c75cbde5331c580fe46aa",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "61a2c632783c09c2b213d5dd5395aba62aa7ce46b57c75cbde5331c580fe46aa",
+            "pixels": 4096,
+            "uniqueRgbColors": 66,
+            "minimumRgb": [37, 35, 34],
+            "maximumRgb": [43, 39, 39],
+            "meanRgbRounded": [40, 37, 36],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-canonical-background-1",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "e316199a5e3ae00a041f338431b676aaf6c95de07e706f6812c58f4d5cdc7e8a",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 1170,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "e316199a5e3ae00a041f338431b676aaf6c95de07e706f6812c58f4d5cdc7e8a",
+            "pixels": 4096,
+            "uniqueRgbColors": 63,
+            "minimumRgb": [34, 32, 31],
+            "maximumRgb": [39, 37, 38],
+            "meanRgbRounded": [37, 34, 35],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-canonical-background-2",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 1000,
+            "width": 48,
+            "height": 48
+          },
+          "pixelSha256": "54dca1c7767d674fba2c0623db01f6ba5e9e0d5f38b5da43348231e13e45bb44",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 1000,
+              "width": 48,
+              "height": 48
+            },
+            "pixelSha256": "54dca1c7767d674fba2c0623db01f6ba5e9e0d5f38b5da43348231e13e45bb44",
+            "pixels": 2304,
+            "uniqueRgbColors": 48,
+            "minimumRgb": [37, 34, 34],
+            "maximumRgb": [42, 39, 39],
+            "meanRgbRounded": [40, 37, 37],
+            "exactCcff00Pixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "schemaVersion": "lammb-source-trait-evidence/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-broad-ash",
+        "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+        "decodedSourcePixelSha256": "2bdde63fca69ee950fbed4106fd5f135cd89f1d842bdd56af7b434185cb3a8ad",
+        "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c",
+        "reviewSha256": "298fd699f160d1c1a9439619f6a5ae956fd697cbff0a42ba9aa75d191b42478c",
+        "ownerArtApproval": "APPROVED_ART_DIRECTION",
+        "productionRegistered": false,
+        "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+        "provenance": [
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+            "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+          },
+          {
+            "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+            "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+            "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+            "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+          },
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+            "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+          }
+        ],
+        "eyes": {
+          "status": "EYE_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "visibleEyeCount": 2,
+          "appearance": "Green/olive irises with yellow-green lower crescent under studio shading. No reliable albedo/colorway or deliberate glow evidence establishes the CCFF00 Radioactive Green definition.",
+          "structure": "Two coherent sheep primary eyes, dark pupils, heavy pink eyelids and white catchlights; no split colors or secondary sockets.",
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-eyes-radioactive",
+              "definitionSha256": "8576b586768f818a7e3040eeba85b822a3dff3d4d2feb42ea72e4dc23a2b0eb2"
+            },
+            {
+              "traitId": "lammb-eyes-amber",
+              "definitionSha256": "fa687098e75ddf26d02972a3f96094633d326e439c4b7f77d37a040b0f1beecc"
+            },
+            {
+              "traitId": "lammb-eyes-red",
+              "definitionSha256": "d53bda82f50e77a1abe46c0544907e6553090d6fafd77e37b14d1d33ba1d15e5"
+            },
+            {
+              "traitId": "lammb-eyes-ice",
+              "definitionSha256": "e0772f90c7434e627e7bbb9c349810ac456f35a59322cc42d8669da426905e9b"
+            },
+            {
+              "traitId": "lammb-eyes-violet",
+              "definitionSha256": "887451b00d02e8e14293a7fda7676433ec6025a193719526ffdc2bcda6d7ab0d"
+            },
+            {
+              "traitId": "lammb-eyes-onyx",
+              "definitionSha256": "feee997118328020b757cf614b60adc835463882da19efc0837f11519ce979be"
+            },
+            {
+              "traitId": "lammb-eyes-split",
+              "definitionSha256": "bfb1ebe52e519c55670a2ad95de7a9d652035d0ed523ef8ab0adf29e73a075dc"
+            },
+            {
+              "traitId": "lammb-eyes-compound",
+              "definitionSha256": "e56742082fe7f408e0b3a8cbd3e9fd083a2cc61a370d1c4f4ca6a5a75751b96e"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-broad-ash-iris-0",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 451,
+                "y": 612,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "ab0b6201515a49c035444b9fc2e77a7a5a933ea98a4de0834df547211324d732",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-broad-ash-iris-1",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 855,
+                "y": 512,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "c4883ffcee4d5d068a9a7ff9aa60de2c591f726581fe9f6a0cbf66416f9d3fa1",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed correspondence to the existing definition supported by an artist/material reference, or separately authorized definition/trait work. Do not equate shaded green pixels with CCFF00 albedo or invent an Eye ID."
+        },
+        "background": {
+          "status": "BACKGROUND_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "appearance": "Integrated warm charcoal/taupe neutral studio gradient/vignette. No laboratory shapes, chartreuse signal glow or distinct event-horizon phenomenon.",
+          "integratedAuthoredFrame": true,
+          "interchangeable": false,
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-environments-chartreuse",
+              "definitionSha256": "04416c585ebb7c723adbc2be3d18d815fc7688c1c5ef89f590883d8e3d0a38f4"
+            },
+            {
+              "traitId": "lammb-environments-near-black",
+              "definitionSha256": "c943a40ee08467c5c34d9f50e59c7a99d348a722568d6c0ef0ab32ce01b56d8d"
+            },
+            {
+              "traitId": "lammb-environments-graphite",
+              "definitionSha256": "ba25c7db5f1080579028f5ff844fb9474ed56bca0d98ae71014ac167b4124bb3"
+            },
+            {
+              "traitId": "lammb-environments-lab",
+              "definitionSha256": "bbd10f1da3b3ebe79e0244514198a4c8dc87207796546bd87ef69e368ff49943"
+            },
+            {
+              "traitId": "lammb-environments-night",
+              "definitionSha256": "dc3f84ae30a8d7205dd2e97a05e7943ea4b0a817c15e718637b115cd76a1b277"
+            },
+            {
+              "traitId": "lammb-environments-event-horizon",
+              "definitionSha256": "5a65c31576d85d219b01a1be9bfc19f3b198001fdd550b6a715746dcb7add7e5"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-broad-ash-background-0",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "28677a48c3686c83bcc0899a867a840d82f031240a5a5eab87a1b32d46cbabe8",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-broad-ash-background-1",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 1170,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "8dbf3817dbd83ae7764b7f6a813cd1a3e96a0e75ed698b1323cdfc628bfe84a0",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-broad-ash-background-2",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 1000,
+                "width": 48,
+                "height": 48
+              },
+              "pixelSha256": "0c5a42bd2659f87b3f3a6ebe351e6a46fb3c4447988ee2e797b663dc0c6f1867",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed existing definition correspondence supported by a source/material reference, or separately authorized background definition/asset work. The current flat-color descriptions do not confidently match this shaded frame."
+        },
+        "pose": {
+          "registrationFamily": "ORIGINAL_THREE_QUARTER",
+          "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+        }
+      },
+      "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+      "regionMeasurements": [
+        {
+          "id": "proof-broad-ash-iris-0",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 451,
+            "y": 612,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "ab0b6201515a49c035444b9fc2e77a7a5a933ea98a4de0834df547211324d732",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 451,
+              "y": 612,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "ab0b6201515a49c035444b9fc2e77a7a5a933ea98a4de0834df547211324d732",
+            "pixels": 84,
+            "uniqueRgbColors": 80,
+            "minimumRgb": [100, 98, 49],
+            "maximumRgb": [134, 134, 85],
+            "meanRgbRounded": [123, 118, 66],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-broad-ash-iris-1",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 855,
+            "y": 512,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "c4883ffcee4d5d068a9a7ff9aa60de2c591f726581fe9f6a0cbf66416f9d3fa1",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 855,
+              "y": 512,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "c4883ffcee4d5d068a9a7ff9aa60de2c591f726581fe9f6a0cbf66416f9d3fa1",
+            "pixels": 84,
+            "uniqueRgbColors": 83,
+            "minimumRgb": [92, 91, 43],
+            "maximumRgb": [141, 142, 89],
+            "meanRgbRounded": [119, 119, 68],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-broad-ash-background-0",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "28677a48c3686c83bcc0899a867a840d82f031240a5a5eab87a1b32d46cbabe8",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "28677a48c3686c83bcc0899a867a840d82f031240a5a5eab87a1b32d46cbabe8",
+            "pixels": 4096,
+            "uniqueRgbColors": 60,
+            "minimumRgb": [37, 34, 33],
+            "maximumRgb": [42, 39, 38],
+            "meanRgbRounded": [40, 37, 36],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-broad-ash-background-1",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "8dbf3817dbd83ae7764b7f6a813cd1a3e96a0e75ed698b1323cdfc628bfe84a0",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 1170,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "8dbf3817dbd83ae7764b7f6a813cd1a3e96a0e75ed698b1323cdfc628bfe84a0",
+            "pixels": 4096,
+            "uniqueRgbColors": 53,
+            "minimumRgb": [33, 32, 31],
+            "maximumRgb": [38, 35, 35],
+            "meanRgbRounded": [36, 33, 33],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-broad-ash-background-2",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 1000,
+            "width": 48,
+            "height": 48
+          },
+          "pixelSha256": "0c5a42bd2659f87b3f3a6ebe351e6a46fb3c4447988ee2e797b663dc0c6f1867",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 1000,
+              "width": 48,
+              "height": 48
+            },
+            "pixelSha256": "0c5a42bd2659f87b3f3a6ebe351e6a46fb3c4447988ee2e797b663dc0c6f1867",
+            "pixels": 2304,
+            "uniqueRgbColors": 45,
+            "minimumRgb": [36, 33, 33],
+            "maximumRgb": [40, 38, 37],
+            "meanRgbRounded": [38, 36, 35],
+            "exactCcff00Pixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "schemaVersion": "lammb-source-trait-evidence/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-rolled-locks",
+        "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+        "decodedSourcePixelSha256": "b4de249262173a2f6d65bf5030c08308c72157983634bdf68f3dabbe2299c496",
+        "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb",
+        "reviewSha256": "e916bdeadd60d825114a42e939785c05ee707c753ea0a87a012e18d31376c884",
+        "ownerArtApproval": "APPROVED_ART_DIRECTION",
+        "productionRegistered": false,
+        "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+        "provenance": [
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+            "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+          },
+          {
+            "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+            "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+            "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+          },
+          {
+            "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+            "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+          },
+          {
+            "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+            "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+          }
+        ],
+        "eyes": {
+          "status": "EYE_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "visibleEyeCount": 2,
+          "appearance": "Green/olive irises with yellow-green lower crescent under studio shading. No reliable albedo/colorway or deliberate glow evidence establishes the CCFF00 Radioactive Green definition.",
+          "structure": "Two coherent sheep primary eyes, dark pupils, heavy pink eyelids and white catchlights; no split colors or secondary sockets.",
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-eyes-radioactive",
+              "definitionSha256": "8576b586768f818a7e3040eeba85b822a3dff3d4d2feb42ea72e4dc23a2b0eb2"
+            },
+            {
+              "traitId": "lammb-eyes-amber",
+              "definitionSha256": "fa687098e75ddf26d02972a3f96094633d326e439c4b7f77d37a040b0f1beecc"
+            },
+            {
+              "traitId": "lammb-eyes-red",
+              "definitionSha256": "d53bda82f50e77a1abe46c0544907e6553090d6fafd77e37b14d1d33ba1d15e5"
+            },
+            {
+              "traitId": "lammb-eyes-ice",
+              "definitionSha256": "e0772f90c7434e627e7bbb9c349810ac456f35a59322cc42d8669da426905e9b"
+            },
+            {
+              "traitId": "lammb-eyes-violet",
+              "definitionSha256": "887451b00d02e8e14293a7fda7676433ec6025a193719526ffdc2bcda6d7ab0d"
+            },
+            {
+              "traitId": "lammb-eyes-onyx",
+              "definitionSha256": "feee997118328020b757cf614b60adc835463882da19efc0837f11519ce979be"
+            },
+            {
+              "traitId": "lammb-eyes-split",
+              "definitionSha256": "bfb1ebe52e519c55670a2ad95de7a9d652035d0ed523ef8ab0adf29e73a075dc"
+            },
+            {
+              "traitId": "lammb-eyes-compound",
+              "definitionSha256": "e56742082fe7f408e0b3a8cbd3e9fd083a2cc61a370d1c4f4ca6a5a75751b96e"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-rolled-locks-iris-0",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 451,
+                "y": 612,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "ffc3707f4e856f307764955627e527ba286740b586d79e086cf02af2ddf418eb",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-rolled-locks-iris-1",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 855,
+                "y": 512,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "e6652aa7380e0751ab79dd4d7a899d529c0d69fd80c8e5ea250c5f87b69d4e18",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed correspondence to the existing definition supported by an artist/material reference, or separately authorized definition/trait work. Do not equate shaded green pixels with CCFF00 albedo or invent an Eye ID."
+        },
+        "background": {
+          "status": "BACKGROUND_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "appearance": "Integrated warm charcoal/taupe neutral studio gradient/vignette. No laboratory shapes, chartreuse signal glow or distinct event-horizon phenomenon.",
+          "integratedAuthoredFrame": true,
+          "interchangeable": false,
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-environments-chartreuse",
+              "definitionSha256": "04416c585ebb7c723adbc2be3d18d815fc7688c1c5ef89f590883d8e3d0a38f4"
+            },
+            {
+              "traitId": "lammb-environments-near-black",
+              "definitionSha256": "c943a40ee08467c5c34d9f50e59c7a99d348a722568d6c0ef0ab32ce01b56d8d"
+            },
+            {
+              "traitId": "lammb-environments-graphite",
+              "definitionSha256": "ba25c7db5f1080579028f5ff844fb9474ed56bca0d98ae71014ac167b4124bb3"
+            },
+            {
+              "traitId": "lammb-environments-lab",
+              "definitionSha256": "bbd10f1da3b3ebe79e0244514198a4c8dc87207796546bd87ef69e368ff49943"
+            },
+            {
+              "traitId": "lammb-environments-night",
+              "definitionSha256": "dc3f84ae30a8d7205dd2e97a05e7943ea4b0a817c15e718637b115cd76a1b277"
+            },
+            {
+              "traitId": "lammb-environments-event-horizon",
+              "definitionSha256": "5a65c31576d85d219b01a1be9bfc19f3b198001fdd550b6a715746dcb7add7e5"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-rolled-locks-background-0",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "f864e63dc652d1d4c28d8e158707244b191faef2fd8ffb168d017b6d5bf79261",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-rolled-locks-background-1",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 1170,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "210356e4a20bd9f9a566cb62a705528422f38d56f49fbb873fe1a627482e9235",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-rolled-locks-background-2",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 1000,
+                "width": 48,
+                "height": 48
+              },
+              "pixelSha256": "54d63f7f00d9d35611a7a38a54753bf868476474e4d50e0470b8181927f4c958",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed existing definition correspondence supported by a source/material reference, or separately authorized background definition/asset work. The current flat-color descriptions do not confidently match this shaded frame."
+        },
+        "pose": {
+          "registrationFamily": "ORIGINAL_THREE_QUARTER",
+          "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+        }
+      },
+      "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+      "regionMeasurements": [
+        {
+          "id": "proof-rolled-locks-iris-0",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 451,
+            "y": 612,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "ffc3707f4e856f307764955627e527ba286740b586d79e086cf02af2ddf418eb",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 451,
+              "y": 612,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "ffc3707f4e856f307764955627e527ba286740b586d79e086cf02af2ddf418eb",
+            "pixels": 84,
+            "uniqueRgbColors": 83,
+            "minimumRgb": [93, 92, 45],
+            "maximumRgb": [139, 133, 88],
+            "meanRgbRounded": [125, 121, 67],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-rolled-locks-iris-1",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 855,
+            "y": 512,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "e6652aa7380e0751ab79dd4d7a899d529c0d69fd80c8e5ea250c5f87b69d4e18",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 855,
+              "y": 512,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "e6652aa7380e0751ab79dd4d7a899d529c0d69fd80c8e5ea250c5f87b69d4e18",
+            "pixels": 84,
+            "uniqueRgbColors": 83,
+            "minimumRgb": [88, 85, 43],
+            "maximumRgb": [137, 139, 85],
+            "meanRgbRounded": [122, 122, 68],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-rolled-locks-background-0",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "f864e63dc652d1d4c28d8e158707244b191faef2fd8ffb168d017b6d5bf79261",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "f864e63dc652d1d4c28d8e158707244b191faef2fd8ffb168d017b6d5bf79261",
+            "pixels": 4096,
+            "uniqueRgbColors": 72,
+            "minimumRgb": [36, 33, 32],
+            "maximumRgb": [42, 38, 37],
+            "meanRgbRounded": [39, 36, 35],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-rolled-locks-background-1",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "210356e4a20bd9f9a566cb62a705528422f38d56f49fbb873fe1a627482e9235",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 1170,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "210356e4a20bd9f9a566cb62a705528422f38d56f49fbb873fe1a627482e9235",
+            "pixels": 4096,
+            "uniqueRgbColors": 81,
+            "minimumRgb": [30, 29, 29],
+            "maximumRgb": [37, 35, 35],
+            "meanRgbRounded": [35, 32, 32],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-rolled-locks-background-2",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 1000,
+            "width": 48,
+            "height": 48
+          },
+          "pixelSha256": "54d63f7f00d9d35611a7a38a54753bf868476474e4d50e0470b8181927f4c958",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 1000,
+              "width": 48,
+              "height": 48
+            },
+            "pixelSha256": "54d63f7f00d9d35611a7a38a54753bf868476474e4d50e0470b8181927f4c958",
+            "pixels": 2304,
+            "uniqueRgbColors": 43,
+            "minimumRgb": [36, 33, 32],
+            "maximumRgb": [40, 37, 37],
+            "meanRgbRounded": [38, 35, 34],
+            "exactCcff00Pixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "schemaVersion": "lammb-source-trait-evidence/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "proofId": "proof-front-stage16",
+        "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+        "decodedSourcePixelSha256": "3f875aa0ac747ee7cec9845e7b68ce4ebc4925c4b766cbbfea0af8346fe2a7a3",
+        "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd",
+        "reviewSha256": "e82582cffb12203605413a7c10cfb3d314291a7f172efb5234888890a56f305c",
+        "ownerArtApproval": "APPROVED_ART_DIRECTION",
+        "productionRegistered": false,
+        "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+        "provenance": [
+          {
+            "path": "reports/ART_016_STAGE7_FRONT_TAG_001/RECONSTRUCTION_MANIFEST.json",
+            "sha256": "d79e98c5a259d2a79fd4123a6d13d84c6ffc4d745fa0b4156be14c1b88640171"
+          }
+        ],
+        "eyes": {
+          "status": "EYE_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "visibleEyeCount": 2,
+          "appearance": "Green/olive irises with yellow-green lower crescent under studio shading. No reliable albedo/colorway or deliberate glow evidence establishes the CCFF00 Radioactive Green definition.",
+          "structure": "Two coherent sheep primary eyes, dark pupils, heavy pink eyelids and white catchlights; no split colors or secondary sockets.",
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-eyes-radioactive",
+              "definitionSha256": "8576b586768f818a7e3040eeba85b822a3dff3d4d2feb42ea72e4dc23a2b0eb2"
+            },
+            {
+              "traitId": "lammb-eyes-amber",
+              "definitionSha256": "fa687098e75ddf26d02972a3f96094633d326e439c4b7f77d37a040b0f1beecc"
+            },
+            {
+              "traitId": "lammb-eyes-red",
+              "definitionSha256": "d53bda82f50e77a1abe46c0544907e6553090d6fafd77e37b14d1d33ba1d15e5"
+            },
+            {
+              "traitId": "lammb-eyes-ice",
+              "definitionSha256": "e0772f90c7434e627e7bbb9c349810ac456f35a59322cc42d8669da426905e9b"
+            },
+            {
+              "traitId": "lammb-eyes-violet",
+              "definitionSha256": "887451b00d02e8e14293a7fda7676433ec6025a193719526ffdc2bcda6d7ab0d"
+            },
+            {
+              "traitId": "lammb-eyes-onyx",
+              "definitionSha256": "feee997118328020b757cf614b60adc835463882da19efc0837f11519ce979be"
+            },
+            {
+              "traitId": "lammb-eyes-split",
+              "definitionSha256": "bfb1ebe52e519c55670a2ad95de7a9d652035d0ed523ef8ab0adf29e73a075dc"
+            },
+            {
+              "traitId": "lammb-eyes-compound",
+              "definitionSha256": "e56742082fe7f408e0b3a8cbd3e9fd083a2cc61a370d1c4f4ca6a5a75751b96e"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-front-stage16-iris-0",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 449,
+                "y": 571,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "91c57721db9dec356327d2ada9b1389279828f39ad3b5657d8dc02d0a972f737",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-front-stage16-iris-1",
+              "role": "IRIS_LOWER_CRESCENT_PROXY",
+              "roi": {
+                "x": 846,
+                "y": 571,
+                "width": 12,
+                "height": 7
+              },
+              "pixelSha256": "a5270a49e26012346ae5bef504e899f915f5b470a5f57c3dbf72ba5fc85f5556",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed correspondence to the existing definition supported by an artist/material reference, or separately authorized definition/trait work. Do not equate shaded green pixels with CCFF00 albedo or invent an Eye ID."
+        },
+        "background": {
+          "status": "BACKGROUND_BINDING_UNRESOLVED",
+          "bindingTraitId": null,
+          "appearance": "Integrated warm charcoal/taupe neutral studio gradient/vignette. No laboratory shapes, chartreuse signal glow or distinct event-horizon phenomenon.",
+          "integratedAuthoredFrame": true,
+          "interchangeable": false,
+          "comparedTraitDefinitions": [
+            {
+              "traitId": "lammb-environments-chartreuse",
+              "definitionSha256": "04416c585ebb7c723adbc2be3d18d815fc7688c1c5ef89f590883d8e3d0a38f4"
+            },
+            {
+              "traitId": "lammb-environments-near-black",
+              "definitionSha256": "c943a40ee08467c5c34d9f50e59c7a99d348a722568d6c0ef0ab32ce01b56d8d"
+            },
+            {
+              "traitId": "lammb-environments-graphite",
+              "definitionSha256": "ba25c7db5f1080579028f5ff844fb9474ed56bca0d98ae71014ac167b4124bb3"
+            },
+            {
+              "traitId": "lammb-environments-lab",
+              "definitionSha256": "bbd10f1da3b3ebe79e0244514198a4c8dc87207796546bd87ef69e368ff49943"
+            },
+            {
+              "traitId": "lammb-environments-night",
+              "definitionSha256": "dc3f84ae30a8d7205dd2e97a05e7943ea4b0a817c15e718637b115cd76a1b277"
+            },
+            {
+              "traitId": "lammb-environments-event-horizon",
+              "definitionSha256": "5a65c31576d85d219b01a1be9bfc19f3b198001fdd550b6a715746dcb7add7e5"
+            }
+          ],
+          "regions": [
+            {
+              "id": "proof-front-stage16-background-0",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "eceef6897dc2349765032da7bebe60b84769a2d12c7a6097e34b13cf16d35546",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-front-stage16-background-1",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 1170,
+                "y": 16,
+                "width": 64,
+                "height": 64
+              },
+              "pixelSha256": "8d38aa2771633d941bdc95961cd3d05d6dc9711b814c0c45273995949fbc20dd",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            },
+            {
+              "id": "proof-front-stage16-background-2",
+              "role": "OBSERVED_BACKGROUND_PROXY",
+              "roi": {
+                "x": 16,
+                "y": 1000,
+                "width": 48,
+                "height": 48
+              },
+              "pixelSha256": "11b0192474115f4c4f346ef39f3f1b529e4dbdc0bfc1569b6aeba3ebd0d0d138",
+              "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO"
+            }
+          ],
+          "resolutionRequired": "Owner-reviewed existing definition correspondence supported by a source/material reference, or separately authorized background definition/asset work. The current flat-color descriptions do not confidently match this shaded frame."
+        },
+        "pose": {
+          "registrationFamily": "FRONT",
+          "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+        }
+      },
+      "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+      "regionMeasurements": [
+        {
+          "id": "proof-front-stage16-iris-0",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 449,
+            "y": 571,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "91c57721db9dec356327d2ada9b1389279828f39ad3b5657d8dc02d0a972f737",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 449,
+              "y": 571,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "91c57721db9dec356327d2ada9b1389279828f39ad3b5657d8dc02d0a972f737",
+            "pixels": 84,
+            "uniqueRgbColors": 83,
+            "minimumRgb": [6, 5, 2],
+            "maximumRgb": [146, 135, 74],
+            "meanRgbRounded": [80, 74, 39],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-front-stage16-iris-1",
+          "role": "IRIS_LOWER_CRESCENT_PROXY",
+          "roi": {
+            "x": 846,
+            "y": 571,
+            "width": 12,
+            "height": 7
+          },
+          "pixelSha256": "a5270a49e26012346ae5bef504e899f915f5b470a5f57c3dbf72ba5fc85f5556",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 846,
+              "y": 571,
+              "width": 12,
+              "height": 7
+            },
+            "pixelSha256": "a5270a49e26012346ae5bef504e899f915f5b470a5f57c3dbf72ba5fc85f5556",
+            "pixels": 84,
+            "uniqueRgbColors": 83,
+            "minimumRgb": [92, 99, 60],
+            "maximumRgb": [154, 148, 83],
+            "meanRgbRounded": [125, 126, 72],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-front-stage16-background-0",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "eceef6897dc2349765032da7bebe60b84769a2d12c7a6097e34b13cf16d35546",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "eceef6897dc2349765032da7bebe60b84769a2d12c7a6097e34b13cf16d35546",
+            "pixels": 4096,
+            "uniqueRgbColors": 57,
+            "minimumRgb": [35, 33, 32],
+            "maximumRgb": [41, 37, 38],
+            "meanRgbRounded": [38, 35, 35],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-front-stage16-background-1",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "pixelSha256": "8d38aa2771633d941bdc95961cd3d05d6dc9711b814c0c45273995949fbc20dd",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 1170,
+              "y": 16,
+              "width": 64,
+              "height": 64
+            },
+            "pixelSha256": "8d38aa2771633d941bdc95961cd3d05d6dc9711b814c0c45273995949fbc20dd",
+            "pixels": 4096,
+            "uniqueRgbColors": 80,
+            "minimumRgb": [32, 30, 29],
+            "maximumRgb": [37, 35, 35],
+            "meanRgbRounded": [34, 32, 32],
+            "exactCcff00Pixels": 0
+          }
+        },
+        {
+          "id": "proof-front-stage16-background-2",
+          "role": "OBSERVED_BACKGROUND_PROXY",
+          "roi": {
+            "x": 16,
+            "y": 1000,
+            "width": 48,
+            "height": 48
+          },
+          "pixelSha256": "11b0192474115f4c4f346ef39f3f1b529e4dbdc0bfc1569b6aeba3ebd0d0d138",
+          "scope": "MANUALLY_OBSERVED_PROXY_NOT_SEGMENTATION_OR_ALBEDO",
+          "statistics": {
+            "roi": {
+              "x": 16,
+              "y": 1000,
+              "width": 48,
+              "height": 48
+            },
+            "pixelSha256": "11b0192474115f4c4f346ef39f3f1b529e4dbdc0bfc1569b6aeba3ebd0d0d138",
+            "pixels": 2304,
+            "uniqueRgbColors": 67,
+            "minimumRgb": [34, 32, 32],
+            "maximumRgb": [40, 37, 37],
+            "meanRgbRounded": [37, 34, 34],
+            "exactCcff00Pixels": 0
+          }
+        }
+      ]
+    }
+  ],
+  "completeMetadataRecipes": 0,
+  "registrationProposals": [],
+  "productionRegisteredCount": 0
+}
