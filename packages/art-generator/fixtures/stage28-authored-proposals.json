@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "lammb-authored-source-proposals/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "productionPromotionAuthorized": false,
+  "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+  "specCanonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "backlogSha256": "c260e6e424bf93460e07514e15d2f77c99bf236cade3042909c56596cc200aaa",
+  "ownerEvidence": {
+    "path": "reports/TASK_028_STAGE28_PREPARATION_001/OWNER_DECISIONS.json",
+    "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0"
+  },
+  "provenanceEvidence": {
+    "path": "reports/TASK_027_STAGE27_EXPANSION_001/GENERATION_PROVENANCE.json",
+    "sha256": "74912db8fc21d1098cde7e336fb30e9b71a32e0aba3e344a7016b0d5316e1c29"
+  },
+  "assets": [
+    {
+      "id": "dev-authored-collar-shift",
+      "backlogId": "backlog-study27-collar-shift",
+      "sourceId": "source-stage27-01-collar-shift",
+      "sourceSha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+      "family": "COLLAR_SHIFT",
+      "visibleTraitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-bomber"],
+      "composition": "IMMUTABLE_AUTHORED_FULL_FRAME_ONLY",
+      "poseContactRegistration": "NOT_VALIDATED",
+      "extractedLayers": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "dev-authored-after-hours-observer",
+      "backlogId": "backlog-study27-after-hours-observer",
+      "sourceId": "source-stage27-03-after-hours-observer",
+      "sourceSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+      "family": "AFTER_HOURS_OBSERVER",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-long-coat",
+        "lammb-environments-lab"
+      ],
+      "composition": "IMMUTABLE_AUTHORED_FULL_FRAME_ONLY",
+      "poseContactRegistration": "NOT_VALIDATED",
+      "extractedLayers": false,
+      "productionRegistered": false
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Permanent artwork-development backlog
 
-`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.7.0 preserves all 115 reviewed Stage 26 records and appends three Stage 27 studies, for 118 items. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
+`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.8.0 preserves all 118 Stage 27 source records and appends the three Stage 28 owner decisions. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
 
 `ARTWORK_BACKLOG_v0.2.0.json` preserves the exact Stage 22 snapshot. Its canonical SHA256 remains `029ddfb529330a7d459fa8cc1d9e9d174b2963c8157c16e687775ab74c592744`. The Stage 22 authored registry must resolve against that snapshot, not the evolving current backlog. Its source and owner-evidence bindings have not been rewritten. The original `mainSha` is the historical capture baseline; each new generation records its own provenance separately.
 
@@ -22,7 +22,7 @@ The original Identity Vault still has a historical null canonical field. Later e
 
 Stage 21's source recovery reverified 848 historical artwork paths, 345 Stage 15 evidence records, 19 Stage 16 manifest entries, 142 Stage 20 artifacts and the merged Stage 17 source/evidence declarations. The historical front ear-tag proof and its independent reconstruction match exact bytes. Newly inspected records are baselined explicitly rather than presented as prior hash matches. Source-only/decoder validation and artistic approval remain distinct.
 
-The current backlog digest reader checks 156 source/evidence bindings across 85 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21, 23, 25 and 27 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter and Stage 26 proposal adapter decode their approved outputs again within unchanged proof limits.
+The current backlog digest reader checks 157 source/evidence bindings across 86 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21, 23, 25 and 27 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter and authored-source proposal adapter decode approved outputs again within unchanged proof limits.
 
 ```powershell
 node --experimental-strip-types packages/art-generator/tooling/artwork-backlog.ts docs/art-production/ARTWORK_BACKLOG_v1.json packages/art-generator/specs/lammb-traits-v1.json C:/LAMMB-Studio
@@ -73,3 +73,13 @@ The existing append validator now permits exactly the two explicit generation-ve
 The append contract adds only the explicit 0.6.0→0.7.0 transition. All 115 prior items and evidence prefixes remain byte-equivalent as parsed records. Three distinct new native PNG hashes and their actual approved raster references bind to preserved generation/QA evidence. Current source verification checks 156 declarations across 85 private paths. The dated generation authorization is not artwork acceptance. No new frequencies, grail reservations, compatibility rules or collection supply changes occur.
 
 `stage27-character-studies.json` contains three partial, unpublished development metadata examples. Exact image and metadata digests are bound; no token assignment or complete logical vector is claimed. Delighted is a working title, with only an existing Amused facet proposed for its visible expression. Future contact, garment, background and source-family registration still require owner review. Skeletal anatomy, Pixel Drip compatibility, Magma clothing compatibility and Rolled Locks differentiation remain open.
+
+## Stage 28 owner decisions and preparation
+
+`ARTWORK_BACKLOG_v0.7.0.json` pins the exact pre-decision Stage 27 snapshot. Its original append tests and pending-review metadata continue resolving against that historical record. Stage 28 does not rewrite those original reviews or infer production approval from a later art-direction decision.
+
+`STAGE28_OWNER_DECISIONS.json` appends art-direction approval of Collar Shift and After-hours Observer, plus owner `NEEDS_REFINEMENT` for Delighted Conspirator because its expression is insufficiently differentiated from Amused. The owner-transition contract adds only 0.7.0→0.8.0. All 118 IDs, source declarations, previous history, technical reviews and compatibility restrictions remain unchanged; all production states remain `NOT_PRODUCTION_REGISTERED`.
+
+`stage28-authored-proposals.json` uses the existing authored-source proposal adapter for two immutable approved frames. Family bindings now include exact Collar Shift and Observer IDs/facets and their actual three/two historical references. They do not establish interchangeable clothing, poses, backgrounds or contacts. The existing Stage 26 families and pinned evidence are unchanged.
+
+`STAGE28_PREPARATION.md` documents source/metadata compatibility, diversity priorities and Netlify diagnostic limits. `STAGE28_NEXT_STUDIES.json` supplies three exact no-generation concepts with approved native raster references. No frequency, grail, supply, production promotion or ImageGen execution is authorized by these plans.

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "lammb-artwork-owner-decisions/1.0.0",
+  "recordedAt": "2026-10-12T15:53:15.448Z",
+  "authority": "CURRENT_OWNER_DIRECTIVE",
+  "authentication": "TRUSTED_OPERATOR_TRANSCRIPTION_NOT_SIGNED_OWNER_AUTH",
+  "mainSha": "5bfbdcaff5dc772d0dba519bdd4579394d400db4",
+  "reviewedHeadSha": "014032b98a34191836279a1513c3b2ebd23e0f4e",
+  "productionApproval": false,
+  "decisions": [
+    {
+      "backlogId": "backlog-study27-collar-shift",
+      "sourceSha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+      "decision": "ART_DIRECTION_APPROVED",
+      "instruction": "Owner approves Collar Shift art direction only. Source-specific authored pose/garment proposal remains development-only, unregistered for production.",
+      "nextAction": "DEVELOPMENT_ONLY_COLLAR_SHIFT_AUTHORING_PROPOSAL_THEN_OWNER_REGISTRATION_REVIEW",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    },
+    {
+      "backlogId": "backlog-study27-after-hours-observer",
+      "sourceSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+      "decision": "ART_DIRECTION_APPROVED",
+      "instruction": "Owner approves After-hours Observer art direction only. Its integrated lab background/lighting/coat source remains development-only, unregistered for production.",
+      "nextAction": "DEVELOPMENT_ONLY_OBSERVER_AUTHORING_PROPOSAL_THEN_OWNER_REGISTRATION_REVIEW",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    },
+    {
+      "backlogId": "backlog-study27-delighted-conspirator",
+      "sourceSha256": "fe95b48b6831306f0e6d91dd804f74cac6442524f3b16960bc7efdbcac2cd04e",
+      "decision": "NEEDS_REFINEMENT",
+      "instruction": "Owner finds Delighted Conspirator insufficiently differentiated from Amused. Preserve the native study, technical QA and all previous approvals; no production registration.",
+      "nextAction": "OWNER_REVIEW_OF_DISTINCT_EXPRESSION_PLAN_NO_AUTOMATIC_GENERATION",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION"
+    }
+  ]
+}

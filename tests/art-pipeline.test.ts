@@ -10,7 +10,11 @@ import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.3.0.json';
 import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.4.0.json';
 import expandedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.5.0.json';
 import stage26Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.6.0.json';
-import stage27Backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage27Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.7.0.json';
+import stage28Backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage28OwnerDecisions from '../docs/art-production/STAGE28_OWNER_DECISIONS.json';
+import stage28Proposals from '../packages/art-generator/fixtures/stage28-authored-proposals.json';
+import stage28NextStudies from '../docs/art-production/STAGE28_NEXT_STUDIES.json';
 import stage27Metadata from '../packages/art-generator/fixtures/stage27-character-studies.json';
 import { openSeaMetadataSchema } from '../packages/art-generator/src/opensea-metadata.ts';
 import stage26OwnerDecisions from '../docs/art-production/STAGE26_OWNER_DECISIONS.json';
@@ -49,6 +53,225 @@ import {
 
 // Synthetic fixtures for validation; no fixture here is an approved LAMMB trait.
 const digest = 'a'.repeat(64);
+describe('Stage 28 source-bound approvals and authored proposals', () => {
+  const specRaw = sha256Bytes(
+    readFileSync(
+      new URL(
+        '../packages/art-generator/specs/lammb-traits-v1.json',
+        import.meta.url,
+      ),
+    ),
+  );
+  const ownerRaw = sha256Bytes(
+    readFileSync(
+      new URL(
+        '../docs/art-production/STAGE28_OWNER_DECISIONS.json',
+        import.meta.url,
+      ),
+    ),
+  );
+  const resolveProposal = (
+    p: unknown = stage28Proposals,
+    b: unknown = stage28Backlog,
+    owner: unknown = stage28OwnerDecisions,
+  ) => resolveAuthoredSourceProposals(p, b, spec, specRaw, owner);
+  it('plans three distinct studies with approved native references and no execution authorization', () => {
+    expect(stage28NextStudies.studies).toHaveLength(3);
+    expect(stage28NextStudies.generationAuthorized).toBe(false);
+    expect(stage28NextStudies.imagegenCallsThisTask).toBe(0);
+    expect(stage28NextStudies.productionPromotionAuthorized).toBe(false);
+    expect(stage28NextStudies.traitFrequenciesChanged).toBe(false);
+    expect(stage28NextStudies.grailReservationsChanged).toBe(false);
+    expect(stage28NextStudies.studies.map((s) => s.focus)).toEqual([
+      'CUTE_EXPRESSIVE',
+      'BOLD_INTIMIDATING_STREETWEAR',
+      'UNUSUAL_WOOL_SILHOUETTE',
+    ]);
+    for (const s of stage28NextStudies.studies) {
+      expect(
+        s.references.filter((r) => r.role.startsWith('PRIMARY_')),
+      ).toHaveLength(1);
+      expect(s.prompt.length).toBeGreaterThan(600);
+      for (const r of s.references) {
+        const i = stage28Backlog.items.find((i) => i.id === r.backlogId)!;
+        expect(i.artisticApproval).toBe('ART_DIRECTION_APPROVED');
+        const source = i.sources.find((x) => x.id === r.sourceId)!;
+        expect(source.sha256).toBe(r.sha256);
+        expect(source.path).toBe(r.path);
+        expect(source.dimensions).toEqual(r.dimensions);
+      }
+      for (const id of s.proposedExistingTraitIds)
+        expect(spec.traits.some((t) => t.id === id)).toBe(true);
+    }
+  });
+  it('preserves 118 prior source/history records and appends only the owner decisions', () => {
+    const b = validateArtworkOwnerDecisionUpdate(
+      stage27Backlog,
+      stage28Backlog,
+      stage28OwnerDecisions,
+      ownerRaw,
+    );
+    expect(b.items).toHaveLength(118);
+    expect(b.backlogVersion).toBe('0.8.0');
+    for (const [index, item] of b.items.entries()) {
+      const old = stage27Backlog.items[index]!;
+      expect(item.sources).toEqual(old.sources);
+      expect(
+        item.ownerDecisionHistory.slice(0, old.ownerDecisionHistory.length),
+      ).toEqual(old.ownerDecisionHistory);
+      expect(item.technicalStatus).toBe(old.technicalStatus);
+      expect(item.productionRegistration).toBe('NOT_PRODUCTION_REGISTERED');
+      expect(item.finalProductionApproval).toBeNull();
+    }
+    expect(b.evidence.slice(0, stage27Backlog.evidence.length)).toEqual(
+      stage27Backlog.evidence,
+    );
+    for (const d of stage28OwnerDecisions.decisions) {
+      const i = b.items.find((i) => i.id === d.backlogId)!;
+      expect(i.artisticApproval).toBe(d.decision);
+      expect(i.studyReview?.ownerReviewStatus).toBe(d.decision);
+    }
+    expect(ownerRaw).toBe(stage28Proposals.ownerEvidence.sha256);
+    expect(b.frequenciesChanged).toBe(false);
+    expect(b.grailReservationsChanged).toBe(false);
+    expect(b.collectionSupply).toBe(5280);
+  });
+  it.each([
+    'old history',
+    'wrong source hash',
+    'missing owner event',
+    'wrong event date',
+    'owner evidence hash',
+    'old compatibility',
+    'technical QA',
+    'unknown decision',
+    'duplicate decision',
+    'production promotion',
+    'unsupported transition',
+  ])('approval update rejects %s', (mode) => {
+    const b = structuredClone(stage28Backlog),
+      owner = structuredClone(stage28OwnerDecisions),
+      i = b.items.find((i) => i.id === 'backlog-study27-collar-shift')!;
+    if (mode === 'old history') i.ownerDecisionHistory[0]!.scope = 'Rewritten';
+    if (mode === 'wrong source hash') owner.decisions[0]!.sourceSha256 = digest;
+    if (mode === 'missing owner event') i.ownerDecisionHistory.pop();
+    if (mode === 'wrong event date') i.ownerDecisionHistory.at(-1)!.date = null;
+    if (mode === 'owner evidence hash') b.evidence.at(-1)!.sha256 = digest;
+    if (mode === 'old compatibility')
+      i.studyReview!.compatibilityRestrictions.push('UNAUTHORIZED_LAYER');
+    if (mode === 'technical QA') i.technicalStatus = 'NEEDS_REFINEMENT';
+    if (mode === 'unknown decision') owner.decisions[0]!.backlogId = 'unknown';
+    if (mode === 'duplicate decision')
+      owner.decisions.push(owner.decisions[0]!);
+    if (mode === 'production promotion')
+      i.productionRegistration = 'PRODUCTION_REGISTERED';
+    if (mode === 'unsupported transition') b.backlogVersion = '0.6.0';
+    expect(() =>
+      validateArtworkOwnerDecisionUpdate(stage27Backlog, b, owner, ownerRaw),
+    ).toThrow();
+  });
+  it('resolves exact source families with three and two historical raster references', () => {
+    const r = resolveProposal();
+    expect(r.resolved.map((f) => f.references.length)).toEqual([3, 2]);
+    const bytes = Buffer.from('Synthetic metadata input, never a native LAMMB');
+    const facets = r.resolved.map((f) => {
+      expect(f.asset.composition).toBe('IMMUTABLE_AUTHORED_FULL_FRAME_ONLY');
+      expect(f.asset.productionRegistered).toBe(false);
+      expect(() => createAuthoredProposalMetadata(f, bytes)).toThrow(
+        'PROPOSAL_METADATA_IMAGE',
+      );
+      const m = createAuthoredProposalMetadata(
+        { ...f, source: { ...f.source, sha256: sha256Bytes(bytes) } },
+        bytes,
+      );
+      expect(m.binding.completeCollectionVector).toBe(false);
+      expect(m.binding.productionRegistered).toBe(false);
+      expect(m.binding.tokenAssignment).toBeNull();
+      for (const absent of [
+        'Eyes',
+        'Wool',
+        'Accessories',
+        'Pose',
+        'Expression',
+        'Rarity',
+      ])
+        expect(m.metadata.attributes.map((a) => a.trait_type)).not.toContain(
+          absent,
+        );
+      return m.metadata.attributes;
+    });
+    expect(facets[0]).toEqual([
+      { trait_type: 'Species', value: 'Sheep' },
+      { trait_type: 'Clothing', value: 'Black Bomber' },
+    ]);
+    expect(facets[1]).toEqual([
+      { trait_type: 'Species', value: 'Sheep' },
+      { trait_type: 'Clothing', value: 'Lab Coat' },
+      { trait_type: 'Background', value: 'Containment Lab' },
+    ]);
+  });
+  it.each([
+    'contact claim',
+    'production claim',
+    'duplicate source',
+    'wrong family',
+    'wrong source hash',
+    'invented expression',
+    'invented wool',
+    'missing reference',
+    'extra reference',
+    'two primary references',
+    'refinement source',
+    'wrong owner decision',
+    'missing generation',
+    'bad spec digest',
+    'bad backlog digest',
+  ])('proposal rejects %s', (mode) => {
+    const p = structuredClone(stage28Proposals),
+      b = structuredClone(stage28Backlog),
+      owner = structuredClone(stage28OwnerDecisions),
+      i = b.items.find((i) => i.id === 'backlog-study27-collar-shift')!;
+    if (mode === 'contact claim')
+      p.assets[0]!.poseContactRegistration = 'REGISTERED';
+    if (mode === 'production claim')
+      Object.assign(p.assets[0]!, { productionRegistered: true });
+    if (mode === 'duplicate source')
+      p.assets[1]!.sourceSha256 = p.assets[0]!.sourceSha256;
+    if (mode === 'wrong family') p.assets[0]!.family = 'AMUSED_HOODIE';
+    if (mode === 'wrong source hash') p.assets[0]!.sourceSha256 = digest;
+    if (mode === 'invented expression')
+      p.assets[0]!.visibleTraitIds.push('lammb-expressions-smirk');
+    if (mode === 'invented wool')
+      p.assets[1]!.visibleTraitIds.push('lammb-wool-ivory');
+    if (mode === 'missing reference') i.sources.splice(1, 1);
+    if (mode === 'extra reference')
+      i.sources = [...i.sources, { ...i.sources[1]!, id: 'extra-reference' }];
+    if (mode === 'two primary references')
+      i.sources[1]!.role = 'PRIMARY_RASTER_REFERENCE';
+    if (mode === 'refinement source')
+      p.assets[0]!.backlogId = 'backlog-study27-delighted-conspirator';
+    if (mode === 'wrong owner decision')
+      owner.decisions[0]!.decision = 'NEEDS_REFINEMENT';
+    if (mode === 'missing generation')
+      i.studyReview!.provenanceEvidence = 'evidence-stage26-owner-decisions';
+    p.backlogSha256 = canonicalSha256(b);
+    if (mode === 'bad spec digest') p.specCanonicalSha256 = digest;
+    if (mode === 'bad backlog digest') p.backlogSha256 = digest;
+    expect(() => resolveProposal(p, b, owner)).toThrow();
+  });
+  it('pins the new proposal before private filesystem I/O', async () => {
+    await expect(
+      validateAuthoredSourceProposals(
+        'nonexistent',
+        stage28Proposals,
+        stage28Backlog,
+        spec,
+        specRaw,
+        digest,
+      ),
+    ).rejects.toThrow('PROPOSAL_SHA256');
+  });
+});
 describe('Stage 27 bounded character-study append', () => {
   it('preserves all 115 approved/reviewed records and adds only three pending studies', () => {
     const b = validateArtworkStudyAppend(stage26Backlog, stage27Backlog);

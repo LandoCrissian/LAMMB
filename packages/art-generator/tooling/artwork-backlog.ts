@@ -38,6 +38,7 @@ export const artworkBacklogSchema = z
       '0.5.0',
       '0.6.0',
       '0.7.0',
+      '0.8.0',
     ]),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
@@ -313,7 +314,8 @@ export function validateArtworkOwnerDecisionUpdate(
   const evidence = addedEvidence[0];
   const ownerTransition =
     (before.backlogVersion === '0.3.0' && after.backlogVersion === '0.4.0') ||
-    (before.backlogVersion === '0.5.0' && after.backlogVersion === '0.6.0');
+    (before.backlogVersion === '0.5.0' && after.backlogVersion === '0.6.0') ||
+    (before.backlogVersion === '0.7.0' && after.backlogVersion === '0.8.0');
   if (
     !ownerTransition ||
     !same(root(before), root(after)) ||
