@@ -6,13 +6,16 @@ import { dirname, join, resolve as resolvePath } from 'node:path';
 import sharp from 'sharp';
 // Keep Stage 22's pinned registration evidence on its immutable snapshot.
 import backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.2.0.json';
-import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.3.0.json';
+import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage24OwnerDecisions from '../docs/art-production/STAGE24_OWNER_DECISIONS.json';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
 import { sha256Bytes } from '../packages/art-generator/src/canonical.ts';
 import {
   validateArtworkBacklog,
   validateArtworkBacklogUpdate,
   validateArtworkStudyAppend,
+  validateArtworkOwnerDecisionUpdate,
 } from '../packages/art-generator/tooling/artwork-backlog.ts';
 import ownerDecisions from '../docs/art-production/STAGE22_OWNER_DECISIONS.json';
 import authoredRegistry from '../packages/art-generator/fixtures/stage22-authored-mutations.json';
@@ -33,6 +36,85 @@ import {
 
 // Synthetic fixtures for validation; no fixture here is an approved LAMMB trait.
 const digest = 'a'.repeat(64);
+describe('source-bound Stage 24 owner art review', () => {
+  const ownerRawSha = sha256Bytes(
+    readFileSync(
+      new URL(
+        '../docs/art-production/STAGE24_OWNER_DECISIONS.json',
+        import.meta.url,
+      ),
+    ),
+  );
+  it('appends two art approvals and one refinement without production promotion', () => {
+    const b = validateArtworkOwnerDecisionUpdate(
+      currentBacklog,
+      reviewedBacklog,
+      stage24OwnerDecisions,
+      ownerRawSha,
+    );
+    expect(b.items).toHaveLength(112);
+    for (const d of stage24OwnerDecisions.decisions) {
+      const before = currentBacklog.items.find((i) => i.id === d.backlogId)!;
+      const after = b.items.find((i) => i.id === d.backlogId)!;
+      expect(after.sources).toEqual(before.sources);
+      expect(after.artisticApproval).toBe(d.decision);
+      expect(after.studyReview?.ownerReviewStatus).toBe(d.decision);
+      expect(
+        after.ownerDecisionHistory.slice(0, before.ownerDecisionHistory.length),
+      ).toEqual(before.ownerDecisionHistory);
+      expect(after.productionRegistration).toBe('NOT_PRODUCTION_REGISTERED');
+      expect(after.finalProductionApproval).toBeNull();
+    }
+    expect(
+      b.items.find((i) => i.id === 'backlog-study21-skeletal-correction')!
+        .artisticApproval,
+    ).toBe('REJECTED');
+    expect(
+      b.items.find((i) => i.id === 'backlog-stage12-03-magma')!
+        .artisticApproval,
+    ).toBe('ART_DIRECTION_APPROVED');
+  });
+  it.each([
+    'wrong output hash',
+    'unknown item',
+    'duplicate decision',
+    'fake evidence hash',
+    'missing decision',
+    'undated decision',
+    'edited old history',
+    'modified provenance',
+    'changed compatibility',
+    'unrequested item change',
+    'production promotion',
+  ])('rejects %s', (mode) => {
+    const b = structuredClone(reviewedBacklog),
+      owner = structuredClone(stage24OwnerDecisions);
+    const pixel = b.items.find(
+      (i) => i.id === 'backlog-study23-pixel-drip-evolution',
+    )!;
+    if (mode === 'wrong output hash') owner.decisions[0]!.sourceSha256 = digest;
+    if (mode === 'unknown item') owner.decisions[0]!.backlogId = 'missing-item';
+    if (mode === 'duplicate decision')
+      owner.decisions.push(owner.decisions[0]!);
+    if (mode === 'fake evidence hash') b.evidence.at(-1)!.sha256 = digest;
+    if (mode === 'missing decision') pixel.ownerDecisionHistory.pop();
+    if (mode === 'undated decision')
+      pixel.ownerDecisionHistory.at(-1)!.date = null;
+    if (mode === 'edited old history')
+      pixel.ownerDecisionHistory[0]!.scope = 'rewritten';
+    if (mode === 'modified provenance')
+      pixel.studyReview!.provenanceEvidence = 'evidence-stage23-native-decode';
+    if (mode === 'changed compatibility')
+      pixel.studyReview!.compatibilityRestrictions = ['arbitrary layering'];
+    if (mode === 'unrequested item change')
+      b.items[0]!.nextAction = 'unauthorized';
+    if (mode === 'production promotion')
+      pixel.productionRegistration = 'PRODUCTION_REGISTERED';
+    expect(() =>
+      validateArtworkOwnerDecisionUpdate(currentBacklog, b, owner, ownerRawSha),
+    ).toThrow();
+  });
+});
 describe('bounded new-study append and immutable registration snapshots', () => {
   it('preserves the exact Stage 22 binding and all 109 historical records', () => {
     expect(canonicalSha256(backlog)).toBe(authoredRegistry.backlogSha256);

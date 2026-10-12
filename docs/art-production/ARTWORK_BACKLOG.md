@@ -1,6 +1,6 @@
 # Permanent artwork-development backlog
 
-`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.3.0 preserves all 109 Stage 22 items and appends three Stage 23 studies, for 112 items. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
+`ARTWORK_BACKLOG_v1.json` is the durable, versioned review record. Version 0.4.0 retains the 112 Stage 23 items and appends three Stage 24 owner decisions to their histories. Items cover historical artwork decisions, existing trait-source requirements, failed repair evidence, legacy references, production gaps and bounded art studies. It is a development backlog, not a production asset registry or an NFT allocation list.
 
 `ARTWORK_BACKLOG_v0.2.0.json` preserves the exact Stage 22 snapshot. Its canonical SHA256 remains `029ddfb529330a7d459fa8cc1d9e9d174b2963c8157c16e687775ab74c592744`. The Stage 22 authored registry must resolve against that snapshot, not the evolving current backlog. Its source and owner-evidence bindings have not been rewritten. The original `mainSha` is the historical capture baseline; each new generation records its own provenance separately.
 
@@ -22,7 +22,7 @@ The original Identity Vault still has a historical null canonical field. Later e
 
 Stage 21's source recovery reverified 848 historical artwork paths, 345 Stage 15 evidence records, 19 Stage 16 manifest entries, 142 Stage 20 artifacts and the merged Stage 17 source/evidence declarations. The historical front ear-tag proof and its independent reconstruction match exact bytes. Newly inspected records are baselined explicitly rather than presented as prior hash matches. Source-only/decoder validation and artistic approval remain distinct.
 
-The current backlog digest reader checks 129 source/evidence bindings across 71 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21 and Stage 23 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter decodes the two art-approved outputs again within unchanged proof limits.
+The current backlog digest reader checks 130 source/evidence bindings across 72 unique private paths. The preserved Stage 22 snapshot still checks 117 bindings across 65 paths. JSON decision records are evidence for a trusted operator, not cryptographic owner authentication. The backlog validator does not decode these sources or promote them. Stage 21 and Stage 23 native PNGs have separate bounded CRC/decompression and full raster decode receipts; the Stage 22 authored adapter decodes the two art-approved outputs again within unchanged proof limits.
 
 ```powershell
 node --experimental-strip-types packages/art-generator/tooling/artwork-backlog.ts docs/art-production/ARTWORK_BACKLOG_v1.json packages/art-generator/specs/lammb-traits-v1.json C:/LAMMB-Studio
@@ -36,6 +36,14 @@ The creative family specification is `UNIVERSE_ART_DIRECTION_v1.md`. Its Burnout
 
 ## Stage 23 bounded append
 
-`STAGE23_CHARACTER_EVOLUTION.md` records the three authorized studies. Ovine Skeletal is `NEEDS_REFINEMENT`; Pixel Drip Evolution and Utility Vest are proposed `PRODUCTION_CANDIDATE` studies. All three remain `UNREVIEWED` by the owner and `NOT_PRODUCTION_REGISTERED`. These QA classes are development judgments, not rarity tiers, NFT assignments or acceptance of anatomy.
+`STAGE23_CHARACTER_EVOLUTION.md` records the three authorized studies and their original pending-review state. Ovine Skeletal's technical QA is `NEEDS_REFINEMENT`; Pixel Drip Evolution and Utility Vest have proposed `PRODUCTION_CANDIDATE` technical QA. Stage 24 records the later owner decisions below. These QA classes are development judgments, not rarity tiers, NFT assignments or acceptance of anatomy.
 
 `validateArtworkStudyAppend` allows one to three new studies in this version transition, requires a byte-equivalent prior record/evidence prefix, approved historical raster-input bindings, new output hashes and dated technical reviews bound to new generation evidence. A technically rejected output must be negative QA only. Private source verification must still check the declared evidence and PNG hashes. This bounded append is separate from the existing dated owner-decision update contract; it does not authenticate an owner, certify aesthetic quality or permit production promotion.
+
+## Stage 24 owner decisions
+
+`ARTWORK_BACKLOG_v0.3.0.json` preserves the exact pre-decision Stage 23 snapshot. Its canonical SHA256 is `dd3f6f06c053a9faec978c2bac5a082ed13d7e6e873d856957bf6fc5fce583cb`. Tests validate the original study append against that snapshot, then separately validate the owner transition to current version 0.4.0.
+
+`STAGE24_OWNER_DECISIONS.json` records explicit artistic approval of Pixel Drip Evolution and Utility Vest, and `NEEDS_REFINEMENT` for Ovine Skeletal. The new refinement state conveys the owner's actual review rather than retaining `UNREVIEWED`. Every source declaration and previous history entry remains unchanged. Earlier rejected skeletons stay quarantined. Pixel coverage/metadata and source-specific vest compatibility still require work. All 112 items remain outside production registration.
+
+`validateArtworkOwnerDecisionUpdate` requires exact source hashes, one bound owner-evidence record, unchanged non-target items and one dated history append per reviewed study. It rejects changed provenance, compatibility, prior decisions, mismatched hashes and production promotion. Its evidence is an explicit trusted-operator transcription of the current directive, not signed owner authentication. `STAGE24_REFINEMENT_PLAN.md` contains the no-generation skeletal plan and three proposed next concepts; `STAGE24_PERFORMANCE_VALIDATION.md` records the bounded canonical-encoding optimization and preserved reconstruction evidence.

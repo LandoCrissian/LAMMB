@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "lammb-artwork-owner-decisions/1.0.0",
+  "recordedAt": "2026-10-12T02:18:22.272Z",
+  "authority": "CURRENT_OWNER_DIRECTIVE",
+  "authentication": "TRUSTED_OPERATOR_TRANSCRIPTION_NOT_SIGNED_OWNER_AUTH",
+  "mainSha": "11d1396d516eb9e140d1c25ff2ff42402f0c413e",
+  "reviewedHeadSha": "9dd67ef5a18679b8a286e39ee60aac05c9fb959d",
+  "productionApproval": false,
+  "decisions": [
+    {
+      "backlogId": "backlog-study23-pixel-drip-evolution",
+      "sourceSha256": "33094916e4c946d5f794d47cd078f78ea63b8284bd7fe6b5227311a37b99d74d",
+      "decision": "ART_DIRECTION_APPROVED",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Owner approves Pixel Drip Evolution as an artistic reference and development source only. Pixel coverage and metadata compatibility remain unresolved. No production registration.",
+      "nextAction": "PIXEL_COVERAGE_AND_METADATA_REVIEW_BEFORE_PRODUCTION"
+    },
+    {
+      "backlogId": "backlog-study23-utility-vest",
+      "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+      "decision": "ART_DIRECTION_APPROVED",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Owner approves Utility Vest as an artistic reference and development source only. Source-specific clothing compatibility remains unresolved. No production registration.",
+      "nextAction": "POSE_SPECIFIC_CLOTHING_COMPATIBILITY_REVIEW_BEFORE_PRODUCTION"
+    },
+    {
+      "backlogId": "backlog-study23-ovine-skeletal",
+      "sourceSha256": "b42e616701c2b1d9ec8b0c9ad45e6941451d8a84ef7a3187c1923b57631a049f",
+      "decision": "NEEDS_REFINEMENT",
+      "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+      "instruction": "Ovine Skeletal needs refinement: dentition and neck anatomy remain unresolved. All previously rejected skeletal studies remain quarantined. No production registration.",
+      "nextAction": "ANATOMICALLY_GROUNDED_PROMPT_AND_REFERENCE_PLAN_NO_GENERATION"
+    }
+  ]
+}
