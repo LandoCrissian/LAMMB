@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.6.0",
+  "backlogVersion": "0.7.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -156,6 +156,27 @@
       "sha256": "ee723d6f2644bf86eb1e2e64c48391ef1fd71b8e1ee2a7b81bd49bfdcb976a20",
       "bytes": 1991,
       "kind": "OWNER_ART_DECISION_TRANSCRIPTION"
+    },
+    {
+      "id": "evidence-stage27-generation",
+      "path": "reports/TASK_027_STAGE27_EXPANSION_001/GENERATION_PROVENANCE.json",
+      "sha256": "74912db8fc21d1098cde7e336fb30e9b71a32e0aba3e344a7016b0d5316e1c29",
+      "bytes": 15333,
+      "kind": "IMAGEGEN_GENERATION_PROVENANCE"
+    },
+    {
+      "id": "evidence-stage27-native-integrity",
+      "path": "reports/TASK_027_STAGE27_EXPANSION_001/NATIVE_OUTPUTS.json",
+      "sha256": "83c7cf05a15625b78f3de68a91d7c3c0511da1c7cac55821cb71ad571ce21146",
+      "bytes": 2034,
+      "kind": "NATIVE_INTEGRITY_RECEIPT"
+    },
+    {
+      "id": "evidence-stage27-artistic-qa",
+      "path": "reports/TASK_027_STAGE27_EXPANSION_001/ARTISTIC_QA.json",
+      "sha256": "b877cfddb0cc6b86d8f9df61bbf9d9c5a1c8c546e120516e3cc40be914eb1571",
+      "bytes": 5982,
+      "kind": "TECHNICAL_ART_REVIEW"
     }
   ],
   "items": [
@@ -4755,6 +4776,270 @@
           "Source-specific authored coat/body/neck contact; no reuse as an ordinary hoodie replacement layer.",
           "Lab Coat is the existing canonical metadata name for lammb-clothing-long-coat; no new Clothing or Accessory ID is created.",
           "No unverified Expression, Eye, Background, pose or pen metadata facets; owner review and production registration remain separate."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study27-collar-shift",
+      "label": "Stage 27 Collar Shift / confident dynamic pose",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "POSE",
+      "sources": [
+        {
+          "id": "source-stage27-01-collar-shift-reference-1",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-01-collar-shift-reference-2",
+          "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-03-relaxed-lean-native.png",
+          "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-01-collar-shift-reference-3",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-01-collar-shift",
+          "path": "output/TASK_027_STAGE27_STUDIES_001/01-collar-shift-native.png",
+          "sha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-bomber"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Head tilt/closed cheek attitude repeats the approved relaxed lean; diversity comes mainly from the genuine forelimb/collar gesture and bomber.",
+        "No pose landmarks, alpha masks or transferable contact registration. Forelimb anatomy still needs owner inspection.",
+        "Fine fringe is near the edge; no source padding, interpolation or production framing approval."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_SOURCE_SPECIFIC_POSE_GARMENT_REGISTRATION",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage27-generation-authorization-01-collar-shift",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 027; no retries or production promotion.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:14:00.050Z"
+        },
+        {
+          "id": "stage27-technical-art-review-01-collar-shift",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:22:01.164Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage27-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study27-delighted-conspirator",
+      "label": "Stage 27 Delighted Conspirator / playful expressive individuality",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "PERSONALITY",
+      "sources": [
+        {
+          "id": "source-stage27-02-delighted-conspirator-reference-1",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-02-delighted-conspirator-reference-2",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-02-delighted-conspirator",
+          "path": "output/TASK_027_STAGE27_STUDIES_001/02-delighted-conspirator-native.png",
+          "sha256": "fe95b48b6831306f0e6d91dd804f74cac6442524f3b16960bc7efdbcac2cd04e",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-expressions-amused",
+        "lammb-clothing-shell"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "NEEDS_REFINEMENT",
+      "knownLimitations": [
+        "The requested genuinely different delighted personality is only a moderate shift from approved Amused. It is not accepted as a strong independent expression family.",
+        "Raised eyelid/brow and mouth openness are coherent but do not deliver a strongly unhinged new personality at 64px.",
+        "Full-frame garment and expression, not interchangeable layers. No extra generation or silent replacement."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "OWNER_REVIEW_OF_WARDROBE_VALUE_AND_SEPARATELY_AUTHORIZED_STRONGER_EMOTIONAL_CONCEPT",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage27-generation-authorization-02-delighted-conspirator",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 027; no retries or production promotion.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:15:26.337Z"
+        },
+        {
+          "id": "stage27-technical-art-review-02-delighted-conspirator",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:22:01.164Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "NEEDS_REFINEMENT",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage27-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study27-after-hours-observer",
+      "label": "Stage 27 After-hours Observer / environmental universe portrait",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "ENVIRONMENT",
+      "sources": [
+        {
+          "id": "source-stage27-03-after-hours-observer-reference-1",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+          "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-03-after-hours-observer-reference-2",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage27-03-after-hours-observer",
+          "path": "output/TASK_027_STAGE27_STUDIES_001/03-after-hours-observer-native.png",
+          "sha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-long-coat",
+        "lammb-environments-lab"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "The face/expression remains close to approved Lab Coat; the meaningful contribution is authored setting, broader body view and coherent environmental lighting.",
+        "No separable background/garment masks or contacts proven. Two pen-like pocket details are not an independent Accessory facet.",
+        "Fine rim light and fabric texture require native review; environmental imagery implies no playable destination or holder utility."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_AUTHORED_ENVIRONMENT_LIGHTING_AND_VISIBLE_TRAIT_REGISTRATION",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage27-generation-authorization-03-after-hours-observer",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 027; no retries or production promotion.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:16:40.762Z"
+        },
+        {
+          "id": "stage27-technical-art-review-03-after-hours-observer",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage27-generation",
+          "date": "2026-10-12T15:22:01.164Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage27-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
         ]
       }
     }

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "lammb-character-study-metadata/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "productionPromotionAuthorized": false,
+  "sourceBacklogVersion": "0.7.0",
+  "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+  "studies": [
+    {
+      "backlogId": "backlog-study27-collar-shift",
+      "sourceId": "source-stage27-01-collar-shift",
+      "imageSha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+      "visibleTraitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-bomber"],
+      "metadata": {
+        "name": "LAMMB — Development Study collar-shift",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Bomber"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "0360ef396ace990f902fd5c182386cfdf92d1656c45169b556515c74b0ff937c",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    },
+    {
+      "backlogId": "backlog-study27-delighted-conspirator",
+      "sourceId": "source-stage27-02-delighted-conspirator",
+      "imageSha256": "fe95b48b6831306f0e6d91dd804f74cac6442524f3b16960bc7efdbcac2cd04e",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-expressions-amused",
+        "lammb-clothing-shell"
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Study delighted-conspirator",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/fe95b48b6831306f0e6d91dd804f74cac6442524f3b16960bc7efdbcac2cd04e.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Amused"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Reflective Shell"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "faf2d1bf9e8527d9ea5bd249926d43cf5eb9eb4b669b3af9ddb8807bad52ba5f",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    },
+    {
+      "backlogId": "backlog-study27-after-hours-observer",
+      "sourceId": "source-stage27-03-after-hours-observer",
+      "imageSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+      "visibleTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-clothing-long-coat",
+        "lammb-environments-lab"
+      ],
+      "metadata": {
+        "name": "LAMMB — Development Study after-hours-observer",
+        "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+        "image": "https://artwork.invalid/lammb/f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Lab Coat"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Containment Lab"
+          }
+        ]
+      },
+      "binding": {
+        "metadataSha256": "a57d904fd27121c4fe4d367fb754c9e25c2840738bc47052152695b69dce03c0",
+        "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "ownerArtApproval": "PENDING",
+        "productionRegistered": false,
+        "completeCollectionVector": false,
+        "tokenAssignment": null,
+        "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+      }
+    }
+  ]
+}
