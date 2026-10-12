@@ -5,7 +5,10 @@ import { deflateSync } from 'node:zlib';
 import sharp from 'sharp';
 import { beforeAll, describe, expect, it } from 'vitest';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
-import { sha256Bytes } from '../packages/art-generator/src/canonical.ts';
+import {
+  canonicalSha256,
+  sha256Bytes,
+} from '../packages/art-generator/src/canonical.ts';
 import {
   decodeApprovedPng,
   inspectPng,
@@ -19,6 +22,14 @@ import {
 import { pngProofSchema } from '../packages/art-generator/src/png-proof-schema.ts';
 import type { PngProofRequest } from '../packages/art-generator/src/png-proof-schema.ts';
 import { createPngProofMetadata } from '../packages/art-generator/src/png-proof-metadata.ts';
+import recipeReviews from '../packages/art-generator/fixtures/stage30-recipe-reviews.json';
+import stage16Request from '../packages/art-generator/fixtures/stage16-png-proof.json';
+import stage17Registry from '../packages/art-generator/fixtures/stage17-asset-registry.json';
+import { resolveRegisteredProof } from '../packages/art-generator/src/asset-registry.ts';
+import {
+  recipeReviewSchema,
+  reconcileRecipeAcceptance,
+} from '../packages/art-generator/tooling/recipe-acceptance.ts';
 
 // Tiny synthetic pixels only: no collection artwork, production approval or GPU.
 const encode = (bytes: Buffer, w: number, h: number, c: 3 | 4) =>
@@ -126,6 +137,181 @@ beforeAll(async () => {
     [jointSource.id, data[1]!],
     [maskSource.id, data[2]!],
   ]);
+});
+
+describe('source-bound development recipe reconciliation', () => {
+  // These test bytes exercise receipt/metadata logic only. The decoder and
+  // renderer tests below use actual synthetic PNGs; native artwork is private.
+  // Stage30's private acceptance receipt independently renders all four natives.
+  const bytes = Buffer.from('receipt-only unit test; not a rendered PNG');
+  const context = (index = 0) => {
+    const row = recipeReviews.recipes[index]!;
+    const p = pngProofSchema.parse(structuredClone(row.request));
+    p.expectedOutputSha256 = sha256Bytes(bytes);
+    const r = recipeReviewSchema.parse(structuredClone(row.review));
+    r.requestSha256 = canonicalSha256(p);
+    return { p, r };
+  };
+  const reconcile = (
+    { p, r }: ReturnType<typeof context>,
+    pin = canonicalSha256(r),
+  ) => reconcileRecipeAcceptance(r, p, spec, bytes, pin);
+
+  it('pins the four saved requests, source evidence and reviewed observations', () => {
+    expect(recipeReviews.recipes).toHaveLength(4);
+    expect(recipeReviews.specSha256).toBe(canonicalSha256(spec));
+    expect(recipeReviews.registrySha256).toBe(canonicalSha256(stage17Registry));
+    for (const row of recipeReviews.recipes) {
+      expect(row.reviewSha256).toBe(canonicalSha256(row.review));
+      expect(row.review.requestSha256).toBe(canonicalSha256(row.request));
+      expect(row.provenance.every((e) => /^[0-9a-f]{64}$/.test(e.sha256))).toBe(
+        true,
+      );
+      expect(row.request).toEqual(
+        row.id === 'proof-front-stage16'
+          ? stage16Request
+          : resolveRegisteredProof(stage17Registry, row.id).request,
+      );
+    }
+    expect(
+      new Set(recipeReviews.recipes.map((x) => x.request.expectedOutputSha256))
+        .size,
+    ).toBe(4);
+  });
+  it.each([0, 1, 2, 3])(
+    'keeps recipe %i incomplete and emits only supported visible facets',
+    (index) => {
+      const result = reconcile(context(index));
+      expect(result.status).toBe('INCOMPLETE');
+      expect(result.completeMetadataVector).toBe(false);
+      expect(result.unresolved.map((x) => x.category)).toEqual([
+        'eyes',
+        'environments',
+      ]);
+      expect(result.supportedTraitIds).toHaveLength(7);
+      expect(result.metadata.attributes).toHaveLength(5);
+      expect(result.metadata.attributes).toContainEqual({
+        trait_type: 'Wool',
+        value: ['Ivory Curls', 'Ash Curls', 'Rolled Locks', 'Ivory Curls'][
+          index
+        ],
+      });
+      expect(result.metadata.attributes).toContainEqual({
+        trait_type: 'Ear Tag',
+        value: '5280',
+      });
+      expect(
+        result.metadata.attributes.some(
+          (x) =>
+            x.value === 'NONE' || ['Eyes', 'Background'].includes(x.trait_type),
+        ),
+      ).toBe(false);
+      expect(result.metadata.image).toContain(sha256Bytes(bytes));
+      expect(result.productionRegistered).toBe(false);
+      expect(result.tokenAssignment).toBeNull();
+      expect(result).not.toHaveProperty('technicallyRenderable');
+    },
+  );
+  it('rejects silent eye/background completion against the reviewed pin', () => {
+    const c = context(),
+      pin = canonicalSha256(c.r);
+    const eye = c.r.slots.find((x) => x.category === 'eyes')!;
+    eye.status = 'SUPPORTED_VISIBLE';
+    eye.traitId = 'lammb-eyes-radioactive';
+    eye.missingEvidence = [];
+    expect(() => reconcile(c, pin)).toThrow('RECIPE_REVIEW_SHA256');
+  });
+  it('rejects changed source/contact declarations and altered specifications', () => {
+    const c = context();
+    c.p.registration.roi.x++;
+    expect(() => reconcile(c)).toThrow('RECIPE_REQUEST_BINDING');
+    const d = context(),
+      changed = structuredClone(spec);
+    changed.referenceEvidence[0]!.note += ' changed review';
+    expect(() =>
+      reconcileRecipeAcceptance(d.r, d.p, changed, bytes, canonicalSha256(d.r)),
+    ).toThrow('RECIPE_SPEC_BINDING');
+  });
+  it('rejects a changed final output even if declarations are unchanged', () => {
+    const c = context();
+    expect(() =>
+      reconcileRecipeAcceptance(
+        c.r,
+        c.p,
+        spec,
+        Buffer.from('different bytes'),
+        canonicalSha256(c.r),
+      ),
+    ).toThrow('RECIPE_OUTPUT_BINDING');
+  });
+  it('rejects source family and pose mislabeling', () => {
+    const c = context(1);
+    c.r.sourceFamily.woolTraitId = 'lammb-wool-ivory';
+    expect(() => reconcile(c)).toThrow('RECIPE_KNOWN_SOURCE_FAMILY');
+    const d = context();
+    d.r.sourceFamily.pose = 'FRONT';
+    expect(() => reconcile(d)).toThrow('RECIPE_POSE');
+  });
+  it('rejects an unrecognized native source even with mutually consistent declared hashes', () => {
+    const c = context();
+    c.p.base.sha256 = 'a'.repeat(64);
+    c.p.base.approval.sha256 = c.p.base.sha256;
+    c.p.registration.baseSha256 = c.p.base.sha256;
+    c.r.requestSha256 = canonicalSha256(c.p);
+    expect(() => reconcile(c)).toThrow('RECIPE_KNOWN_SOURCE_FAMILY');
+  });
+  it('rejects missing approval and production promotion', () => {
+    const c = context();
+    c.p.base.approval.state = 'VALIDATED_RECONSTRUCTION_INPUT';
+    c.r.requestSha256 = canonicalSha256(c.p);
+    expect(() => reconcile(c)).toThrow('Base needs explicit artistic approval');
+    expect(() =>
+      recipeReviewSchema.parse({ ...context().r, productionRegistered: true }),
+    ).toThrow();
+    expect(() =>
+      pngProofSchema.parse({ ...context().p, productionRegistered: true }),
+    ).toThrow();
+  });
+  it('rejects duplicate/missing categories', () => {
+    const c = context();
+    c.r.slots[1] = structuredClone(c.r.slots[0]!);
+    expect(() => reconcile(c)).toThrow('RECIPE_CATEGORY_COVERAGE');
+  });
+  it('requires explicit unresolved evidence and prohibits filled unresolved slots', () => {
+    const c = context();
+    c.r.slots.find((x) => x.category === 'eyes')!.missingEvidence = [];
+    expect(() => reconcile(c)).toThrow('RECIPE_UNRESOLVED_VALUE');
+    const d = context();
+    d.r.slots.find((x) => x.category === 'environments')!.traitId =
+      'lammb-environments-graphite';
+    expect(() => reconcile(d)).toThrow('RECIPE_UNRESOLVED_VALUE');
+  });
+  it('rejects wrong facets, category substitutions and invented absences', () => {
+    const c = context();
+    c.r.slots.find((x) => x.category === 'wool')!.traitId = 'lammb-wool-ash';
+    expect(() => reconcile(c)).toThrow('RECIPE_SOURCE_FACETS');
+    const d = context();
+    d.r.slots.find((x) => x.category === 'wool')!.traitId =
+      'lammb-clothing-hoodie';
+    expect(() => reconcile(d)).toThrow('RECIPE_TRAIT_CATEGORY');
+    const e = context();
+    e.r.slots.find((x) => x.category === 'wool')!.status = 'SUPPORTED_ABSENT';
+    expect(() => reconcile(e)).toThrow('RECIPE_ABSENCE');
+  });
+  it('omits absence facets without altering the internal collection IDs', () => {
+    const c = context();
+    c.r.slots.find((x) => x.category === 'mutations')!.status =
+      'SUPPORTED_VISIBLE';
+    expect(() => reconcile(c)).toThrow('RECIPE_ABSENT_FACET');
+    const result = reconcile(context());
+    expect(result.supportedTraitIds).toContain('lammb-mutations-none');
+    expect(result.supportedTraitIds).toContain('lammb-pixel-corruption-none');
+    expect(
+      result.metadata.attributes.some(
+        (x) => x.trait_type === 'Pixel Corruption',
+      ),
+    ).toBe(false);
+  });
 });
 
 function crc(data: Uint8Array) {

@@ -1,0 +1,1047 @@
+{
+  "schemaVersion": "lammb-four-recipe-development-reviews/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "5bfbdcaff5dc772d0dba519bdd4579394d400db4",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+  "productionPromotionAuthorized": false,
+  "recipes": [
+    {
+      "id": "proof-canonical",
+      "label": "IVORY_CURLS",
+      "request": {
+        "schemaVersion": 1,
+        "purpose": "DEVELOPMENT_ONLY",
+        "renderer": {
+          "id": "png-contact-proof",
+          "version": "1.0.0"
+        },
+        "canvas": {
+          "width": 1254,
+          "height": 1254
+        },
+        "base": {
+          "id": "dev-png-canonical",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "APPROVED_ART_DIRECTION",
+            "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+            "evidence": "Stage15 digest-bound inventory: explicit art direction approval only"
+          },
+          "productionRegistered": false
+        },
+        "joint": {
+          "id": "dev-png-ear-tag-contact",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/ear-tag-5280-context-bound-rgba.png",
+          "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "dimensions": {
+            "width": 300,
+            "height": 390
+          },
+          "channels": 4,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "mask": {
+          "id": "dev-png-ear-tag-mask",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/hybrid-integration-mask.png",
+          "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "expectedOutputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+        "productionRegistered": false
+      },
+      "wool": "lammb-wool-ivory",
+      "historical": "output/ART_016_STAGE4_EAR_TAG_001/lammb-016-stage4-hybrid-finished-native.png",
+      "sourceRoot": "STUDIO",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+        }
+      ],
+      "review": {
+        "schemaVersion": "lammb-development-recipe-review/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "proof-canonical",
+        "sourceMode": "PROVEN_DETERMINISTIC_CONTACT",
+        "authority": "TECHNICAL_SOURCE_REVIEW_NOT_OWNER_PRODUCTION_APPROVAL",
+        "productionRegistered": false,
+        "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "sourceFamily": {
+          "pose": "ORIGINAL_THREE_QUARTER",
+          "anatomy": "SHEEP",
+          "woolTraitId": "lammb-wool-ivory",
+          "clothing": "BLACK_HOODIE",
+          "accessory": "EAR_TAG_5280",
+          "mutation": "NONE"
+        },
+        "slots": [
+          {
+            "category": "base_anatomy",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-base-anatomy-sheep",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "wool",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-wool-ivory",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "eyes",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+            "missingEvidence": [
+              "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+            ]
+          },
+          {
+            "category": "expressions",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "evidence": "Observed low relaxed lids and compact closed mouth agree with Heavy Lidded. Proposed technical visible mapping, not owner production approval.",
+            "missingEvidence": []
+          },
+          {
+            "category": "clothing",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-clothing-hoodie",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "accessories",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-accessories-ear-tag",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "mutations",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-mutations-none",
+            "evidence": "Single normal sheep anatomy; no structural replacement is visible.",
+            "missingEvidence": []
+          },
+          {
+            "category": "pixel_corruption",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-pixel-corruption-none",
+            "evidence": "No designed pixel displacement in the decoded native source or validated contact proof.",
+            "missingEvidence": []
+          },
+          {
+            "category": "environments",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+            "missingEvidence": [
+              "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+            ]
+          }
+        ],
+        "compatibilityRestrictions": [
+          "Only this exact native base, contact, mask, ROI and polygon are compatible.",
+          "No portable tag placement across another pose, wool, expression, garment or mutation.",
+          "No production registration or token assignment; original sources stay immutable.",
+          "Eyes and background remain unresolved; do not force a complete vector."
+        ]
+      },
+      "reviewSha256": "29c8e006c658f95c082a14712437b2c900c7119896b3bc26073c27d4f72f73ee",
+      "backgroundProbes": [
+        {
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 66,
+          "minimumRgb": [37, 35, 34],
+          "maximumRgb": [43, 39, 39],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        },
+        {
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 63,
+          "minimumRgb": [34, 32, 31],
+          "maximumRgb": [39, 37, 38],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        }
+      ]
+    },
+    {
+      "id": "proof-broad-ash",
+      "label": "ASH_CURLS",
+      "request": {
+        "schemaVersion": 1,
+        "purpose": "DEVELOPMENT_ONLY",
+        "renderer": {
+          "id": "png-contact-proof",
+          "version": "1.0.0"
+        },
+        "canvas": {
+          "width": 1254,
+          "height": 1254
+        },
+        "base": {
+          "id": "dev-png-broad-ash",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-02-broad-offset-crown-ash-native.png",
+          "sha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "APPROVED_ART_DIRECTION",
+            "sha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+            "evidence": "Stage15 digest-bound inventory: explicit art direction approval only"
+          },
+          "productionRegistered": false
+        },
+        "joint": {
+          "id": "dev-png-ear-tag-contact",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/ear-tag-5280-context-bound-rgba.png",
+          "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "dimensions": {
+            "width": 300,
+            "height": 390
+          },
+          "channels": 4,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "mask": {
+          "id": "dev-png-ear-tag-mask",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/hybrid-integration-mask.png",
+          "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "expectedOutputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+        "productionRegistered": false
+      },
+      "wool": "lammb-wool-ash",
+      "historical": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-01-ash-ear-tag-native.png",
+      "sourceRoot": "STUDIO",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+        }
+      ],
+      "review": {
+        "schemaVersion": "lammb-development-recipe-review/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "proof-broad-ash",
+        "sourceMode": "PROVEN_DETERMINISTIC_CONTACT",
+        "authority": "TECHNICAL_SOURCE_REVIEW_NOT_OWNER_PRODUCTION_APPROVAL",
+        "productionRegistered": false,
+        "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "sourceFamily": {
+          "pose": "ORIGINAL_THREE_QUARTER",
+          "anatomy": "SHEEP",
+          "woolTraitId": "lammb-wool-ash",
+          "clothing": "BLACK_HOODIE",
+          "accessory": "EAR_TAG_5280",
+          "mutation": "NONE"
+        },
+        "slots": [
+          {
+            "category": "base_anatomy",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-base-anatomy-sheep",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "wool",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-wool-ash",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "eyes",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+            "missingEvidence": [
+              "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+            ]
+          },
+          {
+            "category": "expressions",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "evidence": "Observed low relaxed lids and compact closed mouth agree with Heavy Lidded. Proposed technical visible mapping, not owner production approval.",
+            "missingEvidence": []
+          },
+          {
+            "category": "clothing",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-clothing-hoodie",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "accessories",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-accessories-ear-tag",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "mutations",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-mutations-none",
+            "evidence": "Single normal sheep anatomy; no structural replacement is visible.",
+            "missingEvidence": []
+          },
+          {
+            "category": "pixel_corruption",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-pixel-corruption-none",
+            "evidence": "No designed pixel displacement in the decoded native source or validated contact proof.",
+            "missingEvidence": []
+          },
+          {
+            "category": "environments",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+            "missingEvidence": [
+              "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+            ]
+          }
+        ],
+        "compatibilityRestrictions": [
+          "Only this exact native base, contact, mask, ROI and polygon are compatible.",
+          "No portable tag placement across another pose, wool, expression, garment or mutation.",
+          "No production registration or token assignment; original sources stay immutable.",
+          "Eyes and background remain unresolved; do not force a complete vector."
+        ]
+      },
+      "reviewSha256": "298fd699f160d1c1a9439619f6a5ae956fd697cbff0a42ba9aa75d191b42478c",
+      "backgroundProbes": [
+        {
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 60,
+          "minimumRgb": [37, 34, 33],
+          "maximumRgb": [42, 39, 38],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        },
+        {
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 53,
+          "minimumRgb": [33, 32, 31],
+          "maximumRgb": [38, 35, 35],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        }
+      ]
+    },
+    {
+      "id": "proof-rolled-locks",
+      "label": "ROLLED_LOCKS",
+      "request": {
+        "schemaVersion": 1,
+        "purpose": "DEVELOPMENT_ONLY",
+        "renderer": {
+          "id": "png-contact-proof",
+          "version": "1.0.0"
+        },
+        "canvas": {
+          "width": 1254,
+          "height": 1254
+        },
+        "base": {
+          "id": "dev-png-rolled-locks",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-03-rolled-locks-ivory-native.png",
+          "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "APPROVED_ART_DIRECTION",
+            "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+            "evidence": "Stage15 digest-bound inventory: explicit art direction approval only"
+          },
+          "productionRegistered": false
+        },
+        "joint": {
+          "id": "dev-png-ear-tag-contact",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/ear-tag-5280-context-bound-rgba.png",
+          "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "dimensions": {
+            "width": 300,
+            "height": 390
+          },
+          "channels": 4,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "mask": {
+          "id": "dev-png-ear-tag-mask",
+          "path": "output/ART_016_STAGE4_EAR_TAG_001/hybrid-integration-mask.png",
+          "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+            "evidence": "Stage4/5 historical reconstruction, context-bound contact only"
+          },
+          "productionRegistered": false
+        },
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "expectedOutputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+        "productionRegistered": false
+      },
+      "wool": "lammb-wool-locks",
+      "historical": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-02-rolled-ear-tag-native.png",
+      "sourceRoot": "STUDIO",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d"
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3"
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7"
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0"
+        }
+      ],
+      "review": {
+        "schemaVersion": "lammb-development-recipe-review/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "proof-rolled-locks",
+        "sourceMode": "PROVEN_DETERMINISTIC_CONTACT",
+        "authority": "TECHNICAL_SOURCE_REVIEW_NOT_OWNER_PRODUCTION_APPROVAL",
+        "productionRegistered": false,
+        "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "sourceFamily": {
+          "pose": "ORIGINAL_THREE_QUARTER",
+          "anatomy": "SHEEP",
+          "woolTraitId": "lammb-wool-locks",
+          "clothing": "BLACK_HOODIE",
+          "accessory": "EAR_TAG_5280",
+          "mutation": "NONE"
+        },
+        "slots": [
+          {
+            "category": "base_anatomy",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-base-anatomy-sheep",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "wool",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-wool-locks",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "eyes",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+            "missingEvidence": [
+              "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+            ]
+          },
+          {
+            "category": "expressions",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "evidence": "Observed low relaxed lids and compact closed mouth agree with Heavy Lidded. Proposed technical visible mapping, not owner production approval.",
+            "missingEvidence": []
+          },
+          {
+            "category": "clothing",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-clothing-hoodie",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "accessories",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-accessories-ear-tag",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "mutations",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-mutations-none",
+            "evidence": "Single normal sheep anatomy; no structural replacement is visible.",
+            "missingEvidence": []
+          },
+          {
+            "category": "pixel_corruption",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-pixel-corruption-none",
+            "evidence": "No designed pixel displacement in the decoded native source or validated contact proof.",
+            "missingEvidence": []
+          },
+          {
+            "category": "environments",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+            "missingEvidence": [
+              "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+            ]
+          }
+        ],
+        "compatibilityRestrictions": [
+          "Only this exact native base, contact, mask, ROI and polygon are compatible.",
+          "No portable tag placement across another pose, wool, expression, garment or mutation.",
+          "No production registration or token assignment; original sources stay immutable.",
+          "Eyes and background remain unresolved; do not force a complete vector."
+        ]
+      },
+      "reviewSha256": "e916bdeadd60d825114a42e939785c05ee707c753ea0a87a012e18d31376c884",
+      "backgroundProbes": [
+        {
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 72,
+          "minimumRgb": [36, 33, 32],
+          "maximumRgb": [42, 38, 37],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        },
+        {
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 81,
+          "minimumRgb": [30, 29, 29],
+          "maximumRgb": [37, 35, 35],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        }
+      ]
+    },
+    {
+      "id": "proof-front-stage16",
+      "label": "FRONT_IVORY",
+      "request": {
+        "schemaVersion": 1,
+        "purpose": "DEVELOPMENT_ONLY",
+        "renderer": {
+          "id": "png-contact-proof",
+          "version": "1.0.0"
+        },
+        "canvas": {
+          "width": 1254,
+          "height": 1254
+        },
+        "base": {
+          "id": "dev-png-front-base",
+          "path": "ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "APPROVED_ART_DIRECTION",
+            "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+            "evidence": "Owner Task016 Stage7 and Stage16 directives; Stage15 canonical artwork inventory. Artistic approval only."
+          },
+          "productionRegistered": false
+        },
+        "joint": {
+          "id": "dev-png-front-contact",
+          "path": "ART_016_STAGE7_FRONT_TAG_001/front-5280-contact-context-rgba.png",
+          "sha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+          "dimensions": {
+            "width": 235,
+            "height": 350
+          },
+          "channels": 4,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+            "evidence": "Stage7 RECONSTRUCTION_MANIFEST and successful native hybrid; Stage16 explicitly authorizes reuse for this engineering proof."
+          },
+          "productionRegistered": false
+        },
+        "mask": {
+          "id": "dev-png-front-mask",
+          "path": "ART_016_STAGE7_FRONT_TAG_001/front-contact-integration-mask.png",
+          "sha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "channels": 3,
+          "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+          "approval": {
+            "state": "VALIDATED_RECONSTRUCTION_INPUT",
+            "sha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+            "evidence": "Stage7 saved integration mask; exact original digest and geometry. No production registration inferred."
+          },
+          "productionRegistered": false
+        },
+        "registration": {
+          "poseFamily": "FRONT",
+          "baseSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "jointSha256": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+          "maskSha256": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+          "roi": {
+            "x": 65,
+            "y": 550,
+            "width": 235,
+            "height": 350
+          },
+          "polygon": [
+            [142, 574],
+            [165, 566],
+            [188, 579],
+            [198, 600],
+            [190, 625],
+            [181, 637],
+            [195, 649],
+            [217, 666],
+            [247, 695],
+            [260, 777],
+            [266, 853],
+            [249, 870],
+            [115, 884],
+            [92, 871],
+            [80, 776],
+            [82, 694],
+            [95, 668],
+            [123, 644],
+            [129, 622],
+            [124, 600],
+            [126, 581]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "Stage7 RECONSTRUCTION_MANIFEST.json; 6px ear/10px background smoothstep feather is already encoded in the immutable mask."
+        },
+        "expectedOutputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+        "productionRegistered": false
+      },
+      "wool": "lammb-wool-ivory",
+      "historical": "output/ART_016_STAGE7_FRONT_TAG_001/lammb-016-stage7-front-ear-tag-hybrid-native.png",
+      "sourceRoot": "STUDIO_OUTPUT",
+      "provenance": [
+        {
+          "path": "reports/ART_016_STAGE7_FRONT_TAG_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "d79e98c5a259d2a79fd4123a6d13d84c6ffc4d745fa0b4156be14c1b88640171"
+        }
+      ],
+      "review": {
+        "schemaVersion": "lammb-development-recipe-review/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "proof-front-stage16",
+        "sourceMode": "PROVEN_DETERMINISTIC_CONTACT",
+        "authority": "TECHNICAL_SOURCE_REVIEW_NOT_OWNER_PRODUCTION_APPROVAL",
+        "productionRegistered": false,
+        "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd",
+        "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "sourceFamily": {
+          "pose": "FRONT",
+          "anatomy": "SHEEP",
+          "woolTraitId": "lammb-wool-ivory",
+          "clothing": "BLACK_HOODIE",
+          "accessory": "EAR_TAG_5280",
+          "mutation": "NONE"
+        },
+        "slots": [
+          {
+            "category": "base_anatomy",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-base-anatomy-sheep",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "wool",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-wool-ivory",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "eyes",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+            "missingEvidence": [
+              "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+            ]
+          },
+          {
+            "category": "expressions",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "evidence": "Observed low relaxed lids and compact closed mouth agree with Heavy Lidded. Proposed technical visible mapping, not owner production approval.",
+            "missingEvidence": []
+          },
+          {
+            "category": "clothing",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-clothing-hoodie",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "accessories",
+            "status": "SUPPORTED_VISIBLE",
+            "traitId": "lammb-accessories-ear-tag",
+            "evidence": "Existing source-family declaration and visible native feature; exact source/output hashes bind this observation.",
+            "missingEvidence": []
+          },
+          {
+            "category": "mutations",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-mutations-none",
+            "evidence": "Single normal sheep anatomy; no structural replacement is visible.",
+            "missingEvidence": []
+          },
+          {
+            "category": "pixel_corruption",
+            "status": "SUPPORTED_ABSENT",
+            "traitId": "lammb-pixel-corruption-none",
+            "evidence": "No designed pixel displacement in the decoded native source or validated contact proof.",
+            "missingEvidence": []
+          },
+          {
+            "category": "environments",
+            "status": "UNRESOLVED",
+            "traitId": null,
+            "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+            "missingEvidence": [
+              "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+            ]
+          }
+        ],
+        "compatibilityRestrictions": [
+          "Only this exact native base, contact, mask, ROI and polygon are compatible.",
+          "No portable tag placement across another pose, wool, expression, garment or mutation.",
+          "No production registration or token assignment; original sources stay immutable.",
+          "Eyes and background remain unresolved; do not force a complete vector."
+        ]
+      },
+      "reviewSha256": "e82582cffb12203605413a7c10cfb3d314291a7f172efb5234888890a56f305c",
+      "backgroundProbes": [
+        {
+          "roi": {
+            "x": 16,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 57,
+          "minimumRgb": [35, 33, 32],
+          "maximumRgb": [41, 37, 38],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        },
+        {
+          "roi": {
+            "x": 1170,
+            "y": 16,
+            "width": 64,
+            "height": 64
+          },
+          "uniqueRgbColors": 80,
+          "minimumRgb": [32, 30, 29],
+          "maximumRgb": [37, 35, 35],
+          "scope": "Manual observed-background proxy, not a complete semantic background mask or eye-color certification"
+        }
+      ]
+    }
+  ]
+}
