@@ -1,0 +1,769 @@
+{
+  "schemaVersion": "lammb-stage30-reconciliation/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "5bfbdcaff5dc772d0dba519bdd4579394d400db4",
+  "dependency": {
+    "pr24": {
+      "number": 24,
+      "head": "ac48c6cc02fc1917b5c71bb487a54277515f4ebc",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "acceptance": "PR24_READY_FOR_OWNER_MERGE",
+      "mergeAuthorized": false,
+      "ciRun": 38275532427,
+      "classify": "SUCCESS",
+      "verify": "SUCCESS",
+      "browserAcceptance": "SKIPPED_NOT_EXECUTED",
+      "netlifyCurrent": "READY",
+      "historicalNetlifyRootCause": "UNCONFIRMED_AUTHENTICATED_LOG_ACCESS_UNAVAILABLE",
+      "sourceBindings": 157,
+      "uniquePaths": 86,
+      "backlogItems": 118
+    },
+    "pr25": {
+      "number": 25,
+      "head": "4b7a8af32978e34030e6410c18177107a1b06e12",
+      "dependencyHead": "ac48c6cc02fc1917b5c71bb487a54277515f4ebc",
+      "status": "PRESERVED_UNCHANGED_WAITING_FOR_OWNER_PR24_MERGE",
+      "ciRun": 38286085430,
+      "classify": "SUCCESS",
+      "verify": "SUCCESS",
+      "browserAcceptance": "SKIPPED_NOT_EXECUTED"
+    }
+  },
+  "sourcePins": {
+    "fixtureCanonicalSha256": "c27006b4c4f8f84b1c25fae1d7a67a2eef79b30110631e5c95f34420812a75a8",
+    "specCanonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+    "registryCanonicalSha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+    "backlogCanonicalSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+    "logicalReceiptByteSha256": "9e3503f4230802309b835ab9a2d0e40115ba9aead18ac576767f0df90c561ac9",
+    "nativeVerificationByteSha256": "340545baf213cd1e006c41b66f7b7c536b0a42c23ece1c6cd485ba63542a0ad5",
+    "pr24AcceptanceByteSha256": "01da7795bc1e0a83da45c30fcfd6895846d6553d2f2c4af700145224b7adaa59",
+    "finalNativeVerificationByteSha256": "0e509be55a4548e8b583f10c5fffb6f2ce5472ade0fbdd374571b6f505516538"
+  },
+  "backlog": {
+    "location": "PR25_ONLY_NOT_MAIN",
+    "mainItems": 115,
+    "recoveredItems": 121,
+    "unchangedPreviousItems": 118,
+    "sourceBindings": 169,
+    "uniquePaths": 92,
+    "studyDecisions": [
+      {
+        "id": "backlog-study29-soft-chaos",
+        "qa": "PRODUCTION_CANDIDATE",
+        "artisticApproval": "UNREVIEWED",
+        "ownerApproval": "PENDING",
+        "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+        "sourceSha256": "5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7",
+        "ownerApprovalStatus": "OWNER_APPROVAL_PENDING"
+      },
+      {
+        "id": "backlog-study29-storm-warden",
+        "qa": "PRODUCTION_CANDIDATE",
+        "artisticApproval": "UNREVIEWED",
+        "ownerApproval": "PENDING",
+        "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+        "sourceSha256": "13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b",
+        "ownerApprovalStatus": "OWNER_APPROVAL_PENDING"
+      },
+      {
+        "id": "backlog-study29-coil-cascade",
+        "qa": "NEEDS_REFINEMENT",
+        "artisticApproval": "UNREVIEWED",
+        "ownerApproval": "PENDING",
+        "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+        "sourceSha256": "498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e",
+        "ownerApprovalStatus": "OWNER_APPROVAL_PENDING"
+      }
+    ],
+    "quarantinesPreserved": true,
+    "productionPromotions": 0
+  },
+  "recipes": [
+    {
+      "id": "proof-canonical",
+      "status": "INCOMPLETE",
+      "mode": "PROVEN_DETERMINISTIC_CONTACT",
+      "sourceArtApproval": "APPROVED_ART_DIRECTION",
+      "baseHash": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+      "contactHash": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+      "maskHash": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+      "outputHash": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "decodedPixelHash": "daa7245888222d4b06a063ea2434a7607bed4ef3c5d0b8105c33fec00fb0f892",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "registeredPose": "ORIGINAL_THREE_QUARTER",
+      "roi": {
+        "x": 75,
+        "y": 670,
+        "width": 300,
+        "height": 390
+      },
+      "polygon": [
+        [171, 683],
+        [194, 691],
+        [215, 712],
+        [220, 746],
+        [227, 766],
+        [236, 789],
+        [270, 809],
+        [307, 825],
+        [321, 845],
+        [333, 888],
+        [350, 995],
+        [345, 1025],
+        [318, 1044],
+        [139, 1049],
+        [111, 1037],
+        [97, 1003],
+        [85, 881],
+        [96, 847],
+        [116, 820],
+        [146, 790],
+        [150, 759],
+        [145, 725],
+        [148, 702]
+      ],
+      "requestHash": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61",
+      "reviewHash": "29c8e006c658f95c082a14712437b2c900c7119896b3bc26073c27d4f72f73ee",
+      "supportedTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-ivory",
+        "lammb-expressions-heavy-lidded",
+        "lammb-clothing-hoodie",
+        "lammb-accessories-ear-tag",
+        "lammb-mutations-none",
+        "lammb-pixel-corruption-none"
+      ],
+      "unresolved": [
+        {
+          "category": "eyes",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+          "missingEvidence": [
+            "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+          ]
+        },
+        {
+          "category": "environments",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+          "missingEvidence": [
+            "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+          ]
+        }
+      ],
+      "developmentMetadata": {
+        "name": "LAMMB — Development Recipe proof-canonical",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          }
+        ]
+      },
+      "metadataHash": "97ce07638714da20c20d1667be1b3a1dac1c4d44e6d7cb29bb9dd1da9ec4f8c9",
+      "sourceRegistrationEligibility": "RECONSTRUCTION_VALIDATED_METADATA_INCOMPLETE_OWNER_PROMOTION_PROHIBITED",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379",
+          "bytes": 1657012,
+          "hashVerified": true
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d",
+          "bytes": 8129,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3",
+          "bytes": 10142,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7",
+          "bytes": 25670,
+          "hashVerified": true
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0",
+          "bytes": 9704,
+          "hashVerified": true
+        }
+      ],
+      "historicalBytesEqual": true,
+      "independentReconstructionBytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "changedPixels": 61651,
+      "outputBytes": 2961803,
+      "sourceLoadMillisecondsRounded": 6,
+      "renderMillisecondsRounded": 350,
+      "reconstructionMillisecondsRounded": 327,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-broad-ash",
+      "status": "INCOMPLETE",
+      "mode": "PROVEN_DETERMINISTIC_CONTACT",
+      "sourceArtApproval": "APPROVED_ART_DIRECTION",
+      "baseHash": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+      "contactHash": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+      "maskHash": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+      "outputHash": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "decodedPixelHash": "1100ec1017233425e812d7e22eff40eae667e6bb9573bcdb7f4192df230cc35c",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "registeredPose": "ORIGINAL_THREE_QUARTER",
+      "roi": {
+        "x": 75,
+        "y": 670,
+        "width": 300,
+        "height": 390
+      },
+      "polygon": [
+        [171, 683],
+        [194, 691],
+        [215, 712],
+        [220, 746],
+        [227, 766],
+        [236, 789],
+        [270, 809],
+        [307, 825],
+        [321, 845],
+        [333, 888],
+        [350, 995],
+        [345, 1025],
+        [318, 1044],
+        [139, 1049],
+        [111, 1037],
+        [97, 1003],
+        [85, 881],
+        [96, 847],
+        [116, 820],
+        [146, 790],
+        [150, 759],
+        [145, 725],
+        [148, 702]
+      ],
+      "requestHash": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c",
+      "reviewHash": "298fd699f160d1c1a9439619f6a5ae956fd697cbff0a42ba9aa75d191b42478c",
+      "supportedTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-ash",
+        "lammb-expressions-heavy-lidded",
+        "lammb-clothing-hoodie",
+        "lammb-accessories-ear-tag",
+        "lammb-mutations-none",
+        "lammb-pixel-corruption-none"
+      ],
+      "unresolved": [
+        {
+          "category": "eyes",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+          "missingEvidence": [
+            "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+          ]
+        },
+        {
+          "category": "environments",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+          "missingEvidence": [
+            "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+          ]
+        }
+      ],
+      "developmentMetadata": {
+        "name": "LAMMB — Development Recipe proof-broad-ash",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ash Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          }
+        ]
+      },
+      "metadataHash": "ba87a6c6d31583ad30e8f55a28e272b36a27539ef6727f040216665f37aa24aa",
+      "sourceRegistrationEligibility": "RECONSTRUCTION_VALIDATED_METADATA_INCOMPLETE_OWNER_PROMOTION_PROHIBITED",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379",
+          "bytes": 1657012,
+          "hashVerified": true
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d",
+          "bytes": 8129,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3",
+          "bytes": 10142,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7",
+          "bytes": 25670,
+          "hashVerified": true
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0",
+          "bytes": 9704,
+          "hashVerified": true
+        }
+      ],
+      "historicalBytesEqual": true,
+      "independentReconstructionBytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "changedPixels": 60803,
+      "outputBytes": 2914912,
+      "sourceLoadMillisecondsRounded": 6,
+      "renderMillisecondsRounded": 324,
+      "reconstructionMillisecondsRounded": 331,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-rolled-locks",
+      "status": "INCOMPLETE",
+      "mode": "PROVEN_DETERMINISTIC_CONTACT",
+      "sourceArtApproval": "APPROVED_ART_DIRECTION",
+      "baseHash": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+      "contactHash": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+      "maskHash": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+      "outputHash": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "decodedPixelHash": "7f81fe8ed5e864381499fe5e69b2a161ad400fb651bd720122ba1f6f19a600c0",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "registeredPose": "ORIGINAL_THREE_QUARTER",
+      "roi": {
+        "x": 75,
+        "y": 670,
+        "width": 300,
+        "height": 390
+      },
+      "polygon": [
+        [171, 683],
+        [194, 691],
+        [215, 712],
+        [220, 746],
+        [227, 766],
+        [236, 789],
+        [270, 809],
+        [307, 825],
+        [321, 845],
+        [333, 888],
+        [350, 995],
+        [345, 1025],
+        [318, 1044],
+        [139, 1049],
+        [111, 1037],
+        [97, 1003],
+        [85, 881],
+        [96, 847],
+        [116, 820],
+        [146, 790],
+        [150, 759],
+        [145, 725],
+        [148, 702]
+      ],
+      "requestHash": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb",
+      "reviewHash": "e916bdeadd60d825114a42e939785c05ee707c753ea0a87a012e18d31376c884",
+      "supportedTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-locks",
+        "lammb-expressions-heavy-lidded",
+        "lammb-clothing-hoodie",
+        "lammb-accessories-ear-tag",
+        "lammb-mutations-none",
+        "lammb-pixel-corruption-none"
+      ],
+      "unresolved": [
+        {
+          "category": "eyes",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+          "missingEvidence": [
+            "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+          ]
+        },
+        {
+          "category": "environments",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+          "missingEvidence": [
+            "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+          ]
+        }
+      ],
+      "developmentMetadata": {
+        "name": "LAMMB — Development Recipe proof-rolled-locks",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Rolled Locks"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          }
+        ]
+      },
+      "metadataHash": "6b7e8fe2048f4664128f6bfca8d3cf181d793c3ea109f93767cffd7c3d7dc4d7",
+      "sourceRegistrationEligibility": "RECONSTRUCTION_VALIDATED_METADATA_INCOMPLETE_OWNER_PROMOTION_PROHIBITED",
+      "provenance": [
+        {
+          "id": "inventory",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+          "kind": "INVENTORY",
+          "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379",
+          "bytes": 1657012,
+          "hashVerified": true
+        },
+        {
+          "id": "stage4-contact",
+          "path": "reports/ART_016_STAGE4_EAR_TAG_001/HYBRID_PROVENANCE.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "663dcac5e03ca1617b138081515ef62a225d2c63eff1d1a7442844ab7a1c930d",
+          "bytes": 8129,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-reconstruction",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "6994a0dc778393c9a34005cfa4beba6c011f86a4920ce33d08d319479a95abd3",
+          "bytes": 10142,
+          "hashVerified": true
+        },
+        {
+          "id": "stage5-qa",
+          "path": "reports/ART_016_STAGE5_TRANSFER_001/QA_AND_PROVENANCE.json",
+          "kind": "ART_APPROVAL_RECORD",
+          "sha256": "b7ca95c9b4c8c69bb7bab5c8c86a824cbcbe7b2a77ffa1376939316df4d4a2e7",
+          "bytes": 25670,
+          "hashVerified": true
+        },
+        {
+          "id": "framing-proposal",
+          "path": "reports/ART_016_STAGE15_AUDIT_001/FRAMING_POLICY_PROPOSAL.json",
+          "kind": "FRAMING_PROPOSAL",
+          "sha256": "9dc598ab2f1e70e445c4421b4ab18ee093b4984679fa7ff7d8b5946537d527a0",
+          "bytes": 9704,
+          "hashVerified": true
+        }
+      ],
+      "historicalBytesEqual": true,
+      "independentReconstructionBytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "changedPixels": 60898,
+      "outputBytes": 2940548,
+      "sourceLoadMillisecondsRounded": 5,
+      "renderMillisecondsRounded": 312,
+      "reconstructionMillisecondsRounded": 322,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-front-stage16",
+      "status": "INCOMPLETE",
+      "mode": "PROVEN_DETERMINISTIC_CONTACT",
+      "sourceArtApproval": "APPROVED_ART_DIRECTION",
+      "baseHash": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+      "contactHash": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+      "maskHash": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96",
+      "outputHash": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "decodedPixelHash": "e7d120731fd10fa9f65ff0f9aedc69622729abea4e17cb8b129836b9e3949802",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "registeredPose": "FRONT",
+      "roi": {
+        "x": 65,
+        "y": 550,
+        "width": 235,
+        "height": 350
+      },
+      "polygon": [
+        [142, 574],
+        [165, 566],
+        [188, 579],
+        [198, 600],
+        [190, 625],
+        [181, 637],
+        [195, 649],
+        [217, 666],
+        [247, 695],
+        [260, 777],
+        [266, 853],
+        [249, 870],
+        [115, 884],
+        [92, 871],
+        [80, 776],
+        [82, 694],
+        [95, 668],
+        [123, 644],
+        [129, 622],
+        [124, 600],
+        [126, 581]
+      ],
+      "requestHash": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd",
+      "reviewHash": "e82582cffb12203605413a7c10cfb3d314291a7f172efb5234888890a56f305c",
+      "supportedTraitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-ivory",
+        "lammb-expressions-heavy-lidded",
+        "lammb-clothing-hoodie",
+        "lammb-accessories-ear-tag",
+        "lammb-mutations-none",
+        "lammb-pixel-corruption-none"
+      ],
+      "unresolved": [
+        {
+          "category": "eyes",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Native irises read green under shaded studio lighting; this does not establish the Trait Bible CCFF00 Radioactive Green definition.",
+          "missingEvidence": [
+            "Reviewed iris material/color reference or explicit owner clarification of how the existing CCFF00 definition applies to shaded green artwork. Do not infer a new eye value or recolor source."
+          ]
+        },
+        {
+          "category": "environments",
+          "status": "UNRESOLVED",
+          "traitId": null,
+          "evidence": "Existing source has shaded neutral studio background. Flat exact Graphite/Near Black and other scene definitions are not supported by this frame.",
+          "missingEvidence": [
+            "Approved source-specific background-to-existing-trait binding consistent with the definition; current flat-color traits do not fit the gradient. Any new trait/definition requires separate owner authorization."
+          ]
+        }
+      ],
+      "developmentMetadata": {
+        "name": "LAMMB — Development Recipe proof-front-stage16",
+        "description": "Unpublished source-bound development reconciliation. No token assignment, final artwork approval or production registration.",
+        "image": "https://artwork.invalid/lammb/ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          }
+        ]
+      },
+      "metadataHash": "51ee32587621de8fe3028c22175252e4facd907c5e637b8c899035847e13b042",
+      "sourceRegistrationEligibility": "RECONSTRUCTION_VALIDATED_METADATA_INCOMPLETE_OWNER_PROMOTION_PROHIBITED",
+      "provenance": [
+        {
+          "path": "reports/ART_016_STAGE7_FRONT_TAG_001/RECONSTRUCTION_MANIFEST.json",
+          "kind": "RECONSTRUCTION_RECORD",
+          "sha256": "d79e98c5a259d2a79fd4123a6d13d84c6ffc4d745fa0b4156be14c1b88640171",
+          "bytes": 3801,
+          "hashVerified": true
+        }
+      ],
+      "historicalBytesEqual": true,
+      "independentReconstructionBytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "changedPixels": 40054,
+      "outputBytes": 2969728,
+      "sourceLoadMillisecondsRounded": 5,
+      "renderMillisecondsRounded": 311,
+      "reconstructionMillisecondsRounded": 314,
+      "productionRegistered": false
+    }
+  ],
+  "capacity": {
+    "supply": 5280,
+    "allLogicalVectors": 13271040,
+    "allStructurallyValidVectors": 5907744,
+    "ordinaryConstructorVectors": 5852448,
+    "reservedVectors": 6,
+    "reservedOutsideOrdinary": 1,
+    "constructorSelectableVectors": 5852449,
+    "logicalMethod": "STAGE29_EXACT_ENUMERATION_UNCHANGED_SPEC_REUSED_WITH_HASH_BINDING",
+    "ownerApprovedSourceDeclarations": 31,
+    "approvedFullFrameSources": 27,
+    "provenCompatibleContactRecipes": 4,
+    "developmentProposals": 6,
+    "proposalsAdditive": false,
+    "uniqueDevelopmentImages": 34,
+    "technicallyRenderableRecipesVerifiedHere": 4,
+    "completeTruthfulMetadataRecipes": 0,
+    "artisticallyDistinctCount": null,
+    "productionRegistered": 0,
+    "completeMetadataShortfall": 5280,
+    "registrationShortfall": 5280,
+    "mechanicalFourProofShortfall": 5276,
+    "visualUniquenessClaimed": false
+  },
+  "duplicates": {
+    "fourEncodedHashesUnique": true,
+    "fourDecodedHashesUnique": true,
+    "exactFourRecipeDuplicatePairs": 0,
+    "historicalAllLibraryDiagnostic": {
+      "images": 34,
+      "pairs": 561,
+      "exactEncodedPairs": 0,
+      "exactDecodedPairs": 0,
+      "nearPairCount": 31,
+      "meaning": "Retained Stage29 RGB-distance diagnostic, not artistic equivalence or owner acceptance"
+    }
+  },
+  "priorityGaps": [
+    {
+      "rank": 1,
+      "requirement": "Owner-reviewed eye definition/material binding and an honest studio-background binding for each source. New trait/definition changes require separate authorization."
+    },
+    {
+      "rank": 2,
+      "requirement": "Complete source-specific authored frame vectors; reconcile absence export and approval before production registration."
+    },
+    {
+      "rank": 3,
+      "requirement": "Resolve integrated Magma clothing whitelist and Pixel Drip coverage; preserve exposed Magma and skeletal/void quarantines."
+    },
+    {
+      "rank": 4,
+      "requirement": "After dependency integration, register compatible expression/pose/clothing/background families and run a separately authorized controlled batch visual pilot."
+    }
+  ],
+  "runtime": {
+    "nativeVerificationMillisecondsRounded": 3587,
+    "peakRssKiB": 201196,
+    "node": "v22.23.2",
+    "sharp": "0.35.5",
+    "libvips": "8.18.7",
+    "cpuConcurrency": 1,
+    "imagegenCalls": 0,
+    "localBrowserRuns": 0,
+    "localWebsiteBuilds": 0
+  },
+  "tests": {
+    "targetedTestsPassed": 441,
+    "testFiles": 8,
+    "secondsRounded": 25,
+    "policyAssertionsWeakened": false,
+    "nativeArtworkValidationSeparateFromSyntheticCi": true,
+    "changedTestLogicDoesNotCertifyNativePixels": true
+  },
+  "limits": {
+    "ownerApprovalNotInferred": true,
+    "allMetadataUnpublished": true,
+    "tokenAssignment": null,
+    "productionPromotionAuthorized": false,
+    "traitFrequenciesChanged": false,
+    "existingRendererChanged": false,
+    "task017Touched": false
+  },
+  "recommendedNextStage": "Separate owner authorization to merge PR24; then integrate/revalidate PR25. Resolve source-specific eyes/environment bindings before any complete-vector or production claim."
+}
