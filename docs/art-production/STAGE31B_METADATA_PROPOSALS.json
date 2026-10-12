@@ -1,0 +1,569 @@
+{
+  "status": "PROPOSED_DEVELOPMENT_METADATA_OWNER_DEFINITION_APPROVAL_PENDING",
+  "records": [
+    {
+      "schemaVersion": "lammb-proposed-complete-source-metadata/1.0.0",
+      "purpose": "DEVELOPMENT_ONLY",
+      "id": "proof-canonical",
+      "status": "COMPLETE_PROPOSED_SOURCE_METADATA",
+      "sourceHashes": {
+        "base": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "metadata": {
+        "name": "LAMMB — Proposed Source Metadata proof-canonical",
+        "description": "Unpublished development metadata for verified LAMMB artwork. Olive Green eyes and Charcoal Studio Gradient are source-bound definitions pending owner approval; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "a0f30e0d985911fa5186c373a27d502f35b2b694f9f9438509d5618f04200f52",
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ivory",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "eyes",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-eyes-olive-green",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "definitionSha256": "363a242038aa0f19406c4c9210816c2e909daa69595ebd147699fc4f43502569",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5"
+        },
+        {
+          "category": "environments",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-environments-charcoal-studio-gradient",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "definitionSha256": "e3c3fed26c5d2b2053e2bc24685b84d2060723e91d51a53a3a060632cd8bd82e",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        }
+      ],
+      "pose": {
+        "registrationFamily": "ORIGINAL_THREE_QUARTER",
+        "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+      },
+      "completeProposedMetadata": true,
+      "completeApprovedCatalogMetadata": false,
+      "unresolvedVisibleFacets": [],
+      "pendingDefinitionApprovals": [
+        "proposed-lammb-eyes-olive-green",
+        "proposed-lammb-environments-charcoal-studio-gradient"
+      ],
+      "generatorEnabled": false,
+      "registrationCandidate": false,
+      "productionRegistered": false,
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+      "tokenAssignment": null
+    },
+    {
+      "schemaVersion": "lammb-proposed-complete-source-metadata/1.0.0",
+      "purpose": "DEVELOPMENT_ONLY",
+      "id": "proof-broad-ash",
+      "status": "COMPLETE_PROPOSED_SOURCE_METADATA",
+      "sourceHashes": {
+        "base": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "metadata": {
+        "name": "LAMMB — Proposed Source Metadata proof-broad-ash",
+        "description": "Unpublished development metadata for verified LAMMB artwork. Olive Green eyes and Charcoal Studio Gradient are source-bound definitions pending owner approval; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ash Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "9ad01e456588e4cb754b209830f7a3ffb4e161ca6995e8e0da42ee9bd0350216",
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "eyes",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-eyes-olive-green",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "definitionSha256": "363a242038aa0f19406c4c9210816c2e909daa69595ebd147699fc4f43502569",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423"
+        },
+        {
+          "category": "environments",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-environments-charcoal-studio-gradient",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "definitionSha256": "e3c3fed26c5d2b2053e2bc24685b84d2060723e91d51a53a3a060632cd8bd82e",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        }
+      ],
+      "pose": {
+        "registrationFamily": "ORIGINAL_THREE_QUARTER",
+        "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+      },
+      "completeProposedMetadata": true,
+      "completeApprovedCatalogMetadata": false,
+      "unresolvedVisibleFacets": [],
+      "pendingDefinitionApprovals": [
+        "proposed-lammb-eyes-olive-green",
+        "proposed-lammb-environments-charcoal-studio-gradient"
+      ],
+      "generatorEnabled": false,
+      "registrationCandidate": false,
+      "productionRegistered": false,
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+      "tokenAssignment": null
+    },
+    {
+      "schemaVersion": "lammb-proposed-complete-source-metadata/1.0.0",
+      "purpose": "DEVELOPMENT_ONLY",
+      "id": "proof-rolled-locks",
+      "status": "COMPLETE_PROPOSED_SOURCE_METADATA",
+      "sourceHashes": {
+        "base": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+        "joint": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+        "mask": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d"
+      },
+      "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "metadata": {
+        "name": "LAMMB — Proposed Source Metadata proof-rolled-locks",
+        "description": "Unpublished development metadata for verified LAMMB artwork. Olive Green eyes and Charcoal Studio Gradient are source-bound definitions pending owner approval; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Rolled Locks"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "2f35f4530c9166543bcca2ab0d28476dda750c3cb8d8b24d00cbb70397afcaa4",
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "eyes",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-eyes-olive-green",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "definitionSha256": "363a242038aa0f19406c4c9210816c2e909daa69595ebd147699fc4f43502569",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383"
+        },
+        {
+          "category": "environments",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-environments-charcoal-studio-gradient",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "definitionSha256": "e3c3fed26c5d2b2053e2bc24685b84d2060723e91d51a53a3a060632cd8bd82e",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        }
+      ],
+      "pose": {
+        "registrationFamily": "ORIGINAL_THREE_QUARTER",
+        "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+      },
+      "completeProposedMetadata": true,
+      "completeApprovedCatalogMetadata": false,
+      "unresolvedVisibleFacets": [],
+      "pendingDefinitionApprovals": [
+        "proposed-lammb-eyes-olive-green",
+        "proposed-lammb-environments-charcoal-studio-gradient"
+      ],
+      "generatorEnabled": false,
+      "registrationCandidate": false,
+      "productionRegistered": false,
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+      "tokenAssignment": null
+    },
+    {
+      "schemaVersion": "lammb-proposed-complete-source-metadata/1.0.0",
+      "purpose": "DEVELOPMENT_ONLY",
+      "id": "proof-front-stage16",
+      "status": "COMPLETE_PROPOSED_SOURCE_METADATA",
+      "sourceHashes": {
+        "base": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+        "joint": "32b64756dc35163a8a62661192f66cf0d79199af1fd553bc7bd30f60ca2a7524",
+        "mask": "b07e6530dc162d7e08bd16910fcda42c294f895a847632150261009c81278c96"
+      },
+      "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "metadata": {
+        "name": "LAMMB — Proposed Source Metadata proof-front-stage16",
+        "description": "Unpublished development metadata for verified LAMMB artwork. Olive Green eyes and Charcoal Studio Gradient are source-bound definitions pending owner approval; no token assignment or production registration.",
+        "image": "https://artwork.invalid/lammb/ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e.png",
+        "external_url": "https://lammb.fun",
+        "attributes": [
+          {
+            "trait_type": "Species",
+            "value": "Sheep"
+          },
+          {
+            "trait_type": "Wool",
+            "value": "Ivory Curls"
+          },
+          {
+            "trait_type": "Expression",
+            "value": "Heavy Lidded"
+          },
+          {
+            "trait_type": "Clothing",
+            "value": "Black Hoodie"
+          },
+          {
+            "trait_type": "Ear Tag",
+            "value": "5280"
+          },
+          {
+            "trait_type": "Pixel Corruption",
+            "value": "NONE"
+          },
+          {
+            "trait_type": "Eyes",
+            "value": "Olive Green"
+          },
+          {
+            "trait_type": "Background",
+            "value": "Charcoal Studio Gradient"
+          }
+        ]
+      },
+      "metadataSha256": "e42839099024e0b753837a2c25d13bf0eb53584dd0fe532baad789fb58cf38b2",
+      "traitVector": [
+        {
+          "category": "base_anatomy",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-base-anatomy-sheep",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "wool",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-wool-ivory",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "eyes",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-eyes-olive-green",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "definitionSha256": "363a242038aa0f19406c4c9210816c2e909daa69595ebd147699fc4f43502569",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        },
+        {
+          "category": "expressions",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "clothing",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-clothing-hoodie",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "accessories",
+          "state": "VERIFIED_PRESENT",
+          "traitId": "lammb-accessories-ear-tag",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "mutations",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-mutations-none",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "pixel_corruption",
+          "state": "VERIFIED_ABSENT",
+          "traitId": "lammb-pixel-corruption-none",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117"
+        },
+        {
+          "category": "environments",
+          "state": "PROPOSED_SOURCE_BINDING",
+          "traitId": "proposed-lammb-environments-charcoal-studio-gradient",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "definitionSha256": "e3c3fed26c5d2b2053e2bc24685b84d2060723e91d51a53a3a060632cd8bd82e",
+          "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc"
+        }
+      ],
+      "pose": {
+        "registrationFamily": "FRONT",
+        "publicAttribute": "OMITTED_NO_EXISTING_POSE_TRAIT"
+      },
+      "completeProposedMetadata": true,
+      "completeApprovedCatalogMetadata": false,
+      "unresolvedVisibleFacets": [],
+      "pendingDefinitionApprovals": [
+        "proposed-lammb-eyes-olive-green",
+        "proposed-lammb-environments-charcoal-studio-gradient"
+      ],
+      "generatorEnabled": false,
+      "registrationCandidate": false,
+      "productionRegistered": false,
+      "promotionGate": "SEPARATE_EXPLICIT_OWNER_PRODUCTION_APPROVAL_REQUIRED",
+      "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+      "tokenAssignment": null
+    }
+  ]
+}
