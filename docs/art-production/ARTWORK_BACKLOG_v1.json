@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.4.0",
+  "backlogVersion": "0.5.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -128,6 +128,27 @@
       "sha256": "dddfa6a391dc5796521b6524b10c22c4acbfe78ee15ad3bae970e2a8e2661fb1",
       "bytes": 2021,
       "kind": "OWNER_ART_DECISION_TRANSCRIPTION"
+    },
+    {
+      "id": "evidence-stage25-generation",
+      "path": "reports/TASK_025_STAGE25_EXPANSION_001/GENERATION_PROVENANCE.json",
+      "sha256": "415788a2be16ae48fb586aa466bfcac0f4c1246e53426d06f0c707ed711e3e04",
+      "bytes": 14291,
+      "kind": "IMAGEGEN_GENERATION_PROVENANCE"
+    },
+    {
+      "id": "evidence-stage25-artistic-qa",
+      "path": "reports/TASK_025_STAGE25_EXPANSION_001/ARTISTIC_QA.json",
+      "sha256": "e23ab5ba4a7cd0912bea4421305fbbbb5f8e7018ebffaf97217c823636106aeb",
+      "bytes": 6508,
+      "kind": "TECHNICAL_ART_REVIEW"
+    },
+    {
+      "id": "evidence-stage25-native-decode",
+      "path": "reports/TASK_025_STAGE25_EXPANSION_001/NATIVE_OUTPUTS.json",
+      "sha256": "3f8119b99338fcdd9229f567998703d6f74d18956baf1c588e789a227401d47a",
+      "bytes": 1568,
+      "kind": "NATIVE_INTEGRITY_RECEIPT"
     }
   ],
   "items": [
@@ -4447,6 +4468,262 @@
           "Pose-specific authored full-frame with integrated crewneck and vest; do not stack two independent Clothing values.",
           "No cloth/neck joint portability or ordinary hoodie contact reuse demonstrated.",
           "Existing Utility Vest ID is a proposed mapping; owner artistic review and source-family registration remain required."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study25-amused",
+      "label": "Stage 25 amused / knowing half-laugh",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "EXPRESSIONS",
+      "sources": [
+        {
+          "id": "source-stage25-01-amused-reference-1",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-01-amused-reference-2",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-01-amused",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-expressions-amused",
+        "lammb-clothing-hoodie"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Fine lower teeth are not anatomically certifiable from the full portrait; visible count is perspective-limited and not exported as a trait.",
+        "Whole-frame generation changes freckles, wool details and pose; no pixel-locked identity preservation claimed.",
+        "Fine left ear fringe reaches the square edge and circular presentation trims outer fringe; no semantic framing threshold compliance claimed."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored expression/pose source; no transferable mouth/eyelid layer or ear-tag contact geometry established.",
+        "Amused is a proposed existing-ID mapping; no complete production trait vector or NFT metadata publication.",
+        "Owner art approval and source-specific anatomy/registration remain required."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_POSE_EXPRESSION_AND_VISIBLE_TRAIT_VALIDATION",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage25-generation-authorization-01-amused",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One authorized reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:01:58.917Z"
+        },
+        {
+          "id": "stage25-technical-art-review-01-amused",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA only, owner art approval pending.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:12:02.192Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage25-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored expression/pose source; no transferable mouth/eyelid layer or ear-tag contact geometry established.",
+          "Amused is a proposed existing-ID mapping; no complete production trait vector or NFT metadata publication.",
+          "Owner art approval and source-specific anatomy/registration remain required."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study25-rolled-locks-evolution",
+      "label": "Stage 25 rolled locks / front-facing evolution",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "WOOL",
+      "sources": [
+        {
+          "id": "source-stage25-02-rolled-locks-evolution-reference-1",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-02-rolled-locks-evolution-reference-2",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-03-rolled-locks-ivory-native.png",
+          "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-02-rolled-locks-evolution",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/02-rolled-locks-evolution-native.png",
+          "sha256": "7b68a4b06677da0b13e9484f65a68c85d03917647af81c54544da009e44976d1",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-locks",
+        "lammb-clothing-hoodie"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "NEEDS_REFINEMENT",
+      "knownLimitations": [
+        "The dominant three front coils substantially repeat the prior Rolled Locks grammar at 64px/128px; this does not demonstrate the requested strong new wool silhouette.",
+        "The dry unimpressed expression also adds little new personality; camera/arrangement changes alone are insufficient diversity evidence.",
+        "No independent alpha wool extraction, pose registration or headwear clearance proof; earlier failed extraction methods remain excluded."
+      ],
+      "requiredImprovements": [
+        "Not selected as a production candidate: weak wool-geometry differentiation requires a separate future owner decision.",
+        "Existing approved Rolled Locks source and owner approval remain unchanged; this new pending study neither replaces nor revokes them.",
+        "Do not treat this full-frame output as a compositable wool layer or introduce new wool/color IDs.",
+        "The Rolled Locks beanie/beanie-chain exclusions and cap contact requirements remain unchanged."
+      ],
+      "nextAction": "OWNER_REVIEW_OF_FRONT_POSE_VALUE_AND_FUTURE_DISTINCT_CROWN_GEOMETRY_NO_AUTOMATIC_RETRY",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage25-generation-authorization-02-rolled-locks-evolution",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One authorized reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:03:17.185Z"
+        },
+        {
+          "id": "stage25-technical-art-review-02-rolled-locks-evolution",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA only, owner art approval pending.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:12:02.192Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "NEEDS_REFINEMENT",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage25-generation",
+        "compatibilityRestrictions": [
+          "Not selected as a production candidate: weak wool-geometry differentiation requires a separate future owner decision.",
+          "Existing approved Rolled Locks source and owner approval remain unchanged; this new pending study neither replaces nor revokes them.",
+          "Do not treat this full-frame output as a compositable wool layer or introduce new wool/color IDs.",
+          "The Rolled Locks beanie/beanie-chain exclusions and cap contact requirements remain unchanged."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study25-lab-coat",
+      "label": "Stage 25 oversized laboratory coat",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "CLOTHING",
+      "sources": [
+        {
+          "id": "source-stage25-03-lab-coat-reference-1",
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-03-lab-coat-reference-2",
+          "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-03-relaxed-lean-native.png",
+          "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage25-03-lab-coat",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+          "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-long-coat"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "The eccentric scientist personality is restrained; the dark coat may read as a peacoat at 64px rather than unmistakably laboratory-specific apparel.",
+        "Two small pen-like inserts appeared in the breast pocket; these are authored decorative details, not a verified independent Accessory value.",
+        "Head is smaller than the tight canonical crop to show clothing; finer pocket/cloth detail is lost at 64px. Intentional bottom portrait cropping remains acceptable."
+      ],
+      "requiredImprovements": [
+        "Source-specific authored coat/body/neck contact; no reuse as an ordinary hoodie replacement layer.",
+        "Lab Coat is the existing canonical metadata name for lammb-clothing-long-coat; no new Clothing or Accessory ID is created.",
+        "No unverified Expression, Eye, Background, pose or pen metadata facets; owner review and production registration remain separate."
+      ],
+      "nextAction": "OWNER_ART_REVIEW_THEN_SOURCE_SPECIFIC_LAB_COAT_AND_POSE_COMPATIBILITY",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage25-generation-authorization-03-lab-coat",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One authorized reference-conditioned study; no automatic retries, production promotion or owner art acceptance.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:04:37.612Z"
+        },
+        {
+          "id": "stage25-technical-art-review-03-lab-coat",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and 64/128/256 square/circle review; proposed QA only, owner art approval pending.",
+          "evidence": "evidence-stage25-generation",
+          "date": "2026-10-12T04:12:02.192Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage25-generation",
+        "compatibilityRestrictions": [
+          "Source-specific authored coat/body/neck contact; no reuse as an ordinary hoodie replacement layer.",
+          "Lab Coat is the existing canonical metadata name for lammb-clothing-long-coat; no new Clothing or Accessory ID is created.",
+          "No unverified Expression, Eye, Background, pose or pen metadata facets; owner review and production registration remain separate."
         ]
       }
     }

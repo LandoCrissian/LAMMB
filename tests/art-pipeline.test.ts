@@ -7,7 +7,8 @@ import sharp from 'sharp';
 // Keep Stage 22's pinned registration evidence on its immutable snapshot.
 import backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.2.0.json';
 import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.3.0.json';
-import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.4.0.json';
+import expandedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
 import stage24OwnerDecisions from '../docs/art-production/STAGE24_OWNER_DECISIONS.json';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
 import { sha256Bytes } from '../packages/art-generator/src/canonical.ts';
@@ -36,6 +37,81 @@ import {
 
 // Synthetic fixtures for validation; no fixture here is an approved LAMMB trait.
 const digest = 'a'.repeat(64);
+describe('Stage 25 append after source-bound owner review', () => {
+  it('preserves all 112 reviewed records and appends exactly three pending studies', () => {
+    const b = validateArtworkStudyAppend(reviewedBacklog, expandedBacklog);
+    expect(b.backlogVersion).toBe('0.5.0');
+    expect(b.items).toHaveLength(115);
+    expect(b.items.slice(0, 112)).toEqual(reviewedBacklog.items);
+    expect(b.evidence.slice(0, reviewedBacklog.evidence.length)).toEqual(
+      reviewedBacklog.evidence,
+    );
+    expect(b.items.slice(112).map((i) => i.technicalStatus)).toEqual([
+      'PRODUCTION_CANDIDATE',
+      'NEEDS_REFINEMENT',
+      'PRODUCTION_CANDIDATE',
+    ]);
+    for (const i of b.items.slice(112)) {
+      expect(i.artisticApproval).toBe('UNREVIEWED');
+      expect(i.studyReview?.ownerReviewStatus).toBe('PENDING');
+      expect(i.productionRegistration).toBe('NOT_PRODUCTION_REGISTERED');
+      expect(i.finalProductionApproval).toBeNull();
+    }
+    expect(
+      b.items.find((i) => i.id === 'backlog-study23-ovine-skeletal')!
+        .artisticApproval,
+    ).toBe('NEEDS_REFINEMENT');
+    expect(
+      b.items.find((i) => i.id === 'backlog-study23-pixel-drip-evolution')!
+        .artisticApproval,
+    ).toBe('ART_DIRECTION_APPROVED');
+  });
+  it.each([
+    'old owner history rewrite',
+    'old source replacement',
+    'unapproved raster',
+    'reference dimensions',
+    'duplicate native output',
+    'missing primary raster',
+    'second primary raster',
+    'missing provenance',
+    'four studies',
+    'owner approval claim',
+    'production promotion',
+    'unsupported version transition',
+  ])('rejects %s', (mode) => {
+    const b = structuredClone(expandedBacklog),
+      study = b.items[112]!;
+    if (mode === 'old owner history rewrite')
+      b.items[111]!.ownerDecisionHistory.at(-1)!.scope = 'rewritten';
+    if (mode === 'old source replacement')
+      b.items[0]!.sources[0]!.sha256 = digest;
+    if (mode === 'unapproved raster') study.sources[0]!.sha256 = digest;
+    if (mode === 'reference dimensions')
+      study.sources[0]!.dimensions.width = 1200;
+    if (mode === 'duplicate native output')
+      study.sources.at(-1)!.sha256 = b.items[113]!.sources.at(-1)!.sha256;
+    if (mode === 'missing primary raster')
+      study.sources = study.sources.filter(
+        (s) => s.role !== 'PRIMARY_RASTER_REFERENCE',
+      );
+    if (mode === 'second primary raster')
+      study.sources[1]!.role = 'PRIMARY_RASTER_REFERENCE';
+    if (mode === 'missing provenance')
+      study.studyReview!.provenanceEvidence = 'absent-generation';
+    if (mode === 'four studies')
+      b.items.push({
+        ...structuredClone(study),
+        id: 'unauthorized-fourth-study',
+      });
+    if (mode === 'owner approval claim')
+      study.artisticApproval = 'ART_DIRECTION_APPROVED';
+    if (mode === 'production promotion')
+      study.productionRegistration = 'PRODUCTION_REGISTERED';
+    if (mode === 'unsupported version transition') b.backlogVersion = '0.3.0';
+    expect(() => validateArtworkStudyAppend(reviewedBacklog, b)).toThrow();
+  });
+});
 describe('source-bound Stage 24 owner art review', () => {
   const ownerRawSha = sha256Bytes(
     readFileSync(
