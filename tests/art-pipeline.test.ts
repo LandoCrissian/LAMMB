@@ -9,7 +9,10 @@ import backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.2.0.json';
 import currentBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.3.0.json';
 import reviewedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.4.0.json';
 import expandedBacklog from '../docs/art-production/ARTWORK_BACKLOG_v0.5.0.json';
-import stage26Backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage26Backlog from '../docs/art-production/ARTWORK_BACKLOG_v0.6.0.json';
+import stage27Backlog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import stage27Metadata from '../packages/art-generator/fixtures/stage27-character-studies.json';
+import { openSeaMetadataSchema } from '../packages/art-generator/src/opensea-metadata.ts';
 import stage26OwnerDecisions from '../docs/art-production/STAGE26_OWNER_DECISIONS.json';
 import stage26Proposals from '../packages/art-generator/fixtures/stage26-authored-proposals.json';
 import stage26NextStudies from '../docs/art-production/STAGE26_NEXT_STUDIES.json';
@@ -46,6 +49,170 @@ import {
 
 // Synthetic fixtures for validation; no fixture here is an approved LAMMB trait.
 const digest = 'a'.repeat(64);
+describe('Stage 27 bounded character-study append', () => {
+  it('preserves all 115 approved/reviewed records and adds only three pending studies', () => {
+    const b = validateArtworkStudyAppend(stage26Backlog, stage27Backlog);
+    expect(b.backlogVersion).toBe('0.7.0');
+    expect(b.items).toHaveLength(118);
+    expect(b.items.slice(0, 115)).toEqual(stage26Backlog.items);
+    expect(b.evidence.slice(0, stage26Backlog.evidence.length)).toEqual(
+      stage26Backlog.evidence,
+    );
+    expect(b.items.slice(115).map((i) => i.technicalStatus)).toEqual([
+      'PRODUCTION_CANDIDATE',
+      'NEEDS_REFINEMENT',
+      'PRODUCTION_CANDIDATE',
+    ]);
+    for (const item of b.items.slice(115)) {
+      expect(item.artisticApproval).toBe('UNREVIEWED');
+      expect(item.studyReview?.ownerReviewStatus).toBe('PENDING');
+      expect(item.productionRegistration).toBe('NOT_PRODUCTION_REGISTERED');
+      expect(item.finalProductionApproval).toBeNull();
+      expect(item.sources.at(-1)!.dimensions).toEqual({
+        width: 1254,
+        height: 1254,
+      });
+    }
+    expect(
+      b.items.find((i) => i.id === 'backlog-study25-amused')!.artisticApproval,
+    ).toBe('ART_DIRECTION_APPROVED');
+    expect(
+      b.items.find((i) => i.id === 'backlog-study25-lab-coat')!
+        .artisticApproval,
+    ).toBe('ART_DIRECTION_APPROVED');
+    expect(
+      b.items.find((i) => i.id === 'backlog-study25-rolled-locks-evolution')!
+        .artisticApproval,
+    ).toBe('NEEDS_REFINEMENT');
+    expect(b.collectionSupply).toBe(5280);
+    expect(b.frequenciesChanged).toBe(false);
+    expect(b.grailReservationsChanged).toBe(false);
+  });
+  it.each([
+    'old history rewrite',
+    'old source rewrite',
+    'old compatibility rewrite',
+    'unapproved input',
+    'missing primary input',
+    'second primary input',
+    'reference dimension mismatch',
+    'duplicate output',
+    'old output reused',
+    'missing generation',
+    'four studies',
+    'owner approval',
+    'production promotion',
+    'unsupported transition',
+    'missing technical review',
+    'wrong output role',
+  ])('rejects %s', (mode) => {
+    const b = structuredClone(stage27Backlog),
+      study = b.items[115]!;
+    if (mode === 'old history rewrite')
+      b.items[114]!.ownerDecisionHistory.at(-1)!.scope = 'Rewritten';
+    if (mode === 'old source rewrite') b.items[0]!.sources[0]!.sha256 = digest;
+    if (mode === 'old compatibility rewrite')
+      b.items[114]!.studyReview!.compatibilityRestrictions.push('UNAUTHORIZED');
+    if (mode === 'unapproved input') study.sources[0]!.sha256 = digest;
+    if (mode === 'missing primary input')
+      study.sources = study.sources.filter(
+        (s) => s.role !== 'PRIMARY_RASTER_REFERENCE',
+      );
+    if (mode === 'second primary input')
+      study.sources[1]!.role = 'PRIMARY_RASTER_REFERENCE';
+    if (mode === 'reference dimension mismatch')
+      study.sources[0]!.dimensions.width = 1200;
+    if (mode === 'duplicate output')
+      study.sources.at(-1)!.sha256 = b.items[116]!.sources.at(-1)!.sha256;
+    if (mode === 'old output reused')
+      study.sources.at(-1)!.sha256 = b.items[112]!.sources.at(-1)!.sha256;
+    if (mode === 'missing generation')
+      study.studyReview!.provenanceEvidence = 'absent-provenance';
+    if (mode === 'four studies')
+      b.items.push({
+        ...structuredClone(study),
+        id: 'unauthorized-fourth-study',
+      });
+    if (mode === 'owner approval')
+      study.artisticApproval = 'ART_DIRECTION_APPROVED';
+    if (mode === 'production promotion')
+      study.productionRegistration = 'PRODUCTION_REGISTERED';
+    if (mode === 'unsupported transition') b.backlogVersion = '0.5.0';
+    if (mode === 'missing technical review')
+      study.ownerDecisionHistory = study.ownerDecisionHistory.filter(
+        (h) => h.authority !== 'TECHNICAL_ART_REVIEW',
+      );
+    if (mode === 'wrong output role')
+      study.sources.at(-1)!.role = 'NEGATIVE_QA_ONLY';
+    expect(() => validateArtworkStudyAppend(stage26Backlog, b)).toThrow();
+  });
+  it('binds partial visible metadata to native hashes and existing values without production claims', () => {
+    const rawSpecSha = sha256Bytes(
+      readFileSync(
+        new URL(
+          '../packages/art-generator/specs/lammb-traits-v1.json',
+          import.meta.url,
+        ),
+      ),
+    );
+    expect(stage27Metadata.specRawSha256).toBe(rawSpecSha);
+    expect(stage27Metadata.studies).toHaveLength(3);
+    expect(stage27Metadata.productionPromotionAuthorized).toBe(false);
+    expect(
+      new Set(stage27Metadata.studies.map((s) => s.imageSha256)).size,
+    ).toBe(3);
+    for (const study of stage27Metadata.studies) {
+      const item = stage27Backlog.items.find((i) => i.id === study.backlogId)!;
+      const native = item.sources.find((s) => s.id === study.sourceId)!;
+      expect(native.role).toBe('GENERATED_NATIVE_STUDY');
+      expect(study.imageSha256).toBe(native.sha256);
+      expect(study.visibleTraitIds).toEqual(item.traitIds);
+      const metadata = openSeaMetadataSchema.parse(study.metadata);
+      expect(metadata.image).toBe(
+        'https://artwork.invalid/lammb/' + native.sha256 + '.png',
+      );
+      expect(metadata.attributes).toEqual(
+        study.visibleTraitIds.flatMap(
+          (id) => spec.traits.find((t) => t.id === id)!.metadata,
+        ),
+      );
+      expect(canonicalSha256(metadata)).toBe(study.binding.metadataSha256);
+      expect(study.binding.productionRegistered).toBe(false);
+      expect(study.binding.completeCollectionVector).toBe(false);
+      expect(study.binding.ownerArtApproval).toBe('PENDING');
+      expect(study.binding.tokenAssignment).toBeNull();
+      for (const absent of [
+        'Eyes',
+        'Wool',
+        'Accessories',
+        'Pose',
+        'Rarity',
+        'Rank',
+      ])
+        expect(metadata.attributes.map((a) => a.trait_type)).not.toContain(
+          absent,
+        );
+    }
+    expect(stage27Metadata.studies[0]!.metadata.attributes).toEqual([
+      { trait_type: 'Species', value: 'Sheep' },
+      { trait_type: 'Clothing', value: 'Black Bomber' },
+    ]);
+    expect(stage27Metadata.studies[1]!.metadata.attributes).toContainEqual({
+      trait_type: 'Expression',
+      value: 'Amused',
+    });
+    expect(stage27Metadata.studies[2]!.metadata.attributes).toContainEqual({
+      trait_type: 'Background',
+      value: 'Containment Lab',
+    });
+    expect(
+      stage27Metadata.studies[0]!.metadata.attributes.map((a) => a.trait_type),
+    ).not.toContain('Background');
+    expect(
+      stage27Metadata.studies[1]!.metadata.attributes.map((a) => a.trait_type),
+    ).not.toContain('Background');
+  });
+});
 describe('Stage 26 owner review and authored-source proposals', () => {
   const specRaw = sha256Bytes(
     readFileSync(
