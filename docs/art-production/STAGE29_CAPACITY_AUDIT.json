@@ -1,0 +1,3164 @@
+{
+  "schemaVersion": "lammb-compatibility-capacity-audit/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "5bfbdcaff5dc772d0dba519bdd4579394d400db4",
+  "dependencyHead": "ac48c6cc02fc1917b5c71bb487a54277515f4ebc",
+  "backlogVersion": "0.9.0",
+  "backlogSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+  "pilotManifestSha256": "1bbadfe232ccb5c50661e12bd4f0191d0c6be710b28e2919c1c951ed7569b08a",
+  "sourceChecks": {
+    "declaredBindings": 169,
+    "verifiedUniquePaths": 92,
+    "productionPromotions": 0
+  },
+  "capacity": {
+    "approvedNativeSourceDeclarations": 31,
+    "approvedAuthoredFullFrames": 27,
+    "provenDeterministicContactRecipes": 4,
+    "developmentProposalDeclarations": 6,
+    "proposalsAdditive": false,
+    "newNativeStudies": 3,
+    "uniqueDevelopmentNativeOutputs": 34,
+    "knownCompleteVectorConflicts": 1,
+    "fullyReconciledRenderableCollectionVectors": 0,
+    "artisticallyDistinctCount": null,
+    "artisticallyDistinctCountReason": "Owner art approval and low RGB distance are not certification of pairwise visual distinctness.",
+    "productionRegisteredCount": 0,
+    "registrationShortfall": 5280,
+    "completeVectorShortfall": 5280,
+    "grossUniqueDevelopmentImageShortfall": 5246
+  },
+  "simulation": {
+    "count": 5280,
+    "uniqueFingerprints": 5280,
+    "artifactsCanonicalSha256": "c979deda42d1228944081f9c494fdbf6e202c3d89319b64b893a07eb526f6164",
+    "reproduced": true,
+    "descriptorAssetsAreNotPng": true,
+    "grailReservations": 6
+  },
+  "historical4074": {
+    "value": 4074,
+    "meaning": "One Task015B 5280-sample signature count after omitting background and pixel corruption, not exhaustive collection capacity or visual uniqueness."
+  },
+  "assetCoverage": {
+    "requiredTemplates": 79,
+    "missingTemplates": 79,
+    "requiredFamilyBindings": 284,
+    "missingFamilyBindings": 284
+  },
+  "duplicates": {
+    "uniqueNativeOutputHashes": 34,
+    "exactEncodedPairs": 0,
+    "exactDecodedPairs": 0,
+    "pairComparisons": 561,
+    "resolutions": [64, 128, 1254],
+    "nearPairs": [
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-approved-stage8-02-confident-smirk",
+        "normalizedRgbMae": {
+          "64": 0.012724992340686275,
+          "128": 0.015136240042892157,
+          "1254": 0.02269131187243383
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-approved-stage9-02-tongue-out",
+        "normalizedRgbMae": {
+          "64": 0.02470288245506536,
+          "128": 0.030761000689338236,
+          "1254": 0.04152288102076025
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-approved-stage9-01-irritated",
+        "normalizedRgbMae": {
+          "64": 0.014623544730392157,
+          "128": 0.017225796568627452,
+          "1254": 0.024534591640718906
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-approved-stage7-front-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.0031505310457516336,
+          "128": 0.0032549689797794117,
+          "1254": 0.003633313198247205
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-stage11-02-high-roller",
+        "normalizedRgbMae": {
+          "64": 0.0325472962622549,
+          "128": 0.03467371323529412,
+          "1254": 0.04373703973202297
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-02-multi-eye",
+        "normalizedRgbMae": {
+          "64": 0.02328207975898693,
+          "128": 0.025999540441176472,
+          "1254": 0.0336607167661725
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-front",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.019722732843137254,
+          "128": 0.021633412479575165,
+          "1254": 0.02963305862931087
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-rolled-locks",
+        "b": "backlog-approved-stage5-rolled-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.005396624795751634,
+          "128": 0.005532896752450981,
+          "1254": 0.005973976643931859
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-broad-ash",
+        "b": "backlog-approved-stage5-ash-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.005347477532679739,
+          "128": 0.005490850311478758,
+          "1254": 0.005945306050233441
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-three-quarter",
+        "b": "backlog-approved-stage4-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.005303436478758169,
+          "128": 0.005446729473039215,
+          "1254": 0.005929136965918336
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-approved-stage9-02-tongue-out",
+        "normalizedRgbMae": {
+          "64": 0.019501251021241832,
+          "128": 0.025023696001838236,
+          "1254": 0.03479186936211146
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-approved-stage9-01-irritated",
+        "normalizedRgbMae": {
+          "64": 0.01841713899101307,
+          "128": 0.02126034007352941,
+          "1254": 0.02596050936198378
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-approved-stage7-front-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.01572680504493464,
+          "128": 0.018252703099468953,
+          "1254": 0.026135876302772577
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-stage11-02-high-roller",
+        "normalizedRgbMae": {
+          "64": 0.029004544526143792,
+          "128": 0.030247268178104577,
+          "1254": 0.036022953399669884
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-02-multi-eye",
+        "normalizedRgbMae": {
+          "64": 0.02840328839869281,
+          "128": 0.03204178155637255,
+          "1254": 0.038883269485774904
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage8-02-confident-smirk",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.024967128778594774,
+          "128": 0.02775671466503268,
+          "1254": 0.03404937164349769
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-02-tongue-out",
+        "b": "backlog-approved-stage9-01-irritated",
+        "normalizedRgbMae": {
+          "64": 0.02851211448120915,
+          "128": 0.034390238842933005,
+          "1254": 0.04375389045991107
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-02-tongue-out",
+        "b": "backlog-approved-stage7-front-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.027636399611928104,
+          "128": 0.0338171466503268,
+          "1254": 0.04490526791942448
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-02-tongue-out",
+        "b": "backlog-stage11-02-high-roller",
+        "normalizedRgbMae": {
+          "64": 0.0394039777369281,
+          "128": 0.044344953150531045,
+          "1254": 0.053565313432932096
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-02-tongue-out",
+        "b": "backlog-02-multi-eye",
+        "normalizedRgbMae": {
+          "64": 0.03748276654411765,
+          "128": 0.04396262574040033,
+          "1254": 0.05308681294504987
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-02-tongue-out",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.03368725745506536,
+          "128": 0.03920938329758987,
+          "1254": 0.04889148046450252
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-01-irritated",
+        "b": "backlog-approved-stage7-front-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.01766812193627451,
+          "128": 0.02038598154105392,
+          "1254": 0.028015868396372146
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-01-irritated",
+        "b": "backlog-stage11-02-high-roller",
+        "normalizedRgbMae": {
+          "64": 0.033400033190359474,
+          "128": 0.03574314491421569,
+          "1254": 0.04219006626855689
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-01-irritated",
+        "b": "backlog-02-multi-eye",
+        "normalizedRgbMae": {
+          "64": 0.030076529309640523,
+          "128": 0.033970652062908495,
+          "1254": 0.041026183143296924
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage9-01-irritated",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.027849264705882355,
+          "128": 0.03088394863153595,
+          "1254": 0.03737803255951991
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage7-front-ear-tag",
+        "b": "backlog-stage11-02-high-roller",
+        "normalizedRgbMae": {
+          "64": 0.03553059895833333,
+          "128": 0.03777326197406045,
+          "1254": 0.04715611568036749
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage7-front-ear-tag",
+        "b": "backlog-02-multi-eye",
+        "normalizedRgbMae": {
+          "64": 0.026216873468137256,
+          "128": 0.02904403786254085,
+          "1254": 0.037006695585312124
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage7-front-ear-tag",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.022658803104575166,
+          "128": 0.024687484043096404,
+          "1254": 0.03302270918839077
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-approved-stage5-rolled-ear-tag",
+        "b": "backlog-approved-stage4-ear-tag",
+        "normalizedRgbMae": {
+          "64": 0.03993087469362745,
+          "128": 0.04307334750306373,
+          "1254": 0.04834311234166064
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-stage12-03-magma",
+        "b": "backlog-study21-magma-hoodie",
+        "normalizedRgbMae": {
+          "64": 0.03925685508578431,
+          "128": 0.04267921198427288,
+          "1254": 0.06081367593803341
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      },
+      {
+        "a": "backlog-02-multi-eye",
+        "b": "backlog-study21-refined-pixel-drip",
+        "normalizedRgbMae": {
+          "64": 0.031903275633169935,
+          "128": 0.03473674300449347,
+          "1254": 0.04117162011232256
+        },
+        "nearDuplicateDiagnostic": true,
+        "exactEncoded": false,
+        "exactDecoded": false
+      }
+    ],
+    "diagnosticGroups": [
+      [
+        "backlog-approved-front",
+        "backlog-approved-stage8-02-confident-smirk",
+        "backlog-approved-stage9-02-tongue-out",
+        "backlog-approved-stage9-01-irritated",
+        "backlog-approved-stage7-front-ear-tag",
+        "backlog-stage11-02-high-roller",
+        "backlog-02-multi-eye",
+        "backlog-study21-refined-pixel-drip"
+      ],
+      [
+        "backlog-rolled-locks",
+        "backlog-approved-stage5-rolled-ear-tag",
+        "backlog-approved-stage4-ear-tag",
+        "backlog-approved-three-quarter"
+      ],
+      ["backlog-broad-ash", "backlog-approved-stage5-ash-ear-tag"],
+      ["backlog-stage12-03-magma", "backlog-study21-magma-hoodie"]
+    ],
+    "method": "Whole-frame normalized RGB MAE <0.04 at 64px; background/pose sensitive. Connected groups are review prompts, not aesthetic equivalence classes."
+  },
+  "metadata": {
+    "validPartialExamples": 34,
+    "completeNineCategoryVectors": 0,
+    "published": 0,
+    "tokenAssignments": 0
+  },
+  "excluded": [
+    {
+      "id": "backlog-stage10-02-arms-crossed",
+      "status": "CONDITIONAL_ART_APPROVAL",
+      "sources": [
+        {
+          "id": "lammb-audit-stage10-02-arms-crossed",
+          "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-02-arms-crossed-native.png",
+          "sha256": "2a2d2bf263f00675a032ba778c06395da2eaf002eaf367ace721c88fa8164103",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SOURCE_ARTWORK"
+        }
+      ]
+    },
+    {
+      "id": "backlog-rejected-generic-stage1",
+      "status": "REJECTED",
+      "sources": [
+        {
+          "id": "lammb-audit-rejected-generic-stage1",
+          "path": "output/ART_016_PILOT_001_20261009/lammb-pilot-001-stage-1-native.png",
+          "sha256": "ab236f50df26b12ffd95c8a499d5688a3c6cb4f430a73833dd8e92ab631f8765",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "NEGATIVE_QA_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-01-skeletal-corrected",
+      "status": "REJECTED",
+      "sources": [
+        {
+          "id": "lammb-audit-01-skeletal-corrected",
+          "path": "output/ART_016_STAGE13_MUTATIONS_001/lammb-016-stage13-01-skeletal-corrected-native.png",
+          "sha256": "4e23456af0dcbfaa05b1fa52d77f71f374290251e59b5e3afc1c818cc4180f67",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "NEGATIVE_QA_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-01-void",
+      "status": "CONDITIONAL_ART_APPROVAL",
+      "sources": [
+        {
+          "id": "lammb-audit-01-void",
+          "path": "output/ART_016_STAGE14_MUTATIONS_001/lammb-016-stage14-01-void-native.png",
+          "sha256": "76ab9f4c2302b8f396a46c596a93624e8d4dde52967f7d21349aa09bd34fe9e9",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SOURCE_ARTWORK"
+        }
+      ]
+    },
+    {
+      "id": "backlog-01-skeletal",
+      "status": "REJECTED",
+      "sources": [
+        {
+          "id": "lammb-audit-01-skeletal",
+          "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-01-skeletal-native.png",
+          "sha256": "595a42bbcfbbdb3b0e6d3e35c5531bf3349db79bf6695fb1ddf688786f93aa54",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "NEGATIVE_QA_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-study21-skeletal-correction",
+      "status": "REJECTED",
+      "sources": [
+        {
+          "id": "source-stage21-skeletal-correction",
+          "path": "output/TASK_021_STAGE21_STUDIES_001/02-skeletal-correction-native.png",
+          "sha256": "ac797d8411e3ef015d2fe2311d3fb3a05690898ef8f357d26aa82e5c689bda81",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "NEGATIVE_QA_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-legacy-local-art003",
+      "status": "REJECTED",
+      "sources": [
+        {
+          "id": "lammb-audit-sha256-3fd104c588d3ee81d43c507b59ccf34203f5ac01e0073756859c74b70121829e",
+          "path": "output/ART_003_LOCAL_GENESIS_20261008/native-candidate_00001_.png",
+          "sha256": "3fd104c588d3ee81d43c507b59ccf34203f5ac01e0073756859c74b70121829e",
+          "dimensions": {
+            "width": 768,
+            "height": 768
+          },
+          "role": "NEGATIVE_QA_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-study23-ovine-skeletal",
+      "status": "NEEDS_REFINEMENT",
+      "sources": [
+        {
+          "id": "source-stage23-01-ovine-skeletal",
+          "path": "output/TASK_023_STAGE23_STUDIES_001/01-ovine-skeletal-native.png",
+          "sha256": "b42e616701c2b1d9ec8b0c9ad45e6941451d8a84ef7a3187c1923b57631a049f",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-study25-rolled-locks-evolution",
+      "status": "NEEDS_REFINEMENT",
+      "sources": [
+        {
+          "id": "source-stage25-02-rolled-locks-evolution",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/02-rolled-locks-evolution-native.png",
+          "sha256": "7b68a4b06677da0b13e9484f65a68c85d03917647af81c54544da009e44976d1",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ]
+    },
+    {
+      "id": "backlog-study27-delighted-conspirator",
+      "status": "NEEDS_REFINEMENT",
+      "sources": [
+        {
+          "id": "source-stage27-02-delighted-conspirator",
+          "path": "output/TASK_027_STAGE27_STUDIES_001/02-delighted-conspirator-native.png",
+          "sha256": "fe95b48b6831306f0e6d91dd804f74cac6442524f3b16960bc7efdbcac2cd04e",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "backlog-approved-front",
+      "source": {
+        "id": "lammb-audit-approved-front",
+        "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+        "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "3f875aa0ac747ee7cec9845e7b68ce4ebc4925c4b766cbbfea0af8346fe2a7a3",
+      "nativeBytes": 2312892,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-front",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-rolled-locks",
+      "source": {
+        "id": "lammb-audit-rolled-locks",
+        "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-03-rolled-locks-ivory-native.png",
+        "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "b4de249262173a2f6d65bf5030c08308c72157983634bdf68f3dabbe2299c496",
+      "nativeBytes": 2233685,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-rolled-locks",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Rolled Locks"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-locks",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-compact-ivory",
+      "source": {
+        "id": "lammb-audit-compact-ivory",
+        "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-01-compact-crown-ivory-native.png",
+        "sha256": "1adc7bbead8de6aed4ae0c362933fdcb8cb02dc634f43fce6aee7188aca91607",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "6af2e86e800c62347e37ade5f3326afe562d4512cf4218d0d2ae23f8cad7982b",
+      "nativeBytes": 2159458,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-compact-ivory",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/1adc7bbead8de6aed4ae0c362933fdcb8cb02dc634f43fce6aee7188aca91607.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-broad-ash",
+      "source": {
+        "id": "lammb-audit-broad-ash",
+        "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-02-broad-offset-crown-ash-native.png",
+        "sha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "2bdde63fca69ee950fbed4106fd5f135cd89f1d842bdd56af7b434185cb3a8ad",
+      "nativeBytes": 2334805,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-broad-ash",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ash Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ash",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-three-quarter",
+      "source": {
+        "id": "lammb-audit-approved-three-quarter",
+        "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+        "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "e4df708deb3560f8982ea4718cf93766b0c5d55f8e38456eb5f6acf144ac80db",
+      "nativeBytes": 2300282,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-three-quarter",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage8-02-confident-smirk",
+      "source": {
+        "id": "lammb-audit-approved-stage8-02-confident-smirk",
+        "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-02-confident-smirk-native.png",
+        "sha256": "bb31b405267c3a366b4c6b58474555d22ca0c646c6e2a9a3e2cd6a79e9ee32c2",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "6b15627b107c47d2dfa24b79dc7e23688a885583926d68a9e7eae901db0a2c53",
+      "nativeBytes": 2290423,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-stage8-02-confident-smirk",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/bb31b405267c3a366b4c6b58474555d22ca0c646c6e2a9a3e2cd6a79e9ee32c2.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Smirk"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie",
+          "lammb-expressions-smirk"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage8-01-three-quarter-right",
+      "source": {
+        "id": "lammb-audit-approved-stage8-01-three-quarter-right",
+        "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-01-three-quarter-right-native.png",
+        "sha256": "b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "b46084d34acadce6ce108ab4ffc45cb9485b70e6353f00185a2e1e76569484d8",
+      "nativeBytes": 2319192,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-stage8-01-three-quarter-right",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage10-03-relaxed-lean",
+      "source": {
+        "id": "lammb-audit-stage10-03-relaxed-lean",
+        "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-03-relaxed-lean-native.png",
+        "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "da35d24b3bf72394732a1af9e97ea83da7f39b9719177ae7023670b15c2c15ea",
+      "nativeBytes": 2312979,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage10-03-relaxed-lean",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage10-01-skeptical-head-tilt",
+      "source": {
+        "id": "lammb-audit-stage10-01-skeptical-head-tilt",
+        "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-01-skeptical-head-tilt-native.png",
+        "sha256": "7dc29c1af83b9f6d967f22f2792cfc016ae79986889127e90292e28f17692392",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "89bc474d51932757977be37aa98bd4809c194a1fd69aa4ee95e87bc41f3cb485",
+      "nativeBytes": 2315391,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage10-01-skeptical-head-tilt",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/7dc29c1af83b9f6d967f22f2792cfc016ae79986889127e90292e28f17692392.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage9-02-tongue-out",
+      "source": {
+        "id": "lammb-audit-approved-stage9-02-tongue-out",
+        "path": "output/ART_016_STAGE9_EXPRESSIONS_001/lammb-016-stage9-02-tongue-out-native.png",
+        "sha256": "792570b4a1bf5cb953415f1f169488605656c754a62a3e040729cc4577f018e8",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "4a4509405cb98652aebf5a1457115b8c310c5b56e7ac66187e12445694ea1c65",
+      "nativeBytes": 2242065,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-stage9-02-tongue-out",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/792570b4a1bf5cb953415f1f169488605656c754a62a3e040729cc4577f018e8.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage9-01-irritated",
+      "source": {
+        "id": "lammb-audit-approved-stage9-01-irritated",
+        "path": "output/ART_016_STAGE9_EXPRESSIONS_001/lammb-016-stage9-01-irritated-native.png",
+        "sha256": "57aa717011915f36e498cdb4725e32525337d8296df476d3ff681c3a95b70d89",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "bf7e5af052d4e296d4df978b84e9ca11d4f988fa033acfbe109552bdc575485a",
+      "nativeBytes": 2301290,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-approved-stage9-01-irritated",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/57aa717011915f36e498cdb4725e32525337d8296df476d3ff681c3a95b70d89.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage7-front-ear-tag",
+      "source": {
+        "id": "lammb-audit-approved-stage7-front-ear-tag",
+        "path": "output/ART_016_STAGE7_FRONT_TAG_001/lammb-016-stage7-front-ear-tag-hybrid-native.png",
+        "sha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "DETERMINISTIC_CONTACT_PROOF",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "e7d120731fd10fa9f65ff0f9aedc69622729abea4e17cb8b129836b9e3949802",
+      "nativeBytes": 2969728,
+      "decodedBytes": 4717548,
+      "recipeId": "proof-front-stage16",
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development PNG Contact Proof",
+          "description": "Unpublished engineering proof using reviewed visible Sheep, Ivory Curls, Black Hoodie and 5280 ear tag. No token assignment, registration or allocation.",
+          "image": "https://artwork.invalid/lammb/ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "imageSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "metadataSha256": "bd351725f2e3ddfdb38f3e434aab84d147565d553d83bf8ff318b00722d3af12",
+          "specVersion": "1.1.0",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ivory",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage5-rolled-ear-tag",
+      "source": {
+        "id": "lammb-audit-approved-stage5-rolled-ear-tag",
+        "path": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-02-rolled-ear-tag-native.png",
+        "sha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "DETERMINISTIC_CONTACT_PROOF",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "7f81fe8ed5e864381499fe5e69b2a161ad400fb651bd720122ba1f6f19a600c0",
+      "nativeBytes": 2940548,
+      "decodedBytes": 4717548,
+      "recipeId": "proof-rolled-locks",
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-rolled-locks",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Rolled Locks"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-rolled-locks",
+          "imageSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "metadataSha256": "02197673056db09315ba3b4269528b2cf481053f2ec1e8a71ad5adecfbd6010b",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-locks",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage5-ash-ear-tag",
+      "source": {
+        "id": "lammb-audit-approved-stage5-ash-ear-tag",
+        "path": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-01-ash-ear-tag-native.png",
+        "sha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "DETERMINISTIC_CONTACT_PROOF",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "1100ec1017233425e812d7e22eff40eae667e6bb9573bcdb7f4192df230cc35c",
+      "nativeBytes": 2914912,
+      "decodedBytes": 4717548,
+      "recipeId": "proof-broad-ash",
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-broad-ash",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ash Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-broad-ash",
+          "imageSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "metadataSha256": "217ff829508187c3882f5e8f85b59409e97f3cbe8c08532ff3c7a21bf18f0e8a",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ash",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-approved-stage4-ear-tag",
+      "source": {
+        "id": "lammb-audit-approved-stage4-ear-tag",
+        "path": "output/ART_016_STAGE4_EAR_TAG_001/lammb-016-stage4-hybrid-finished-native.png",
+        "sha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "DETERMINISTIC_CONTACT_PROOF",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "daa7245888222d4b06a063ea2434a7607bed4ef3c5d0b8105c33fec00fb0f892",
+      "nativeBytes": 2961803,
+      "decodedBytes": 4717548,
+      "recipeId": "proof-canonical",
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-canonical",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-canonical",
+          "imageSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "metadataSha256": "1c3ce4dfcc0625d65034c4e10705d9780f8154c7706b26c5884537d6d00ab6fe",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ivory",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage13-03-botanical",
+      "source": {
+        "id": "lammb-audit-stage13-03-botanical",
+        "path": "output/ART_016_STAGE13_MUTATIONS_001/lammb-016-stage13-03-botanical-native.png",
+        "sha256": "387546b1a5c31de0ea160665111824ba099b9d9a1d9d6ae15d70eb867ca5f6e4",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "7215aab9cb546cc8b2ad33cc5b461e60838afbc35c90bd5d4ca9eeabc1b2b25f",
+      "nativeBytes": 2412219,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage13-03-botanical",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/387546b1a5c31de0ea160665111824ba099b9d9a1d9d6ae15d70eb867ca5f6e4.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Botanical"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Bark and Wool"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie",
+          "lammb-mutations-botanical"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage13-02-crystalline",
+      "source": {
+        "id": "lammb-audit-stage13-02-crystalline",
+        "path": "output/ART_016_STAGE13_MUTATIONS_001/lammb-016-stage13-02-crystalline-native.png",
+        "sha256": "4911298707c7b33b33f3b2b81f47df910950ed1dd04981415edd150323f74914",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "711d9b6543190830ee508de1fb7f6ca51a1973ff91fc64494a416074da42a6be",
+      "nativeBytes": 2320175,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage13-02-crystalline",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/4911298707c7b33b33f3b2b81f47df910950ed1dd04981415edd150323f74914.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Crystalline"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Quartz and Wool"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie",
+          "lammb-mutations-crystalline"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage12-03-magma",
+      "source": {
+        "id": "lammb-audit-stage12-03-magma",
+        "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+        "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "314179d0f2f9a4fb944d1f14ab8957c2eea5671b1849e449892a0f2c8f9e95c0",
+      "nativeBytes": 2932710,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage12-03-magma",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Magma"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Basalt and Wool"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-mutations-magma"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage12-02-cybernetic",
+      "source": {
+        "id": "lammb-audit-stage12-02-cybernetic",
+        "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-02-cybernetic-native.png",
+        "sha256": "5dfac50914a3c2c86c9f2f194e784c1640492c25a4a783dfe292ac821dbb9650",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "ce3fd2050b064ce899fd54cb3d70c197ecbff20393167c368f3ff469e44cc279",
+      "nativeBytes": 2361290,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage12-02-cybernetic",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/5dfac50914a3c2c86c9f2f194e784c1640492c25a4a783dfe292ac821dbb9650.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Cybernetic"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Titanium and Wool"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie",
+          "lammb-mutations-cybernetic"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage11-03-neon-rebel",
+      "source": {
+        "id": "lammb-audit-stage11-03-neon-rebel",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-03-neon-rebel-native.png",
+        "sha256": "5d8f83e16565137bc19db46722ed9bfdd533d1e1b6cc10d913df37ec3b88d2ef",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "c729389873f5997b0e39ec989faf37c64caf57c09abee2c5ef6d81aa22f27f43",
+      "nativeBytes": 2509299,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage11-03-neon-rebel",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/5d8f83e16565137bc19db46722ed9bfdd533d1e1b6cc10d913df37ec3b88d2ef.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            }
+          ]
+        },
+        "visibleTraitIds": ["lammb-base-anatomy-sheep", "lammb-wool-ivory"],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage11-02-high-roller",
+      "source": {
+        "id": "lammb-audit-stage11-02-high-roller",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-02-high-roller-native.png",
+        "sha256": "eb526c44e680f4805fac8dccf0ba2d1a619a0b22f0e2e38488e782778332729c",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "8c4545cbae4a050cb028a0a52bfa885b494dd430e6ff5ef3738c9832fa0f7523",
+      "nativeBytes": 2348005,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage11-02-high-roller",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/eb526c44e680f4805fac8dccf0ba2d1a619a0b22f0e2e38488e782778332729c.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Smirk"
+            },
+            {
+              "trait_type": "Eyewear",
+              "value": "Dark Shades"
+            },
+            {
+              "trait_type": "Dental Accent",
+              "value": "Gold Tooth"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie",
+          "lammb-expressions-smirk",
+          "lammb-accessories-shades-gold"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-stage11-01-underground-streetwear",
+      "source": {
+        "id": "lammb-audit-stage11-01-underground-streetwear",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-01-underground-streetwear-native.png",
+        "sha256": "f6c0aaf3427fedc3c07dc3ddefc3db57d6a013d56b65bfe215dc15341f9df9ae",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "4f298124ffe111ad2d7df6fc1a8d650092fc70f64bd3a20d2ca229636e066e90",
+      "nativeBytes": 2357541,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-stage11-01-underground-streetwear",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/f6c0aaf3427fedc3c07dc3ddefc3db57d6a013d56b65bfe215dc15341f9df9ae.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Bomber"
+            },
+            {
+              "trait_type": "Headwear",
+              "value": "Black Beanie"
+            },
+            {
+              "trait_type": "Jewelry",
+              "value": "Silver Chain"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-bomber",
+          "lammb-accessories-beanie-chain"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-02-multi-eye",
+      "source": {
+        "id": "lammb-audit-02-multi-eye",
+        "path": "output/ART_016_STAGE14_MUTATIONS_001/lammb-016-stage14-02-multi-eye-native.png",
+        "sha256": "06349558674f2d2e33a04a7eac64f632da003261d8647c00bbda3c96b4e10130",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "SOURCE_ARTWORK"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "398acd12ac3396a552042fbf04f8b17fb9ed6ea1090a1a9f1207fe1ca4c7f132",
+      "nativeBytes": 2229332,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-02-multi-eye",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/06349558674f2d2e33a04a7eac64f632da003261d8647c00bbda3c96b4e10130.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Multi Eye"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Organic"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie",
+          "lammb-mutations-multi-eye"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study21-magma-hoodie",
+      "source": {
+        "id": "source-stage21-magma-hoodie",
+        "path": "output/TASK_021_STAGE21_STUDIES_001/01-magma-hoodie-native.png",
+        "sha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "965be19cd46cfbd5ce62504d8338e9b939e4801d146d8699625120e6ef437dd0",
+      "nativeBytes": 2874786,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study21-magma-hoodie",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Magma"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Basalt and Wool"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie",
+          "lammb-mutations-magma"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": "MAGMA_CLOTHING_WHITELIST_EXCLUDES_HOODIE",
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study21-refined-pixel-drip",
+      "source": {
+        "id": "source-stage21-refined-pixel-drip",
+        "path": "output/TASK_021_STAGE21_STUDIES_001/03-refined-pixel-drip-native.png",
+        "sha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "696705d66dd712c394d461a47da247564ade40578f0730e97f4420543d00e81b",
+      "nativeBytes": 2322155,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study21-refined-pixel-drip",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study23-pixel-drip-evolution",
+      "source": {
+        "id": "source-stage23-02-pixel-drip-evolution",
+        "path": "output/TASK_023_STAGE23_STUDIES_001/02-pixel-drip-evolution-native.png",
+        "sha256": "33094916e4c946d5f794d47cd078f78ea63b8284bd7fe6b5227311a37b99d74d",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "e41a4a8ec48e444ac2f6b5e8be2087b81a6470b59094103903e613d3b5c55b17",
+      "nativeBytes": 2270565,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study23-pixel-drip-evolution",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/33094916e4c946d5f794d47cd078f78ea63b8284bd7fe6b5227311a37b99d74d.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study23-utility-vest",
+      "source": {
+        "id": "source-stage23-03-utility-vest",
+        "path": "output/TASK_023_STAGE23_STUDIES_001/03-utility-vest-native.png",
+        "sha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "cb2f2f3479fa81649921d2e5f1f785e05fc33d5632717b42add70c58499d37be",
+      "nativeBytes": 2347475,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study23-utility-vest",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Utility Vest"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-utility-vest"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study25-amused",
+      "source": {
+        "id": "source-stage25-01-amused",
+        "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+        "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "daa63e4369e2c02cd910bdc2e8c33762cd3da3f673257e113512603e94dba8ee",
+      "nativeBytes": 2315018,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study25-amused",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Amused"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-expressions-amused",
+          "lammb-clothing-hoodie"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study25-lab-coat",
+      "source": {
+        "id": "source-stage25-03-lab-coat",
+        "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+        "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "c9deb8d5f0575535ce7a0327418bf18cfa4753bebbeb551f63a3a569272f95cf",
+      "nativeBytes": 2493914,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study25-lab-coat",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Lab Coat"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-long-coat"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study27-collar-shift",
+      "source": {
+        "id": "source-stage27-01-collar-shift",
+        "path": "output/TASK_027_STAGE27_STUDIES_001/01-collar-shift-native.png",
+        "sha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "9d53296fa83f16bba51aa01c1ccf88e6b21fc60ff49417c4f3cfdd962092ff84",
+      "nativeBytes": 2305063,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study27-collar-shift",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Bomber"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-bomber"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study27-after-hours-observer",
+      "source": {
+        "id": "source-stage27-03-after-hours-observer",
+        "path": "output/TASK_027_STAGE27_STUDIES_001/03-after-hours-observer-native.png",
+        "sha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "role": "GENERATED_NATIVE_STUDY"
+      },
+      "mode": "IMMUTABLE_AUTHORED_FRAME",
+      "artApproval": "ART_DIRECTION_APPROVED",
+      "productionRegistered": false,
+      "pixelSha256": "1076787fa256a444e093f2c3dd4ea0ee98e02cd272e022c895745c401a7ca738",
+      "nativeBytes": 2382352,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Capacity backlog-study27-after-hours-observer",
+          "description": "Unpublished partial visible-trait source audit. No token assignment, production approval or complete collection vector.",
+          "image": "https://artwork.invalid/lammb/f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Lab Coat"
+            },
+            {
+              "trait_type": "Background",
+              "value": "Containment Lab"
+            }
+          ]
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-long-coat",
+          "lammb-environments-lab"
+        ],
+        "completeCollectionVector": false,
+        "productionRegistered": false,
+        "tokenAssignment": null
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study29-soft-chaos",
+      "source": {
+        "path": "output/TASK_029_STAGE29_STUDIES_001/01-soft-chaos-native.png",
+        "sha256": "5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "mode": "NEW_AUTHORED_STUDY",
+      "artApproval": "PENDING",
+      "qaClassification": "PRODUCTION_CANDIDATE",
+      "productionRegistered": false,
+      "pixelSha256": "e52adebd0b0a2e1582d900bbd3f5e3d4ca21368bfb551b854b9eda1c7cfe925d",
+      "nativeBytes": 2242160,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "backlogId": "backlog-study29-soft-chaos",
+        "sourceId": "source-stage29-01-soft-chaos",
+        "imageSha256": "5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7",
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-crewneck"
+        ],
+        "metadata": {
+          "name": "LAMMB — Development Study soft-chaos",
+          "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+          "image": "https://artwork.invalid/lammb/5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Crewneck"
+            }
+          ]
+        },
+        "binding": {
+          "metadataSha256": "b2cf8190810117b9483f9cc6a288cd98e3596aeab6b085423c41b479aa4b3bf2",
+          "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+          "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+          "ownerArtApproval": "PENDING",
+          "productionRegistered": false,
+          "completeCollectionVector": false,
+          "tokenAssignment": null,
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study29-storm-warden",
+      "source": {
+        "path": "output/TASK_029_STAGE29_STUDIES_001/02-storm-warden-native.png",
+        "sha256": "13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "mode": "NEW_AUTHORED_STUDY",
+      "artApproval": "PENDING",
+      "qaClassification": "PRODUCTION_CANDIDATE",
+      "productionRegistered": false,
+      "pixelSha256": "a4b48ceb728fc994e3d2f696462d5983582d5f3215109aa7c0b87d7b5bf94168",
+      "nativeBytes": 2417416,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "backlogId": "backlog-study29-storm-warden",
+        "sourceId": "source-stage29-02-storm-warden",
+        "imageSha256": "13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b",
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-clothing-lab-jacket"
+        ],
+        "metadata": {
+          "name": "LAMMB — Development Study storm-warden",
+          "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+          "image": "https://artwork.invalid/lammb/13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Lab Jacket"
+            }
+          ]
+        },
+        "binding": {
+          "metadataSha256": "71405f4b566f693dadd1ff8d27bb0a93f5a6f82bcfad3be410130f9457f3e6df",
+          "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+          "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+          "ownerArtApproval": "PENDING",
+          "productionRegistered": false,
+          "completeCollectionVector": false,
+          "tokenAssignment": null,
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    },
+    {
+      "id": "backlog-study29-coil-cascade",
+      "source": {
+        "path": "output/TASK_029_STAGE29_STUDIES_001/03-coil-cascade-native.png",
+        "sha256": "498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "mode": "NEW_AUTHORED_STUDY",
+      "artApproval": "PENDING",
+      "qaClassification": "NEEDS_REFINEMENT",
+      "productionRegistered": false,
+      "pixelSha256": "c63c9bc9b05146559b752f9360eb5dec7811808b16672eb76b5908435f22ea3a",
+      "nativeBytes": 2201872,
+      "decodedBytes": 4717548,
+      "recipeId": null,
+      "metadata": {
+        "backlogId": "backlog-study29-coil-cascade",
+        "sourceId": "source-stage29-03-coil-cascade",
+        "imageSha256": "498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e",
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-locks",
+          "lammb-clothing-hoodie"
+        ],
+        "metadata": {
+          "name": "LAMMB — Development Study coil-cascade",
+          "description": "Unpublished partial visible-trait review example. Owner art approval pending; no token assignment, full collection vector or production registration.",
+          "image": "https://artwork.invalid/lammb/498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Rolled Locks"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            }
+          ]
+        },
+        "binding": {
+          "metadataSha256": "c006c2e50389349ceec0df178b1fee426118fd65b64e07c805e58dc1566e73c2",
+          "purpose": "DEVELOPMENT_ONLY_PARTIAL_REVIEW_EXAMPLE",
+          "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+          "ownerArtApproval": "PENDING",
+          "productionRegistered": false,
+          "completeCollectionVector": false,
+          "tokenAssignment": null,
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+        }
+      },
+      "completeCollectionVector": false,
+      "knownCollectionConflict": null,
+      "sourceSpecificOnly": true
+    }
+  ],
+  "proofs": [
+    {
+      "id": "proof-canonical",
+      "sourceRecipe": {
+        "id": "proof-canonical",
+        "baseId": "canonical",
+        "contactId": "ear-tag-contact",
+        "maskId": "ear-tag-mask",
+        "historicalOutputId": "canonical-historical",
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ivory",
+          "lammb-clothing-hoodie",
+          "lammb-accessories-ear-tag"
+        ]
+      },
+      "sha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "bytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-canonical",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-canonical",
+          "imageSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "metadataSha256": "1c3ce4dfcc0625d65034c4e10705d9780f8154c7706b26c5884537d6d00ab6fe",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ivory",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      }
+    },
+    {
+      "id": "proof-broad-ash",
+      "sourceRecipe": {
+        "id": "proof-broad-ash",
+        "baseId": "broad-ash",
+        "contactId": "ear-tag-contact",
+        "maskId": "ear-tag-mask",
+        "historicalOutputId": "broad-ash-historical",
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-ash",
+          "lammb-clothing-hoodie",
+          "lammb-accessories-ear-tag"
+        ]
+      },
+      "sha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "bytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-broad-ash",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ash Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-broad-ash",
+          "imageSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "metadataSha256": "217ff829508187c3882f5e8f85b59409e97f3cbe8c08532ff3c7a21bf18f0e8a",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ash",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      }
+    },
+    {
+      "id": "proof-rolled-locks",
+      "sourceRecipe": {
+        "id": "proof-rolled-locks",
+        "baseId": "rolled-locks",
+        "contactId": "ear-tag-contact",
+        "maskId": "ear-tag-mask",
+        "historicalOutputId": "rolled-locks-historical",
+        "registration": {
+          "poseFamily": "ORIGINAL_THREE_QUARTER",
+          "baseSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "jointSha256": "29a3ffead57c075d2981578a75dd38a7be00a6674efb31d4bb51b818167712e6",
+          "maskSha256": "bc69326292066150459da4440b675a63a453009221493446df55a9a58badff7d",
+          "roi": {
+            "x": 75,
+            "y": 670,
+            "width": 300,
+            "height": 390
+          },
+          "polygon": [
+            [171, 683],
+            [194, 691],
+            [215, 712],
+            [220, 746],
+            [227, 766],
+            [236, 789],
+            [270, 809],
+            [307, 825],
+            [321, 845],
+            [333, 888],
+            [350, 995],
+            [345, 1025],
+            [318, 1044],
+            [139, 1049],
+            [111, 1037],
+            [97, 1003],
+            [85, 881],
+            [96, 847],
+            [116, 820],
+            [146, 790],
+            [150, 759],
+            [145, 725],
+            [148, 702]
+          ],
+          "transform": "IDENTITY_NO_RESAMPLING",
+          "colorMath": "SRGB_BYTE_INTEGER_SOURCE_OVER",
+          "alpha": "STRAIGHT_RGBA_ZERO_RGB_AT_ZERO_ALPHA",
+          "maskPolicy": "EXACT_SAVED_MASK_EQUALS_JOINT_ALPHA",
+          "evidence": "stage4-contact + stage5-reconstruction: unchanged historical registration"
+        },
+        "visibleTraitIds": [
+          "lammb-base-anatomy-sheep",
+          "lammb-wool-locks",
+          "lammb-clothing-hoodie",
+          "lammb-accessories-ear-tag"
+        ]
+      },
+      "sha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "bytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development Registered Proof proof-rolled-locks",
+          "description": "Unpublished source-bound ear-tag reconstruction. Visible traits only; no NFT assignment or production approval.",
+          "image": "https://artwork.invalid/lammb/b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Rolled Locks"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+          "proofId": "proof-rolled-locks",
+          "imageSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "metadataSha256": "02197673056db09315ba3b4269528b2cf481053f2ec1e8a71ad5adecfbd6010b",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-locks",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      }
+    },
+    {
+      "id": "proof-front-stage16",
+      "sourceRecipeHash": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd",
+      "sha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "bytesEqual": true,
+      "outsideMaskChangedPixels": 0,
+      "metadata": {
+        "metadata": {
+          "name": "LAMMB — Development PNG Contact Proof",
+          "description": "Unpublished engineering proof using reviewed visible Sheep, Ivory Curls, Black Hoodie and 5280 ear tag. No token assignment, registration or allocation.",
+          "image": "https://artwork.invalid/lammb/ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Ear Tag",
+              "value": "5280"
+            }
+          ]
+        },
+        "binding": {
+          "purpose": "DEVELOPMENT_ONLY",
+          "imageSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "metadataSha256": "bd351725f2e3ddfdb38f3e434aab84d147565d553d83bf8ff318b00722d3af12",
+          "specVersion": "1.1.0",
+          "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+          "visibleTraitIds": [
+            "lammb-base-anatomy-sheep",
+            "lammb-wool-ivory",
+            "lammb-clothing-hoodie",
+            "lammb-accessories-ear-tag"
+          ],
+          "publication": "NOT_PUBLISHED_PLACEHOLDER_URI",
+          "tokenAssignment": null
+        }
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "file": "stage22-authored-mutations.json",
+      "registrySha256": "0529d5202915f6abc22a3294abcb6d7479a529bd485e681767d117c12a976b7d",
+      "result": {
+        "purpose": "DEVELOPMENT_ONLY",
+        "registrySha256": "0529d5202915f6abc22a3294abcb6d7479a529bd485e681767d117c12a976b7d",
+        "specRawSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+        "specCanonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+        "backlogSha256": "029ddfb529330a7d459fa8cc1d9e9d174b2963c8157c16e687775ab74c592744",
+        "ownerEvidenceSha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223",
+        "generationEvidenceSha256": "fca1436f04d516545cb21af588ee3c79597316db7791492fc11f72bb49f8ba79",
+        "verified": [
+          {
+            "id": "stage22-magma-hoodie",
+            "imageSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "bytes": 2874786,
+            "decodedBytes": 4717548,
+            "pixelSha256": "965be19cd46cfbd5ce62504d8338e9b939e4801d146d8699625120e6ef437dd0",
+            "metadata": {
+              "name": "LAMMB — Development Art Study stage22-magma-hoodie",
+              "description": "Unpublished authored art study. Partial visible traits only; not an eligible collection vector, NFT assignment or production registration.",
+              "image": "https://artwork.invalid/lammb/7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Black Hoodie"
+                },
+                {
+                  "trait_type": "Mutation",
+                  "value": "Magma"
+                },
+                {
+                  "trait_type": "Material",
+                  "value": "Basalt and Wool"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+              "metadataSha256": "0e0e756956e315db269d6befa117f62107f0d939d75c526d2937fa77d4b46d8d",
+              "compatibility": "BLOCKED_BY_EXISTING_MAGMA_CLOTHING_RULE",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "omittedFacets": [
+                "Eyes",
+                "Expression",
+                "Wool",
+                "Background",
+                "Accessories",
+                "Pixel Corruption"
+              ],
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          },
+          {
+            "id": "stage22-pixel-drip",
+            "imageSha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "bytes": 2322155,
+            "decodedBytes": 4717548,
+            "pixelSha256": "696705d66dd712c394d461a47da247564ade40578f0730e97f4420543d00e81b",
+            "metadata": {
+              "name": "LAMMB — Development Art Study stage22-pixel-drip",
+              "description": "Unpublished authored art study. Partial visible traits only; not an eligible collection vector, NFT assignment or production registration.",
+              "image": "https://artwork.invalid/lammb/be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Black Hoodie"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "be2da3bae45f9a02403c144049966c4d768140dbffff2bedc8ef66e37c28010f",
+              "metadataSha256": "3920d055ac0b0d69ea44e23ab720fbcbb500dba8217c07e6f606f62217dde9b9",
+              "compatibility": "INCOMPLETE_TRAIT_VECTOR",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "omittedFacets": [
+                "Eyes",
+                "Expression",
+                "Wool",
+                "Background",
+                "Accessories",
+                "Pixel Corruption"
+              ],
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          }
+        ],
+        "productionRegisteredCount": 0
+      },
+      "additiveCapacity": false
+    },
+    {
+      "file": "stage26-authored-proposals.json",
+      "registrySha256": "04c04cb0d8b5df43fa555239caafaa2aad55072eb296f8668085cba9456df6b4",
+      "result": {
+        "purpose": "DEVELOPMENT_ONLY",
+        "proposalSha256": "04c04cb0d8b5df43fa555239caafaa2aad55072eb296f8668085cba9456df6b4",
+        "productionRegistered": false,
+        "verified": [
+          {
+            "id": "dev-authored-amused",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "nativeBytes": 2315018,
+            "decodedBytes": 4717548,
+            "pixelSha256": "daa63e4369e2c02cd910bdc2e8c33762cd3da3f673257e113512603e94dba8ee",
+            "metadata": {
+              "name": "LAMMB — Development Authored Source dev-authored-amused",
+              "description": "Unpublished partial visible-trait example for one approved authored source. No NFT assignment, complete collection vector or production registration.",
+              "image": "https://artwork.invalid/lammb/082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Expression",
+                  "value": "Amused"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Black Hoodie"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+              "metadataSha256": "e93e27d98a87ab67a20c9441252f7b782eb1f8072eddcb8c2ba76f6427b05cc5",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "tokenAssignment": null,
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          },
+          {
+            "id": "dev-authored-lab-coat",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "nativeBytes": 2493914,
+            "decodedBytes": 4717548,
+            "pixelSha256": "c9deb8d5f0575535ce7a0327418bf18cfa4753bebbeb551f63a3a569272f95cf",
+            "metadata": {
+              "name": "LAMMB — Development Authored Source dev-authored-lab-coat",
+              "description": "Unpublished partial visible-trait example for one approved authored source. No NFT assignment, complete collection vector or production registration.",
+              "image": "https://artwork.invalid/lammb/84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Lab Coat"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b",
+              "metadataSha256": "a96c3dd0ed5c9d731f753e9e8ede8af05a40115827d28fbc5cf43b19b5220530",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "tokenAssignment": null,
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          }
+        ]
+      },
+      "additiveCapacity": false
+    },
+    {
+      "file": "stage28-authored-proposals.json",
+      "registrySha256": "fb822bd9f3e5317713f09dcdf133be82838e17db4a868696819f2dab6d7030ab",
+      "result": {
+        "purpose": "DEVELOPMENT_ONLY",
+        "proposalSha256": "fb822bd9f3e5317713f09dcdf133be82838e17db4a868696819f2dab6d7030ab",
+        "productionRegistered": false,
+        "verified": [
+          {
+            "id": "dev-authored-collar-shift",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "nativeBytes": 2305063,
+            "decodedBytes": 4717548,
+            "pixelSha256": "9d53296fa83f16bba51aa01c1ccf88e6b21fc60ff49417c4f3cfdd962092ff84",
+            "metadata": {
+              "name": "LAMMB — Development Authored Source dev-authored-collar-shift",
+              "description": "Unpublished partial visible-trait example for one approved authored source. No NFT assignment, complete collection vector or production registration.",
+              "image": "https://artwork.invalid/lammb/c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Black Bomber"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "c1ea578b93f03c378ad8c589c665532cf007f5d1aada9799ada1ff4170eb5128",
+              "metadataSha256": "66a8ec8db7a00ae51486f933403541f3feef787d42a563911635b23c525d7ecb",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "tokenAssignment": null,
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          },
+          {
+            "id": "dev-authored-after-hours-observer",
+            "dimensions": {
+              "width": 1254,
+              "height": 1254
+            },
+            "nativeBytes": 2382352,
+            "decodedBytes": 4717548,
+            "pixelSha256": "1076787fa256a444e093f2c3dd4ea0ee98e02cd272e022c895745c401a7ca738",
+            "metadata": {
+              "name": "LAMMB — Development Authored Source dev-authored-after-hours-observer",
+              "description": "Unpublished partial visible-trait example for one approved authored source. No NFT assignment, complete collection vector or production registration.",
+              "image": "https://artwork.invalid/lammb/f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa.png",
+              "external_url": "https://lammb.fun",
+              "attributes": [
+                {
+                  "trait_type": "Species",
+                  "value": "Sheep"
+                },
+                {
+                  "trait_type": "Clothing",
+                  "value": "Lab Coat"
+                },
+                {
+                  "trait_type": "Background",
+                  "value": "Containment Lab"
+                }
+              ]
+            },
+            "binding": {
+              "purpose": "DEVELOPMENT_ONLY",
+              "imageSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+              "metadataSha256": "6e7c2a299ecaaff2a2192a703119c4f266a5a9880a92a5af788f6c197e1c54ad",
+              "completeCollectionVector": false,
+              "productionRegistered": false,
+              "tokenAssignment": null,
+              "publication": "NOT_PUBLISHED_PLACEHOLDER_URI"
+            }
+          }
+        ]
+      },
+      "additiveCapacity": false
+    }
+  ],
+  "runtimeMs": 16758.065000000002,
+  "peakRssMiB": 588.2890625,
+  "codec": {
+    "sharp": "0.35.5",
+    "vips": "8.18.7",
+    "concurrency": 1,
+    "cache": false
+  },
+  "imagegenCalls": 3,
+  "productionPromotions": 0
+}

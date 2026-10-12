@@ -1,6 +1,6 @@
 {
   "schemaVersion": "lammb-artwork-backlog/1.0.0",
-  "backlogVersion": "0.8.0",
+  "backlogVersion": "0.9.0",
   "purpose": "ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT",
   "mainSha": "bf71f22c881ae409179f8c37efab89809c74a5af",
   "collectionSupply": 5280,
@@ -184,6 +184,27 @@
       "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0",
       "bytes": 2041,
       "kind": "OWNER_ART_DECISION_TRANSCRIPTION"
+    },
+    {
+      "id": "evidence-stage29-generation",
+      "path": "reports/TASK_029_STAGE29_UNIVERSE_CAPACITY_001/GENERATION_PROVENANCE.json",
+      "sha256": "d36df4b8c5a0f75ce7fd24d0b7b81cf9056eb3c2c2d8a9fd3e47f49891b05dc9",
+      "bytes": 15319,
+      "kind": "IMAGEGEN_GENERATION_PROVENANCE"
+    },
+    {
+      "id": "evidence-stage29-native-integrity",
+      "path": "reports/TASK_029_STAGE29_UNIVERSE_CAPACITY_001/NATIVE_OUTPUTS.json",
+      "sha256": "718b28e41726291bfcf311e5b623b197bfa1fc7115ee60f926e5c6bc275faa02",
+      "bytes": 1995,
+      "kind": "NATIVE_INTEGRITY_RECEIPT"
+    },
+    {
+      "id": "evidence-stage29-artistic-qa",
+      "path": "reports/TASK_029_STAGE29_UNIVERSE_CAPACITY_001/ARTISTIC_QA.json",
+      "sha256": "7e5c78b52d18e3782098015e22f4f2f69d776212f0f1a6dfefc3f3c20643400f",
+      "bytes": 4655,
+      "kind": "TECHNICAL_ART_REVIEW"
     }
   ],
   "items": [
@@ -5067,6 +5088,257 @@
         "qaClassification": "PRODUCTION_CANDIDATE",
         "ownerReviewStatus": "ART_DIRECTION_APPROVED",
         "provenanceEvidence": "evidence-stage27-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study29-soft-chaos",
+      "label": "Stage 29 Soft Chaos / caught-in-the-act delight",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "PERSONALITY",
+      "sources": [
+        {
+          "id": "source-stage29-01-soft-chaos-reference-1",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-01-soft-chaos-reference-2",
+          "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-01-soft-chaos",
+          "path": "output/TASK_029_STAGE29_STUDIES_001/01-soft-chaos-native.png",
+          "sha256": "5618fa6c103881bec01a4ab4ee82ae8991077411b30e387e5e8f137d156f60b7",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-crewneck"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Original left ear remains close to native edge; not registered to a silhouette mask or numerical crop policy.",
+        "Expression is an unapproved working interpretation; exact Expression/Eyes/Wool/Background values remain unresolved.",
+        "Full-frame authored pose and emotion; no interchangeable facial, wool, garment or contact layers."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "Owner artistic review of personality distinction; then source-specific landmark and complete visible-vector reconciliation.",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage29-generation-authorization-01-soft-chaos",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 029; no retries or production promotion.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:11:21.137Z"
+        },
+        {
+          "id": "stage29-technical-art-review-01-soft-chaos",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:21:43.510Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage29-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study29-storm-warden",
+      "label": "Stage 29 Storm Warden / intimidating technical streetwear",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "STREETWEAR",
+      "sources": [
+        {
+          "id": "source-stage29-02-storm-warden-reference-1",
+          "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-01-three-quarter-right-native.png",
+          "sha256": "b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-02-storm-warden-reference-2",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-02-broad-offset-crown-ash-native.png",
+          "sha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-02-storm-warden",
+          "path": "output/TASK_029_STAGE29_STUDIES_001/02-storm-warden-native.png",
+          "sha256": "13def8362a290abd683801654584e18c5d88e95149e7d65e1a3a224176420b6b",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": ["lammb-base-anatomy-sheep", "lammb-clothing-lab-jacket"],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "PRODUCTION_CANDIDATE",
+      "knownLimitations": [
+        "Ash/neutral wool lighting does not independently certify the exact Broad Ash geometry; omit unverified Wool and Eyes facets.",
+        "Abstract night setting is not a registered Background value or removable lighting layer.",
+        "Integrated garment/pose/lighting full frame; no ordinary hoodie, expression or tag-contact portability."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "Owner review of silhouette and material; register only as a source-specific authored frame after approved evidence and full metadata reconciliation.",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage29-generation-authorization-02-storm-warden",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 029; no retries or production promotion.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:12:20.926Z"
+        },
+        {
+          "id": "stage29-technical-art-review-02-storm-warden",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "PRODUCTION_CANDIDATE",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:21:43.510Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "PRODUCTION_CANDIDATE",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage29-generation",
+        "compatibilityRestrictions": [
+          "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+          "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+          "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+        ]
+      }
+    },
+    {
+      "id": "backlog-study29-coil-cascade",
+      "label": "Stage 29 Coil Cascade / asymmetric rolled-wool envelope",
+      "kind": "AUTHORIZED_NEW_STUDY",
+      "family": "WOOL",
+      "sources": [
+        {
+          "id": "source-stage29-03-coil-cascade-reference-1",
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "PRIMARY_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-03-coil-cascade-reference-2",
+          "path": "output/ART_016_STAGE2_WOOL_001/lammb-016-stage2-03-rolled-locks-ivory-native.png",
+          "sha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "SUPPORTING_APPROVED_RASTER_REFERENCE"
+        },
+        {
+          "id": "source-stage29-03-coil-cascade",
+          "path": "output/TASK_029_STAGE29_STUDIES_001/03-coil-cascade-native.png",
+          "sha256": "498e1bc4d6cbb3f3da5b54db1bc61054ffcfee3e61c5627ed9b57fd5689c010e",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "role": "GENERATED_NATIVE_STUDY"
+        }
+      ],
+      "traitIds": [
+        "lammb-base-anatomy-sheep",
+        "lammb-wool-locks",
+        "lammb-clothing-hoodie"
+      ],
+      "artisticApproval": "UNREVIEWED",
+      "productionRegistration": "NOT_PRODUCTION_REGISTERED",
+      "technicalStatus": "NEEDS_REFINEMENT",
+      "knownLimitations": [
+        "Five clearly differentiated rooted rolls and sufficient distinction from earlier Rolled Locks are not established.",
+        "High/diagonal crown shifts arrangement but retains the old dominant three-roll grammar.",
+        "Requested crewneck failed; no silent repair or retry.",
+        "Full frame, no registered wool layer or headwear clearance mask."
+      ],
+      "requiredImprovements": [
+        "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
+        "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
+        "Visible trait mappings are partial and proposed; no complete collection vector, unverified eye/wool/pose/prop facets, token assignment or production approval."
+      ],
+      "nextAction": "Owner review; design five identifiable curl centers/negative spaces before separately authorized further generation. Preserve this native study as refinement evidence.",
+      "ownerDecisionHistory": [
+        {
+          "id": "stage29-generation-authorization-03-coil-cascade",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "GENERATION_AUTHORIZED_NOT_ART_APPROVED",
+          "scope": "One reference-conditioned study authorized by Task 029; no retries or production promotion.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:13:14.063Z"
+        },
+        {
+          "id": "stage29-technical-art-review-03-coil-cascade",
+          "authority": "TECHNICAL_ART_REVIEW",
+          "decision": "NEEDS_REFINEMENT",
+          "scope": "Native and actual-size 64/128/256 square/circle QA only; owner review pending.",
+          "evidence": "evidence-stage29-generation",
+          "date": "2026-10-12T17:21:43.510Z"
+        }
+      ],
+      "finalProductionApproval": null,
+      "studyReview": {
+        "qaClassification": "NEEDS_REFINEMENT",
+        "ownerReviewStatus": "PENDING",
+        "provenanceEvidence": "evidence-stage29-generation",
         "compatibilityRestrictions": [
           "Full-frame authored study only. No interchangeable expression, wool, clothing, background or accessory layers.",
           "No pose/contact landmarks, semantic masks or family compatibility registration. Existing ear-tag contacts are not transferable.",
