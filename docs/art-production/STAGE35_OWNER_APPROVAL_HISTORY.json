@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "lammb-authored-source-approval-history/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "preservedBacklogSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+  "previousHistory": {
+    "path": "docs/art-production/STAGE31C_OWNER_APPROVAL_HISTORY.json",
+    "sha256": "229547e54995112ed5127597db9b1dd830b57fc889593240b0ab2d47164f84c9"
+  },
+  "events": [
+    {
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "sources": [
+        {
+          "proofId": "proof-canonical",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61"
+        },
+        {
+          "proofId": "proof-broad-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c"
+        },
+        {
+          "proofId": "proof-rolled-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb"
+        },
+        {
+          "proofId": "proof-front-stage16",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd"
+        }
+      ],
+      "productionPromotionAuthorized": false,
+      "generatorActivationAuthorized": false,
+      "frequencyAssignmentAuthorized": false,
+      "id": "stage31b-proposal-recorded",
+      "actor": "CODEX",
+      "decision": "PROPOSAL_RECORDED_OWNER_APPROVAL_PENDING",
+      "previousEventSha256": null
+    },
+    {
+      "proposalSha256": "21dd4985b4d449acf80954b843376e989e1e0d7c89b9ffe3e0852153b03baedc",
+      "sources": [
+        {
+          "proofId": "proof-canonical",
+          "sourceSha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "outputSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "evidenceSha256": "da7af9490224badeeb9a5315f077283262831442cabd4bfc9529173a8372d3d5",
+          "requestSha256": "e446a011d698ddcb8a41ce64a6fc549818f3635de28ec2d95d234c7758f72d61"
+        },
+        {
+          "proofId": "proof-broad-ash",
+          "sourceSha256": "b2736f8678ec0c0eb3b83ff4192720c9116a79129e5b5b0713a6e7698c9ad493",
+          "outputSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "evidenceSha256": "a214cdc2da2b8e9ead2a7a6ddd69b96d51aca7b7a2b961a833b9faf646fff423",
+          "requestSha256": "219b85d0205afeba6d93a1ad9d34703905f02d30d40b5f7476d98301d956610c"
+        },
+        {
+          "proofId": "proof-rolled-locks",
+          "sourceSha256": "6b94719ef6c30bfaf730733ead2bfcea45821017aa122ba521587d36dbac8df7",
+          "outputSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "evidenceSha256": "c27a62d3298b687cbbd2e686dcd11259f04fd46e6024c89bfc2210cf90151383",
+          "requestSha256": "725372f6b25b05e22389ced90b928d8c7013e89d811db32434ac4a07c67903eb"
+        },
+        {
+          "proofId": "proof-front-stage16",
+          "sourceSha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "outputSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+          "evidenceSha256": "3ee1b8cc7cc6db4fcc27fd2866c92d231a0302dd3c1e6d55b69d3dc122c65117",
+          "requestSha256": "d20d9b646ab23c08fdbc8e8e06188a5528788d0414b969f8e6ad32e0e7d34dbd"
+        }
+      ],
+      "productionPromotionAuthorized": false,
+      "generatorActivationAuthorized": false,
+      "frequencyAssignmentAuthorized": false,
+      "id": "task031c-owner-source-trait-approval",
+      "actor": "OWNER",
+      "decision": "APPROVED_SOURCE_SPECIFIC",
+      "authorizationReference": "TASK_031C_OWNER_APPROVED_DEFINITIONS",
+      "approvedLabels": ["Olive Green", "Charcoal Studio Gradient"],
+      "previousEventSha256": "0c2754fdc049c241f4d1acb45660891f576536d5393707e8d0ab16e682cc30ec"
+    },
+    {
+      "id": "task035-owner-authored-source-metadata",
+      "actor": "OWNER",
+      "decision": "APPROVED_SOURCE_SPECIFIC",
+      "authorizationReference": "TASK_035_OWNER_AUTHORIZED_PR30_MERGE_AND_SOURCE_METADATA_COMPLETION",
+      "recordedAt": "2026-10-13T19:04:14.404Z",
+      "previousEventSha256": "19eac3c0ac99f32fef12e5a0db2e3413e25b2cb62eb15142d67f9024133625d1",
+      "stage34ProposalSha256": "d95e87ea5d1790895ca836a6f704a58436264a4d343af3b8b2f0874b23400df0",
+      "approvedBindings": [
+        {
+          "traitId": "lammb-source-eyes-olive-green",
+          "label": "Olive Green",
+          "sources": [
+            {
+              "sourceId": "authored-amused",
+              "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+              "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+              "requestSha256": "a531e2b870e212645f744a5a3eebf7b09101c32969da3db9464ab04c045c8cb4"
+            },
+            {
+              "sourceId": "authored-utility-vest",
+              "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+              "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+              "requestSha256": "276206b74cb126ad774882be6a7018fd6384504ca3eef272253ee391c29ab261"
+            },
+            {
+              "sourceId": "authored-magma-hoodie",
+              "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+              "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+              "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+            },
+            {
+              "sourceId": "authored-after-hours-observer",
+              "sourceSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+              "deliverySha256": "2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34",
+              "requestSha256": "c418c3ed84bfed4a819b4b53b3d6e1b2acfe0e5c681d29a2a129f1f42eaca707"
+            }
+          ]
+        },
+        {
+          "traitId": "lammb-source-environments-charcoal-studio-gradient",
+          "label": "Charcoal Studio Gradient",
+          "sources": [
+            {
+              "sourceId": "authored-amused",
+              "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+              "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+              "requestSha256": "a531e2b870e212645f744a5a3eebf7b09101c32969da3db9464ab04c045c8cb4"
+            },
+            {
+              "sourceId": "authored-utility-vest",
+              "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+              "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+              "requestSha256": "276206b74cb126ad774882be6a7018fd6384504ca3eef272253ee391c29ab261"
+            },
+            {
+              "sourceId": "authored-magma-hoodie",
+              "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+              "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+              "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+            }
+          ]
+        },
+        {
+          "traitId": "lammb-source-clothing-scorched-hoodie",
+          "label": "Scorched Hoodie",
+          "sources": [
+            {
+              "sourceId": "authored-magma-hoodie",
+              "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+              "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+              "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+            }
+          ]
+        }
+      ],
+      "integratedCompatibility": {
+        "sourceId": "authored-magma-hoodie",
+        "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+        "scope": "EXACT_AUTHORED_FRAME_ONLY_NOT_ORDINARY_LAYER_COMPATIBILITY"
+      },
+      "afterHoursEnvironment": {
+        "sourceId": "authored-after-hours-observer",
+        "traitId": "lammb-environments-lab",
+        "decision": "EXISTING_CONTAINMENT_LAB_DEFINITION_RETAINED_AFTER_NATIVE_VISUAL_REVIEW"
+      },
+      "productionPromotionAuthorized": false,
+      "generatorActivationAuthorized": false,
+      "frequencyAssignmentAuthorized": false
+    }
+  ]
+}

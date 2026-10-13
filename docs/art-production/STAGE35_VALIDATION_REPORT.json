@@ -1,0 +1,1356 @@
+{
+  "schemaVersion": "lammb-stage35-validation-report/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "pr30MergeStatus": "MERGED_REBASE",
+  "reviewedHead": "1d9ae05747a41527360e2731a770e6e3f4a151de",
+  "preMergeMain": "f658d08cf760c56ae94577e6461e947b58ddcd8c",
+  "postMergeMain": "2545d730ddba57752990b30a84aa857e76324e3c",
+  "mergedTree": "4aaad382f9709c4de8cd36b572072b4d8425dd0d",
+  "approvedBindings": [
+    {
+      "id": "lammb-source-eyes-olive-green",
+      "label": "Olive Green",
+      "sources": [
+        {
+          "sourceId": "authored-amused",
+          "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+          "requestSha256": "a531e2b870e212645f744a5a3eebf7b09101c32969da3db9464ab04c045c8cb4"
+        },
+        {
+          "sourceId": "authored-utility-vest",
+          "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+          "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+          "requestSha256": "276206b74cb126ad774882be6a7018fd6384504ca3eef272253ee391c29ab261"
+        },
+        {
+          "sourceId": "authored-magma-hoodie",
+          "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+          "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+          "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+        },
+        {
+          "sourceId": "authored-after-hours-observer",
+          "sourceSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+          "deliverySha256": "2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34",
+          "requestSha256": "c418c3ed84bfed4a819b4b53b3d6e1b2acfe0e5c681d29a2a129f1f42eaca707"
+        }
+      ]
+    },
+    {
+      "id": "lammb-source-environments-charcoal-studio-gradient",
+      "label": "Charcoal Studio Gradient",
+      "sources": [
+        {
+          "sourceId": "authored-amused",
+          "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+          "requestSha256": "a531e2b870e212645f744a5a3eebf7b09101c32969da3db9464ab04c045c8cb4"
+        },
+        {
+          "sourceId": "authored-utility-vest",
+          "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+          "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+          "requestSha256": "276206b74cb126ad774882be6a7018fd6384504ca3eef272253ee391c29ab261"
+        },
+        {
+          "sourceId": "authored-magma-hoodie",
+          "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+          "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+          "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+        }
+      ]
+    },
+    {
+      "id": "lammb-source-clothing-scorched-hoodie",
+      "label": "Scorched Hoodie",
+      "sources": [
+        {
+          "sourceId": "authored-magma-hoodie",
+          "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+          "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+          "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc"
+        }
+      ]
+    }
+  ],
+  "ownerApprovalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+  "catalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+  "sourceChecks": {
+    "declaredBindings": 169,
+    "verifiedUniquePaths": 92,
+    "productionPromotions": 0,
+    "visualEvidenceFiles": 4,
+    "exposedMagmaPreserved": {
+      "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+      "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5"
+    }
+  },
+  "fourNewRecipeResults": [
+    {
+      "id": "authored-amused",
+      "sourceHashIntegrity": "PASS",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "nativeSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+      "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+      "nativeBytes": 2315018,
+      "deliveryBytes": 14292857,
+      "nativeHistoricalBytesEqual": true,
+      "nativeDecodedPixelsEqual": true,
+      "deliveryHistoricalBytesEqual": true,
+      "nativePixelChanges": 0,
+      "independentReplayAgainstStage34": "PASS",
+      "metadataSha256": "7406645962d8cbdd80373846eae6cc5f5bf0c99ef20486f177f9fca3f036d96b",
+      "completeMetadata": true,
+      "publicAttributeCount": 8,
+      "sourceArtApproval": {
+        "id": "stage26-owner-decision-backlog-study25-amused",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage26-owner-decisions",
+        "date": "2026-10-12T05:58:10.439Z"
+      },
+      "rendererReceiptSha256": "2f38e37fd864c2ae8291ad5289451ff4853efce10395fae29a0e548e40031e2c",
+      "provenance": [
+        {
+          "path": "reports/TASK_026_STAGE26_PREPARATION_001/OWNER_DECISIONS.json",
+          "sha256": "ee723d6f2644bf86eb1e2e64c48391ef1fd71b8e1ee2a7b81bd49bfdcb976a20"
+        },
+        {
+          "path": "reports/TASK_025_STAGE25_EXPANSION_001/GENERATION_PROVENANCE.json",
+          "sha256": "415788a2be16ae48fb586aa466bfcac0f4c1246e53426d06f0c707ed711e3e04"
+        },
+        {
+          "path": "reports/TASK_025_STAGE25_EXPANSION_001/ARTISTIC_QA.json",
+          "sha256": "e23ab5ba4a7cd0912bea4421305fbbbb5f8e7018ebffaf97217c823636106aeb"
+        }
+      ],
+      "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+      "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+      "productionRegistered": false,
+      "generatorEnabled": false,
+      "tokenAssignment": null,
+      "measurements": {
+        "decodeMs": 60.8143,
+        "renderMs": 3568.1886999999997,
+        "peakRssMiB": 207.6484375,
+        "cpuConcurrency": 1,
+        "methodGpuVramMiB": 0,
+        "totalReplayMs": 3917.5139
+      },
+      "recipe": {
+        "schemaVersion": "lammb-complete-authored-development-recipe/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "authored-amused",
+        "status": "COMPLETE_SOURCE_BOUND_DEVELOPMENT_RECIPE",
+        "sourceSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+        "nativeOutputSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+        "nativeDecodedPixelSha256": "daa63e4369e2c02cd910bdc2e8c33762cd3da3f673257e113512603e94dba8ee",
+        "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+        "deliveryDecodedPixelSha256": "6ff6a89fb14a1554d508de4d92b5fd26491dd9d6348c2d16e95262bf5f36d585",
+        "nativeDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "deliveryDimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "sourceApproval": {
+          "id": "stage26-owner-decision-backlog-study25-amused",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage26-owner-decisions",
+          "date": "2026-10-12T05:58:10.439Z"
+        },
+        "provenance": [
+          {
+            "path": "reports/TASK_026_STAGE26_PREPARATION_001/OWNER_DECISIONS.json",
+            "sha256": "ee723d6f2644bf86eb1e2e64c48391ef1fd71b8e1ee2a7b81bd49bfdcb976a20"
+          },
+          {
+            "path": "reports/TASK_025_STAGE25_EXPANSION_001/GENERATION_PROVENANCE.json",
+            "sha256": "415788a2be16ae48fb586aa466bfcac0f4c1246e53426d06f0c707ed711e3e04"
+          },
+          {
+            "path": "reports/TASK_025_STAGE25_EXPANSION_001/ARTISTIC_QA.json",
+            "sha256": "e23ab5ba4a7cd0912bea4421305fbbbb5f8e7018ebffaf97217c823636106aeb"
+          }
+        ],
+        "referenceDependencies": [
+          {
+            "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+            "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+          },
+          {
+            "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+            "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a"
+          }
+        ],
+        "visualEvidence": {
+          "path": "reports/TASK_034_APPROVED_CHARACTER_001/authored-amused-eye-evidence.png",
+          "sha256": "50d5e34fa31d9a0ef4450fb03d1d1b069d7dc4db8d5dfd77b30cd4eedae114b0",
+          "roi": {
+            "x": 320,
+            "y": 440,
+            "width": 660,
+            "height": 235
+          },
+          "interpretation": "MANUAL_NATIVE_VISUAL_CORRESPONDENCE_NOT_EXACT_ALBEDO_MEASUREMENT"
+        },
+        "rendererRecipeReference": {
+          "path": "packages/art-generator/fixtures/stage34-authored-frames.json",
+          "requestSha256": "a531e2b870e212645f744a5a3eebf7b09101c32969da3db9464ab04c045c8cb4",
+          "rendererReceiptSha256": "2f38e37fd864c2ae8291ad5289451ff4853efce10395fae29a0e548e40031e2c",
+          "method": "EXACT_AUTHORED_NATIVE_PASSTHROUGH_PLUS_NOHALO_CPU_DELIVERY"
+        },
+        "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+        "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+        "traitVector": [
+          {
+            "category": "base_anatomy",
+            "traitId": "lammb-base-anatomy-sheep",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame.",
+            "definitionSha256": "9ec12cb7f6371c4847ad292710390d5b05742938e0444a2f1e51512ac4ead27e"
+          },
+          {
+            "category": "wool",
+            "traitId": "lammb-wool-ivory",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer.",
+            "definitionSha256": "5843b2a4ae069d31461ea56ca4ec29226c50a15dcbfcacc9b624cb6216dbeb28"
+          },
+          {
+            "category": "eyes",
+            "traitId": "lammb-source-eyes-olive-green",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "79469d7c264faf3b63c6af6f6950656771704d656e3b1eb52e7437a9ef0de3ed"
+          },
+          {
+            "category": "expressions",
+            "traitId": "lammb-expressions-amused",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Small open asymmetrical smile, visible organized lower dental arcade, no tongue; no tooth-count claim.",
+            "definitionSha256": "40d394e8dfd2a85cb585bec9b495b50fa63cfe9bea69396a449c80fd062042b8"
+          },
+          {
+            "category": "clothing",
+            "traitId": "lammb-clothing-hoodie",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Black heavy cotton hoodie with hood down; no new clothing components.",
+            "definitionSha256": "735f04b9452cbe9972bc7b2159f580e1c1a90996526827a0df957534175b0cda"
+          },
+          {
+            "category": "accessories",
+            "traitId": "lammb-accessories-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata.",
+            "definitionSha256": "b3a51ae5cd52e603ca0725deb888aae454ce84f5ce91d90800188270699a72be"
+          },
+          {
+            "category": "pixel_corruption",
+            "traitId": "lammb-pixel-corruption-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption.",
+            "definitionSha256": "b1b1a287825985d1250b9d47a4d0376de8e10e85db567bdb9b10ea76dce9325f"
+          },
+          {
+            "category": "environments",
+            "traitId": "lammb-source-environments-charcoal-studio-gradient",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "f3ecadfb3e1e1eccb654aa9a14fa46112e4425536dbbd45748f06a3482fcca85"
+          },
+          {
+            "category": "mutations",
+            "traitId": "lammb-mutations-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No structural mutation visible; omit absent normal mutation facet.",
+            "definitionSha256": "3e4db29ffc1f4a116d63fdddbc0d3c0ba1480885860da0fab0b34210a407d040"
+          }
+        ],
+        "metadata": {
+          "name": "LAMMB — Amused",
+          "description": "An olive-eyed LAMMB with ivory curls and an amused expression in a black hoodie against a charcoal studio gradient. Unpublished source-specific development artwork; no token assignment or production registration.",
+          "image": "https://artwork.invalid/lammb/authored/682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Eyes",
+              "value": "Olive Green"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Amused"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Black Hoodie"
+            },
+            {
+              "trait_type": "Pixel Corruption",
+              "value": "NONE"
+            },
+            {
+              "trait_type": "Background",
+              "value": "Charcoal Studio Gradient"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Organic"
+            }
+          ]
+        },
+        "metadataSha256": "7406645962d8cbdd80373846eae6cc5f5bf0c99ef20486f177f9fca3f036d96b",
+        "compatibility": [
+          "Exact authored source only; no independent clothing/wool/expression/background recombination",
+          "No Stage4/5/7 ear-tag contact reuse",
+          "Native PNG pass-through; delivery resampling creates no new native anatomy"
+        ],
+        "compatibilityScope": "AUTHORED_FRAME_ONLY",
+        "recipeType": "AUTHORED_FULL_FRAME",
+        "poseFamily": "THREE_QUARTER_HEAD_TILT",
+        "completeMetadata": true,
+        "unresolvedFacets": [],
+        "sourceTraitApproval": "APPROVED_SOURCE_SPECIFIC",
+        "productionRegistered": false,
+        "productionPromotionAuthorized": false,
+        "promotionGate": "EXPLICIT_SEPARATE_OWNER_PRODUCTION_REGISTRATION_REQUIRED",
+        "generatorEnabled": false,
+        "tokenAssignment": null,
+        "publication": "UNPUBLISHED_PLACEHOLDER_URI",
+        "deliveryArtApproval": "PENDING"
+      }
+    },
+    {
+      "id": "authored-utility-vest",
+      "sourceHashIntegrity": "PASS",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "nativeSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+      "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+      "nativeBytes": 2347475,
+      "deliveryBytes": 13999626,
+      "nativeHistoricalBytesEqual": true,
+      "nativeDecodedPixelsEqual": true,
+      "deliveryHistoricalBytesEqual": true,
+      "nativePixelChanges": 0,
+      "independentReplayAgainstStage34": "PASS",
+      "metadataSha256": "7b13a6fa15e6d3e28734edb85311d91d1c0f1899b2959d39bacc5719aa496dd1",
+      "completeMetadata": true,
+      "publicAttributeCount": 8,
+      "sourceArtApproval": {
+        "id": "stage24-owner-study23-utility-vest",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage24-owner-decisions",
+        "date": "2026-10-12T02:18:22.272Z"
+      },
+      "rendererReceiptSha256": "7ad77f70a77a096366b1a4fcc2393ad6a0ea09a1830dd57e23c3327a084b5b9f",
+      "provenance": [
+        {
+          "path": "reports/TASK_024_STAGE24_APPROVALS_PERFORMANCE_001/OWNER_DECISIONS.json",
+          "sha256": "dddfa6a391dc5796521b6524b10c22c4acbfe78ee15ad3bae970e2a8e2661fb1"
+        },
+        {
+          "path": "reports/TASK_023_STAGE23_EVOLUTION_001/GENERATION_PROVENANCE.json",
+          "sha256": "5a64364a9cd6eff9e7f74b45008c5d58f84756168786dacb55c216392dffe736"
+        },
+        {
+          "path": "reports/TASK_023_STAGE23_EVOLUTION_001/ARTISTIC_QA.json",
+          "sha256": "2a08c8032559799828a72357a7ab322915f310bd92dac5763611e0e710ec73a2"
+        }
+      ],
+      "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+      "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+      "productionRegistered": false,
+      "generatorEnabled": false,
+      "tokenAssignment": null,
+      "measurements": {
+        "decodeMs": 63.07130000000001,
+        "renderMs": 3584.5787,
+        "peakRssMiB": 207.92578125,
+        "cpuConcurrency": 1,
+        "methodGpuVramMiB": 0,
+        "totalReplayMs": 3940.0211
+      },
+      "recipe": {
+        "schemaVersion": "lammb-complete-authored-development-recipe/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "authored-utility-vest",
+        "status": "COMPLETE_SOURCE_BOUND_DEVELOPMENT_RECIPE",
+        "sourceSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+        "nativeOutputSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+        "nativeDecodedPixelSha256": "cb2f2f3479fa81649921d2e5f1f785e05fc33d5632717b42add70c58499d37be",
+        "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+        "deliveryDecodedPixelSha256": "2b00729a3439bc30a38a0fdc415fc2a715d197cf2f4a7b00b5e0b42d71c7d73a",
+        "nativeDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "deliveryDimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "sourceApproval": {
+          "id": "stage24-owner-study23-utility-vest",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage24-owner-decisions",
+          "date": "2026-10-12T02:18:22.272Z"
+        },
+        "provenance": [
+          {
+            "path": "reports/TASK_024_STAGE24_APPROVALS_PERFORMANCE_001/OWNER_DECISIONS.json",
+            "sha256": "dddfa6a391dc5796521b6524b10c22c4acbfe78ee15ad3bae970e2a8e2661fb1"
+          },
+          {
+            "path": "reports/TASK_023_STAGE23_EVOLUTION_001/GENERATION_PROVENANCE.json",
+            "sha256": "5a64364a9cd6eff9e7f74b45008c5d58f84756168786dacb55c216392dffe736"
+          },
+          {
+            "path": "reports/TASK_023_STAGE23_EVOLUTION_001/ARTISTIC_QA.json",
+            "sha256": "2a08c8032559799828a72357a7ab322915f310bd92dac5763611e0e710ec73a2"
+          }
+        ],
+        "referenceDependencies": [
+          {
+            "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+            "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+          },
+          {
+            "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+            "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a"
+          }
+        ],
+        "visualEvidence": {
+          "path": "reports/TASK_034_APPROVED_CHARACTER_001/authored-utility-vest-eye-evidence.png",
+          "sha256": "48963e9b271a3f600c6477734f632b22f7292a5c9c57ce561b5b801b767e51d3",
+          "roi": {
+            "x": 300,
+            "y": 500,
+            "width": 700,
+            "height": 200
+          },
+          "interpretation": "MANUAL_NATIVE_VISUAL_CORRESPONDENCE_NOT_EXACT_ALBEDO_MEASUREMENT"
+        },
+        "rendererRecipeReference": {
+          "path": "packages/art-generator/fixtures/stage34-authored-frames.json",
+          "requestSha256": "276206b74cb126ad774882be6a7018fd6384504ca3eef272253ee391c29ab261",
+          "rendererReceiptSha256": "7ad77f70a77a096366b1a4fcc2393ad6a0ea09a1830dd57e23c3327a084b5b9f",
+          "method": "EXACT_AUTHORED_NATIVE_PASSTHROUGH_PLUS_NOHALO_CPU_DELIVERY"
+        },
+        "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+        "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+        "traitVector": [
+          {
+            "category": "base_anatomy",
+            "traitId": "lammb-base-anatomy-sheep",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame.",
+            "definitionSha256": "9ec12cb7f6371c4847ad292710390d5b05742938e0444a2f1e51512ac4ead27e"
+          },
+          {
+            "category": "wool",
+            "traitId": "lammb-wool-ivory",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer.",
+            "definitionSha256": "5843b2a4ae069d31461ea56ca4ec29226c50a15dcbfcacc9b624cb6216dbeb28"
+          },
+          {
+            "category": "eyes",
+            "traitId": "lammb-source-eyes-olive-green",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "79469d7c264faf3b63c6af6f6950656771704d656e3b1eb52e7437a9ef0de3ed"
+          },
+          {
+            "category": "expressions",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer.",
+            "definitionSha256": "e9a0454aa31d679ade4eeb731a823adb6d786388bfd0f6c6d36a2190bb4da57d"
+          },
+          {
+            "category": "clothing",
+            "traitId": "lammb-clothing-utility-vest",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Structured dark utility vest with two purposeful pocket/seam groups over a crewneck. One integrated garment value, not stacked clothing.",
+            "definitionSha256": "7aa8c3635bd16f04719820e15866aad3344d57f7b9daa509fc402e3c37348522"
+          },
+          {
+            "category": "accessories",
+            "traitId": "lammb-accessories-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata.",
+            "definitionSha256": "b3a51ae5cd52e603ca0725deb888aae454ce84f5ce91d90800188270699a72be"
+          },
+          {
+            "category": "pixel_corruption",
+            "traitId": "lammb-pixel-corruption-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption.",
+            "definitionSha256": "b1b1a287825985d1250b9d47a4d0376de8e10e85db567bdb9b10ea76dce9325f"
+          },
+          {
+            "category": "environments",
+            "traitId": "lammb-source-environments-charcoal-studio-gradient",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "f3ecadfb3e1e1eccb654aa9a14fa46112e4425536dbbd45748f06a3482fcca85"
+          },
+          {
+            "category": "mutations",
+            "traitId": "lammb-mutations-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No structural mutation visible; omit absent normal mutation facet.",
+            "definitionSha256": "3e4db29ffc1f4a116d63fdddbc0d3c0ba1480885860da0fab0b34210a407d040"
+          }
+        ],
+        "metadata": {
+          "name": "LAMMB — Utility Vest",
+          "description": "An olive-eyed LAMMB with ivory curls and a structured utility vest against a charcoal studio gradient. Unpublished source-specific development artwork; no token assignment or production registration.",
+          "image": "https://artwork.invalid/lammb/authored/6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Eyes",
+              "value": "Olive Green"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Heavy Lidded"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Utility Vest"
+            },
+            {
+              "trait_type": "Pixel Corruption",
+              "value": "NONE"
+            },
+            {
+              "trait_type": "Background",
+              "value": "Charcoal Studio Gradient"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Organic"
+            }
+          ]
+        },
+        "metadataSha256": "7b13a6fa15e6d3e28734edb85311d91d1c0f1899b2959d39bacc5719aa496dd1",
+        "compatibility": [
+          "Exact authored source only; no independent clothing/wool/expression/background recombination",
+          "No Stage4/5/7 ear-tag contact reuse",
+          "Native PNG pass-through; delivery resampling creates no new native anatomy"
+        ],
+        "compatibilityScope": "AUTHORED_FRAME_ONLY",
+        "recipeType": "AUTHORED_FULL_FRAME",
+        "poseFamily": "FRONT_AUTHORED_BUST",
+        "completeMetadata": true,
+        "unresolvedFacets": [],
+        "sourceTraitApproval": "APPROVED_SOURCE_SPECIFIC",
+        "productionRegistered": false,
+        "productionPromotionAuthorized": false,
+        "promotionGate": "EXPLICIT_SEPARATE_OWNER_PRODUCTION_REGISTRATION_REQUIRED",
+        "generatorEnabled": false,
+        "tokenAssignment": null,
+        "publication": "UNPUBLISHED_PLACEHOLDER_URI",
+        "deliveryArtApproval": "PENDING"
+      }
+    },
+    {
+      "id": "authored-magma-hoodie",
+      "sourceHashIntegrity": "PASS",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "nativeSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+      "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+      "nativeBytes": 2874786,
+      "deliveryBytes": 16894810,
+      "nativeHistoricalBytesEqual": true,
+      "nativeDecodedPixelsEqual": true,
+      "deliveryHistoricalBytesEqual": true,
+      "nativePixelChanges": 0,
+      "independentReplayAgainstStage34": "PASS",
+      "metadataSha256": "0d0f6c826f8bd44377784bf574928ab4a8db7d7cfab14abb4402488bccd3184a",
+      "completeMetadata": true,
+      "publicAttributeCount": 9,
+      "sourceArtApproval": {
+        "id": "stage22-owner-art-decision",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage22-owner-decisions",
+        "date": "2026-10-11T23:03:23.893Z"
+      },
+      "rendererReceiptSha256": "40e0e35f3ad75bec3d56aeadb68c86925eed0e62584e400525e21afa9a08cb2b",
+      "provenance": [
+        {
+          "path": "reports/TASK_022_STAGE22_MUTATION_REGISTRATION_001/OWNER_DECISIONS.json",
+          "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223"
+        },
+        {
+          "path": "reports/TASK_021_STAGE21_UNIVERSE_001/GENERATION_PROVENANCE.json",
+          "sha256": "fca1436f04d516545cb21af588ee3c79597316db7791492fc11f72bb49f8ba79"
+        },
+        {
+          "path": "reports/TASK_021_STAGE21_UNIVERSE_001/ARTISTIC_QA.json",
+          "sha256": "f47cedcefaacfeeca39f0534d7960fb24ef55afdda19be53410261f8927a996e"
+        }
+      ],
+      "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+      "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+      "productionRegistered": false,
+      "generatorEnabled": false,
+      "tokenAssignment": null,
+      "measurements": {
+        "decodeMs": 66.03359999999998,
+        "renderMs": 3543.826,
+        "peakRssMiB": 213.68359375,
+        "cpuConcurrency": 1,
+        "methodGpuVramMiB": 0,
+        "totalReplayMs": 3929.608
+      },
+      "recipe": {
+        "schemaVersion": "lammb-complete-authored-development-recipe/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "authored-magma-hoodie",
+        "status": "COMPLETE_SOURCE_BOUND_DEVELOPMENT_RECIPE",
+        "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+        "nativeOutputSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+        "nativeDecodedPixelSha256": "965be19cd46cfbd5ce62504d8338e9b939e4801d146d8699625120e6ef437dd0",
+        "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+        "deliveryDecodedPixelSha256": "75905e8aae2dd92a8aed86b08ef49bd19c4899e2e03428e221f02d116760cac1",
+        "nativeDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "deliveryDimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "sourceApproval": {
+          "id": "stage22-owner-art-decision",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage22-owner-decisions",
+          "date": "2026-10-11T23:03:23.893Z"
+        },
+        "provenance": [
+          {
+            "path": "reports/TASK_022_STAGE22_MUTATION_REGISTRATION_001/OWNER_DECISIONS.json",
+            "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223"
+          },
+          {
+            "path": "reports/TASK_021_STAGE21_UNIVERSE_001/GENERATION_PROVENANCE.json",
+            "sha256": "fca1436f04d516545cb21af588ee3c79597316db7791492fc11f72bb49f8ba79"
+          },
+          {
+            "path": "reports/TASK_021_STAGE21_UNIVERSE_001/ARTISTIC_QA.json",
+            "sha256": "f47cedcefaacfeeca39f0534d7960fb24ef55afdda19be53410261f8927a996e"
+          }
+        ],
+        "referenceDependencies": [
+          {
+            "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+            "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5"
+          },
+          {
+            "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+            "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+          }
+        ],
+        "visualEvidence": {
+          "path": "reports/TASK_034_APPROVED_CHARACTER_001/authored-magma-hoodie-eye-evidence.png",
+          "sha256": "627123299ebbed74a3c5237374442cb9052cb7d56c1bd58f16116c8cca3cd42d",
+          "roi": {
+            "x": 320,
+            "y": 535,
+            "width": 625,
+            "height": 180
+          },
+          "interpretation": "MANUAL_NATIVE_VISUAL_CORRESPONDENCE_NOT_EXACT_ALBEDO_MEASUREMENT"
+        },
+        "rendererRecipeReference": {
+          "path": "packages/art-generator/fixtures/stage34-authored-frames.json",
+          "requestSha256": "8d46dcb501de32300c0201f07bce3ed85f162ae3948d39b9604ce1c02d16dfbc",
+          "rendererReceiptSha256": "40e0e35f3ad75bec3d56aeadb68c86925eed0e62584e400525e21afa9a08cb2b",
+          "method": "EXACT_AUTHORED_NATIVE_PASSTHROUGH_PLUS_NOHALO_CPU_DELIVERY"
+        },
+        "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+        "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+        "traitVector": [
+          {
+            "category": "base_anatomy",
+            "traitId": "lammb-base-anatomy-sheep",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame.",
+            "definitionSha256": "9ec12cb7f6371c4847ad292710390d5b05742938e0444a2f1e51512ac4ead27e"
+          },
+          {
+            "category": "wool",
+            "traitId": "lammb-wool-singed",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Intact charcoal curls with cooled brown edges and surviving fibres match existing Singed Curls. Structural heat fissures belong to the integrated Magma anatomy; no interchangeable wool layer is asserted.",
+            "definitionSha256": "a886872b164ed42504dabdd560e32ac83d5e9f7e20a64156a4b85d4acf59a05d"
+          },
+          {
+            "category": "eyes",
+            "traitId": "lammb-source-eyes-olive-green",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "79469d7c264faf3b63c6af6f6950656771704d656e3b1eb52e7437a9ef0de3ed"
+          },
+          {
+            "category": "expressions",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer.",
+            "definitionSha256": "e9a0454aa31d679ade4eeb731a823adb6d786388bfd0f6c6d36a2190bb4da57d"
+          },
+          {
+            "category": "clothing",
+            "traitId": "lammb-source-clothing-scorched-hoodie",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Source-specific scorched black hoodie with heat seams integrated into volcanic anatomy; ordinary Magma rules exclude Black Hoodie. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "2a7409baf042338aadfa46dfa128d2238181c37fd9f9178a3839eea2292329a8"
+          },
+          {
+            "category": "accessories",
+            "traitId": "lammb-accessories-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata.",
+            "definitionSha256": "b3a51ae5cd52e603ca0725deb888aae454ce84f5ce91d90800188270699a72be"
+          },
+          {
+            "category": "pixel_corruption",
+            "traitId": "lammb-pixel-corruption-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption.",
+            "definitionSha256": "b1b1a287825985d1250b9d47a4d0376de8e10e85db567bdb9b10ea76dce9325f"
+          },
+          {
+            "category": "environments",
+            "traitId": "lammb-source-environments-charcoal-studio-gradient",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "f3ecadfb3e1e1eccb654aa9a14fa46112e4425536dbbd45748f06a3482fcca85"
+          },
+          {
+            "category": "mutations",
+            "traitId": "lammb-mutations-magma",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Cooled basalt anatomy, localized chartreuse heat, low swept horn pair and charred curls. Existing family description fits; garment/wool/eye combination is not constructor compatible. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "0d1b951189b1ba568bd3ab50665b3aefe4300eef019b1ddc1f1fca641f18711c"
+          }
+        ],
+        "metadata": {
+          "name": "LAMMB — Magma Hoodie",
+          "description": "A volcanic LAMMB with olive-green eyes, singed curls and an integrated scorched hoodie against a charcoal studio gradient. Unpublished source-specific development artwork; no token assignment or production registration.",
+          "image": "https://artwork.invalid/lammb/authored/669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Singed Curls"
+            },
+            {
+              "trait_type": "Eyes",
+              "value": "Olive Green"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Heavy Lidded"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Scorched Hoodie"
+            },
+            {
+              "trait_type": "Pixel Corruption",
+              "value": "NONE"
+            },
+            {
+              "trait_type": "Background",
+              "value": "Charcoal Studio Gradient"
+            },
+            {
+              "trait_type": "Mutation",
+              "value": "Magma"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Basalt and Wool"
+            }
+          ]
+        },
+        "metadataSha256": "0d0f6c826f8bd44377784bf574928ab4a8db7d7cfab14abb4402488bccd3184a",
+        "compatibility": [
+          "Exact authored source only; no independent clothing/wool/expression/background recombination",
+          "No Stage4/5/7 ear-tag contact reuse",
+          "Native PNG pass-through; delivery resampling creates no new native anatomy"
+        ],
+        "compatibilityScope": "OWNER_APPROVED_INTEGRATED_MAGMA_AUTHORED_FRAME_ONLY",
+        "recipeType": "INTEGRATED_SPECIAL_MUTATION",
+        "poseFamily": "FRONT_MAGMA_AUTHORED_BUST",
+        "completeMetadata": true,
+        "unresolvedFacets": [],
+        "sourceTraitApproval": "APPROVED_SOURCE_SPECIFIC",
+        "productionRegistered": false,
+        "productionPromotionAuthorized": false,
+        "promotionGate": "EXPLICIT_SEPARATE_OWNER_PRODUCTION_REGISTRATION_REQUIRED",
+        "generatorEnabled": false,
+        "tokenAssignment": null,
+        "publication": "UNPUBLISHED_PLACEHOLDER_URI",
+        "deliveryArtApproval": "PENDING"
+      }
+    },
+    {
+      "id": "authored-after-hours-observer",
+      "sourceHashIntegrity": "PASS",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "nativeSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+      "deliverySha256": "2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34",
+      "nativeBytes": 2382352,
+      "deliveryBytes": 13675888,
+      "nativeHistoricalBytesEqual": true,
+      "nativeDecodedPixelsEqual": true,
+      "deliveryHistoricalBytesEqual": true,
+      "nativePixelChanges": 0,
+      "independentReplayAgainstStage34": "PASS",
+      "metadataSha256": "3d0ccfb79aea86e627e59f930c20f2c3b9a706a3f76177a529ce4368c1bdf1bb",
+      "completeMetadata": true,
+      "publicAttributeCount": 8,
+      "sourceArtApproval": {
+        "id": "stage28-owner-decision-backlog-study27-after-hours-observer",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage28-owner-decisions",
+        "date": "2026-10-12T15:53:15.448Z"
+      },
+      "rendererReceiptSha256": "9bb3866ebaa16006e8171789a8c37dc2be7d6e3b37a3cb25ca19ac7d9c09e930",
+      "provenance": [
+        {
+          "path": "reports/TASK_028_STAGE28_PREPARATION_001/OWNER_DECISIONS.json",
+          "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0"
+        },
+        {
+          "path": "reports/TASK_027_STAGE27_EXPANSION_001/GENERATION_PROVENANCE.json",
+          "sha256": "74912db8fc21d1098cde7e336fb30e9b71a32e0aba3e344a7016b0d5316e1c29"
+        },
+        {
+          "path": "reports/TASK_027_STAGE27_EXPANSION_001/ARTISTIC_QA.json",
+          "sha256": "b877cfddb0cc6b86d8f9df61bbf9d9c5a1c8c546e120516e3cc40be914eb1571"
+        }
+      ],
+      "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+      "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+      "productionRegistered": false,
+      "generatorEnabled": false,
+      "tokenAssignment": null,
+      "measurements": {
+        "decodeMs": 61.03129999999999,
+        "renderMs": 3438.5868,
+        "peakRssMiB": 205.640625,
+        "cpuConcurrency": 1,
+        "methodGpuVramMiB": 0,
+        "totalReplayMs": 3803.4444000000003
+      },
+      "recipe": {
+        "schemaVersion": "lammb-complete-authored-development-recipe/1.0.0",
+        "purpose": "DEVELOPMENT_ONLY",
+        "id": "authored-after-hours-observer",
+        "status": "COMPLETE_SOURCE_BOUND_DEVELOPMENT_RECIPE",
+        "sourceSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+        "nativeOutputSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+        "nativeDecodedPixelSha256": "1076787fa256a444e093f2c3dd4ea0ee98e02cd272e022c895745c401a7ca738",
+        "deliverySha256": "2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34",
+        "deliveryDecodedPixelSha256": "f3f63f4a26c2f573892e535ee10d47fdae63cce0e65266df0090c70e1c483024",
+        "nativeDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "deliveryDimensions": {
+          "width": 3072,
+          "height": 3072
+        },
+        "sourceApproval": {
+          "id": "stage28-owner-decision-backlog-study27-after-hours-observer",
+          "authority": "CURRENT_OWNER_DIRECTIVE",
+          "decision": "ART_DIRECTION_APPROVED",
+          "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+          "evidence": "evidence-stage28-owner-decisions",
+          "date": "2026-10-12T15:53:15.448Z"
+        },
+        "provenance": [
+          {
+            "path": "reports/TASK_028_STAGE28_PREPARATION_001/OWNER_DECISIONS.json",
+            "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0"
+          },
+          {
+            "path": "reports/TASK_027_STAGE27_EXPANSION_001/GENERATION_PROVENANCE.json",
+            "sha256": "74912db8fc21d1098cde7e336fb30e9b71a32e0aba3e344a7016b0d5316e1c29"
+          },
+          {
+            "path": "reports/TASK_027_STAGE27_EXPANSION_001/ARTISTIC_QA.json",
+            "sha256": "b877cfddb0cc6b86d8f9df61bbf9d9c5a1c8c546e120516e3cc40be914eb1571"
+          }
+        ],
+        "referenceDependencies": [
+          {
+            "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+            "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b"
+          },
+          {
+            "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+            "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+          }
+        ],
+        "visualEvidence": {
+          "path": "reports/TASK_034_APPROVED_CHARACTER_001/authored-after-hours-observer-eye-evidence.png",
+          "sha256": "6a2bc451491c18cd997b327b62901b59bae0efcd80d3cdbf0aab299e4861990c",
+          "roi": {
+            "x": 400,
+            "y": 480,
+            "width": 450,
+            "height": 300
+          },
+          "interpretation": "MANUAL_NATIVE_VISUAL_CORRESPONDENCE_NOT_EXACT_ALBEDO_MEASUREMENT"
+        },
+        "rendererRecipeReference": {
+          "path": "packages/art-generator/fixtures/stage34-authored-frames.json",
+          "requestSha256": "c418c3ed84bfed4a819b4b53b3d6e1b2acfe0e5c681d29a2a129f1f42eaca707",
+          "rendererReceiptSha256": "9bb3866ebaa16006e8171789a8c37dc2be7d6e3b37a3cb25ca19ac7d9c09e930",
+          "method": "EXACT_AUTHORED_NATIVE_PASSTHROUGH_PLUS_NOHALO_CPU_DELIVERY"
+        },
+        "approvedCatalogSha256": "c6188b532ad2a7bd7f9b68dac1310b0853a5d6801e37589d699732e01a248d6e",
+        "approvalHistorySha256": "1c5b77dae0f34b6faecc002565bf4229ace835426ba55cddc2bdcc692a76e95a",
+        "traitVector": [
+          {
+            "category": "base_anatomy",
+            "traitId": "lammb-base-anatomy-sheep",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame.",
+            "definitionSha256": "9ec12cb7f6371c4847ad292710390d5b05742938e0444a2f1e51512ac4ead27e"
+          },
+          {
+            "category": "wool",
+            "traitId": "lammb-wool-ivory",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer.",
+            "definitionSha256": "5843b2a4ae069d31461ea56ca4ec29226c50a15dcbfcacc9b624cb6216dbeb28"
+          },
+          {
+            "category": "eyes",
+            "traitId": "lammb-source-eyes-olive-green",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only. Task035 owner approved this exact authored source binding; no collection-wide selection or layer compatibility is implied.",
+            "definitionSha256": "79469d7c264faf3b63c6af6f6950656771704d656e3b1eb52e7437a9ef0de3ed"
+          },
+          {
+            "category": "expressions",
+            "traitId": "lammb-expressions-heavy-lidded",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer.",
+            "definitionSha256": "e9a0454aa31d679ade4eeb731a823adb6d786388bfd0f6c6d36a2190bb4da57d"
+          },
+          {
+            "category": "clothing",
+            "traitId": "lammb-clothing-long-coat",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Near-black structured laboratory coat collar and sleeves; pocket pen details remain garment decoration, not an independent accessory.",
+            "definitionSha256": "c56f0e343ecd453684155c2a9b7340681c3aa0b8a1b0c8068c3e64a2472b1b4d"
+          },
+          {
+            "category": "accessories",
+            "traitId": "lammb-accessories-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata.",
+            "definitionSha256": "b3a51ae5cd52e603ca0725deb888aae454ce84f5ce91d90800188270699a72be"
+          },
+          {
+            "category": "pixel_corruption",
+            "traitId": "lammb-pixel-corruption-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption.",
+            "definitionSha256": "b1b1a287825985d1250b9d47a4d0376de8e10e85db567bdb9b10ea76dce9325f"
+          },
+          {
+            "category": "environments",
+            "traitId": "lammb-environments-lab",
+            "status": "VERIFIED_PRESENT",
+            "evidence": "Distant industrial containment shapes and chartreuse lab lighting; authored environment is inseparable from subject lighting.",
+            "definitionSha256": "8696630f617ac7d5f66d9e0663a6b325d10259e4d3318f3d2730ed45c0a4f573"
+          },
+          {
+            "category": "mutations",
+            "traitId": "lammb-mutations-none",
+            "status": "VERIFIED_ABSENT",
+            "evidence": "No structural mutation visible; omit absent normal mutation facet.",
+            "definitionSha256": "3e4db29ffc1f4a116d63fdddbc0d3c0ba1480885860da0fab0b34210a407d040"
+          }
+        ],
+        "metadata": {
+          "name": "LAMMB — After-hours Observer",
+          "description": "An olive-eyed LAMMB in a structured dark lab coat observing an atmospheric containment laboratory. Unpublished source-specific development artwork; no token assignment or production registration.",
+          "image": "https://artwork.invalid/lammb/authored/2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34.png",
+          "external_url": "https://lammb.fun",
+          "attributes": [
+            {
+              "trait_type": "Species",
+              "value": "Sheep"
+            },
+            {
+              "trait_type": "Wool",
+              "value": "Ivory Curls"
+            },
+            {
+              "trait_type": "Eyes",
+              "value": "Olive Green"
+            },
+            {
+              "trait_type": "Expression",
+              "value": "Heavy Lidded"
+            },
+            {
+              "trait_type": "Clothing",
+              "value": "Lab Coat"
+            },
+            {
+              "trait_type": "Pixel Corruption",
+              "value": "NONE"
+            },
+            {
+              "trait_type": "Background",
+              "value": "Containment Lab"
+            },
+            {
+              "trait_type": "Material",
+              "value": "Organic"
+            }
+          ]
+        },
+        "metadataSha256": "3d0ccfb79aea86e627e59f930c20f2c3b9a706a3f76177a529ce4368c1bdf1bb",
+        "compatibility": [
+          "Exact authored source only; no independent clothing/wool/expression/background recombination",
+          "No Stage4/5/7 ear-tag contact reuse",
+          "Native PNG pass-through; delivery resampling creates no new native anatomy"
+        ],
+        "compatibilityScope": "AUTHORED_FRAME_ONLY",
+        "recipeType": "AUTHORED_FULL_FRAME",
+        "poseFamily": "THREE_QUARTER_COAT_LAB_FRAME",
+        "completeMetadata": true,
+        "unresolvedFacets": [],
+        "sourceTraitApproval": "APPROVED_SOURCE_SPECIFIC",
+        "productionRegistered": false,
+        "productionPromotionAuthorized": false,
+        "promotionGate": "EXPLICIT_SEPARATE_OWNER_PRODUCTION_REGISTRATION_REQUIRED",
+        "generatorEnabled": false,
+        "tokenAssignment": null,
+        "publication": "UNPUBLISHED_PLACEHOLDER_URI",
+        "deliveryArtApproval": "PENDING"
+      }
+    }
+  ],
+  "allEightDeliveryIntegrity": [
+    {
+      "id": "proof-canonical",
+      "nativeSha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+      "deliverySha256": "5365e5960de5faecc432fe2bb8ce673d56872f827ae31bbde8eeb44223265c75",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 14181933,
+      "currentTaskIndependentReplay": "PRESERVED_STAGE34_REPLAY_RECEIPT_AND_CURRENT_FILE_HASH_VERIFIED",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-broad-ash",
+      "nativeSha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+      "deliverySha256": "3ffd97a824f976805e5d7e76e42f39f55627c2671c9c72607893b986dc9866ff",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 13961429,
+      "currentTaskIndependentReplay": "PRESERVED_STAGE34_REPLAY_RECEIPT_AND_CURRENT_FILE_HASH_VERIFIED",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-rolled-locks",
+      "nativeSha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+      "deliverySha256": "fd54363d8432253834c4035b32cd4dad80ccdf7a0b58c20081c2f7bccd2c61ba",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 13888010,
+      "currentTaskIndependentReplay": "PRESERVED_STAGE34_REPLAY_RECEIPT_AND_CURRENT_FILE_HASH_VERIFIED",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "proof-front-stage16",
+      "nativeSha256": "ad0d8fc9b5a5d7cdf98ad9a8bf5ad1f75704f1bf3971a82bb35de0874dc96d0e",
+      "deliverySha256": "0cf18e5bb60758e468cb94b7c6b4f18d03c41f9276ed47e4a29e05671ccaa800",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 14309544,
+      "currentTaskIndependentReplay": "PRESERVED_STAGE34_REPLAY_RECEIPT_AND_CURRENT_FILE_HASH_VERIFIED",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "authored-amused",
+      "nativeSha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+      "deliverySha256": "682ac185fe6516e1b7d1629083ea66dd97a80b7b4efdc61cda97fdbd226765f5",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 14292857,
+      "currentTaskIndependentReplay": "PASS",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "authored-utility-vest",
+      "nativeSha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+      "deliverySha256": "6f7df2855f15d0295cfb527d287130a9f75bc0949e58de90eedb0dfde53f5937",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 13999626,
+      "currentTaskIndependentReplay": "PASS",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "authored-magma-hoodie",
+      "nativeSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+      "deliverySha256": "669e984dfd71d13b81a19d9b79e02afd092c71a252dc50b77268b2e064e12981",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 16894810,
+      "currentTaskIndependentReplay": "PASS",
+      "completeMetadata": true,
+      "productionRegistered": false
+    },
+    {
+      "id": "authored-after-hours-observer",
+      "nativeSha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+      "deliverySha256": "2a09dbd70e3a69baf999c3b97ceab62ee403a32c4d8a8367f46bb6954500fd34",
+      "nativeDimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "deliveryDimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "deliveryBytes": 13675888,
+      "currentTaskIndependentReplay": "PASS",
+      "completeMetadata": true,
+      "productionRegistered": false
+    }
+  ],
+  "totalCompleteRecipeCount": 8,
+  "delivery3072Count": 8,
+  "productionRegisteredCount": 0,
+  "completeRecipeShortfallTo5280": 5272,
+  "backlog": {
+    "count": 121,
+    "canonicalSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+    "changed": false
+  },
+  "weightedTraitSpec": {
+    "fileSha256": "f8a6f7e1d113258ad0df7a49795f013a41dd3fa195f65e03ed7279f02b392c6e",
+    "canonicalSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+    "changed": false,
+    "frequenciesChanged": false,
+    "grailReservationsChanged": false
+  },
+  "duplicateResults": {
+    "encodedNativeDuplicates": 0,
+    "decodedNativeDuplicates": 0,
+    "encodedDeliveryDuplicates": 0,
+    "decodedDeliveryDuplicates": 0,
+    "scope": "Four current independent replays plus immutable prior four decoded-pixel receipts"
+  },
+  "visualDiversity": {
+    "previousDiagnosticPairs": [
+      {
+        "a": "proof-canonical",
+        "b": "proof-rolled-locks",
+        "normalizedRgbMae": {
+          "64": 0.03790594362745098,
+          "128": 0.04197535296670751
+        }
+      }
+    ],
+    "characterArtworkChanged": false,
+    "similarityMetric": "UNALIGNED_RGB_MAE_DIAGNOSTIC_NOT_ARTISTIC_CERTIFICATION",
+    "full5280VisualUniquenessClaimed": false
+  },
+  "openSea": {
+    "schemaValidation": "PASS",
+    "nameDescriptionImageExternalUrlAttributes": "VALID",
+    "uriStatus": "UNPUBLISHED_PLACEHOLDER_HTTPS",
+    "publicAttributeCounts": [
+      {
+        "id": "authored-amused",
+        "count": 8
+      },
+      {
+        "id": "authored-utility-vest",
+        "count": 8
+      },
+      {
+        "id": "authored-magma-hoodie",
+        "count": 9
+      },
+      {
+        "id": "authored-after-hours-observer",
+        "count": 8
+      }
+    ],
+    "officialReferences": [
+      "https://docs.opensea.io/docs/metadata-standards",
+      "https://docs.opensea.io/docs/media-and-traits"
+    ],
+    "liveMetadataPublished": false,
+    "tokenIdsAssigned": false
+  },
+  "performance": {
+    "independentReplayCount": 4,
+    "totalMs": 15590.5874,
+    "peakReplayRssMiB": 213.68359375,
+    "cpuConcurrency": 1,
+    "gpuVramAllocatedByMethodMiB": 0,
+    "codecs": {
+      "sharp": "0.35.5",
+      "vips": "8.18.7",
+      "png": "1.6.58",
+      "zlibNg": "2.3.3"
+    },
+    "comparisonPeakRssMiB": 175.32421875
+  },
+  "scope": {
+    "newArtwork": 0,
+    "imageGenCalls": 0,
+    "productionPromotion": false,
+    "generatorActivation": false,
+    "productionDecoderBudgetChanged": false,
+    "originalMastersChanged": false,
+    "websiteChanged": false,
+    "chamberChanged": false,
+    "task017Changed": false
+  },
+  "netlifyFreeze": {
+    "commitMarkerRequired": "[skip netlify]",
+    "prTitleMarkerRequired": "[skip netlify]",
+    "siteSettingsChanged": false,
+    "procedure": "DOCUMENTED_GIT_TRIGGER_SKIP_NOT_SITE_WIDE_GUARANTEE"
+  },
+  "limitations": [
+    "Complete development recipes are not production-registered NFTs.",
+    "No arbitrary layer compatibility, frequency assignment or generator activation is authorized.",
+    "3072px resampling creates no new native detail; historical intentional cropping remains.",
+    "Owner approval records are operator receipts of the directive, not cryptographic owner authentication.",
+    "Byte replay is verified in recorded codec environment, not a universal cross-platform guarantee.",
+    "PFP review remains artistic evidence; pixel tests do not certify collector appeal or 5280-image uniqueness.",
+    "Netlify suppression is per guarded Git operation; other site triggers are not globally disabled."
+  ]
+}

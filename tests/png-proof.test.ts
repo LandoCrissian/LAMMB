@@ -28,6 +28,304 @@ import {
   pngContactRenderer,
 } from '../packages/art-generator/src/png-proof.ts';
 import { pngProofSchema } from '../packages/art-generator/src/png-proof-schema.ts';
+import approvedAuthoredCatalog from '../packages/art-generator/fixtures/stage35-approved-authored-catalog.json';
+import authoredSourceApprovals from '../docs/art-production/STAGE35_OWNER_APPROVAL_HISTORY.json';
+import stage34Audit from '../docs/art-production/STAGE34_DELIVERY_AUDIT.json';
+import completeAuthoredSnapshots from '../docs/art-production/STAGE35_COMPLETE_RECIPES.json';
+import {
+  createCompleteAuthoredRecipe,
+  requireUniqueCompleteAuthoredOutputs,
+  validateApprovedAuthoredCatalog,
+  validateCompleteAuthoredRecipe,
+} from '../packages/art-generator/tooling/approved-authored-recipes.ts';
+
+describe('Stage35 approved authored metadata stays bound to four exact frames', () => {
+  it('keeps all four complete snapshots reproducible with the separate production gate', () => {
+    expect(completeAuthoredSnapshots.totalCompleteRecipeCount).toBe(8);
+    expect(completeAuthoredSnapshots.productionRegisteredCount).toBe(0);
+    expect(
+      completeAuthoredSnapshots.existingCompleteRecipesReference.sha256,
+    ).toBe(canonicalSha256(completeRecipeSnapshots));
+    for (const [index, recipe] of completeAuthoredSnapshots.recipes.entries())
+      expect(validateCompleteAuthoredRecipe(recipe, ...context(index))).toEqual(
+        recipe,
+      );
+  });
+  function context(index = 0): Parameters<typeof createCompleteAuthoredRecipe> {
+    const source = authoredFixture.sources[index]!;
+    return [
+      approvedAuthoredCatalog,
+      authoredSourceApprovals,
+      source,
+      artworkBacklog,
+      spec,
+      stage34Audit.outputs.find((o) => o.id === source.id)!.receipt.receipt,
+    ];
+  }
+  it.each([0, 1, 2, 3])(
+    'completes recipe %i without changing its PNG or production state',
+    (index) => {
+      const c = context(index),
+        recipe = createCompleteAuthoredRecipe(...c);
+      expect(recipe.completeMetadata).toBe(true);
+      expect(recipe.unresolvedFacets).toEqual([]);
+      expect(recipe.productionRegistered).toBe(false);
+      expect(recipe.generatorEnabled).toBe(false);
+      expect(recipe.tokenAssignment).toBe(null);
+      expect(recipe.metadata.attributes).toContainEqual({
+        trait_type: 'Eyes',
+        value: 'Olive Green',
+      });
+      expect(recipe.metadata.image).toContain(recipe.deliverySha256);
+      expect(
+        recipe.metadata.attributes.some((a) => a.trait_type === 'Ear Tag'),
+      ).toBe(false);
+      expect(
+        recipe.metadata.attributes.some((a) =>
+          /^(rarity|rank|tier|grail)$/i.test(a.trait_type),
+        ),
+      ).toBe(false);
+      expect(recipe.traitVector).toHaveLength(9);
+      expect(validateCompleteAuthoredRecipe(recipe, ...c)).toEqual(recipe);
+      expect(recipe.nativeOutputSha256).toBe(
+        authoredFixture.sources[index]!.source.sha256,
+      );
+    },
+  );
+  it('retains all prior decisions, catalog scopes and weighted rules', () => {
+    const catalog = validateApprovedAuthoredCatalog(
+      approvedAuthoredCatalog,
+      authoredSourceApprovals,
+    );
+    expect(authoredSourceApprovals.events.slice(0, 2)).toEqual(
+      ownerSourceApprovals.events,
+    );
+    expect(catalog.previousCatalogSha256).toBe(
+      canonicalSha256(approvedSourceCatalog),
+    );
+    expect(catalog.definitions.map((d) => d.sourceRestrictions.length)).toEqual(
+      [4, 3, 1],
+    );
+    for (const def of catalog.definitions) {
+      expect(def.selectionWeight).toBe(null);
+      expect(def.generatorEnabled).toBe(false);
+      expect(def.interchangeableLayer).toBe(false);
+    }
+    expect(canonicalSha256(spec)).toBe(
+      '2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a',
+    );
+    expect(canonicalSha256(artworkBacklog)).toBe(
+      '8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d',
+    );
+  });
+  it('keeps the actual lab environment and source-specific Magma garment', () => {
+    const lab = createCompleteAuthoredRecipe(...context(3)),
+      magma = createCompleteAuthoredRecipe(...context(2));
+    expect(lab.metadata.attributes).toContainEqual({
+      trait_type: 'Background',
+      value: 'Containment Lab',
+    });
+    expect(lab.metadata.attributes).not.toContainEqual({
+      trait_type: 'Background',
+      value: 'Charcoal Studio Gradient',
+    });
+    expect(magma.metadata.attributes).toContainEqual({
+      trait_type: 'Clothing',
+      value: 'Scorched Hoodie',
+    });
+    expect(magma.metadata.attributes).toContainEqual({
+      trait_type: 'Wool',
+      value: 'Singed Curls',
+    });
+    expect(magma.metadata.attributes).toContainEqual({
+      trait_type: 'Mutation',
+      value: 'Magma',
+    });
+    expect(magma.metadata.attributes).toContainEqual({
+      trait_type: 'Material',
+      value: 'Basalt and Wool',
+    });
+    expect(magma.metadata.attributes).toHaveLength(9);
+    expect(magma.compatibilityScope).toBe(
+      'OWNER_APPROVED_INTEGRATED_MAGMA_AUTHORED_FRAME_ONLY',
+    );
+    expect(
+      spec.traits
+        .find((t) => t.id === 'lammb-mutations-magma')!
+        .mutation!.categoryEffects.find((e) => e.category === 'clothing')!
+        .allowedTraitIds,
+    ).not.toContain('lammb-clothing-hoodie');
+  });
+  const badCatalogs = [
+    'source hash',
+    'delivery hash',
+    'pixel hash',
+    'renderer receipt',
+    'invented eye',
+    'wrong environment',
+    'ordinary magma hoodie',
+    'cross-source scorched hoodie',
+    'weight',
+    'production',
+    'generator',
+    'interchangeable layer',
+    'prior catalog',
+    'missing source approval',
+    'missing provenance evidence',
+  ];
+  it.each(badCatalogs)('rejects catalog substitution: %s', (kind) => {
+    const c = structuredClone(approvedAuthoredCatalog);
+    if (kind === 'source hash') c.sources[0]!.sourceSha256 = 'a'.repeat(64);
+    if (kind === 'delivery hash') c.sources[0]!.deliverySha256 = 'a'.repeat(64);
+    if (kind === 'pixel hash')
+      c.sources[0]!.deliveryDecodedPixelSha256 = 'a'.repeat(64);
+    if (kind === 'renderer receipt')
+      c.sources[0]!.rendererReceiptSha256 = 'a'.repeat(64);
+    if (kind === 'invented eye')
+      c.sources[0]!.facets.find((f) => f.category === 'eyes')!.traitId =
+        'fake-eyes';
+    if (kind === 'wrong environment')
+      c.sources[3]!.facets.find((f) => f.category === 'environments')!.traitId =
+        'lammb-source-environments-charcoal-studio-gradient';
+    if (kind === 'ordinary magma hoodie')
+      c.sources[2]!.facets.find((f) => f.category === 'clothing')!.traitId =
+        'lammb-clothing-hoodie';
+    if (kind === 'cross-source scorched hoodie')
+      c.definitions[2]!.sourceRestrictions.push(
+        c.definitions[0]!.sourceRestrictions[0]!,
+      );
+    if (kind === 'weight')
+      Object.assign(c.definitions[0]!, { selectionWeight: 1 });
+    if (kind === 'production') c.productionRegistered = true;
+    if (kind === 'generator') c.generatorEnabled = true;
+    if (kind === 'interchangeable layer')
+      c.definitions[2]!.interchangeableLayer = true;
+    if (kind === 'prior catalog') c.previousCatalogSha256 = 'a'.repeat(64);
+    if (kind === 'missing source approval')
+      c.sources[0]!.sourceArtApproval.decision = 'REJECTED';
+    if (kind === 'missing provenance evidence')
+      c.sources[0]!.visualEvidence.sha256 = 'a'.repeat(64);
+    expect(() =>
+      createCompleteAuthoredRecipe(
+        c,
+        ...(context().slice(1) as [
+          unknown,
+          unknown,
+          unknown,
+          unknown,
+          unknown,
+        ]),
+      ),
+    ).toThrow();
+  });
+  it('rejects false owner history and removal of the previous decisions', () => {
+    const h = structuredClone(authoredSourceApprovals);
+    h.events.pop();
+    expect(() =>
+      validateApprovedAuthoredCatalog(approvedAuthoredCatalog, h),
+    ).toThrow();
+    const altered = structuredClone(authoredSourceApprovals);
+    altered.events[0]!.previousEventSha256 = 'a'.repeat(64);
+    expect(() =>
+      validateApprovedAuthoredCatalog(approvedAuthoredCatalog, altered),
+    ).toThrow();
+  });
+  it.each([
+    'native hash',
+    'delivery hash',
+    'decoded pixels',
+    'dimensions',
+    'contact',
+    'source approval',
+    'metadata',
+    'provenance',
+  ])('rejects altered renderer evidence: %s', (kind) => {
+    const c = context(),
+      receipt = structuredClone(c[5]) as Record<string, unknown>;
+    if (kind === 'native hash') receipt.nativeOutputSha256 = 'a'.repeat(64);
+    if (kind === 'delivery hash') receipt.deliverySha256 = 'a'.repeat(64);
+    if (kind === 'decoded pixels')
+      receipt.deliveryDecodedPixelSha256 = 'a'.repeat(64);
+    if (kind === 'dimensions')
+      receipt.deliveryDimensions = { width: 3073, height: 3072 };
+    if (kind === 'contact') receipt.contactLayersApplied = 1;
+    if (kind === 'source approval')
+      receipt.sourceApproval = { decision: 'REJECTED' };
+    if (kind === 'metadata') receipt.metadata = { completeMetadata: true };
+    if (kind === 'provenance') receipt.provenance = [];
+    c[5] = receipt;
+    expect(() => createCompleteAuthoredRecipe(...c)).toThrow(
+      'AUTHORED_COMPLETE_RENDER_RECEIPT',
+    );
+  });
+  it('rejects a substituted PNG declaration, missing art approval and rule changes', () => {
+    const c = context(),
+      row = structuredClone(authoredFixture.sources[0]!);
+    row.source.sha256 = 'a'.repeat(64);
+    c[2] = row;
+    expect(() => createCompleteAuthoredRecipe(...c)).toThrow();
+    const b = structuredClone(artworkBacklog);
+    b.items.find((i) => i.id === 'backlog-study25-amused')!.artisticApproval =
+      'REJECTED';
+    const d = context();
+    d[3] = b;
+    expect(() => createCompleteAuthoredRecipe(...d)).toThrow();
+    const s = structuredClone(spec);
+    s.traits[0]!.selectionWeight++;
+    d[3] = artworkBacklog;
+    d[4] = s;
+    expect(() => createCompleteAuthoredRecipe(...d)).toThrow();
+  });
+  it('rejects fabricated exported fields and production promotion', () => {
+    const c = context(),
+      r = createCompleteAuthoredRecipe(...c);
+    for (const changed of [
+      { ...r, productionRegistered: true },
+      { ...r, generatorEnabled: true },
+      { ...r, tokenAssignment: 1 },
+      {
+        ...r,
+        metadata: {
+          ...r.metadata,
+          attributes: [
+            ...r.metadata.attributes,
+            { trait_type: 'Rarity', value: 'Legendary' },
+          ],
+        },
+      },
+      {
+        ...r,
+        metadata: {
+          ...r.metadata,
+          image: 'https://example.invalid/unbound.png',
+        },
+      },
+      { ...r, unresolvedFacets: ['eyes'] },
+      { ...r, compatibilityScope: 'ARBITRARY_LAYER_REUSE' },
+    ])
+      expect(() => validateCompleteAuthoredRecipe(changed, ...c)).toThrow();
+  });
+  it('rejects exact and decoded-image duplicates independently', () => {
+    const r = [0, 1, 2, 3].map((i) =>
+      createCompleteAuthoredRecipe(...context(i)),
+    );
+    expect(() => requireUniqueCompleteAuthoredOutputs(r)).not.toThrow();
+    expect(() => requireUniqueCompleteAuthoredOutputs([r[0]!, r[0]!])).toThrow(
+      'AUTHORED_COMPLETE_DUPLICATE_OUTPUT',
+    );
+    for (const field of [
+      'nativeOutputSha256',
+      'nativeDecodedPixelSha256',
+      'deliverySha256',
+      'deliveryDecodedPixelSha256',
+    ] as const) {
+      const altered = { ...r[1]!, [field]: r[0]![field] };
+      expect(() =>
+        requireUniqueCompleteAuthoredOutputs([r[0]!, altered]),
+      ).toThrow('AUTHORED_COMPLETE_DUPLICATE_OUTPUT');
+    }
+  });
+});
 
 describe('approved authored frames keep recipe, trait and promotion boundaries', () => {
   const clone = () => structuredClone(authoredFixture.sources[0]!);
