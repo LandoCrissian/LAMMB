@@ -5,6 +5,14 @@ import { deflateSync } from 'node:zlib';
 import sharp from 'sharp';
 import { beforeAll, describe, expect, it } from 'vitest';
 import spec from '../packages/art-generator/specs/lammb-traits-v1.json';
+import authoredFixture from '../packages/art-generator/fixtures/stage34-authored-frames.json';
+import artworkBacklog from '../docs/art-production/ARTWORK_BACKLOG_v1.json';
+import {
+  createAuthoredMetadata,
+  renderAuthoredFrame,
+  resolveAuthoredFrame,
+} from '../packages/art-generator/tooling/authored-frame.ts';
+import { resampleNativeForDevelopment } from '../packages/art-generator/tooling/delivery-derivative.ts';
 import {
   canonicalSha256,
   sha256Bytes,
@@ -20,6 +28,219 @@ import {
   pngContactRenderer,
 } from '../packages/art-generator/src/png-proof.ts';
 import { pngProofSchema } from '../packages/art-generator/src/png-proof-schema.ts';
+
+describe('approved authored frames keep recipe, trait and promotion boundaries', () => {
+  const clone = () => structuredClone(authoredFixture.sources[0]!);
+  it('retains four source-specific pending recipes without generator or production activation', () => {
+    for (const source of authoredFixture.sources) {
+      const { row } = resolveAuthoredFrame(source, artworkBacklog, spec);
+      const metadata = createAuthoredMetadata(
+        row,
+        artworkBacklog,
+        spec,
+        row.source.sha256,
+      );
+      expect(metadata.completeMetadata).toBe(false);
+      expect(metadata.generatorEnabled).toBe(false);
+      expect(metadata.productionRegistered).toBe(false);
+      expect(
+        metadata.verifiedPartialMetadata.attributes.some(
+          (a) => a.trait_type === 'Eyes',
+        ),
+      ).toBe(false);
+      expect(metadata.proposedMetadata.attributes).toContainEqual({
+        trait_type: 'Eyes',
+        value: 'Olive Green',
+      });
+      expect(
+        metadata.proposedMetadata.attributes.some(
+          (a) => a.trait_type === 'Ear Tag',
+        ),
+      ).toBe(false);
+      expect(metadata.proposedMetadata.image).toContain(
+        'https://artwork.invalid/',
+      );
+    }
+    expect(canonicalSha256(artworkBacklog)).toBe(
+      '8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d',
+    );
+    expect(canonicalSha256(spec)).toBe(
+      '2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a',
+    );
+  });
+  it('uses the existing laboratory background only where visible and keeps Magma garment integration pending', () => {
+    const lab = authoredFixture.sources.find(
+      (s) => s.id === 'authored-after-hours-observer',
+    )!;
+    const magma = authoredFixture.sources.find(
+      (s) => s.id === 'authored-magma-hoodie',
+    )!;
+    expect(
+      createAuthoredMetadata(lab, artworkBacklog, spec, lab.source.sha256)
+        .verifiedPartialMetadata.attributes,
+    ).toContainEqual({ trait_type: 'Background', value: 'Containment Lab' });
+    const m = createAuthoredMetadata(
+      magma,
+      artworkBacklog,
+      spec,
+      magma.source.sha256,
+    );
+    expect(m.unresolved.map((f) => f.category)).toEqual([
+      'eyes',
+      'clothing',
+      'environments',
+      'mutations',
+    ]);
+    expect(m.verifiedPartialMetadata.attributes).toContainEqual({
+      trait_type: 'Wool',
+      value: 'Singed Curls',
+    });
+    expect(m.proposedMetadata.attributes).toContainEqual({
+      trait_type: 'Clothing',
+      value: 'Scorched Hoodie',
+    });
+    expect(
+      m.verifiedPartialMetadata.attributes.some(
+        (a) => a.trait_type === 'Clothing',
+      ),
+    ).toBe(false);
+    expect(authoredFixture.exposedMagmaRetained.sha256).toBe(
+      'd8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5',
+    );
+  });
+  const mutations: [string, (row: ReturnType<typeof clone>) => unknown][] = [
+    [
+      'source substitution',
+      (r) => ({ ...r, source: { ...r.source, sha256: 'a'.repeat(64) } }),
+    ],
+    [
+      'dimension substitution',
+      (r) => ({
+        ...r,
+        source: { ...r.source, dimensions: { width: 3072, height: 3072 } },
+      }),
+    ],
+    [
+      'unsupported eye binding',
+      (r) => ({
+        ...r,
+        facets: r.facets.map((f) =>
+          f.category === 'eyes'
+            ? { ...f, traitId: 'lammb-eyes-radioactive' }
+            : f,
+        ),
+      }),
+    ],
+    [
+      'unsupported background',
+      (r) => ({
+        ...r,
+        facets: r.facets.map((f) =>
+          f.category === 'environments'
+            ? { ...f, traitId: 'lammb-environments-chartreuse' }
+            : f,
+        ),
+      }),
+    ],
+    [
+      'silent eye-scope approval',
+      (r) => ({
+        ...r,
+        facets: r.facets.map((f) =>
+          f.category === 'eyes' ? { ...f, status: 'VERIFIED_PRESENT' } : f,
+        ),
+      }),
+    ],
+    ['production promotion', (r) => ({ ...r, productionRegistered: true })],
+    ['generator activation', (r) => ({ ...r, generatorEnabled: true })],
+    ['arbitrary contact reuse', (r) => ({ ...r, contactSource: 'stage4-tag' })],
+    [
+      'arbitrary donor transform',
+      (r) => ({ ...r, transform: { scale: 2.4, offsetX: 0 } }),
+    ],
+    [
+      'incomplete provenance',
+      (r) => ({ ...r, provenance: r.provenance.slice(1) }),
+    ],
+    ['wrong pose', (r) => ({ ...r, poseFamily: 'SIDE_PROFILE' })],
+    [
+      'invented metadata',
+      (r) => ({
+        ...r,
+        facets: r.facets.map((f) =>
+          f.category === 'wool' ? { ...f, traitId: 'fictional-wool' } : f,
+        ),
+      }),
+    ],
+    [
+      'path traversal',
+      (r) => ({ ...r, source: { ...r.source, path: '../outside.png' } }),
+    ],
+    [
+      'false owner scope',
+      (r) => ({
+        ...r,
+        ownerDecision: { ...r.ownerDecision, scope: 'PRODUCTION_APPROVAL' },
+      }),
+    ],
+  ];
+  for (const [name, change] of mutations)
+    it('rejects ' + name, () =>
+      expect(() =>
+        resolveAuthoredFrame(change(clone()), artworkBacklog, spec),
+      ).toThrow(),
+    );
+  it('rejects altered approval history and frequency configuration', () => {
+    const b = structuredClone(artworkBacklog);
+    b.items
+      .find((i) => i.id === clone().backlogId)!
+      .ownerDecisionHistory.at(-1)!.decision = 'REJECTED';
+    expect(() => resolveAuthoredFrame(clone(), b, spec)).toThrow();
+    const s = structuredClone(spec);
+    s.traits[0]!.selectionWeight++;
+    expect(() => resolveAuthoredFrame(clone(), artworkBacklog, s)).toThrow(
+      'AUTHORED_SPEC_BINDING',
+    );
+  });
+  it('rejects missing provenance before decoding a supplied source', async () => {
+    await expect(
+      renderAuthoredFrame(
+        clone(),
+        artworkBacklog,
+        spec,
+        new Map([[clone().source.path, new Uint8Array()]]),
+      ),
+    ).rejects.toThrow('AUTHORED_MISSING_PROVENANCE_OR_SOURCE');
+  });
+  for (const [name, bytes, code] of [
+    ['incorrect hash', new Uint8Array(20), 'AUTHORED_SOURCE_SHA256'],
+    [
+      'oversized source',
+      new Uint8Array(4 * 1024 * 1024 + 1),
+      'AUTHORED_SOURCE_BUDGET',
+    ],
+  ] as const)
+    it('rejects ' + name + ' before PNG decoding', async () => {
+      const r = clone(),
+        inputs = new Map(
+          [r.source, ...r.provenance, ...r.referenceDependencies].map((ref) => [
+            ref.path,
+            bytes,
+          ]),
+        );
+      await expect(
+        renderAuthoredFrame(r, artworkBacklog, spec, inputs),
+      ).rejects.toThrow(code);
+    });
+  it('keeps the pixel utility bounded and rejects malformed input', async () => {
+    await expect(
+      resampleNativeForDevelopment(new Uint8Array()),
+    ).rejects.toThrow('PNG_SIGNATURE');
+    await expect(
+      resampleNativeForDevelopment(new Uint8Array(4 * 1024 * 1024 + 1)),
+    ).rejects.toThrow('SOURCE_BYTES');
+  });
+});
 import type { PngProofRequest } from '../packages/art-generator/src/png-proof-schema.ts';
 import { createPngProofMetadata } from '../packages/art-generator/src/png-proof-metadata.ts';
 import recipeReviews from '../packages/art-generator/fixtures/stage30-recipe-reviews.json';

@@ -203,6 +203,26 @@ export async function renderDeliveryDerivative(
   context: RecipeContext,
 ) {
   const { request, parent } = validateDeliveryParent(input, native, context);
+  const { output, pixels } = await resampleNativeForDevelopment(native);
+  requireProof(
+    sha256Bytes(native) === request.nativeProofSha256,
+    'DELIVERY_NATIVE_MUTATED',
+  );
+  return { output, receipt: makeReceipt(request, parent, output, pixels) };
+}
+
+// Shared bounded pixel operation only, not a source approval, recipe or promotion
+// API. Each caller must separately verify its source-specific approval/provenance.
+export async function resampleNativeForDevelopment(native: Uint8Array) {
+  const header = inspectPng(native);
+  requireProof(
+    header.width === 1254 && header.height === 1254 && header.channels === 3,
+    'DELIVERY_NATIVE_LAYOUT',
+  );
+  requireProof(
+    sharp.versions.sharp === '0.35.5' && sharp.versions.vips === '8.18.7',
+    'DELIVERY_CODEC_VERSION',
+  );
   sharp.concurrency(1);
   sharp.cache(false);
   const scale = 512 / 209;
@@ -251,11 +271,7 @@ export async function renderDeliveryDerivative(
     .png({ compressionLevel: 9, adaptiveFiltering: false, palette: false })
     .toBuffer();
   const pixels = await decodeDelivery(output);
-  requireProof(
-    sha256Bytes(native) === request.nativeProofSha256,
-    'DELIVERY_NATIVE_MUTATED',
-  );
-  return { output, receipt: makeReceipt(request, parent, output, pixels) };
+  return { output, pixels };
 }
 
 // Receipt/hash/pixel checks do not alone prove reconstruction. Independent
