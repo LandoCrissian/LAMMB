@@ -1,0 +1,577 @@
+{
+  "schemaVersion": "lammb-stage34-authored-source-proposals/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "baselineMain": "f658d08cf760c56ae94577e6461e947b58ddcd8c",
+  "backlogSha256": "8e1942d09635f4740efcff4493c5225b911b206ada373e4c6eb359adb0c24b8d",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "exposedMagmaRetained": {
+    "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+    "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5"
+  },
+  "sources": [
+    {
+      "id": "authored-amused",
+      "label": "Amused",
+      "backlogId": "backlog-study25-amused",
+      "source": {
+        "id": "dev-png-stage34-amused",
+        "path": "output/TASK_025_STAGE25_STUDIES_001/01-amused-native.png",
+        "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "082a2de341b74e93ebe94be380acb8b6ec8aad660d64aefe64ed80d83ea6b631",
+          "evidence": "stage26-owner-decision-backlog-study25-amused"
+        },
+        "productionRegistered": false
+      },
+      "ownerDecision": {
+        "id": "stage26-owner-decision-backlog-study25-amused",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage26-owner-decisions",
+        "date": "2026-10-12T05:58:10.439Z"
+      },
+      "provenance": [
+        {
+          "path": "reports/TASK_026_STAGE26_PREPARATION_001/OWNER_DECISIONS.json",
+          "sha256": "ee723d6f2644bf86eb1e2e64c48391ef1fd71b8e1ee2a7b81bd49bfdcb976a20"
+        },
+        {
+          "path": "reports/TASK_025_STAGE25_EXPANSION_001/GENERATION_PROVENANCE.json",
+          "sha256": "415788a2be16ae48fb586aa466bfcac0f4c1246e53426d06f0c707ed711e3e04"
+        },
+        {
+          "path": "reports/TASK_025_STAGE25_EXPANSION_001/ARTISTIC_QA.json",
+          "sha256": "e23ab5ba4a7cd0912bea4421305fbbbb5f8e7018ebffaf97217c823636106aeb"
+        }
+      ],
+      "referenceDependencies": [
+        {
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+        },
+        {
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a"
+        }
+      ],
+      "poseFamily": "THREE_QUARTER_HEAD_TILT",
+      "recipeType": "AUTHORED_FULL_FRAME",
+      "facets": [
+        {
+          "category": "base_anatomy",
+          "traitId": "lammb-base-anatomy-sheep",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame."
+        },
+        {
+          "category": "wool",
+          "traitId": "lammb-wool-ivory",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer."
+        },
+        {
+          "category": "eyes",
+          "traitId": "lammb-source-eyes-olive-green",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only."
+        },
+        {
+          "category": "expressions",
+          "traitId": "lammb-expressions-amused",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Small open asymmetrical smile, visible organized lower dental arcade, no tongue; no tooth-count claim."
+        },
+        {
+          "category": "clothing",
+          "traitId": "lammb-clothing-hoodie",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Black heavy cotton hoodie with hood down; no new clothing components."
+        },
+        {
+          "category": "accessories",
+          "traitId": "lammb-accessories-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata."
+        },
+        {
+          "category": "pixel_corruption",
+          "traitId": "lammb-pixel-corruption-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption."
+        },
+        {
+          "category": "environments",
+          "traitId": "lammb-source-environments-charcoal-studio-gradient",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended."
+        },
+        {
+          "category": "mutations",
+          "traitId": "lammb-mutations-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No structural mutation visible; omit absent normal mutation facet."
+        }
+      ],
+      "eyeEvidenceRoi": {
+        "x": 320,
+        "y": 440,
+        "width": 660,
+        "height": 235
+      },
+      "compatibility": [
+        "Exact authored source only; no independent clothing/wool/expression/background recombination",
+        "No Stage4/5/7 ear-tag contact reuse",
+        "Native PNG pass-through; delivery resampling creates no new native anatomy"
+      ],
+      "metadataStatus": "INCOMPLETE_OWNER_BINDINGS_REQUIRED",
+      "productionRegistered": false,
+      "generatorEnabled": false
+    },
+    {
+      "id": "authored-utility-vest",
+      "label": "Utility Vest",
+      "backlogId": "backlog-study23-utility-vest",
+      "source": {
+        "id": "dev-png-stage34-utility-vest",
+        "path": "output/TASK_023_STAGE23_STUDIES_001/03-utility-vest-native.png",
+        "sha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "9a858dda8c1c7293a6a0acb517c60b7e8aafb5d091bc15ae867f76350d81b52d",
+          "evidence": "stage24-owner-study23-utility-vest"
+        },
+        "productionRegistered": false
+      },
+      "ownerDecision": {
+        "id": "stage24-owner-study23-utility-vest",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage24-owner-decisions",
+        "date": "2026-10-12T02:18:22.272Z"
+      },
+      "provenance": [
+        {
+          "path": "reports/TASK_024_STAGE24_APPROVALS_PERFORMANCE_001/OWNER_DECISIONS.json",
+          "sha256": "dddfa6a391dc5796521b6524b10c22c4acbfe78ee15ad3bae970e2a8e2661fb1"
+        },
+        {
+          "path": "reports/TASK_023_STAGE23_EVOLUTION_001/GENERATION_PROVENANCE.json",
+          "sha256": "5a64364a9cd6eff9e7f74b45008c5d58f84756168786dacb55c216392dffe736"
+        },
+        {
+          "path": "reports/TASK_023_STAGE23_EVOLUTION_001/ARTISTIC_QA.json",
+          "sha256": "2a08c8032559799828a72357a7ab322915f310bd92dac5763611e0e710ec73a2"
+        }
+      ],
+      "referenceDependencies": [
+        {
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+        },
+        {
+          "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a"
+        }
+      ],
+      "poseFamily": "FRONT_AUTHORED_BUST",
+      "recipeType": "AUTHORED_FULL_FRAME",
+      "facets": [
+        {
+          "category": "base_anatomy",
+          "traitId": "lammb-base-anatomy-sheep",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame."
+        },
+        {
+          "category": "wool",
+          "traitId": "lammb-wool-ivory",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer."
+        },
+        {
+          "category": "eyes",
+          "traitId": "lammb-source-eyes-olive-green",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only."
+        },
+        {
+          "category": "expressions",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer."
+        },
+        {
+          "category": "clothing",
+          "traitId": "lammb-clothing-utility-vest",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Structured dark utility vest with two purposeful pocket/seam groups over a crewneck. One integrated garment value, not stacked clothing."
+        },
+        {
+          "category": "accessories",
+          "traitId": "lammb-accessories-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata."
+        },
+        {
+          "category": "pixel_corruption",
+          "traitId": "lammb-pixel-corruption-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption."
+        },
+        {
+          "category": "environments",
+          "traitId": "lammb-source-environments-charcoal-studio-gradient",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended."
+        },
+        {
+          "category": "mutations",
+          "traitId": "lammb-mutations-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No structural mutation visible; omit absent normal mutation facet."
+        }
+      ],
+      "eyeEvidenceRoi": {
+        "x": 300,
+        "y": 500,
+        "width": 700,
+        "height": 200
+      },
+      "compatibility": [
+        "Exact authored source only; no independent clothing/wool/expression/background recombination",
+        "No Stage4/5/7 ear-tag contact reuse",
+        "Native PNG pass-through; delivery resampling creates no new native anatomy"
+      ],
+      "metadataStatus": "INCOMPLETE_OWNER_BINDINGS_REQUIRED",
+      "productionRegistered": false,
+      "generatorEnabled": false
+    },
+    {
+      "id": "authored-magma-hoodie",
+      "label": "Magma Hoodie",
+      "backlogId": "backlog-study21-magma-hoodie",
+      "source": {
+        "id": "dev-png-stage34-magma-hoodie",
+        "path": "output/TASK_021_STAGE21_STUDIES_001/01-magma-hoodie-native.png",
+        "sha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+          "evidence": "stage22-owner-art-decision"
+        },
+        "productionRegistered": false
+      },
+      "ownerDecision": {
+        "id": "stage22-owner-art-decision",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage22-owner-decisions",
+        "date": "2026-10-11T23:03:23.893Z"
+      },
+      "provenance": [
+        {
+          "path": "reports/TASK_022_STAGE22_MUTATION_REGISTRATION_001/OWNER_DECISIONS.json",
+          "sha256": "1f788270584a5cccb29167c938dcc316a80212f10106c18c0a8b27dda885d223"
+        },
+        {
+          "path": "reports/TASK_021_STAGE21_UNIVERSE_001/GENERATION_PROVENANCE.json",
+          "sha256": "fca1436f04d516545cb21af588ee3c79597316db7791492fc11f72bb49f8ba79"
+        },
+        {
+          "path": "reports/TASK_021_STAGE21_UNIVERSE_001/ARTISTIC_QA.json",
+          "sha256": "f47cedcefaacfeeca39f0534d7960fb24ef55afdda19be53410261f8927a996e"
+        }
+      ],
+      "referenceDependencies": [
+        {
+          "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+          "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5"
+        },
+        {
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+        }
+      ],
+      "poseFamily": "FRONT_MAGMA_AUTHORED_BUST",
+      "recipeType": "INTEGRATED_SPECIAL_MUTATION",
+      "facets": [
+        {
+          "category": "base_anatomy",
+          "traitId": "lammb-base-anatomy-sheep",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame."
+        },
+        {
+          "category": "wool",
+          "traitId": "lammb-wool-singed",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Intact charcoal curls with cooled brown edges and surviving fibres match existing Singed Curls. Structural heat fissures belong to the integrated Magma anatomy; no interchangeable wool layer is asserted."
+        },
+        {
+          "category": "eyes",
+          "traitId": "lammb-source-eyes-olive-green",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only."
+        },
+        {
+          "category": "expressions",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer."
+        },
+        {
+          "category": "clothing",
+          "traitId": "proposed-lammb-clothing-scorched-hoodie",
+          "status": "OWNER_FAMILY_COMPATIBILITY_REQUIRED",
+          "evidence": "Source-specific scorched black hoodie with heat seams integrated into volcanic anatomy; ordinary Magma rules exclude Black Hoodie."
+        },
+        {
+          "category": "accessories",
+          "traitId": "lammb-accessories-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata."
+        },
+        {
+          "category": "pixel_corruption",
+          "traitId": "lammb-pixel-corruption-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption."
+        },
+        {
+          "category": "environments",
+          "traitId": "lammb-source-environments-charcoal-studio-gradient",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Integrated dark charcoal studio gradient; existing four-source approval cannot be silently extended."
+        },
+        {
+          "category": "mutations",
+          "traitId": "lammb-mutations-magma",
+          "status": "OWNER_FAMILY_COMPATIBILITY_REQUIRED",
+          "evidence": "Cooled basalt anatomy, localized chartreuse heat, low swept horn pair and charred curls. Existing family description fits; garment/wool/eye combination is not constructor compatible."
+        }
+      ],
+      "eyeEvidenceRoi": {
+        "x": 320,
+        "y": 535,
+        "width": 625,
+        "height": 180
+      },
+      "compatibility": [
+        "Exact authored source only; no independent clothing/wool/expression/background recombination",
+        "No Stage4/5/7 ear-tag contact reuse",
+        "Native PNG pass-through; delivery resampling creates no new native anatomy"
+      ],
+      "metadataStatus": "INCOMPLETE_OWNER_BINDINGS_REQUIRED",
+      "productionRegistered": false,
+      "generatorEnabled": false
+    },
+    {
+      "id": "authored-after-hours-observer",
+      "label": "After-hours Observer",
+      "backlogId": "backlog-study27-after-hours-observer",
+      "source": {
+        "id": "dev-png-stage34-after-hours-observer",
+        "path": "output/TASK_027_STAGE27_STUDIES_001/03-after-hours-observer-native.png",
+        "sha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "f9fbf9d8087cefa28c0a31bd6f72bd35ce29911f40fdb488b7184d3bb5b532fa",
+          "evidence": "stage28-owner-decision-backlog-study27-after-hours-observer"
+        },
+        "productionRegistered": false
+      },
+      "ownerDecision": {
+        "id": "stage28-owner-decision-backlog-study27-after-hours-observer",
+        "authority": "CURRENT_OWNER_DIRECTIVE",
+        "decision": "ART_DIRECTION_APPROVED",
+        "scope": "ART_DIRECTION_ONLY_NOT_PRODUCTION_REGISTRATION",
+        "evidence": "evidence-stage28-owner-decisions",
+        "date": "2026-10-12T15:53:15.448Z"
+      },
+      "provenance": [
+        {
+          "path": "reports/TASK_028_STAGE28_PREPARATION_001/OWNER_DECISIONS.json",
+          "sha256": "6878c75d701f453ca5e25dc4f04756e112856beab945b7064ba11982f44e33a0"
+        },
+        {
+          "path": "reports/TASK_027_STAGE27_EXPANSION_001/GENERATION_PROVENANCE.json",
+          "sha256": "74912db8fc21d1098cde7e336fb30e9b71a32e0aba3e344a7016b0d5316e1c29"
+        },
+        {
+          "path": "reports/TASK_027_STAGE27_EXPANSION_001/ARTISTIC_QA.json",
+          "sha256": "b877cfddb0cc6b86d8f9df61bbf9d9c5a1c8c546e120516e3cc40be914eb1571"
+        }
+      ],
+      "referenceDependencies": [
+        {
+          "path": "output/TASK_025_STAGE25_STUDIES_001/03-lab-coat-native.png",
+          "sha256": "84093cc65b3c05928695588c1bf88cad9137143a364883b59fb7e6fd4a008d2b"
+        },
+        {
+          "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449"
+        }
+      ],
+      "poseFamily": "THREE_QUARTER_COAT_LAB_FRAME",
+      "recipeType": "AUTHORED_FULL_FRAME",
+      "facets": [
+        {
+          "category": "base_anatomy",
+          "traitId": "lammb-base-anatomy-sheep",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Ovine muzzle, low lateral ears and one coherent sheep head preserved in approved authored frame."
+        },
+        {
+          "category": "wool",
+          "traitId": "lammb-wool-ivory",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Warm ivory rooted clustered curls; full-frame material/profile observation, no transferable alpha layer."
+        },
+        {
+          "category": "eyes",
+          "traitId": "lammb-source-eyes-olive-green",
+          "status": "OWNER_SOURCE_BINDING_REQUIRED",
+          "evidence": "Visible olive-green irises and dark pupils; no exact CCFF00 glow evidence. Existing definition approval covers four prior proofs only."
+        },
+        {
+          "category": "expressions",
+          "traitId": "lammb-expressions-heavy-lidded",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Low eyelids and compact closed mouth; expression is integrated with pose, not an independent mouth/eye layer."
+        },
+        {
+          "category": "clothing",
+          "traitId": "lammb-clothing-long-coat",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Near-black structured laboratory coat collar and sleeves; pocket pen details remain garment decoration, not an independent accessory."
+        },
+        {
+          "category": "accessories",
+          "traitId": "lammb-accessories-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible tag, headwear, eyewear, jewelry or dental accent; omit empty accessory metadata."
+        },
+        {
+          "category": "pixel_corruption",
+          "traitId": "lammb-pixel-corruption-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No visible pixel breakup. Magma heat fissures are structural material, not pixel corruption."
+        },
+        {
+          "category": "environments",
+          "traitId": "lammb-environments-lab",
+          "status": "VERIFIED_PRESENT",
+          "evidence": "Distant industrial containment shapes and chartreuse lab lighting; authored environment is inseparable from subject lighting."
+        },
+        {
+          "category": "mutations",
+          "traitId": "lammb-mutations-none",
+          "status": "VERIFIED_ABSENT",
+          "evidence": "No structural mutation visible; omit absent normal mutation facet."
+        }
+      ],
+      "eyeEvidenceRoi": {
+        "x": 400,
+        "y": 480,
+        "width": 450,
+        "height": 300
+      },
+      "compatibility": [
+        "Exact authored source only; no independent clothing/wool/expression/background recombination",
+        "No Stage4/5/7 ear-tag contact reuse",
+        "Native PNG pass-through; delivery resampling creates no new native anatomy"
+      ],
+      "metadataStatus": "INCOMPLETE_OWNER_BINDINGS_REQUIRED",
+      "productionRegistered": false,
+      "generatorEnabled": false
+    }
+  ],
+  "definitions": [
+    {
+      "id": "lammb-source-eyes-olive-green",
+      "action": "PROPOSE_ADDITIONAL_SOURCE_BINDINGS",
+      "label": "Olive Green",
+      "category": "eyes",
+      "sourceIds": [
+        "authored-amused",
+        "authored-utility-vest",
+        "authored-magma-hoodie",
+        "authored-after-hours-observer"
+      ],
+      "state": "OWNER_APPROVAL_PENDING",
+      "selectionWeight": null,
+      "proposedTotalCount": null,
+      "generatorEnabled": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "lammb-source-environments-charcoal-studio-gradient",
+      "action": "PROPOSE_ADDITIONAL_SOURCE_BINDINGS",
+      "label": "Charcoal Studio Gradient",
+      "category": "environments",
+      "sourceIds": [
+        "authored-amused",
+        "authored-utility-vest",
+        "authored-magma-hoodie"
+      ],
+      "state": "OWNER_APPROVAL_PENDING",
+      "selectionWeight": null,
+      "proposedTotalCount": null,
+      "generatorEnabled": false,
+      "productionRegistered": false
+    },
+    {
+      "id": "proposed-lammb-clothing-scorched-hoodie",
+      "action": "PROPOSE_INTEGRATED_MUTATION_GARMENT",
+      "label": "Scorched Hoodie",
+      "category": "clothing",
+      "sourceIds": ["authored-magma-hoodie"],
+      "state": "OWNER_APPROVAL_PENDING",
+      "selectionWeight": null,
+      "proposedTotalCount": null,
+      "generatorEnabled": false,
+      "productionRegistered": false
+    }
+  ],
+  "ownerProductionApproval": false,
+  "frequencyChanges": false,
+  "proposalReviewHistory": [
+    {
+      "authority": "TECHNICAL_VISUAL_REVIEW_NOT_OWNER_APPROVAL",
+      "decision": "USE_EXISTING_SINGED_CURLS_DEFINITION",
+      "sourceId": "authored-magma-hoodie",
+      "sourceSha256": "7afa4e0ba9e3ed52fbe443ace411fa9a2d25625c749bf1f716ab5034d8531492",
+      "earlierProposedWool": "Basalt Curls",
+      "reason": "Native curl fibres and cooled brown/charcoal edges support the existing definition; a new wool ID is unnecessary.",
+      "historicalRecord": "INITIAL_TRAIT_PROPOSALS.json preserved privately"
+    }
+  ]
+}
