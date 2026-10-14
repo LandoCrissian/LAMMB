@@ -1,0 +1,1302 @@
+{
+  "schemaVersion": "lammb-development-pilot/1.0.0",
+  "purpose": "DEVELOPMENT_ONLY",
+  "collectionSupply": 5280,
+  "plannedNetwork": "Robinhood Chain; no chain configuration or token assignment",
+  "specSha256": "2681b2b423b95ddc05ea74e29e80851d7103422b8c61ab9b6df2080f88645f9a",
+  "approvalInventory": {
+    "path": "reports/ART_016_STAGE15_AUDIT_001/ARTWORK_INVENTORY.json",
+    "sha256": "cfbc2be612f4d6f27fe31f3ae69edae8ecf74a27f7cec1f259f5bd3bf56ad379"
+  },
+  "registrySha256": "83c0c9be5ac1c79a6761ae957d8c55d3bf56698ab88a25988945ec094724c4c7",
+  "framingPolicy": "2_PERCENT_DIAGNOSTIC_8_PERCENT_ASPIRATIONAL",
+  "candidates": [
+    {
+      "id": "pilot-canonical",
+      "label": "Canonical identity",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-canonical",
+        "path": "output/ART_016R_REFERENCE_LOCK_001/lammb-016r-reference-lock-001-native.png",
+        "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "34a8b9369ce4ccbf6c5f07bff54e176660798ec668a45f97b6a8f793961a592a",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-three-quarter"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-three-quarter",
+      "proofId": null,
+      "observed": {
+        "pose": "THREE_QUARTER_LEFT",
+        "expression": "Unimpressed",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Inherited tight left-ear fringe; framing and circular crop are diagnostics, not automatic rejection or production certification."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-front",
+      "label": "Front facing",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-front",
+        "path": "output/ART_016_STAGE6_FRONT_001/lammb-016-stage6-front-facing-native.png",
+        "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "23213a0781d596408ec29143f22ecfd4d7ddc29aa9a3dca38a7de44709bb5449",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-front"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-front",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-right",
+      "label": "Three-quarter right",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-right",
+        "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-01-three-quarter-right-native.png",
+        "sha256": "b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "b5a0bb24730d1832a459fe52af30f0699554d75a4c2b568d387447c76ad34484",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage8-01-three-quarter-right"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage8-01-three-quarter-right",
+      "proofId": null,
+      "observed": {
+        "pose": "THREE_QUARTER_RIGHT",
+        "expression": "Unimpressed",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-smirk",
+      "label": "Confident smirk",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-smirk",
+        "path": "output/ART_016_STAGE8_DIVERSITY_001/lammb-016-stage8-02-confident-smirk-native.png",
+        "sha256": "bb31b405267c3a366b4c6b58474555d22ca0c646c6e2a9a3e2cd6a79e9ee32c2",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "bb31b405267c3a366b4c6b58474555d22ca0c646c6e2a9a3e2cd6a79e9ee32c2",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage8-02-confident-smirk"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage8-02-confident-smirk",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Confident smirk",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-expressions-smirk",
+          "facets": ["Expression"],
+          "observation": "One subtly raised mouth corner; difference is weaker at 64px."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category."
+      ],
+      "qa": {
+        "proposedClass": "NEEDS_REFINEMENT",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Expression change is subtle and comparatively weak at 64px; compare with front and lean before production selection."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-irritated",
+      "label": "Irritated",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-irritated",
+        "path": "output/ART_016_STAGE9_EXPRESSIONS_001/lammb-016-stage9-01-irritated-native.png",
+        "sha256": "57aa717011915f36e498cdb4725e32525337d8296df476d3ff681c3a95b70d89",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "57aa717011915f36e498cdb4725e32525337d8296df476d3ff681c3a95b70d89",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage9-01-irritated"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage9-01-irritated",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Irritated",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "This expression study needs owner mapping or an authorized future Trait Bible extension; existing IDs remain unchanged."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-tongue",
+      "label": "Tongue out",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-tongue",
+        "path": "output/ART_016_STAGE9_EXPRESSIONS_001/lammb-016-stage9-02-tongue-out-native.png",
+        "sha256": "792570b4a1bf5cb953415f1f169488605656c754a62a3e040729cc4577f018e8",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "792570b4a1bf5cb953415f1f169488605656c754a62a3e040729cc4577f018e8",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage9-02-tongue-out"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage9-02-tongue-out",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Tongue out",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "This expression study needs owner mapping or an authorized future Trait Bible extension; existing IDs remain unchanged."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-tilt",
+      "label": "Skeptical tilt",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-tilt",
+        "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-01-skeptical-head-tilt-native.png",
+        "sha256": "7dc29c1af83b9f6d967f22f2792cfc016ae79986889127e90292e28f17692392",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "7dc29c1af83b9f6d967f22f2792cfc016ae79986889127e90292e28f17692392",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage10-01-skeptical-head-tilt"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage10-01-skeptical-head-tilt",
+      "proofId": null,
+      "observed": {
+        "pose": "HEAD_TILT",
+        "expression": "Skeptical",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "This expression study needs owner mapping or an authorized future Trait Bible extension; existing IDs remain unchanged."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-lean",
+      "label": "Relaxed lean",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-lean",
+        "path": "output/ART_016_STAGE10_POSES_001/lammb-016-stage10-03-relaxed-lean-native.png",
+        "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "7566ad5d315200acd6f7b1216e4d0e356872c7409d8dba3a63f09ec8374c8947",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage10-03-relaxed-lean"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage10-03-relaxed-lean",
+      "proofId": null,
+      "observed": {
+        "pose": "RELAXED_LEAN",
+        "expression": "Mischievous lean",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-underground",
+      "label": "Underground streetwear",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-underground",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-01-underground-streetwear-native.png",
+        "sha256": "f6c0aaf3427fedc3c07dc3ddefc3db57d6a013d56b65bfe215dc15341f9df9ae",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "f6c0aaf3427fedc3c07dc3ddefc3db57d6a013d56b65bfe215dc15341f9df9ae",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage11-01-underground-streetwear"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage11-01-underground-streetwear",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Ivory curls beneath beanie",
+        "clothing": "Black bomber",
+        "accessories": "Black beanie and short silver chain",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory curls beneath beanie."
+        },
+        {
+          "traitId": "lammb-clothing-bomber",
+          "facets": ["Clothing"],
+          "observation": "Visible ribbed bomber collar, zip closure and stitched fabric."
+        },
+        {
+          "traitId": "lammb-accessories-beanie-chain",
+          "facets": ["Headwear", "Jewelry"],
+          "observation": "Black ribbed beanie and short visible silver chain form one authored configuration."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-high-roller",
+      "label": "High roller",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-high-roller",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-02-high-roller-native.png",
+        "sha256": "eb526c44e680f4805fac8dccf0ba2d1a619a0b22f0e2e38488e782778332729c",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "eb526c44e680f4805fac8dccf0ba2d1a619a0b22f0e2e38488e782778332729c",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage11-02-high-roller"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage11-02-high-roller",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Smirk",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "Dark shades and visible gold tooth",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-expressions-smirk",
+          "facets": ["Expression"],
+          "observation": "Asymmetric raised mouth corner exposes one gold tooth."
+        },
+        {
+          "traitId": "lammb-accessories-shades-gold",
+          "facets": ["Eyewear", "Dental Accent"],
+          "observation": "One fitted translucent dark frame and one visible gold dental accent."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Gold accent is visible natively but may not read as a tooth at 64px."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-neon",
+      "label": "Neon rebel",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-neon",
+        "path": "output/ART_016_STAGE11_STREETWEAR_001/lammb-016-stage11-03-neon-rebel-native.png",
+        "sha256": "5d8f83e16565137bc19db46722ed9bfdd533d1e1b6cc10d913df37ec3b88d2ef",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "5d8f83e16565137bc19db46722ed9bfdd533d1e1b6cc10d913df37ec3b88d2ef",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage11-03-neon-rebel"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage11-03-neon-rebel",
+      "proofId": null,
+      "observed": {
+        "pose": "RELAXED_LEAN",
+        "expression": "Mischievous lean",
+        "wool": "Ivory compact crown",
+        "clothing": "Black asymmetric high-collar jacket",
+        "accessories": "None",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Jacket interpretation and pixel-corruption coverage are not verified against existing Shell/TOUCH specifications; these facets are omitted."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Pixel fragments may vanish at 64px; coverage and compatibility are not registered."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-cybernetic",
+      "label": "Cybernetic",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-cybernetic",
+        "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-02-cybernetic-native.png",
+        "sha256": "5dfac50914a3c2c86c9f2f194e784c1640492c25a4a783dfe292ac821dbb9650",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "5dfac50914a3c2c86c9f2f194e784c1640492c25a4a783dfe292ac821dbb9650",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage12-02-cybernetic"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage12-02-cybernetic",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Ivory surviving crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "CYBERNETIC"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-mutations-cybernetic",
+          "facets": ["Mutation"],
+          "observation": "Observed integrated CYBERNETIC anatomy; material chemistry and source registration unverified."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Anatomy-family source bindings and material/wool registration remain incomplete; not a complete nine-category collection vector."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Integrated CYBERNETIC anatomy is authored full-frame; no independent mutation layer claimed.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-magma",
+      "label": "Magma",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-magma",
+        "path": "output/ART_016_STAGE12_MUTATIONS_001/lammb-016-stage12-03-magma-native.png",
+        "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "d8b85e65943c819c2fcbb3a56a2ff4539cf5ed350c203101799544bf0389f4d5",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage12-03-magma"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage12-03-magma",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Mineralized volcanic curls",
+        "clothing": "No clothing",
+        "accessories": "None",
+        "mutation": "MAGMA"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-mutations-magma",
+          "facets": ["Mutation"],
+          "observation": "Observed integrated MAGMA anatomy; material chemistry and source registration unverified."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Anatomy-family source bindings and material/wool registration remain incomplete; not a complete nine-category collection vector.",
+        "No clothing facet: visible volcanic torso is bare. Canonical wool value and required horn interpretation remain unresolved."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Integrated MAGMA anatomy is authored full-frame; no independent mutation layer claimed.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-crystalline",
+      "label": "Crystalline",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-crystalline",
+        "path": "output/ART_016_STAGE13_MUTATIONS_001/lammb-016-stage13-02-crystalline-native.png",
+        "sha256": "4911298707c7b33b33f3b2b81f47df910950ed1dd04981415edd150323f74914",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "4911298707c7b33b33f3b2b81f47df910950ed1dd04981415edd150323f74914",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage13-02-crystalline"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage13-02-crystalline",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Ivory surviving crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "CRYSTALLINE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-mutations-crystalline",
+          "facets": ["Mutation"],
+          "observation": "Observed integrated CRYSTALLINE anatomy; material chemistry and source registration unverified."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Anatomy-family source bindings and material/wool registration remain incomplete; not a complete nine-category collection vector."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Integrated CRYSTALLINE anatomy is authored full-frame; no independent mutation layer claimed.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-botanical",
+      "label": "Botanical",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-botanical",
+        "path": "output/ART_016_STAGE13_MUTATIONS_001/lammb-016-stage13-03-botanical-native.png",
+        "sha256": "387546b1a5c31de0ea160665111824ba099b9d9a1d9d6ae15d70eb867ca5f6e4",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "387546b1a5c31de0ea160665111824ba099b9d9a1d9d6ae15d70eb867ca5f6e4",
+          "evidence": "Stage15 pinned inventory lammb-audit-stage13-03-botanical"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-stage13-03-botanical",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed",
+        "wool": "Ivory surviving crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "BOTANICAL"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-mutations-botanical",
+          "facets": ["Mutation"],
+          "observation": "Observed integrated BOTANICAL anatomy; material chemistry and source registration unverified."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Anatomy-family source bindings and material/wool registration remain incomplete; not a complete nine-category collection vector."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Integrated BOTANICAL anatomy is authored full-frame; no independent mutation layer claimed.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-multi-eye",
+      "label": "Multi eye",
+      "mode": "AUTHORED_FULL_FRAME",
+      "source": {
+        "id": "dev-png-stage20-multi-eye",
+        "path": "output/ART_016_STAGE14_MUTATIONS_001/lammb-016-stage14-02-multi-eye-native.png",
+        "sha256": "06349558674f2d2e33a04a7eac64f632da003261d8647c00bbda3c96b4e10130",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "06349558674f2d2e33a04a7eac64f632da003261d8647c00bbda3c96b4e10130",
+          "evidence": "Stage15 pinned inventory lammb-audit-02-multi-eye"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-02-multi-eye",
+      "proofId": null,
+      "observed": {
+        "pose": "FRONT",
+        "expression": "Unimpressed; five visible eyes",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "None",
+        "mutation": "MULTI_EYE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-mutations-multi-eye",
+          "facets": ["Mutation"],
+          "observation": "Observed integrated MULTI_EYE anatomy; material chemistry and source registration unverified."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported.",
+        "Anatomy-family source bindings and material/wool registration remain incomplete; not a complete nine-category collection vector."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Five integrated eyes: two primary, three secondary; one sheep face.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Integrated MULTI_EYE anatomy is authored full-frame; no independent mutation layer claimed.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-canonical-tag",
+      "label": "Canonical with ear tag",
+      "mode": "REGISTERED_CONTACT",
+      "source": {
+        "id": "dev-png-stage20-canonical-tag",
+        "path": "output/ART_016_STAGE4_EAR_TAG_001/lammb-016-stage4-hybrid-finished-native.png",
+        "sha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "89ba9dba1070fe9cc8fab0be82b947ba8cc37f17d14b25dcf9260ee5cbde173b",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage4-ear-tag"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage4-ear-tag",
+      "proofId": "proof-canonical",
+      "observed": {
+        "pose": "THREE_QUARTER_LEFT",
+        "expression": "Unimpressed",
+        "wool": "Ivory compact crown",
+        "clothing": "Black hoodie",
+        "accessories": "5280 ear tag",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ivory",
+          "facets": ["Wool"],
+          "observation": "Observed Ivory compact crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-accessories-ear-tag",
+          "facets": ["Ear Tag"],
+          "observation": "Contact source binds the visible metal tag with exact 5280 lettering."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Inherited tight left-ear fringe; framing and circular crop are diagnostics, not automatic rejection or production certification."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-ash-tag",
+      "label": "Broad Ash with ear tag",
+      "mode": "REGISTERED_CONTACT",
+      "source": {
+        "id": "dev-png-stage20-ash-tag",
+        "path": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-01-ash-ear-tag-native.png",
+        "sha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "be31a4ee0745486208859ecdefcbec819f555ceb73579367e4bcc6e2d6367227",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage5-ash-ear-tag"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage5-ash-ear-tag",
+      "proofId": "proof-broad-ash",
+      "observed": {
+        "pose": "THREE_QUARTER_LEFT",
+        "expression": "Unimpressed",
+        "wool": "Broad offset Ash crown",
+        "clothing": "Black hoodie",
+        "accessories": "5280 ear tag",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-ash",
+          "facets": ["Wool"],
+          "observation": "Observed Broad offset Ash crown."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-accessories-ear-tag",
+          "facets": ["Ear Tag"],
+          "observation": "Contact source binds the visible metal tag with exact 5280 lettering."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Inherited tight left-ear fringe; framing and circular crop are diagnostics, not automatic rejection or production certification."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    },
+    {
+      "id": "pilot-rolled-tag",
+      "label": "Rolled Locks with ear tag",
+      "mode": "REGISTERED_CONTACT",
+      "source": {
+        "id": "dev-png-stage20-rolled-tag",
+        "path": "output/ART_016_STAGE5_TRANSFER_001/lammb-016-stage5-02-rolled-ear-tag-native.png",
+        "sha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "channels": 3,
+        "colorPolicy": "SRGB_8BIT_UNTAGGED_OR_STANDARD_SRGB",
+        "approval": {
+          "state": "APPROVED_ART_DIRECTION",
+          "sha256": "b24074f881d853e5be351f53ec8d22d39208cdd99e0b52a5940bc49b13c3b040",
+          "evidence": "Stage15 pinned inventory lammb-audit-approved-stage5-rolled-ear-tag"
+        },
+        "productionRegistered": false
+      },
+      "historicalAssetId": "lammb-audit-approved-stage5-rolled-ear-tag",
+      "proofId": "proof-rolled-locks",
+      "observed": {
+        "pose": "THREE_QUARTER_LEFT",
+        "expression": "Unimpressed",
+        "wool": "Rolled Locks",
+        "clothing": "Black hoodie",
+        "accessories": "5280 ear tag",
+        "mutation": "NONE"
+      },
+      "visibleClaims": [
+        {
+          "traitId": "lammb-base-anatomy-sheep",
+          "facets": ["Species"],
+          "observation": "Low lateral ears, compact sheep muzzle and single coherent species face are visible."
+        },
+        {
+          "traitId": "lammb-wool-locks",
+          "facets": ["Wool"],
+          "observation": "Observed Rolled Locks."
+        },
+        {
+          "traitId": "lammb-clothing-hoodie",
+          "facets": ["Clothing"],
+          "observation": "Visible black hood and hoodie neckline."
+        },
+        {
+          "traitId": "lammb-accessories-ear-tag",
+          "facets": ["Ear Tag"],
+          "observation": "Contact source binds the visible metal tag with exact 5280 lettering."
+        }
+      ],
+      "unresolvedMetadata": [
+        "Eye palette is not certified as the exact Trait Bible radioactive color.",
+        "Studio gradient background is not a registered flat-palette background.",
+        "Pose is a production source family, not a new constructor trait category.",
+        "Expression interpretation retained in QA; no unverified Expression facet exported."
+      ],
+      "qa": {
+        "proposedClass": "PRODUCTION_CANDIDATE",
+        "anatomy": "Recognizable single sheep face, low ears and coherent muzzle; artistic judgment, not automated certification.",
+        "framing": "Intentional shoulder/bottom portrait crop accepted for this proposed policy. Inspect circular previews; 2% and 8% remain diagnostic only.",
+        "materials": "Coherent wool and apparel lighting; no new material claims beyond visible facets.",
+        "thumbnail": "Native and 64px/128px square/circle previews required; source-specific similarity reported separately.",
+        "defects": [
+          "Inherited tight left-ear fringe; framing and circular crop are diagnostics, not automatic rejection or production certification."
+        ],
+        "finalOwnerApproval": null
+      },
+      "productionRegistered": false
+    }
+  ]
+}
