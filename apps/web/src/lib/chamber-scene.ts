@@ -609,6 +609,9 @@ export class ChamberScene {
       this.frameCount = 0;
       this.frame = requestAnimationFrame(this.tick);
     }
+    // Periodic diagnostics may predate the final movement frame. Publish the
+    // frozen state before an overlay reads it, and again before resuming frames.
+    if (!this.disposed) this.publish();
   }
   clearInput() {
     this.keys.clear();
