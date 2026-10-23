@@ -62,8 +62,9 @@ const humanError = (error: unknown) =>
     ? error.message.replaceAll('_', ' ').toLowerCase()
     : 'Unable to complete request.';
 
-function useWalletSessionReset() {
+function useWalletSessionReset(active: boolean) {
   useEffect(() => {
+    if (!active) return;
     const provider = (window as Window & { ethereum?: Provider }).ethereum;
     if (!provider?.on || !provider.removeListener) return;
     const reset = () => {
@@ -77,11 +78,10 @@ function useWalletSessionReset() {
       provider.removeListener?.('accountsChanged', reset);
       provider.removeListener?.('disconnect', reset);
     };
-  }, []);
+  }, [active]);
 }
 
 export function GenesisRegistration() {
-  useWalletSessionReset();
   const [enabled, setEnabled] = useState(false);
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<Status | null>(null);
@@ -89,6 +89,7 @@ export function GenesisRegistration() {
     'Registration is not open. No applications are being collected.',
   );
   const [consent, setConsent] = useState(false);
+  useWalletSessionReset(status !== null);
   useEffect(() => {
     let active = true;
     void api('config')
@@ -260,7 +261,6 @@ type RecordRow = {
   founderEvidence: string | null;
 };
 export function GenesisAdmin() {
-  useWalletSessionReset();
   const [enabled, setEnabled] = useState(false);
   const [records, setRecords] = useState<RecordRow[] | null>(null);
   const [notice, setNotice] = useState(
@@ -273,6 +273,7 @@ export function GenesisAdmin() {
   const [units, setUnits] = useState(1);
   const [grantKey, setGrantKey] = useState('');
   const [kind, setKind] = useState('INVITATION');
+  useWalletSessionReset(records !== null);
   useEffect(() => {
     void api('config')
       .then((c) => setEnabled(c.adminEnabled))
