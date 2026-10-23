@@ -49,6 +49,8 @@ export interface ReadinessOptions {
   outputRoot: string;
 }
 export async function runGenesisReadiness(options: ReadinessOptions) {
+  // Stronger workstation start gate, before reading private inputs or writing.
+  requireGenesis(freemem() / 1048576 >= 4096, 'RAM_START');
   // Explicit local read-only roots. No credentials, network or registry executor.
   sharp.concurrency(1);
   sharp.cache(false);

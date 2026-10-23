@@ -1,4 +1,5 @@
 import { collection } from '@lammb/collection/config';
+import { archivedDevelopmentCollection } from './legacy-development.ts';
 import { z } from 'zod';
 import { canonicalJson, canonicalSha256, compareText } from './canonical.ts';
 import { evaluateComposition, specimenFingerprint } from './constraints.ts';
@@ -150,7 +151,9 @@ export function generateCollection(inputs: EngineInputs) {
       rendererVersion: RENDERER_VERSION,
       seedDerivationVersion: SEED_DERIVATION_VERSION,
       collectionConfigSha256: canonicalSha256({
-        ...collection,
+        ...(catalog.purpose === 'DEVELOPMENT_ONLY'
+          ? archivedDevelopmentCollection
+          : collection),
         mintPriceWei: collection.mintPriceWei.toString(),
       }),
       catalogSha256: canonicalSha256(catalog),

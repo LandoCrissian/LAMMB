@@ -50,4 +50,4 @@ Future production initialization and writes additionally require signed root/hea
 
 Before adoption, rollback consists of not merging or reverting this additive code. Historical development validators and records remain unchanged. After future registration but before deployment, use authorized revocation with complete history. Do not delete or rewrite previous generations, accepted artwork, metadata proposals or preservation pins.
 
-Registration readiness does not implement minting, reveal, contract deployment, public metadata publication or final token assignment. The repository's legacy 5,280 supply settings are deliberately unchanged; the separate mint migration must enforce 720 across all mint paths.
+Registration readiness does not implement minting, reveal, contract deployment, public metadata publication or final token assignment. The current Genesis collection cap is 720. Archived development simulations retain their historical counts and cannot authorize production; all future mint paths must enforce the same 720 cap.

@@ -1,16 +1,20 @@
 import { createLaunchSnapshotSchema } from '@lammb/schema/launch';
 import { collection } from './config';
 
-export const launchSnapshotSchema = createLaunchSnapshotSchema(collection.supply);
+export const ascentSummitFt = 5280;
+export const launchSnapshotSchema = createLaunchSnapshotSchema(
+  collection.supply,
+  ascentSummitFt,
+);
 
 // The 5280 Ascent is a Mile High narrative, not a token-supply counter.
 export const ascentMilestones = {
   dataAuthority: 'STATIC_CANONICAL',
   value: [
     { id: 'GROUND', altitudeFt: 0 },
-    { id: 'HALFWAY', altitudeFt: 2640 },
-    { id: 'ONE_FOOT_LEFT', altitudeFt: 5279 },
-    { id: 'LAUNCH', altitudeFt: 5280 },
+    { id: 'HALFWAY', altitudeFt: ascentSummitFt / 2 },
+    { id: 'ONE_FOOT_LEFT', altitudeFt: ascentSummitFt - 1 },
+    { id: 'LAUNCH', altitudeFt: ascentSummitFt },
   ],
 } as const;
 

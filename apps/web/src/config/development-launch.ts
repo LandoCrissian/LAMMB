@@ -1,6 +1,7 @@
 import { collection } from '@lammb/collection/config';
 import {
   ascentMilestones,
+  ascentSummitFt,
   launchSnapshotSchema,
 } from '@lammb/collection/launch';
 import type { LaunchState, LaunchSnapshot } from '@lammb/schema/launch';
@@ -27,7 +28,7 @@ export const developmentLaunchSnapshots: Readonly<
     ...common,
     state: 'ASCENT',
     collector: { ...collector, state: 'sealed' },
-    currentAltitudeFt: { value: collection.supply - 1, dataAuthority },
+    currentAltitudeFt: { value: ascentSummitFt - 1, dataAuthority },
     milestones: ascentMilestones,
     milestoneHistory: {
       dataAuthority,
@@ -43,7 +44,7 @@ export const developmentLaunchSnapshots: Readonly<
     state: 'MINT',
     collector: { ...collector, state: 'sealed' },
     currentAltitudeFt: {
-      value: collection.supply,
+      value: ascentSummitFt,
       dataAuthority: 'STATIC_CANONICAL',
     },
     mintIntegration: 'NOT_CONNECTED',

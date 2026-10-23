@@ -78,7 +78,7 @@ describe('website foundation boundaries', () => {
     }
     expect(html).not.toContain('/art/sealed-specimen/');
     expect(html).not.toMatch(/Watch trailer|Mint now|Connect wallet/i);
-    expect(html).toContain('5280');
+    expect(html).toContain('720');
     expect(html).toContain('Robinhood Chain');
     expect(html).toContain('network gas applies');
   });

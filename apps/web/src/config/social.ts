@@ -7,8 +7,7 @@ export const socialDestinations = {
   home: {
     path: '/',
     title: 'LAMMB — Higher Together',
-    description:
-      '5280 LAMMBs. One species. Infinite personalities. Explore the sealed collection and the world beyond it. Mint unavailable.',
+    description: `${collection.supply} LAMMBs. One species. Infinite personalities. Explore the sealed collection and the world beyond it. Mint unavailable.`,
     image: '/social/home-v1.jpg',
     alt: 'LAMMB graffiti identity beside a sealed black industrial specimen. Sealed. For now. Higher together.',
   },
@@ -31,10 +30,9 @@ export const socialDestinations = {
   collection: {
     path: '/collection',
     title: 'The Collection / LAMMB',
-    description:
-      '5280 LAMMBs. Every story sealed. Your first encounter is an unrevealed specimen; individual characters come later. Mint unavailable.',
+    description: `${collection.supply} LAMMBs. Every story sealed. Your first encounter is an unrevealed specimen; individual characters come later. Mint unavailable.`,
     image: '/social/collection-v1.jpg',
-    alt: 'An unrevealed industrial specimen in an evidence frame beside 5280. Every story sealed.',
+    alt: 'An unrevealed industrial specimen in an evidence frame beside 720. Every story sealed.',
   },
 } as const;
 

@@ -56,7 +56,7 @@ export const questions = [
   {
     question: 'What is The 5280 Ascent?',
     answer:
-      'A deliberate launch narrative: 0 FT at the base, 2,640 FT halfway, 5,279 FT with one foot left, and 5280 FT at mint-launch altitude. Social engagement does not move the altitude.',
+      'A deliberate launch narrative: 0 FT at the base, 2,640 FT halfway, 5,279 FT with one foot left, and 5280 FT at mint-launch altitude. 5280 is Mile High heritage, independent of the 720 Genesis mint cap. Social engagement does not move the altitude.',
   },
   {
     question: 'How does Break the Seal work?',

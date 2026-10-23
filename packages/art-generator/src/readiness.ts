@@ -47,7 +47,9 @@ export function artReadiness(inputs: PlanInputs, specimenInputs: unknown[]) {
         index: null,
       });
     if (!specimenInputs.length || specimenInputs.length > collection.supply)
-      throw new Error('Readiness requires 1..5280 supplied logical specimens');
+      throw new Error(
+        `Readiness requires 1..${collection.supply} supplied logical specimens`,
+      );
     const indices = new Set<number>();
     const fingerprints = new Set<string>();
     for (const specimenInput of specimenInputs) {

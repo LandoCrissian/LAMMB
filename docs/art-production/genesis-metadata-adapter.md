@@ -48,6 +48,6 @@ node --max-old-space-size=1024 --experimental-strip-types packages/art-generator
   --output-root '<new exclusive disposable output directory>'
 ```
 
-This command has no execution flag, signer, wallet, network upload or production-store option. It reads sources sequentially, writes new adapted JSON and a disposable readiness journal, verifies deterministic replay of the adapter and byte-exact round trips, and stops before `REGISTERED`. Its source-memory floor is 2,048 MiB; workstation orchestration must also enforce the preferred start threshold and stable readings. Existing artwork is never rendered or rewritten by this adapter.
+This command has no execution flag, signer, wallet, network upload or production-store option. It reads sources sequentially, writes new adapted JSON and a disposable readiness journal, verifies deterministic replay of the adapter and byte-exact round trips, and stops before `REGISTERED`. It enforces a 4,096 MiB start gate before private input I/O, retains the 2,048 MiB in-flight safety floor, and requires stable workstation readings before launch. Existing artwork is never rendered or rewritten by this adapter.
 
 Historical metadata remains readable through the exact preserved Task070 extension. Unrelated historical formats are not guessed or migrated automatically. Unsupported lossless mappings fail with `GenesisError.code`, optional composition ID and field path. File paths are root-confined and symlinks/junctions rejected; source-size and parser budgets apply.

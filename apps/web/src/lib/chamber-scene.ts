@@ -254,7 +254,7 @@ export class ChamberScene {
       this.box(0.05, 2.0, 0.6, x, 1.8, 0, this.signal, specimen);
     this.label('smile', 1.55, 1.85, 0, 1.7, 0.777, specimen);
     this.label(
-      'SEALED / 5280\nCONFIDENCE IS NOT A SAFETY FEATURE',
+      'SEALED / 720\nCONFIDENCE IS NOT A SAFETY FEATURE',
       2.8,
       0.8,
       0,
