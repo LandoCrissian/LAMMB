@@ -129,12 +129,29 @@ try {
   const page = await context.newPage();
   const methods = [],
     requests = [];
-  let applied = false;
+  let applied = false,
+    signedIn = true;
   await page.addInitScript(() => {
     window.__genesisTestMethods = [];
+    const listeners = new Map();
+    window.__genesisEmitAccountChanged = () => {
+      for (const callback of listeners.get('accountsChanged') ?? []) callback();
+    };
     window.ethereum = {
+      on: (event, callback) => {
+        const existing = listeners.get(event) ?? [];
+        listeners.set(event, [...existing, callback]);
+      },
+      removeListener: (event, callback) => {
+        listeners.set(
+          event,
+          (listeners.get(event) ?? []).filter((c) => c !== callback),
+        );
+      },
       request: async ({ method }) => {
         window.__genesisTestMethods.push(method);
+        if (method === 'eth_requestAccounts')
+          window.__genesisEmitAccountChanged();
         if (method === 'eth_requestAccounts' || method === 'eth_accounts')
           return ['0x' + '1'.repeat(40)];
         if (method === 'personal_sign') return '0x' + 'a'.repeat(130);
@@ -158,8 +175,16 @@ try {
         message: 'Synthetic browser fixture only. No transaction.',
         expires: Date.now() + 300000,
       };
-    else if (action === 'verify') body = { verified: true };
-    else if (action === 'status')
+    else if (action === 'verify') {
+      signedIn = true;
+      body = { verified: true };
+    } else if (action === 'status') {
+      if (!signedIn)
+        return route.fulfill({
+          status: 401,
+          contentType: 'application/json',
+          body: '{"error":"SESSION_REQUIRED"}',
+        });
       body = {
         address: '0x' + '1'.repeat(40),
         founder: false,
@@ -167,12 +192,14 @@ try {
         wlAllowance: 0,
         gtdAllowance: 0,
       };
-    else if (action === 'apply') {
+    } else if (action === 'apply') {
       assert.equal(route.request().postDataJSON().consent, true);
       applied = true;
       body = { status: 'PENDING', duplicate: false };
-    } else if (action === 'logout') body = { signedOut: true };
-    else throw new Error('Unexpected API action');
+    } else if (action === 'logout') {
+      signedIn = false;
+      body = { signedOut: true };
+    } else throw new Error('Unexpected API action');
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
@@ -187,14 +214,13 @@ try {
     .getByRole('button', { name: 'Verify wallet & check status' })
     .click();
   const submit = page.getByRole('button', { name: 'Submit WL application' });
+  await submit.waitFor({ state: 'visible' });
   assert.equal(await submit.isDisabled(), true);
   await page.getByRole('checkbox').check();
   await submit.click();
-  assert(
-    await page
-      .getByText('WL application submitted for review. No mint is reserved.')
-      .isVisible(),
-  );
+  await page
+    .getByText('WL application submitted for review. No mint is reserved.')
+    .waitFor({ state: 'visible' });
   assert.equal(
     await page.getByRole('button', { name: 'Submit WL application' }).count(),
     0,
@@ -211,6 +237,16 @@ try {
     methods,
     requests,
     approved: false,
+  });
+  await page.evaluate(() => window.__genesisEmitAccountChanged());
+  await page
+    .getByRole('button', { name: 'Verify wallet & check status' })
+    .waitFor({ state: 'visible' });
+  assert.equal(await page.getByRole('checkbox').count(), 0);
+  assert.equal(requests.filter((r) => r.action === 'logout').length, 2);
+  report.checks.push({
+    fixture: 'ACCOUNT_CHANGE_REVOKES_SESSION',
+    passed: true,
   });
   await context.close();
   assert.deepEqual(report.errors, []);
