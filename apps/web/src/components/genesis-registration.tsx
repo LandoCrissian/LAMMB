@@ -263,6 +263,7 @@ type RecordRow = {
 export function GenesisAdmin() {
   const [enabled, setEnabled] = useState(false);
   const [records, setRecords] = useState<RecordRow[] | null>(null);
+  const [privateVerified, setPrivateVerified] = useState(false);
   const [notice, setNotice] = useState(
     'Administrator access is disabled until separately configured and approved.',
   );
@@ -273,7 +274,7 @@ export function GenesisAdmin() {
   const [units, setUnits] = useState(1);
   const [grantKey, setGrantKey] = useState('');
   const [kind, setKind] = useState('INVITATION');
-  useWalletSessionReset(records !== null);
+  useWalletSessionReset(records !== null || privateVerified);
   useEffect(() => {
     void api('config')
       .then((c) => setEnabled(c.adminEnabled))
@@ -306,6 +307,7 @@ export function GenesisAdmin() {
         onClick={() =>
           void run(async () => {
             await signIn('admin');
+            setPrivateVerified(false);
             setRecords((await api('admin-records')).records);
             setNotice(
               'Administrator verified. Private session expires in 15 minutes.',
@@ -315,6 +317,42 @@ export function GenesisAdmin() {
       >
         Verify administrator wallet
       </button>
+      <p>
+        Owner-nominated founder or invitation wallet? Prove control privately
+        without administrator privileges or a public WL application.
+      </p>
+      <button
+        className="genesis-button"
+        disabled={!enabled || busy}
+        onClick={() =>
+          void run(async () => {
+            await signIn('collector');
+            await api('status');
+            setRecords(null);
+            setPrivateVerified(true);
+            setNotice(
+              'Wallet control verified privately. An administrator must separately review allocation evidence. This did not grant administrator access or mint an NFT.',
+            );
+          })
+        }
+      >
+        Verify private invitation wallet
+      </button>
+      {privateVerified ? (
+        <button
+          className="genesis-text-button"
+          disabled={busy}
+          onClick={() =>
+            void run(async () => {
+              await api('logout', {});
+              setPrivateVerified(false);
+              setNotice('Signed out.');
+            })
+          }
+        >
+          Sign out private wallet
+        </button>
+      ) : null}
       {records ? (
         <>
           <div className="genesis-admin-form">

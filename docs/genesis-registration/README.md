@@ -25,6 +25,13 @@ path. The administrator assigns verified individual invitations or reviewed
 partner entitlements. Founder has no public application and can appear in
 only the Stage 1 export.
 
+The owner may nominate private verification wallets in server configuration.
+While public registration is closed, these wallets can prove control through
+the separate private verification button at `/admin/genesis`. They receive a
+collector-purpose session only: no administrator role and no WL application.
+This permits founder/invitation ownership verification before public intake.
+An administrator still must separately review allocation evidence.
+
 ## Server boundaries
 
 Node route handlers at `/api/genesis/[action]` call one service shared by tests.
@@ -61,7 +68,9 @@ Production CSP and recovery/RAM gates are unchanged.
 
 Rate limits are stored transactionally, HMAC-keyed, and enforced before signatures:
 10 challenges per connection/minute, 5 per wallet/minute, 20 verification attempts
-per connection/minute. Only Netlify's platform-set connection IP is trusted when
+per connection/minute. Request handlers additionally limit applications to
+10 per connection/minute and other requests to 120 per action/minute.
+Only Netlify's platform-set connection IP is trusted when
 `NETLIFY=true`; other hosts use a shared conservative bucket. Do not enable on
 another host until its trusted gateway identity has been reviewed. Wallet ownership
 does not prevent multi-wallet/Sybil abuse; add monitored gateway limits/challenge

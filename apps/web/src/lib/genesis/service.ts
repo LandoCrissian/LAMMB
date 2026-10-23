@@ -21,6 +21,7 @@ export interface ServiceConfig {
   adminWallets: string[];
   rateSecret: string;
   approvedPartners: Record<string, string>;
+  privateVerificationWallets: string[];
 }
 export class RegistrationService {
   constructor(
@@ -28,11 +29,14 @@ export class RegistrationService {
     readonly config: ServiceConfig,
     private clock = () => Date.now(),
   ) {}
-  gate(purpose: 'collector' | 'admin') {
+  gate(purpose: 'collector' | 'admin', address?: string) {
     if (
       !(purpose === 'admin'
         ? this.config.adminEnabled
-        : this.config.publicEnabled)
+        : this.config.publicEnabled ||
+          (this.config.adminEnabled &&
+            address !== undefined &&
+            this.config.privateVerificationWallets.includes(address)))
     )
       throw new GenesisError('REGISTRATION_INACTIVE', 503);
   }
@@ -72,8 +76,8 @@ export class RegistrationService {
     purpose: 'collector' | 'admin',
     client: string,
   ) {
-    this.gate(purpose);
     const address = wallet(input);
+    this.gate(purpose, address);
     if (purpose === 'admin' && !this.config.adminWallets.includes(address))
       throw new GenesisError('ADMIN_FORBIDDEN', 403);
     const now = this.clock(),
@@ -125,7 +129,7 @@ export class RegistrationService {
       return s.challenges.splice(index, 1)[0]!;
     });
     if (!challenge) throw new GenesisError('CHALLENGE_INVALID', 401);
-    this.gate(challenge.purpose);
+    this.gate(challenge.purpose, challenge.address);
     if (
       challenge.purpose === 'admin' &&
       !this.config.adminWallets.includes(challenge.address)
@@ -179,7 +183,7 @@ export class RegistrationService {
       (c) => c.digest === hash(token) && c.expires > this.clock(),
     );
     if (!entry) throw new GenesisError('SESSION_REQUIRED', 401);
-    this.gate(entry.purpose);
+    this.gate(entry.purpose, entry.address);
     if (
       admin &&
       (entry.purpose !== 'admin' ||

@@ -53,6 +53,7 @@ async function setup() {
     adminWallets: [admin.address.toLowerCase()],
     rateSecret: 'b'.repeat(64),
     approvedPartners: { 'approved-project': proof },
+    privateVerificationWallets: [],
   };
   const service = new RegistrationService(store, config, () => now);
   async function login(
@@ -277,6 +278,31 @@ describe('signature ownership and sessions', () => {
   });
 });
 describe('private applications, founder and approved entitlements', () => {
+  it('verifies an owner-nominated founder privately without public signup or admin privileges', async () => {
+    const s = await setup();
+    s.config.publicEnabled = false;
+    s.config.privateVerificationWallets = [s.founder.address.toLowerCase()];
+    const token = await s.login(s.founder);
+    expect((await s.service.status(token)).founder).toBe(false);
+    await expect(s.service.apply(token, true)).rejects.toThrow(
+      'REGISTRATION_INACTIVE',
+    );
+    await expect(s.service.adminList(token)).rejects.toThrow('ADMIN_FORBIDDEN');
+    await expect(
+      s.service.challenge(s.collector.address, 'collector', 'other'),
+    ).rejects.toThrow('REGISTRATION_INACTIVE');
+    await s.service.decide(s.adminToken, {
+      address: s.founder.address,
+      action: 'FOUNDER',
+      evidence: proof,
+    });
+    expect((await s.service.export(s.adminToken, 'FOUNDER')).units).toBe(48);
+    expect((await s.service.status(token)).founder).toBe(true);
+    s.config.privateVerificationWallets = [];
+    await expect(s.service.status(token)).rejects.toThrow(
+      'REGISTRATION_INACTIVE',
+    );
+  });
   it('requires ownership, consent and a collector session; application is pending, never approved', async () => {
     const s = await setup(),
       token = await s.login();

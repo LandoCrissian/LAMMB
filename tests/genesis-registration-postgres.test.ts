@@ -52,6 +52,7 @@ describe.skipIf(!database)('real PostgreSQL registration transactions', () => {
       adminWallets: [admin],
       rateSecret: 'a'.repeat(64),
       approvedPartners: {},
+      privateVerificationWallets: [],
     };
     service = new RegistrationService(store, config);
     other = new RegistrationService(new PostgresStore(otherPool), config);

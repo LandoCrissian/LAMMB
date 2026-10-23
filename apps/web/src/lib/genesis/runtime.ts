@@ -27,6 +27,12 @@ export function runtimeConfig(env: Record<string, string | undefined>) {
     .split(',')
     .filter(Boolean)
     .map(wallet);
+  const privateVerificationWallets = (
+    env.GENESIS_PRIVATE_VERIFICATION_WALLETS ?? ''
+  )
+    .split(',')
+    .filter(Boolean)
+    .map(wallet);
   if (adminEnabled && !adminWallets.length)
     throw new GenesisError('ADMIN_CONFIGURATION_REQUIRED', 503);
   let approvedPartners: Record<string, string>;
@@ -63,6 +69,7 @@ export function runtimeConfig(env: Record<string, string | undefined>) {
       adminWallets,
       rateSecret: secret,
       approvedPartners,
+      privateVerificationWallets,
     } satisfies ServiceConfig,
     databaseUrl: db,
     ssl:
