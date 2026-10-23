@@ -22,6 +22,8 @@ Framework dependency advisory gate: **PASS in package audit; runtime CI required
 
 ## Verification and evidence
 
+Current social metadata points to `*-v2.jpg` for all four 720-card variants, giving crawlers a new asset URL. Original v1 JPEG bytes remain as historical assets; they are not selected by current metadata. Source artwork is unchanged.
+
 Run `node scripts/audit-genesis-supply.mjs --check` to check the deterministic inventory. It fails on an unexplained live-site retired-supply reference. The historical development engine/specification retains its original 5280 simulation envelope/config to preserve byte-pinned approvals and golden results; production requests additionally require exactly 720. These historical logical simulations cannot assign Genesis artwork, rarity or supply.
 
 Run `node scripts/verify-launch-network.mjs` for read-only live identity/discovery observations. The checked-in [2026-10-23 receipt](network-evidence.json) includes response digests and scope. Official documentation: [Robinhood network configuration](https://docs.robinhood.com/chain/connecting/), [OpenSea chain API](https://docs.opensea.io/reference/get_chains), [metadata standards](https://docs.opensea.io/docs/metadata-standards). Network identity is not deployed-contract correctness.

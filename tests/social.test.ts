@@ -57,7 +57,7 @@ describe('social route metadata', () => {
       description: 'A fictional research dossier.',
       images: [
         {
-          url: 'https://lammb.fun/social/universe-v1.jpg',
+          url: 'https://lammb.fun/social/universe-v2.jpg',
           width: 1200,
           height: 630,
         },

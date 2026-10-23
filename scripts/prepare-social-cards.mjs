@@ -203,7 +203,7 @@ const cards = [
 ];
 const assets = [];
 for (const card of cards) {
-  const filename = `${card.id}-v1.jpg`;
+  const filename = `${card.id}-v2.jpg`;
   await writeFile(path.join(sourceOutput, `${card.id}.svg`), card.svg);
   const bytes = await sharp(Buffer.from(card.svg))
     .flatten({ background: '#080B09' })

@@ -374,7 +374,7 @@
     {
       "path": "docs/launch-recovery/README.md",
       "baselineLines": [],
-      "currentLines": [9, 25],
+      "currentLines": [9, 27],
       "disposition": "RECOVERY_REVIEW_OR_SPECIFICATION"
     },
     {

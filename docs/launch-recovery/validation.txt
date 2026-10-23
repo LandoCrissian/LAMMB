@@ -93,11 +93,11 @@ Generating route types...
 
  Test Files  25 passed (25)
       Tests  922 passed (922)
-   Start at  10:52:10
-   Duration  48.13s (tests 84%, import 12%, transform 4%)
+   Start at  10:58:33
+   Duration  44.45s (tests 84%, import 12%, transform 4%)
 
-    Isolate  25 workers spawned · ~119ms startup each (spawn + environment, per file)
-             at least ~2.85s faster with isolate: false — reuses workers across files instead of one per file
+    Isolate  25 workers spawned · ~116ms startup each (spawn + environment, per file)
+             at least ~2.77s faster with isolate: false — reuses workers across files instead of one per file
 
 
 === Production-mode local build and social checks (no deployment) ===
@@ -110,18 +110,18 @@ Generating route types...
 > next build
 
 ▲ Next.js 16.4.3 (Turbopack)
-✓ Running next.config.ts took 181ms
+✓ Running next.config.ts took 179ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 2.6s
+✓ Compiled successfully in 430ms
   Running TypeScript ...
-  Finished TypeScript in 3.3s ...
+  Finished TypeScript in 2.7s ...
   Collecting page data using 15 workers ...
   Generating static pages using 15 workers (0/23) ...
   Generating static pages using 15 workers (5/23) 
   Generating static pages using 15 workers (11/23) 
   Generating static pages using 15 workers (17/23) 
-✓ Generating static pages using 15 workers (23/23) in 688ms
+✓ Generating static pages using 15 workers (23/23) in 636ms
   Finalizing page optimization ...
 
 Route (app)

@@ -16,7 +16,7 @@
     {
       "id": "home",
       "route": "/",
-      "path": "/social/home-v1.jpg",
+      "path": "/social/home-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
@@ -46,7 +46,7 @@
     {
       "id": "universe",
       "route": "/universe",
-      "path": "/social/universe-v1.jpg",
+      "path": "/social/universe-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
@@ -68,7 +68,7 @@
     {
       "id": "world",
       "route": "/world",
-      "path": "/social/world-v1.jpg",
+      "path": "/social/world-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
@@ -88,7 +88,7 @@
     {
       "id": "collection",
       "route": "/collection",
-      "path": "/social/collection-v1.jpg",
+      "path": "/social/collection-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
