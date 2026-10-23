@@ -1,6 +1,7 @@
 import { randomBytes } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { privateKeyToAccount } from 'viem/accounts';
+import { parseSiweMessage, validateSiweMessage } from 'viem/siwe';
 import {
   emptyState,
   prune,
@@ -109,6 +110,30 @@ describe('Genesis stage policy', () => {
   });
 });
 describe('signature ownership and sessions', () => {
+  it('uses standard parsed SIWE fields and a checksummed wallet for wallet interoperability', async () => {
+    const s = await setup();
+    const c = await s.service.challenge(
+      s.collector.address,
+      'collector',
+      'standard-message',
+    );
+    const parsed = parseSiweMessage(c.message);
+    expect(parsed.address).toBe(s.collector.address);
+    expect(parsed.scheme).toBe('https');
+    expect(parsed.chainId).toBe(4663);
+    expect(parsed.uri).toBe('https://lammb.fun/mint');
+    expect(
+      validateSiweMessage({
+        message: parsed,
+        address: s.collector.address,
+        domain: 'lammb.fun',
+        scheme: 'https',
+      }),
+    ).toBe(true);
+    expect(
+      validateSiweMessage({ message: parsed, domain: 'evil.example' }),
+    ).toBe(false);
+  });
   it('binds origin, chain, purpose, random nonce, expiry and exact address', async () => {
     const s = await setup();
     const c = await s.service.challenge(
@@ -359,6 +384,7 @@ describe('private applications, founder and approved entitlements', () => {
     const output = await s.service.export(s.adminToken, 'WL');
     expect(output.csv).toBe(s.collector.address.toLowerCase() + ',2,0\r\n');
     expect(output.sha256).toBe(hash(output.csv));
+    expect(output.csv.endsWith(String.fromCharCode(13, 10))).toBe(true);
     expect(output.units).toBe(2);
     expect(output.rows).toBe(1);
     await s.service.decide(s.adminToken, {

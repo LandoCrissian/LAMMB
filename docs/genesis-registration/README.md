@@ -44,7 +44,8 @@ The state is capped at 5,000 wallet records, 1,000 live challenges, 2,000 sessio
 5,000 rate buckets, 20,000 audit entries and 8 MiB encoded data. Capacity failures
 close submissions. Do not scale these bounds without a measured migration.
 
-Ownership uses EIP-191 message recovery through viem, with SIWE-style domain,
+Ownership uses viem's SIWE message builder (including checksummed addresses)
+and EIP-191 message recovery, with domain,
 URI, chain 4663, purpose, random nonce, issued time and five-minute expiration.
 The server verifies the exact stored message; clients cannot provide a replacement.
 A separate random browser-binding cookie prevents challenge transfer/login CSRF.

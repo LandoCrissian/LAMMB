@@ -93,6 +93,9 @@ try {
         .getByText(/Only at the official OpenSea collection linked above/)
         .isVisible(),
     );
+    await page.evaluate(() =>
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' }),
+    );
     await page.screenshot({
       path: path.join(output, 'genesis-' + width + '.png'),
       fullPage: true,

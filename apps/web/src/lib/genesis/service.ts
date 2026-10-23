@@ -1,5 +1,6 @@
 import { createHash, createHmac, randomBytes } from 'node:crypto';
 import { verifyMessage } from 'viem';
+import { createSiweMessage } from 'viem/siwe';
 import { GENESIS } from './policy';
 import {
   GenesisError,
@@ -85,19 +86,19 @@ export class RegistrationService {
       binding = random();
     const expires = now + 5 * 60_000;
     const nonce = random();
-    const message = [
-      `${new URL(this.config.origin).host} wants you to sign in with your Ethereum account:`,
-      address,
-      '',
-      `LAMMB Genesis ${purpose} access. No mint, transaction or spending approval.`,
-      '',
-      `URI: ${this.config.origin}/mint`,
-      'Version: 1',
-      `Chain ID: ${GENESIS.chainId}`,
-      `Nonce: ${nonce}`,
-      `Issued At: ${new Date(now).toISOString()}`,
-      `Expiration Time: ${new Date(expires).toISOString()}`,
-    ].join('\n');
+    const origin = new URL(this.config.origin);
+    const message = createSiweMessage({
+      address: address as `0x${string}`,
+      scheme: origin.protocol.slice(0, -1),
+      domain: origin.host,
+      statement: `LAMMB Genesis ${purpose} access. No mint, transaction or spending approval.`,
+      uri: this.config.origin + '/mint',
+      version: '1',
+      chainId: GENESIS.chainId,
+      nonce,
+      issuedAt: new Date(now),
+      expirationTime: new Date(expires),
+    });
     const allowed = await this.store.transaction((s) => {
       prune(s, now);
       const ipOk = this.rate(s, 'challenge-ip:' + client, 10, now);
