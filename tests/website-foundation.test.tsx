@@ -111,6 +111,11 @@ describe('website foundation boundaries', () => {
         (match) => match[1],
       );
       for (const href of hrefs) {
+        if (
+          _route === '/mint' &&
+          href === 'https://opensea.io/collection/lammbs'
+        )
+          continue; // The newly authorized collection information link, never a mint.
         expect(href?.startsWith('/') || href?.startsWith('#')).toBe(true);
         if (href?.startsWith('/'))
           expect([
@@ -177,7 +182,8 @@ describe('website foundation boundaries', () => {
   });
 
   it('distinguishes authorized sealed previews from final artwork and keeps character art unavailable', () => {
-    for (const Page of [Home, Vault, Collection, Mint]) {
+    // Mint now presents the stage plan rather than the historical specimen preview.
+    for (const Page of [Home, Vault, Collection]) {
       const html = markup(Page);
       expect(html).toContain('Concept preview / not final NFT artwork');
       expect(html).toContain(

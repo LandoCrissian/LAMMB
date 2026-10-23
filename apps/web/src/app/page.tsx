@@ -77,7 +77,7 @@ export default function Home() {
               </span>
             </Link>
             <Link className="cinema-secondary" href="/mint">
-              Mint details{' '}
+              Genesis stages{' '}
               <span aria-hidden="true">
                 <Icon />
               </span>

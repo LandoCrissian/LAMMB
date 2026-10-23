@@ -3,7 +3,7 @@
   "scope": "All tracked and nonignored source/docs/schema/test text, excluding dependency lockfile and this generated inventory. Binary assets are covered by provenance and visual review; numeric substrings inside hashes/decimal coordinates are excluded.",
   "policy": "Current Genesis mint cap is 720. Remaining 5280 references are heritage, retired development evidence, negative tests or explicit migration explanations. Archived byte-pinned JSON/frequencies are preserved and cannot authorize production.",
   "baselineFilesScanned": 295,
-  "currentFilesScanned": 317,
+  "currentFilesScanned": 332,
   "files": [
     {
       "path": "apps/web/public/social/provenance.json",

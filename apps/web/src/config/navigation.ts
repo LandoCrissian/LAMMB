@@ -25,5 +25,5 @@ export const navigation = [
     detail: 'Your future collection',
   },
   { href: '/faq', label: 'FAQ', detail: 'Find your answers' },
-  { href: '/mint', label: 'Mint', detail: 'Availability & details' },
+  { href: '/mint', label: 'Mint', detail: 'Four stages / 720 Genesis' },
 ] as const;

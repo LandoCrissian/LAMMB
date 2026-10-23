@@ -192,6 +192,18 @@ async function preview(cwd, baselineOnly) {
         await command(
           process.execPath,
           [
+            path.join(root, 'scripts/verify-genesis-browser.mjs'),
+            '--playwright-module',
+            driver,
+            '--browser',
+            browser,
+          ],
+          cwd,
+        );
+      if (!baselineOnly)
+        await command(
+          process.execPath,
+          [
             path.join(root, 'scripts/verify-chamber-browser.mjs'),
             '--playwright-module',
             driver,
