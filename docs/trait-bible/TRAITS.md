@@ -1,3 +1,5 @@
+> Historical development proposal and simulation evidence. The former 5,280 model is retired; current Genesis is 720 (690 ordinary, 24 Ultimate, six grails). These unchanged proposed counts do not allocate Genesis traits, rarity or mint capacity.
+
 # Complete trait definitions — proposal 1.1.0
 
 All 66 values are PROPOSED. No artwork or count is owner-approved. One selected configuration per existing engine category; headwear, materials and effects are facets, not extra independent draws.

@@ -88,7 +88,7 @@ describe('classified fictional universe', () => {
     expect(labFiles[1].narrative).toContain('motivational podcast');
     expect(labFiles[1].narrative).toContain('exit liquidity');
     expect(labFiles[2].narrative).toContain('skeletal anomalies');
-    expect(labFiles[3].narrative).toContain('5280');
+    expect(labFiles[3].narrative).toContain('720');
     expect(labFiles[3].narrative).toContain('Robinhood Chain');
   });
   it('keeps every facility page honest about fiction, unavailable entertainment and mint independence', () => {

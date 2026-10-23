@@ -4,8 +4,11 @@ import type {
   LaunchState,
 } from '@lammb/schema/launch';
 import { compatibleCollectorStates } from '@lammb/schema/launch';
-import { collection } from './config';
-import { launchSnapshotSchema, recoveryMilestones } from './launch';
+import {
+  launchSnapshotSchema,
+  recoveryMilestones,
+  ascentSummitFt,
+} from './launch';
 
 const numberLabel = (value: number) => value.toLocaleString('en-US');
 const altitudeLabel = (value: number) => `${numberLabel(value)} FT`;
@@ -113,7 +116,7 @@ function altitudeVisual(
     value: current,
     valueLabel:
       current === null ? 'ALTITUDE UNAVAILABLE' : altitudeLabel(current),
-    percent: current === null ? null : (current / collection.supply) * 100,
+    percent: current === null ? null : (current / ascentSummitFt) * 100,
     dataLabel:
       snapshot.state === 'PRE_ASCENT'
         ? 'Static canonical / initial altitude'
@@ -170,7 +173,7 @@ export function createLaunchPresentation(input: unknown): LaunchPresentation {
       return {
         ...base,
         title:
-          snapshot.currentAltitudeFt.value === collection.supply - 1
+          snapshot.currentAltitudeFt.value === ascentSummitFt - 1
             ? 'ONE FOOT LEFT.'
             : 'THE ASCENT.',
         detail:

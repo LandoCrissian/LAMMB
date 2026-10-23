@@ -71,7 +71,7 @@ describe('validated launch presentations', () => {
     },
   );
 
-  it('binds halfway, the final pause and mint altitude to canonical supply', () => {
+  it('keeps heritage altitude independent of Genesis supply', () => {
     const halfway = createLaunchPresentation(atAltitude(2640));
     expect(halfway.visual.kind).toBe('altitude');
     if (halfway.visual.kind !== 'altitude') throw new Error('Invalid view');
@@ -146,16 +146,19 @@ describe('validated launch presentations', () => {
     ).toBe(false);
   });
 
-  it.each([-1, 5281, 1.5])('rejects invalid recovered count %s', (value) => {
-    expect(
-      launchSnapshotSchema.safeParse({
-        ...recovery,
-        recoveredCount: { value, dataAuthority: fixtureAuthority },
-      }).success,
-    ).toBe(false);
-  });
+  it.each([-1, 721, 5280, 1.5])(
+    'rejects invalid recovered count %s',
+    (value) => {
+      expect(
+        launchSnapshotSchema.safeParse({
+          ...recovery,
+          recoveredCount: { value, dataAuthority: fixtureAuthority },
+        }).success,
+      ).toBe(false);
+    },
+  );
 
-  it.each([0, 1000, 2640, 4000, 5000, 5279, 5280])(
+  it.each([0, 360, 719, 720])(
     'accepts bounded fixture count %s without changing recovery state',
     (value) => {
       const view = createLaunchPresentation({
@@ -177,7 +180,7 @@ describe('validated launch presentations', () => {
       kind: 'recovery',
       value: null,
       percent: null,
-      valueLabel: '— / 5,280',
+      valueLabel: '— / 720',
     });
     for (const dataAuthority of [
       { kind: 'FUTURE_ONCHAIN', status: 'UNAVAILABLE' },

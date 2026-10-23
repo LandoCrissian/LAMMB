@@ -1,5 +1,7 @@
 # LAMMB
 
+Genesis launch recovery status and remaining owner gates: [issue 34 readiness matrix](docs/launch-recovery/README.md).
+
 LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch experience built exclusively for Robinhood Chain mainnet. Task 005 builds the responsive website foundation while preserving Task 004 art ingestion, Task 003 offline construction and Task 002 launch/data-authority/fairness boundaries. Mint, country registration and collector profiles remain unavailable.
 
 ## Canonical product facts
@@ -10,7 +12,7 @@ LAMMB means **Let's All Make Money Bitches**. It is an NFT collection and launch
 | Domain                    | lammb.fun                                             |
 | Network                   | Robinhood Chain mainnet                               |
 | Chain ID                  | 4663                                                  |
-| Collection supply         | 5,280                                                 |
+| Collection supply         | 720                                                   |
 | Primary mint price        | 0 ETH / free mint; network gas still applies          |
 | Marketplace / drop target | OpenSea                                               |
 | Launch model              | Delayed reveal                                        |

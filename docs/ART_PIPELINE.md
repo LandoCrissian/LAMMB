@@ -25,7 +25,7 @@ Weights drive integer selection conditioned by compatibility, uniqueness and exa
 
 ## Locked generation requirements
 
-The complete production collection must eventually generate **5,280** art/metadata pairs, using canonical supply rather than a second executable constant. Task 003 generates only 100 logical development specimens. Identical normalized inputs, engine version and seed produce byte-identical ordered logical artifacts. A future approved renderer must extend that guarantee to final image bytes.
+The complete production collection must eventually contain **720** accepted Genesis art/metadata pairs, using canonical supply rather than a second executable constant. Task 003 generates only 100 logical development specimens. Identical normalized inputs, engine version and seed produce byte-identical ordered logical artifacts. A future approved renderer must extend that guarantee to final image bytes.
 
 The recipe records input hashes, source reference, generator version, seed, construction PRNG, canonical ordering/encoding, logical renderer version and attempt budgets. No ambient randomness, wall-clock timestamp, directory enumeration or manual substitution influences deterministic artifacts. Final pixel rendering/codec versions and immutable production source/runtime evidence still require approval.
 

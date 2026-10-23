@@ -1,3 +1,5 @@
+> Historical development proposal and simulation evidence. The former 5,280 model is retired; current Genesis is 720 (690 ordinary, 24 Ultimate, six grails). These unchanged proposed counts do not allocate Genesis traits, rarity or mint capacity.
+
 # Proposed and observed collection frequencies
 
 All proposed per-category totals cover 5280; all approved counts remain unset. EXACT_TOTAL values are hard quotas after reserved contributions are subtracted. For WEIGHTED_TARGET, proposed totals are owner preferences and selectionWeight is a raw draw weight; neither is the compatibility-conditioned expected final count. Observed totals belong to this exact recipe only. See [the adversarial frequency audit](ADVERSARIAL_REVIEW.md#frequency-audit) for historical 240/82 evidence. [Task 015B results](FINAL_REFINEMENT.md) cover current bundles, silhouettes, provisional dental preferences and seed sensitivity. Do not substitute these tables for owner frequency approval or a custom rarity ranking.

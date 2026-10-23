@@ -1,3 +1,5 @@
+> Historical development proposal and simulation evidence. The former 5,280 model is retired; current Genesis is 720 (690 ordinary, 24 Ultimate, six grails). These unchanged proposed counts do not allocate Genesis traits, rarity or mint capacity.
+
 # LAMMB Master Trait Bible — production specification 1.1.0
 
 This is the complete proposed design and production handoff for **5280 LAMMBs**.

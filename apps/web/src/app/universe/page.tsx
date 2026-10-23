@@ -78,7 +78,7 @@ export default function Universe() {
         ))}
       </section>
       <div className="labs-overview-foot">
-        <span>5280 SEALED / ZERO USEFUL QUALIFICATIONS</span>
+        <span>720 SEALED / ZERO USEFUL QUALIFICATIONS</span>
         <Link href="/universe/archive/000">
           Start with FILE 000 <Icon name="right" />
         </Link>
