@@ -30,6 +30,16 @@ export class RegistrationService {
     readonly config: ServiceConfig,
     private clock = () => Date.now(),
   ) {}
+  private challengeGate(purpose: 'collector' | 'admin') {
+    // Nonces disclose no membership. Private access is checked only after a
+    // valid signature, before any wallet record/session is created.
+    if (
+      !(purpose === 'admin'
+        ? this.config.adminEnabled
+        : this.config.publicEnabled || this.config.adminEnabled)
+    )
+      throw new GenesisError('REGISTRATION_INACTIVE', 503);
+  }
   gate(purpose: 'collector' | 'admin', address?: string) {
     if (
       !(purpose === 'admin'
@@ -78,9 +88,7 @@ export class RegistrationService {
     client: string,
   ) {
     const address = wallet(input);
-    this.gate(purpose, address);
-    if (purpose === 'admin' && !this.config.adminWallets.includes(address))
-      throw new GenesisError('ADMIN_FORBIDDEN', 403);
+    this.challengeGate(purpose);
     const now = this.clock(),
       id = random(),
       binding = random();
@@ -102,7 +110,12 @@ export class RegistrationService {
     const allowed = await this.store.transaction((s) => {
       prune(s, now);
       const ipOk = this.rate(s, 'challenge-ip:' + client, 10, now);
-      const walletOk = this.rate(s, 'challenge-wallet:' + address, 5, now);
+      const walletOk = this.rate(
+        s,
+        'challenge-wallet:' + client + ':' + address,
+        5,
+        now,
+      );
       if (!ipOk || !walletOk) return false;
       if (s.challenges.length >= 1000) return false;
       s.challenges.push({
@@ -130,12 +143,7 @@ export class RegistrationService {
       return s.challenges.splice(index, 1)[0]!;
     });
     if (!challenge) throw new GenesisError('CHALLENGE_INVALID', 401);
-    this.gate(challenge.purpose, challenge.address);
-    if (
-      challenge.purpose === 'admin' &&
-      !this.config.adminWallets.includes(challenge.address)
-    )
-      throw new GenesisError('ADMIN_FORBIDDEN', 403);
+    this.challengeGate(challenge.purpose);
     let valid = false;
     try {
       valid = await verifyMessage({
@@ -147,6 +155,12 @@ export class RegistrationService {
       /* A malformed signature is an authentication failure. */
     }
     if (!valid) throw new GenesisError('SIGNATURE_INVALID', 401);
+    this.gate(challenge.purpose, challenge.address);
+    if (
+      challenge.purpose === 'admin' &&
+      !this.config.adminWallets.includes(challenge.address)
+    )
+      throw new GenesisError('ADMIN_FORBIDDEN', 403);
     const token = random(),
       expires = now + (challenge.purpose === 'admin' ? 15 : 30) * 60_000;
     await this.store.transaction((s) => {

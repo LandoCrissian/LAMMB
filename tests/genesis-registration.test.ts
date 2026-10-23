@@ -242,8 +242,14 @@ describe('signature ownership and sessions', () => {
   it('rejects nonadministrator sign-in and privilege escalation', async () => {
     const s = await setup(),
       token = await s.login();
+    const c = await s.service.challenge(s.collector.address, 'admin', 'client');
     await expect(
-      s.service.challenge(s.collector.address, 'admin', 'client'),
+      s.service.verify(
+        c.id,
+        c.binding,
+        await s.collector.signMessage({ message: c.message }),
+        'client',
+      ),
     ).rejects.toThrow('ADMIN_FORBIDDEN');
     await expect(s.service.adminList(token)).rejects.toThrow('ADMIN_FORBIDDEN');
     await expect(
@@ -268,8 +274,18 @@ describe('signature ownership and sessions', () => {
     const s = await setup(),
       token = await s.login();
     s.config.publicEnabled = false;
+    const c = await s.service.challenge(
+      s.collector.address,
+      'collector',
+      'client',
+    );
     await expect(
-      s.service.challenge(s.collector.address, 'collector', 'client'),
+      s.service.verify(
+        c.id,
+        c.binding,
+        await s.collector.signMessage({ message: c.message }),
+        'client',
+      ),
     ).rejects.toThrow('REGISTRATION_INACTIVE');
     await expect(s.service.apply(token, true)).rejects.toThrow(
       'REGISTRATION_INACTIVE',
@@ -278,11 +294,14 @@ describe('signature ownership and sessions', () => {
       'REGISTRATION_INACTIVE',
     );
     s.config.adminEnabled = false;
+    await expect(
+      s.service.challenge(s.collector.address, 'collector', 'client'),
+    ).rejects.toThrow('REGISTRATION_INACTIVE');
     await expect(s.service.adminList(s.adminToken)).rejects.toThrow(
       'REGISTRATION_INACTIVE',
     );
   });
-  it('uses durable rate limits and cannot reset them by repeated failed logins', async () => {
+  it('persists per-client limits without letting an attacker lock out another connection', async () => {
     const s = await setup();
     for (let i = 0; i < 5; i++)
       await s.service.challenge(
@@ -291,8 +310,11 @@ describe('signature ownership and sessions', () => {
         'same-client',
       );
     await expect(
-      s.service.challenge(s.collector.address, 'collector', 'different-client'),
+      s.service.challenge(s.collector.address, 'collector', 'same-client'),
     ).rejects.toThrow('RATE_LIMITED');
+    await expect(
+      s.service.challenge(s.collector.address, 'collector', 'different-client'),
+    ).resolves.toBeDefined();
     expect(s.store.state.rates.every((r) => /^[a-f0-9]{64}$/.test(r.key))).toBe(
       true,
     );
@@ -300,6 +322,41 @@ describe('signature ownership and sessions', () => {
     await expect(
       s.service.challenge(s.collector.address, 'collector', 'same-client'),
     ).resolves.toBeDefined();
+  });
+  it('does not expose administrator or private-wallet membership before ownership proof', async () => {
+    const s = await setup(),
+      attacker = account();
+    s.config.publicEnabled = false;
+    s.config.privateVerificationWallets = [s.founder.address.toLowerCase()];
+    for (const [candidate, purpose] of [
+      [s.admin, 'admin'],
+      [s.collector, 'admin'],
+      [s.founder, 'collector'],
+      [s.collector, 'collector'],
+    ] as const) {
+      const c = await s.service.challenge(
+        candidate.address,
+        purpose,
+        'privacy-client',
+      );
+      expect(Object.keys(c).sort()).toEqual([
+        'binding',
+        'expires',
+        'id',
+        'message',
+      ]);
+      await expect(
+        s.service.verify(
+          c.id,
+          c.binding,
+          await attacker.signMessage({ message: c.message }),
+          'privacy-client',
+        ),
+      ).rejects.toThrow('SIGNATURE_INVALID');
+    }
+    expect(s.store.state.records.map((r) => r.address)).toEqual([
+      s.admin.address.toLowerCase(),
+    ]);
   });
 });
 describe('private applications, founder and approved entitlements', () => {
@@ -313,9 +370,24 @@ describe('private applications, founder and approved entitlements', () => {
       'REGISTRATION_INACTIVE',
     );
     await expect(s.service.adminList(token)).rejects.toThrow('ADMIN_FORBIDDEN');
+    const outsider = await s.service.challenge(
+      s.collector.address,
+      'collector',
+      'other',
+    );
     await expect(
-      s.service.challenge(s.collector.address, 'collector', 'other'),
+      s.service.verify(
+        outsider.id,
+        outsider.binding,
+        await s.collector.signMessage({ message: outsider.message }),
+        'other',
+      ),
     ).rejects.toThrow('REGISTRATION_INACTIVE');
+    expect(
+      s.store.state.records.some(
+        (r) => r.address === s.collector.address.toLowerCase(),
+      ),
+    ).toBe(false);
     await s.service.decide(s.adminToken, {
       address: s.founder.address,
       action: 'FOUNDER',

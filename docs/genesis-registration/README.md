@@ -54,6 +54,12 @@ Only EOA signatures are supported in this version; ERC-1271/smart-account wallet
 require a separately reviewed chain-aware verifier. A signature proves control,
 not partner holdings or eligibility.
 
+Challenge responses do not disclose private-list membership. When private
+verification/admin mode is enabled, both nominated and other addresses receive
+the same nonce format. Membership is evaluated only after a valid signature,
+before a wallet record or session can be created. An unapproved wallet cannot
+register merely by obtaining a challenge while public registration is closed.
+
 Session cookies are HttpOnly, SameSite=Strict, Path=/ and Secure with a __Host-
 prefix in production. Only SHA-256 session and browser-binding tokens are stored.
 Collector sessions last 30 minutes; admin sessions 15 minutes. Login replaces
@@ -68,7 +74,7 @@ Signatures, raw IPs, database URLs and private errors are never logged.
 Production CSP and recovery/RAM gates are unchanged.
 
 Rate limits are stored transactionally, HMAC-keyed, and enforced before signatures:
-10 challenges per connection/minute, 5 per wallet/minute, 20 verification attempts
+10 challenges per connection/minute, 5 per wallet per connection/minute, 20 verification attempts
 per connection/minute. Request handlers additionally limit applications to
 10 per connection/minute and other requests to 120 per action/minute.
 Only Netlify's platform-set connection IP is trusted when
