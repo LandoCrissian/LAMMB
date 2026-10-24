@@ -125,6 +125,10 @@ before launch, without introducing a custom website mint.
 
 ## Activation and operational prerequisites
 
+Use the [Task081 database and activation checklist](activation-checklist.md) for
+exact setup, least-privilege preflight, private restore rehearsal and owner gates.
+It separates disposable CI proof from unverified production hosting settings.
+
 Both flags are OFF by default and were not enabled on a live host.
 After separate owner approval, provision a private PostgreSQL database, encrypted
 at rest, independent backups and least-privilege runtime DML credentials.

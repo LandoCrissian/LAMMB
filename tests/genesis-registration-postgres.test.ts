@@ -1,9 +1,11 @@
 import { randomBytes } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { Pool } from 'pg';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { PostgresStore } from '../apps/web/src/lib/genesis/store';
-import { emptyState } from '../apps/web/src/lib/genesis/model';
+import { emptyState, validateState } from '../apps/web/src/lib/genesis/model';
 import { RegistrationService, hash } from '../apps/web/src/lib/genesis/service';
 
 const database = process.env.GENESIS_TEST_DATABASE_URL;
@@ -148,6 +150,171 @@ describe.skipIf(!database)('real PostgreSQL registration transactions', () => {
         )
       ).rows[0].data.challenges,
     ).toEqual([]);
+  });
+  it('preserves rate limits across fresh service instances and independent database pools', async () => {
+    await seed();
+    for (let n = 0; n < 10; n++)
+      await service.limitRequest('restart-client', 'apply');
+    await expect(other.limitRequest('restart-client', 'apply')).rejects.toThrow(
+      'RATE_LIMITED',
+    );
+    expect(
+      (
+        await pool.query(
+          'SELECT data FROM genesis_registration_state WHERE id=1',
+        )
+      ).rows[0].data.rates,
+    ).toHaveLength(1);
+  });
+  it('rehearses least-privilege runtime transactions and the read-only operator preflight', async () => {
+    await seed();
+    const role = schema + '_runtime';
+    const testPassword = randomBytes(32).toString('hex');
+    const runtimeUrl = new URL(database!);
+    runtimeUrl.username = role;
+    runtimeUrl.password = testPassword;
+    const runtime = new Pool({
+      connectionString: runtimeUrl.toString(),
+      options: '-c search_path=' + schema,
+    });
+    try {
+      await bootstrap.query(
+        'CREATE ROLE "' +
+          role +
+          '" LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD \'' +
+          testPassword +
+          "'",
+      );
+      await bootstrap.query(
+        'GRANT USAGE ON SCHEMA "' + schema + '" TO "' + role + '"',
+      );
+      await bootstrap.query(
+        'GRANT SELECT, UPDATE ON "' +
+          schema +
+          '".genesis_registration_state TO "' +
+          role +
+          '"',
+      );
+      const before = (
+        await pool.query(
+          'SELECT revision FROM genesis_registration_state WHERE id=1',
+        )
+      ).rows[0].revision;
+      await runtime.query(
+        await readFile('apps/web/registration/verify-runtime.sql', 'utf8'),
+      );
+      expect(
+        (
+          await pool.query(
+            'SELECT revision FROM genesis_registration_state WHERE id=1',
+          )
+        ).rows[0].revision,
+      ).toBe(before);
+      await new PostgresStore(runtime).transaction((s) => {
+        expect(s.records).toHaveLength(82);
+      });
+      for (const sql of [
+        'DELETE FROM genesis_registration_state',
+        'TRUNCATE genesis_registration_state',
+        'CREATE TABLE forbidden(id int)',
+        "INSERT INTO genesis_registration_state(id,data) VALUES (1,'{}')",
+      ]) {
+        await expect(runtime.query(sql)).rejects.toThrow(/permission denied/);
+      }
+      // Owner/superuser connections must fail the same production preflight.
+      const ownerClient = await pool.connect();
+      try {
+        await expect(
+          ownerClient.query(
+            await readFile('apps/web/registration/verify-runtime.sql', 'utf8'),
+          ),
+        ).rejects.toThrow('GENESIS_RUNTIME_ROLE_PRIVILEGED');
+      } finally {
+        await ownerClient.query('ROLLBACK');
+        ownerClient.release();
+      }
+      // This CI service is explicitly unencrypted loopback; do not label it TLS-tested.
+      const tlsClient = await runtime.connect();
+      try {
+        await expect(
+          tlsClient.query(
+            await readFile('apps/web/registration/verify-tls.sql', 'utf8'),
+          ),
+        ).rejects.toThrow('GENESIS_VERIFIED_TLS_REQUIRED');
+      } finally {
+        await tlsClient.query('ROLLBACK');
+        tlsClient.release();
+      }
+    } finally {
+      await runtime.end();
+      await bootstrap.query('DROP OWNED BY "' + role + '"');
+      await bootstrap.query('DROP ROLE "' + role + '"');
+    }
+  });
+  it('recovers an independently read private state snapshot into a disposable schema without changing the source', async () => {
+    await seed();
+    for (let n = 0; n < 10; n++)
+      await service.limitRequest('recovery-client', 'apply');
+    const source = (
+      await otherPool.query(
+        'SELECT revision, data::text AS bytes FROM genesis_registration_state WHERE id=1',
+      )
+    ).rows[0];
+    const dir = await mkdtemp(join(tmpdir(), 'lammb-db-recovery-'));
+    const recoverySchema = schema + '_recovery';
+    const recovered = new Pool({
+      connectionString: database,
+      options: '-c search_path=' + recoverySchema,
+    });
+    try {
+      const filename = join(dir, 'private-state.json');
+      await writeFile(filename, source.bytes, { flag: 'wx', mode: 0o600 });
+      const bytes = await readFile(filename);
+      expect(hash(bytes.toString('utf8'))).toBe(hash(source.bytes));
+      const state = validateState(JSON.parse(bytes.toString('utf8')));
+      await bootstrap.query('CREATE SCHEMA "' + recoverySchema + '"');
+      await recovered.query(
+        await readFile('apps/web/registration/001-genesis.sql', 'utf8'),
+      );
+      await recovered.query(
+        'UPDATE genesis_registration_state SET revision=$1, data=$2::jsonb WHERE id=1',
+        [source.revision, JSON.stringify(state)],
+      );
+      const independent = (
+        await recovered.query(
+          'SELECT data::text AS bytes FROM genesis_registration_state WHERE id=1',
+        )
+      ).rows[0].bytes;
+      expect(hash(independent)).toBe(hash(source.bytes));
+      // Restore must invalidate pre-incident authentication while retaining
+      // approvals/audit and durable rate buckets. Apply only to this test copy.
+      await new PostgresStore(recovered).transaction((s) => {
+        s.sessions = [];
+        s.challenges = [];
+      });
+      const restoredService = new RegistrationService(
+        new PostgresStore(recovered),
+        service.config,
+      );
+      await expect(restoredService.adminList(token)).rejects.toThrow(
+        'SESSION_REQUIRED',
+      );
+      await expect(
+        restoredService.limitRequest('recovery-client', 'apply'),
+      ).rejects.toThrow('RATE_LIMITED');
+      const after = (
+        await pool.query(
+          'SELECT revision, data::text AS bytes FROM genesis_registration_state WHERE id=1',
+        )
+      ).rows[0];
+      expect(after).toEqual(source);
+    } finally {
+      await recovered.end();
+      await bootstrap.query(
+        'DROP SCHEMA IF EXISTS "' + recoverySchema + '" CASCADE',
+      );
+      await rm(dir, { recursive: true, force: true });
+    }
   });
   it('fails closed on corrupted state without overwriting evidence', async () => {
     await pool.query(

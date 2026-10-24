@@ -849,9 +849,24 @@ describe('deployment and corruption fail closed', () => {
     ).toThrow('ACTIVATION_REVIEW_REQUIRED');
     expect(runtimeConfig(env).ssl).toEqual({ rejectUnauthorized: true });
   });
+  it('never disables certificate verification in production, including loopback, and supports a reviewed CA', () => {
+    expect(
+      runtimeConfig({
+        ...env,
+        GENESIS_DATABASE_URL: 'postgres://runtime:fake@127.0.0.1/genesis',
+      }).ssl,
+    ).toEqual({ rejectUnauthorized: true });
+    expect(
+      runtimeConfig({ ...env, GENESIS_DATABASE_CA: 'reviewed-ca-placeholder' })
+        .ssl,
+    ).toEqual({ rejectUnauthorized: true, ca: 'reviewed-ca-placeholder' });
+  });
   it.each([
     { GENESIS_ORIGIN: 'https://evil.example' },
     { GENESIS_DATABASE_URL: 'postgres://db.example/genesis?sslmode=no-verify' },
+    { GENESIS_DATABASE_URL: 'postgres://db.example/genesis?sslcert=untrusted' },
+    { GENESIS_DATABASE_URL: 'postgres://db.example/genesis?SSLMODE=disable' },
+    { GENESIS_DATABASE_URL: 'postgres://db.example/genesis?%73slmode=disable' },
     { GENESIS_RATE_SECRET: 'short' },
     { GENESIS_APPROVED_PARTNERS: '{"invented":"unverified"}' },
     { GENESIS_ADMIN_ENABLED: 'true', GENESIS_ADMIN_WALLETS: '' },
