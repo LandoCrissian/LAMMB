@@ -33,3 +33,28 @@ it('does not dispatch any pointer input to a disabled control', async () => {
   expect(page.mouse.down).not.toHaveBeenCalled();
   expect(page.mouse.up).not.toHaveBeenCalled();
 });
+
+it('retains the original 30-second budget and never starts late input after failure', async () => {
+  vi.useFakeTimers();
+  try {
+    let acknowledge!: () => void;
+    const control = {
+      isEnabled: async () => true,
+      hover: () =>
+        new Promise<void>((r) => {
+          acknowledge = r;
+        }),
+    };
+    const page = { mouse: { down: vi.fn(), up: vi.fn() } };
+    const click = clickChamberControl(page, control);
+    const failure = expect(click).rejects.toThrow('timed out (30000ms)');
+    await vi.advanceTimersByTimeAsync(30000);
+    await failure;
+    acknowledge();
+    await vi.advanceTimersByTimeAsync(1);
+    expect(page.mouse.down).not.toHaveBeenCalled();
+    expect(page.mouse.up).not.toHaveBeenCalled();
+  } finally {
+    vi.useRealTimers();
+  }
+});

@@ -5,8 +5,42 @@ import assert from 'node:assert/strict';
 // pointer capture. Keep native hit testing and await each input acknowledgement;
 // no force, DOM click, scene mutation, retry or extra timeout is involved.
 export async function clickChamberControl(page, control) {
-  assert(await control.isEnabled(), 'Chamber control must be enabled');
-  await control.hover();
-  await page.mouse.down();
-  await page.mouse.up();
+  // mouse.down/up have no locator timeout of their own. Preserve the original
+  // 30-second click budget across the whole sequence, including hover. A failed
+  // caller closes its disposable browser, cancelling outstanding protocol work.
+  let timer,
+    expired = false,
+    phase = 'enabled check';
+  const deadline = new Promise((_, reject) => {
+    timer = setTimeout(() => {
+      expired = true;
+      reject(
+        new Error(
+          `Chamber control input acknowledgement timed out (30000ms) during ${phase}`,
+        ),
+      );
+    }, 30000);
+  });
+  const check = () => {
+    if (expired) throw new Error('Chamber control input deadline expired');
+  };
+  try {
+    await Promise.race([
+      deadline,
+      (async () => {
+        assert(await control.isEnabled(), 'Chamber control must be enabled');
+        check();
+        phase = 'hover acknowledgement';
+        await control.hover();
+        check();
+        phase = 'press acknowledgement';
+        await page.mouse.down();
+        check();
+        phase = 'release acknowledgement';
+        await page.mouse.up();
+      })(),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
 }
