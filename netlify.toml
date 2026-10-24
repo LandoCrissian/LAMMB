@@ -1,0 +1,19 @@
+# Prepared configuration only. Draft commits retain [skip netlify].
+# Existing site Package directory must be apps/web; Base remains repository root.
+[build]
+  base = "."
+  command = "npm run build"
+  publish = "apps/web/.next"
+
+[build.environment]
+  NODE_VERSION = "22.23.2"
+
+# Defense in depth: the runtime independently rejects every non-production
+# Netlify context, even if an operator accidentally overrides these flags.
+[context.deploy-preview.environment]
+  GENESIS_REGISTRATION_ENABLED = "false"
+  GENESIS_ADMIN_ENABLED = "false"
+
+[context.branch-deploy.environment]
+  GENESIS_REGISTRATION_ENABLED = "false"
+  GENESIS_ADMIN_ENABLED = "false"

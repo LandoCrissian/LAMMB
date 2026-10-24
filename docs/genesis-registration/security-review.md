@@ -1,4 +1,4 @@
-# Task080 security review and release boundaries
+# Genesis security review and release boundaries
 
 This review covers code and synthetic tests, not an independent third-party
 audit or an activated production service.
@@ -43,3 +43,28 @@ and full Chrome/Edge acceptance remain intact.
 No confirmed exploitable code defect remains from the local pass. Production
 activation is nevertheless **NO-GO** until operating prerequisites and exact-head
 CI are satisfied and the owner separately approves activation.
+
+## Task082 native Database integration
+
+The SDK resolves the current native branch. Request handling retains real `pg`
+transactions, never independent HTTP queries for BEGIN/UPDATE/COMMIT. Code replaces
+the provider URL's migration-owner login with SQL-created `lammb_genesis_runtime`;
+a separate server-only password is required. A manual URL on Netlify, missing SDK
+context or invalid provider options fails closed. URL SSL parameters cannot
+weaken certificate/hostname verification. Every request transaction checks its
+effective role, grants and TLS before reading private state.
+
+Native migrations validate/adopt the exact historical schema, preserve data and
+revision, reject drift, and create the restricted role NOLOGIN without secrets.
+No destructive reset/down is provided. All non-production contexts, including
+missing CONTEXT on Netlify, block every Genesis endpoint before DB resolution.
+There is no preview-enable switch; copied auth/flags do not expose wallet records.
+
+Residual operating risks: actual native role permissions and auto-injected
+provider credential privileges have not been inspected. A compromised function
+can read its server secrets, including any provider-injected URL; the restricted
+query login does not claim to eliminate full runtime compromise. Verify provider
+scope/IAM and protect logs. Real TLS, branch mapping, backup retention, independent
+recovery, connection capacity and adapter context/IP behavior require an authorized
+platform rehearsal. Never fall back to an owner login, weaken grants or spoof
+CONTEXT to make those gates pass. See the [native checklist](netlify-database.md).

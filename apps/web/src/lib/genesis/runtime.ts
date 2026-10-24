@@ -3,8 +3,13 @@ import { z } from 'zod';
 import { GenesisError, wallet } from './model';
 import { RegistrationService, type ServiceConfig } from './service';
 import { PostgresStore } from './store';
+import { assertRegistrationContext, databaseConfig } from './database';
 
-export function runtimeConfig(env: Record<string, string | undefined>) {
+export function runtimeConfig(
+  env: Record<string, string | undefined>,
+  resolveNative?: () => string,
+) {
+  assertRegistrationContext(env);
   const publicEnabled = env.GENESIS_REGISTRATION_ENABLED === 'true';
   const adminEnabled = env.GENESIS_ADMIN_ENABLED === 'true';
   if (!publicEnabled && !adminEnabled)
@@ -46,21 +51,6 @@ export function runtimeConfig(env: Record<string, string | undefined>) {
   } catch {
     throw new GenesisError('PARTNER_CONFIGURATION_INVALID', 503);
   }
-  const db = env.GENESIS_DATABASE_URL ?? '';
-  let url: URL;
-  try {
-    url = new URL(db);
-  } catch {
-    throw new GenesisError('DATABASE_CONFIGURATION_REQUIRED', 503);
-  }
-  if (!['postgres:', 'postgresql:'].includes(url.protocol))
-    throw new GenesisError('DATABASE_CONFIGURATION_REQUIRED', 503);
-  // Never let query-string SSL settings override certificate validation.
-  if (
-    [...url.searchParams.keys()].some((k) => k.toLowerCase().startsWith('ssl'))
-  )
-    throw new GenesisError('DATABASE_TLS_CONFIGURATION_INVALID', 503);
-  const loopback = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
   return {
     service: {
       origin,
@@ -71,14 +61,7 @@ export function runtimeConfig(env: Record<string, string | undefined>) {
       approvedPartners,
       privateVerificationWallets,
     } satisfies ServiceConfig,
-    databaseUrl: db,
-    ssl:
-      loopback && env.NODE_ENV !== 'production'
-        ? false
-        : {
-            rejectUnauthorized: true,
-            ...(env.GENESIS_DATABASE_CA ? { ca: env.GENESIS_DATABASE_CA } : {}),
-          },
+    ...databaseConfig(env, resolveNative),
   };
 }
 
@@ -95,6 +78,7 @@ export function registrationService() {
     const pool = new Pool({
       connectionString: config.databaseUrl,
       ssl: config.ssl,
+      enableChannelBinding: config.enableChannelBinding,
       max: 2,
       connectionTimeoutMillis: 5000,
       idleTimeoutMillis: 10_000,
@@ -104,7 +88,10 @@ export function registrationService() {
       /* Never log connection strings or private query data. */
     });
     singleton = {
-      service: new RegistrationService(new PostgresStore(pool), config.service),
+      service: new RegistrationService(
+        new PostgresStore(pool, { requireTls: config.ssl !== false }),
+        config.service,
+      ),
       fingerprint,
     };
   }

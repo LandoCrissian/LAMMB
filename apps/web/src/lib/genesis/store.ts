@@ -1,5 +1,6 @@
 import type { Pool } from 'pg';
 import { emptyState, validateState, GenesisError, type State } from './model';
+import { verifyDatabaseAccess } from './database-guard';
 
 export interface Store {
   transaction<T>(fn: (state: State) => Promise<T> | T): Promise<T>;
@@ -8,12 +9,17 @@ export interface Store {
 // One bounded document is locked for each transaction: approvals, nonce consumption,
 // rate limits and exports are serialized across serverless instances, not in memory.
 export class PostgresStore implements Store {
-  constructor(private readonly pool: Pool) {}
+  constructor(
+    private readonly pool: Pool,
+    private readonly access?: { requireTls: boolean },
+  ) {}
   async transaction<T>(fn: (state: State) => Promise<T> | T): Promise<T> {
     const client = await this.pool.connect();
     try {
       await client.query('BEGIN');
       await client.query("SET LOCAL statement_timeout = '5000ms'");
+      if (this.access)
+        await verifyDatabaseAccess(client, this.access.requireTls);
       const result = await client.query(
         'SELECT data FROM genesis_registration_state WHERE id = 1 FOR UPDATE',
       );

@@ -1,5 +1,12 @@
 # Genesis database and activation handoff
 
+**Historical Task081 manual-PostgreSQL procedure.** Task082's
+[Netlify Database integration and activation checklist](netlify-database.md)
+supersedes this setup for Netlify. Follow its native migration lifecycle,
+branch-aware SDK configuration and unconditional preview privacy block.
+The manual migration instructions below are retained as historical evidence,
+not the current Netlify deployment procedure.
+
 Task081 starts at PR37 `8abca00bd7d3dd89be17fb67373a5ae700ec1608`.
 This is a setup procedure for review, not authorization to execute production
 DDL, deploy, merge, enable registration or mint. No production database was

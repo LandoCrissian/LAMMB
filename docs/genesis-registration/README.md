@@ -36,9 +36,16 @@ An administrator still must separately review allocation evidence.
 
 Node route handlers at `/api/genesis/[action]` call one service shared by tests.
 PostgreSQL is required. There is no production in-memory fallback or local-file
-wallet database. An explicit migration creates one versioned, bounded JSONB
+wallet database. On Netlify, pinned `@netlify/database` resolves the current
+branch; a restricted SQL login and verified-TLS `pg.Pool` preserve transactions.
+Native deploy migrations create or validate the historical schema without
+resetting data. See the [current Netlify activation handoff](netlify-database.md).
+Non-production Netlify contexts are unconditionally closed before DB resolution,
+including when copied activation flags or sessions are present.
+The migration creates one versioned, bounded JSONB
 state row. Each operation uses one checked-out client, BEGIN, SELECT FOR UPDATE,
-validated mutation, UPDATE and COMMIT; failures roll back. This serializes
+validated mutation, UPDATE and COMMIT; failures roll back. Request transactions
+verify restricted effective grants and TLS on that same connection. This serializes
 approvals, exports and one-time challenge consumption across serverless instances.
 The state is capped at 5,000 wallet records, 1,000 live challenges, 2,000 sessions,
 5,000 rate buckets, 20,000 audit entries and 8 MiB encoded data. Capacity failures
