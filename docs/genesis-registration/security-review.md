@@ -86,8 +86,8 @@ At `9eaa467`, Edge job `120808359815` isolated the stall to the post-move DOM
 hit-test read, before button press. The helper now checks geometry/hit targets
 before input, observes trusted pointer receivers passively, completes native
 move/down/up without intervening DOM queries, then validates the down/up receipt.
-It does not force a click, dispatch DOM input, scroll hidden controls into view,
-retry, change scene state or extend the original 30-second budget. All existing
+It does not force a click, dispatch DOM input, unhide controls, retry input,
+change scene state or extend the original 30-second budget. All existing
 Chamber assertions remain unchanged. Negative tests reject off-screen, disabled
 or occluded targets, wrong event receivers and late input after expiry.
 
@@ -106,3 +106,9 @@ locator again waits for a label that no longer exists. The helper pins the
 original element for geometry/receipt checks and disposes it afterward. A
 regression test changes the locator after activation while the original node's
 receipt remains readable. No assertions or deadlines are removed.
+
+At `a739aef`, full 1440px gameplay checks passed. The next failure was Reset
+position inside the short-landscape Controls scroller, capped at 64svh. Native
+`scrollIntoViewIfNeeded` is restored before geometry/hit checks, matching ordinary
+locator actionability; it changes scroll position, not CSS visibility or z-order.
+Clipped-panel and late-scroll tests retain the same timeout and input safety.

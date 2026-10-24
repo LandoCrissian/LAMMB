@@ -38,6 +38,11 @@ export async function clickChamberControl(page, control) {
         target = await control.elementHandle();
         check();
         assert(target, 'Chamber control must resolve to an element');
+        phase = 'native scroll acknowledgement';
+        // Match ordinary locator actionability: short landscape panels scroll.
+        // This does not unhide controls or bypass an occluding element.
+        await target.scrollIntoViewIfNeeded();
+        check();
         phase = 'visible geometry';
         const box = await target.boundingBox();
         check();
@@ -102,7 +107,7 @@ export async function clickChamberControl(page, control) {
         phase = 'native hit test';
         assert(
           await inspect('prepare'),
-          'Chamber control must receive native input',
+          `Chamber control must receive native input: ${String(control)}`,
         );
         prepared = true;
         check();

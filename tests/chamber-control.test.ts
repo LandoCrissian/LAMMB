@@ -7,6 +7,7 @@ import { moveObserver, nearTerminal } from '../apps/web/src/lib/chamber-model';
 
 function fixture() {
   const target = {
+    scrollIntoViewIfNeeded: vi.fn(async () => {}),
     boundingBox: vi.fn(async () => ({
       x: 10,
       y: 20,
@@ -69,7 +70,7 @@ it('does not dispatch any pointer input to a disabled control', async () => {
   expect(page.mouse.up).not.toHaveBeenCalled();
 });
 
-it('rejects controls outside the viewport without forcing or scrolling them', async () => {
+it('rejects controls still outside the viewport after native scrolling', async () => {
   const { control, target, page } = fixture();
   target.boundingBox.mockResolvedValue({
     x: 400,
@@ -80,6 +81,47 @@ it('rejects controls outside the viewport without forcing or scrolling them', as
   await expect(clickChamberControl(page, control)).rejects.toThrow('viewport');
   expect(page.mouse.move).not.toHaveBeenCalled();
   expect(page.mouse.down).not.toHaveBeenCalled();
+});
+
+it('natively scrolls a clipped panel control into view before checking its hit target', async () => {
+  const { control, target, page } = fixture();
+  let scrolled = false;
+  target.scrollIntoViewIfNeeded.mockImplementation(async () => {
+    scrolled = true;
+  });
+  target.evaluate.mockImplementation(async () => scrolled);
+  await clickChamberControl(page, control);
+  expect(target.scrollIntoViewIfNeeded).toHaveBeenCalledOnce();
+  expect(target.boundingBox.mock.invocationCallOrder[0]).toBeGreaterThan(
+    target.scrollIntoViewIfNeeded.mock.invocationCallOrder[0]!,
+  );
+  expect(page.mouse.down).toHaveBeenCalledOnce();
+  expect(page.mouse.up).toHaveBeenCalledOnce();
+});
+
+it('does not send input if native scrolling completes after the original deadline', async () => {
+  vi.useFakeTimers();
+  try {
+    const { control, target, page } = fixture();
+    let resolve!: () => void;
+    target.scrollIntoViewIfNeeded.mockImplementation(
+      () =>
+        new Promise<void>((done) => {
+          resolve = done;
+        }),
+    );
+    const action = clickChamberControl(page, control);
+    const failure = expect(action).rejects.toThrow('timed out (30000ms)');
+    await vi.advanceTimersByTimeAsync(30000);
+    await failure;
+    resolve();
+    await vi.advanceTimersByTimeAsync(1);
+    expect(target.boundingBox).not.toHaveBeenCalled();
+    expect(page.mouse.move).not.toHaveBeenCalled();
+    expect(page.mouse.down).not.toHaveBeenCalled();
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
 it('rejects an occluded control before sending native input', async () => {

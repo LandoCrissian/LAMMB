@@ -10,6 +10,7 @@ export function clickChamberControl(
   control: {
     isEnabled(): Promise<boolean>;
     elementHandle(): Promise<{
+      scrollIntoViewIfNeeded(): Promise<unknown>;
       boundingBox(): Promise<{
         x: number;
         y: number;
