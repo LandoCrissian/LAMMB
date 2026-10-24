@@ -109,10 +109,10 @@ export const labFiles = [
     id: '003',
     title: 'The Lockdown',
     category: 'CONTAINMENT / BAD DECISIONS',
-    stamp: '5280 SEALED',
+    stamp: '720 SEALED',
     summary: 'Seal the specimens. Preserve the paperwork. Blame the paperwork.',
     narrative:
-      '5280 catastrophically unqualified specimens were eventually sealed. The facility was connected to Robinhood Chain. Now the seals are beginning to fail. Management insists everything is contained. Management has also started wearing running shoes to meetings.',
+      '720 catastrophically unqualified specimens were eventually sealed. The facility was connected to Robinhood Chain. Now the seals are beginning to fail. Management insists everything is contained. Management has also started wearing running shoes to meetings.',
     incidents: [
       {
         id: 'I-003-A',

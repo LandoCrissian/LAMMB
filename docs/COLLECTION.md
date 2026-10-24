@@ -2,7 +2,7 @@
 
 ## Locked product decisions
 
-LAMMB (`LAMMB`) has a supply of **5,280** and targets **Robinhood Chain mainnet**, chain ID **4663**. The primary mint price is **0 ETH**, represented as **0 wei**; network gas still applies. The domain is **lammb.fun**, the marketplace/drop target is **OpenSea**, and the launch model is **delayed reveal**. LAMMB means **Let's All Make Money Bitches**.
+LAMMB (`LAMMB`) has a Genesis supply of **720** (690 ordinary, 24 Ultimate, six grails) and targets **Robinhood Chain mainnet**, chain ID **4663**. The primary mint price is **0 ETH**, represented as **0 wei**; network gas still applies. The domain is **lammb.fun**, the marketplace/drop target is **OpenSea**, and the launch model is **delayed reveal**. LAMMB means **Let's All Make Money Bitches**.
 
 The access model consists of **Partner GTD**, **allowlist if required**, and **public allocation**. This defines vocabulary, not eligibility rules, quantities, per-wallet limits, a schedule, or a guarantee about integration availability.
 

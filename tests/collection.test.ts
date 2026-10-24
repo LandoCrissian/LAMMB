@@ -8,7 +8,7 @@ describe('canonical collection configuration', () => {
     expect(collection).toMatchObject({
       name: 'LAMMB',
       symbol: 'LAMMB',
-      supply: 5280,
+      supply: 720,
       chainId: 4663,
       mintPriceWei: 0n,
       domain: 'lammb.fun',

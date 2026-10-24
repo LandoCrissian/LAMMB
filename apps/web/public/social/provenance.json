@@ -1,6 +1,6 @@
 {
   "version": "lammb-social/1",
-  "authorization": "OWNER_TASK_010S_CINEMATIC_SOCIAL_SHARING",
+  "authorization": "OWNER_TASK_010S_CINEMATIC_SOCIAL_SHARING_AND_ISSUE_34_SUPPLY_CORRECTION",
   "approval": "TASK_010S_COMPOSITIONS_PENDING_OWNER_VISUAL_REVIEW",
   "productionNFTArtworkApproved": false,
   "creation": "Original code-native graphic compositions; existing owner-authorized website art and real atlas geometry. No new scene generation, no source repaint, no enlargement of raster sources.",
@@ -16,13 +16,13 @@
     {
       "id": "home",
       "route": "/",
-      "path": "/social/home-v1.jpg",
+      "path": "/social/home-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
       "mime": "image/jpeg",
-      "bytes": 175674,
-      "sha256": "f7844403adafd9a3180fecf8205ea2b84f1d91f5e475e7d5127dd8ee40c51d2e",
+      "bytes": 175371,
+      "sha256": "7310ba058f5881b2ddf09f5f24a7a14e249a8cc4709be42167b0999bac86939e",
       "composition": "Sealed front specimen with the existing LAMMB graffiti identity; studio spotlight and precision type.",
       "sources": [
         {
@@ -46,13 +46,13 @@
     {
       "id": "universe",
       "route": "/universe",
-      "path": "/social/universe-v1.jpg",
+      "path": "/social/universe-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
       "mime": "image/jpeg",
-      "bytes": 137150,
-      "sha256": "f95f7ee4f6a7211e382b71cb416cc8bb009c2703b5807813cd8c39a16effe831",
+      "bytes": 136842,
+      "sha256": "1bc56b927e2f685b5d17afff14e278be0d923b52701be6f358b5312beac338e1",
       "composition": "Existing empty classified laboratory with original typographic dossier and redaction treatment; fictional leaked research.",
       "sources": [
         {
@@ -68,13 +68,13 @@
     {
       "id": "world",
       "route": "/world",
-      "path": "/social/world-v1.jpg",
+      "path": "/social/world-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
       "mime": "image/jpeg",
-      "bytes": 180013,
-      "sha256": "16c69364c69740f86d1bd8344f511159889110a2ab99201538441a00c9f8b630",
+      "bytes": 179786,
+      "sha256": "80492ea2bda266c701ca8b72729d74660256bfacc185cc777e1b57a675998ecd",
       "composition": "Actual Equal Earth country geometry rasterized natively, with no invented participants, activity pins or registry totals.",
       "sources": [
         {
@@ -88,14 +88,14 @@
     {
       "id": "collection",
       "route": "/collection",
-      "path": "/social/collection-v1.jpg",
+      "path": "/social/collection-v2.jpg",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
       "mime": "image/jpeg",
-      "bytes": 135895,
-      "sha256": "790498d9fd687a15dd90298683b77376b59b671f7d581ddc39110834192dc1c1",
-      "composition": "Existing unrevealed side specimen in an industrial evidence frame; 5280 collection supply without a comma.",
+      "bytes": 129644,
+      "sha256": "57aa381545f81f57400a90098c0239ae7a28978d301dc3ac47ff02b7d84f5e8b",
+      "composition": "Existing unrevealed side specimen in an industrial evidence frame; 720 Genesis supply without a comma.",
       "sources": [
         {
           "path": "/art/cinematic-preview/side.webp",

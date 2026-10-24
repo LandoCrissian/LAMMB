@@ -1,0 +1,564 @@
+Issue 34 local verification transcript — 2026-10-23
+
+Fresh test run: 25 files / 922 tests PASS. CI policy: 61 PASS.
+Tests started at 4577 MiB available; build at 4481 MiB, above 4096 MiB.
+Final exact pushed-head CI results are recorded separately in each draft PR.
+Source artwork, historical fixture/spec JSON and approval byte sets have zero diff from baseline. Private Task070/071 inputs were unavailable.
+
+=== Chamber regression before fix (expected failure) ===
+
+ RUN  v5.0.3 C:/Users/RMT/Documents/Codex/2026-10-23/execute-github-issue-34-in-landocrissian/LAMMB
+
+ ❯ tests/chamber-scene.test.ts (1 test | 1 failed) 6ms
+   × publishes the exact frozen observer between periodic samples and on resume 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/chamber-scene.test.ts > publishes the exact frozen observer between periodic samples and on resume
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ tests/chamber-scene.test.ts:35:20
+     33|
+     34|   scene.setPaused(true);
+     35|   expect(snapshot).toHaveBeenCalledTimes(1);
+       |                    ^
+     36|   const frozen = snapshot.mock.calls[0]![0];
+     37|   expect(frozen).toMatchObject({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  10:36:22
+   Duration  288ms (import 50%, transform 43%, tests 4%, worker 3%)
+
+
+=== Chamber regression after fix ===
+
+ RUN  v5.0.3 C:/Users/RMT/Documents/Codex/2026-10-23/execute-github-issue-34-in-landocrissian/LAMMB
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  10:37:35
+   Duration  776ms (import 65%, transform 27%, tests 6%, worker 2%)
+
+
+=== Formatting ===
+
+> lammb@0.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+=== Lint ===
+
+> lammb@0.0.0 lint
+> eslint . --max-warnings 0
+
+
+=== Typecheck ===
+
+> lammb@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit && npm run typecheck --workspaces --if-present
+
+
+> @lammb/web@0.0.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> @lammb/art-generator@0.0.0 typecheck
+> tsc --noEmit
+
+
+> @lammb/collection@0.0.0 typecheck
+> tsc --noEmit
+
+
+> @lammb/schema@0.0.0 typecheck
+> tsc --noEmit
+
+
+=== Full unit tests (disposable non-wallet signer fixtures authorized) ===
+
+> lammb@0.0.0 test
+> vitest run --maxWorkers=1
+
+
+ RUN  v5.0.3 <checkout>
+
+
+ Test Files  25 passed (25)
+      Tests  922 passed (922)
+   Start at  10:58:33
+   Duration  44.45s (tests 84%, import 12%, transform 4%)
+
+    Isolate  25 workers spawned · ~116ms startup each (spawn + environment, per file)
+             at least ~2.77s faster with isolate: false — reuses workers across files instead of one per file
+
+
+=== Production-mode local build and social checks (no deployment) ===
+
+> lammb@0.0.0 build
+> node scripts/write-build-info.mjs && npm run build --workspace @lammb/web && node scripts/verify-social-metadata.mjs --built
+
+
+> @lammb/web@0.0.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+✓ Running next.config.ts took 179ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 430ms
+  Running TypeScript ...
+  Finished TypeScript in 2.7s ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/23) ...
+  Generating static pages using 15 workers (5/23) 
+  Generating static pages using 15 workers (11/23) 
+  Generating static pages using 15 workers (17/23) 
+✓ Generating static pages using 15 workers (23/23) in 636ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /ascent
+├ ○ /collection
+├ ○ /community
+├ ○ /development/launch
+├ ○ /faq
+├ ○ /mint
+├ ○ /profile
+├ ○ /robots.txt
+├ ○ /universe
+├ ○ /universe/archive
+├   /universe/archive/[file]
+│ ├ ● /universe/archive/000
+│ ├ ● /universe/archive/001
+│ ├ ● /universe/archive/002
+│ └ ● /universe/archive/003
+├ ○ /universe/experimental
+├ ○ /universe/experimental/chamber
+├ ○ /universe/security
+├ ○ /universe/surveillance
+├ ○ /vault
+└ ○ /world
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+{
+  "result": "PASS",
+  "assets": 4,
+  "metadata": 20,
+  "access": 0,
+  "failures": []
+}
+
+=== CI policy tests ===
+TAP version 13
+# Subtest: path-aware CI policy: original 23 scenarios
+    # Subtest: NFT source edit
+    ok 1 - NFT source edit
+      ---
+      duration_ms: 1014.8067
+      type: 'test'
+      ...
+    # Subtest: NFT documentation
+    ok 2 - NFT documentation
+      ---
+      duration_ms: 991.086
+      type: 'test'
+      ...
+    # Subtest: NFT approved test
+    ok 3 - NFT approved test
+      ---
+      duration_ms: 962.3367
+      type: 'test'
+      ...
+    # Subtest: website source
+    ok 4 - website source
+      ---
+      duration_ms: 880.1189
+      type: 'test'
+      ...
+    # Subtest: Chamber source
+    ok 5 - Chamber source
+      ---
+      duration_ms: 894.695
+      type: 'test'
+      ...
+    # Subtest: shared collection source
+    ok 6 - shared collection source
+      ---
+      duration_ms: 991.7535
+      type: 'test'
+      ...
+    # Subtest: root dependency manifest
+    ok 7 - root dependency manifest
+      ---
+      duration_ms: 945.5002
+      type: 'test'
+      ...
+    # Subtest: workspace dependency manifest
+    ok 8 - workspace dependency manifest
+      ---
+      duration_ms: 888.0615
+      type: 'test'
+      ...
+    # Subtest: workspace lockfile
+    ok 9 - workspace lockfile
+      ---
+      duration_ms: 939.9713
+      type: 'test'
+      ...
+    # Subtest: workflow change
+    ok 10 - workflow change
+      ---
+      duration_ms: 947.603
+      type: 'test'
+      ...
+    # Subtest: unknown path
+    ok 11 - unknown path
+      ---
+      duration_ms: 884.1158
+      type: 'test'
+      ...
+    # Subtest: mixed NFT and website
+    ok 12 - mixed NFT and website
+      ---
+      duration_ms: 976.7583
+      type: 'test'
+      ...
+    # Subtest: rename website into NFT
+    ok 13 - rename website into NFT
+      ---
+      duration_ms: 1026.1579
+      type: 'test'
+      ...
+    # Subtest: rename Chamber into NFT docs
+    ok 14 - rename Chamber into NFT docs
+      ---
+      duration_ms: 983.8845
+      type: 'test'
+      ...
+    # Subtest: rename NFT into website
+    ok 15 - rename NFT into website
+      ---
+      duration_ms: 929.7987
+      type: 'test'
+      ...
+    # Subtest: website deletion
+    ok 16 - website deletion
+      ---
+      duration_ms: 938.1593
+      type: 'test'
+      ...
+    # Subtest: workspace dependency deletion
+    ok 17 - workspace dependency deletion
+      ---
+      duration_ms: 895.4884
+      type: 'test'
+      ...
+    # Subtest: main push with NFT source
+    ok 18 - main push with NFT source
+      ---
+      duration_ms: 727.2681
+      type: 'test'
+      ...
+    # Subtest: empty PR diff
+    ok 19 - empty PR diff
+      ---
+      duration_ms: 850.8121
+      type: 'test'
+      ...
+    # Subtest: missing base
+    ok 20 - missing base
+      ---
+      duration_ms: 774.6529
+      type: 'test'
+      ...
+    # Subtest: unavailable base object
+    ok 21 - unavailable base object
+      ---
+      duration_ms: 817.2927
+      type: 'test'
+      ...
+    # Subtest: PR17 seven-file scope
+    ok 22 - PR17 seven-file scope
+      ---
+      duration_ms: 930.4387
+      type: 'test'
+      ...
+    # Subtest: PR18 workflow scope
+    ok 23 - PR18 workflow scope
+      ---
+      duration_ms: 852.6748
+      type: 'test'
+      ...
+    1..23
+ok 1 - path-aware CI policy: original 23 scenarios
+  ---
+  duration_ms: 21045.261
+  type: 'suite'
+  ...
+# Subtest: path-aware CI policy: adversarial additions
+    # Subtest: case-insensitive nested dependency manifest on Windows
+    ok 1 - case-insensitive nested dependency manifest on Windows
+      ---
+      duration_ms: 879.3726
+      type: 'test'
+      ...
+    # Subtest: case-insensitive nested shrinkwrap on Windows
+    ok 2 - case-insensitive nested shrinkwrap on Windows
+      ---
+      duration_ms: 862.4108
+      type: 'test'
+      ...
+    # Subtest: NFT source addition
+    ok 3 - NFT source addition
+      ---
+      duration_ms: 822.5574
+      type: 'test'
+      ...
+    # Subtest: NFT source deletion
+    ok 4 - NFT source deletion
+      ---
+      duration_ms: 815.7655
+      type: 'test'
+      ...
+    # Subtest: NFT-only rename
+    ok 5 - NFT-only rename
+      ---
+      duration_ms: 930.9003
+      type: 'test'
+      ...
+    # Subtest: root lockfile
+    ok 6 - root lockfile
+      ---
+      duration_ms: 842.9315
+      type: 'test'
+      ...
+    # Subtest: root lockfile deletion
+    ok 7 - root lockfile deletion
+      ---
+      duration_ms: 824.9902
+      type: 'test'
+      ...
+    # Subtest: nested manifest deletion
+    ok 8 - nested manifest deletion
+      ---
+      duration_ms: 865.5609
+      type: 'test'
+      ...
+    # Subtest: nested lockfile deletion
+    ok 9 - nested lockfile deletion
+      ---
+      duration_ms: 866.2881
+      type: 'test'
+      ...
+    # Subtest: dependency renamed into NFT source
+    ok 10 - dependency renamed into NFT source
+      ---
+      duration_ms: 942.1849
+      type: 'test'
+      ...
+    # Subtest: Chamber renamed into NFT source
+    ok 11 - Chamber renamed into NFT source
+      ---
+      duration_ms: 945.4573
+      type: 'test'
+      ...
+    # Subtest: NFT build configuration
+    ok 12 - NFT build configuration
+      ---
+      duration_ms: 882.3415
+      type: 'test'
+      ...
+    # Subtest: unknown file inside NFT workspace
+    ok 13 - unknown file inside NFT workspace
+      ---
+      duration_ms: 883.8749
+      type: 'test'
+      ...
+    # Subtest: unknown file inside NFT docs
+    ok 14 - unknown file inside NFT docs
+      ---
+      duration_ms: 882.6092
+      type: 'test'
+      ...
+    # Subtest: public artwork changes
+    ok 15 - public artwork changes
+      ---
+      duration_ms: 864.4799
+      type: 'test'
+      ...
+    # Subtest: shared root tooling
+    ok 16 - shared root tooling
+      ---
+      duration_ms: 856.9539
+      type: 'test'
+      ...
+    # Subtest: NFT trait-bible docs
+    ok 17 - NFT trait-bible docs
+      ---
+      duration_ms: 894.6266
+      type: 'test'
+      ...
+    # Subtest: unclassified test
+    ok 18 - unclassified test
+      ---
+      duration_ms: 821.0805
+      type: 'test'
+      ...
+    # Subtest: NFT fixture addition
+    ok 19 - NFT fixture addition
+      ---
+      duration_ms: 893.9985
+      type: 'test'
+      ...
+    # Subtest: NFT source path containing spaces
+    ok 20 - NFT source path containing spaces
+      ---
+      duration_ms: 915.331
+      type: 'test'
+      ...
+    # Subtest: website path containing spaces
+    ok 21 - website path containing spaces
+      ---
+      duration_ms: 881.9188
+      type: 'test'
+      ...
+    # Subtest: main push with missing base
+    ok 22 - main push with missing base
+      ---
+      duration_ms: 741.6705
+      type: 'test'
+      ...
+    # Subtest: unknown event
+    ok 23 - unknown event
+      ---
+      duration_ms: 728.8721
+      type: 'test'
+      ...
+    # Subtest: malformed base
+    ok 24 - malformed base
+      ---
+      duration_ms: 744.087
+      type: 'test'
+      ...
+    # Subtest: option-shaped base
+    ok 25 - option-shaped base
+      ---
+      duration_ms: 714.9776
+      type: 'test'
+      ...
+    # Subtest: mutable base ref
+    ok 26 - mutable base ref
+      ---
+      duration_ms: 728.8058
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: package.json
+    ok 27 - deep nested dependency/configuration: package.json
+      ---
+      duration_ms: 858.0397
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: package-lock.json
+    ok 28 - deep nested dependency/configuration: package-lock.json
+      ---
+      duration_ms: 866.8736
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: npm-shrinkwrap.json
+    ok 29 - deep nested dependency/configuration: npm-shrinkwrap.json
+      ---
+      duration_ms: 876.8851
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: pnpm-lock.yaml
+    ok 30 - deep nested dependency/configuration: pnpm-lock.yaml
+      ---
+      duration_ms: 876.9959
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: yarn.lock
+    ok 31 - deep nested dependency/configuration: yarn.lock
+      ---
+      duration_ms: 927.758
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: bun.lock
+    ok 32 - deep nested dependency/configuration: bun.lock
+      ---
+      duration_ms: 888.5169
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: bun.lockb
+    ok 33 - deep nested dependency/configuration: bun.lockb
+      ---
+      duration_ms: 891.2964
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: .npmrc
+    ok 34 - deep nested dependency/configuration: .npmrc
+      ---
+      duration_ms: 953.7403
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: .yarnrc
+    ok 35 - deep nested dependency/configuration: .yarnrc
+      ---
+      duration_ms: 988.9036
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: .yarnrc.yml
+    ok 36 - deep nested dependency/configuration: .yarnrc.yml
+      ---
+      duration_ms: 913.833
+      type: 'test'
+      ...
+    # Subtest: deep nested dependency/configuration: pnpm-workspace.yaml
+    ok 37 - deep nested dependency/configuration: pnpm-workspace.yaml
+      ---
+      duration_ms: 886.5135
+      type: 'test'
+      ...
+    1..37
+ok 2 - path-aware CI policy: adversarial additions
+  ---
+  duration_ms: 31965.4097
+  type: 'suite'
+  ...
+# Subtest: keeps core verification unconditional and browser jobs dependent on successful classification and verification
+ok 3 - keeps core verification unconditional and browser jobs dependent on successful classification and verification
+  ---
+  duration_ms: 0.3715
+  type: 'test'
+  ...
+1..3
+# tests 61
+# suites 2
+# pass 61
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54892.185
+
+=== npm audit after Next.js 16.4.3 patch ===
+{
+  "info": 0,
+  "low": 0,
+  "moderate": 0,
+  "high": 0,
+  "critical": 0,
+  "total": 0
+}

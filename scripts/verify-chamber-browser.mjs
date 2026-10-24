@@ -7,6 +7,10 @@ import { createRequire } from 'node:module';
 import { freemem } from 'node:os';
 import path from 'node:path';
 import { parseArgs, promisify } from 'node:util';
+import {
+  approachChamberConsole,
+  clickChamberControl,
+} from './lib/chamber-control.mjs';
 assert.equal(
   process.env.GITHUB_ACTIONS,
   'true',
@@ -140,13 +144,18 @@ async function portraitFallback(page) {
 async function tools(page, open) {
   const detail = page.locator('.chamber-comfort');
   if ((await detail.evaluate((el) => el.open)) !== open)
-    await detail.locator(':scope > summary').click();
+    await clickChamberControl(page, detail.locator(':scope > summary'));
+  await page.waitForFunction(
+    (expected) => document.querySelector('.chamber-comfort').open === expected,
+    open,
+  );
 }
 async function reset(page) {
   await tools(page, true);
-  await page
-    .getByRole('button', { name: 'Reset position', exact: true })
-    .click();
+  await clickChamberControl(
+    page,
+    page.getByRole('button', { name: 'Reset position', exact: true }),
+  );
   await tools(page, false);
   await until(page, (p) => Math.abs(p.x) < 0.01 && Math.abs(p.z - 5.5) < 0.01);
 }
@@ -198,7 +207,10 @@ async function noOverflow(page) {
 async function evolution(page, context, cdp, width) {
   await reset(page);
   const start = await diagnostics(page);
-  await page.getByRole('button', { name: 'Third person', exact: true }).click();
+  await clickChamberControl(
+    page,
+    page.getByRole('button', { name: 'Third person', exact: true }),
+  );
   await until(page, (p) => p.perspective === 'third');
   assert.equal((await diagnostics(page)).z, start.z);
   await hold(page, 'w', (p) => p.z < 3.9);
@@ -213,7 +225,10 @@ async function evolution(page, context, cdp, width) {
     'Shortened boom hides obstructing observer',
   );
   assert(camera.z <= 6.75 && Math.abs(camera.x) <= 5.75 && camera.y <= 4.6);
-  await page.getByRole('button', { name: 'First person', exact: true }).click();
+  await clickChamberControl(
+    page,
+    page.getByRole('button', { name: 'First person', exact: true }),
+  );
   await reset(page);
   const original = page.viewportSize();
   const landscape = {
@@ -348,9 +363,10 @@ async function evolution(page, context, cdp, width) {
   await page.keyboard.press('Tab');
   await page.waitForTimeout(1200);
   if (width >= 768)
-    await page
-      .getByRole('button', { name: 'Third person', exact: true })
-      .click();
+    await clickChamberControl(
+      page,
+      page.getByRole('button', { name: 'Third person', exact: true }),
+    );
   const priorInspection = await diagnostics(page);
   await page.getByRole('button', { name: 'Inspect specimen (E)' }).click();
   const inspecting = await diagnostics(page);
@@ -517,9 +533,10 @@ async function evolution(page, context, cdp, width) {
       .getByRole('button', { name: 'First person', exact: true })
       .isVisible()
   )
-    await page
-      .getByRole('button', { name: 'First person', exact: true })
-      .click();
+    await clickChamberControl(
+      page,
+      page.getByRole('button', { name: 'First person', exact: true }),
+    );
   await reset(page);
   evidence.checks.push({
     width,
@@ -851,7 +868,15 @@ try {
       // Walk to console, activate, replay and reset the complete comedy sequence.
       await hold(page, 'a', (p) => p.x < -2.7);
       await alignWithConsole(page);
-      await hold(page, 'w', (p) => p.near);
+      await approachChamberConsole(
+        page,
+        () => diagnostics(page),
+        (step) =>
+          evidence.researchApproaches.push({
+            ...step,
+            method: 'bounded native key pulse',
+          }),
+      );
       assert.equal(
         await page
           .getByRole('button', { name: 'Run experiment (E)' })

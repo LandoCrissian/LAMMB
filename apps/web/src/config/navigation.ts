@@ -11,7 +11,11 @@ export const navigation = [
   { href: '/', label: 'Home', detail: 'Return to the night' },
   { href: '/vault', label: 'The Vault', detail: 'Behind the seal' },
   { href: '/universe', label: 'The Universe', detail: 'The world within' },
-  { href: '/collection', label: 'The Collection', detail: '5280 stories' },
+  {
+    href: '/collection',
+    label: 'The Collection',
+    detail: '720 Genesis stories',
+  },
   { href: '/ascent', label: 'The Ascent', detail: 'Follow the climb' },
   { href: '/community', label: 'Community', detail: 'Higher together' },
   { href: '/world', label: 'LAMMB World', detail: 'Explore the global atlas' },
@@ -21,5 +25,5 @@ export const navigation = [
     detail: 'Your future collection',
   },
   { href: '/faq', label: 'FAQ', detail: 'Find your answers' },
-  { href: '/mint', label: 'Mint', detail: 'Availability & details' },
+  { href: '/mint', label: 'Mint', detail: 'Four stages / 720 Genesis' },
 ] as const;

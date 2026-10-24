@@ -1,6 +1,6 @@
 # Production art ingestion and renderer boundary
 
-Task 004 prepares LAMMB for **100 real visual LAMMBs** once approved art exists. It creates no artwork, final traits, real visual collection, contracts or deployment. Supply remains the canonical 5,280; construction indices remain separate from token IDs. A local approval declaration is a review record, **not authenticated authority or a signature**.
+Task 004 prepares LAMMB for **100 real visual LAMMBs** once approved art exists. It creates no artwork, final traits, real visual collection, contracts or deployment. Genesis supply is now 720; archived development evidence retains its original historical limits; construction indices remain separate from token IDs. A local approval declaration is a review record, **not authenticated authority or a signature**.
 
 ## LOCKED ARCHITECTURE
 

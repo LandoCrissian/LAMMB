@@ -118,7 +118,7 @@ export function SealedSpecimen({
         <div className="inspection-stage">
           <div className="inspection-coordinate" aria-hidden="true">
             <span>LAMMB / UNREVEALED</span>
-            <span>5280 / SEALED</span>
+            <span>720 / SEALED</span>
           </div>
           <figure className="inspection-figure">
             <Image

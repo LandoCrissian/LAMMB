@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { artManifestSchema } from './art-schema.ts';
 import { collection } from '@lammb/collection/config';
+import { archivedDevelopmentSupply } from './legacy-development.ts';
 import {
   generationRecipeSchema,
   identifierSchema,
@@ -84,7 +85,12 @@ export const engineTraitSchema = z.strictObject({
   assetIds: ids.min(1),
   frequency: z.strictObject({
     weight: z.number().int().min(1).max(1000000),
-    plannedCount: z.number().int().min(0).max(collection.supply).optional(),
+    plannedCount: z
+      .number()
+      .int()
+      .min(0)
+      .max(archivedDevelopmentSupply)
+      .optional(),
   }),
   tags: ids,
   requiresTraitIds: ids,
@@ -163,12 +169,12 @@ export const engineCatalogSchema = z.strictObject({
                 .number()
                 .int()
                 .min(0)
-                .max(collection.supply - 1),
+                .max(archivedDevelopmentSupply - 1),
               traitIds: ids.min(1),
             }),
           )
           .min(1)
-          .max(collection.supply),
+          .max(archivedDevelopmentSupply),
       }),
     )
     .max(128),
@@ -181,10 +187,14 @@ export const engineRequestSchema = z.strictObject({
     .string()
     .regex(/^(?:[a-f0-9]{40}|urn:[a-z0-9-]+:[a-zA-Z0-9:._/-]+)$/)
     .max(240),
-  outputCount: z.number().int().min(1).max(collection.supply),
+  outputCount: z.number().int().min(1).max(archivedDevelopmentSupply),
   maxAttemptsPerSpecimen: z.number().int().min(1).max(10000),
   maxTotalAttempts: z.number().int().min(1).max(5000000),
 });
+
+// The larger request envelope exists solely to replay archived development
+// simulations. Every production constructor must use this exact Genesis cap.
+export const genesisOutputCountSchema = z.literal(collection.supply);
 
 export const constructionRecipeSchema = generationRecipeSchema
   .omit({ schemaVersion: true, sourceCommit: true })
@@ -207,7 +217,7 @@ export const logicalSpecimenSchema = z.strictObject({
     .number()
     .int()
     .min(0)
-    .max(collection.supply - 1),
+    .max(archivedDevelopmentSupply - 1),
   grailId: identifierSchema.nullable(),
   traitIds: ids.min(1),
   composition: z
@@ -240,7 +250,7 @@ export const constructionProvenanceSchema = z.strictObject({
         usedAssetIds: ids.min(1),
       }),
     )
-    .max(collection.supply),
+    .max(archivedDevelopmentSupply),
 });
 
 const descriptor = z.strictObject({ label: text, value: text });
@@ -261,7 +271,7 @@ export const developmentMetadataSchema = z.strictObject({
     .regex(/^urn:lammb:(?:development|construction):provenance:[a-f0-9]{64}$/),
 });
 
-const count = z.number().int().min(0).max(collection.supply);
+const count = z.number().int().min(0).max(archivedDevelopmentSupply);
 const attempts = z.number().int().min(0).max(5000000);
 export const engineArtifactsSchema = z
   .strictObject({
@@ -269,12 +279,14 @@ export const engineArtifactsSchema = z
       schemaVersion: z.literal(2),
       purpose: purposeSchema,
       recipe: constructionRecipeSchema,
-      specimens: z.array(logicalSpecimenSchema).max(collection.supply),
+      specimens: z.array(logicalSpecimenSchema).max(archivedDevelopmentSupply),
     }),
     publicMetadata: z.strictObject({
       schemaVersion: z.literal(1),
       purpose: purposeSchema,
-      specimens: z.array(developmentMetadataSchema).max(collection.supply),
+      specimens: z
+        .array(developmentMetadataSchema)
+        .max(archivedDevelopmentSupply),
     }),
     provenance: constructionProvenanceSchema,
     summary: z.strictObject({
@@ -298,7 +310,7 @@ export const engineArtifactsSchema = z
         ordinaryAccepted: count,
         grailReservations: count,
         maxSpecimenAttempts: attempts,
-        perSpecimenAttempts: z.array(attempts).max(collection.supply),
+        perSpecimenAttempts: z.array(attempts).max(archivedDevelopmentSupply),
       }),
       catalogSha256: sha256Schema,
       assetManifestSha256: sha256Schema,
@@ -308,6 +320,19 @@ export const engineArtifactsSchema = z
   })
   .superRefine((artifacts, context) => {
     const expected = artifacts.logicalCollection.recipe.expectedOutputCount;
+    const purpose = artifacts.logicalCollection.purpose;
+    if (
+      artifacts.publicMetadata.purpose !== purpose ||
+      artifacts.provenance.purpose !== purpose ||
+      artifacts.summary.purpose !== purpose ||
+      (purpose === 'PRODUCTION' && expected !== collection.supply)
+    ) {
+      context.addIssue({
+        code: 'custom',
+        message:
+          'Purpose must match; production requires exactly the Genesis supply',
+      });
+    }
     if (
       artifacts.logicalCollection.specimens.length !== expected ||
       artifacts.publicMetadata.specimens.length !== expected ||

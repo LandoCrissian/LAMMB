@@ -3,6 +3,7 @@ import {
   assetManifestSchema,
   engineCatalogSchema,
   engineRequestSchema,
+  genesisOutputCountSchema,
 } from './engine-schema.ts';
 import type {
   EngineCatalog,
@@ -29,6 +30,16 @@ export function validateInputs(
   const catalog = engineCatalogSchema.parse(
     JSON.parse(canonicalJson(catalogInput)),
   );
+  const request = engineRequestSchema.parse(requestInput);
+  if (catalog.purpose === 'PRODUCTION') {
+    genesisOutputCountSchema.parse(request.outputCount);
+    const cap = request.outputCount;
+    if (
+      catalog.traits.some((t) => (t.frequency.plannedCount ?? 0) > cap) ||
+      catalog.grails.some((g) => g.reservations.some((r) => r.index >= cap))
+    )
+      throw new InputError('Production quotas and reservations exceed Genesis');
+  }
   let manifest = assetManifestSchema.parse(
     JSON.parse(canonicalJson(manifestInput)),
   );
@@ -38,7 +49,6 @@ export function validateInputs(
     throw new InputError(
       'Production construction requires V2 artwork and approvals',
     );
-  const request = engineRequestSchema.parse(requestInput);
   if (catalog.purpose !== manifest.purpose)
     throw new InputError('Catalog/manifest environment mismatch');
   unique(

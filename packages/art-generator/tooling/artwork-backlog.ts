@@ -43,6 +43,7 @@ export const artworkBacklogSchema = z
     ]),
     purpose: z.literal('ART_DEVELOPMENT_NOT_PRODUCTION_ASSIGNMENT'),
     mainSha: z.string().regex(/^[a-f0-9]{40}$/),
+    // Immutable historical development evidence; never a current mint limit.
     collectionSupply: z.literal(5280),
     traitBibleVersion: z.literal('1.1.0'),
     traitBibleSha256: sha256Schema,

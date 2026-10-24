@@ -2,7 +2,7 @@
 
 ## Locked product decisions
 
-LAMMB is **The 5,280 Ascent** on Robinhood Chain (4663), with 5,280 supply, a 0 ETH primary mint (gas applies), OpenSea as the marketplace target, and delayed reveal. There is no token, staking, points, DAO or invented roadmap utility.
+LAMMB is **The 5,280 Ascent** on Robinhood Chain (4663), with 720 Genesis supply (690 ordinary, 24 Ultimate, six grails), a 0 ETH primary mint (gas applies), OpenSea as the marketplace target, and delayed reveal. There is no token, staking, points, DAO or invented roadmap utility.
 
 The global lifecycle vocabulary remains:
 
@@ -27,7 +27,7 @@ Altitude is deliberate, authorized launch data. Likes, retweets, followers, Disc
 
 ## Validated state payloads
 
-`createLaunchSnapshotSchema` extends the Task 001 state vocabulary. `launchSnapshotSchema` injects canonical supply. Every strict record requires version `1`, explicit development snapshot authority and a collector presentation. Unknown fields, unsupported versions, missing payloads and incompatible combinations fail closed before presentation derivation. No defaults silently create missing values.
+`createLaunchSnapshotSchema` extends the Task 001 state vocabulary. `launchSnapshotSchema` injects the 720 supply and independent 5280-foot heritage summit. Every strict record requires version `1`, explicit development snapshot authority and a collector presentation. Unknown fields, unsupported versions, missing payloads and incompatible combinations fail closed before presentation derivation. No defaults silently create missing values.
 
 | Global state | Required presentation payload                                                    |
 | ------------ | -------------------------------------------------------------------------------- |
@@ -45,9 +45,9 @@ Altitude is deliberate, authorized launch data. Likes, retweets, followers, Disc
 
 ## Specimen recovery
 
-The intended mint initially delivers an unrevealed **SEALED SPECIMEN**. No final traits or rarity are exposed. The recovery presentation is **SPECIMENS RECOVERED: x / 5,280**. Current UI displays **— / 5,280**, explicitly labeled future onchain supply unavailable; it performs no chain read and never substitutes zero for unknown supply.
+The intended mint initially delivers an unrevealed **SEALED SPECIMEN**. No final traits or rarity are exposed. The recovery presentation is **SPECIMENS RECOVERED: x / 720**. Current UI displays **— / 720**, explicitly labeled future onchain supply unavailable; it performs no chain read and never substitutes zero for unknown supply.
 
-Narrative markers 1,000, 2,640, 4,000, 5,000, 5,279 and 5,280 do not imply sellout or trigger another state. Development counts are accepted only with fixture authority and visible sample labeling. Even a development count of 5,280 remains RECOVERY. Counts must be integers from zero through canonical supply. The completion condition and authoritative supply-reader design remain unresolved.
+Recovery markers 0, 360, 719 and 720 do not imply sellout or trigger another state. Development counts are accepted only with fixture authority and visible sample labeling. Even a development count of 5,280 remains RECOVERY. Counts must be integers from zero through canonical supply. The completion condition and authoritative supply-reader design remain unresolved.
 
 ## Blackout
 

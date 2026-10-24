@@ -2,7 +2,7 @@
 
 ## LOCKED
 
-Canonical collection facts remain in `packages/collection/src/config.ts`: LAMMB, supply 5,280, Robinhood Chain (4663), free mint with gas, delayed reveal and lammb.fun. Construction does not allocate NFTs to wallets or map specimens to token IDs. Category names remain defined once in `src/schema.ts`.
+Canonical collection facts remain in `packages/collection/src/config.ts`: LAMMB, Genesis supply 720, Robinhood Chain (4663), free mint with gas, delayed reveal and lammb.fun. Construction does not allocate NFTs to wallets or map specimens to token IDs. Category names remain defined once in `src/schema.ts`.
 
 Construction must validate complete inputs, enforce compatibility and uniqueness, meet the requested count exactly, and reproduce ordered logical outputs. Failure returns a structured error without a partial collection or relaxed rules. **A commitment proves only what the eventual protocol actually binds.** Construction integrity is not proof of fair token assignment.
 
@@ -135,7 +135,7 @@ The six corruption planned counts cover 98 ordinary slots; the two grails add GL
 | Logical collection | `3f062e25fe2648ab2f5167c27754526d0f968d531611ca8e4505d765ae7eb9c3` |
 | Public metadata    | `0f402c1a650b3957527b028448bc44a258a2d5af1c191c19c68ce99ec63bed1b` |
 
-Measured 100-specimen timing belongs in the external delivery report, outside deterministic evidence. The constructor uses indexed maps, bounded per-category selection and a fingerprint set; it avoids comparing every specimen with every other specimen. No production 5,280-specimen run or renderer benchmark has been performed.
+Measured 100-specimen timing belongs in the external delivery report, outside deterministic evidence. The constructor uses indexed maps, bounded per-category selection and a fingerprint set; it avoids comparing every specimen with every other specimen. The archived 5,280 logical model is retired as production capacity; current Genesis requires 720. No production collection run or renderer benchmark is claimed here.
 
 ## UNRESOLVED PRODUCTION DECISION
 

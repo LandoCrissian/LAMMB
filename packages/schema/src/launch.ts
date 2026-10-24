@@ -71,29 +71,35 @@ export const milestoneIdSchema = z.enum([
 ]);
 
 // Supply is injected by packages/collection: no duplicated collection constant.
-export function createLaunchSnapshotSchema(supply: number) {
-  if (!Number.isSafeInteger(supply) || supply < 4 || supply % 2 !== 0) {
-    throw new Error('Ascent requires an even canonical supply');
+export function createLaunchSnapshotSchema(supply: number, summitFt: number) {
+  if (
+    !Number.isSafeInteger(supply) ||
+    supply < 1 ||
+    !Number.isSafeInteger(summitFt) ||
+    summitFt < 4 ||
+    summitFt % 2 !== 0
+  ) {
+    throw new Error('Supply must be positive; ascent requires an even summit');
   }
   const altitude = z
     .number()
     .int()
     .min(0)
-    .max(supply - 1);
+    .max(summitFt - 1);
   const milestones = canonicalDatumSchema(
     z.tuple([
       z.strictObject({ id: z.literal('GROUND'), altitudeFt: z.literal(0) }),
       z.strictObject({
         id: z.literal('HALFWAY'),
-        altitudeFt: z.literal(supply / 2),
+        altitudeFt: z.literal(summitFt / 2),
       }),
       z.strictObject({
         id: z.literal('ONE_FOOT_LEFT'),
-        altitudeFt: z.literal(supply - 1),
+        altitudeFt: z.literal(summitFt - 1),
       }),
       z.strictObject({
         id: z.literal('LAUNCH'),
-        altitudeFt: z.literal(supply),
+        altitudeFt: z.literal(summitFt),
       }),
     ]),
   );
@@ -131,7 +137,7 @@ export function createLaunchSnapshotSchema(supply: number) {
       z.strictObject({
         ...common,
         state: z.literal('MINT'),
-        currentAltitudeFt: canonicalDatumSchema(z.literal(supply)),
+        currentAltitudeFt: canonicalDatumSchema(z.literal(summitFt)),
         mintIntegration: z.literal('NOT_CONNECTED'),
         specimen: z.literal('SEALED_SPECIMEN'),
       }),

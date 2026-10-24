@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { collection } from '@lammb/collection/config';
+// Archived unapproved Trait Bible, never the Genesis production specification.
+import { archivedDevelopmentSupply } from './legacy-development.ts';
 import { canonicalJson, canonicalSha256, sha256Bytes } from './canonical.ts';
 import { evaluateComposition } from './constraints.ts';
 import { compatibilityRuleSchema, engineTraitSchema } from './engine-schema.ts';
@@ -48,7 +49,7 @@ export const productionSpecSchema = z
     schemaVersion: z.literal(1),
     specVersion: z.enum(['1.0.0', '1.1.0']),
     id: z.literal('lammb-trait-bible'),
-    supply: z.literal(collection.supply),
+    supply: z.literal(archivedDevelopmentSupply),
     status: z.literal('OWNER_REVIEW_REQUIRED'),
     constructorPolicy: z.literal('ONE_TRAIT_PER_EXISTING_CATEGORY'),
     designRefinement: z
@@ -95,7 +96,11 @@ export const productionSpecSchema = z
           visualDefinition: text,
           referenceIds: z.array(text),
           approval: proposal,
-          proposedTotalCount: z.number().int().min(0).max(collection.supply),
+          proposedTotalCount: z
+            .number()
+            .int()
+            .min(0)
+            .max(archivedDevelopmentSupply),
           approvedTotalCount: z.null(),
           selectionWeight: z.number().int().min(1).max(1000000),
           ordinaryDisabled: z.boolean(),
@@ -186,7 +191,7 @@ export const productionSpecSchema = z
             .number()
             .int()
             .min(0)
-            .max(collection.supply - 1),
+            .max(archivedDevelopmentSupply - 1),
           traitIds: ids.length(9),
           visualDefinition: text,
           silhouetteTest: text,
@@ -570,7 +575,7 @@ export const productionSpecSchema = z
       if (
         !values.length ||
         values.reduce((n, t) => n + t.proposedTotalCount, 0) !==
-          collection.supply
+          archivedDevelopmentSupply
       )
         issue(`Proposed totals must cover supply: ${category.category}`);
       unique(
@@ -848,7 +853,7 @@ export function simulationInputs(input: unknown, seedHex = '0150'.repeat(16)) {
       schemaVersion: 1,
       seedHex,
       sourceReference: `urn:lammb:proposal:task-015-${canonicalSha256(spec)}`,
-      outputCount: collection.supply,
+      outputCount: archivedDevelopmentSupply,
       maxAttemptsPerSpecimen: 1000,
       maxTotalAttempts: 1000000,
     },

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { collection } from '@lammb/collection/config';
 import { format, resolveConfig } from 'prettier';
 
 const publicRoot = path.resolve('apps/web/public');
@@ -111,7 +112,7 @@ const common = (
   <path d="M68 546H1132" stroke="#748066" stroke-opacity=".45"/>
   ${text(68, 583, 'lammb.fun', 21, '#F4F5EB', 700)}
   ${mono(240, 582, route)}
-  ${mono(895, 582, '5280 / SEALED', accent)}
+  ${mono(895, 582, `${collection.supply} / SEALED`, accent)}
 </svg>`;
 
 const cards = [
@@ -185,11 +186,11 @@ const cards = [
     route: '/collection',
     sources: [inventory[1]],
     composition:
-      'Existing unrevealed side specimen in an industrial evidence frame; 5280 collection supply without a comma.',
+      'Existing unrevealed side specimen in an industrial evidence frame; 720 Genesis supply without a comma.',
     svg: common(
       `<ellipse cx="925" cy="285" rx="330" ry="310" fill="url(#spot)"/><rect x="700" y="108" width="411" height="404" fill="url(#grid)" stroke="#687A50" stroke-opacity=".5"/>
       ${image(side, 740, 45, 337, 505)}
-      ${text(68, 246, '5280', 132, accent, 900, -5)}
+      ${text(68, 246, String(collection.supply), 132, accent, 900, -5)}
       ${text(70, 319, 'EVERY STORY', 51, '#F4F5EB', 900, -2)}
       ${text(68, 397, 'SEALED.', 76, '#F4F5EB', 900, -3)}
       ${text(70, 454, 'Sealed first. Revealed later.', 24)}
@@ -202,7 +203,7 @@ const cards = [
 ];
 const assets = [];
 for (const card of cards) {
-  const filename = `${card.id}-v1.jpg`;
+  const filename = `${card.id}-v2.jpg`;
   await writeFile(path.join(sourceOutput, `${card.id}.svg`), card.svg);
   const bytes = await sharp(Buffer.from(card.svg))
     .flatten({ background: '#080B09' })
@@ -232,7 +233,8 @@ await writeFile(
     JSON.stringify(
       {
         version: 'lammb-social/1',
-        authorization: 'OWNER_TASK_010S_CINEMATIC_SOCIAL_SHARING',
+        authorization:
+          'OWNER_TASK_010S_CINEMATIC_SOCIAL_SHARING_AND_ISSUE_34_SUPPLY_CORRECTION',
         approval: 'TASK_010S_COMPOSITIONS_PENDING_OWNER_VISUAL_REVIEW',
         productionNFTArtworkApproved: false,
         creation:

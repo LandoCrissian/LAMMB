@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-23T16:43:18.873Z",
+  "result": "PASS",
+  "scope": "Network identity and marketplace chain discovery only; collection indexing, tokenURI retrieval, reveal and trading remain unverified.",
+  "observations": [
+    {
+      "url": "https://rpc.mainnet.chain.robinhood.com",
+      "status": 200,
+      "responseSha256": "75ea0f516604d743a7a785da0919b7b26debc20e260ff9d0a045c6cfa40f876f",
+      "environment": "mainnet",
+      "method": "eth_chainId",
+      "chainId": 4663,
+      "result": "0x1237"
+    },
+    {
+      "url": "https://rpc.testnet.chain.robinhood.com",
+      "status": 200,
+      "responseSha256": "b0d6b7795edd1e5eea1c88846cb44d399e266b747d930877bbceb94befcb0feb",
+      "environment": "testnet",
+      "method": "eth_chainId",
+      "chainId": 46630,
+      "result": "0xb626"
+    },
+    {
+      "url": "https://api.opensea.io/api/v2/chains",
+      "status": 200,
+      "responseSha256": "eaff9a766ce1ed60ddfd82c2a713a7a666067a784d4ca99604c72a4d4ec48de2",
+      "chainCount": 29,
+      "robinhood": {
+        "chain": "robinhood",
+        "name": "Robinhood Chain",
+        "symbol": "ETH",
+        "supports_swaps": true,
+        "block_explorer": "Etherscan",
+        "block_explorer_url": "https://robin.etherscan.io"
+      }
+    }
+  ]
+}

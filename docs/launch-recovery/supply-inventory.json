@@ -1,0 +1,717 @@
+{
+  "baseline": "c3d5618bc1712043e506e81ca54e35a41194a1a0",
+  "scope": "All tracked and nonignored source/docs/schema/test text, excluding dependency lockfile and this generated inventory. Binary assets are covered by provenance and visual review; numeric substrings inside hashes/decimal coordinates are excluded.",
+  "policy": "Current Genesis mint cap is 720. Remaining 5280 references are heritage, retired development evidence, negative tests or explicit migration explanations. Archived byte-pinned JSON/frequencies are preserved and cannot authorize production.",
+  "baselineFilesScanned": 295,
+  "currentFilesScanned": 341,
+  "files": [
+    {
+      "path": "apps/web/public/social/provenance.json",
+      "baselineLines": [98],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/app/ascent/page.tsx",
+      "baselineLines": [11],
+      "currentLines": [11],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "apps/web/src/app/development/launch/page.tsx",
+      "baselineLines": [30],
+      "currentLines": [30],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "apps/web/src/app/faq/page.tsx",
+      "baselineLines": [41],
+      "currentLines": [41],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "apps/web/src/app/universe/page.tsx",
+      "baselineLines": [81],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/components/sealed-specimen.tsx",
+      "baselineLines": [121],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/config/labs.ts",
+      "baselineLines": [112, 115],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/config/navigation.ts",
+      "baselineLines": [14],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/config/site.ts",
+      "baselineLines": [6, 57, 59],
+      "currentLines": [6, 57, 59],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "apps/web/src/config/social.ts",
+      "baselineLines": [11, 35],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "apps/web/src/lib/chamber-scene.ts",
+      "baselineLines": [257],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "docs/ART_INGESTION.md",
+      "baselineLines": [3],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "docs/ART_PIPELINE.md",
+      "baselineLines": [28],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.2.0.json",
+      "baselineLines": [6, 946, 1025, 1099, 1203, 3045, 3058, 3199, 3212],
+      "currentLines": [6, 946, 1025, 1099, 1203, 3045, 3058, 3199, 3212],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.3.0.json",
+      "baselineLines": [6, 967, 1046, 1120, 1224, 3066, 3079, 3220, 3233],
+      "currentLines": [6, 967, 1046, 1120, 1224, 3066, 3079, 3220, 3233],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.4.0.json",
+      "baselineLines": [6, 974, 1053, 1127, 1231, 3073, 3086, 3227, 3240],
+      "currentLines": [6, 974, 1053, 1127, 1231, 3073, 3086, 3227, 3240],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.5.0.json",
+      "baselineLines": [6, 995, 1074, 1148, 1252, 3094, 3107, 3248, 3261],
+      "currentLines": [6, 995, 1074, 1148, 1252, 3094, 3107, 3248, 3261],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.6.0.json",
+      "baselineLines": [6, 1002, 1081, 1155, 1259, 3101, 3114, 3255, 3268],
+      "currentLines": [6, 1002, 1081, 1155, 1259, 3101, 3114, 3255, 3268],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.7.0.json",
+      "baselineLines": [6, 1023, 1102, 1176, 1280, 3122, 3135, 3276, 3289],
+      "currentLines": [6, 1023, 1102, 1176, 1280, 3122, 3135, 3276, 3289],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v0.8.0.json",
+      "baselineLines": [6, 1030, 1109, 1183, 1287, 3129, 3142, 3283, 3296],
+      "currentLines": [6, 1030, 1109, 1183, 1287, 3129, 3142, 3283, 3296],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG_v1.json",
+      "baselineLines": [6, 1051, 1130, 1204, 1308, 3150, 3163, 3304, 3317],
+      "currentLines": [6, 1051, 1130, 1204, 1308, 3150, 3163, 3304, 3317],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/ARTWORK_BACKLOG.md",
+      "baselineLines": [93],
+      "currentLines": [93],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE16_PNG_PROOF.md",
+      "baselineLines": [5, 146, 193, 204],
+      "currentLines": [5, 146, 193, 204],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE17_ASSET_REGISTRATION.md",
+      "baselineLines": [3, 143],
+      "currentLines": [3, 143],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE22_PRODUCTION_MODEL.md",
+      "baselineLines": [49, 51],
+      "currentLines": [49, 51],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE23_CHARACTER_EVOLUTION.md",
+      "baselineLines": [45],
+      "currentLines": [45],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE24_PERFORMANCE_VALIDATION.md",
+      "baselineLines": [11, 40, 50],
+      "currentLines": [11, 40, 50],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE24_REFINEMENT_PLAN.md",
+      "baselineLines": [69],
+      "currentLines": [69],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE25_CHARACTER_EXPANSION.md",
+      "baselineLines": [46],
+      "currentLines": [46],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE26_DIVERSITY_ROADMAP.md",
+      "baselineLines": [18, 36, 38],
+      "currentLines": [18, 36, 38],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE26_NEXT_STUDIES.json",
+      "baselineLines": [7],
+      "currentLines": [7],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE26_PRODUCTION_PREPARATION.md",
+      "baselineLines": [42],
+      "currentLines": [42],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE27_CHARACTER_STUDIES.md",
+      "baselineLines": [49],
+      "currentLines": [49],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE28_NEXT_STUDIES.json",
+      "baselineLines": [7],
+      "currentLines": [7],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE28_PREPARATION.md",
+      "baselineLines": [15, 28, 38, 61],
+      "currentLines": [15, 28, 38, 61],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE29_CAPACITY_AUDIT.json",
+      "baselineLines": [
+        29, 30, 34, 35, 43, 1232, 1250, 1314, 1379, 1444, 2590, 2693, 2796,
+        2827, 2845
+      ],
+      "currentLines": [
+        29, 30, 34, 35, 43, 1232, 1250, 1314, 1379, 1444, 2590, 2693, 2796,
+        2827, 2845
+      ],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE29_UNIVERSE_CAPACITY.md",
+      "baselineLines": [39, 41, 92],
+      "currentLines": [39, 41, 92],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE30_FOUR_RECIPE_ACCEPTANCE.md",
+      "baselineLines": [103, 105, 120, 188],
+      "currentLines": [103, 105, 120, 188],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE30_RECONCILIATION.json",
+      "baselineLines": [184, 343, 502, 659, 686, 704, 705],
+      "currentLines": [184, 343, 502, 659, 686, 704, 705],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31_CAPACITY.json",
+      "baselineLines": [17, 18, 125, 242, 359, 476],
+      "currentLines": [17, 18, 125, 242, 359, 476],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31_TRAIT_BINDING.md",
+      "baselineLines": [99, 158],
+      "currentLines": [99, 158],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31B_METADATA_ALIGNMENT.md",
+      "baselineLines": [6, 22, 82, 139],
+      "currentLines": [6, 22, 82, 139],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31B_METADATA_PROPOSALS.json",
+      "baselineLines": [41, 182, 323, 464],
+      "currentLines": [41, 182, 323, 464],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31C_APPROVED_RECIPES.md",
+      "baselineLines": [51, 97],
+      "currentLines": [51, 97],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31C_COMPLETE_RECIPES.json",
+      "baselineLines": [133, 155, 305, 327, 477, 499, 633, 655],
+      "currentLines": [133, 155, 305, 327, 477, 499, 633, 655],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE31C_HIGH_RESOLUTION_PLAN.md",
+      "baselineLines": [65],
+      "currentLines": [65],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE32_DELIVERY_PILOT.json",
+      "baselineLines": [23, 45, 111, 133, 199, 221, 287, 309],
+      "currentLines": [23, 45, 111, 133, 199, 221, 287, 309],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE32_DELIVERY_PILOT.md",
+      "baselineLines": [36, 103],
+      "currentLines": [36, 103],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE33_CONTROLLED_PILOT.json",
+      "baselineLines": [
+        820, 842, 927, 949, 1039, 1061, 1151, 1173, 3020, 3199, 3221, 3470,
+        3492, 3757, 3779, 4044, 4066, 4956, 4967
+      ],
+      "currentLines": [
+        820, 842, 927, 949, 1039, 1061, 1151, 1173, 3020, 3199, 3221, 3470,
+        3492, 3757, 3779, 4044, 4066, 4956, 4967
+      ],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE33_CONTROLLED_PILOT.md",
+      "baselineLines": [68, 69, 82, 109],
+      "currentLines": [68, 69, 82, 109],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE34_AUTHORED_CHARACTERS.md",
+      "baselineLines": [27, 28, 32],
+      "currentLines": [27, 28, 32],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE34_DELIVERY_AUDIT.json",
+      "baselineLines": [
+        24, 120, 142, 296, 318, 465, 487, 641, 663, 810, 832, 986, 1008, 1155,
+        1177, 1315, 1337
+      ],
+      "currentLines": [
+        24, 120, 142, 296, 318, 465, 487, 641, 663, 810, 832, 986, 1008, 1155,
+        1177, 1315, 1337
+      ],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE35_SOURCE_METADATA_COMPLETION.md",
+      "baselineLines": [80],
+      "currentLines": [80],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/STAGE35_VALIDATION_REPORT.json",
+      "baselineLines": [1353],
+      "currentLines": [1353],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/art-production/UNIVERSE_ART_DIRECTION_v1.md",
+      "baselineLines": [53],
+      "currentLines": [53],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/COLLECTION.md",
+      "baselineLines": [5],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "docs/GENERATOR.md",
+      "baselineLines": [5, 138],
+      "currentLines": [138],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/LAUNCH_LIFECYCLE.md",
+      "baselineLines": [5, 15, 22, 48, 50],
+      "currentLines": [5, 15, 22, 30, 50],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/launch-recovery/README.md",
+      "baselineLines": [],
+      "currentLines": [9, 27],
+      "disposition": "RECOVERY_REVIEW_OR_SPECIFICATION"
+    },
+    {
+      "path": "docs/launch-recovery/registry-review.md",
+      "baselineLines": [],
+      "currentLines": [20],
+      "disposition": "RECOVERY_REVIEW_OR_SPECIFICATION"
+    },
+    {
+      "path": "docs/TASK_005_REVIEW.md",
+      "baselineLines": [99],
+      "currentLines": [99],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/task-009-classified-universe.md",
+      "baselineLines": [7],
+      "currentLines": [7],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ACCESSORY_BUNDLES.md",
+      "baselineLines": [5, 9, 29, 56, 83],
+      "currentLines": [5, 9, 29, 56, 83],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ADVERSARIAL_015B.json",
+      "baselineLines": [8, 9, 17, 18, 20],
+      "currentLines": [8, 9, 17, 18, 20],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ADVERSARIAL_BASELINE.json",
+      "baselineLines": [8, 9, 14, 15, 17],
+      "currentLines": [8, 9, 14, 15, 17],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ADVERSARIAL_CURRENT.json",
+      "baselineLines": [8, 9, 17, 18, 20],
+      "currentLines": [8, 9, 17, 18, 20],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ADVERSARIAL_REVIEW.md",
+      "baselineLines": [13, 34, 43, 96, 108, 109, 111, 145, 166, 231],
+      "currentLines": [1, 15, 36, 45, 98, 110, 111, 113, 147, 168, 233],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/ARTWORK_PILOT.md",
+      "baselineLines": [59, 60, 61, 77, 198, 203],
+      "currentLines": [59, 60, 61, 77, 198, 203],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/FINAL_REFINEMENT.md",
+      "baselineLines": [31, 44, 69, 70, 71, 72, 94, 98, 125],
+      "currentLines": [31, 44, 69, 70, 71, 72, 94, 98, 125],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/FREQUENCIES.md",
+      "baselineLines": [3, 9, 70, 77, 137, 186, 200],
+      "currentLines": [1, 5, 11, 72, 79, 139, 188, 202],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/OPENSEA_METADATA.md",
+      "baselineLines": [68],
+      "currentLines": [68],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/OWNER_DIRECTION.md",
+      "baselineLines": [7],
+      "currentLines": [7],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/PRODUCTION_READINESS.md",
+      "baselineLines": [81, 144],
+      "currentLines": [81, 144],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/README.md",
+      "baselineLines": [3, 30, 86, 143],
+      "currentLines": [1, 5, 32, 88, 145],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/SEED_SENSITIVITY_015B.json",
+      "baselineLines": [8, 9, 15, 103, 104, 110, 198, 199, 205, 293, 294, 300],
+      "currentLines": [8, 9, 15, 103, 104, 110, 198, 199, 205, 293, 294, 300],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/SEED_SENSITIVITY.json",
+      "baselineLines": [8, 9, 15, 100, 101, 107, 192, 193, 199, 284, 285, 291],
+      "currentLines": [8, 9, 15, 100, 101, 107, 192, 193, 199, 284, 285, 291],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/SIMULATION.json",
+      "baselineLines": [28, 47, 49, 768, 816, 821, 842, 899],
+      "currentLines": [28, 47, 49, 768, 816, 821, 842, 899],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/trait-bible/TRAITS.md",
+      "baselineLines": [
+        17, 34, 45, 56, 67, 78, 89, 100, 111, 128, 139, 150, 161, 172, 183, 194,
+        205, 222, 233, 244, 255, 266, 277, 294, 305, 316, 327, 338, 349, 360,
+        371, 388, 399, 410, 421, 432, 437, 440, 443, 454, 465, 476, 487, 498,
+        509, 514, 517, 520, 531, 542, 559, 570, 581, 592, 603, 614, 625, 636,
+        653, 664, 675, 686, 697, 708, 725, 736, 747, 758, 769, 780
+      ],
+      "currentLines": [
+        1, 19, 36, 47, 58, 69, 80, 91, 102, 113, 130, 141, 152, 163, 174, 185,
+        196, 207, 224, 235, 246, 257, 268, 279, 296, 307, 318, 329, 340, 351,
+        362, 373, 390, 401, 412, 423, 434, 439, 442, 445, 456, 467, 478, 489,
+        500, 511, 516, 519, 522, 533, 544, 561, 572, 583, 594, 605, 616, 627,
+        638, 655, 666, 677, 688, 699, 710, 727, 738, 749, 760, 771, 782
+      ],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/WEBSITE_ART.md",
+      "baselineLines": [49, 50, 51],
+      "currentLines": [49, 50, 51],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "docs/WEBSITE.md",
+      "baselineLines": [35],
+      "currentLines": [35],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "packages/art-generator/fixtures/stage16-png-proof.json",
+      "baselineLines": [31],
+      "currentLines": [31],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/fixtures/stage17-asset-registry.json",
+      "baselineLines": [307],
+      "currentLines": [307],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/fixtures/stage29-logical-capacity.json",
+      "baselineLines": [5],
+      "currentLines": [5],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/fixtures/stage30-recipe-reviews.json",
+      "baselineLines": [42, 308, 574, 840],
+      "currentLines": [42, 308, 574, 840],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/specs/lammb-traits-v1.json",
+      "baselineLines": [
+        5, 515, 517, 1636, 1637, 1651, 1829, 1830, 1848, 1864, 1875, 1938, 1996,
+        4530, 5475, 5562, 8151, 8155, 8159, 8222, 8223, 8238, 8243
+      ],
+      "currentLines": [
+        5, 515, 517, 1636, 1637, 1651, 1829, 1830, 1848, 1864, 1875, 1938, 1996,
+        4530, 5475, 5562, 8151, 8155, 8159, 8222, 8223, 8238, 8243
+      ],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/specs/lammb-traits-v1.schema.json",
+      "baselineLines": [19, 237],
+      "currentLines": [19, 237],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/src/legacy-development.ts",
+      "baselineLines": [],
+      "currentLines": [5],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/src/png-proof-metadata.ts",
+      "baselineLines": [31],
+      "currentLines": [31],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/src/production-spec.ts",
+      "baselineLines": [453],
+      "currentLines": [458],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/tooling/approved-source-traits.ts",
+      "baselineLines": [264],
+      "currentLines": [264],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/tooling/artwork-backlog.ts",
+      "baselineLines": [46],
+      "currentLines": [47],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/tooling/collection-capacity.ts",
+      "baselineLines": [223],
+      "currentLines": [223],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/art-generator/tooling/task-015.ts",
+      "baselineLines": [279, 327],
+      "currentLines": [279, 327],
+      "disposition": "ARCHIVED_DEVELOPMENT_PROTOCOL_OR_EAR_TAG_TRAIT"
+    },
+    {
+      "path": "packages/collection/src/config.ts",
+      "baselineLines": [8],
+      "currentLines": [3],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "packages/collection/src/launch.ts",
+      "baselineLines": [],
+      "currentLines": [4, 10],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "packages/collection/src/presentation.ts",
+      "baselineLines": [159, 192],
+      "currentLines": [162, 195],
+      "disposition": "HERITAGE_ALTITUDE_OR_RETIREMENT_EXPLANATION"
+    },
+    {
+      "path": "README.md",
+      "baselineLines": [13, 18],
+      "currentLines": [20],
+      "disposition": "DOCUMENTED_HERITAGE_OR_HISTORICAL_REPORT"
+    },
+    {
+      "path": "scripts/audit-genesis-supply.mjs",
+      "baselineLines": [],
+      "currentLines": [11, 67, 70, 104],
+      "disposition": "HERITAGE_GUARD_OR_INVENTORY_TOOL"
+    },
+    {
+      "path": "scripts/prepare-social-cards.mjs",
+      "baselineLines": [114, 188, 192],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "scripts/verify-social-browser.mjs",
+      "baselineLines": [76],
+      "currentLines": [76],
+      "disposition": "HERITAGE_GUARD_OR_INVENTORY_TOOL"
+    },
+    {
+      "path": "scripts/verify-social-metadata.mjs",
+      "baselineLines": [173],
+      "currentLines": [173],
+      "disposition": "HERITAGE_GUARD_OR_INVENTORY_TOOL"
+    },
+    {
+      "path": "scripts/verify-website-browser.mjs",
+      "baselineLines": [1020],
+      "currentLines": [1020],
+      "disposition": "HERITAGE_GUARD_OR_INVENTORY_TOOL"
+    },
+    {
+      "path": "tests/art-ingestion-io.test.ts",
+      "baselineLines": [150],
+      "currentLines": [150],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/art-pipeline.test.ts",
+      "baselineLines": [147, 320, 477, 1855, 1856],
+      "currentLines": [147, 320, 477, 1855, 1856],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/chamber.test.tsx",
+      "baselineLines": [167],
+      "currentLines": [167],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/collection.test.ts",
+      "baselineLines": [11],
+      "currentLines": [],
+      "disposition": "CORRECTED_OR_REMOVED"
+    },
+    {
+      "path": "tests/genesis-supply.test.ts",
+      "baselineLines": [],
+      "currentLines": [13, 18, 22],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/labs.test.tsx",
+      "baselineLines": [91, 106],
+      "currentLines": [106],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/launch-presentation.test.ts",
+      "baselineLines": [65, 91, 96, 110, 158, 180],
+      "currentLines": [65, 91, 96, 110, 149],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/png-proof.test.ts",
+      "baselineLines": [1194, 1289, 1329, 1475, 1531, 1969, 2467],
+      "currentLines": [1194, 1289, 1329, 1475, 1531, 1969, 2467],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/trait-bible.test.ts",
+      "baselineLines": [118, 441],
+      "currentLines": [118, 441],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    },
+    {
+      "path": "tests/website-foundation.test.tsx",
+      "baselineLines": [81, 108],
+      "currentLines": [108],
+      "disposition": "HISTORICAL_ASSERTION_HERITAGE_OR_REJECTION_TEST"
+    }
+  ]
+}
