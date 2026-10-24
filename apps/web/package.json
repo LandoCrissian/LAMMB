@@ -12,6 +12,7 @@
     "@lammb/collection": "0.0.0",
     "@lammb/schema": "0.0.0",
     "@netlify/database": "2.0.1",
+    "@netlify/functions": "6.0.3",
     "next": "16.4.3",
     "pg": "8.23.1",
     "react": "19.3.0",

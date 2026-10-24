@@ -27,7 +27,7 @@ times unannounced and minting is OpenSea only.
 
 - [ ] Base directory: repository root (`.`). Package directory: `apps/web` in the
       site UI. Build: `npm run build`; publish: `apps/web/.next`; Node 22.23.2.
-      Root `netlify.toml` defines build/base/publish and preview-off flags. Verify
+      Root `netlify.toml` defines build/base/publish and build-only preview-off flags. Verify
       the actual site's OpenNext adapter and resolved migration discovery before
       authorizing a deploy. SDK 2.0.1 requires Node >=22.12.0.
 - [ ] Inspect existing native migration history. Prepared files under root
@@ -65,7 +65,11 @@ applications. It never embeds a password or enables registration.
       `\password lammb_genesis_runtime` prompts without shell-history exposure;
       then authorize `ALTER ROLE lammb_genesis_runtime LOGIN`. Do not commit the
       password to SQL or print it in a ticket/build log.
-- [ ] Configure these server-only, production-scoped Functions settings:
+- [ ] Configure these server settings through Netlify UI/API, available to
+      Functions, with production-context values. Personal may not offer granular
+      Functions scopes; use All scopes if necessary and protect build logs. TOML
+      environment values do not become function runtime variables. Never use
+      `NEXT_PUBLIC_`; confirm the actual plan's context controls before setup:
 
 | Setting                                | Value / owner action                                                |
 | -------------------------------------- | ------------------------------------------------------------------- |
@@ -99,16 +103,18 @@ binding is enabled as supported by pg; verify-full TLS is mandatory regardless.
 - [ ] Confirm main database resolution for production and distinct provider
       branches for two authorized previews. Preview branches copy production PII,
       roles and authentication state. Keep branch credentials/build logs private.
-- [ ] Leave both flags false on previews/branch deploys. Independently, code blocks
-      **every non-production CONTEXT, or missing CONTEXT on Netlify**, before SDK
+- [ ] Leave both flags false on previews/branch deploys. Independently, code uses
+      `getContext()` from `@netlify/functions@6.0.3` and blocks **every non-production
+      deploy.context, or missing request context on Netlify**, before SDK
       resolution or pool creation. Copied sessions, admin config and Origin cannot
       open private records/decisions/exports. There is no preview-enable override.
+      Build-only CONTEXT/NETLIFY variables are not the runtime authority.
 - [ ] Do not give previews production rate/admin/password secrets. Platform preview
       access protection adds defense where available; it does not replace this
       unconditional API block. Do not spoof CONTEXT for QA. Use disposable local/CI
       synthetic data; any future hosted backend rehearsal needs separate review.
 - [ ] Verify actual Node Route Handler SDK context (including Lambda compatibility
-      constraints), adapter-provided CONTEXT/NETLIFY and trusted connection-IP
+      constraints), `getContext().deploy.context` and trusted `getContext().ip`
       behavior privately. Missing context fails closed; no manual URL workaround.
 - [ ] With a trusted runtime-role service profile using verify-full TLS run
       `apps/web/registration/verify-runtime.sql` and `verify-tls.sql`. Require
@@ -152,6 +158,7 @@ backup receipt, native branch test or production TLS handshake.
 
 Official references: [SDK/API](https://docs.netlify.com/build/data-and-storage/netlify-database/api/),
 [migrations](https://docs.netlify.com/build/data-and-storage/netlify-database/migrations/),
+[request context](https://docs.netlify.com/build/functions/api/#getcontext),
 [setup](https://docs.netlify.com/build/data-and-storage/netlify-database/getting-started/),
 [backup behavior](https://docs.netlify.com/build/data-and-storage/netlify-database/backup-and-recovery/),
 [Neon SQL roles](https://neon.com/docs/manage/roles).

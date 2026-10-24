@@ -3,6 +3,7 @@ import { z, ZodError } from 'zod';
 import { GenesisError } from './model';
 import { registrationService } from './runtime';
 import type { RegistrationService } from './service';
+import { trustedConnectionIp } from './deployment';
 
 const challengeInput = z.strictObject({
   address: z.string().max(42),
@@ -157,12 +158,9 @@ export async function handleGenesis(
     )
       throw new GenesisError('ORIGIN_FORBIDDEN', 403);
     const token = getCookie(req, 'session');
-    // Only the platform-set connection IP is trusted on Netlify. Else share one
-    // conservative bucket; arbitrary X-Forwarded-For cannot evade the limiter.
-    const rawIp =
-      process.env.NETLIFY === 'true'
-        ? req.headers.get('x-nf-client-connection-ip')
-        : null;
+    // Platform request context supplies the client IP, not a build-only NETLIFY
+    // flag or caller-supplied forwarded headers. Else share a conservative bucket.
+    const rawIp = trustedConnectionIp();
     const client = createHmac('sha256', service.config.rateSecret)
       .update(rawIp ?? 'untrusted-client')
       .digest('hex');

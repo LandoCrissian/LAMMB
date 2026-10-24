@@ -84,8 +84,9 @@ Rate limits are stored transactionally, HMAC-keyed, and enforced before signatur
 10 challenges per connection/minute, 5 per wallet per connection/minute, 20 verification attempts
 per connection/minute. Request handlers additionally limit applications to
 10 per connection/minute and other requests to 120 per action/minute.
-Only Netlify's platform-set connection IP is trusted when
-`NETLIFY=true`; other hosts use a shared conservative bucket. Do not enable on
+Only `getContext().ip` from Netlify's supported request API is trusted;
+caller-supplied forwarded headers and build-only NETLIFY flags are not identity.
+Other hosts use a shared conservative bucket. Do not enable on
 another host until its trusted gateway identity has been reviewed. Wallet ownership
 does not prevent multi-wallet/Sybil abuse; add monitored gateway limits/challenge
 controls if needed before opening registration. Do not claim a solved Sybil defense.

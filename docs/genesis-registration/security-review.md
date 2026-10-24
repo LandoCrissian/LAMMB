@@ -56,8 +56,11 @@ effective role, grants and TLS before reading private state.
 
 Native migrations validate/adopt the exact historical schema, preserve data and
 revision, reject drift, and create the restricted role NOLOGIN without secrets.
-No destructive reset/down is provided. All non-production contexts, including
-missing CONTEXT on Netlify, block every Genesis endpoint before DB resolution.
+No destructive reset/down is provided. Request-local `getContext().deploy.context`
+is authoritative; build-only CONTEXT/NETLIFY variables are not relied on. All
+non-production contexts or missing native request context block every Genesis
+endpoint before DB resolution. Client rate keys use `getContext().ip`, not
+caller-supplied proxy headers.
 There is no preview-enable switch; copied auth/flags do not expose wallet records.
 
 Residual operating risks: actual native role permissions and auto-injected

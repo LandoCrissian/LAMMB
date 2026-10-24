@@ -4,6 +4,7 @@ import { GenesisError, wallet } from './model';
 import { RegistrationService, type ServiceConfig } from './service';
 import { PostgresStore } from './store';
 import { assertRegistrationContext, databaseConfig } from './database';
+import { requestEnvironment } from './deployment';
 
 export function runtimeConfig(
   env: Record<string, string | undefined>,
@@ -68,7 +69,7 @@ export function runtimeConfig(
 let singleton:
   { service: RegistrationService; fingerprint: string } | undefined;
 export function registrationService() {
-  const config = runtimeConfig(process.env);
+  const config = runtimeConfig(requestEnvironment(process.env));
   // Deployment configuration is immutable for a process. Cache only pool/service,
   // never requests, wallet results, sessions or mutable registration state.
   const fingerprint = JSON.stringify(config);

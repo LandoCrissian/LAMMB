@@ -4,6 +4,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { databaseConfig } from '../apps/web/src/lib/genesis/database';
 import { runtimeConfig } from '../apps/web/src/lib/genesis/runtime';
 import { handleGenesis } from '../apps/web/src/lib/genesis/http';
+import {
+  requestEnvironment,
+  trustedConnectionIp,
+} from '../apps/web/src/lib/genesis/deployment';
 
 const password = 'disposable-test-password-@:/?-123456789';
 const provider =
@@ -106,6 +110,56 @@ describe('Netlify branch-aware database configuration', () => {
 });
 
 describe('preview privacy boundary', () => {
+  it('uses supported request metadata without relying on build-only environment variables', () => {
+    const env = requestEnvironment(
+      { GENESIS_REGISTRATION_ENABLED: 'false' },
+      () => ({ deploy: { context: 'production' }, ip: '192.0.2.1' }),
+    );
+    expect(env.NETLIFY).toBe('true');
+    expect(env.CONTEXT).toBe('production');
+    expect(() => runtimeConfig(env)).toThrow('REGISTRATION_INACTIVE');
+  });
+  it.each(['deploy-preview', 'branch-deploy', 'dev', 'unknown'])(
+    'trusts native %s metadata over an accidentally copied production environment',
+    (context) => {
+      expect(() =>
+        requestEnvironment(enabled, () => ({
+          deploy: { context },
+          ip: '192.0.2.1',
+        })),
+      ).toThrow('REGISTRATION_PREVIEW_DISABLED');
+    },
+  );
+  it.each([
+    { SITE_ID: 'native-site' },
+    { NETLIFY_DB_URL: 'must-not-be-used' },
+    { NETLIFY: 'true' },
+    { CONTEXT: 'production' },
+  ])('fails closed without a supported request context %j', (env) => {
+    expect(() => requestEnvironment(env)).toThrow(
+      'REGISTRATION_PREVIEW_DISABLED',
+    );
+  });
+  it('keeps standalone local/test configuration without fabricating a native context', () => {
+    expect(requestEnvironment({ NODE_ENV: 'test' })).toEqual({
+      NODE_ENV: 'test',
+    });
+    expect(() =>
+      requestEnvironment({ ...enabled, CONTEXT: 'deploy-preview' }, () => ({
+        deploy: { context: 'production' },
+        ip: '192.0.2.1',
+      })),
+    ).toThrow('REGISTRATION_PREVIEW_DISABLED');
+  });
+  it('uses trusted request IP without reading caller-supplied proxy headers', () => {
+    expect(
+      trustedConnectionIp(() => ({
+        deploy: { context: 'production' },
+        ip: '192.0.2.1',
+      })),
+    ).toBe('192.0.2.1');
+    expect(trustedConnectionIp()).toBeNull();
+  });
   it.each(['deploy-preview', 'branch-deploy', 'dev', 'unknown', ''])(
     'blocks context %s before SDK resolution even with activation/admin flags copied',
     (context) => {
