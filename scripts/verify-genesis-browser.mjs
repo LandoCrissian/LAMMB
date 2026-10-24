@@ -51,6 +51,31 @@ try {
         .evaluateAll((nodes) => nodes.map((n) => n.dataset.stage)),
       ['FOUNDER', 'GTD', 'WL', 'PUBLIC'],
     );
+    const allocations = { FOUNDER: 48, GTD: 392, WL: 160, PUBLIC: 120 };
+    for (const [id, count] of Object.entries(allocations)) {
+      const card = page.locator(`[data-stage="${id}"]`);
+      assert.equal(
+        (await card.locator('.genesis-allocation').textContent()).trim(),
+        `${count}NFT allocation target`,
+      );
+      assert.equal(
+        await card.getByText('Free + gas', { exact: true }).count(),
+        1,
+      );
+      assert.equal(
+        await card.getByText('To be announced', { exact: true }).count(),
+        1,
+      );
+    }
+    assert.equal(
+      Object.values(allocations).reduce((sum, n) => sum + n, 0),
+      720,
+    );
+    assert.equal(
+      /0x[a-fA-F0-9]{40}/.test(await page.locator('body').innerText()),
+      false,
+      'No wallet list in the default public page',
+    );
     assert.equal(
       await page
         .getByRole('button', { name: 'Verify wallet & check status' })
@@ -120,6 +145,10 @@ try {
       width,
       closed: true,
       overflow: false,
+      allocations,
+      partnersConfirmed: false,
+      stageTimesAnnounced: false,
+      privateWalletsExposed: false,
       screenshot: 'genesis-' + width + '.png',
     });
     await context.close();
