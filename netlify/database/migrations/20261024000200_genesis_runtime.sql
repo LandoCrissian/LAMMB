@@ -1,6 +1,6 @@
 -- No credentials in migrations. Owner enables LOGIN privately only after review.
 -- Neon SQL-created roles do not receive neon_superuser membership.
-BEGIN;
+-- Netlify owns the outer transaction and migration-ledger commit.
 SET LOCAL statement_timeout = '10000ms';
 SELECT pg_advisory_xact_lock(hashtextextended(current_schema() || ':genesis-migrations', 0));
 DO $$
@@ -21,4 +21,3 @@ BEGIN
 END $$;
 REVOKE ALL ON genesis_registration_state FROM lammb_genesis_runtime;
 GRANT SELECT, UPDATE ON genesis_registration_state TO lammb_genesis_runtime;
-COMMIT;

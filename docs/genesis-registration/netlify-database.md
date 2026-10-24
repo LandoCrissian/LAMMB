@@ -40,6 +40,11 @@ times unannounced and minting is OpenSea only.
       web builds/request handlers. Do not run hosted `drizzle-kit push` or apply
       the historical SQL manually on an existing native database.
 
+Netlify owns the migration transaction and ledger commit. Native migration files
+must not include outer BEGIN/COMMIT statements. CI runs them inside the runner's
+transaction and verifies that a failed ledger write rolls back schema and grants.
+See the [official migration runner](https://github.com/netlify/primitives/blob/main/packages/database/dev/src/lib/migrations.ts).
+
 The first migration creates one empty version-1 state row on an empty database
 or adopts the exact historical table contract without changing state/revision.
 Column types/defaults/constraints, RLS, triggers, inheritance and bounded row

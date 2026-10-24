@@ -1,6 +1,6 @@
 -- Native deploy lifecycle, version 1. Never edit after application.
 -- Adopts the exact historical 001 contract without resetting existing data.
-BEGIN;
+-- Netlify owns the outer transaction and migration-ledger commit.
 SET LOCAL statement_timeout = '10000ms';
 SELECT pg_advisory_xact_lock(hashtextextended(current_schema() || ':genesis-migrations', 0));
 
@@ -65,4 +65,3 @@ BEGIN
     THEN RAISE EXCEPTION 'GENESIS_EXISTING_STATE_REVIEW_REQUIRED'; END IF;
 END $$;
 REVOKE ALL ON genesis_registration_state FROM PUBLIC;
-COMMIT;

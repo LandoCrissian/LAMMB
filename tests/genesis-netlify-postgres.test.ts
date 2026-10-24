@@ -33,8 +33,11 @@ describe.skipIf(!database)('native migration and runtime PostgreSQL', () => {
   }
   async function apply(target: Pool, filename: string) {
     const client = await target.connect();
+    const native = filename.startsWith('netlify/database/migrations/');
     try {
+      if (native) await client.query('BEGIN');
       await client.query(await readFile(filename, 'utf8'));
+      if (native) await client.query('COMMIT');
     } catch (error) {
       await client.query('ROLLBACK');
       throw error;
@@ -152,6 +155,46 @@ describe.skipIf(!database)('native migration and runtime PostgreSQL', () => {
         ).rows,
       ).toEqual(before);
     } finally {
+      await target.end();
+    }
+  });
+  it('leaves schema and grant rollback under the deployment runner when its ledger write fails', async () => {
+    const target = await isolated('ledger_failure');
+    const client = await target.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query(
+        'CREATE TEMP TABLE deployment_ledger(name text PRIMARY KEY) ON COMMIT DROP',
+      );
+      await client.query(
+        "INSERT INTO deployment_ledger VALUES ('already-applied')",
+      );
+      await client.query(await readFile(stateMigration, 'utf8'));
+      await client.query(await readFile(roleMigration, 'utf8'));
+      await expect(
+        client.query(
+          "INSERT INTO deployment_ledger VALUES ('already-applied')",
+        ),
+      ).rejects.toThrow(/duplicate key/);
+      await client.query('ROLLBACK');
+      expect(
+        (
+          await client.query(
+            "SELECT to_regclass('genesis_registration_state') AS state",
+          )
+        ).rows[0].state,
+      ).toBeNull();
+      expect(
+        (
+          await client.query(
+            "SELECT has_schema_privilege($1, current_schema(), 'USAGE') AS granted",
+            [role],
+          )
+        ).rows[0].granted,
+      ).toBe(false);
+    } finally {
+      await client.query('ROLLBACK');
+      client.release();
       await target.end();
     }
   });

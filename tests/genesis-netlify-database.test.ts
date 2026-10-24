@@ -239,10 +239,20 @@ describe('preview privacy boundary', () => {
   );
 });
 
-it('preserves the historical migration bytes and uses ordered native migration names', async () => {
+it('preserves the historical migration bytes', async () => {
   expect(
     createHash('sha256')
       .update(await readFile('apps/web/registration/001-genesis.sql'))
       .digest('hex'),
   ).toBe('bf0d90d196c94535dedec8ddb8f1226e880f3fb808fdeb15629730c71b334a78');
+});
+
+it('leaves native migration transaction ownership with the platform runner', async () => {
+  for (const name of [
+    '20261024000100_genesis_state.sql',
+    '20261024000200_genesis_runtime.sql',
+  ]) {
+    const sql = await readFile('netlify/database/migrations/' + name, 'utf8');
+    expect(sql).not.toMatch(/^(?:BEGIN|COMMIT|ROLLBACK);\r?$/m);
+  }
 });
