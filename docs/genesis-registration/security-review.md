@@ -82,10 +82,20 @@ checks. The failure archive is `12550929603`, SHA-256
 The exact internal hover substep was not traced; Playwright 1.62.1's hover path
 also waits on an injected hit-target interceptor, beyond native mouse movement.
 
-The helper now performs explicit visible geometry/viewport and native hit-target
-checks before and after real mouse movement, then awaits mouse down/up separately.
+At `9eaa467`, Edge job `120808359815` isolated the stall to the post-move DOM
+hit-test read, before button press. The helper now checks geometry/hit targets
+before input, observes trusted pointer receivers passively, completes native
+move/down/up without intervening DOM queries, then validates the down/up receipt.
 It does not force a click, dispatch DOM input, scroll hidden controls into view,
 retry, change scene state or extend the original 30-second budget. All existing
 Chamber assertions remain unchanged. Negative tests reject off-screen, disabled
-or occluded targets and prevent late input after expiry. This is a narrowly scoped
-test-driver correction required by full acceptance, not a product behavior change.
+or occluded targets, wrong event receivers and late input after expiry.
+
+Chrome at `9eaa467` also overshot research proximity and held forward at the north
+wall. Diagnostics publish once/second; a transient proximity result can be missed
+by polling under software rendering. The approach now releases keys between
+500ms native pulses and waits for a fresh diagnostic sample, correcting southward
+after an overshoot. The original 25-second bound, actual proximity predicate and
+all interaction assertions remain. Unit tests use real movement/collision rules
+to verify approach from both sides. These are test-driver corrections required
+by full acceptance, not changes to product gameplay or registration behavior.

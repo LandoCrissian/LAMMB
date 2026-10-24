@@ -16,8 +16,28 @@ export function clickChamberControl(
       height: number;
     } | null>;
     evaluate(
-      fn: (element: Element, point: { x: number; y: number }) => boolean,
-      point: { x: number; y: number },
+      fn: (
+        element: Element,
+        argument: {
+          at: { x: number; y: number };
+          stage: 'prepare' | 'verify' | 'cleanup';
+        },
+      ) => boolean,
+      argument: {
+        at: { x: number; y: number };
+        stage: 'prepare' | 'verify' | 'cleanup';
+      },
     ): Promise<boolean>;
   },
+): Promise<void>;
+
+export function approachChamberConsole(
+  page: {
+    keyboard: {
+      press(key: string, options: { delay: number }): Promise<unknown>;
+    };
+    waitForTimeout(milliseconds: number): Promise<unknown>;
+  },
+  read: () => Promise<{ x: number; z: number; near: boolean }>,
+  record?: (point: { key: string; x: number; z: number }) => void,
 ): Promise<void>;

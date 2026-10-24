@@ -7,7 +7,10 @@ import { createRequire } from 'node:module';
 import { freemem } from 'node:os';
 import path from 'node:path';
 import { parseArgs, promisify } from 'node:util';
-import { clickChamberControl } from './lib/chamber-control.mjs';
+import {
+  approachChamberConsole,
+  clickChamberControl,
+} from './lib/chamber-control.mjs';
 assert.equal(
   process.env.GITHUB_ACTIONS,
   'true',
@@ -865,7 +868,15 @@ try {
       // Walk to console, activate, replay and reset the complete comedy sequence.
       await hold(page, 'a', (p) => p.x < -2.7);
       await alignWithConsole(page);
-      await hold(page, 'w', (p) => p.near);
+      await approachChamberConsole(
+        page,
+        () => diagnostics(page),
+        (step) =>
+          evidence.researchApproaches.push({
+            ...step,
+            method: 'bounded native key pulse',
+          }),
+      );
       assert.equal(
         await page
           .getByRole('button', { name: 'Run experiment (E)' })
