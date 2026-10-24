@@ -51,7 +51,9 @@ export function databaseConfig(
     // NEVER used by the request handler. This SQL-created login has no owner or
     // neon_superuser membership. Branches copy roles, not application secrets.
     url.username = 'lammb_genesis_runtime';
-    url.password = password;
+    // URL setters retain literal % sequences; encode first so pg's URI decode
+    // cannot silently change a password containing e.g. "%3A" into ":".
+    url.password = encodeURIComponent(password);
     for (const [key, value] of url.searchParams) {
       if (
         url.searchParams.getAll(key).length !== 1 ||

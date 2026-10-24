@@ -9,7 +9,7 @@ import {
   trustedConnectionIp,
 } from '../apps/web/src/lib/genesis/deployment';
 
-const password = 'disposable-test-password-@:/?-123456789';
+const password = 'disposable-test-password-@:/?%3A-123456789';
 const provider =
   'postgresql://migration_owner:never-used@preview-branch.example/genesis?sslmode=require&channel_binding=require';
 const enabled = {
