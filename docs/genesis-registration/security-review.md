@@ -99,3 +99,10 @@ after an overshoot. The original 25-second bound, actual proximity predicate and
 all interaction assertions remain. Unit tests use real movement/collision rules
 to verify approach from both sides. These are test-driver corrections required
 by full acceptance, not changes to product gameplay or registration behavior.
+
+The new receipt check at `6194c7b` exposed a helper identity error: activating
+Third person renames the button First person, so resolving the old role/name
+locator again waits for a label that no longer exists. The helper pins the
+original element for geometry/receipt checks and disposes it afterward. A
+regression test changes the locator after activation while the original node's
+receipt remains readable. No assertions or deadlines are removed.

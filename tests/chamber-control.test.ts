@@ -6,16 +6,21 @@ import {
 import { moveObserver, nearTerminal } from '../apps/web/src/lib/chamber-model';
 
 function fixture() {
+  const target = {
+    boundingBox: vi.fn(async () => ({
+      x: 10,
+      y: 20,
+      width: 100,
+      height: 48,
+    })),
+    evaluate: vi.fn(async () => true),
+    dispose: vi.fn(async () => {}),
+  };
   return {
+    target,
     control: {
       isEnabled: vi.fn(async () => true),
-      boundingBox: vi.fn(async () => ({
-        x: 10,
-        y: 20,
-        width: 100,
-        height: 48,
-      })),
-      evaluate: vi.fn(async () => true),
+      elementHandle: vi.fn(async () => target),
     },
     page: {
       viewportSize: () => ({ width: 320, height: 844 }),
@@ -36,37 +41,37 @@ it('does not pipeline press/release while the previous native input is unacknowl
   const down = new Promise<void>((r) => {
     pressed = r;
   });
-  const { control, page } = fixture();
+  const { control, target, page } = fixture();
   page.mouse.move.mockImplementation(() => move);
   page.mouse.down.mockImplementation(() => down);
   const click = clickChamberControl(page, control);
   await vi.waitFor(() => expect(page.mouse.move).toHaveBeenCalledWith(60, 44));
-  expect(control.evaluate).toHaveBeenCalledOnce();
+  expect(target.evaluate).toHaveBeenCalledOnce();
   expect(page.mouse.down).not.toHaveBeenCalled();
   expect(page.mouse.up).not.toHaveBeenCalled();
   moved();
   await vi.waitFor(() => expect(page.mouse.down).toHaveBeenCalledOnce());
-  expect(control.evaluate).toHaveBeenCalledOnce();
+  expect(target.evaluate).toHaveBeenCalledOnce();
   expect(page.mouse.up).not.toHaveBeenCalled();
   pressed();
   await click;
-  expect(control.evaluate).toHaveBeenCalledTimes(2);
+  expect(target.evaluate).toHaveBeenCalledTimes(2);
   expect(page.mouse.up).toHaveBeenCalledOnce();
 });
 
 it('does not dispatch any pointer input to a disabled control', async () => {
-  const { control, page } = fixture();
+  const { control, target, page } = fixture();
   control.isEnabled.mockResolvedValue(false);
   await expect(clickChamberControl(page, control)).rejects.toThrow('enabled');
-  expect(control.boundingBox).not.toHaveBeenCalled();
+  expect(target.boundingBox).not.toHaveBeenCalled();
   expect(page.mouse.move).not.toHaveBeenCalled();
   expect(page.mouse.down).not.toHaveBeenCalled();
   expect(page.mouse.up).not.toHaveBeenCalled();
 });
 
 it('rejects controls outside the viewport without forcing or scrolling them', async () => {
-  const { control, page } = fixture();
-  control.boundingBox.mockResolvedValue({
+  const { control, target, page } = fixture();
+  target.boundingBox.mockResolvedValue({
     x: 400,
     y: 20,
     width: 100,
@@ -78,8 +83,8 @@ it('rejects controls outside the viewport without forcing or scrolling them', as
 });
 
 it('rejects an occluded control before sending native input', async () => {
-  const { control, page } = fixture();
-  control.evaluate.mockResolvedValue(false);
+  const { control, target, page } = fixture();
+  target.evaluate.mockResolvedValue(false);
   await expect(clickChamberControl(page, control)).rejects.toThrow(
     'native input',
   );
@@ -88,8 +93,8 @@ it('rejects an occluded control before sending native input', async () => {
 });
 
 it('rejects a native receipt if an overlapping target intercepted the gesture', async () => {
-  const { control, page } = fixture();
-  control.evaluate.mockResolvedValueOnce(true).mockResolvedValueOnce(false);
+  const { control, target, page } = fixture();
+  target.evaluate.mockResolvedValueOnce(true).mockResolvedValueOnce(false);
   await expect(clickChamberControl(page, control)).rejects.toThrow(
     'trusted down/up',
   );
@@ -99,15 +104,28 @@ it('rejects a native receipt if an overlapping target intercepted the gesture', 
 });
 
 it('finishes native move/down/up before asking the renderer for a receipt', async () => {
-  const { control, page } = fixture();
-  control.evaluate.mockResolvedValueOnce(true).mockImplementation(async () => {
+  const { control, target, page } = fixture();
+  target.evaluate.mockResolvedValueOnce(true).mockImplementation(async () => {
     expect(page.mouse.move).toHaveBeenCalledOnce();
     expect(page.mouse.down).toHaveBeenCalledOnce();
     expect(page.mouse.up).toHaveBeenCalledOnce();
     return true;
   });
   await clickChamberControl(page, control);
-  expect(control.evaluate).toHaveBeenCalledTimes(2);
+  expect(target.evaluate).toHaveBeenCalledTimes(2);
+});
+
+it('retains the clicked node when activation changes its accessible name', async () => {
+  const { control, target, page } = fixture();
+  page.mouse.up.mockImplementation(async () => {
+    control.elementHandle.mockRejectedValue(
+      new Error('Old accessible name no longer exists'),
+    );
+  });
+  await clickChamberControl(page, control);
+  expect(control.elementHandle).toHaveBeenCalledOnce();
+  expect(target.evaluate).toHaveBeenCalledTimes(2);
+  await vi.waitFor(() => expect(target.dispose).toHaveBeenCalledOnce());
 });
 
 it('retains the original 30-second budget and never starts late input after failure', async () => {

@@ -9,25 +9,28 @@ export function clickChamberControl(
   },
   control: {
     isEnabled(): Promise<boolean>;
-    boundingBox(): Promise<{
-      x: number;
-      y: number;
-      width: number;
-      height: number;
-    } | null>;
-    evaluate(
-      fn: (
-        element: Element,
+    elementHandle(): Promise<{
+      boundingBox(): Promise<{
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      } | null>;
+      evaluate(
+        fn: (
+          element: Element,
+          argument: {
+            at: { x: number; y: number };
+            stage: 'prepare' | 'verify' | 'cleanup';
+          },
+        ) => boolean,
         argument: {
           at: { x: number; y: number };
           stage: 'prepare' | 'verify' | 'cleanup';
         },
-      ) => boolean,
-      argument: {
-        at: { x: number; y: number };
-        stage: 'prepare' | 'verify' | 'cleanup';
-      },
-    ): Promise<boolean>;
+      ): Promise<boolean>;
+      dispose(): Promise<unknown>;
+    } | null>;
   },
 ): Promise<void>;
 

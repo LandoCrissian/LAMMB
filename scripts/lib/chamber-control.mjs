@@ -14,7 +14,7 @@ export async function clickChamberControl(page, control) {
     phase = 'enabled check',
     prepared = false,
     inspected = false;
-  let inspect;
+  let inspect, target;
   const deadline = new Promise((_, reject) => {
     timer = setTimeout(() => {
       expired = true;
@@ -34,8 +34,12 @@ export async function clickChamberControl(page, control) {
       (async () => {
         assert(await control.isEnabled(), 'Chamber control must be enabled');
         check();
+        phase = 'control identity';
+        target = await control.elementHandle();
+        check();
+        assert(target, 'Chamber control must resolve to an element');
         phase = 'visible geometry';
-        const box = await control.boundingBox();
+        const box = await target.boundingBox();
         check();
         assert(
           box && box.width > 0 && box.height > 0,
@@ -54,7 +58,7 @@ export async function clickChamberControl(page, control) {
           'Chamber control must be inside the viewport',
         );
         inspect = (stage) =>
-          control.evaluate(
+          target.evaluate(
             (element, { at, stage }) => {
               const key = Symbol.for('lammb.acceptance.control-pointer-trace');
               const doc = element.ownerDocument;
@@ -121,7 +125,16 @@ export async function clickChamberControl(page, control) {
     ]);
   } finally {
     clearTimeout(timer);
-    if (prepared && !inspected) void inspect('cleanup').catch(() => {});
+    // Keep the original node even when activation changes its accessible name.
+    // Cleanup is read-only and must not extend the input deadline on a stuck page.
+    if (target) {
+      const cleanup =
+        prepared && !inspected ? inspect('cleanup') : Promise.resolve();
+      void cleanup
+        .catch(() => {})
+        .then(() => target.dispose())
+        .catch(() => {});
+    }
   }
 }
 
