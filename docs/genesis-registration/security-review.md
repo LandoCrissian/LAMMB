@@ -71,3 +71,21 @@ scope/IAM and protect logs. Real TLS, branch mapping, backup retention, independ
 recovery, connection capacity and adapter context/IP behavior require an authorized
 platform rehearsal. Never fall back to an owner login, weaken grants or spoof
 CONTEXT to make those gates pass. See the [native checklist](netlify-database.md).
+
+### Full browser acceptance dependency
+
+At Task082 head `5ab2922`, all 1,035 repository tests and responsive Genesis
+checks passed, but Chrome job `120804217844` stopped in the existing Chamber
+helper's locator-hover acknowledgement after the 1440px evolution and experiment
+checks. The failure archive is `12550929603`, SHA-256
+`6c32def8db70d39e9935d13f6598febcf8408f9c21a0e137d23baab381c520c0`.
+The exact internal hover substep was not traced; Playwright 1.62.1's hover path
+also waits on an injected hit-target interceptor, beyond native mouse movement.
+
+The helper now performs explicit visible geometry/viewport and native hit-target
+checks before and after real mouse movement, then awaits mouse down/up separately.
+It does not force a click, dispatch DOM input, scroll hidden controls into view,
+retry, change scene state or extend the original 30-second budget. All existing
+Chamber assertions remain unchanged. Negative tests reject off-screen, disabled
+or occluded targets and prevent late input after expiry. This is a narrowly scoped
+test-driver correction required by full acceptance, not a product behavior change.
